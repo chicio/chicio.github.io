@@ -374,5 +374,5 @@ scene that supports advanced feature, in particular physically based rendering :
 ![I know three.js](/assets/images/posts/i-know-threejs.jpg "I know three.js")
 
 You know three.js now. You're ready to conquer the web 3D world now :smirk:. Ah!! I was forgetting: you can find a live 
-demo of the scene we created on the [homepage of my website]({{% site.url % }} "Fabrizio Duroni").
+demo of the scene we created on the [homepage of my website](/ "Fabrizio Duroni").
  
