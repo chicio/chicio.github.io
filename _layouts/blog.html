@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <style type="text/css">{% include critical-blog.css %}</style>
+        {% include analytics.html %}
+        <meta name="p:domain_verify" content="33d2d5dad0e1496d9f7974925340ea50"/>
+        <meta property="og:image" content="{{ site.url }}{{ site.image }}"/>
+        <meta property="og:type" content="profile"/>
+        {% seo %}
+    </head>
+    <body class="blog-body">
+        <div class="blog-masthead">
+            <div class="container">
+                <nav class="blog-nav">
+                    {% for nav in site.nav %}
+                    <a class="blog-nav-item {% if page.url contains nav.url and nav.name != 'Home' %}active{% endif %}"
+                       href="{{ nav.url }}">{{ nav.name }}</a>
+                    {% endfor %}
+                </nav>
+            </div>
+        </div>
+        <div class="container blog-posts">
+            <div class="blog-header row">
+                <a href="/blog/">
+                <img alt="Sombrero Galaxy" class="img-responsive blog-logo" src="/assets/images/blog-logo.png">
+                    </a>
+                <h1 class="blog-title"><a href="/blog/">CHICIO CODING</a></h1>
+                <h2 class="lead blog-description">Dirty clean code</h2>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 blog-main">
+                    {% for post in paginator.posts %}
+                    <div class="row blog-post">
+                        <h2 class="blog-post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+                        <p class="blog-post-meta">{{ post.date | date_to_string }}</p>
+                        {{ post.content | markdownify }}
+                    </div>
+                    {% endfor %}
+                    <div class="row">
+                        <nav class="blog-arrows">
+                            <ul class="pager">
+                                {% if paginator.previous_page %}
+                                <li>
+                                    <a class="btn btn-default" href="{{ paginator.previous_page_path }}">Previous</a>
+                                </li>
+                                {% endif %}
+                                {% if paginator.next_page %}
+                                <li>
+                                    <a class="btn btn-default" href="{{ paginator.next_page_path }}">Next</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="container-fluid text-center blog-footer">
+            <div class="row center-content blog-nav">
+                <a href="/" class="blog-nav-item">
+                    Home
+                </a>|
+                <a href="/blog/" class="blog-nav-item">
+                    Blog
+                </a>|
+                <a href="/2017/05/10/about-me.html" class="blog-nav-item">
+                    About Me
+                </a>|
+                <a href="/blog/archive/" class="blog-nav-item">
+                    Archive
+                </a>|
+                <a href="/blog/tags/" class="blog-nav-item">
+                    Tags
+                </a>
+            </div>
+            <div class="row center-content">
+                <div class="col-xs-12">
+                    <a href="https://github.com/chicio" target="_blank">
+                        <i class="blog-footer-icon fa fa-github" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/fabrizio-duroni-947a9b35/" target="_blank">
+                        <i class="blog-footer-icon fa fa-linkedin" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://twitter.com/chicio86" target="_blank">
+                        <i class="blog-footer-icon fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.facebook.com/fabrizio.duroni" target="_blank">
+                        <i class="blog-footer-icon fa fa-facebook" aria-hidden="true"></i>
+                    </a>
+                    <a href="mailto:fabrizio.duroni@gmail.com">
+                        <i class="blog-footer-icon fa fa-envelope" aria-hidden="true"></i>
+                    </a>
+                    <a href="tel:+393285926828">
+                        <i id="phone-number" class="blog-footer-icon fa fa-mobile" aria-hidden="true"></i>
+                    </a>
+                    <div class="row blog-copyright">
+                        <h5>Made with <span id="heart" class="heart">💖</span> by {{ site.author }} 'Chicio'</h5>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <noscript id="deferred-styles">
+            <link rel="stylesheet" href="/assets/styles/style.css">
+        </noscript>
+        <script>
+            var loadDeferredStyles = function () {
+                var addStylesNode = document.getElementById("deferred-styles");
+                var replacement = document.createElement("div");
+                replacement.innerHTML = addStylesNode.textContent;
+                document.body.appendChild(replacement)
+                addStylesNode.parentElement.removeChild(addStylesNode);
+            };
+            var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+                webkitRequestAnimationFrame || msRequestAnimationFrame;
+            if (raf) raf(function () {
+                window.setTimeout(loadDeferredStyles, 0);
+            });
+            else window.addEventListener('load', loadDeferredStyles);
+        </script>
+    </body>
+</html>

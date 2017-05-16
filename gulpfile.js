@@ -1,0 +1,236 @@
+var gulp = require('gulp');
+var concat = require('gulp-concat');
+var sass = require('gulp-sass');
+var child = require('child_process');
+var gutil = require('gulp-util');
+var browserSync = require('browser-sync').create();
+var uglify = require('gulp-uglify');
+var argv = require('yargs').argv;
+var critical = require('critical');
+
+var isTravis = (argv.travis !== undefined);
+var isDevelopment = (argv.dev !== undefined);
+var cssFiles = '_css/**/*.?(s)css';
+var jsFiles = '_js/**/*.js';
+var siteRoot = '_site';
+
+gulp.task('serve', function() {
+    browserSync.init({
+        files: [siteRoot + '/**'],
+        port: 4000,
+        server: {
+            baseDir: siteRoot
+        },
+        browser: ["safari"]
+    });
+
+    gulp.watch(jsFiles, ['bundle-scripts'])
+    gulp.watch(cssFiles, ['css']);
+});
+
+gulp.task('jekyll', function() {
+    var options = ['build', '--watch', '--incremental', '--drafts'];
+
+    if (isTravis) {
+        options = ['build', '--incremental', '--drafts'];
+    }
+
+    const jekyll = child.spawn('jekyll', options);
+
+    const jekyllLogger = function(buffer) {
+        buffer.toString()
+            .split(/\n/)
+            .forEach(function (message) {
+                gutil.log('Jekyll: ' + message)
+            });
+    };
+
+    jekyll.stdout.on('data', jekyllLogger);
+    jekyll.stderr.on('data', jekyllLogger);
+});
+
+gulp.task('jekyll-build', function() {
+    const jekyll = child.spawn('jekyll', ['build',
+        '--incremental',
+        '--drafts'
+    ]);
+
+    const jekyllLogger = function(buffer) {
+        buffer.toString()
+            .split(/\n/)
+            .forEach(function (message) {
+                gutil.log('Jekyll: ' + message)
+            });
+    };
+
+    jekyll.stdout.on('data', jekyllLogger);
+    jekyll.stderr.on('data', jekyllLogger);
+});
+
+gulp.task('css', function() {
+    gulp.src(cssFiles)
+        .pipe(sass({outputStyle: isDevelopment ? 'expanded' : 'compressed'}))
+        .pipe(concat('style.css'))
+        .pipe(gulp.dest('assets/styles'))
+});
+
+gulp.task('bundle-scripts', function() {
+    return gulp.src([jsFiles, '!_js/vendor/**/*.js'])
+        .pipe(concat('index.min.js'))
+        .pipe(gulp.dest('assets/js'))
+        .pipe(isDevelopment ? gutil.noop() : uglify())
+        .pipe(gulp.dest('assets/js'));
+});
+
+gulp.task('vendor-scripts', function() {
+    return gulp.src([
+        '_js/vendor/threejs/three.js',
+        '_js/vendor/threejs/OrbitControls.js',
+        '_js/vendor/threejs/PLYLoader.js',
+        '_js/vendor/webfont.js',
+        '_js/vendor/jquery.js',
+        '_js/vendor/bootstrap.min.js',
+        '_js/vendor/gsap/TweenMax.min.js',
+        '_js/vendor/scrollmagic/ScrollMagic.min.js',
+        '_js/vendor/scrollmagic/plugins/animation.gsap.min.js',
+        '_js/vendor/gsap/plugins/ScrollToPlugin.min.js'
+    ]).pipe(concat('vendor.min.js'))
+      .pipe(gulp.dest('assets/js'))
+      .pipe(isDevelopment ? gutil.noop() : uglify())
+      .pipe(gulp.dest('assets/js'));
+});
+
+gulp.task('images', function() {
+    return gulp.src(['_images/**/*.png', '_images/**/*.jpg', '_images/**/*.jpeg'])
+        .pipe(gulp.dest('assets/images'))
+});
+
+gulp.task('fonts', function() {
+    return gulp.src('_fonts/**/*.*')
+        .pipe(gulp.dest('assets/fonts'))
+});
+
+gulp.task('models', function() {
+    return gulp.src('_models/**/*.*')
+        .pipe(gulp.dest('assets/models'))
+});
+
+gulp.task('css-critical', function() {
+    critical.generate({
+        base: '_layouts/',
+        src: 'home.html',
+        css: ['assets/styles/style.css'],
+        dimensions: [{
+            width: 320,
+            height: 480
+        },{
+            width: 768,
+            height: 1024
+        },{
+            width: 1280,
+            height: 960
+        }],
+        dest: '../_includes/critical.css',
+        minify: true,
+        extract: false
+    });
+
+    critical.generate({
+        base: '_layouts/',
+        src: 'blog.html',
+        css: ['assets/styles/style.css'],
+        dimensions: [{
+            width: 320,
+            height: 480
+        },{
+            width: 768,
+            height: 1024
+        },{
+            width: 1280,
+            height: 960
+        }],
+        dest: '../_includes/critical-blog.css',
+        minify: true,
+        extract: false
+    });
+
+    critical.generate({
+        base: '_layouts/',
+        src: 'post.html',
+        css: ['assets/styles/style.css'],
+        dimensions: [{
+            width: 320,
+            height: 480
+        },{
+            width: 768,
+            height: 1024
+        },{
+            width: 1280,
+            height: 960
+        }],
+        dest: '../_includes/critical-blog-post.css',
+        minify: true,
+        extract: false
+    });
+
+    critical.generate({
+        base: '_layouts/',
+        src: 'post-archive.html',
+        css: ['assets/styles/style.css'],
+        dimensions: [{
+            width: 320,
+            height: 480
+        },{
+            width: 768,
+            height: 1024
+        },{
+            width: 1280,
+            height: 960
+        }],
+        dest: '../_includes/critical-blog-post-archive.css',
+        minify: true,
+        extract: false
+    });
+
+    critical.generate({
+        base: '_layouts/',
+        src: 'tags.html',
+        css: ['assets/styles/style.css'],
+        dimensions: [{
+            width: 320,
+            height: 480
+        },{
+            width: 768,
+            height: 1024
+        },{
+            width: 1280,
+            height: 960
+        }],
+        dest: '../_includes/critical-blog-tags.css',
+        minify: true,
+        extract: false
+    });
+});
+
+gulp.task('default', [
+    'css',
+    'css-critical',
+    'bundle-scripts',
+    'vendor-scripts',
+    'images',
+    'fonts',
+    'models',
+    'jekyll',
+    'serve'
+]);
+
+gulp.task('test', [
+    'css',
+    'css-critical',
+    'bundle-scripts',
+    'vendor-scripts',
+    'images',
+    'fonts',
+    'models',
+    'jekyll'
+]);

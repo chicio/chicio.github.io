@@ -1,0 +1,83 @@
+# Fabrizio Duroni Website Jekyll config file.
+#
+
+########## Data
+
+title: Fabrizio Duroni
+
+author: Fabrizio Duroni
+
+email: fabrizio.duroni@gmail.com
+
+description: >
+ Fabrizio Duroni 'Chicio' official site with profile details. Main skills: mobile application development,
+ computer graphics, web development.
+
+url: https://www.fabrizioduroni.it
+
+github_username: chicio
+
+twitter:
+  username: chicio86
+
+facebook:
+  app_id: 443203399348229
+  publisher: https://www.facebook.com/fabrizio.duroni
+
+logo: /assets/images/fabrizio-duroni.jpg
+
+social:
+  name: Fabrizio Duroni
+  links:
+    - https://twitter.com/chicio86
+    - https://www.facebook.com/fabrizio.duroni
+    - https://www.linkedin.com/in/fabrizio-duroni-947a9b35/
+    - https://plus.google.com/+FabrizioDuroni
+    - https://github.com/chicio
+    - https://it.pinterest.com/chicio86/
+
+lang: en_US
+
+image: /assets/images/fabrizio-duroni.jpg
+
+nav:
+  - name: "Home"
+    url:  "/"
+  - name: "Blog"
+    url:  "/blog/"
+  - name: "About Me"
+    url:  "/2017/05/10/about-me.html"
+
+########## Configuration
+
+paginate:           5
+paginate_path:      /blog/page:num/
+
+# Uncomment to get html not minified
+# minify_html: false
+
+# Markdown
+markdown:           kramdown
+highlighter: rouge
+kramdown:
+  input:            GFM
+
+#Gems
+gems:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - octopress-minify-html
+  - jekyll-paginate
+  - jemoji
+
+# Build settings
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - node_modules
+  - gulpfile.js
+  - material
+  - LICENSE.md
+  - README.md
+  - blog-material

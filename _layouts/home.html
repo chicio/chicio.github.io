@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        {% include analytics.html %}
+        <style type="text/css">{% include critical.css %}</style>
+        <meta name="p:domain_verify" content="33d2d5dad0e1496d9f7974925340ea50"/>
+        <meta property="og:image" content="{{ site.url }}{{ site.image }}" />
+        <meta property="og:type" content="profile" />
+        {% seo %}
+    </head>
+    <body>
+        <div id="loader" class="loader"></div>
+        <div id="profile-introduction" class="container-fluid profile-introduction">
+            <div id="rendering-surface" class="container-fluid"></div>
+            <div class="row vertical-center-row text-center">
+                <div id="center-content" class="center-content">
+                    <img src="/assets/images/fabrizio-duroni.jpg"
+                         id="profile-image"
+                         class="img-responsive img-circle"
+                         alt="Fabrizio Duroni"/>
+                    <h1 id="profile-name">{{ site.author }}</h1>
+                    <h3 id="profile-job" class="profile-job">Software Developer</h3>
+                    <a href="https://github.com/chicio" target="_blank">
+                        <i class="profile-icon fa fa-github" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/fabrizio-duroni-947a9b35/" target="_blank">
+                        <i class="profile-icon fa fa-linkedin" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://twitter.com/chicio86" target="_blank">
+                        <i class="profile-icon fa fa-twitter" aria-hidden="true"></i>
+                    </a><br class="break"/>
+                    <a href="https://www.facebook.com/fabrizio.duroni" target="_blank">
+                        <i class="profile-icon fa fa-facebook" aria-hidden="true"></i>
+                    </a>
+                    <a href="mailto:fabrizio.duroni@gmail.com">
+                        <i class="profile-icon fa fa-envelope" aria-hidden="true"></i>
+                    </a>
+                    <a href="tel:+393285926828">
+                        <i id="phone-number" class="profile-icon fa fa-mobile" aria-hidden="true"></i>
+                    </a>
+                    <!--
+                    <a href="/blog/" target="_blank">
+                        <i id="blog" class="profile-icon fa fa-pencil-square" aria-hidden="true"></i>
+                    </a>
+                    -->
+                </div>
+            </div>
+            <i class="down-arrow fa fa-chevron-down"
+               aria-hidden="true"
+               id="down-arrow"></i>
+        </div>
+        <div id="who-am-i-container" class="container-fluid who-am-i-container">
+            <div class="row who-am-i">
+                <div id="who-am-i-description" class="row who-am-i-description">
+                    <h1>Who I am</h1>
+                    <p>
+                        I'm {{ site.author }}, a software developer with many years of experience.
+                        I have a strong knowledge of the following languages: C++, Objective-C, Swift, C, Java, PHP.
+                        I'm specialized in mobile application development. I started to develop mobile application since
+                        2010. I'm also specialized in computer graphics and I have good knowledge of web development
+                        (both frontend and backend).
+                    </p>
+                </div>
+                <div id="who-am-i-icons" class="row who-am-i-icons center-block">
+                    <img class="who-am-i-icon" alt="XCode" src="/assets/images/xcode.png"/>
+                    <img class="who-am-i-icon" alt="Swift" src="/assets/images/swift.png"/>
+                    <img class="who-am-i-icon" alt="Android" src="/assets/images/android.png"/>
+                    <img class="who-am-i-icon" alt="C++" src="/assets/images/cpp.png"/>
+                    <img alt="OpenGL ES"
+                         class="who-am-i-big-icon who-am-i-icon"
+                         src="/assets/images/opengl-es.png"/>
+                    <img class="who-am-i-big-icon who-am-i-icon"
+                         alt="Unity"
+                         src="/assets/images/unity.png"/>
+                    <img class="who-am-i-icon" alt="PHP" src="/assets/images/php.png"/>
+                    <img class="who-am-i-icon" alt="HTML - CSS -Javascript" src="/assets/images/html-css-js.png"/>
+                    <img class="who-am-i-icon" alt="Visual Studio" src="/assets/images/visual-studio.png"/>
+                </div>
+            </div>
+        </div>
+        <div class="profile-container container-fluid">
+            <ul class="nav nav-tabs nav-justified responsive" id="profile-tabs">
+                <li id="projects" class="active"><a href="#personal-projects">Projects</a></li>
+                <li id="education-and-experience"><a href="#experience">Experience</a></li>
+            </ul>
+            <div class="tab-content responsive">
+                <div class="tab-pane active projects" id="personal-projects">
+                    <div id="#spectral-clara-lux-tracer" class="row project">
+                        <div class="col-sm-6 col-md-6 center-block project-image-container project-image-container-right">
+                            <img id="spectral-clara-lux-tracer-image"
+                                 alt="Spectral Clara Lux Tracer"
+                                 src="/assets/images/spectral-clara-lux-tracer.jpg"
+                                 class="img-responsive">
+                        </div>
+                        <div id="spectral-clara-lux-tracer-info" class="col-sm-6 col-md-6 project-info">
+                            <h1>Spectral Clara Lux Tracer</h1>
+                            <p>
+                                Physically based ray tracer with multiple shading models support and Color Rendering
+                                Index (CRI) evaluation. Project developed for my master degree thesis at
+                                <a href="https://www.disco.unimib.it">University Milano-Bicocca</a> -
+                                <a href="http://www.ivl.disco.unimib.it">Imaging and Vision Laboratory</a>.
+                            </p>
+                            <ul class="project-features">
+                                <li>Computer graphics</li>
+                                <li>Ray-tracing</li>
+                                <li>Physically based rendering</li>
+                                <li>Color calculation using spectral data</li>
+                                <li>Color Rendering index calculation</li>
+                                <li>iOS, macOS, Windows</li>
+                                <li>Objective-C, C++</li>
+                            </ul>
+                            <a class="btn btn-default" href="https://github.com/chicio/Spectral-Clara-Lux-Tracer"
+                               target="_blank">Github repo</a>
+                            <a class="btn btn-default"
+                               href="https://drive.google.com/file/d/0BxeVnHLvT8-7dkxQRjV6M29TeUk/view"
+                               target="_blank">Thesis</a>
+                        </div>
+                    </div>
+                    <div class="row project">
+                        <div class="col-sm-6 col-md-6 center-block project-image-container">
+                            <img id="spectral-brdf-explorer-image"
+                                 alt="Spectral BRDF Explorer"
+                                 src="/assets/images/spectral-brdf-explorer.png"
+                                 class="img-responsive">
+                        </div>
+                        <div id="spectral-brdf-explorer-info" class="col-sm-6 col-md-6 project-info">
+                            <h1>Spectral BRDF Explorer</h1>
+                            <p>
+                                OpenGL ES application inspired by
+                                <a href="https://github.com/wdas/brdf">Walt Animation Disney Studios BRDF Viewer</a>.
+                                A simple application thats shows some of the most famous lighting model used in computer
+                                graphics and that supports color calculation using RGB and spectral data of lights and
+                                object surfaces.
+                            </p>
+                            <ul class="project-features">
+                                <li>Computer graphics</li>
+                                <li>OpenGL ES</li>
+                                <li>Color calculation using spectral data</li>
+                                <li>iOS, Android</li>
+                                <li>Objective-C, Java, C++</li>
+                            </ul>
+                            <a class="btn btn-default"
+                               href="https://github.com/chicio/Spectral-BRDF-Explorer" target="_blank">Github repo</a>
+                        </div>
+                    </div>
+                    <div class="row project">
+                        <div class="col-sm-6 col-md-6 center-block project-image-container project-image-container-right">
+                            <img id="ray-tracing-image"
+                                 alt="Ray tracing"
+                                 src="/assets/images/ray-tracing.jpg"
+                                 class="img-responsive">
+                        </div>
+                        <div id="ray-tracing-info" class="col-sm-6 col-md-6 project-info">
+                            <h1>Ray-tracing</h1>
+                            <p>
+                                Ray tracer for iPad developed as final project for my computer graphics course at
+                                <a href="https://www.disco.unimib.it">University Milano-Bicocca</a>. It supports the
+                                some common ray tracing/computer graphics techniques and some interesting addition like
+                                perlin noise.
+                            </p>
+                            <ul class="project-features">
+                                <li>Computer graphics</li>
+                                <li>Ray-tracing</li>
+                                <li>Lighting models</li>
+                                <li>Soft shadow</li>
+                                <li>Cube mapping</li>
+                                <li>Procedural texture with Perlin noise</li>
+                                <li>Bump mapping</li>
+                                <li>iOS</li>
+                                <li>Objective-C</li>
+                            </ul>
+                            <a class="btn btn-default" href="https://github.com/chicio/Ray-tracing"
+                               target="_blank">Github repo</a>
+                        </div>
+                    </div>
+                    <div class="row project">
+                        <div class="col-sm-6 col-md-6 center-block project-image-container project-image-container">
+                            <img id="rangeuislider-image"
+                                 alt="RangeUISlider"
+                                 src="/assets/images/range-ui-slider.png"
+                                 class="img-responsive">
+                        </div>
+                        <div id="rangeuislider-info" class="col-sm-6 col-md-6 project-info">
+                            <h1>RangeUISlider</h1>
+                            <p>
+                                A highly customizable iOS range selection slider, developed using autolayout and
+                                completely
+                                customizable using IBDesignabled and IBInspectable. Distributed as a custom framework
+                                and
+                                with <a href="https://cocoapods.org/pods/RangeUISlider">cocoapods</a>.
+                            </p>
+                            <ul class="project-features">
+                                <li>Cocoa Touch</li>
+                                <li>Custom UI Component</li>
+                                <li>Autolayout</li>
+                                <li>IBDesignable</li>
+                                <li>IBInspectable</li>
+                                <li>iOS</li>
+                                <li>Swift</li>
+                            </ul>
+                            <a class="btn btn-default" href="https://github.com/chicio/RangeUISlider"
+                               target="_blank">Github repo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="experience">
+                    <div class="container">
+                        <ul id="timeline" class="timeline">
+                            <li id="timeline-element-lastminute" class="timeline-element">
+                                <div class="timeline-badge work">
+                                    <i class="glyphicon glyphicon-briefcase"></i>
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="row timeline-heading">
+                                        <img alt="Lastminute.com group" src="/assets/images/lastminute-group.png">
+                                        <h4 class="timeline-title">Lastminute.com group</h4>
+                                        <h4 class="timeline-subtitle">
+                                            Mobile application developer
+                                        </h4>
+                                        <p>
+                                            <small class="text-muted visible-xs-block visible-sm-block">February 2017
+                                            </small>
+                                        </p>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p>
+                                            Designing and implementing iOS and Android apps for the main brands of the
+                                            company: Lastminute.com, Volagratis, Bravofly, Rumbo.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="timeline-date visible-md-block visible-lg-block">
+                                    <span>February 2017</span>
+                                </div>
+                            </li>
+                            <li id="timeline-element-bicocca" class="timeline-element timeline-inverted">
+                                <div class="timeline-badge">
+                                    <i class="glyphicon glyphicon-education"></i>
+                                </div>
+                                <div class="timeline-panel">
+
+                                    <div class="row timeline-heading">
+                                        <img alt="Unimib"
+                                             src="/assets/images/unimib.jpg">
+                                        <h4 class="timeline-title">Milano-Bicocca University</h4>
+                                        <h4 class="timeline-subtitle">
+                                            Master's degree in Computer Science
+                                        </h4>
+                                        <p>
+                                            <small class="text-muted visible-xs-block visible-sm-block">July 2016
+                                            </small>
+                                        </p>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p>
+                                            Thesis: “Spectral Clara Lux Tracer: physically based ray tracer with
+                                            multiple
+                                            shading models support”. You can find more info about it in the project
+                                            section.
+                                        </p>
+                                        <ul>
+                                            <li>Computer graphics</li>
+                                            <li>Software engineering</li>
+                                            <li>Algorithm and Theoretical CS</li>
+                                            <li>IT security</li>
+                                            <li>IT management</li>
+                                            <li>Design and user experience</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="timeline-date-inverted visible-md-block visible-lg-block">
+                                    <span>July 2016</span>
+                                </div>
+                            </li>
+                            <li id="timeline-element-condenast">
+                                <div class="timeline-badge work">
+                                    <i class="glyphicon glyphicon-briefcase"></i>
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="row timeline-heading">
+                                        <img alt="Condé Nast" src="/assets/images/condenast.png">
+                                        <h4 class="timeline-title">Condé Nast Italia</h4>
+                                        <h4 class="timeline-subtitle">
+                                            Mobile/Web application developer
+                                        </h4>
+                                        <p>
+                                            <small class="text-muted visible-xs-block visible-sm-block">June 2013
+                                            </small>
+                                        </p>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p>
+                                            Designing and implementing iOS and Android apps for the main brands of the
+                                            company: Vanity Fair, Glamour, Wired, Vogue.
+                                        </p>
+                                        <p>I also worked with the web team to
+                                            develop the new version of the official web sites for GQ Italia, Glamour,
+                                            CNLive! and Vogue Italia.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="timeline-date visible-md-block visible-lg-block">
+                                    <span>June 2013</span>
+                                </div>
+                            </li>
+                            <li id="timeline-element-shi">
+                                <div class="timeline-badge work">
+                                    <i class="glyphicon glyphicon-briefcase"></i>
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="row timeline-heading">
+                                        <img alt="SHI" src="/assets/images/shi.png">
+                                        <h4 class="timeline-title">SHI</h4>
+                                        <h4 class="timeline-subtitle">
+                                            iOS/Web Developer
+                                        </h4>
+                                        <p>
+                                            <small class="text-muted visible-xs-block visible-sm-block">October 2010
+                                            </small>
+                                        </p>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p>
+                                            Design and development of mobile application on iOS, Android and Windows
+                                            phone
+                                            platform, for enterprise distribution (ad-hoc distribution) or within the
+                                            various
+                                            app store.
+                                        </p>
+                                        <p>
+                                            Design and development of Web application used as backend for mobile app.
+                                            Design and development of Enterprise Web application.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="timeline-date visible-md-block visible-lg-block">
+                                    <span>October 2010</span>
+                                </div>
+                            </li>
+                            <li id="timeline-element-bottinelli-informatica">
+                                <div class="timeline-badge work">
+                                    <i class="glyphicon glyphicon-briefcase"></i>
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="row timeline-heading">
+                                        <img alt="Bottinelli Informatica"
+                                             src="/assets/images/bottinelli-informatica.png">
+                                        <h4 class="timeline-title">Bottinelli informatica</h4>
+                                        <h4 class="timeline-subtitle">
+                                            Developer
+                                        </h4>
+                                        <p>
+                                            <small class="text-muted visible-xs-block visible-sm-block">September 2009
+                                            </small>
+                                        </p>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p>Software development for textile industry.</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-date visible-md-block visible-lg-block">
+                                    <span>September 2009</span>
+                                </div>
+                            </li>
+                            <li id="timeline-element-avanade">
+                                <div class="timeline-badge work">
+                                    <i class="glyphicon glyphicon-briefcase"></i>
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="row timeline-heading">
+                                        <img alt="Avanade" src="/assets/images/avanade.png">
+                                        <h4 class="timeline-title">Avanade</h4>
+                                        <h4 class="timeline-subtitle">
+                                            PMO Consultant
+                                        </h4>
+                                        <p>
+                                            <small class="text-muted visible-xs-block visible-sm-block">October 2008
+                                            </small>
+                                        </p>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p>
+                                            Assigned on Eurosig integration BA-HVB/Unicredit project, I worked with the
+                                            Accenture Consultant team as a PMO.
+                                        </p>
+                                        <ul>
+                                            <li>Tracking creation and evolution of functional specification to cover the
+                                                gaps between ASC, CRE, PAY, MDM and BSS sector of the IT systems of
+                                                Unicredit and HVB bank.
+                                            </li>
+                                            <li>
+                                                Publishing statistics to show the state of art of the functional
+                                                specification
+                                                produced, the open change request and the state of user test.
+                                                Maintenance of
+                                                tools created with Microsoft Excel, Microsoft Powerpoint and VBA used to
+                                                generate the above mentioned statistics.
+                                            </li>
+                                            <li>
+                                                Maintenance of tools used to manage WBS of the project inside Accenture
+                                                team.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="timeline-date visible-md-block visible-lg-block">
+                                    <span>October 2008</span>
+                                </div>
+                            </li>
+                            <li id="timeline-element-insubria" class="timeline-inverted">
+                                <div class="timeline-badge">
+                                    <i class="glyphicon glyphicon-education"></i>
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="row timeline-heading">
+                                        <img alt="Insubria" src="/assets/images/insubria.png">
+                                        <h4 class="timeline-title">Insubria University</h4>
+                                        <h4 class="timeline-subtitle">
+                                            Bachelor's degree in Computer Science
+                                        </h4>
+                                        <p>
+                                            <small class="text-muted visible-xs-block visible-sm-block">October 2008
+                                            </small>
+                                        </p>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p>
+                                            Thesis: “Grandi Giardini: implementazione di un portale web con funzionalità
+                                            e-commerce”. A web e-commerce developed for Grandi Giardini Italiani s.r.l.,
+                                            a company dealing with the organization of events in some of the most
+                                            beautiful italian gardens (never deployed in production).
+                                        </p>
+                                        <ul>
+                                            <li>Software engineering</li>
+                                            <li>Algorithm and Theoretical CS</li>
+                                            <li>IT security</li>
+                                            <li>IT management</li>
+                                            <li>Networking</li>
+                                            <li>Programming</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="timeline-date-inverted visible-md-block visible-lg-block">
+                                    <span>October 2008</span>
+                                </div>
+                            </li>
+                            <li id="timeline-element-romagnosi" class="timeline-inverted">
+                                <div class="timeline-badge">
+                                    <i class="glyphicon glyphicon-education"></i>
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="row timeline-heading">
+                                        <h4 class="timeline-title">ITCG Romagnosi</h4>
+                                        <h4 class="timeline-subtitle">
+                                            High school in Accountant
+                                        </h4>
+                                        <p>
+                                            <small class="text-muted visible-xs-block visible-sm-block">July 2005
+                                            </small>
+                                        </p>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <div class="timeline-date-inverted visible-md-block visible-lg-block">
+                                    <span>July 2005</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="container-fluid text-center">
+            <div class="row">
+                <h5>Share on</h5>
+                <a href="http://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}&title={{ site.title | replace:' ','%20' }}"
+                   target="_blank">
+                    <i class="share-icon fa fa-linkedin" aria-hidden="true"></i>
+                </a>
+                <a href="https://twitter.com/intent/tweet?text={{ site.title | replace:' ','%20' }}&url={{ site.url }}&via={{ site.twitter.username }}&related={{ site.twitter.username }}"
+                   rel="nofollow" target="_blank" title="Share on Twitter">
+                    <i class="share-icon fa fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a href="https://facebook.com/sharer.php?u={{ site.url }}"
+                   rel="nofollow"
+                   target="_blank"
+                   title="Share on Facebook">
+                    <i class="share-icon fa fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="https://plus.google.com/share?url={{ site.url }}"
+                   rel="nofollow"
+                   target="_blank"
+                   title="Share on Google+">
+                    <i class="share-icon fa fa-google-plus-square" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="row copyright">
+                <h5>Made with <span id="heart" class="heart">💖</span> by {{ site.author }} 'Chicio'</h5>
+            </div>
+        </footer>
+        <noscript id="deferred-styles">
+            <link rel="stylesheet" href="/assets/styles/style.css">
+        </noscript>
+        <script>
+            var loadDeferredStyles = function() {
+                var addStylesNode = document.getElementById("deferred-styles");
+                var replacement = document.createElement("div");
+                replacement.innerHTML = addStylesNode.textContent;
+                document.body.appendChild(replacement)
+                addStylesNode.parentElement.removeChild(addStylesNode);
+            };
+            var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+                webkitRequestAnimationFrame || msRequestAnimationFrame;
+            if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+            else window.addEventListener('load', loadDeferredStyles);
+        </script>
+        <script type="text/javascript" src="/assets/js/vendor.min.js"></script>
+        <script type="text/javascript" src="/assets/js/index.min.js"></script>
+    </body>
+</html>

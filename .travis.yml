@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "7"
+before_install:
+  - rvm install 2.4.1
+before_script:
+  - npm install -g gulp
+  - gem install jekyll
+  - gem install jekyll-seo-tag
+  - gem install jekyll-sitemap
+  - gem install octopress-minify-html
+script: gulp test --travis
+
