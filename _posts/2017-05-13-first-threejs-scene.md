@@ -152,7 +152,7 @@ increase performance, as the default is 1024) and we give a little blur on the s
 We also create a geometry and a material for the light:
   - the geometry is a sphere with radius 0
   - the material is a complete emissive physically based material
-In fact, the `MeshStandardMaterial` is the three.js implementation of a physically based material (so it real: three.js rocks with
+In fact, the `MeshStandardMaterial` is the three.js implementation of a physically based material (so it's real: three.js rocks with
 physically based rendering :open_mouth:).
 
 ```javascript
