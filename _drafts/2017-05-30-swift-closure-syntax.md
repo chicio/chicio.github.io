@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Swift Closure: what they are and declaration syntax"
-description: "In this post I will show you how to create a scene using ThreeJS with support for Physically Based Rendering"
+title: "Swift Closure: what they are and syntax"
+description: "In this post I will talk about Swift closure: what they are and their syntax"
 date: 2017-05-30
 tags: [swift, ios, apple, mobile-application-development]
 comments: true
@@ -20,15 +20,40 @@ As reported on [official Apple swift documentation](https://developer.apple.com/
 Closures are in many ways what blocks are in Objective-C (or lamba function in other languages).
 As it was for blocks, it is not easy to remeber their syntax. This post is intended to be a reference for me (and you, readers :wink:) about closure syntax. You could also take a look at [F*****g closure syntax](http://fuckingclosuresyntax.com "F*****g closure syntax").
 
-Declare as a variable:
+Declare as a variable (valid also fo `let` constants):
 
 ```swift
 var closure: (parameters) -> returnType
 ```
 
+Declared as a typealias:
+
 ```swift
 typealias ClosureType = (parameters) -> returnType
 ```
 
+Declared as a function parameter and then call that function: 
 
+```swift
+func myFunction(closure: (parameters) -> returnType)  {
+    ...
+}
 
+...
+
+/** You can explictly write the type of parameters. **/
+
+//Call with round brackets.
+myFunction(closure: { (parameters) -> returnType in
+    ...
+})
+
+//Call without round brackets (only if closure id the last parameter).
+myFunction { (parameters) -> returnType in
+    ...
+}
+```
+
+There is also the possibility to use a shorthand for the parameter: you can call them using `$` followed by the index of the argument in the call. Last but not least, you can capture self avoing retain cycle using `[unowned self]` before the parameters.
+
+Go and show to the world the power of closure in Swift!! :sunglasses:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Swift Closure: Demystifying @escaping and @autoclosure attributes"
-description: "In this post I will show you how to create a scene using ThreeJS with support for Physically Based Rendering"
+description: "In this post I will talk about Swift closure and the potential of the @escaping and @autoclosure attributes"
 date: 2017-06-15
 tags: [swift, ios, apple, mobile-application-development]
 comments: true
@@ -13,10 +13,85 @@ seo:
 
 ---
 
-As reported on official swift documentation and as we saw in a [previous pos closures aret](/2017-05-30-swift-closure-syntax.html "previous post") closures are: 
+As reported in the official swift documentation and as we saw in a [previous post closures](/2017-05-30-swift-closure-syntax.html "previous post"), closures are: 
 
-> Closures are self-contained blocks of functionality that can be passed around and used in your code. They can capture and store references to any constants and variables from the context in which they are defined.
+> self-contained blocks of functionality that can be passed around and used in your code. They can capture and store references to any constants and variables from the context in which they are defined.
 
-Closures are in many ways what blocks are in Objective-C (or lamba function in other languages). In this post I will show you two interesting closure features: autoclosure and escaping.
+In this post I will show you two interesting closure features: `@autoclosure` and `@escaping`.
+An `@escaping` closure is passed as a parameter to a function, but it is not executed inside it. So, basically the closure is execute after the function returns. The classical example is a closure being stored in a variable outside that function.
+An `@autoclosure` is a closure without parameter that is automatically created to wrap an expression that’s being passed as an argument to a function.
+This two attributes combined have great potential. Let's see an example where you can avoid multiple if/switch with the use of closure and these two attributes.  
+For example we can have a `UITableView` and we want to execute different action for each cell displayed.
+If we don't use closure and the attributes `@autoclosure` and `@escaping` we need to distinguish based on the position or eventually casting some specialization of a class used to represent the cell data.
+Suppose instead that each cell show an instance of an `Operation` class, defined in this way:
 
-...
+```swift
+class Operation {
+    
+    let name: String
+    let action: () -> ()
+    
+    init(name: String, action: @autoclosure @escaping () -> ()) {
+        
+        self.name = name
+        self.action = action
+    }
+}
+```
+
+So basically in the constructor we are expecting a something that will be enclosed in a closure, thanks to the `@autoclosure` attribute, and we storing it as an instance variable of our class. We can store it because we are using also the `@escaping` attribute. 
+Now in our controller we can define an array of operation that will be the datasource to our `UITableViewController`. To each `Operation` instance we can pass in the constructor the function that corresponds to the operation that we want to execute. This function will be executed in the table view delegate method `public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)` by accessing the corresponding element in the array data source, without the need to identify the exact cell selected.  
+Here is the complete `OperationsViewController`:  
+
+```swift
+class OperationsViewController: UITableViewController {
+    
+    var operations: [Operation] = []
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        self.operations.append(Operation(name: "Operation 1", action: self.showOrangeDetail()))
+        self.operations.append(Operation(name: "Operation 2", action: self.showGreenDetail()))
+    }
+    
+    //MARK: TableView Datasource
+    
+    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return self.operations.count
+    }
+    
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "OperationCell")!
+        cell.textLabel?.text = self.operations[indexPath.row].name
+        
+        return cell
+    }
+    
+    //MARK: TableView Delegate
+    
+    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        self.operations[indexPath.row].action()
+    }
+    
+    //MARK: Actions
+    
+    private func showOrangeDetail() {
+        
+        self.performSegue(withIdentifier: "OrangeSegue", sender: nil)
+    }
+    
+    private func showGreenDetail() {
+        
+        self.performSegue(withIdentifier: "GreenSegue", sender: nil)
+    }
+}
+```
+
+You can download the complete example [here](https://drive.google.com/open?id=0Bx4GYUTmBfaJdUsyYWRlU1BnTVk "autoclosure example link").
+So basically, no if, no switch, only :heart: for `@autoclosure` and `@escaping` :heart_eyes:.
+
