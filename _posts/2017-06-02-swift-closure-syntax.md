@@ -18,7 +18,7 @@ As reported on [official Apple swift documentation](https://developer.apple.com/
 > Closures are self-contained blocks of functionality that can be passed around and used in your code. They can capture and store references to any constants and variables from the context in which they are defined.
 
 Closures are in many ways what blocks are in Objective-C (or lamba function in other languages).
-As it was for blocks, it is not easy to remeber their syntax. This post is intended to be a reference for me (and you, readers :wink:) about closure syntax. You could also take a look at [F*****g closure syntax](http://fuckingclosuresyntax.com "F*****g closure syntax").
+As it was for blocks, it is not easy to remeber their syntax. This post is intended to be a reference for me (and you, readers :wink:) about closure syntax. You could also take a look at [F$%&£&g closure syntax](http://fuckingclosuresyntax.com "F$%&£&g closure syntax").
 
 Declare as a variable (valid also fo `let` constants):
 
