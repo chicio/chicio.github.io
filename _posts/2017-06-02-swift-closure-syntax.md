@@ -20,7 +20,7 @@ As reported on [official Apple swift documentation](https://developer.apple.com/
 Closures are in many ways what blocks are in Objective-C (or lamba function in other languages).
 As it was for blocks, it is not easy to remeber their syntax. This post is intended to be a reference for me (and you, readers :wink:) about closure syntax. You could also take a look at [F$%&£&g closure syntax](http://fuckingclosuresyntax.com "F$%&£&g closure syntax").
 
-Declare as a variable (valid also fo `let` constants):
+Declared as a variable (valid also for `let` constants):
 
 ```swift
 var closure: (parameters) -> returnType
