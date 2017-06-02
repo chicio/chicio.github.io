@@ -26,6 +26,12 @@ Declared as a variable (valid also for `let` constants):
 var closure: (parameters) -> returnType
 ```
 
+Declared as an optional variable:
+
+```swift
+var closure: ((parameters) -> returnType)?
+```
+
 Declared as a typealias:
 
 ```swift
