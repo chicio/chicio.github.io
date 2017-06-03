@@ -39,7 +39,7 @@ class Operation {
 }
 ```
 
-So basically in the constructor we are expecting a something that will be enclosed in a closure, thanks to the `@autoclosure` attribute, and we storing it as an instance variable of our class. We can store it because we are using also the `@escaping` attribute. 
+So basically in the constructor we are expecting something that will be enclosed in a closure, thanks to the `@autoclosure` attribute, and we storing it as an instance variable of our class. We can store it because we are using also the `@escaping` attribute. 
 Now in our controller we can define an array of operation that will be the datasource to our `UITableViewController`. To each `Operation` instance we can pass in the constructor the function that corresponds to the operation that we want to execute. This function will be executed in the table view delegate method `public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)` by accessing the corresponding element in the array data source, without the need to identify the exact cell selected.  
 Here is the complete `OperationsViewController`:  
 
