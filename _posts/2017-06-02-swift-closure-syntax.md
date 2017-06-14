@@ -9,7 +9,7 @@ seo:
  - type: "BlogPosting"
 ---
 
-*In this post I will talk about Swift closure: what they are and their syntax*
+*In this post I will talk about Swift closure: what they are and their syntax.*
 
 ---
 
