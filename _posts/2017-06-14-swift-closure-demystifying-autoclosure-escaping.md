@@ -13,7 +13,7 @@ seo:
 
 ---
 
-As reported in the official swift documentation and as we saw in the [previous post closures](/2017/06/02/swift-closure-syntax.html "previous post"), closures are: 
+As reported in the official swift documentation and as we saw in the [previous post](/2017/06/02/swift-closure-syntax.html "previous post closures"), closures are: 
 
 > self-contained blocks of functionality that can be passed around and used in your code. They can capture and store references to any constants and variables from the context in which they are defined.
 
