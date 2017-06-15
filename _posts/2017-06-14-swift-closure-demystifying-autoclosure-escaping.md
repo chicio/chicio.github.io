@@ -21,6 +21,10 @@ In this post I will show you two interesting closure features: `@autoclosure` an
 An `@escaping` closure is passed as a parameter to a function, but it is not executed inside it. So, basically the closure is executed after the function returns. The classical example is a closure being stored in a variable outside that function.  
 An `@autoclosure` is a closure without parameter that is automatically created to wrap an expression that’s being passed as an argument to a function.
 This two attributes combined have great potential. Let's see an example where you can avoid multiple if/switch with the use of closure and these two attributes.  
+You could start "abusing" closures and use them everywhere after mastering these two attributes!! :stuck_out_tongue_winking_eye: (Maybe it's better to stay calm and don't abuse closures even after seeing this attributes :relieved:).
+
+![Swift closure everywhere](/assets/images/posts/closure-everywhere.jpg "Swift closure everywhere")
+
 For example we can have a `UITableView` and we want to execute different action for each cell displayed.
 If we don't use closure and the attributes `@autoclosure` and `@escaping`, we need to distinguish the cells using the position or eventually casting some specialization of a class used to represent the cell data.
 Suppose instead that each cell shows an instance of an `Operation` class, defined in this way:

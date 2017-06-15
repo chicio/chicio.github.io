@@ -54,7 +54,7 @@ myFunction(closure: { (parameters) -> returnType in
     ...
 })
 
-//Call without round brackets (only if closure id the last parameter).
+//Call without round brackets (only if closure is the last parameter).
 myFunction { (parameters) -> returnType in
     ...
 }
