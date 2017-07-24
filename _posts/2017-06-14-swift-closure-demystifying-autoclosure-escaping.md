@@ -31,12 +31,10 @@ Suppose instead that each cell shows an instance of an `Operation` class, define
 
 ```swift
 class Operation {
-    
     let name: String
     let action: () -> ()
     
     init(name: String, action: @autoclosure @escaping () -> ()) {
-        
         self.name = name
         self.action = action
     }
@@ -49,7 +47,7 @@ Here you can find the complete `OperationsViewController`:
 
 ```swift
 class OperationsViewController: UITableViewController {
-    
+
     var operations: [Operation] = []
     
     override func viewDidLoad() {
