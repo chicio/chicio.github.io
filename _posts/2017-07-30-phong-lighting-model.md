@@ -32,8 +32,8 @@ Let's see how we is it composed.
 In real world light is modeled by its spectrum, and each surface by its reflectance spectrum.
 In computer graphics often an approximation based on RGB triplets is used:  
 
-* light color is a RGB triplet 
-* the reflectance spectrum is a triple of percentage
+* Light color is a RGB triplet 
+* The reflectance spectrum is a triple of percentage
 
 So each component of the following equations will be described by a triplet of number (RGB or percentage).  
 The light that you see on a surface could be decomposed into four main components. Let's see them in detail and how they are composed together to calculate the illumination of a surface point: Phong model.
@@ -45,30 +45,31 @@ $$I_{\text{emissive}}=k_{\text{e}}I_{\text{LE}}$$
   
   
 #### **Ambient component**
-This is light component used to model empirically the contribution of indirect illumination of bouncing lights in the scene on a surface. It depends entirely on the surface material (no geometry influences). So the ambient illumination $I_{\text{ambient}}$ of a surface point is obtained by multiplying the ambient constant of a surface $k_{\text{a}}$ by the light ambient intensity $I_{\text{LA}}$. The ambient constant $k_{\text{a}}$ is a constant related exclusively to the surface material that express empirically its response to indirect illumination. As for the emissive component, the ambient light intensity could be the intensity of the scene light (or an average if you have multiple scene lights).
+This is light component used to model empirically the contribution of indirect illumination of bouncing lights in the scene on a surface. It depends entirely on the surface material (no geometry influences). So the ambient illumination $I_{\text{ambient}}$ of a surface point is obtained by multiplying the ambient constant of a surface $k_{\text{a}}$ with the light ambient intensity $I_{\text{LA}}$. The ambient constant $k_{\text{a}}$ is a constant related exclusively to the surface material that express empirically its response to indirect illumination. As for the emissive component, the ambient light intensity could be the intensity of the scene light (or an average if you have multiple scene lights).
 
 $$I_{\text{ambient}}=k_{\text{a}}I_{\text{LA}}$$
 
 #### **Diffusive component**  
-This light component represents  the amount of reflected light given an incident light. Lambertian surfaces are considered: The incident light is equally reflected (with a given amount) in all directions. The amount of reflected light depends on the incident angle of the light with respect to the surface’s normal. The diffuse illumination 
+This light component represents  the amount of reflected light given an incident light. Lambertian surfaces are considered: The incident light is equally reflected (with a given amount) in all directions. The amount of reflected light depends on the incident angle of the light with respect to the surface’s normal. The diffuse illumination $I_{\text{diffuse}}$ of a surface point is obtained by multiplying the diffuse surface constant $k_{\text{d}}$ with the light diffuse intensity $I_{\text{LD}}$ and with the attenutation factor due to incident light given by the cosine of the angle between the light direction and the surface normal $\cos\theta$.  This last value is the dot product between the surface normal ${\hat {N}}$ and the light direction ${\hat {L}}$. So the final formula for the diffuse component is:
 
-$$I_{\text{diffuse}}=k_{\text{d}}I_{\text{LD}}\cos\theta$$
+$$I_{\text{diffuse}}=k_{\text{d}}I_{\text{LD}}({\hat {L}}\cdot{\hat {N}})$$
 
 #### **Specular component**
-This light componet represents the amount of reflected light in a specific direction (mirror alike reflection). Light is reflected in a different way depending on the incident light direction. A shiny materials are the one with a high specular component. The perceived specular light depends on the position of the observer with respect to the surface. The size of the specular highlights is regulated by a shinisess constant $$\alpha$$
+This light componet represents the amount of reflected light in a specific direction (mirror alike reflection). Light is reflected in a different way depending on the incident light direction. Shiny materials are the one with a high specular component. The perceived specular light depends on the position of the observer with respect to the surface. In particular, the specular illumination is influenced by $\cos\alpha$, that is the cosine of the angle between the direction from the surface point towards the view ${\hat {V}}$ and the direction that a perfectly reflected ray of light would take from this point on the surface ${\hat {R}}$. The size of the specular highlights is regulated by a shinisess constant $$n$$, based on the surface material properties. Given all this information the specular component formula obtained by multiplying the specular surface constant $k_{\text{s}}$ with the light specular intensity $I_{\text{LS}}$ and with dot product of the reflection direction ${\hat {R}}$ and the the direction from the surface point towards the view ${\hat {V}}$ squared to the shinisess constant $$n$$:
 
-formula
+$$I_{\text{specular}}=k_{\text{s}}I_{\text{LS}}({\hat {R}}\cdot {\hat {V}})^{n}$$
 
 The above observation are valid also in case we have multiple lights. The only difference is that the diffuse and specular component are calculated for each light and their sum is the final diffuse and specular component.
-Now we are ready to write the complete Phong reflection lighting equation
+Now we are ready to write the complete Phong reflection lighting equation:
 
-$$I_{\text{p}}=k_{\text{a}}i_{\text{a}}+\sum _{m\;\in \;{\text{lights}}}(k_{\text{d}}({\hat {L}}_{m}\cdot {\hat {N}})i_{m,{\text{d}}}+k_{\text{s}}({\hat {R}}_{m}\cdot {\hat {V}})^{\alpha }i_{m,{\text{s}}}).$$
+$$I_{\text{tot}}=k_{\text{e}}I_{\text{LE}}+k_{\text{a}}I_{\text{LA}}+\sum _{p\;\in \;{\text{lights}}}(k_{\text{d}}I_{p,{\text{LD}}} ({\hat {L}}_{p}\cdot {\hat {N}})+k_{\text{s}}I_{p,{\text{LS}}}({\hat {R}}_{p}\cdot {\hat {V}})^{n})$$
 
-How can you implement it in a OpenGL ES shader? The following code sample is a simple implementation of this model using RGB colors. It is a fragment shader that could be used to implement per fragment lighting. This basically means that all lighting calculation is done in the fragment shader on a each fragment (maybe this is material for a new post ). It was written using OpenGL ES 3.0 and GLSL 3.0
+Just a final note: we distinguished different type of light intensity based on the component. In fact most of the time this model is implemented using a single general light intensity triplet for all the component for each light.
+How can you implement it in a OpenGL ES shader? The following code sample is a simple implementation of this model using RGB colors. It is a fragment shader that could be used to implement per fragment lighting. This basically means that all lighting calculation is done in the fragment shader on a each fragment (maybe this is material for a new post :stuck_out_tongue_closed_eyes:). It was written using OpenGL ES 3.0 and GLSL 3.0. It uses a single light for all the component calculation.
 
 <script src="https://gist.github.com/chicio/d983fff6ff304bd55bebd6ff05a2f9dd.js"></script>
 
-The following image is an example of a standford model rendered using this model with Spectral BRDF explorer.
+The following image is an example of the happy buddha standford mesh rendered using my [Spectral BRDF explorer](https://github.com/chicio/Spectral-BRDF-Explorer "Spectral BRDF explorer"){:target="_blank"} iOS renderer. The lighting is (obviously) calculated using the Phong reflection model. The surface simulated is bronze (you can find some of the constant we discussed before [here](http://devernay.free.fr/cours/opengl/materials.html "phong lighting constants").
 Nice :smirk:!!!! 
 
-image
+![phong example - spectral brdf explorer](/assets/images/posts/phong-example.jpg "phong example - spectral brdf explorer")
