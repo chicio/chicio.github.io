@@ -69,7 +69,7 @@ How can you implement it in a OpenGL ES shader? The following code sample is a s
 
 <script src="https://gist.github.com/chicio/d983fff6ff304bd55bebd6ff05a2f9dd.js"></script>
 
-The following image is an example of the happy buddha standford mesh rendered using my [Spectral BRDF explorer](https://github.com/chicio/Spectral-BRDF-Explorer "Spectral BRDF explorer"){:target="_blank"} iOS renderer. The lighting is (obviously) calculated using the Phong reflection model. The surface simulated is bronze (you can find some of the constant we discussed before [here](http://devernay.free.fr/cours/opengl/materials.html "phong lighting constants").
+The following image is an example of the happy buddha standford mesh rendered using my [Spectral BRDF explorer](https://github.com/chicio/Spectral-BRDF-Explorer "Spectral BRDF explorer"){:target="_blank"} iOS renderer. The lighting is (obviously) calculated using the Phong reflection model. The surface simulated is bronze (you can find some of the constant we discussed before [here](http://devernay.free.fr/cours/opengl/materials.html "phong lighting constants")).
 Nice :smirk:!!!! 
 
 ![phong example - spectral brdf explorer](/assets/images/posts/phong-example.jpg "phong example - spectral brdf explorer")
