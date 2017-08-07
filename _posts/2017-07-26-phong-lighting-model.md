@@ -3,6 +3,7 @@ layout: post
 title: "Phong reflection model"
 description: "In this post I will talk about phong reflection model: one of the oldest and most popular lighting model in computer graphics."
 date: 2017-07-26
+image: /assets/images/posts/phong-example.jpg
 tags: [computer graphics]
 comments: true
 seo:
