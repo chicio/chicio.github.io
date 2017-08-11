@@ -16,7 +16,7 @@ seo:
 
 We live in the era of Physically Based Rendering (PBR). Everyone in the computer graphics field know it is the future. I will talk a lot about it in some future post. But now, for this first post about computer graphics theory, I would like to talk about one of the most popular lighting model used in computer graphics: the Phong reflection post.  
 Why? Because even if PBR is winning the war (I know you're scared about PBR theoretical foundation :fearful: :stuck_out_tongue:), the Phong reflection model is still used in a lot of application, and it is also a good starting point for eveyone who want to start a journey in the computer graphics field.
-In this post I will show you what it is in detail and we will see an implementation in OpenGL ES GLSL shading language. 
+In this post I will show you what it is in detail and we will see an implementation in OpenGL ES GLSL shading language. All the vectors reported in this article will be [normalized](https://en.wikipedia.org/wiki/Unit_vector "unit vector").
 First of all we need to do a classification of the lighting models available in computer graphics. 
 The light at any give point on a surface in a scene is influenced by:  
 

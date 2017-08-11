@@ -2,7 +2,7 @@
 layout: post
 title: "Model View Presenter on iOS: no more excuses, write your unit test"
 description: "In this post I will talk about the model view presenter architectural pattern and how it can improve you unit test and your TDD workflow when developing an iOS application."
-date: 2017-07-26
+date: 2017-08-15
 image: /assets/images/posts/model-view-presenter-ios.jpg
 tags: [swift, ios, apple, mobile-application-development, test-driven-development, architectural-pattern]
 comments: true
@@ -17,11 +17,11 @@ seo:
 Unit test in iOS application is some way "hard". The architectural pattern implemented by default on iOS is the Model View Controller. This architecture provides you a clear separation between the UI and the business logic.
 The problem is that most of the time you have to fight with "Massive View Controllers" that act as glue between the model and a lot of UI/view code and that, for this reason, are not so easy to test. This basically means that most of the time the [presentation logic](https://en.wikipedia.org/wiki/Presentation_logic "presentation logic"), how the business model is displayed to the user in the User Interface, is tested in the wrong way, or maybe worst it is not tested.  
 This is were the Model View Presenter could save us. In this architectural pattern all the *presentation logic is moved from the view controller to a new component, the presenter*. This means that it will manage *model objects* to retrieve the data and then prepare it to be displayed by the *view, that will be our View Controller*. This one becomes a passive interface that has the only responsability to show data returned by the presenter in the specific platform User Interface component. In this way the presenter is a component without any platform specific dependency, that works only on the view and other model objects, injected at construction time. In this way all dependecies could be mocked and you can unit test basically everything!! :relaxed:  
-Now it's time to see the Model View Presenter in action!! :grin: We will create a simple app that shows a list on products in a `UITableView`. On the tap of a cell the product detail is shown. An error will be displayed if an error occurs when the products are retrieved or when it doesn't contain all the data needed to show its detail. We will develop this app using [Test Driven Development](https://en.wikipedia.org/wiki/Test-driven_development "Test Driven Development") technique, and I will show the unit tests created for each class implemented. This is a mockup of what we want to achieve.
+Now it's time to see the Model View Presenter in action!! :grin: We will create a simple app that shows a list on products in a `UITableView`. On the tap of a cell the product detail is shown. An error will be displayed if an error occurs when the products are retrieved or when it doesn't contain all the data needed to show its detail. We will develop this app using [Test Driven Development](https://en.wikipedia.org/wiki/Test-driven_development "Test Driven Development") technique, and I will show the unit tests created for each class implemented. This unit tests will also be written using the "Given-then-when" structure, typically used in [Behaviour Driven Development](https://en.wikipedia.org/wiki/Behavior-driven_development "Behaviour Driven Development"). Even if not related to this article, I like this way of writing unit tests because they are more expressive, so I will use it in all my code. Below you can find a mockup of what we want to achieve.
 
 ![Model view presenter mockup](/assets/images/posts/mockup-model-view-presenter.png "Model view presenter mockup")
 
-Let's start by creating a `Product` struct that we will use to describe our products. Each product will be composed of a name, a simple description and an image (identified by its name):  
+Let's start by creating a `Product` struct that we will use to describe our products. Each product will be composed of a name, a description and an image (identified by its name):  
 
 ```swift
 public struct Product {
@@ -37,7 +37,7 @@ public struct Product {
 }
 ```
 
-The products objects will be retrieved using a [Repository](https://martinfowler.com/eaaCatalog/repository.html "Repository"). First of all we define a `Repository` protocol. Generally speaking, we will try to define a protocol for all our classes so that we can work using abstraction and not concrete implementation and to obtain the highest decoupling between our classes. Last but not least (and maybe the most important thing) using protocols we will be able to produce some mocks/spy of our components in our unit tests.
+The products objects will be retrieved using a [Repository](https://martinfowler.com/eaaCatalog/repository.html "Repository"). First of all we need to define a `Repository` protocol. Generally speaking, we will try to define a protocol for all our classes so that we can work using abstraction (and not concrete implementation) to obtain the highest decoupling between our classes. Last but not least (and maybe the most important thing) by using protocols we will be able to produce some mocks/spies of our components in our unit tests.
 
 ```swift
 public protocol Repository {
@@ -45,7 +45,7 @@ public protocol Repository {
 }
 ```
 
-In our case the repository will not retrieve the data from a real database or using a service. All data will be retrieved from a local array inside the repository. This is the final implementation of our repository:
+In our case the repository will not retrieve the data from a real datasource or using a service. All data will be retrieved from a local array inside the repository. This is the final implementation of our repository:
 
 ```swift
 public class ProductsRepository: Repository {
@@ -110,12 +110,13 @@ Now it's time to develop our `ProductsPresenter` presenter. It will need a view 
 
 * **the show detail action in the** `onSelected(product: Product)` method. In this method we will have to check if all the product data is correct, that in our case means that the product must have a valid product. If it is valid, show its detail in the view, else an error message.
 
-First we will implement the protocol `ProductView`, that contains all the valid operation of the view that our presenter will use:
+We start by defining the protocol `ProductView`, that contains all the valid operation of the view that our presenter will use:
 
 ```swift
 public protocol ProductsView {
     func showLoadingStatus()
     func hideLoadingStatus()
+    func show(title aTitle: String)
     func show(products: [Product])
     func showErrorWith(message: String)
     func showDetailFor(product: Product)
@@ -135,6 +136,7 @@ public class ProductsPresenter {
     }
     
     public func onStart() {
+        productsView.show(title: "Products")
         productsView.showLoadingStatus()
         productsRepository.get { [unowned self] retrievedProducts in
             self.tryToShow(retrievedProducts: retrievedProducts)
@@ -160,7 +162,7 @@ public class ProductsPresenter {
 }
 ```
 
-Develop a class like this one in TDD it's easy, given the fact that we can mock every dependecies it has and we can check in detail all the presentation flow. The unit test our presenter are shown below. *You can note that a lot of handcraft made mock objects are used but not reported here (you will find them in the complete project on Github reported at the end of this article)*.
+Develop a class like this one in TDD it's easy, given the fact that we can mock every dependecies it has and we can test in detail all the presentation flow. The unit test of our presenter are shown below. *You can note that a lot of handcraft made mock objects are used but not reported here (you will find them in the complete project on Github reported at the end of this article)*.
 
 ```swift 
 class ProductsPresenterTests: XCTestCase {
@@ -174,6 +176,7 @@ class ProductsPresenterTests: XCTestCase {
         givenAProductsView()
         givenAProductsPresenterWith(repository: productsRepositoryWithProducts)
         whenTheProductsPresenterStarts()
+        thenTheTitleIsDisplayed()
         thenTheProductViewShowsLoadingStatus()
         thenTryToRetrieveProduct()
         thenTheProductViewHidesLoadingStatus()
@@ -185,6 +188,7 @@ class ProductsPresenterTests: XCTestCase {
         givenAProductsView()
         givenAProductsPresenterWith(repository: productsRepositoryWithoutProducts)
         whenTheProductsPresenterStarts()
+        thenTheTitleIsDisplayed()
         thenTheProductViewShowsLoadingStatus()
         thenTryToRetrieveProductFromEmptyRepository()
         thenTheProductViewHidesLoadingStatus()
@@ -239,6 +243,10 @@ class ProductsPresenterTests: XCTestCase {
                                                      image: "car"))
     }
     
+    private func thenTheTitleIsDisplayed() {
+        XCTAssertTrue(productsView.showTitleHasBeenCalled)
+    }
+    
     private func thenTryToRetrieveProduct() {
         XCTAssertTrue(productsRepositoryWithProducts.getHasBeenCalled)
     }
@@ -269,7 +277,7 @@ class ProductsPresenterTests: XCTestCase {
 }
 ```
 
-It easy to see that the unit tests for our presenter describe the presentation flow. This basically means that our unit tests are the documentation of our presentation logic. Cooool!!!! :sunglasses:
+It easy to see that the unit tests for our presenter describe the entire presentation flow. This basically means that our unit tests are the documentation of our presentation logic. Cooool!!!! :sunglasses:
 Now the next big question is: who is going to implement our `ProductsView` protocol? As we said in the introduction, our view controllers become the View in the Model View Presenter architecture. They act as passive platform specific user interface components updater. This means that our protocol will be implemented by `ProductsViewController`. It have the responsibility to launch the `ProductsPresenter` action at the right time and implement all the real passive User Interface update operation.
 In particular we will have our `onStart()` presenter method call in the `viewDidLoad` and the `onSelected(product: Product)` when a product cell is tapped, that means a product has been selected. The final implementation will be: 
 
@@ -296,6 +304,10 @@ class ProductsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     //MARK: ProductsView
+   
+    public func show(title aTitle: String) {
+        title = aTitle
+    }
 
     public func showLoadingStatus() {
         productsActivityIndicator.startAnimating()
@@ -357,6 +369,7 @@ In the same way we developed this components, we can go on and implement our pro
 
 ```swift
 public protocol ProductDetailView {
+    func show(title aTitle: String)
     func show(product: Product)
     func showErrorWith(message: String)
 }
@@ -375,6 +388,7 @@ public class ProductDetailPresenter {
     }
 
     public func onStart() {
+        productDetailView.show(title: "Product")
         if let product = product {
             productDetailView.show(product: product)
         } else {
@@ -397,6 +411,7 @@ class ProductDetailPresenterTests: XCTestCase {
                                                           description: "aDescription",
                                                           image: "image"))
         whenThePresenterStarts()
+        thenTheTitleIsDisplayed()
         thenTheProductDetailIsShown()
     }
     
@@ -417,6 +432,10 @@ class ProductDetailPresenterTests: XCTestCase {
     
     private func whenThePresenterStarts() {
         productDetailPresenter.onStart()
+    }
+    
+    private func thenTheTitleIsDisplayed() {
+        XCTAssertTrue(productDetailView.showTitleHasBeenCalled)
     }
     
     private func thenTheProductDetailIsShown() {
@@ -451,13 +470,17 @@ class ProductDetailViewController: UIViewController, ProductDetailView {
     
     //MARK: ProductDetailView
     
-    func show(product: Product) {
+    public func show(title aTitle: String) {
+        title = aTitle
+    }
+    
+    public func show(product: Product) {
         nameLabel.text = product.name
         descriptionLabel.text = product.description
         imageView.image = UIImage(named: product.image)
     }
     
-    func showErrorWith(message: String) {
+    public func showErrorWith(message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { [unowned self] action in
             self.dismiss(animated: true, completion: nil)
@@ -472,6 +495,5 @@ Now you can start to create your high quality unit tested apps :relieved:.
 
 ![Model view presenter ios unit tests](/assets/images/posts/model-view-presenter-ios.jpg "Model view presenter ios unit tests")
 
-Time to try it yourself in one of your project. If you wanna review the complete project code you can check [this Github repository](https://github.com/chicio/Model-View-Presenter "Model View Presenter iOS github repository").
-
+Time to try it yourself in one of your project. If you wanna review the complete project code you can check [this Github repository](https://github.com/chicio/Model-View-Presenter "Model View Presenter iOS github repository").  
 

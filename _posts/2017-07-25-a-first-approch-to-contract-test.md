@@ -16,7 +16,7 @@ seo:
 Sometimes you have to unit test multiple implementations of the same interface. So basically you have the same tests for multiple concrete implementation of the same interface. In a case like this one, contract test could help you save a lot of time. Using contract test you will be able to run the same set of test for different concrete implementations.  
 How does it work? The main point is to have a template base abstract "ContractTest" test class that incapsulate the logic of the tests using abstract methods that use the base interface of the objects under test. These abstract methods will be implmented in the subclasses of this "ContractTest" class and they will feed the test with a concrete implementation of the interface used in the declaration of the abstract methods.  
 Let's see an example to make everything more clear!!!  
-The example is a standalone Java project that uses Junit 4 and Mockito 2.8, but nothing stops you from applying this concept to other languages/platform (in fact, I heard and implemented contract test on a component inside an Android App :heart_eyes:).  
+The example is a standalone Java project that uses Junit 4 and Mockito 2.8, but nothing stops you from applying this concept to other languages/platform (in fact, I learned and implemented contract test on a component inside an Android App :heart_eyes:).  
 Suppose for example that we have the following interface:
 
 ```java
