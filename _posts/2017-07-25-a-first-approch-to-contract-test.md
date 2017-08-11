@@ -3,7 +3,7 @@ layout: post
 title: "A first approch to contract test"
 description: "In this post I will talk about contract test: what they are and how you can use them."
 date: 2017-07-25
-tags: [test-driven-development, java]
+tags: [test driven development, java]
 comments: true
 seo:
  - type: "BlogPosting"

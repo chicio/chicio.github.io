@@ -4,7 +4,7 @@ title: "Swift Closure: demystifying @escaping and @autoclosure attributes"
 description: "In this post I will talk about Swift closure and the potential of the @escaping and @autoclosure attributes"
 date: 2017-06-14
 image: /assets/images/posts/closure-everywhere.jpg
-tags: [swift, ios, apple, mobile-application-development]
+tags: [swift, ios, apple, mobile application development]
 comments: true
 seo:
  - type: "BlogPosting"
