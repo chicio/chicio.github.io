@@ -419,6 +419,7 @@ class ProductDetailPresenterTests: XCTestCase {
         givenAProductDetailView()
         givenAProductDetailPresenterWith(product: nil)
         whenThePresenterStarts()
+        thenTheTitleIsDisplayed()        
         thenAnErrorMessageIsDisplayed()
     }
     
