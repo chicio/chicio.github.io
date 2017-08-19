@@ -12,3 +12,73 @@ seo:
 *In this post I will give you an informal introduction about Physically based rendering.*
 
 ---
+
+Physically based rendering (PBR) is one of the most advanced and trending field in computer graphics. PBR uses physically correct lighting and shading models to treat light as it behaves in the real world. As a consequence of the fact that what could be seen in a computer graphics application is decided by how light is represented, with PBR it is possible to reach a new level of realism. But wait, what do we mean with "physically correct"?  
+Before giving an answer and try to give a detail definition of PBR we need to clarify be acquited with some important concept.
+
+#### **What is light?**
+
+Light is a form of electromagnetic radiation. Specifically, it is a small subset of the entire electromagnetic
+radiation spectrum with wavelength between 400 nm and 700 nm. The set of studies and techniques that try to describe and measure how the electromagnetic radiation of light is propagated, reflected and transmitted is called radiometry. What are the fundamental quantities described by radiometry? The first one is the called **flux**, it describes the amount of radiant energy emitted, reflected or transmitted from a surface per unit time. The radiant energy is the energy of an electromagnetic radiation. The unit measure of flux is joules per seconds $\frac{J}{s}$, and it is usually reported with the Greek letter $\frac{J}{s}$.  
+Other two important quantities of radiometry are **irradiance** and **radiant exitance**. The first one described flux arriving at a surface per unit area. The second one describe flux leaving a surface per unit area (Pharr et al., 2010 [1]). Formally irradiance is described with the following equation:
+
+$$E = \frac{d\phi}{dA}$$
+
+where the differential flux $d\phi$ is computed over the differential area $dA$. It is measured as units of watt
+per square meter.  
+Before proceding to the last radiometry quantity definition, it is useful to give the definition of **solid angle**. A solid angle is an extension of a 2D angle in 3D on a unit sphere. It is the total area projected by an object on a unit sphere centered at a point $p$. It is measured in steradians. The entire unit sphere corresponds to a solid angle of $4\pi$ (the surface area of the unit sphere). A solid angle is usually indicated as \Omega, but it is possible also to represent it with \omega, that is the set of all direction vectors anchored at $p$ that point toward the area on the unit sphere and the object (Pharr et al., 2010 [1]).
+Now it is possible to give the definition of **radiance**, that is flux density per unit solid angle per unit area:
+
+$$L=\frac{d\phi}{d\omega \ dA^{\perp}}$$
+
+In this case $dA^{\perp}$ is the projected area $dA^{\perp}$ on a surface perpendicular to $\omega$. So radiance describe the limit of measurement of incident light at the surface as a cone of incident directions of interest ${d\omega}$ becomes very small, and as the local area of interest on the surface $dA$ also becomes very small (Pharr et al., 2010 [1]). It is useful to make a distinction between radiance arriving at a point, usually called incident radiance and indicated with $L_{i}(p,\omega)$, and radiance leaving a point called exitant radiance and indicated with $L_{o}(p,\omega)$. This distinction will be used in the equations described in the next
+chapters. It is important also to note another useful property, that connect the two types of radiance:
+
+$$L_{i}(p,\omega) \neq L_{o}(p,\omega)$$
+
+#### **The rendering equation**
+
+The rendering equation was introduced by James Kajiya in 1986 [2]. Sometimes it is also called the LTE, Light Transport Equation. It is the equation that describes the equilibrium distribution of radiance in a scene (Pharr et al., 2010 [3]). It gives the total reflected radiance at a point as a sum of emitted and reflected light from a surface. This is the formula of the rendering equation:
+
+$$L_{o}(p,\omega) = L_{e}(p,\omega) + \int_{\Omega}f_{r}(p,\omega_{i},\omega_{0})L_{i}(p,\omega)\cos\theta_{i}d\omega_{i}$$
+
+In this formula the meaning of each symbols are:
+* $p$ is a point on a surface in the scene
+* $\omega_{o}$ is the outgoing light direction
+* $\omega_{i}$ is the incident light direction
+* $L_{o}(p,\omega)$ is the exitant radiance at a point $p$
+* $L_{e}(p,\omega)$ is the emitted radiance at a point $p$
+* $\Omega$ is the unit hemisphere centered around the normal at point $p$
+* $\int_{\Omega}...d\omega_{i}$ is the integral over the unit hemisphere
+* $f_{r}(p,\omega_{i},\omega_{0})$ is the Bidirectional Reflectance Distribution Function and we will talk about it in a few moments
+* $L_{i}(p,\omega)$ is the incident radiance arriving at a point $p$
+* $\cos\theta_{i}$ is given by the dot product between 𝜔: and the normal at point $p$, and is the attenuation factor of the irradiance due to incident angle
+
+#### **BRDF**
+One of the main component of the rendering equation previously described is the Bidirectional Reflectance Distribution Function (BRDF). This function describes how light is reflected from a surface. It represents a constant of proportionality between the differential exitant radiance and the differential irradiance at a point $p$ (Pharr et al., 2010 [1]). The parameter of this function are: the incident light direction, the outgoing light direction and a point on the surface. The formula for this function in terms of radiometric quantities is the following:
+
+$$f_{r}(p,\omega_{i},\omega_{o}) = \frac{dL_{o}(p,\omega_{o})}{dE(p,\omega_{I})}$$
+
+The BRDF has two important properties:
+* it is a symmetric function, so for all pair of directions $$f_{r}(p,\omega_{i},\omega_{o}) = f_{r}(p,\omega_{o},\omega_{i})$$
+* it satisfies the **energy conservation principle**: *the light reflected is less than or equal to the incident light*.
+Some specific material surfaces, for example glass, reflect and transmit light at the same time. So a fraction of light goes through the material. For this reason, there’s another function, the Bidirectional Transmittance Distribution Function, BTDF, defined in the same way as the BRDF, but with the directions $\omega_{i}$ and $\omega_{o}$ placed in the opposite hemisphere around $p$ (Pharr et al., 2010 [1]). It is usually indicated as f_{t}(p,\omega_{i},\omega_{o}).
+How are the BRDF and BTDF calculated? A set of models has been developed, each one representing a specific property of different materials.
+
+#### Physically based rendering 
+PBR is often characterized by - but not necessarily limited to - an approximation of a real, radiometric bidirectional reflectance distribution function to govern the essential reflections of light, the use of reflection constants such as specular intensity, gloss, and metallicity derived from measurements of real-world sources, accurate modeling of global illumination in which light bounces and/or is emitted from objects other than the primary light sources, conservation of energy which balances the intensity of specular highlights with dark areas of an object, Fresnel conditions that reflect light at the sides of objects perpendicular to the viewer, and accurate modeling of roughness resulting from microsurfaces.
+......
+
+
+
+
+
+
+
+
+  
+  
+  
+[1] M. Pharr and G. Humphreys, “Color and radiometry,” in Physically based rendering: from theory to implementation, 2nd Edition ed., Burlington, Massachusetts: Morgan Kaufmann, 2010, ch. 5, pp. 261-297.  
+[2] J. T. Kajiya, “The Rendering Equation,” in SIGGRAPH '86, Dallas, 1986, pp. 143-150.  
+[3] M. Pharr and G. Humphreys, “Light transport I: surface reflection,” in Physically based rendering: from theory to implementation, 2nd ed., Burlington, Morgan Kaufmann, 2010, ch. 15, pp. 760-770.
