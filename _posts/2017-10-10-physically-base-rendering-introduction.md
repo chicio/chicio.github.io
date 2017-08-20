@@ -64,11 +64,11 @@ The BRDF has two important properties:
 * it satisfies the **energy conservation principle**: *the light reflected is less than or equal to the incident light*.
 
 A lot of models has been developed to describe the BRDF of different surfaces. In particular, in the last years the **microfacet** models have gained attention. In these kind of models the surface is represented as composed by infinitely small microfactes that model in a more realistic way the vast majority of surfaces in the real world. Each one of these microfactes has is geometric definition (in particular its normal).  
-Some specific material surfaces, for example glass, reflect and transmit light at the same time. So a fraction of light goes through the material. For this reason, there’s another function, the Bidirectional Transmittance Distribution Function, BTDF, defined in the same way as the BRDF, but with the directions $\omega_{i}$ and $\omega_{o}$ placed in the opposite hemisphere around $p$ (Pharr et al., 2010 [1]). It is usually indicated as f_{t}(p,\omega_{i},\omega_{o}).
+Some specific material surfaces, for example glass, reflect and transmit light at the same time. So a fraction of light goes through the material. For this reason, there’s another function, the Bidirectional Transmittance Distribution Function, BTDF, defined in the same way as the BRDF, but with the directions $\omega_{i}$ and $\omega_{o}$ placed in the opposite hemisphere around $p$ (Pharr et al., 2010 [1]). It is usually indicated as $f_{t}(p,\omega_{i},\omega_{o})$.
 The **[Fresnel equations](https://en.wikipedia.org/wiki/Fresnel_equations "Fresnel equations")** tries to define the behaviour of light between different surfaces. They also help us to get the balance between different kind of reflections changes based on the angle at which you view the surface.
 
 
-#### Physically based rendering 
+#### **Physically based rendering**
 So let's go back to our original question: What is PBR?
 PBR is a model that enclose a set of techniques that try to simulate how the light behaves in the real world.
 Taking an extraction from the Wikipedia definition:
@@ -82,8 +82,14 @@ You can see from the definition that PBR is a model that uses all the concepts w
 * roughness: this component specifies how rough a surface is on a per texel basis
 * normal: this component is a classical normal map of the surface
 
+What results can you achieve suing PBR? These are two example images: the first one is taken from my physically based spectral path tracing engine [Spectral Clara Lux Tracer](https://github.com/chicio/Spectral-Clara-Lux-Tracer "Spectral Clara Lux Tracer") and the second one is taken from PBRT, the physically based engine described in the book ["Physically based rendering: from theory to implementation" by M. Pharr, W. Jakob, G. Humphreys](http://www.pbrt.org "Physically based rendering: from theory to implementation by M. Pharr, W. Jakob, G. Humphreys").
+
+![Pbr examples](/assets/images/posts/pbr-introduction-examples.jpg "Pbr examples")
+
+How coooool are these images???? :sunglasses:
 We are at the end of the introduction. I hope now it is at least clear what PBR is :relaxed:!! See you for other stuff about computer graphics and PBR :blush:.
   
-[1] M. Pharr and G. Humphreys, “Color and radiometry,” in Physically based rendering: from theory to implementation, 2nd Edition ed., Burlington, Massachusetts: Morgan Kaufmann, 2010, ch. 5, pp. 261-297.  
+<br/>  
+*[1] M. Pharr and G. Humphreys, “Color and radiometry,” in Physically based rendering: from theory to implementation, 2nd Edition ed., Burlington, Massachusetts: Morgan Kaufmann, 2010, ch. 5, pp. 261-297.  
 [2] J. T. Kajiya, “The Rendering Equation,” in SIGGRAPH '86, Dallas, 1986, pp. 143-150.  
-[3] M. Pharr and G. Humphreys, “Light transport I: surface reflection,” in Physically based rendering: from theory to implementation, 2nd ed., Burlington, Morgan Kaufmann, 2010, ch. 15, pp. 760-770.
+[3] M. Pharr and G. Humphreys, “Light transport I: surface reflection,” in Physically based rendering: from theory to implementation, 2nd ed., Burlington, Morgan Kaufmann, 2010, ch. 15, pp. 760-770.*
