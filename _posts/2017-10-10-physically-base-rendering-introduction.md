@@ -62,22 +62,27 @@ $$f_{r}(p,\omega_{i},\omega_{o}) = \frac{dL_{o}(p,\omega_{o})}{dE(p,\omega_{I})}
 The BRDF has two important properties:
 * it is a symmetric function, so for all pair of directions $$f_{r}(p,\omega_{i},\omega_{o}) = f_{r}(p,\omega_{o},\omega_{i})$$
 * it satisfies the **energy conservation principle**: *the light reflected is less than or equal to the incident light*.
+
+A lot of models has been developed to describe the BRDF of different surfaces. In particular, in the last years the **microfacet** models have gained attention. In these kind of models the surface is represented as composed by infinitely small microfactes that model in a more realistic way the vast majority of surfaces in the real world. Each one of these microfactes has is geometric definition (in particular its normal).  
 Some specific material surfaces, for example glass, reflect and transmit light at the same time. So a fraction of light goes through the material. For this reason, there’s another function, the Bidirectional Transmittance Distribution Function, BTDF, defined in the same way as the BRDF, but with the directions $\omega_{i}$ and $\omega_{o}$ placed in the opposite hemisphere around $p$ (Pharr et al., 2010 [1]). It is usually indicated as f_{t}(p,\omega_{i},\omega_{o}).
-How are the BRDF and BTDF calculated? A set of models has been developed, each one representing a specific property of different materials.
+The **[Fresnel equations](https://en.wikipedia.org/wiki/Fresnel_equations "Fresnel equations")** tries to define the behaviour of light between different surfaces. They also help us to get the balance between different kind of reflections changes based on the angle at which you view the surface.
+
 
 #### Physically based rendering 
-PBR is often characterized by - but not necessarily limited to - an approximation of a real, radiometric bidirectional reflectance distribution function to govern the essential reflections of light, the use of reflection constants such as specular intensity, gloss, and metallicity derived from measurements of real-world sources, accurate modeling of global illumination in which light bounces and/or is emitted from objects other than the primary light sources, conservation of energy which balances the intensity of specular highlights with dark areas of an object, Fresnel conditions that reflect light at the sides of objects perpendicular to the viewer, and accurate modeling of roughness resulting from microsurfaces.
-......
+So let's go back to our original question: What is PBR?
+PBR is a model that enclose a set of techniques that try to simulate how the light behaves in the real world.
+Taking an extraction from the Wikipedia definition:
 
+>PBR is often characterized by an approximation of a real, radiometric bidirectional reflectance distribution function (BRDF) to govern the essential reflections of light, the use of reflection constants such as specular intensity, gloss, and metallicity derived from measurements of real-world sources, accurate modeling of global illumination in which light bounces and/or is emitted from objects other than the primary light sources, conservation of energy which balances the intensity of specular highlights with dark areas of an object, Fresnel conditions that reflect light at the sides of objects perpendicular to the viewer, and accurate modeling of roughness resulting from microsurfaces.
 
+You can see from the definition that PBR is a model that uses all the concepts we saw previously in this article to try to get the most accurate results in terms of realism in a computer graphics applications. PBR engines and asset pipelines let the artist define materials in terms of more realistic components, instead of tweaking ad-hoc parameters based on the type of the surface. Usually in these kind of engine/asstes pipeline the main parameter used to specify a surface features are:
 
+* albedo/diffuse: this component controls the base color/reflectivity of the surface
+* metallic: this component specifies the is the surface is metallic or not
+* roughness: this component specifies how rough a surface is on a per texel basis
+* normal: this component is a classical normal map of the surface
 
-
-
-
-
-  
-  
+We are at the end of the introduction. I hope now it is at least clear what PBR is :relaxed:!! See you for other stuff about computer graphics and PBR :blush:.
   
 [1] M. Pharr and G. Humphreys, “Color and radiometry,” in Physically based rendering: from theory to implementation, 2nd Edition ed., Burlington, Massachusetts: Morgan Kaufmann, 2010, ch. 5, pp. 261-297.  
 [2] J. T. Kajiya, “The Rendering Equation,” in SIGGRAPH '86, Dallas, 1986, pp. 143-150.  
