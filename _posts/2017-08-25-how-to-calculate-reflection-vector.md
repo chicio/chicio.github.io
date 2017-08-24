@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to calculate the reflection"
+title: "How to calculate the reflection vector"
 description: "In this post I will talk about reflection vector used in some lighting models, for example the Phong reflection model. I will show you how this vector is calculated."
 date: 2017-08-25
 image: /assets/images/posts/reflection.png
