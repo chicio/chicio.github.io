@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to calculate the reflection"
-description: "In this post I will talk about the model view presenter architectural pattern and how it can improve you unit test and your TDD workflow when developing an iOS application."
+description: "In this post I will talk about reflection vector used in some lighting models, for example the Phong reflection model. I will show you how this vector is calculated."
 date: 2017-08-25
 image: /assets/images/posts/reflection.png
 tags: [computer graphics]
@@ -10,7 +10,7 @@ seo:
  - type: "BlogPosting"
 ---
 
-*In this post I will talk about the model view presenter architectural pattern and how it can improve you unit test and your TDD workflow when developing an iOS application.*
+*In this post I will talk about reflection vector used in some lighting models, for example the Phong reflection model. I will show you how this vector is calculated.*
 
 ---
 
