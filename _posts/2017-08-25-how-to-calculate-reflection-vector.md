@@ -72,4 +72,4 @@ $${\hat {R}} = ({\hat {L}} \cdot {\hat {N}}){\hat {N}} - {\hat {L}} + ({\hat {L}
 
 $$R = 2({\hat{N}}\cdot{\hat{L}}){\hat{N}} - {\hat{L}}$$
 
-That's it!! We get our formula. Now your ready to explain in detail the Phong model :relaxed:.
+That's it!! We get our formula. Now your ready to explain in detail the entire "magic" of the Phong model :relaxed:.
