@@ -14,7 +14,7 @@ seo:
 
 ---
 
-In a [previous post](http://www.fabrizioduroni.it/2017/07/26/phong-lighting-model.html "phong model post") I talked about the Phong lighting model. I described all the different components contained inside it and how they try to describe and simulate different kind of light components. In particular you will remeber that there's a specular component that try to simulated the light reflected in a specific direction: the reflection direction. In the shader implementation this direction has been calculated using a GLSL method `reflect`:
+In a [previous post](http://www.fabrizioduroni.it/2017/07/26/phong-lighting-model.html "phong model post") I talked about the Phong lighting model. I described all the different components contained inside it and how they try to describe and simulate different kind of light components. In particular you will remember that there's a specular component that try to simulated the light reflected in a specific direction: the reflection direction. In the shader implementation this direction has been calculated using a GLSL method `reflect`:
 
 ```glsl
 vec3 reflectionDirection = reflect(-lightDirection, normalInterp);
@@ -38,7 +38,7 @@ From the law of reflaction reported above we know that:
 
 $$\Theta_R=\Theta_L$$
 
-This equation could be rewritten as the dot product of the reflection direction with the normal equals the dot product of the incident light direction and the normal (remeber that the [dot product of two vector is equal to the cosine of the angle between them](https://en.wikipedia.org/wiki/Dot_product "dot product of two vector is equal to the cosine of the angle between them")). So we have:  
+This equation could be rewritten as the dot product of the reflection direction with the normal equals the dot product of the incident light direction and the normal (remember that the [dot product of two vector is equal to the cosine of the angle between them](https://en.wikipedia.org/wiki/Dot_product "dot product of two vector is equal to the cosine of the angle between them")). So we have:  
 
 $${\hat {R}} \cdot {\hat {N}} = {\hat {L}} \cdot {\hat {N}}$$
 
