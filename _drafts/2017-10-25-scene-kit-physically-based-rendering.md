@@ -204,4 +204,107 @@ class PhysicallyBasedObject: Object {
 }
 ```
 
-So, the next question is: How is `PhysicallyBasedMaterial` composed? We create `PhysicallyBasedMaterial` as a class with a single property `material` of type `SCNMaterial`.
+So, the next question is: how do we define the `PhysicallyBasedMaterial` class? We create `PhysicallyBasedMaterial` with a single property `material` of type `SCNMaterial`. On this material property we set:
+
+* the `lightingModel` to `.physicallyBased`, to mark it for SceneKit as a physically based material
+* `diffuse.contents` property with an appropriate diffuse value.
+* `roughness.contents` property with an appropriate roughness value.
+* `metalness.contents` property with an appropriate metalness value.
+* `normal.contents` property with an appropriate normal value.
+* `ambientOcclusion.contents` property with an appropriate ambient occlusion value
+
+As you can see, we have all the properties we discussed in the [physically based rendering introduction post](https://www.fabrizioduroni.it/2017-10-10-physically-based-rendering-introduction.html "physically based introduction post"). We have also other property that help us gain realism, especially with indirect lighting for what concern the [ambient occlusion](https://en.wikipedia.org/wiki/Ambient_occlusion "ambient occlusion"). Which kind of values accept this properties? As stated in the Apple documentation you can assign to the `contents` property:
+
+* a color (`NSColor`/`UIColor`/`CGColor`) 
+* a number (`NSNumber`)
+* an image (`NSImage`/`UIImage`/`CGImage`)
+* a string
+* a `CALayer`
+* a texture (`SKTexture`/`MDLTexture`/`MTLTexture`/`GLKTextureInfo`)
+* a `SKScene`
+* an array of six image that represente a cube map (as we did for the `lightingEnviroment.contents property`).
+
+```swift
+class PhysicallyBasedMaterial {
+    let material: SCNMaterial
+    
+    init(diffuse: Any, roughness: Any, metalness: Any, normal: Any, ambientOcclusion: Any? = nil) {
+        material = SCNMaterial()
+        material.lightingModel = .physicallyBased
+        material.diffuse.contents = diffuse
+        material.roughness.contents = roughness
+        material.metalness.contents = metalness
+        material.normal.contents = normal
+        material.ambientOcclusion.contents = ambientOcclusion
+    }
+}
+```
+
+Now it's time to construct our scene :relieved:!! We start by creating a a new class `PhysicallyBasedScene`, subclass of `SCNScene`. In this way we can customize the default initializer with the step needed to add all the element of our scene, and also because in this way we have direct access to all the properties of `SCNScene`. We also define a protocol, `Scene`, that we will use to manage some gesture and animate the scene. So in the initializer we will call three methods: `createCamera()` in which we will create the camera, `createLight()` in which we will create the lights, `createObjects()` in which we will create the objects. NB: we need to define also the initializer with coder because we are subclassing a class that adopt the `NSSecureCoding` that is an extension of the `NSCoding` protocol that has this required initializer.
+
+```swift
+@objc class PhysicallyBasedScene: SCNScene, Scene {
+    var camera: Camera!
+    
+    override init() {
+        super.init()
+        createCamera()
+        createLight()
+        createObjects()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    ...
+    ...
+}    
+```
+
+So we start by creating our camera. We place it in front of the scene with the pivot moved a little bit and HDR post processing activated.
+
+```swift
+private func createCamera() {
+    camera = Camera(
+        position: SCNVector3Make(0, 2, 0),
+        rotation: SCNVector4Make(1, 0, 0, GLKMathDegreesToRadians(-5)),
+        wantsHDR: true,
+        pivot: SCNMatrix4MakeTranslation(0, 0, -8)
+    )
+    rootNode.addChildNode(camera.node)
+}
+```
+
+Then we create our lights. We create a physically based light with power of 100 lumen and a color temperature of 4000K. In this way we can match the warm orange color of the cubemap used for the lighting enviroment that we set in the scene.
+
+```swift
+private func createLight() {
+    rootNode.addChildNode(createPhysicallyBasedLight().node)
+    createPhysicallyLightingEnviroment()
+}
+
+private func createPhysicallyBasedLight() -> PhysicallyBasedLight {
+    let lightFeatures = LightFeatures(
+        position: SCNVector3Make(-2, 5, 4),
+        orientation: SCNVector3Make(GLKMathDegreesToRadians(-45), GLKMathDegreesToRadians(-25), 0),
+        color: UIColor.white
+    )
+    let physicallyBasedLightFeatures = PhysicallyBasedLightFeatures(lumen: 100, temperature: 4000)
+    let physicallyBasedLight = PhysicallyBasedLight(
+        lightFeatures: lightFeatures,
+        physicallyBasedLightFeatures: physicallyBasedLightFeatures
+    )
+    return physicallyBasedLight
+}
+
+private func createPhysicallyLightingEnviroment() {
+    let enviroment = PhysicallyBasedLightingEnviroment(
+        cubeMap: ["rightPBR.png", "leftPBR.png", "upPBR.png", "downPBR.png", "backPBR.png", "frontPBR.png"],
+        intensity: 1.0
+    )
+    enviroment.setLightingEnviromentFor(scene: self)
+}
+```
+
+Finally we can place our 4 objects: one basic plane mesh and 3 mesh taken from the [Stanford scan repository](http://graphics.stanford.edu/data/3Dscanrep/ "Stanford scan repository")
