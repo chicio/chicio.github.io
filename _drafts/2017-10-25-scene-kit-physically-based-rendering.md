@@ -307,4 +307,104 @@ private func createPhysicallyLightingEnviroment() {
 }
 ```
 
-Finally we can place our 4 objects: one basic plane mesh and 3 mesh taken from the [Stanford scan repository](http://graphics.stanford.edu/data/3Dscanrep/ "Stanford scan repository")
+Finally we can place our 4 objects: one basic plane mesh and 3 mesh taken from the [Stanford scan repository](http://graphics.stanford.edu/data/3Dscanrep/ "Stanford scan repository"). The choosen mesh are: the dragon, the happy buddha and Lucy. All this meshes will be rendered using the `PhysicallyBasedObject`. We take the textures used to model the various material from [freepbr](https://freepbr.com "freepbr") website.
+
+```swift
+private func createObjects() {
+    addFloor()
+    addDragon()
+    addBuddha()
+    addLucy()
+}
+
+private func addFloor() {
+    let floor = PhysicallyBasedObject(
+        mesh: MeshLoader.loadMeshWith(name: "Floor", ofType: "obj"),
+        material: PhysicallyBasedMaterial(
+            diffuse: "floor-diffuse.png",
+            roughness: NSNumber(value: 0.8),
+            metalness: "floor-metalness.png",
+            normal: "floor-normal.png",
+            ambientOcclusion: "floor-ambient-occlusion.png"
+        ),
+        position: SCNVector3Make(0, 0, 0),
+        rotation: SCNVector4Make(0, 0, 0, 0)
+    )
+    rootNode.addChildNode(floor.node)
+}
+
+private func addDragon() {
+    let dragon = PhysicallyBasedObject(
+        mesh: MeshLoader.loadMeshWith(name: "Dragon", ofType: "obj"),
+        material: PhysicallyBasedMaterial(
+            diffuse: "rustediron-diffuse.png",
+            roughness: NSNumber(value: 0.3),
+            metalness: "rustediron-metalness.png",
+            normal: "rustediron-normal.png"
+        ),
+        position: SCNVector3Make(-2, 0, 3),
+        rotation: SCNVector4Make(0, 1, 0, GLKMathDegreesToRadians(20))
+    )
+    rootNode.addChildNode(dragon.node)
+}
+
+private func addBuddha() {
+    let buddha = PhysicallyBasedObject(
+        mesh: MeshLoader.loadMeshWith(name: "HappyBuddha", ofType: "obj"),
+        material: PhysicallyBasedMaterial(
+            diffuse: "cement-diffuse.png",
+            roughness: NSNumber(value: 0.8),
+            metalness: "cement-metalness.png",
+            normal: "cement-normal.png",
+            ambientOcclusion: "cement-ambient-occlusion.png"
+        ),
+        position: SCNVector3Make(-0.5, 0, 0),
+        rotation: SCNVector4Make(0, 0, 0, 0)
+    )
+    rootNode.addChildNode(buddha.node)
+}
+
+private func addLucy() {
+    let lucy = PhysicallyBasedObject(
+        mesh: MeshLoader.loadMeshWith(name: "Lucy", ofType: "obj"),
+        material: PhysicallyBasedMaterial(
+            diffuse: "copper-diffuse.png",
+            roughness: NSNumber(value: 0.0),
+            metalness: "copper-metalness.png",
+            normal: "copper-normal.png"
+        ),
+        position: SCNVector3Make(2, 0, 2),
+        rotation: SCNVector4Make(0, 0, 0, 0)
+    )
+    rootNode.addChildNode(lucy.node)
+}
+```
+
+The mesh are store as [wavefront obj file](https://en.wikipedia.org/wiki/Wavefront_.obj_file "wavefront obj file"). As you can see from the previous code, we use a class called `MeshLoader`. How does it work? It uses the [Model I/O](https://developer.apple.com/documentation/modelio "Model I/O") Apple framework to load the obj file as a `MDLAsset` and then we extract the first `MDLObject`.
+
+```Swift
+class MeshLoader {
+    
+    static func loadMeshWith(name: String, ofType type: String) -> MDLObject {
+        let path = Bundle.main.path(forResource: name, ofType: type)!
+        let asset = MDLAsset(url: URL(fileURLWithPath: path))
+        return asset[0]!
+    }
+}
+```
+
+We are almost ready to render oour scene. The last thing to do is to implement the methods of the `Scene` protocol to add some movement to the scene. This method will be called by a one tap gesture attached to the main view that will render our scene (We will see it in a few moments). Inside it we use the method `runAction` to rotate the camera around its pivot, that we moved previously to have a rotation axis to move the camera around the scene.
+
+```swift
+func actionForOnefingerGesture(withLocation location: CGPoint, andHitResult hitResult: [Any]!) {
+    self.camera.node.runAction(SCNAction.rotate(by: CGFloat(GLKMathDegreesToRadians(360)),
+                                                around: SCNVector3Make(0, 1, 0),
+                                                duration: 30))
+}
+```
+
+We are ready to render our scene. Assigne an instance of our `PhysicallyBasedScene` to a `SCNView` and see the beautiful results of our work. If you tap [here](https://www.youtube.com/watch?v=yDMdAtv-3Bg "Exploring SceneKit video") you can see a video of our scene.
+
+![Physically based scene](https://raw.githubusercontent.com/chicio/Exploring-SceneKit/master/Screenshots/physically-based-rendering-scene.jpg "Physically based scene")
+
+That's it!! You've made it!! Now you can show to you're friends your physically based scene and be proud of it :sunglasses:. You can find this example with other scene on [this github repository](https://github.com/chicio/Exploring-SceneKit "Exploring-SceneKit repo").
