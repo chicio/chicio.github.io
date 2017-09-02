@@ -3,7 +3,7 @@ layout: post
 title: "Clean Code: meaningful names"
 description: "In this post I will talk about clean code and how important are the name you choose while you're developing software."
 date: 2017-08-11
-image: /assets/images/posts/reflection.png
+image: /assets/images/posts/meaningful-names.jpg
 tags: [clean code]
 comments: true
 seo:
