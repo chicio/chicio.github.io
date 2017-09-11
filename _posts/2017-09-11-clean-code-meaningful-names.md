@@ -82,7 +82,7 @@ private:
 };
 ```
 
-Even if you can maybe get a feeling of what is going, it's hard to really understand all the details of this code, and every class, struct is supposed to do and to represent. What are `pt` and `mt`???? What is supposed to represent a `GameManager` and an `Obj`? And the method `get`, what wants to get????? :cold_sweat:. You can see that a lot of thing are a little bit obscure in this code.  
+Even if you can maybe get a feeling of what is going, it's hard to really understand all the details of this code, and every class, struct is supposed to do and to represent. What are `pt` and `mt`???? What is supposed to represent a `GameManager` and an `Obj`? And the method `get`, what wants to get????? :cold_sweat:. You can see that a lot of things are a little bit obscure in this code.  
 We can try to refactor it following the names guidelines we exposed above. Do you think the code will improve in this way? You can judge it by yourself:
 
 ```c++
