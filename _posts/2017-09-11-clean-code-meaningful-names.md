@@ -2,7 +2,7 @@
 layout: post
 title: "Clean Code: meaningful names"
 description: "In this post I will talk about clean code and how important are the name you choose while you're developing software."
-date: 2017-08-11
+date: 2017-09-11
 image: /assets/images/posts/meaningful-names.jpg
 tags: [clean code]
 comments: true
@@ -15,13 +15,13 @@ seo:
 ---
 I always cared about the software I developed. I also always though that what makes a real professional software developer is how much he/she care about the software he/she is creating: the approch to the problem, the attention to details in code, the passion put into creating every single line of code, the focus on the mission to solve his/her customer problems with your software.  
 When I started to work at [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group") I discovered that I'm not the only one to think about software development in this way.  
-In fact an entire new approch to software developement has been create by [Robert Cecil Martin](https://en.wikipedia.org/wiki/Robert_Cecil_Martin "Robert Cecil Martin"), known as "Uncle Bob" (whatt??!?!!? :stuck_out_tongue:) and famous also to be the guy how defined the [SOLID principles](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design) "Solid principles"). The name of this new approch to software development is **clean code**.  
+In fact an entire new approch to software developement has been create by [Robert Cecil Martin](https://en.wikipedia.org/wiki/Robert_Cecil_Martin "Robert Cecil Martin"), known as "Uncle Bob" (whatt??!?!!? :stuck_out_tongue:) and famous also to be the guy that invented the [SOLID principles](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design) "Solid principles"). The name of this new approch to software development is **clean code**.  
 So as I promised in [my first post](http://www.fabrizioduroni.it/2017/05/10/about-me.html "about me") on this blog I will publish a series of articles in which I will talk about the foundation of clean code and my personal experiences with it. So let's start the discussion with one of the priciples of clean code that impressed me the most: meaningful naming.  
 
 ![Model view presenter mockup](/assets/images/posts/meaningful-names.jpg "Model view presenter mockup")
 
 As stated by Uncle Bob in the beautiful meme above, this principle is simple: choose your name carefully.
-But what does it really mean to "choose carefully"? :confused:. Choose the right names means the following thing: 
+But what does it really mean to "choose carefully"? :confused:. Choosing the right names means the following thing: 
 
 * **Names should releal intent.** Names should answer why a variable, a class or a method exists, what it does and how it must be used.
 * **Avoid disinformation.** Names should not contains false clues about the scope of a variable, method or class. Taking an example from Uncle Bob's clean code: "Do not refer to a grouping of accounts as an accountList, unless it is actually a list...So accountGroups or just plain accounts would be better".
@@ -135,8 +135,9 @@ private:
 };
 ```
 
-Whoaaah!! I mean, the code now seems self explained. Each instruction appears more clear in its intents. Each class, struct and method doesn't need any additional comment/documentation. I think it's really amazing how some changes to the names could improve the quality of a piece of code dramatically like in our case.  
-We're done with names :relieved:. I hope that this article will convice you that the names you choose define 
+Whoaaah!! I mean, the code now seems self explained. Each instruction appears more clear in its intents. Each class, struct and method doesn't need any additional comment/documentation. I think it's really amazing how some changes to the names could improve the quality of a piece of code dramatically like in our case.
+We're done with names :relieved:. You can find the complete example [here](https://drive.google.com/open?id=0Bx4GYUTmBfaJNE13MzNDb1Z5bk0 "Renaming clean code example")
+I hope that this article will convice you that the names you choose define 
 how much you code is "beautiful" in terms of readability and also, more import, maintainability. Quoting what [Grady Booch](https://en.wikipedia.org/wiki/Grady_Booch "Grady Booch") said about clean code: 
 
 >Clean Code reads like a well-written prose.
