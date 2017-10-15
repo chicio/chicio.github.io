@@ -62,8 +62,8 @@ highlighter: rouge
 kramdown:
   input:            GFM
 
-#Gems
-gems:
+#Plugin (gems) used by Jekyll
+plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - octopress-minify-html

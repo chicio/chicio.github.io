@@ -143,6 +143,3 @@ how much you code is "beautiful" in terms of readability and also, more import, 
 >Clean Code reads like a well-written prose.
 
 Choosing the right names is the first step to make your code more similar to a well-written prose.
-
-
-
