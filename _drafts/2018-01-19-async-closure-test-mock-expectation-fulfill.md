@@ -24,6 +24,8 @@ yourInstance.method(param: "aParam") {
     <Your assert using XCTAssert...>
     expectation.fulfill()
 }
+
+wait(for: [expectation], timeout: <time to wait the fulfillment of the expecation>)
 ```
 
 Basically the process to test closure/asynchronous operation is:
@@ -54,6 +56,6 @@ public class PasswordUpdateUseCase {
 }
 ```
 
-As you can see inside the `update` method we have an instance of `PasswordService` that, as the method name suggest, execute an update of the user password and return the result of the operation inside a closure. How do we test it? 
+As you can see inside the `update` method we have an instance of `PasswordService` that, as the method name suggest, execute an update of the user password and return the result of the operation inside a closure. How do we unit test? 
 
 .........
