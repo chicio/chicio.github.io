@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Model View Presenter on Android: unit test everything"
+title: "Model View Presenter on Android: unit test for everything"
 description: "In this post I will talk about the model view presenter architectural pattern and how it can improve you unit test and your TDD workflow when developing an Android application."
-date: 2017-08-11
-image: /assets/images/posts/reflection.png
+date: 2017-10-27
+image: /assets/images/posts/mockup-model-view-presenter.png
 tags: [android, java, mobile application development, test driven development, architectural pattern]
 comments: true
 seo:
@@ -14,8 +14,12 @@ seo:
 
 ---
 
-In a [previous post](http://www.fabrizioduroni.it/2017/08/11/model-view-presenter-architecture-ios-swift-unit-test.html "model view presenter ios post") I talked about the [Model View Presenter](https://en.wikipedia.org/wiki/Model–view–presenter "Model view presenter") architectural pattern and how it could help you to develop apps fully unit tested. But what about Android? Can we reach the same level of testability using this pattern and improve our TDD workflow? Let's find it out :smirk:!!  
-In this post we will try to develop the same application we developed on iOS: a simple product catalog thats shows a list of products. When you tap on one of them, its details is shown (go  and checkout from the above link my previous post for a simple mockou of the application).  
+In a [previous post](http://www.fabrizioduroni.it/2017/08/11/model-view-presenter-architecture-ios-swift-unit-test.html "model view presenter ios post") I talked about the [Model View Presenter](https://en.wikipedia.org/wiki/Model–view–presenter "Model view presenter") architectural pattern and how it could help you to develop apps fully tested. But what about Android? Can we reach the same level of testability using this pattern and improve our TDD workflow? Let's find it out :smirk:!!  
+In this post we will try to develop the same application we developed on iOS in the [previous post](http://www.fabrizioduroni.it/2017/08/11/model-view-presenter-architecture-ios-swift-unit-test.html "model view presenter ios post"): a simple product catalog thats shows a list of products. When you tap on one of them, its details is shown.
+Below you can find the same mockup we used for the iOS version.
+
+![Model view presenter mockup](/assets/images/posts/mockup-model-view-presenter.png "Model view presenter mockup")
+
 Let's start by creating a `Product` class repository: in our case will be a fake one that return to listener a list of products after 3 seconds. We do this to simulate a web service call. This is our implementation for the `Product` class: 
 
 ```java
@@ -442,7 +446,7 @@ class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHolder> {
 }
 ```
 
-There's also another little difference between the Android and the iOS version. If you look carefully in the `showDetailFor(Product product)` method, that is called after the product selected is checked in the presenter, there another component responsible to manage the navigation between the screen of our app. In particular, the screen of our app will all be `Fragment` objects and there will be an `Activity`, the `ProductsActivity`, that will implement the `ProductsNavigator` interface and will be responsible to manage the correct navigation between fragments in the app.
+There's also another little difference between the Android and the iOS version. If you look carefully in the `showDetailFor(Product product)` method, that is called after the product selected is checked in the presenter, there is another component responsible to manage the navigation between the screen of our app. In particular, the screen of our app will  be `Fragment` objects and there will be an `Activity`, the `ProductsActivity`, that will implement the `ProductsNavigator` interface and will be responsible to manage the correct navigation between fragments in the app.
 Let's see in order the `ProductsNavigator` interface: 
 
 ```java
@@ -602,6 +606,7 @@ public class ProductDetailPresenterTest {
     }
 }
 ```
+
 And finally our `ProductDetailFragment`: 
 
 ```java
