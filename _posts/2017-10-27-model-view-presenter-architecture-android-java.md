@@ -15,7 +15,7 @@ seo:
 ---
 
 In a [previous post](http://www.fabrizioduroni.it/2017/08/11/model-view-presenter-architecture-ios-swift-unit-test.html "model view presenter ios post") I talked about the [Model View Presenter](https://en.wikipedia.org/wiki/Model–view–presenter "Model view presenter") architectural pattern and how it could help you to develop apps fully tested. But what about Android? Can we reach the same level of testability using this pattern and improve our TDD workflow? Let's find it out :smirk:!!  
-In this post we will try to develop the same application we developed on iOS in the [previous post](http://www.fabrizioduroni.it/2017/08/11/model-view-presenter-architecture-ios-swift-unit-test.html "model view presenter ios post"): a simple product catalog thats shows a list of products. When you tap on one of them, its details is shown.
+In this post we will try to develop the same application we developed on iOS in the [previous post](http://www.fabrizioduroni.it/2017/08/11/model-view-presenter-architecture-ios-swift-unit-test.html "model view presenter ios post"): a simple product catalog that shows a list of products. When you tap on one of them, its details is shown.
 Below you can find the same mockup we used for the iOS version.
 
 ![Model view presenter mockup](/assets/images/posts/mockup-model-view-presenter.png "Model view presenter mockup")
