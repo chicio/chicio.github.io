@@ -20,7 +20,7 @@ Below you can find the same mockup we used for the iOS version.
 
 ![Model view presenter mockup](/assets/images/posts/mockup-model-view-presenter.png "Model view presenter mockup")
 
-Let's start by creating a `Product` class repository: in our case will be a fake one that return to listener a list of products after 3 seconds. We do this to simulate a web service call. This is our implementation for the `Product` class: 
+Let's start by creating a `Product` class. We need also to create a `ProductsRepository` class: in our case it will be a fake one that return to listener a list of products after 3 seconds. We do this to simulate a web service call. This is our implementation for the `Product` class: 
 
 ```java
 public class Product {
