@@ -9,5 +9,6 @@ before_script:
   - gem install jekyll-seo-tag
   - gem install jekyll-sitemap
   - gem install octopress-minify-html
+  - gem install jekyll-paginate
 script: gulp test --travis
 
