@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A first approch to contract test"
+title: "A first approach to contract test"
 description: "In this post I will talk about contract test: what they are and how you can use them."
 date: 2017-07-25
 tags: [test driven development, java]
@@ -21,7 +21,6 @@ Suppose for example that we have the following interface:
 
 ```java
 public interface Command {
-
     void execute();
 }
 ```
@@ -117,5 +116,5 @@ public class SettingsCommandTest extends CommandContract {
 
 As you can see we tested all our concrete `Command` implementations without replicating the unit tests logic.
 Wonderful :open_mouth::heart_eyes:!!!  
-[Here](https://drive.google.com/open?id=0Bx4GYUTmBfaJRmlRN0xteFdnanM "Contract test java example") you can find the complete example (a Maven project developed using IntelliJ, Juni4, Mockito).  
+[Here](https://github.com/chicio/Contract-Tests "Contract test java example") you can find the complete example (a Maven project developed using IntelliJ, Juni4, Mockito).  
 It's time for you to test contract test on your project :joy::laughing:!!!
