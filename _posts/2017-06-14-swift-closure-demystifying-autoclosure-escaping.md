@@ -42,19 +42,19 @@ class Operation {
 }
 ```
 
-So, basically in the constructor we are expecting something that will be enclosed in a closure, thanks to the `@autoclosure` attribute, and we store it as an instance variable of our class. We can store it because we are using also the `@escaping` attribute. 
-Now in our controller we can define an array of operation that will be the datasource to our `UITableViewController`. We can pass in the constructor of each `Operation` instance the function that corresponds to the operation that we want to execute. This function will be executed in the table view delegate method `public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)` by accessing the corresponding element in the data source array, without the need to identify the exact cell type selected.  
+So, basically in the constructor we are expecting something that will be enclosed in a closure, thanks to the `@autoclosure` attribute, 
+and we store it as an instance variable of our class. We can store it because we are using also the `@escaping` attribute. 
+Now in our controller we can define an array of operation that will be the datasource to our `UITableViewController`. 
+We can pass in the constructor of each `Operation` instance the function that corresponds to the operation that we want to execute. 
+This function will be executed in the table view delegate method `public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)` by accessing the corresponding element in the data source array, without the need to identify the exact cell type selected.  
 Here you can find the complete `OperationsViewController`:  
 
 ```swift
 class OperationsViewController: UITableViewController {
-
     var operations: [Operation] = []
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
         self.operations.append(Operation(name: "Operation 1", action: self.showOrangeDetail()))
         self.operations.append(Operation(name: "Operation 2", action: self.showGreenDetail()))
     }
@@ -62,40 +62,33 @@ class OperationsViewController: UITableViewController {
     //MARK: TableView Datasource
     
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return self.operations.count
     }
     
-    public override func tableView(_ tableView: UITableView,   
-                                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "OperationCell")!
         cell.textLabel?.text = self.operations[indexPath.row].name
-        
         return cell
     }
     
     //MARK: TableView Delegate
     
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         self.operations[indexPath.row].action()
     }
     
     //MARK: Actions
     
     private func showOrangeDetail() {
-        
         self.performSegue(withIdentifier: "OrangeSegue", sender: nil)
     }
     
     private func showGreenDetail() {
-        
         self.performSegue(withIdentifier: "GreenSegue", sender: nil)
     }
 }
 ```
 
-You can download the complete example [here](https://drive.google.com/open?id=0Bx4GYUTmBfaJdUsyYWRlU1BnTVk "autoclosure example link").  
+You can download the complete example [here](https://github.com/chicio/Autoclosure-and-Escaping "autoclosure example link").  
 So basically: no if, no switch, only :heart: for `@autoclosure` and `@escaping` :heart_eyes:.
 
