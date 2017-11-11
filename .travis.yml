@@ -10,5 +10,6 @@ before_script:
   - gem install jekyll-sitemap
   - gem install octopress-minify-html
   - gem install jekyll-paginate
+  - gem install jemoji
 script: gulp test --travis
 
