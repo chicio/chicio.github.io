@@ -136,7 +136,7 @@ private:
 ```
 
 Whoaaah!! I mean, the code now seems self explained. Each instruction appears more clear in its intents. Each class, struct and method doesn't need any additional comment/documentation. I think it's really amazing how some changes to the names could improve the quality of a piece of code dramatically like in our case.
-We're done with names :relieved:. You can find the complete example [here](https://drive.google.com/open?id=0Bx4GYUTmBfaJNE13MzNDb1Z5bk0 "Renaming clean code example")
+We're done with names :relieved:. You can find the complete example [here](https://github.com/chicio/Clean-Code-Meaningful-Names "Renaming clean code example")
 I hope that this article will convice you that the names you choose define 
 how much you code is "beautiful" in terms of readability and also, more import, maintainability. Quoting what [Grady Booch](https://en.wikipedia.org/wiki/Grady_Booch "Grady Booch") said about clean code: 
 
