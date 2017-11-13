@@ -18,7 +18,7 @@ When I started to work at [lastminute.com group](http://www.lastminutegroup.com 
 In fact an entire new approch to software developement has been create by [Robert Cecil Martin](https://en.wikipedia.org/wiki/Robert_Cecil_Martin "Robert Cecil Martin"), known as "Uncle Bob" (whatt??!?!!? :stuck_out_tongue:) and famous also to be the guy that invented the [SOLID principles](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design) "Solid principles"). The name of this new approch to software development is **clean code**.  
 So as I promised in [my first post](http://www.fabrizioduroni.it/2017/05/10/about-me.html "about me") on this blog I will publish a series of articles in which I will talk about the foundation of clean code and my personal experiences with it. So let's start the discussion with one of the priciples of clean code that impressed me the most: meaningful naming.  
 
-![Model view presenter mockup](/assets/images/posts/meaningful-names.jpg "Model view presenter mockup")
+![Uncle bob meaningful names](/assets/images/posts/meaningful-names.jpg "Uncle bob meaningful names")
 
 As stated by Uncle Bob in the beautiful meme above, this principle is simple: choose your name carefully.
 But what does it really mean to "choose carefully"? :confused:. Choosing the right names means the following thing: 
