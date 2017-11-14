@@ -50,12 +50,31 @@ Then we try to link the library to the native code with the standard react nativ
 react-native link realm
 ```
 
-But here something strange happens: as you can see from the screenshot below the command fails  to link the library. 
+But here something strange happens: as you can see from the screenshot below the command fails to link the library. 
 So we need to find another way to install the library.
 
 ![react native realm link fails](/assets/images/posts/react-native-realm-2-link-fails.jpg "react native realm directories")
 
 .....
+
+Usually, if the previous command fails, you do the [manual linking](https://facebook.github.io/react-native/docs/linking-libraries-ios.html "manual linking"). 
+To do it we navigate inside the `node_modules` folder, contained in the react native folder of our project, to found the realm folder. 
+Inside it you will find an XCode project named `RealmReact`, that you have to drag into our project. After that we have to add a reference to 
+the static library `libRealmReact` and compile the project.
+
+![react native realm manual link step 1](/assets/images/posts/react-native-realm-3-manual-link-step-1.jpg "react native realm manual link")
+![react native realm manual link step 2](/assets/images/posts/react-native-realm-3-manual-link-step-2.jpg "react native realm manual link")
+
+Now you would expect that everything works fine but...
+
+![react native realm manual link fails](/assets/images/posts/react-native-realm-3-manual-link-fails.jpg "react native realm manual link fails")
+
+What's happening? The `RealmReact` project is expecting the React Native headers in a relative position with respect 
+to its original position. Arrrgghhh :rage:!! We need to find another way...  
+What can we do?   
+    
+
+
 
    
  
