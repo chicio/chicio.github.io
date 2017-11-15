@@ -44,7 +44,6 @@
 					<p class="blog-post-meta">{{ page.date | date_to_string }}</p>
 					{{ content }}
 				</div>
-				{% include adsense-article-bottom.html %}
 				<div class="blog-tags">
 					<ul>
 						{% for tag in page.tags %}
@@ -57,6 +56,7 @@
 						{% endfor %}
 					</ul>
 				</div>
+				{% include adsense-article-bottom.html %}
 			</div>
 		</div>
 		{% if page.comments %}
