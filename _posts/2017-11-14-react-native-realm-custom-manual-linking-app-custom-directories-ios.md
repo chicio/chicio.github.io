@@ -120,7 +120,7 @@ class ReactNativeRealmController: UIViewController {
 
 and a sample react component with a realm write/read
 
-```javascript
+```jsx
 const Realm = require('realm');
 
 class ReactNativeRealmScreen extends React.Component {
