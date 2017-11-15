@@ -2,8 +2,8 @@
 layout: post
 title: "React Native and Realm: custom manual link for an iOS app with custom directory structure"
 description: "In this post I will show you how to install realm as a dependency in a react native project with custom folders structure without using react-native link command."
-date: 2017-10-27
-image: /assets/images/posts/TO-DO.png
+date: 2017-11-14
+image: /assets/images/posts/react-native-realm-10-build-works.jpg
 tags: [react native, realm, swift, ios, apple, mobile application development]
 comments: true
 seo:
