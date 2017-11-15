@@ -62,6 +62,10 @@ highlighter: rouge
 kramdown:
   input:            GFM
 
+# Jemoji
+emoji:
+  src: "/assets/images/"
+
 #Plugin (gems) used by Jekyll
 plugins:
   - jekyll-seo-tag

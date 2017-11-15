@@ -55,8 +55,6 @@ So we need to find another way to install the library.
 
 ![react native realm link fails](/assets/images/posts/react-native-realm-2-link-fails.jpg "react native realm directories")
 
-.....
-
 Usually, if the previous command fails, you do the [manual linking](https://facebook.github.io/react-native/docs/linking-libraries-ios.html "manual linking"). 
 To do it we navigate inside the `node_modules` folder, contained in the react native folder of our project, to found the realm folder. 
 Inside it you will find an XCode project named `RealmReact`, that you have to drag into our project. After that we have to add a reference to 
@@ -67,15 +65,35 @@ the static library `libRealmReact` and compile the project.
 
 Now you would expect that everything works fine but...
 
-![react native realm manual link fails](/assets/images/posts/react-native-realm-3-manual-link-fails.jpg "react native realm manual link fails")
+![react native realm manual link fails](/assets/images/posts/react-native-realm-4-manual-link-fails.jpg "react native realm manual link fails")
 
 What's happening? The `RealmReact` project is expecting the React Native headers in a relative position with respect 
 to its original position. Arrrgghhh :rage:!! We need to find another way...  
-What can we do?   
-    
+What can we do? We can start by observing that the `RealmReact` project is just a "container project" for:
+ * `RealmJS` project, that  generates two static libraries `libRealmJS.a` and `libGCDWebServers.a`
+ * an Objective-C++ class `RealmReact`
+ * an Objective-C++ file `RealmAnalytics`.     
+So we can try to modify our main project by:
+ * adding the `RealmJS` project and the Objective-C++ files/classes as references
+ * linking the static libraries `libRealmJS.a` and `libGCDWebServers.a` to our main project and see if everything work.
 
+![react native realm custom manual link step 1](/assets/images/posts/react-native-realm-5-custom-manual-link-step-1.jpg "react native realm custom manual link step 1")
+![react native realm custom manual link step 2](/assets/images/posts/react-native-realm-5-custom-manual-link-step-2.jpg "react native realm custom manual link step 1")
 
+Now we need to add to the Header search path option of our main project the paths that were setted in the `RealmReact` project. In this way 
+the `RealmJS` project will be able to find some headers it needs.
 
-   
+![react native realm header search path](/assets/images/posts/react-native-realm-6-header-search-path.jpg "react native realm header search path")
+
+Now if we try to compile our app we expect that everything works fine but...ERROR :warning::fire:!!! The build fails :boom:!!! 
+
+![react native realm C++ error](/assets/images/posts/react-native-realm-7-Cplusplus-error.jpg "react native realm C++ error")
+
+It seems like that in order to be able to compile the C++ source code contained in `RealmJS` we need to set a recent C++ version 
+in our project setting. We can set it to C++ 14 and set the Standard Library to the LLVM one with C++ 11 support.
+
+![react native realm C++ setup](/assets/images/posts/react-native-realm-8-Cplusplus-setup.jpg "react native realm C++ setup")
+
+ ...  
  
 
