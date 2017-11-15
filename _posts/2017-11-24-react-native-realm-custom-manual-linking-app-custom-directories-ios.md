@@ -32,7 +32,7 @@ While I was working on an existing native app integrated with react native only 
 some problem to add Realm, the famous open source dbms, as a dependency to the project.  
 In this post I will show you an example of how you can add Realm to your app with custom react native installation. Let's start :cold_sweat:!!
 To describe the installation process I will use a sample app I created for this post called `ReactNativeRealmManualLink`. You can find 
-it with realm installed on [this github repo](https://github.com/chicio/React-Native-Realm-Manual-Link 'React native realm manual link').   
+it with realm installed in [this github repo](https://github.com/chicio/React-Native-Realm-Manual-Link 'React native realm manual link').   
 Suppose you have a project like the one I linked above, in which React Native is contained in a subfolder of the iOS project, instead of the other way around 
 in a classical standard react native installation. 
 
@@ -75,7 +75,7 @@ What can we do? We can start by observing that the `RealmReact` project is just 
  * an Objective-C++ file `RealmAnalytics`.     
 So we can try to modify our main project by:
  * adding the `RealmJS` project and the Objective-C++ files/classes as references
- * linking the static libraries `libRealmJS.a` and `libGCDWebServers.a` to our main project and see if everything work.
+ * linking the static libraries `libRealmJS.a` and `libGCDWebServers.a` to our main project and see if everything works.
 
 ![react native realm custom manual link step 1](/assets/images/posts/react-native-realm-5-custom-manual-link-step-1.jpg "react native realm custom manual link step 1")
 ![react native realm custom manual link step 2](/assets/images/posts/react-native-realm-5-custom-manual-link-step-2.jpg "react native realm custom manual link step 1")
@@ -94,6 +94,83 @@ in our project setting. We can set it to C++ 14 and set the Standard Library to 
 
 ![react native realm C++ setup](/assets/images/posts/react-native-realm-8-Cplusplus-setup.jpg "react native realm C++ setup")
 
- ...  
- 
+One final step is to remove the flag `-all_load` from the `Other linker flag` option of the main project (if you have it). 
+In this way we avoid to load all Objective-C symbols and have the "duplicated symbols" error.
 
+![react native realm all_load flag](/assets/images/posts/react-native-realm-9-all_load.jpg "react native realm all_load flag")   
+ 
+We are now ready to build our app and see if everything works. To do this we create a sample native view controller with a `RCTRootView` 
+
+```swift
+class ReactNativeRealmController: UIViewController {
+    override func viewDidLoad() {
+        let jsCodeLocation = URL(string: "http://localhost:8081/index.bundle?platform=ios")
+        view = RCTRootView(
+            bundleURL: jsCodeLocation,
+            moduleName: "ReactNativeRealmScreen",
+            initialProperties: nil,
+            launchOptions: nil
+        )
+    }
+}
+```
+
+and a sample react component with a realm write/read
+
+```javascript
+const Realm = require('realm');
+
+class ReactNativeRealmScreen extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            realm: null
+        };
+    }
+
+    componentWillMount() {
+        Realm.open({
+            schema: [{name: 'Band', properties: {name: 'string', singer: 'string'}}]
+        }).then(realm => {
+            realm.write(() => {
+                realm.create('Band', {name: 'HIM', singer: 'Ville Valo'});
+            });
+            this.setState({ realm });
+        });
+    }
+
+    render() {
+        const message = this.state.realm
+            ? 'The singer of HIM band is: ' + this.state.realm.objects('Band').filtered('name = "HIM"')[0].singer
+            : 'Loading...';
+
+        return (
+            <View style={styles.container}>
+              <Text>
+                  {message}
+              </Text>
+            </View>
+        );
+    }
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#FFFFFF',
+    }
+});
+
+AppRegistry.registerComponent('ReactNativeRealmScreen', () => ReactNativeRealmScreen, false);
+```
+
+We are now ready to build our app and, as expected, everything works fine.
+
+![react native realm build works](/assets/images/posts/react-native-realm-10-build-works.jpg "react native realm build works")   
+
+That's it!! As I told you before you can find the complete example in [this github repo](https://github.com/chicio/React-Native-Realm-Manual-Link 'React native realm manual link'). 
+We are now ready create our react native component with realm :bowtie:.  
+
+  
