@@ -52,6 +52,8 @@ Then I installed Gulp:
 ```shell
 $ npm install --save-dev gulp
 ```
+
+{% include adsense-article-middle.html %}
  
 I decided to use the following gulp libraries to improve my work (using the same command used for Gulp to install them):
  
@@ -71,8 +73,8 @@ Below you can find the complete gulpfile:
  
 As you can see I have two gulp task. I use the first from my local environment during development. The second one is used by 
 by travis to make a test build on each commit. All the assets created are saved in the assets folder. Jekyll copies each 
-folder that is not prefix with and underscore
-I also installed some gems to improve and automatize some function of my site:
+folder that is not prefix with and underscore. I also installed some gems to improve and automatize some function of 
+my site:
  
   - jekyll-seo-tag, to automatically create meta and JSON-LD
   - jekyll-sitemap, to automatically generate the sitemap

@@ -84,11 +84,11 @@ public interface ProductsRepositoryListener {
 
 Now we can start to create our presenter. First of all we will define a `ProductsView` that will be responsible to implement the real platform dependent UI code. Our presenter will be responsible for: 
 
-*  **the start of the view in the**  `onStart()` method. In this method it will update the view title, show a loading status and more important it will start the retrieve of the product list and become its listener.
-
+* **the start of the view in the**  `onStart()` method. In this method it will update the view title, show a loading status and more important it will start the retrieve of the product list and become its listener.
 * **listening to the repository callback when the products are retrieve**. So our presenter will implement the `ProductsRepositoryListener` interface and pass to the view the updated product list.
-
 * **the show detail action in the** `onSelected(Product product)` method. In this case it will need to check that we have a valid product and eventually show its detail (or an error message).
+
+{% include adsense-article-middle.html %}
 
 First let's see our `ProductsView` interface:
 

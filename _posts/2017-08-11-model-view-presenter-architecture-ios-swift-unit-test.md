@@ -104,11 +104,15 @@ class ProductsRepositoryTests: XCTestCase {
 }
 ```
 
-Now it's time to develop our `ProductsPresenter` presenter. It will need a view to which it will delegate the real user interface operation and the Repository to retrieve the products data. It will be responsible to manage:
+Now it's time to develop our `ProductsPresenter` presenter. It will need a view to which it will delegate the real user interface operation
+ and the Repository to retrieve the products data. It will be responsible to manage:
 
-* **the start of the view in the** `onStart()` method. In this method we will have to update the view to show a loading status (that will be a `UIActivityIndicator` in the view implementation), then try to retrieve the products from the repository and show them on the view if everything goes fine. If something goes wrong show on the view an error message. In any case, it also need to hide the loading status after the retrieve operation has been completed.
-
-* **the show detail action in the** `onSelected(product: Product)` method. In this method we will have to check if all the product data is correct, that in our case means that the product must have a valid product. If it is valid, show its detail in the view, else an error message.
+* **the start of the view in the** `onStart()` method. In this method we will have to update the view to show a loading status (that 
+will be a `UIActivityIndicator` in the view implementation), then try to retrieve the products from the repository and show them on the view 
+if everything goes fine. If something goes wrong show on the view an error message. In any case, it also need to hide the loading status after
+ the retrieve operation has been completed.
+* **the show detail action in the** `onSelected(product: Product)` method. In this method we will have to check if all the product data is correct,
+ that in our case means that the product must have a valid product. If it is valid, show its detail in the view, else an error message.
 
 We start by defining the protocol `ProductView`, that contains all the valid operation of the view that our presenter will use:
 
@@ -276,6 +280,8 @@ class ProductsPresenterTests: XCTestCase {
     }
 }
 ```
+
+{% include adsense-article-middle.html %}
 
 It easy to see that the unit tests for our presenter describe the entire presentation flow. This basically means that our unit tests are the documentation of our presentation logic. Cooool!!!! :sunglasses:
 Now the next big question is: who is going to implement our `ProductsView` protocol? As we said in the introduction, our view controllers become the View in the Model View Presenter architecture. They act as passive platform specific user interface components updater. This means that our protocol will be implemented by `ProductsViewController`. It have the responsibility to launch the `ProductsPresenter` action at the right time and implement all the real passive User Interface update operation.

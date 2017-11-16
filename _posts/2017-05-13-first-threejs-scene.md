@@ -83,7 +83,9 @@ function createCamera() {
 
     return camera;
 }
-```  
+```
+  
+{% include adsense-article-middle.html %}
 
 We create a renderer with the alpha property set to true, in case we want to integrate in another HTML page and we want 
 the background to be visible until the scene is loaded. We set the [gamma correction](https://en.wikipedia.org/wiki/Gamma_correction
@@ -296,6 +298,9 @@ function loadStars(textureLoader, completeLoad) {
     });
 }
 ```
+
+{% include adsense-article-middle.html %}
+
 For the PLY models, we use the PLY loader to obtain the corrsponding geometry. Then we create a `MeshPhysicalMaterial` using 
 the parameters received. We also set the position and rotation of the mesh and we force the update of the local transform 
 using the `updateMatrix()` method. We set `castShadow` to true, as we need that this meshes are considered in shadow mapping.

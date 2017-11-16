@@ -10,8 +10,8 @@ seo:
     - type: "BlogPosting"
 ---
 
-In this post I will show you how to install realm as a dependency in a react native project with custom folders structure 
-without using `react-native link` command.
+*In this post I will show you how to install realm as a dependency in a react native project with custom folders structure 
+without using react-native link command*.
 
 ---
 
