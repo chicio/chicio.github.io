@@ -9,7 +9,7 @@
         <style type="text/css">{% include critical-blog-tags.css %}</style>
         <meta name="p:domain_verify" content="33d2d5dad0e1496d9f7974925340ea50"/>
         <meta property="og:image" content="{{ site.url }}{{ site.image }}"/>
-        <meta property="og:type" content="profile"/>
+        <meta property="og:type" content="website"/>
         {% seo %}
     </head>
     <body class="blog-body">
@@ -24,13 +24,7 @@
             </div>
         </div>
         <div class="container blog-posts">
-            <div class="blog-header row">
-                <a href="/blog/">
-                    <img alt="Sombrero Galaxy" class="img-responsive blog-logo" src="/assets/images/blog-logo.png">
-                </a>
-                <h1 class="blog-title"><a href="/blog/">CHICIO CODING</a></h1>
-                <h2 class="lead blog-description">Dirty clean code</h2>
-            </div>
+			{% include blog-header.html %}
             <div class="row blog-tags-list">
                 <div class="col-sm-12 blog-main">
                     {% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}

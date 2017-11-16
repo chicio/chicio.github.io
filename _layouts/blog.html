@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="author" href="humans.txt"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <style type="text/css">{% include critical-blog.css %}</style>
+        <meta name="p:domain_verify" content="33d2d5dad0e1496d9f7974925340ea50"/>
+        <link rel="author" href="humans.txt"/>
         {% include analytics.html %}
         {% include adsense.html %}
-        <meta name="p:domain_verify" content="33d2d5dad0e1496d9f7974925340ea50"/>
-        <meta property="og:image" content="{{ site.url }}{{ site.image }}"/>
-        <meta property="og:type" content="profile"/>
+        <style type="text/css">{% include critical-blog.css %}</style>
         {% seo %}
+		<meta property="og:image" content="{{ site.url }}{{ site.image }}"/>
+		<meta property="og:type" content="website"/>
     </head>
     <body class="blog-body">
         <div class="blog-masthead">
@@ -24,13 +24,7 @@
             </div>
         </div>
         <div class="container blog-posts">
-            <div class="blog-header row">
-                <a href="/blog/">
-                <img alt="Sombrero Galaxy" class="img-responsive blog-logo" src="/assets/images/blog-logo.png">
-                    </a>
-                <h1 class="blog-title"><a href="/blog/">CHICIO CODING</a></h1>
-                <h2 class="lead blog-description">Dirty clean code</h2>
-            </div>
+			{% include blog-header.html %}
             <div class="row">
                 <div class="col-sm-12 blog-main">
                     {% for post in paginator.posts %}
