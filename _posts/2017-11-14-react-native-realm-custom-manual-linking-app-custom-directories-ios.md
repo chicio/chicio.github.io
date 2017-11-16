@@ -93,7 +93,8 @@ Now if we try to compile our app we expect that everything works fine but...ERRO
 ![react native realm C++ error](/assets/images/posts/react-native-realm-7-Cplusplus-error.jpg "react native realm C++ error")
 
 It seems like that in order to be able to compile the C++ source code contained in `RealmJS` we need to set a recent C++ version 
-in our project setting. We can set it to C++ 14 and set the Standard Library to the LLVM one with C++ 11 support.
+in our project setting that supports some new features like auto return type on static function. We can set it to C++ 14 
+and set the Standard Library to the LLVM one with C++ 11 support.
 
 ![react native realm C++ setup](/assets/images/posts/react-native-realm-8-Cplusplus-setup.jpg "react native realm C++ setup")
 
