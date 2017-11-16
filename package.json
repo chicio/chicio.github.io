@@ -23,12 +23,13 @@
   "homepage": "https://github.com/chicio/chicio.github.io#readme",
   "devDependencies": {
     "browser-sync": "^2.18.8",
-    "critical": "^0.9.1",
+    "critical": "^1.0.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
-    "yargs": "^9.0.1"
+    "npm-check-updates": "^2.13.0",
+    "yargs": "^10.0.3"
   }
 }
