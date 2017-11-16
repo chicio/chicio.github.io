@@ -61,40 +61,7 @@
             </div>
         </div>
         {% include blog-footer.html %}
-        <noscript id="deferred-styles">
-            <link rel="stylesheet" href="/assets/styles/style.css">
-        </noscript>
-        <script type="text/x-mathjax-config">
-            MathJax.Hub.Config({
-                jax: ["input/TeX","output/SVG"],
-                messageStyle: "none",
-                tex2jax: {
-                    inlineMath: [ ['$','$'] ],
-                    processEscapes: true
-                },
-                "HTML-CSS": { 
-                    linebreaks: { automatic: true }
-                },
-                SVG: { 
-                    linebreaks: { automatic: true } 
-                }
-            });
-        </script>        
-        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script>
-            var loadDeferredStyles = function () {
-                var addStylesNode = document.getElementById("deferred-styles");
-                var replacement = document.createElement("div");
-                replacement.innerHTML = addStylesNode.textContent;
-                document.body.appendChild(replacement)
-                addStylesNode.parentElement.removeChild(addStylesNode);
-            };
-            var raf = requestAnimationFrame || mozRequestAnimationFrame ||
-                webkitRequestAnimationFrame || msRequestAnimationFrame;
-            if (raf) raf(function () {
-                window.setTimeout(loadDeferredStyles, 0);
-            });
-            else window.addEventListener('load', loadDeferredStyles);
-        </script>
+        {% include blog-mathjax.html %}
+		{% include css-link.html %}
     </body>
 </html>
