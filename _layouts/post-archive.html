@@ -47,50 +47,7 @@
             {% include adsense-archive.html %}
         </div>
     </div>
-    <footer class="container-fluid text-center blog-footer">
-        <div class="row center-content blog-nav">
-            <a href="/" class="blog-nav-item">
-                Home
-            </a>|
-            <a href="/blog/" class="blog-nav-item">
-                Blog
-            </a>|
-            <a href="/2017/05/10/about-me.html" class="blog-nav-item">
-                About Me
-            </a>|
-            <a href="/blog/archive/" class="blog-nav-item">
-                Archive
-            </a>|
-            <a href="/blog/tags/" class="blog-nav-item">
-                Tags
-            </a>
-        </div>
-        <div class="row center-content">
-            <div class="col-xs-12">
-                <a href="https://github.com/chicio" target="_blank">
-                    <i class="blog-footer-icon fa fa-github" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/fabrizio-duroni-947a9b35/" target="_blank">
-                    <i class="blog-footer-icon fa fa-linkedin" aria-hidden="true"></i>
-                </a>
-                <a href="https://twitter.com/chicio86" target="_blank">
-                    <i class="blog-footer-icon fa fa-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.facebook.com/fabrizio.duroni" target="_blank">
-                    <i class="blog-footer-icon fa fa-facebook" aria-hidden="true"></i>
-                </a>
-                <a href="mailto:fabrizio.duroni@gmail.com">
-                    <i class="blog-footer-icon fa fa-envelope" aria-hidden="true"></i>
-                </a>
-                <a href="tel:+393285926828">
-                    <i id="phone-number" class="blog-footer-icon fa fa-mobile" aria-hidden="true"></i>
-                </a>
-                <div class="row blog-copyright">
-                    <h5>Made with <span id="heart" class="heart">💖</span> by {{ site.author }} 'Chicio'</h5>
-                </div>
-            </div>
-        </div>
-    </footer>
+    {% include blog-footer.html %}
     <noscript id="deferred-styles">
         <link rel="stylesheet" href="/assets/styles/style.css">
     </noscript>
