@@ -686,4 +686,4 @@ public class ProductDetailFragment extends Fragment implements ProductDetailView
 
 That's it!!!!! You've made it!!! Now you master the Model View Presenter architectural pattern on Android and you're ready to rock with unit test on all the main mobile platform on the market (somebody said Windows Phone!?!?!?!?!? :stuck_out_tongue_closed_eyes:). 
 
-![Model view presenter platforms](/assets/images/posts/model-viewp-presenter-platforms.jpg "Model view presenter chuck norris platforms")
+![Model view presenter platforms](/assets/images/posts/model-view-presenter-platforms.jpg "Model view presenter chuck norris platforms")
