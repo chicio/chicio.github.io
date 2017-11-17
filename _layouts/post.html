@@ -2,48 +2,37 @@
 <html lang="en">
 	{% include head.html critical-css="critical-blog-post.css" %}
 	<body class="blog-body">
-	<div class="blog-masthead">
-		<div class="container">
-			<nav class="blog-nav">
-				{% for nav in site.nav %}
-				<a class="blog-nav-item
-					  {% if nav.name == 'Blog' and page.title != 'About Me' %}active{% endif %}
-					  {% if nav.name == 'About Me' and page.title == 'About Me' %}active{% endif %}"
-				   href="{{ nav.url }}">{{ nav.name }}</a>
-				{% endfor %}
-			</nav>
-		</div>
-	</div>
-	<div class="container blog-posts">
-		{% include blog-header.html %}
-		<div class="row">
-			<div class="col-sm-12 blog-main">
-				<div class="row blog-post">
-					<h2 class="blog-post-title">{{ page.title }}</h2>
-					<p class="blog-post-meta">{{ page.date | date_to_string }}</p>
-					{{ content }}
+		{% include blog-masthead.html %}
+		<div class="container blog-posts">
+			{% include blog-header.html %}
+			<div class="row">
+				<div class="col-sm-12 blog-main">
+					<div class="row blog-post">
+						<h2 class="blog-post-title">{{ page.title }}</h2>
+						<p class="blog-post-meta">{{ page.date | date_to_string }}</p>
+						{{ content }}
+					</div>
+					<div class="blog-tags">
+						<ul>
+							{% for tag in page.tags %}
+							<li>
+								<a href="/blog/tags#{{ tag }}">
+									<span>{{ tag }}</span>
+								</a>
+							</li>
+							{% unless forloop.last %}{% endunless %}
+							{% endfor %}
+						</ul>
+					</div>
+					{% include adsense-article-bottom.html %}
 				</div>
-				<div class="blog-tags">
-					<ul>
-						{% for tag in page.tags %}
-						<li>
-							<a href="/blog/tags#{{ tag }}">
-								<span>{{ tag }}</span>
-							</a>
-						</li>
-						{% unless forloop.last %}{% endunless %}
-						{% endfor %}
-					</ul>
-				</div>
-				{% include adsense-article-bottom.html %}
 			</div>
+			{% if page.comments %}
+				{% include disquis.html %}
+			{% endif %}
 		</div>
-		{% if page.comments %}
-			{% include disquis.html %}
-		{% endif %}
-	</div>
-	{% include blog-footer.html %}
-	{% include blog-mathjax.html %}
-	{% include css-link.html %}
+		{% include blog-footer.html %}
+		{% include blog-mathjax.html %}
+		{% include css-link.html %}
 	</body>
 </html>

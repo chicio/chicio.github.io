@@ -2,16 +2,7 @@
 <html lang="en">
     {% include head.html critical-css="critical-blog-post-archive.css" content-type="website" %}
     <body class="blog-body">
-        <div class="blog-masthead">
-            <div class="container">
-                <nav class="blog-nav">
-                    {% for nav in site.nav %}
-                    <a class="blog-nav-item {% if nav.name == 'Blog' %}active{% endif %}"
-                        href="{{ nav.url }}">{{ nav.name }}</a>
-                    {% endfor %}
-                </nav>
-            </div>
-        </div>
+        {% include blog-masthead.html %}
         <div class="container blog-posts">
             {% include blog-header.html %}
             <div class="row blog-archive">

@@ -1,0 +1,12 @@
+<div class="blog-masthead">
+	<div class="container">
+		<nav class="blog-nav">
+			{% for nav in site.nav %}
+			<a class="blog-nav-item
+					  {% if nav.name == 'Blog' and page.title != 'About Me' %}active{% endif %}
+					  {% if nav.name == 'About Me' and page.title == 'About Me' %}active{% endif %}"
+			   href="{{ nav.url }}">{{ nav.name }}</a>
+			{% endfor %}
+		</nav>
+	</div>
+</div>
