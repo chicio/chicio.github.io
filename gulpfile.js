@@ -23,20 +23,16 @@ gulp.task('serve', function() {
         },
         browser: ["safari"]
     });
-
     gulp.watch(jsFiles, ['bundle-scripts'])
     gulp.watch(cssFiles, ['css']);
 });
 
 gulp.task('jekyll', function() {
     var options = ['build', '--watch', '--incremental', '--drafts'];
-
     if (isTravis) {
         options = ['build', '--incremental', '--drafts'];
     }
-
     const jekyll = child.spawn('jekyll', options);
-
     const jekyllLogger = function(buffer) {
         buffer.toString()
             .split(/\n/)
@@ -44,25 +40,6 @@ gulp.task('jekyll', function() {
                 gutil.log('Jekyll: ' + message)
             });
     };
-
-    jekyll.stdout.on('data', jekyllLogger);
-    jekyll.stderr.on('data', jekyllLogger);
-});
-
-gulp.task('jekyll-build', function() {
-    const jekyll = child.spawn('jekyll', ['build',
-        '--incremental',
-        '--drafts'
-    ]);
-
-    const jekyllLogger = function(buffer) {
-        buffer.toString()
-            .split(/\n/)
-            .forEach(function (message) {
-                gutil.log('Jekyll: ' + message)
-            });
-    };
-
     jekyll.stdout.on('data', jekyllLogger);
     jekyll.stderr.on('data', jekyllLogger);
 });
@@ -115,10 +92,12 @@ gulp.task('models', function() {
         .pipe(gulp.dest('assets/models'))
 });
 
+//**** Used in command line flow ****//
+
 gulp.task('css-critical', function() {
     critical.generate({
-        base: '_layouts/',
-        src: 'home.html',
+        base: '_site/',
+        src: 'index.html',
         css: ['assets/styles/style.css'],
         dimensions: [{
             width: 320,
@@ -136,8 +115,8 @@ gulp.task('css-critical', function() {
     });
 
     critical.generate({
-        base: '_layouts/',
-        src: 'blog.html',
+        base: '_site/',
+        src: 'blog/index.html',
         css: ['assets/styles/style.css'],
         dimensions: [{
             width: 320,
@@ -155,27 +134,8 @@ gulp.task('css-critical', function() {
     });
 
     critical.generate({
-        base: '_layouts/',
-        src: 'post.html',
-        css: ['assets/styles/style.css'],
-        dimensions: [{
-            width: 320,
-            height: 480
-        },{
-            width: 768,
-            height: 1024
-        },{
-            width: 1280,
-            height: 960
-        }],
-        dest: '../_includes/critical-blog-post.css',
-        minify: true,
-        extract: false
-    });
-
-    critical.generate({
-        base: '_layouts/',
-        src: 'post-archive.html',
+        base: '_site/',
+        src: 'blog/archive/index.html',
         css: ['assets/styles/style.css'],
         dimensions: [{
             width: 320,
@@ -193,8 +153,8 @@ gulp.task('css-critical', function() {
     });
 
     critical.generate({
-        base: '_layouts/',
-        src: 'tags.html',
+        base: '_site/',
+        src: 'blog/tags/index.html',
         css: ['assets/styles/style.css'],
         dimensions: [{
             width: 320,
@@ -210,11 +170,29 @@ gulp.task('css-critical', function() {
         minify: true,
         extract: false
     });
+
+    critical.generate({
+        base: '_site/',
+        src: '2017/05/10/about-me.html', //article used as template for critical css on all post pages.
+        css: ['assets/styles/style.css'],
+        dimensions: [{
+            width: 320,
+            height: 480
+        },{
+            width: 768,
+            height: 1024
+        },{
+            width: 1280,
+            height: 960
+        }],
+        dest: '../_includes/critical-blog-post.css',
+        minify: true,
+        extract: false
+    });
 });
 
 gulp.task('default', [
     'css',
-    'css-critical',
     'bundle-scripts',
     'vendor-scripts',
     'images',
@@ -226,7 +204,6 @@ gulp.task('default', [
 
 gulp.task('test', [
     'css',
-    'css-critical',
     'bundle-scripts',
     'vendor-scripts',
     'images',
