@@ -1,0 +1,13 @@
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="p:domain_verify" content="33d2d5dad0e1496d9f7974925340ea50"/>
+	<link rel="author" href="humans.txt"/>
+	{% include analytics.html %}
+	{% include adsense.html %}
+	<style type="text/css">{% include {{ include.critical-css }} %}</style>
+	{% seo %}
+	{% if include.content-type %}
+	<meta property="og:type" content="{{ include.content-type }}"/>
+	{% endif %}
+</head>

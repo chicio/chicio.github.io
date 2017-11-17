@@ -5,7 +5,7 @@
 	From: Asso, Como, Italy
 
 /* SITE */
-	Last update: 2017/05/01
+	Last update: 2017/11/15
 	Language: English
 	Doctype: HTML5
-	IDE: Visual Studio Code
+	IDE: WebStorm

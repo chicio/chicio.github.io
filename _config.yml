@@ -50,6 +50,12 @@ nav:
 
 ########## Configuration
 
+defaults:
+  - scope:
+      path: "" # defaults for all files
+    values:
+      image: /assets/images/fabrizio-duroni.jpg
+
 paginate:           10
 paginate_path:      /blog/page:num/
 

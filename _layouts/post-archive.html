@@ -1,47 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="author" href="humans.txt"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    {% include analytics.html %}
-    {% include adsense.html %}
-    <style type="text/css">{% include critical-blog-post-archive.css %}</style>
-    <meta name="p:domain_verify" content="33d2d5dad0e1496d9f7974925340ea50"/>
-    <meta property="og:image" content="{{ site.url }}{{ site.image }}"/>
-    <meta property="og:type" content="website"/>
-    {% seo %}
-</head>
-<body class="blog-body">
-    <div class="blog-masthead">
-        <div class="container">
-            <nav class="blog-nav">
-                {% for nav in site.nav %}
-                <a class="blog-nav-item {% if nav.name == 'Blog' %}active{% endif %}"
-                   href="{{ nav.url }}">{{ nav.name }}</a>
-                {% endfor %}
-            </nav>
-        </div>
-    </div>
-    <div class="container blog-posts">
-        {% include blog-header.html %}
-        <div class="row blog-archive">
-            {% for post in site.posts %}
-            <div class="container archive-list-post">
-                <a href="{{ post.url }}">
-                    <span class="archive-list-post-title">
-                        {{ post.title }}
-                    </span>
-                    <span class="archive-list-post-date">
-                        <time>| {{ post.date | date_to_string }}</time>
-                    </span>
-                </a>
+    {% include head.html critical-css="critical-blog-post-archive.css" content-type="website" %}
+    <body class="blog-body">
+        <div class="blog-masthead">
+            <div class="container">
+                <nav class="blog-nav">
+                    {% for nav in site.nav %}
+                    <a class="blog-nav-item {% if nav.name == 'Blog' %}active{% endif %}"
+                        href="{{ nav.url }}">{{ nav.name }}</a>
+                    {% endfor %}
+                </nav>
             </div>
-            {% endfor %}
-            {% include adsense-archive.html %}
         </div>
-    </div>
-    {% include blog-footer.html %}
-    {% include css-link.html %}
-</body>
+        <div class="container blog-posts">
+            {% include blog-header.html %}
+            <div class="row blog-archive">
+                {% for post in site.posts %}
+                <div class="container archive-list-post">
+                    <a href="{{ post.url }}">
+                        <span class="archive-list-post-title">
+                            {{ post.title }}
+                        </span>
+                        <span class="archive-list-post-date">
+                            <time>| {{ post.date | date_to_string }}</time>
+                        </span>
+                    </a>
+                </div>
+                {% endfor %}
+            {% include adsense-archive.html %}
+            </div>
+        </div>
+        {% include blog-footer.html %}
+        {% include css-link.html %}
+    </body>
 </html>
