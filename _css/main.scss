@@ -152,6 +152,24 @@ canvas {
             opacity: 0;
             margin-top: 10px;
         }
+
+        &.center-content-buttons {
+            text-align: center;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+
+            .profile-icon {
+                padding-left: 5px;
+                padding-right: 5px;
+                font-size: 1.0em;
+                margin-top:10px;
+                width: 100%;
+                line-height: 45px;
+                height: 45px;
+                display: block;
+            }
+        }
     }
 
     .img-responsive {
@@ -376,6 +394,15 @@ footer {
             h3 {
                 font-size: 30px;
             }
+            &.center-content-buttons {
+                width: 270px;
+
+                .profile-icon {
+                    font-size: 0.7em;
+                    line-height: 50px;
+                    height: 50px;
+                }
+            }
         }
 
         .img-responsive {
@@ -422,6 +449,20 @@ footer {
 
         .project-image-container img {
             margin: 0;
+        }
+    }
+
+    .profile-introduction {
+        .center-content {
+            &.center-content-buttons {
+                width: 250px;
+
+                .profile-icon {
+                    font-size: 0.8em;
+                    line-height: 50px;
+                    height: 50px;
+                }
+            }
         }
     }
 
