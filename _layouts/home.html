@@ -6,38 +6,32 @@
         <div id="profile-introduction" class="container-fluid profile-introduction">
             <div id="rendering-surface" class="container-fluid"></div>
             <div class="row vertical-center-row text-center">
-                <div id="center-content" class="center-content">
+                <div id="row center-content" class="center-content">
                     <img src="/assets/images/fabrizio-duroni.jpg"
                          id="profile-image"
                          class="img-responsive img-circle"
                          alt="Fabrizio Duroni"/>
                     <h1 id="profile-name">{{ site.author }}</h1>
                     <h3 id="profile-job" class="profile-job">Software Developer</h3>
-                    <a href="https://github.com/chicio" target="_blank">
-                        <i class="profile-icon fa fa-github" aria-hidden="true"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/fabrizio-duroni-947a9b35/" target="_blank">
-                        <i class="profile-icon fa fa-linkedin" aria-hidden="true"></i>
-                    </a>
-                    <a href="https://twitter.com/chicio86" target="_blank">
-                        <i class="profile-icon fa fa-twitter" aria-hidden="true"></i>
-                    </a><br class="break"/>
-                    <a href="https://www.facebook.com/fabrizio.duroni" target="_blank">
-                        <i class="profile-icon fa fa-facebook" aria-hidden="true"></i>
-                    </a>
-                    <a href="mailto:fabrizio.duroni@gmail.com">
-                        <i class="profile-icon fa fa-envelope" aria-hidden="true"></i>
-                    </a>
-                    <a href="tel:+393285926828">
-                        <i id="phone-number" class="profile-icon fa fa-mobile" aria-hidden="true"></i>
-                    </a><br class="break"/>
-                    <a href="/blog/" target="_blank">
-                        <i id="blog" class="profile-icon fa fa-pencil-square" aria-hidden="true"></i>
-                    </a>
-                    <a href="/curriculum-vitae.pdf" target="_blank">
-                        <i id="curriculum-vitae" class="profile-icon fa fa-id-card-o" aria-hidden="true"></i>
-                    </a>
+                    {% include social-contacts.html %}
+                    <br class="break"/>
                 </div>
+                    <div id="row center-content-button-text" class="center-content" style="text-align: center; width:
+                    250px; margin-left: auto; margin-right: auto;">
+                        <a class="profile-icon" href="/curriculum-vitae.pdf" target="_blank" style="padding-left:
+                        5px; padding-right: 10px; font-size: 0.8em; margin-top:10px; width: 100%;
+                         line-height: 50px; height: 50px; display: block;" >
+                            <i id="curriculum-vitae" class="fa fa-id-card-o" aria-hidden="true"></i>
+                            Curriculum Vitae
+                        </a>
+                        <a class="profile-icon" href="/blog/" target="_blank" style="padding-left:
+                        10px; padding-right: 10px; padding-bottom: 5px; font-size: 0.8em; margin-top:10px; width: 100%;
+                        line-height: 50px; height: 50px; display: block">
+                            <i id="blog" class="fa fa-pencil-square" aria-hidden="true"></i>
+                            Blog
+                        </a>
+                        <br/>
+                	</div>
             </div>
             <i class="down-arrow fa fa-chevron-down"
                aria-hidden="true"
