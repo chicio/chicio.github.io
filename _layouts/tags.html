@@ -36,11 +36,11 @@
                             <li class="blog-tag-post">
                                 {% if post.link %}
                                 <a href="{{ post.link }}">
-                                    {% else %}
-                                    <a href="{{ post.url }}">
-                                        {% endif %}
-                                        <span class="tag-post-title">{{ post.title }}</span>
-                                    </a>
+                                {% else %}
+                                <a href="{{ post.url }}">
+                                {% endif %}
+                                    <span class="tag-post-title">{{ post.title }}</span>
+                                </a>
                             </li>
                             {% endif %}
                             {% endfor %}
@@ -53,7 +53,7 @@
             </div>
         </div>
         {% include blog-footer.html %}
-        {% include cookie-consent.html %}
-		{% include css-link.html %}
+		{% include blog-dependencies.html %}
+		{% include css-links.html %}
     </body>
 </html>

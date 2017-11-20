@@ -23,7 +23,8 @@ gulp.task('serve', function() {
         },
         browser: ["safari"]
     });
-    gulp.watch(jsFiles, ['bundle-scripts'])
+    gulp.watch(jsFiles, ['bundle-home-scripts']);
+    gulp.watch(jsFiles, ['bundle-blog-scripts']);
     gulp.watch(cssFiles, ['css']);
 });
 
@@ -51,9 +52,17 @@ gulp.task('css', function() {
         .pipe(gulp.dest('assets/styles'))
 });
 
-gulp.task('bundle-scripts', function() {
-    return gulp.src([jsFiles, '!_js/vendor/**/*.js'])
+gulp.task('bundle-home-scripts', function() {
+    return gulp.src(['_js/index.js'])
         .pipe(concat('index.min.js'))
+        .pipe(gulp.dest('assets/js'))
+        .pipe(isDevelopment ? gutil.noop() : uglify())
+        .pipe(gulp.dest('assets/js'));
+});
+
+gulp.task('bundle-blog-scripts', function() {
+    return gulp.src(['_js/blog.js'])
+        .pipe(concat('blog.min.js'))
         .pipe(gulp.dest('assets/js'))
         .pipe(isDevelopment ? gutil.noop() : uglify())
         .pipe(gulp.dest('assets/js'));
@@ -193,7 +202,8 @@ gulp.task('css-critical', function() {
 
 gulp.task('default', [
     'css',
-    'bundle-scripts',
+    'bundle-home-scripts',
+    'bundle-blog-scripts',
     'vendor-scripts',
     'images',
     'fonts',
@@ -204,7 +214,8 @@ gulp.task('default', [
 
 gulp.task('test', [
     'css',
-    'bundle-scripts',
+    'bundle-home-scripts',
+    'bundle-blog-scripts',
     'vendor-scripts',
     'images',
     'fonts',
