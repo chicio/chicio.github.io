@@ -437,6 +437,14 @@ footer {
             }
         }
     }
+
+    .blog-footer {
+        font-size: 16px;
+    }
+
+    .blog-nav-item{
+        padding: 10px;
+    }
 }
 
 @media (min-width: $screen-md-min) {
@@ -993,7 +1001,7 @@ footer {
     margin-bottom: 0;
     width: 100%;
     overflow: hidden;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .blog-footer-icon {
