@@ -29,9 +29,9 @@ gulp.task('serve', function() {
 });
 
 gulp.task('jekyll', function() {
-    var options = ['build', '--watch', '--incremental', '--drafts'];
+    var options = ['build', '--watch', '--incremental'];
     if (isTravis) {
-        options = ['build', '--incremental', '--drafts'];
+        options = ['build', '--incremental'];
     }
     const jekyll = child.spawn('jekyll', options);
     const jekyllLogger = function(buffer) {
