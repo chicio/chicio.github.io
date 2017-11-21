@@ -1,7 +1,7 @@
 runFuckAdBlock();
+cookieConsent();
 $(document).ready(function () {
     loadFonts();
-    cookieConsent();
     heartAnimation();
 });
 

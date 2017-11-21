@@ -1,8 +1,8 @@
+cookieConsent();
 $(document).ready(function () {
     var isMobileDevice = isAMobileDevice();
     var controller = new ScrollMagic.Controller();
     loadFonts();
-    cookieConsent();
     addTabsClickEvent(controller);
     addArrowDownClickEvent(isMobileDevice);
     sceneThreeJS(isMobileDevice);
