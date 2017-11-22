@@ -62,6 +62,8 @@ paginate_path:      /blog/page:num/
 # Uncomment to get html not minified
 # minify_html: false
 
+limit_posts: 4
+
 # Markdown
 markdown:           kramdown
 highlighter: rouge
@@ -72,7 +74,7 @@ kramdown:
 emoji:
   src: "/assets/images/"
 
-#Plugin (gems) used by Jekyll
+# Plugin (gems) used by Jekyll
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap

@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="row">
+		<p>See also</p>
+		{% for post in site.posts limit:4 %}
+		{% if post.url != page.url %}
+		<div class="col-sm-4 col-md-4">
+			<div class="post">
+				<div class="post-img-content">
+					<img src="{{site.url}}{{ post.image }}" class="img-responsive" />
+					<span class="post-title"><b>{{ post.title }}</b><br />
+                        <b>CSS3 Blur</b></span>
+				</div>
+				<div class="content">
+					<div class="author">
+						By <b>Bhaumik</b> |
+						<time datetime="2014-01-20">January 20th, 2014</time>
+					</div>
+					<div>
+						{{ post.excerpt }}
+					</div>
+					<div>
+						<a href="http://www.jquery2dotnet.com/2014/01/jquery-highlight-table-row-and-column.html" class="btn btn-warning btn-sm">Read more</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+		{% endfor %}
+	</div>
+</div>
