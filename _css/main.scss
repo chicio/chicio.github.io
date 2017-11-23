@@ -1121,9 +1121,15 @@ footer {
 .index-content a{
   color: black;
 }
+.index-content .cards {
+  display: flex;
+  width: 100%;
+}
 .index-content .card{
-  background-color: #FFFFFF;
+  background-color: #FFFF00;
   padding:0;
+  margin: 10px;
+  width: 30%;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius:4px;
@@ -1149,7 +1155,6 @@ footer {
   text-overflow: ellipsis;
 }
 .index-content .blue-button{
-  width: 100px;
   -webkit-transition: background-color 1s , color 1s; /* For Safari 3.1 to 6.0 */
   transition: background-color 1s , color 1s;
   min-height: 20px;
