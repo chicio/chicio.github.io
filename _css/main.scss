@@ -1101,52 +1101,72 @@ footer {
 }
 
 
-.post
-{
-  background-color: #FFF;
-  overflow: hidden;
-  box-shadow: 0 0 1px #CCC;
+
+
+
+
+
+.index-content a:hover{
+  color:black;
+  text-decoration:none;
 }
-.post img
-{
-  filter: blur(2px);
-  -webkit-filter: blur(2px);
-  -moz-filter: blur(2px);
-  -o-filter: blur(2px);
-  -ms-filter: blur(2px);
+.index-content{
+  margin-bottom:20px;
+  padding:50px 0px;
+
 }
-.post .content
-{
-  padding: 15px;
+.index-content .row{
+  margin-top:20px;
 }
-.post .author
-{
-  font-size: 11px;
-  color: #737373;
-  padding: 25px 30px 20px;
+.index-content a{
+  color: black;
 }
-.post .post-img-content
-{
-  height: 196px;
-  position: relative;
+.index-content .card{
+  background-color: #FFFFFF;
+  padding:0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius:4px;
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
+
 }
-.post .post-img-content img
-{
-  position: absolute;
+.index-content .card:hover{
+  box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3);
+  color:black;
 }
-.post .post-title
-{
-  display: table-cell;
-  vertical-align: bottom;
-  z-index: 2;
-  position: relative;
+.index-content .card img{
+  width:100%;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
-.post .post-title b
-{
-  background-color: rgba(51, 51, 51, 0.58);
+.index-content .card h4{
+  margin:20px;
+}
+.index-content .card p{
+  margin:20px;
+  opacity: 0.65;
+}
+.index-content .blue-button{
+  width: 100px;
+  -webkit-transition: background-color 1s , color 1s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 1s , color 1s;
+  min-height: 20px;
+  background-color: #002E5B;
+  color: #ffffff;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: lighter;
+  margin: 0px 20px 15px 20px;
+  padding: 5px 0px;
   display: inline-block;
-  margin-bottom: 5px;
-  color: #FFF;
-  padding: 10px 15px;
-  margin-top: 5px;
+}
+.index-content .blue-button:hover{
+  background-color: #dadada;
+  color: #002E5B;
+}
+@media (max-width: 768px) {
+
+  .index-content .col-lg-4 {
+    margin-top: 20px;
+  }
 }
