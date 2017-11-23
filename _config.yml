@@ -59,10 +59,9 @@ defaults:
 paginate:           10
 paginate_path:      /blog/page:num/
 
-# Uncomment to get html not minified
+# Debug options
 # minify_html: false
-
-limit_posts: 4
+# limit_posts: 4
 
 # Markdown
 markdown:           kramdown

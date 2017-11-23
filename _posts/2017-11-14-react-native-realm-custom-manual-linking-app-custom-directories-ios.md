@@ -30,10 +30,8 @@ reuse your native component and bridge them to the javascript side.
 Most of the time the React Native framework will help you also to manage dependencies inside you project. But sometimes, especially 
 if your project doesn't follow the standard React Native directories structure you can have some problem when you try 
 to link you external library.  
-While I was working on an [existing native app integrated with React Native](https://facebook.github
-.io/react-native/docs/integration-with-existing-apps.html 'existing native app integrated with React Native') that 
-has a custom directories structure for the react-native and native code, I found some problem to add [Realm]
-(https://realm.io 'https://realm.io'), the famous open source dbms, as a dependency to the project.  
+While I was working on an [existing native app integrated with React Native](https://facebook.github.io/react-native/docs/integration-with-existing-apps.html 'existing native app integrated with React Native') that 
+has a custom directories structure for the react-native and native code, I found some problem to add [Realm](https://realm.io 'https://realm.io'), the famous open source dbms, as a dependency to the project.  
 In this post I will show you an example of how you can add Realm to your app that has a custom React Native 
 installation. Let's start :cold_sweat:!!
 To describe the installation process I will use a sample app I created for this post called `ReactNativeRealmManualLink`. You can find 

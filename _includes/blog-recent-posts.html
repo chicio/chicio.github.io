@@ -1,17 +1,16 @@
-<div class="index-content">
-	<p>See also</p>
+<div class="recent-posts">
+	<h3>Recent posts</h3>
 	<div class="cards">
 		{% for post in site.posts limit:4 %}
 		{% if post.url != page.url %}
-		<!-- <a href="blog-ici.html"> -->
+		<a href="{{ post.url }}">
 			<div class="card col-lg-4">
 				<div class='img' style='background:url("{{ site.url }}{{ post.image }}") no-repeat 50% 50%; background-size: cover'></div>
-				<!-- <img src="{{site.url}}{{ post.image }}"> -->
 				<h4>{{ post.title }}</h4>
 				<p>{{ post.excerpt | remove: '<em>' | remove: '</em>' }}</p>
-				<a href="blog-ici.html" class="blue-button">Read More</a>
+				<a href="{{ post.url }}" class="card-button">Read More</a>
 			</div>
-		<!-- </a> -->
+		</a>
 		{% endif %}
 		{% endfor %}
 	</div>
