@@ -2,7 +2,8 @@
 layout: post
 title: "Physically based rendering: informal introduction"
 description: "In this post I will give you an informal introduction about Physically based rendering."
-date: 2017-08-11
+date: 2017-12-07
+image: /assets/images/posts/pbr-introduction-examples.jpg
 tags: [computer graphics, physically based rendering]
 comments: true
 seo:
