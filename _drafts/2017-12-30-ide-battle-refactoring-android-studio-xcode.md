@@ -3,7 +3,7 @@ layout: post
 title: "Android Studio vs XCode: why I fall in love with Jetbrains."
 description: "In this posts I will talk about why I started to hate XCode and I fall in love with Android 
 Studio and the various Jetbrains IDEs."
-date: 2017-12-30
+date: 2018-02-03
 image: /assets/images/posts/react-native-realm-10-build-works.jpg
 tags: [IDE, android, java, mobile application development]
 comments: true

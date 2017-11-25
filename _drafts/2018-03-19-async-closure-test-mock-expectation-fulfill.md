@@ -2,7 +2,7 @@
 layout: post
 title: "Asynchronous testing in Swift"
 description: "In this post I will talk about asynchronous testing in Swift."
-date: 2018-01-19
+date: 2018-02-19
 image: /assets/images/posts/expectation-closure.jpg
 tags: [swift, ios, apple, mobile application development, test driven development]
 comments: true
