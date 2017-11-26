@@ -3,7 +3,7 @@ layout: post
 title: "Learning Blender: user interface"
 description: "In this new series of post I will talk about learning to use Blender, the famous 3D computer graphics 
 software. A series of tutorial for beginners (like me)."
-date: 2018-02-19
+date: 2017-11-25
 image: TO DO
 tags: [computer graphics, blender]
 comments: true
@@ -26,23 +26,24 @@ Let's start from the user interface.
 The default layout is composed of individual panels, and inside each one of them you can find an editor. The main 
 editor are:
 
-* info editor, in the top left part of the screen. It contains the main menu of blender. It contains also a layout 
-switcher, to quickly change the layout of Blender based on your need (do animation, modeling...), and a renderer 
+* *info editor*, in the top left part of the screen. It contains the main menu of blender. It contains also a layout 
+switcher, to quickly change the layout of Blender based on your needs (animation, modeling...) and a renderer 
 switcher, to select the renderer engine.
-* outliner editor, it contains a list of all the object in the scene.
-* properties editor, it contains object properties. It is context specific, so its content will change accordingly to
- the object selected. It contains a lot of context specific tabs with specific properties for different context. 
-* timeline and animation editor, used to create and modify animation
-* viewport, that contains the 3D window in which your scene is shown and where you can add, remove or modify objects.
+* *outliner editor*, it contains a list of all the objects in the scene.
+* *properties editor*, it contains the properties of an object. It is context specific, so its content will change 
+accordingly to the selected object. It contains also a lot of context specific tabs with specific properties for 
+different context. 
+* *timeline and animation editor*, used to create and modify animation
+* *viewport*, that contains the 3D window in which your scene is shown and where you can add, remove or modify objects.
 
 ![blender ui editors](/assets/images/posts/blender-ui-1-editors.jpg "blender ui editors")
 
 You can switch a panel from one editor to another by clicking on the icon that shows the current editor selected: a 
-list with all available editor will be shown and you can choose anyone of them.
+list with all the available editors will be shown and you can choose one of them.
 
 ![blender ui switch editor](/assets/images/posts/blender-ui-2-switch-editor.jpg "blender ui switch editor")
 
-In the right side of the viewport you can find a series of tabs that contains some operations, tools and actions you can
+On the left side of the viewport you can find a series of tabs that contains some operations, tools and actions you can
  apply to the 3D window content. This tabs will change based on the fact that you selected or not an object and also 
  based on which type of object you selected. You can also show the object properties sub-panel by clicking the plus (+) 
  button on the right. That sub-panel gives you some information about the object you selected in the 3D window.  
@@ -62,8 +63,8 @@ In the right side of the viewport you can find a series of tabs that contains so
    
  Finally we have the editing interaction mode selector, that allow us to switch between editing mode:
  
- * object mode, that allow us to deal with individual objects
- * edit mode, that allow us to change the objects
+ * *object mode*, that allow us to deal with individual objects
+ * *edit mode*, that allow us to change the objects
  
  The menus on the left of the editing mode selector will change accordingly to the mode selected.
  
