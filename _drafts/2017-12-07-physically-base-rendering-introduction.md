@@ -10,7 +10,8 @@ seo:
  - type: "BlogPosting"
 ---
 
-*In this post I will give you an informal introduction about Physically based rendering.*
+*In this post I will give you an informal introduction (and maybe my personal perspective) about Physically based 
+rendering.*
 
 ---
 
