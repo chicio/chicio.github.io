@@ -4,7 +4,7 @@ title: "Learning Blender: user interface"
 description: "In this new series of post I will talk about learning to use Blender, the famous 3D computer graphics 
 software. A series of tutorial for beginners (like me)."
 date: 2017-11-25
-image: TO DO
+image: /assets/images/posts/blender-ui-1-editors.jpg
 tags: [computer graphics, blender]
 comments: true
 seo:

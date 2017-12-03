@@ -1,10 +1,9 @@
 ---
 layout: post
-title: "Learning Blender: selecting and transforming object"
-description: "In this new series of post I will talk about learning to use Blender, the famous 3D computer graphics 
-software. A series of tutorial for beginners (like me)."
+title: "Learning Blender: selecting and transforming objects"
+description: "Second post for the "Learning Blender" series. This time we will learn how to select and move objects"
 date: 2017-11-25
-image: TO DO
+image: /assets/images/posts/blender-selecting-objects-2.jpg
 tags: [computer graphics, blender]
 comments: true
 seo:
@@ -15,7 +14,7 @@ seo:
 
 ---
 
-In the [first post of the series "Learning Blender"](TODO ) we learned how the user interface is composed and the 
+In the [first post of the series "Learning Blender"](TODO) we learned how the user interface is composed and the 
 most important commands to navigate inside a scene. This time we will be focus on selecting and moving objects inside
  the 3D view.  
 We can *select an object* by using the *right button of your mouse*. If you're on the Macbook like me, the right mouse 
@@ -39,8 +38,8 @@ lets us select objects based on a squared pattern of selection. There are also o
  
 ![blender selecting objects 2](/assets/images/posts/blender-selecting-objects-2.jpg "blender selecting objects 2")
 
-To translate objects around, we use the transform tools. You will find them under Tools -> Transform. As a consequence
- of the fact that we are trying to translate an object in 3D space using the mouse pointer tha works in 2D space, it is 
+To translate objects around, we can use the transform tools. You will find them under Tools -> Transform. As a 
+consequence of the fact that we are trying to translate an object in 3D space using the mouse pointer tha works in 2D space, it is 
 difficult to understand in which direction we are doing our translation. We can constraint the move to just 
 one axis by pressing:
 
