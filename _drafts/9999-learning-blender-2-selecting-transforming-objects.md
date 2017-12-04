@@ -85,6 +85,8 @@ widget.
 ![blender change objects pivot 1](/assets/images/posts/blender-change-pivot-objects-1.jpg "blender change objects 
 pivot 1")
 
+In the next post we will start to explore the art of modeling in Blender.
+
 
 
 

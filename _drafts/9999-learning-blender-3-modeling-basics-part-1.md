@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Learning Blender: modeling, the basics"
+title: "Learning Blender: introduction to basics of modeling - part 1"
 description: "In this new post of the series "Learning Blender" I will talk about the fundamental of modeling in 
 Blender."
 date: 2017-11-25
@@ -60,7 +60,20 @@ After selecting the edges, vertices or faces that we want to modify, 3D axis wil
 
 ![blender modified mesh](/assets/images/posts/blender-modified-mesh.jpg "blender modified mesh")
 
-...(proportional editing)
+By selecting individual edges, vertices and faces you can start modeling you meshes. Anyway, sometimes you will need 
+to be able to do a more soft modeling than the one we already above in this article. This is evident especially while
+ working on organic objects. This is why is it possible to use the *Proportional editing*. When we use the this kind 
+ of modeling, the modification on a vertices/edge/face will influence the other element around with a proportional 
+ falloff. You can activate the proportional editing using the menu Mesh -> Proportional Editing in edit mode or using
+  the dedicated button in the bottom bar of the 3D window.
+  
+![blender modeling proportional editing](/assets/images/posts/blender-modeling-proportional-editing.jpg 
+"blender modeling proportional editing")
 
+Below you can find an example of two meshes modified with and without the proportional editing enable.It's easy to 
+see the difference.
 
+![blender modeling proportional editing example](/assets/images/posts/blender-modeling-proportional-editing-example.jpg 
+"blender modeling proportional editing example")
 
+In the next post we will continue to talk modeling basics.
