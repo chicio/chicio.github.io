@@ -38,7 +38,7 @@ Another interesting option is the edge loop modeling. Basically this means that 
    mesh. We can activate the extrude under Mesh tools -> Extrude Region/Individual. The extrude region will push out 
    the elements selected as a single block. The extrude individual will extrude the elements selected individually.  
     
-![blender sculpting](/assets/images/posts/blender-sculpting.jpg "blender sculpting")
+![blender extrude](/assets/images/posts/blender-extrude.jpg "blender extrude")
     
   
 
