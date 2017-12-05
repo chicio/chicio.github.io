@@ -30,5 +30,15 @@ its properties:
 
 Sculpt mode support also paint textures and strokes. But more important it support symmetry: by selecting and axis 
 any change on one side will be mirrored on the other one.  
-...edges and edges loops
+Another interesting option is the edge loop modeling. Basically this means that if we select a edge loop with "alt +
+ right click" in edit mode/edge select mode, we can modify the edge loop by using the 3D axis that are shown after the
+  selection.  
+  The next tool available for modeling is the extrude tool. With this tool we can modify our geometry and more 
+  details. In particular, we can use it to create branches, legs and other parts that are out of the main body of the
+   mesh. We can activate the extrude under Mesh tools -> Extrude Region/Individual. The extrude region will push out 
+   the elements selected as a single block. The extrude individual will extrude the elements selected individually.  
+    
+![blender sculpting](/assets/images/posts/blender-sculpting.jpg "blender sculpting")
+    
+  
 
