@@ -4,7 +4,7 @@ title: "Learning Blender: introduction to basics of modeling - part 1"
 description: "In this new post of the series "Learning Blender" I will talk about the fundamental of modeling in 
 Blender."
 date: 2017-11-25
-image: TO DO
+image: /assets/images/posts/blender-modeling-create-primitive-meshes.jpg
 tags: [computer graphics, blender]
 comments: true
 seo:

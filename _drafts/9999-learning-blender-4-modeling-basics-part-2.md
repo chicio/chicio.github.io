@@ -4,7 +4,7 @@ title: "Learning Blender: introduction to basics of modeling - part 2"
 description: "In this new post of the series "Learning Blender" I will continue to talk about the fundamental of 
 modeling in Blender."
 date: 2017-11-25
-image: TO DO
+image: /assets/images/posts/blender-subdivision.jpg
 tags: [computer graphics, blender]
 comments: true
 seo:
@@ -40,5 +40,23 @@ Another interesting option is the edge loop modeling. Basically this means that 
     
 ![blender extrude](/assets/images/posts/blender-extrude.jpg "blender extrude")
     
-  
+Another useful tool that we can use for modeling is smooth shading. We can use these to smooth the surface of objects
+ where the polygons of the mesh have too much hard edges. We can find the it under Tools -> Shading while an object 
+ is selected in Object mode or under Shading -> Faces/Edges/Vertices while an object is in Edit mode.  
 
+![blender smooth shading](/assets/images/posts/blender-smooth-shading.jpg "blender smooth shading")
+
+The last tool we can use for some simple modeling is the subdiving mesh tool. There are two ways to do subdivision: 
+tool: 
+
+* subdivision of the mesh itself
+* subdivision surface
+
+Now we will look at subdivision of the mesh itself. To do it we need to be in edit mode on the object and select all 
+with the "a key". We can find the subdivision option under Tools -> Subdivide. If we click on that a series of 
+subdivision properties will appear, that let us customize the number of cuts, the smoothness and other minor properties.
+
+![blender subdivision](/assets/images/posts/blender-subdivision.jpg "blender subdivision")
+
+Remember: each number of cuts increment QUADRUPLICATE the number of polygon in your mesh.  
+In the next chapter we will talk about advanced modeling techniques and tools.
