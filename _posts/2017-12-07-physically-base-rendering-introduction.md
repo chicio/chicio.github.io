@@ -15,7 +15,7 @@ rendering.*
 
 ---
 
-Physically Based Rendering (PBR) is one of the lastest trend of the last years in computer graphics. PBR is 
+Physically Based Rendering (PBR) is one of the latest trend of the last years in computer graphics. PBR is 
 "everywhere" in computer graphics. Buuuut wait, what is it PBR :fearful:? PBR uses physically correct lighting and shading 
 models to treat light as it behaves in the real world. 
  As a consequence of the fact that what could be seen in a computer graphics application is decided by how light is represented, with PBR
