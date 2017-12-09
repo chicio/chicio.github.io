@@ -136,7 +136,7 @@ class ReactNativeRealmScreen extends React.Component {
         super(props);
         this.state = {
             realm: null
-        };
+        };±
     }
 
     componentWillMount() {

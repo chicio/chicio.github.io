@@ -87,7 +87,7 @@ gulp.task('vendor-scripts', function() {
 });
 
 gulp.task('images', function() {
-    return gulp.src(['_images/**/*.png', '_images/**/*.jpg', '_images/**/*.jpeg'])
+    return gulp.src(['_images/**/*.png', '_images/**/*.jpg', '_images/**/*.jpeg', '_images/**/*.gif'])
         .pipe(gulp.dest('assets/images'))
 });
 
