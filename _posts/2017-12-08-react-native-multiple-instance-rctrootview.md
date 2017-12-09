@@ -62,7 +62,7 @@ AppRegistry.registerComponent('BlueScreen', () => BlueScreen);
 AppRegistry.registerComponent('RedScreen', () => RedScreen);
 ```
 
-In the same on the native side there's a controller, `ReactViewController`, that shows React Native components given their name. 
+On the native side there's a controller, `ReactViewController`, that shows React Native components given their name. 
 
 ```swift
 import UIKit
