@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "React Native: use multiple RTCRootView instances in an existing iOS app"
+title: "React Native: use multiple RCTRootView instances in an existing iOS app"
 description: "In this post I show you how is it possible to use multiple RCTRootView instances in an existing iOS app."
 date: 2017-12-08
 image: /assets/images/posts/react-native-crash-reload-with-debugger.jpg
@@ -15,15 +15,14 @@ seo:
 ---
 
 If we want to start to use React Native in an existing app, it's really easy. We can have our first React 
-Native component live inside our app by just following the [getting started tutorial for existing app](https://facebook
-.github.io/react-native/docs/integration-with-existing-apps.html "getting started tutorial for existing app"). But what 
+Native component live inside our app by just following the [getting started tutorial for existing app](https://facebook.github.io/react-native/docs/integration-with-existing-apps.html "getting started tutorial for existing app"). But what 
 happen if we need to use multiple react native component in different parts of your existing app :fearful:? In this 
 tutorial I will show you how we can use multiple instances of `RCTRootView` to show different React Native components
  in different parts of your app. 
  Consider, for example, a simple iOS existing app with React Native. It has two very simple React Native components: 
  
 * `BlueScreen`, that shows a blue view
-* `RedScreen`, shows a red view
+* `RedScreen`, that shows a red view
 
 ```jsx
 import React from "react"
@@ -82,13 +81,14 @@ class ReactViewController: UIViewController {
     }
 }
 ```
-There's also another controller, `MainViewController`, that shows the React Native components above using multiple 
-instance of the `ReactViewController`. The UI of the app is very simple: there are two buttons on the view of the 
-`MainViewController`. A tap on the first one shows the `ReactViewController` with a `RCTRootView` that contains the 
+There's also another controller, `MainViewController`, that shows the React Native components described above using 
+multiple instances of the `ReactViewController`. The UI of the app is very simple: there are two buttons on the view 
+of the `MainViewController`. A tap on the first one shows the `ReactViewController` with a `RCTRootView` that contains the 
 `RedComponent`. A tap on the second one shows the `ReactViewController` with a `RCTRootView` that contains the 
 `BlueComponent`.  
 This basically means that in this apps there are multiple `RCTRootView`, one for each controller created. This 
-instances are kept alive at the same time. The code to start the React Native components is the same contained in the 
+instances are kept alive at the same time (because the `MainViewController` keeps a reference to the two `ReactViewController`). The code to 
+start the React Native components is the same contained in the 
 [getting started tutorial for existing app](https://facebook.github.io/react-native/docs/integration-with-existing-apps.html "getting started tutorial for existing app").
 
 ```swift
@@ -112,10 +112,10 @@ class MainViewController: UIViewController {
 }
 ```
 
-If we try to run the app now we will see something things very strange:
+If we try to run the app something very strange will happen:
 
 * if we do a live reload, we will see our **React components refreshed multiple times**
-* if we press cmd + ctrl + z in the simulator **2 dev menu will be shown**
+* if we press cmd + ctrl + z (shake gesture simulation) in the simulator **2 dev menu will be shown**
 
 ![React Native multiple dev menus](/assets/images/posts/react-native-multiple-debugger.gif "React Native multiple dev menus")   
 
@@ -123,12 +123,10 @@ If we try to run the app now we will see something things very strange:
 
 ![React Native crash multiple view](/assets/images/posts/react-native-crash-reload-with-debugger.jpg "React Native crash multiple view")   
 
-What's happening here? Well, something is missing in our code. If we take a look at the comments in the code of 
-react native for the `RCTRootView` initializer, we will note something very strange:
+What's happening here? Well, there's something wrong in our code. If we take a look at the comments in the code of 
+React Native for the `RCTRootView` initializer, we will notice something very strange:
 
 ```objective-c
-...
-
 /**
  * - Designated initializer -
  */
@@ -147,19 +145,16 @@ react native for the `RCTRootView` initializer, we will note something very stra
                        moduleName:(NSString *)moduleName
                 initialProperties:(NSDictionary *)initialProperties
                     launchOptions:(NSDictionary *)launchOptions;
-                    
-...
 ```   
 
 Whaaaaaaattttt :laughing:?????!?!?!??? This basically means that the documentation in the getting started is 
-considering the case where we will have just one `RCTRootView` instance. But as we can see from the comment we have
- the solution: we need to use the other `RCTRootView` initializer and we can start to use multiple React Native views
-  in the same app. So the new `ReactViewController` with the new `RCTRootView` initialization is the following one:
+considering only the case where we will have a single `RCTRootView` instance. So we need to do something to our 
+`ReactViewController` so that we can keep multiple `RCTRootView` alive at the same time.
+ The solution to our problem is contained in the comments of the initializer above: we need to use the designated 
+ `RCTRootView` initializer to start to use multiple instances of them at the same time in the app. So the new 
+ `ReactViewController` with the new `RCTRootView` initialization is the following one:
 
 ```swift
-import UIKit
-import React
-
 class ReactViewController: UIViewController {
     
     init(moduleName: String, bridge: RCTBridge) {
@@ -175,7 +170,7 @@ class ReactViewController: UIViewController {
 }
 ```
 
-Where do we get an instance of `RCTBridge` to pass to the init of the `ReactViewController` and `RCTRootView`? A new
+Where do we get an instance of `RCTBridge` for the new init of the `ReactViewController` and `RCTRootView`? A new
  object, `ReactNativeBridge`, creates a new `RCTBridge` instance and store it as a property.  
 The `RCTBridge` instance needs a `RCTBridgeDelegate`. Another new object, `ReactNativeBridgeDelegate`, will be the 
 delegate of the `RCTBridge`.
@@ -197,7 +192,7 @@ class ReactNativeBridgeDelegate: NSObject, RCTBridgeDelegate {
 }
 ```
 
-Now it is possible to modify the `MainViewController`. This controller will create a `ReactNativeBridge` with a 
+Now it is possible to modify the `MainViewController`. This controller will create a single `ReactNativeBridge` with a 
 single `RCTBridge` instance. This instance will be passed to the two `ReactViewController`. So they will basically 
 share the same bridge instance.
 
