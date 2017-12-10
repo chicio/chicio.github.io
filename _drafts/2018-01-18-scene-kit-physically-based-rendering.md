@@ -25,7 +25,7 @@ We've already seen what physically based rendering is in [a previous post](https
 ![Physically based scene right](https://raw.githubusercontent.com/chicio/Exploring-SceneKit/master/Screenshots/physically-based-rendering-scene-right.jpg "Physically based scene right")
 
 
-The general approch used in the construction of the scene will be the following: for each main scene category component we will create a class that encapsulate the creation of the `SCNNode`, the base SceneKit unit element, and its setup to obtain the feature we want.  
+The general approach used in the construction of the scene will be the following: for each main scene category component we will create a class that encapsulate the creation of the `SCNNode`, the base SceneKit unit element, and its setup to obtain the feature we want.  
 The first class we are going to create a `Light` class that encapsulate the base features we need to set on the light: position, rotation and generic color. Light in SceneKit are represented using the `SCNLight` class. 
 
 ```swift
@@ -408,4 +408,5 @@ We are ready to render our scene. Assigne an instance of our `PhysicallyBasedSce
 
 ![Physically based scene](https://raw.githubusercontent.com/chicio/Exploring-SceneKit/master/Screenshots/physically-based-rendering-scene.jpg "Physically based scene")
 
-That's it!! You've made it!! Now you can show to you're friends your physically based scene and be proud of it :sunglasses:. You can find this example with other scene on [this github repository](https://github.com/chicio/Exploring-SceneKit "Exploring-SceneKit repo").
+That's it!! You've made it!! Now you can show to you're friends your physically based scene and be proud of it 
+:sunglasses:. You can find this example with other scenes on [this github repository](https://github.com/chicio/Exploring-SceneKit "Exploring-SceneKit repo").

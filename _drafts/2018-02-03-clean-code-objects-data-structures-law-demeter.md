@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Clean Code: meaningful names"
-description: "In this post I will talk about clean code: data structures, objects and the law of demeter."
+description: "In this post I will talk about clean code: data structures, objects vs procedural and the law of demeter."
 date: 2018-03-03
 image: TODO
 tags: [clean code]
