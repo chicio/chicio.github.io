@@ -40,9 +40,9 @@ per square meter.
 Before proceeding to the last radiometry quantity definition, it is useful to give the definition of **solid angle**. A 
 solid angle is an extension of a 2D angle in 3D on a unit sphere. It is the total area projected by an object on a unit 
 sphere centered at a point $p$. It is measured in steradians. The entire unit sphere corresponds to a solid angle of $4\pi$ (the 
-surface area of the unit sphere). A solid angle is usually indicated as \Omega, but it is possible also to represent 
-it with \omega, that is the set of all direction vectors anchored at $p$ that point toward the area on the unit sphere 
-and the object (Pharr et al., 2010 [1]).
+surface area of the unit sphere). A solid angle is usually indicated as $\Omega$, but it is possible also to represent 
+it with $\omega$, that is the set of all direction vectors anchored at $p$ that point toward the area on the unit 
+sphere and the object (Pharr et al., 2010 [1]).
 Now it is possible to give the definition of **radiance**, that is flux density per unit solid angle per unit area:
 
 $$L=\frac{d\phi}{d\omega \ dA^{\perp}}$$
