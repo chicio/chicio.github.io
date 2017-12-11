@@ -25,9 +25,6 @@ tutorial I will show you how we can use multiple instances of `RCTRootView` to s
 * `RedScreen`, that shows a red view
 
 ```jsx
-import React from "react"
-import {View, AppRegistry, StyleSheet} from "react-native";
-
 class BlueScreen extends React.Component {
     render() {
         return (
@@ -64,9 +61,6 @@ AppRegistry.registerComponent('RedScreen', () => RedScreen);
 On the native side there's a controller, `ReactViewController`, that shows React Native components given their name. 
 
 ```swift
-import UIKit
-import React
-
 class ReactViewController: UIViewController {
     init(moduleName: String) {
         super.init(nibName: nil, bundle: nil)
