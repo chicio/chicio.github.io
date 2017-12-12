@@ -96,5 +96,12 @@ will appear that will tell us the number of duplicated vertices removed.
 
 ![blender merge remove tools](/assets/images/posts/blender-merge-remove-tools.jpg "blender merge remove tools")
 
+In blender it is possible to model not only meshes, but also text. We can add text by selecting Add -> Text. We can 
+modify the text by selecting the edit mode: a text cursor will appear so that we can modify the text. In the property
+ panel a special tab will let as customize the text property. 
+ 
+![blender add text](/assets/images/posts/blender-add-text.jpg "blender add text")
+![blender text properties](/assets/images/posts/blender-text-properties.jpg "blender text properties")
 
+  
 
