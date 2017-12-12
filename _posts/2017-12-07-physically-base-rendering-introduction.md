@@ -136,8 +136,8 @@ book ["Physically based rendering: from theory to implementation" by M. Pharr, W
 ![Pbr examples](/assets/images/posts/pbr-introduction-examples.jpg "Pbr examples")
 
 How coooool are these images???? :sunglasses:
-We are at the end of the introduction. I hope now it is at least clear what is PBR :relaxed:!! See you for other stuff 
-about computer graphics and PBR :blush:.
+We are at the end of the introduction. I hope now it is at least clear what is PBR :relaxed:!! See you for other 
+stuff about computer graphics and PBR :blush:.
   
 <br/>  
 *[1] M. Pharr and G. Humphreys, “Color and radiometry,” in Physically based rendering: from theory to implementation, 2nd Edition ed., Burlington, Massachusetts: Morgan Kaufmann, 2010, ch. 5, pp. 261-297.  

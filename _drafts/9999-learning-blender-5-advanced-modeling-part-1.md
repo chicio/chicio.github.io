@@ -66,4 +66,35 @@ Another interesting tool the "Loop Cut and Slide". With this option we can add e
 
 ![blender loop edge and slide](/assets/images/posts/blender-loop-edge-and-slide.jpg "blender loop edge and slide")
 
+Then we have the joining mesh tool and the stitching vertices tool. For the first one, as the name suggest, you can 
+combine multiple mesh into a single one in blender. To join two or more meshes, we have to select them while we are 
+object mode. Remember: the last one selected will be the mesh to which the other ones will be joined. After that we 
+can apply the join mesh using:
+ 
+* the menu option Object -> Join
+* the shortcut "ctrl + j keys"
+
+![blender join meshes](/assets/images/posts/blender-join-meshes.jpg "blender join meshes")
+
+After joining two or more meshes, we will need to fill the gap between then. We can do that by using the merge tool, 
+the remove double tool and the snap element tool to stitch the vertices that are on the border of the meshes. The 
+vertices must be open: they need to be without a connection on one side. So after selecting one vertex we can snap it
+ using the snap element tool. We can activate it using the button in the bottom bar of the 3D window. After 
+ activating it we can grab the selected vertex by pressing the "g key", and snap it to our target vertex.  
+
+![blender snap element](/assets/images/posts/blender-snap-element.jpg "blender snap element")
+
+After snapping vertices we have to remove duplicates. We can do it using the merge tool or using the remove doubles 
+tool. We can find these tools:
+ 
+* under Mesh -> <Type of element under selection>
+* from the contextual menu that you can show by using the shortcut "ctrl + v key" for vertices (NB.: there are also 
+contextual menus for faces and edges that we can show using "ctrl + f key" and "ctrl + e key")
+
+If we decide to go with the remove doubles tools, after applying the operation a popup at the top of the 3D window 
+will appear that will tell us the number of duplicated vertices removed.
+
+![blender merge remove tools](/assets/images/posts/blender-merge-remove-tools.jpg "blender merge remove tools")
+
+
 
