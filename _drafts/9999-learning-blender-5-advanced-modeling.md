@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Learning Blender: advanced modeling - part 1"
+title: "Learning Blender: advanced modeling"
 description: "In this new post of the series "Learning Blender" I will talk about advanced modeling in Blender."
 date: 2017-11-25
 image: TO DO
@@ -61,7 +61,14 @@ which axis the mirroring must be applied.
 
 ![blender mirror modifier](/assets/images/posts/blender-mirror-modifier.jpg "blender mirror modifier")
 
-Another interesting tool the "Loop Cut and Slide". With this option we can add edge loops
+The last interesting modifier (for now) we will see it is the boolean modifier. This modifier let us modify meshes by
+ calculate difference, union and intersection between them.
+ 
+![blender boolean modifier](/assets/images/posts/blender-boolean-modifier.jpg "blender boolean modifier")
+![blender boolean modifier operation option](/assets/images/posts/blender-boolean-modifier-operation-option.jpg 
+"blender boolean modifier operation option")
+
+Another interesting tool is the "Loop Cut and Slide". With this option we can add edge loops
  to our mesh. This tool is useful especially when you need to have more mesh polygon to model the mesh details you want.
 
 ![blender loop edge and slide](/assets/images/posts/blender-loop-edge-and-slide.jpg "blender loop edge and slide")
@@ -102,6 +109,17 @@ modify the text by selecting the edit mode: a text cursor will appear so that we
  
 ![blender add text](/assets/images/posts/blender-add-text.jpg "blender add text")
 ![blender text properties](/assets/images/posts/blender-text-properties.jpg "blender text properties")
+
+Last but not least is the vertex groups tool. This tool allow us to save selection of vertices so that we are able to
+ select them later. We can create a vertex group in the property panel in the corresponding tab. In this tab we have 
+ buttons to:
+ 
+* add/remove vertices to a group
+* select/deselect the vertices of a group
+
+![blender vertex group](/assets/images/posts/blender-vertex-group.jpg "blender vertex group")
+
+In the next post we will discuss about outliner, layers, groups, hierarchies and scenes.
 
   
 
