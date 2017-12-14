@@ -14,7 +14,7 @@ seo:
 
 ---
 
-In the In the [previous post of the series "Learning Blender"](TODO) we talked about the basics of modeling in Blender. In this post we will continue to study the 
+In the [previous post of the series "Learning Blender"](TODO) we talked about the basics of modeling in Blender. In this post we will continue to study the 
 art modeling by starting to analyze Blender advanced modeling tools.  
 Let's start from modifiers. All the operation we saw in the previous modeling post were all "one time operation": 
 after we apply them we can't change their properties to modify the result we obtain. Modifiers let us apply 
