@@ -34,4 +34,8 @@ with a button similar to a checkbox. We can turn on/off a layer by clicking on t
  
 ![blender layers](/assets/images/posts/blender-layers.jpg "blender layers")
  
-
+Another way to organize our objects is by using groups. With groups you can select multiple objects at once. We can 
+create groups and add an object to an existing group by using the menu in the property panel or by using the "ctrl + g
+ keys" shortcut. 
+ 
+![blender group](/assets/images/posts/blender-layers.jpg "blender group")
