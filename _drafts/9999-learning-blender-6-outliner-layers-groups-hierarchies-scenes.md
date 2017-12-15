@@ -39,3 +39,11 @@ create groups and add an object to an existing group by using the menu in the pr
  keys" shortcut. 
  
 ![blender group](/assets/images/posts/blender-layers.jpg "blender group")
+
+
+After layers and group we have scenes. Scenes allow us to create different set of our objects or new set with new 
+object inside our project. We can create and manage scenes by using the outliner and the ad hoc menu at the top of 
+the 3D window. We can create scenes that:
+
+* are linked together: this means that a modification to one mesh in a scenes will be reflected also in the other.
+* separated scene: this means that a modification to one mesh in a scenes will NOT be reflected also in the other.
