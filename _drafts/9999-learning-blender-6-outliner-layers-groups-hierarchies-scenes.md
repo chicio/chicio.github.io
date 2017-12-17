@@ -38,8 +38,7 @@ Another way to organize our objects is by using groups. With groups you can sele
 create groups and add an object to an existing group by using the menu in the property panel or by using the "ctrl + g
  keys" shortcut. 
  
-![blender group](/assets/images/posts/blender-layers.jpg "blender group")
-
+![blender group](/assets/images/posts/blender-groups.jpg "blender group")
 
 After layers and group we have scenes. Scenes allow us to create different set of our objects or new set with new 
 object inside our project. We can create and manage scenes by using the outliner and the ad hoc menu at the top of 
@@ -47,3 +46,14 @@ the 3D window. We can create scenes that:
 
 * are linked together: this means that a modification to one mesh in a scenes will be reflected also in the other.
 * separated scene: this means that a modification to one mesh in a scenes will NOT be reflected also in the other.
+
+![blender scene](/assets/images/posts/blender-scene.jpg "blender scene")
+
+Last but not least we have hierarchies. We can create hierarchies of objects by selecting them and by choosing Object
+ ->  Parent. Here we can find all the possible type of parental relationships that we can create. After creating a 
+ hierarchies of objects, they will be shown grouped in the putliner. We will use  hierarchies extensively when we 
+ will talk about animation.
+ 
+![blender hierarchies](/assets/images/posts/blender-hierarchies.jpg "blender hierarchies")
+
+In the next post we will talk about materials.

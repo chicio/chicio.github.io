@@ -120,6 +120,3 @@ Last but not least is the vertex groups tool. This tool allow us to save selecti
 ![blender vertex group](/assets/images/posts/blender-vertex-group.jpg "blender vertex group")
 
 In the next post we will discuss about outliner, layers, groups, hierarchies and scenes.
-
-  
-
