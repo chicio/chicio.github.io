@@ -1,5 +1,5 @@
 ---
-  layout: post
+layout: post
 title: "Learning Blender: materials."
 description: "In this new post of the series "Learning Blender" I will talk about materials."
 date: 2017-11-25
@@ -15,7 +15,7 @@ seo:
 ---
 
 In the [previous post of the series "Learning Blender"](TODO) we talked about the outliner, layers, groups and 
-hierarchies in Blender. In this post we will start some details to our models by learning how to use materials.  
+hierarchies in Blender. In this post we will start to add some details to our models by learning how to use materials.  
 To set a material on an object we can select the material tab from the properties panel, and the press the new button.
 
 ![blender create material](/assets/images/posts/blender-create-material.jpg "blender create material")
@@ -118,7 +118,19 @@ object plane with the color of the corresponding background pixel, according to 
 
 ![blender transparency](/assets/images/posts/blender-transparency.jpg "blender transparency")
 
+Last but not least we have subsurface scattering. As reported on [wikipedia](https://en.wikipedia.org/wiki/Subsurface_scattering "Subsurface scattering"):
 
+> Subsurface scattering is a mechanism of light transport in which light penetrates the surface of a translucent object,
+ is scattered by interacting with the material, and exits the surface at a different point
 
+We have some parameter to modify the final result of this component:
 
+* index of refraction
+* scale, to determine how deep the light goes
+* rgb radius, that is a color used to blur 
+* scattering weights, to tweak if the effects it is more on front then on the back
+* blend
 
+![blender subsurface scattering](/assets/images/posts/blender-subsurface-scattering.jpg "blender subsurface scattering")
+ 
+In the next post we will talk about textures.
