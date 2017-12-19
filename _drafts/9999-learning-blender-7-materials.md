@@ -70,5 +70,55 @@ reflection that ideally reflect equally the light in all direction. We have also
 
 ![blender material diffuse component](/assets/images/posts/blender-material-diffuse-component.jpg "blender material diffuse component")
 
+After the diffuse component there's the specular component. This component is used to represent the 
+highlights/shininess of the surface. We can select the color as for the diffuse shader. We also have again a 
+intensity parameter to tweak the contribution of the specular component to the final material appearance. There's a 
+list of shader we can choose from:
 
-...specular
+* cook-torrance
+* phong
+* blinn-phong
+* toon
+* wardiso
+
+![blender material specular component](/assets/images/posts/blender-material-specular-component.jpg "blender material specular component")
+
+For both the diffuse and specular component we have also the ramp option. With this option it is possible to apply 
+gradient on the surface. The ramp option could be useful to add a little bit more pop to the material final look. 
+The starting values for ramp contains two color, but we can add as many intermediate points as we want.
+
+![blender material ramp](/assets/images/posts/blender-material-ramp.jpg "blender material ramp")
+
+We have also some shading option that we can use to set other to surface components. In particular we can set the 
+ambient and emit components using the slider contained in this section. We can also completely turn off the shader by
+ using the shadeless option, or using the tangent shading option to create tangent specular highlights. 
+
+![blender shading options](/assets/images/posts/blender-shading-options.jpg "blender shading options")
+ 
+Now we will take a look at how we can create reflective material. To create a reflective material we can activate the
+ Mirror component. We have some options to customize the final result of our reflection: 
+ 
+* reflectivity, that let us customize the amount of reflection
+* fresnel, that let us customize the amount of reflection at grazing incidence
+* depth, the maximum number of reflection bounce
+* max dist, the maximum distance of object to be reflected
+* Gloss, to setup a glossy reflection effect
+
+Remember that the mirror material result is visible only in the final render view. 
+ 
+![blender reflection](/assets/images/posts/blender-reflection.jpg "blender reflection")
+
+After mirror material we can take a look at the transparency component. To make a transparent material we have to 
+activate this component. There are 3 option:
+
+* z transparency, a simple transparency without refraction or any other sort of realistic features
+* mask, a simple masks for the Background. It uses the alpha channel to mix the color of each pixel on the active 
+object plane with the color of the corresponding background pixel, according to the alpha channel of the pixel
+* raytrace, a realistic transparency configurable with Index Of Refraction (IOR) and other parameters.
+
+![blender transparency](/assets/images/posts/blender-transparency.jpg "blender transparency")
+
+
+
+
+
