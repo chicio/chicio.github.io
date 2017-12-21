@@ -55,5 +55,19 @@ the unwrap texture tools. To do this we need first to define seams. Seams (as in
  red lines in the 3D window.
  
 ![blender texture mark seams](/assets/images/posts/blender-texture-mark-seams.jpg "blender texture mark seams")
+
+The we can unwrap the mesh by just selecting Mesh -> UV unwrap -> Unwrap. After that we can scale, translate and 
+rotate the unwrapped mesh to fit into the texture. After that we will finally see the texture on our mesh.
     
-    
+![blender texture unwrap 1](/assets/images/posts/blender-texture-unwrap-1.jpg "blender texture unwrap 1")
+![blender texture unwrap 2](/assets/images/posts/blender-texture-unwrap-2.jpg "blender texture unwrap 2")
+
+We can also create projection mapping using the UV projection. This basically means projecting a sphere, cylinder or 
+a cube onto our project to get some rough mapping that we can tweak later. We can find UV projection under Mesh -> UV
+ Unwrap -> <Sphere/Cylinder/Cube> projection. 
+ 
+![blender uv projection](/assets/images/posts/blender-uv-projection.jpg "blender uv projection")
+
+.............
+ 
+
