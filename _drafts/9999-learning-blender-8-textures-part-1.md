@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Learning Blender: textures."
+title: "Learning Blender: textures - part 1."
 description: "In this new post of the series "Learning Blender" I will talk about textures."
 date: 2017-11-25
 image: TO DO
