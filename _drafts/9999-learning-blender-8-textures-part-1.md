@@ -68,6 +68,6 @@ a cube onto our project to get some rough mapping that we can tweak later. We ca
  
 ![blender uv projection](/assets/images/posts/blender-uv-projection.jpg "blender uv projection")
 
-.............
+In the next post we will talk about other textures technique available in Blender.
  
 
