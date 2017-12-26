@@ -222,3 +222,8 @@ gulp.task('test', [
     'models',
     'jekyll'
 ]);
+
+gulp.task('dev', [
+    'jekyll',
+    'serve'
+]);

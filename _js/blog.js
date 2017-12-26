@@ -1,10 +1,9 @@
 runFuckAdBlock();
 cookieConsent();
+loadFonts();
 $(document).ready(function () {
-    loadFonts();
     heartAnimation();
 });
-
 
 function loadFonts() {
     WebFont.load({
