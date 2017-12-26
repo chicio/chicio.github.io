@@ -20,7 +20,8 @@ Physically Based Rendering (PBR) is one of the latest and most exciting trend in
 models to treat light as it behaves in the real world. 
  As a consequence of the fact that what could be seen in a computer graphics application is decided by how light is represented, with PBR
  it is possible to reach a new level of realism. But wait, what do we mean with "physically correct"?  
-Before giving an answer and try to give a detail definition of PBR we need to clarify be acquited with some important concept.
+Before giving an answer and try to give a detail definition of PBR we need to understand well some important 
+concept.
   
   
 #### **What is light?**
