@@ -28,7 +28,8 @@ Light is a form of electromagnetic radiation. Specifically, it is a small subset
 radiation spectrum with wavelength between 400 nm and 700 nm. The set of studies and techniques that try to describe and 
 measure how the electromagnetic radiation of light is propagated, reflected and transmitted is called radiometry. What 
 are the fundamental quantities described by radiometry? The first one is the called **flux**, it describes the amount
- of radiant energy emitted, reflected or transmitted from a surface per unit time. The radiant energy is the energy of an electromagnetic radiation. The unit measure of flux is joules per seconds $\frac{J}{s}$, and it is usually reported with the Greek letter $\frac{J}{s}$.  
+ of radiant energy emitted, reflected or transmitted from a surface per unit time. The radiant energy is the energy 
+ of an electromagnetic radiation. The unit measure of flux is joules per seconds $\frac{J}{s}$, and it is usually reported with the Greek letter $\phi$.  
 Other two important quantities of radiometry are **irradiance** and **radiant exitance**. The first one described flux 
 arriving at a surface per unit area. The second one describe flux leaving a surface per unit area (Pharr et al., 2010 [1]). 
 Formally irradiance is described with the following equation:
