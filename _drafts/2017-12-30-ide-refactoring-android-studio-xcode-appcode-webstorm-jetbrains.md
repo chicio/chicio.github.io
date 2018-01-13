@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Android Studio vs XCode vs AppCode: the power of shortcuts for refactoring and speeding up the development 
+title: "Android Studio vs XCode vs AppCode: an brief comparison
 process."
-description: "In this posts I will talk about why I started to prefer Jetbrains IDEs for mobile app development."
+description: "In this posts I will some compare Jetbrains IDEs and XCode."
 date: 2018-02-03
 image: /assets/images/posts/react-native-realm-10-build-works.jpg
 tags: [IDE, android, java, mobile application development]
@@ -66,15 +66,29 @@ Let's try to do the same operation we did before with XCode: create a class.
 
 As you can see, Android Studio gives you the ability to write code at the speed of light!!! :flushed:.
 
-### The Jetbrains family: AppCode, Webstorm, PyCharm "& friends" 
-Android Studio is based on IntelliJ IDEA, the famous Java IDE from Jetbrains. ......
+### AppCode
+As you can image, after working a few hours with Android Studio, I started to wonder if there's an IDE that let me 
+setup the same write code style and workflow. Here another colleague that I worked with, [Tommaso Resti](https://www.linkedin.com/in/tommaso-resti-0ab5285a/ "Tommaso Resti"),
+a senior iOS and Android developer, shown me for the first time AppCode. This is another IDE from JetBrains for iOS 
+development. It allows you to improve your development speed by allowing you to use some of the refactoring tools 
+that you can find in Android Studio. However it's not all peace and light in this case. Some of the refactoring tools
+ are not available for Swift and you will still need XCode to work on Xib and Storyboard (the Jetbrains team 
+ developed a plugin for interface builder, but that has been discontinued). 
+ Anyway, if you start to get used to the Android Studio writing code workflow, you will feel at home with AppCode :relaxed:.
 
-
-
-### And the winner is... (you already know it :stuck_out_tongue_winking_eye:)
-
-....
-
+### Final thoughts 
+Android Studio is based on IntelliJ IDEA, the famous Java IDE from Jetbrains. But Jetbrains IDE family is really big.
+ You can find an IDE for each of your favourite language:
+ * CLion, for C and C++
+ * IntelliJ for Java (and maybe their most famous IDE)
+ * PhpStorm
+ * PyCharm
+ * RubyMine for Ruby
+ * GoLand for GO
+ * Rider for C#
+So no worries: if you want to start to improve you coding speed probably there's an IDE for your favourite language. 
+XCode will always have a special place in my heart. I will still continue to use it in my daily Job as a mobile 
+developer. But... the coding speed I gained with the Jetbrains IDEs let me prefer them for my daily job :smiling_imp:.    
        
 
       
