@@ -35,7 +35,7 @@ In this post we will create a scene from scratch that uses the main PBR features
 find inside SceneKit. At the end of this post you will be able to render the scene contained in the image below. So 
 it's time to start coding!!
 
-![Physically based scene right](https://raw.githubusercontent.com/chicio/Exploring-SceneKit/master/Screenshots/physically-based-rendering-scene-right.jpg "Physically based scene right")
+![Physically based scene right](/assets/images/posts/physically-based-rendering-scene-right.jpg "Physically based scene right")
 
 The general approach used in the construction of the scene will be the following: for each main scene category 
 component we will create a class that encapsulate the creation of the corresponding `SCNNode`, the base SceneKit unit 
@@ -463,7 +463,7 @@ class MeshLoader {
 
 We are almost ready to render our scene. The last thing to do is to implement the methods of the `Scene` protocol to
  add some movement to the scene. This method will be called by a one tap gesture attached to the main view that will 
- render our scene (We will see it in a few moments). Inside it we use the method `runAction` to rotate the camera 
+ render our scene (we will see it in a few moments). Inside it we use the method `runAction` to rotate the camera 
  around its pivot, that we moved previously to have a rotation axis to move the camera around the scene.
 
 ```swift
@@ -475,10 +475,16 @@ func actionForOnefingerGesture(withLocation location: CGPoint, andHitResult hitR
 ```
 
 We are ready to render our scene. Assign an instance of our `PhysicallyBasedScene` to a `SCNView` and see the 
-beautiful results of our work. If you tap [here](https://www.youtube.com/watch?v=yDMdAtv-3Bg "Exploring SceneKit 
-video") you can see a video of our scene.
+beautiful results of our work. Below you can find a video of the scene we created.
 
-![Physically based scene](https://raw.githubusercontent.com/chicio/Exploring-SceneKit/master/Screenshots/physically-based-rendering-scene.jpg "Physically based scene")
+<div class="embed-container">
+	<iframe width="700"
+			height="480"
+			src="https://www.youtube.com/embed/yDMdAtv-3Bg"
+			frameborder="0"
+			allowfullscreen="">
+	</iframe>
+</div>
 
 That's it!! You've made it!! Now you can show to your friends your physically based scene and be proud of it 
 :sunglasses:. You can find this example with other scenes on [this github repository](https://github.com/chicio/Exploring-SceneKit "Exploring-SceneKit repo").
