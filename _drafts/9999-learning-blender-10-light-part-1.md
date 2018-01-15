@@ -44,5 +44,40 @@ To actually render the shadow, we need also to set the shadow flag enable in the
 ![blender shadow enable 1](/assets/images/posts/blender-shadow-enable-1.jpg "blender shadow enable 1")
 ![blender shadow enable 2](/assets/images/posts/blender-shadow-enable-2.jpg "blender shadow enable 2")
 
-There are other types of lights. 
+There are other types of lights. For example we have spot lamps. These are light with a specific dim that simulate a 
+cone of light. We can customize the properties of ti in the light tab in the properties panel. One thing to note for 
+spot light is that we can customize the cone (shape, size...).
+
+![blender spot light](/assets/images/posts/blender-spot-light.jpg "blender spot light")
+
+Spot light can use a new type of shadow called buffer shadow. They are useful because they can be rendered more 
+quickly. After enabling it in the properties panel of the spot light, we can customize it as always. There are 
+different type of buffer shadow:
+
+* Classical
+* Classical Half
+* Irregular, a method to achieve ray-tracing alike shadows with good performance
+* Deep, another method similar to ray tracing but much more expensive in terms of performance then Irregular
+
+![blender spot light shadow](/assets/images/posts/blender-spot-light-shadow.jpg "blender spot light shadow")
+
+Another type of light is Hemi-lamps. This are used to create an overall directional light for you scene. As a 
+consequence of the fact that it is a directional light, the position of it doesn't change the final lighting result. 
+Only the orientation influences the final lighting result. As always, we can customize its behaviour in the 
+properties panel.
+
+![blender hemi lamps](/assets/images/posts/blender-hemi-lamps.jpg "blender hemi lamps")
+
+The last available type of light is the area lamps. This kind of light provide illumination from a specific region 
+rather than a single point or a single direction. We can customize it as always from the properties panel. One 
+important thing to note is that area light as a distance property instead of falloff. This parameter determines the 
+final attenuation result. the distance is represented in the 3D window as a dashed line. The only type of shadow 
+supported the ray traced shadow. We can also customize the shape of the shadow: different shapes influence the final 
+rendering result.
+
+  
+
+
+
+ 
 
