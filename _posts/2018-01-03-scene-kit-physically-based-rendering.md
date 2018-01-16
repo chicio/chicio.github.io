@@ -477,14 +477,7 @@ func actionForOnefingerGesture(withLocation location: CGPoint, andHitResult hitR
 We are ready to render our scene. Assign an instance of our `PhysicallyBasedScene` to a `SCNView` and see the 
 beautiful results of our work. Below you can find a video of the scene we created.
 
-<div class="embed-container">
-	<iframe width="700"
-			height="480"
-			src="https://www.youtube.com/embed/yDMdAtv-3Bg"
-			frameborder="0"
-			allowfullscreen="">
-	</iframe>
-</div>
+{% include youtube.html videoId="yDMdAtv-3Bg" %}
 
 That's it!! You've made it!! Now you can show to your friends your physically based scene and be proud of it 
 :sunglasses:. You can find this example with other scenes on [this github repository](https://github.com/chicio/Exploring-SceneKit "Exploring-SceneKit repo").
