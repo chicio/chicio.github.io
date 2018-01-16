@@ -75,9 +75,6 @@ final attenuation result. the distance is represented in the 3D window as a dash
 supported the ray traced shadow. We can also customize the shape of the shadow: different shapes influence the final 
 rendering result.
 
+![blender area lamps](/assets/images/posts/blender-area-lamps.jpg "blender area lamps")
   
-
-
-
- 
-
+In the next post we will talk about how to do other cool stuff with lights in Blender.

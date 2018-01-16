@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Learning Blender: textures - part 2."
-description: "In this new post of the series "Learning Blender" I will talk about textures."
+title: "Learning Blender: textures - part 2"
+description: "In this new post of the series "Learning Blender" I will talk other about textures techniques."
 date: 2017-11-25
 image: TO DO
 tags: [computer graphics, blender]
