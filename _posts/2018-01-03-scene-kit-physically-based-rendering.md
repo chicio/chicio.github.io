@@ -1,16 +1,16 @@
 ---
 layout: post
 title: "SceneKit and physically based rendering"
-description: "In this post I will you guide you in the creation of a scene using SceneKit and its physically based rendering features."
+description: "In this post I will guide you in the creation of a scene using SceneKit and its physically based rendering features."
 date: 2018-01-03
-image: https://raw.githubusercontent.com/chicio/Exploring-SceneKit/master/Screenshots/physically-based-rendering-scene-right.jpg
+image: /assets/images/posts/physically-based-rendering-scene-right.jpg
 tags: [computer graphics, physically based rendering, swift, ios, apple, mobile application development]
 comments: true
 seo:
  - type: "BlogPosting"
 ---
 
-*In this post I will you guide you in the creation of a scene using SceneKit and its physically based rendering features.*
+*In this post I will guide you in the creation of a scene using SceneKit and its physically based rendering features.*
 
 ---
 
