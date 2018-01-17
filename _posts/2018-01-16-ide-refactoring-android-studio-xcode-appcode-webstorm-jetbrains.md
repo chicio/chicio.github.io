@@ -75,7 +75,7 @@ and he introduced me to the power of JetBrains IDEs. This IDE gives you the abil
  Basically you can write code and forget about your mouse!! :open_mouth:. The list of keyboard shortcuts you 
  can use in your development flow is endless. You can find the complete list [here](https://developer.android.com/studio/intro/keyboard-shortcuts.html "Android studio keyboard shortcut"). 
 Let's try to do the exact same operations I did before with XCode, and I also add a rename of the class created at 
-the end of all the previous operation.
+the end of all the previous operation. At the time of this writing the available Android Studio version is 3.0.1. 
 
 {% include youtube.html videoId="Xp3v9VsgFjw" %}
 
