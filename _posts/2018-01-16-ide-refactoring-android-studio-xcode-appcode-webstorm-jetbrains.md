@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Android Studio vs XCode vs AppCode: a brief comparison about coding speed."
+title: "Android Studio vs XCode vs AppCode: a brief comparison about coding speed"
 description: "In this posts I will compare the coding speed that it is possible to achieve in some of the JetBrains 
 IDEs and XCode, in terms of code creation and refactoring."
 date: 2018-01-16
