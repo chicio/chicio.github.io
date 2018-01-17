@@ -37,7 +37,7 @@ This is why I started to work with my colleague [Francesco Bonfadelli](https://w
 lot about developing mobile apps for the Android platform. One of the thing I learned in the first few days is the 
 difference between the official IDEs: Android Studio and XCode. After seeing the coding speed that Francesco was 
 able to achieve during an Android coding session, and how much slower it is to do the same things
- in XCode for iOS, I realized how much more advanced is Android Studio with is set of refactoring features in 
+ in XCode for iOS, I realized how much more advanced is Android Studio with its set of refactoring features in 
  comparison with XCode.  
 In this post I will briefly analyze some IDEs commonly used for mobile application development focusing on the 
 coding speed that is possible to achieve by using them and I will explain to you why, at the
