@@ -106,5 +106,5 @@ the story: JetBrains IDE family is really big.
  
 So no worries: if you want to start to improve you coding speed probably there's an IDE for your favourite language. 
 XCode will always have a special place in my heart. I will still continue to use it in my daily job as a mobile 
-developer. But... the coding speed I gained with the JetBrains IDEs could not be ignored:smiling_imp:. This is why I 
-started to prefer :heart:. 
+developer. But... the coding speed I gained with the JetBrains IDEs could not be ignored :smiling_imp:. This is why I 
+started to prefer them :heart:. 
