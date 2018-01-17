@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Android Studio vs XCode vs AppCode: a brief comparison about coding speed."
-description: "In this posts I will compare the coding speed that it is possible to achieve in some of the Jetbrains 
+description: "In this posts I will compare the coding speed that it is possible to achieve in some of the JetBrains 
 IDEs and XCode, in terms of code creation and refactoring."
 date: 2018-01-16
 image: /assets/images/posts/androidstudio-xcode-appcode.jpg
@@ -11,7 +11,7 @@ seo:
     - type: "BlogPosting"
 ---
 
-*In this posts I will compare the coding speed that it is possible to achieve in some of the Jetbrains 
+*In this posts I will compare the coding speed that it is possible to achieve in some of the JetBrains 
  IDEs and XCode, in terms of code creation and refactoring.*
 
 ---
@@ -41,7 +41,7 @@ able to achieve during an Android coding session, and how much slower it is to d
  comparison with XCode.  
 In this post I will briefly analyze some IDEs commonly used for mobile application development focusing on the 
 coding speed that is possible to achieve by using them and I will explain to you why, at the
- time of this writing, I started to prefer the Jetbrains IDEs family (not only for mobile application development 
+ time of this writing, I started to prefer the JetBrains IDEs family (not only for mobile application development 
  :bowtie:).
 
 ### XCode
@@ -70,9 +70,9 @@ Really slow, isn't it?!?? :fearful:
 ### Android Studio
 Before [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group"), I had used Android Studio just 
 a few times for some very simple Android apps. Then I started to work with [Francesco](https://www.linkedin.com/in/fbonfadelli/ "Francesco Bonfadelli") 
-and he introduced me to the power of Jetbrains IDEs. This IDE gives you the ability to navigate quickly in you source
+and he introduced me to the power of JetBrains IDEs. This IDE gives you the ability to navigate quickly in you source
  code, create and modify classes, and do a lot of other refactoring operations without leaving the keyboard! 
- Basically you can write code without forgetting about your mouse!! :open_mouth:. The list of keyboard shortcut you 
+ Basically you can write code and forget about your mouse!! :open_mouth:. The list of keyboard shortcuts you 
  can use in your development flow is endless. You can find the complete list [here](https://developer.android.com/studio/intro/keyboard-shortcuts.html "Android studio keyboard shortcut"). 
 Let's try to do the exact same operations I did before with XCode, and I also add a rename of the class created at 
 the end of all the previous operation.
@@ -89,13 +89,13 @@ setup the same write code style and workflow. Here another colleague that I work
 a senior iOS and Android developer, shown me AppCode for the first time. This is another IDE from JetBrains for iOS 
 development. It allows you to improve your development speed by allowing you to use some of the refactoring tools 
 that you can find in Android Studio. However it's not all peace and light in this case. Some of the refactoring tools
- are not available for Swift and you will still need XCode to work on Xib and Storyboard (the Jetbrains team 
+ are not available for Swift and you will still need XCode to work on Xib and Storyboard (the JetBrains team 
  developed a plugin for interface builder, but that has been discontinued). 
  Anyway, if you start to get used to the Android Studio writing code workflow, you will feel at home with AppCode :relaxed:.
 
 ### Final thoughts 
-Android Studio and AppCode are based on IntelliJ IDEA, the famous Java IDE from Jetbrains. But that's half of 
-the story: Jetbrains IDE family is really big.
+Android Studio and AppCode are based on IntelliJ IDEA, the famous Java IDE from JetBrains. But that's half of 
+the story: JetBrains IDE family is really big.
  You can find an IDE for each of your favourite language:
  * CLion, for C and C++
  * PhpStorm
@@ -106,5 +106,5 @@ the story: Jetbrains IDE family is really big.
  
 So no worries: if you want to start to improve you coding speed probably there's an IDE for your favourite language. 
 XCode will always have a special place in my heart. I will still continue to use it in my daily job as a mobile 
-developer. But... the coding speed I gained with the Jetbrains IDEs could not be ignored:smiling_imp:. This is why I 
+developer. But... the coding speed I gained with the JetBrains IDEs could not be ignored:smiling_imp:. This is why I 
 started to prefer :heart:. 
