@@ -86,7 +86,7 @@ As you can see, Android Studio gives you the ability to write code at the speed 
 ### AppCode
 As you can image, after working a few hours with Android Studio, I started to wonder if there's an IDE that let me 
 setup the same write code style and workflow. Here another colleague that I worked with, [Tommaso Resti](https://www.linkedin.com/in/tommaso-resti-0ab5285a/ "Tommaso Resti"),
-a senior iOS and Android developer, shown me AppCode for the first time. This is another IDE from JetBrains for iOS 
+a senior iOS and Android developer, showed me AppCode for the first time. This is another IDE from JetBrains for iOS 
 development. It allows you to improve your development speed by allowing you to use some of the refactoring tools 
 that you can find in Android Studio. However it's not all peace and light in this case. Some of the refactoring tools
  are not available for Swift and you will still need XCode to work on Xib and Storyboard (the JetBrains team 
