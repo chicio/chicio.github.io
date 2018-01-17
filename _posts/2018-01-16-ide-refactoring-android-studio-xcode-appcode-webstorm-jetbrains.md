@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Android Studio vs XCode vs AppCode: an brief comparison about coding speed."
+title: "Android Studio vs XCode vs AppCode: a brief comparison about coding speed."
 description: "In this posts I will compare the coding speed that it is possible to achieve in some of the Jetbrains 
 IDEs and XCode, in terms of code creation and refactoring."
 date: 2018-01-16
@@ -20,9 +20,9 @@ IDE, *Integrated Development Environment*, are the software developer toolboxes.
 [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group") my knowledge 
 of the Android platform was very limited. But... [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group") 
 is an [agile software development](https://en.wikipedia.org/wiki/Agile_software_development "agile software development") company 
-and one of the technique we use is [pair programming](https://en.wikipedia.org/wiki/Pair_programming "pair 
-programming"): two developers work at the same feature on the same workstation. As reported on Wikipedia, one of the
- the main advantages of pair programming is knowledge sharing:
+and one of the technique we use during our development is [pair programming](https://en.wikipedia
+.org/wiki/Pair_programming "pair programming"): two developers work at the same feature on the same workstation. 
+As reported on Wikipedia, one of the the main advantages of pair programming is knowledge sharing:
  
  >Knowledge is constantly shared between pair programmers, whether in the industry or in a classroom, many sources 
  suggest that students show higher confidence when programming in pairs, and many learn whether it be from tips on 
@@ -39,16 +39,17 @@ difference between the official IDEs: Android Studio and XCode. After seeing the
 able to achieve during an Android coding session, and how much slower it is to do the same things
  in XCode for iOS, I realized how much more advanced is Android Studio with is set of refactoring features in 
  comparison with XCode.  
-In this post I will briefly analyze this two IDEs by describing their main features. I will then show you why, at the
- time of this writing, I started to prefer the Jetbrains IDEs family for mobile application development 
-(and not only for that :bowtie:).
+In this post I will briefly analyze some IDEs commonly used for mobile application development focusing on the 
+coding speed that is possible to achieve by using them and I will explain to you why, at the
+ time of this writing, I started to prefer the Jetbrains IDEs family (not only for mobile application development 
+ :bowtie:).
 
 ### XCode
 I always loved XCode. I started to use it 8 years ago and it's still here with me during my daily job. It opens in a 
-few seconds and you can start to code very quickly. But.... what happens when your app code start to increase in term 
+few seconds and you can start to code very quickly. But.... what happens when your app code start to increase in terms 
 of complexity and you need to do a simple refactoring operation? Does it help you in some way when it need to create 
 a new class/property? Does it help you when you need to navigate in your code and you need to jump quickly from one 
-class to another? Well, to be honest it doesn't help you. Even a simple renaming could become a painful 
+class to another? Well, to be honest it doesn't help you so much. Even a simple renaming could become a painful 
 operation, especially if you have a project with mixed Swift/Objective-C parts. Everything must be done manually. 
 Consider for example this list of mixed code creation/refactoring operations:
 
@@ -58,11 +59,12 @@ Consider for example this list of mixed code creation/refactoring operations:
  * add a parameter to the method previously created
  * extract the local variable as a property of controller in which I created it
  
-In the following video I will try to do these operations in XCode.
+In the following video I will try to do these operations in XCode. At the time of this writing the available XCode 
+version is 9.2.
 
 {% include youtube.html videoId="tsuS8UoSS1A" %}
 
-More than 2 minutes to implement all the stuff in the above list.
+**More than 2 minutes to implement all the stuff in the above list.**
 Really slow, isn't it?!?? :fearful:
 
 ### Android Studio
@@ -77,7 +79,8 @@ the end of all the previous operation.
 
 {% include youtube.html videoId="Xp3v9VsgFjw" %}
 
-Only 50 seconds and I did all the stuff (and I wans't pushing hard on the keyboard...:stuck_out_tongue_winking_eye:).
+**Only 50 seconds and I did all the stuff (and I wans't pushing hard on the keyboard..
+.:stuck_out_tongue_winking_eye:).**
 As you can see, Android Studio gives you the ability to write code at the speed of light!!! :flushed:.
 
 ### AppCode
@@ -105,9 +108,3 @@ So no worries: if you want to start to improve you coding speed probably there's
 XCode will always have a special place in my heart. I will still continue to use it in my daily job as a mobile 
 developer. But... the coding speed I gained with the Jetbrains IDEs could not be ignored:smiling_imp:. This is why I 
 started to prefer :heart:. 
-    
-       
-
-      
-
-
