@@ -37,6 +37,15 @@ From here we can choose the type of texture we want and we can apply it.
 We also have a specific type of light to simulate the sun: the sun lamp. It behaves in a similar way to the Hemi lamp
 . One particular feature it has is the possibility to add a sky as background and simulate a sun in terms of shape 
 and effects.   
-Last but not least we have ambient occlusion....
+Last but not least we have ambient occlusion. It is a technique that let us simulate more accurately the ambient 
+light in a scene. We can activate it from the world tab in the properties panel. It is possible to adjust how much 
+ambient occlusion will influence the final rendering result by adjusting the factor property. Generally speaking, 
+ambient occlusion is really slow in terms of rendering. Is it possible to improve the rendering speed by changing the
+ gather options in the world panel to "approximate "and setup the number of passes that the renderer must use. 
+ Ambient occlusion uses the ambient color by default. If we want to achieve a more accurate result, especially if 
+ our scene is an outdoor one, we can activate the environment light. This kind of effect will generate ambient 
+ occlusion and eventually it will use (if we choose it) the sky/sky texture as color.   
 
- 
+![blender ambient occlusion enviroment lighting](/assets/images/posts/blender-ambient-occlusion-enviroment-lighting.jpg "blender ambient occlusion enviroment lighting")
+
+In the next post about Blender we will talk about cameras and rendering.

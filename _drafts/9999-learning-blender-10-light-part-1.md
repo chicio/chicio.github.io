@@ -45,7 +45,7 @@ To actually render the shadow, we need also to set the shadow flag enable in the
 ![blender shadow enable 2](/assets/images/posts/blender-shadow-enable-2.jpg "blender shadow enable 2")
 
 There are other types of lights. For example we have spot lamps. These are light with a specific dim that simulate a 
-cone of light. We can customize the properties of ti in the light tab in the properties panel. One thing to note for 
+cone of light. We can customize its properties in the light tab in the properties panel. One thing to note for 
 spot light is that we can customize the cone (shape, size...).
 
 ![blender spot light](/assets/images/posts/blender-spot-light.jpg "blender spot light")
