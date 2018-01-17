@@ -71,8 +71,8 @@ Really slow, isn't it?!?? :fearful:
 Before [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group"), I had used Android Studio just 
 a few times for some very simple Android apps. Then I started to work with [Francesco](https://www.linkedin.com/in/fbonfadelli/ "Francesco Bonfadelli") 
 and he introduced me to the power of JetBrains IDEs. This IDE gives you the ability to navigate quickly in you source
- code, create and modify classes, and do a lot of other refactoring operations without leaving the keyboard! 
- Basically you can write code and forget about your mouse!! :open_mouth:. The list of keyboard shortcuts you 
+ code, create and modify classes, and allows you to do a lot of other refactoring operations without leaving the 
+ keyboard! Basically you can write code and forget about your mouse!! :open_mouth:. The list of keyboard shortcuts you 
  can use in your development flow is endless. You can find the complete list [here](https://developer.android.com/studio/intro/keyboard-shortcuts.html "Android studio keyboard shortcut"). 
 Let's try to do the exact same operations I did before with XCode, and I also add a rename of the class created at 
 the end of all the previous operation. At the time of this writing the available Android Studio version is 3.0.1. 
