@@ -101,6 +101,11 @@ gulp.task('models', function() {
         .pipe(gulp.dest('assets/models'))
 });
 
+gulp.task('force-copy', function() {
+    return gulp.src(['assets'])
+        .pipe(gulp.dest('_site/assets'))
+});
+
 //**** Used in command line flow ****//
 
 gulp.task('css-critical', function() {
