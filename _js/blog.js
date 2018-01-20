@@ -7,7 +7,24 @@ $(document).ready(function () {
 
 function loadFonts() {
     WebFont.load({
-        google: {families: ['Open Sans']}
+        google: {families: ['Open Sans']},
+        loading: disableScroll(),
+        active: showBlog(),
+        inactive: showBlog()
+    });
+}
+
+function disableScroll() {
+    $("html").css('overflow','hidden');
+}
+
+function showBlog() {
+    $(document).ready(function () {
+        var showBlogTimeline = new TimelineMax({delay: 1.2});
+        showBlogTimeline.to("#loader", 0.2, {opacity: 0});
+        showBlogTimeline.to("#loading-screen", 0.4, {xPercent: -100, onComplete: function() {
+                $("html").css('overflow','auto');
+            }}, "+=0.4");
     });
 }
 

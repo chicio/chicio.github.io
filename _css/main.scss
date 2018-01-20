@@ -77,24 +77,13 @@ canvas {
   }
 }
 
-.wf-loading {
-  #loadingScreen {
-    display: block;
-  }
-}
-
-.wf-active {
-  #loadingScreen {
-    display: none;
-  }
-}
-
-#loadingScreen {
+#loading-screen {
   background-color: $primary-color;
   width: 100%;
   height: 100%;
   position: absolute;
   z-index: 1;
+  display: block;
 }
 
 .profile-introduction {

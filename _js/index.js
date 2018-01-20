@@ -123,7 +123,7 @@ function showNewTab(event, element) {
 }
 
 function isEducationTab() {
-    return $('.nav-tabs .active').attr('id') === "education-and-experience";
+    return $(".nav-tabs .active").attr("id") === "education-and-experience";
 }
 
 function profileAnimation(completeFunction) {

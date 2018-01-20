@@ -86,6 +86,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - package.json
+  - package-lock.json
   - node_modules
   - gulpfile.js
   - material
