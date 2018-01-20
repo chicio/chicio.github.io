@@ -2,6 +2,7 @@ cookieConsent();
 $(document).ready(function () {
     var isMobileDevice = isAMobileDevice();
     var controller = new ScrollMagic.Controller();
+    enableScroll();
     loadFonts();
     addTabsClickEvent(controller);
     addArrowDownClickEvent(isMobileDevice);
@@ -10,6 +11,10 @@ $(document).ready(function () {
     projectsAnimation(controller);
     heartAnimation();
 });
+
+function enableScroll() {
+    $("html").css('overflow-y','auto');
+}
 
 function resizeViewport(isMobile) {
     if (isMobile === true) {
