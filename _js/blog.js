@@ -16,6 +16,7 @@ function loadFonts() {
 
 function disableScroll() {
     $("html").css('overflow-y','hidden');
+    $("body").css('position', 'fixed');
 }
 
 function showBlog() {
@@ -23,9 +24,14 @@ function showBlog() {
         var showBlogTimeline = new TimelineMax({delay: 1.2});
         showBlogTimeline.to("#loader", 0.2, {opacity: 0});
         showBlogTimeline.to("#loading-screen", 0.4, {xPercent: -100, onComplete: function() {
-                $("html").css('overflow-y','auto');
-            }}, "+=0.4");
+            enableScroll()
+        }}, "+=0.4");
     });
+}
+
+function enableScroll() {
+    $("html").css('overflow-y','auto');
+    $("body").css('position', '');
 }
 
 function cookieConsent() {
