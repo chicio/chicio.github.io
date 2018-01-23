@@ -9,7 +9,7 @@ comments: true
 seo:
   - type: "BlogPosting"
 ---
-
+ 
 *In this new post of the series "Learning Blender" I will talk about camera and rendering.*
 
 ---
@@ -45,13 +45,36 @@ can use for example a Damped Track and correlate the movement of our camera to t
 For what concerns rendering, we have the possibility to control it in the properties panel under the render tab (the 
 one with the camera). For example we can customize where the render will happen. By default the render will show the 
 result in the image editor, but we can change it by selecting one of the available option in the list. We can change 
-the dimensions of the render result in terms of width/height but also in terms of FPS (we will see why this parameter
- is important in a future post about animations). We can also customize the algorithm used for anti aliasing. Very 
+the dimensions of the render result in terms of width/height but also in terms of FPS. We will see why this parameter
+ is important in a future post about **animations**. We can also customize the algorithm used for anti aliasing. Very 
  important, we can also customize the shading option (as we already see in a previous post about shadows), the 
  performance (for example by adjusting the number of thread that Blender will be allowed to use), and the format of 
  final output of the rendering.
  
 ![blender render option](/assets/images/posts/blender-render-option.jpg "blender render option")
 
-.....
+As we said before in Blender it is possible to render animation. We will go through all the details about animation 
+in a future post. For now we can see how to achieve cool rendering effects, for example motion blur. The motion blur 
+is an effect you have when an object is moving in the length of the exposure of the camera. We can achieve this 
+effect by activating it in the rendering properties and setting the number of motion sample we want. We can also 
+modify the shutter to change the final result of the motion blur (the default value for samples is 1, and we need to 
+modify it because with the value of 1 we will have no motion blur).
 
+![blender motion blur](/assets/images/posts/blender-motion-blur.jpg "blender motion blur")
+
+One last effect we can achieve with the Blender render is depth of field. This effect simulate the fact that only a 
+part of the scene is in focus, based on the focal distance from the camera. To setup the depth of field in our scene,
+ first of all we have to activate it by increasing the distance option in the depth of field section of the 
+ camera properties.  
+
+![blender depth of field 1](/assets/images/posts/blender-depth-of-field-1.jpg "blender depth of field 1")
+
+After that we have to switch to the node editor, add a defocus filter, and connect the render image and depth to the 
+filter, and again the image to the composite final result.
+
+![blender depth of field 2](/assets/images/posts/blender-depth-of-field-2.jpg "blender depth of field 2")
+![blender depth of field 3](/assets/images/posts/blender-depth-of-field-3.jpg "blender depth of field 3")
+![blender depth of field 4](/assets/images/posts/blender-depth-of-field-4.jpg "blender depth of field 4")
+![blender depth of field 5](/assets/images/posts/blender-depth-of-field-5.jpg "blender depth of field 5")
+ 
+That's all for camera and rendering. In the next post we will talk about animation.
