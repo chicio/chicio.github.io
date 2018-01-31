@@ -20,7 +20,7 @@ If you like computer graphics, at some point during your studies you will want t
 content creation software. That's why I started to study Blender, the most beautiful and famous open source 3D software 
 available for free in the market. In this series of posts I will guide you through its features with some tutorials 
 and references list. At the time of this writing the available version of Bender used for this tutorials is the 2.79. 
-All the tutorial are written using Blender on a MacBook Pro.   
+All the tutorials are written using Blender on a MacBook Pro.   
 Let's start from the user interface.
 
 The default layout is composed of individual panels, and inside each one of them we can find an editor. The main 
