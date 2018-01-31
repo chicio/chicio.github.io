@@ -26,7 +26,7 @@ Let's start from the user interface.
 The default layout is composed of individual panels, and inside each one of them we can find an editor. The main 
 editors are:
 
-* **info editor**, in the top left part of the screen. It contains the main menu of blender. It contains also a layout 
+* **info editor**, in the top left part of the screen. It contains the main menu of Blender. It contains also a layout 
 switcher, to quickly change the layout of Blender based on our needs (animation, modeling...) and a renderer 
 switcher, to select the renderer engine.
 * **outliner editor**, it contains a list of all the objects in the scene.
@@ -71,7 +71,7 @@ On the left side of the viewport we can find a series of tabs that contain some 
  
  ![blender ui 3D window](/assets/images/posts/blender-ui-3-3Dwindow.jpg "blender ui 3Dwindow")
 
-To navigate in the 3D space, usually blender require a 3 button mouse (we will see below how to emulate a 3 buttons 
+To navigate in the 3D space, usually Blender require a 3 button mouse (we will see below how to emulate a 3 buttons 
 mouse). Anyway, as we're on a MacBook pro we can do the following basic operation with the "alternative" default 
 mapping:
 
