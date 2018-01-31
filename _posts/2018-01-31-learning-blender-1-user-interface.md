@@ -3,7 +3,7 @@ layout: post
 title: "Learning Blender: user interface"
 description: "In this new series of post I will talk about learning to use Blender, the famous 3D computer graphics 
 software. A series of tutorial for beginners (like me)."
-date: 2017-11-25
+date: 2018-01-31
 image: /assets/images/posts/blender-ui-1-editors.jpg
 tags: [computer graphics, blender]
 comments: true
@@ -26,15 +26,16 @@ Let's start from the user interface.
 The default layout is composed of individual panels, and inside each one of them you can find an editor. The main 
 editor are:
 
-* *info editor*, in the top left part of the screen. It contains the main menu of blender. It contains also a layout 
+* **info editor**, in the top left part of the screen. It contains the main menu of blender. It contains also a layout 
 switcher, to quickly change the layout of Blender based on your needs (animation, modeling...) and a renderer 
 switcher, to select the renderer engine.
-* *outliner editor*, it contains a list of all the objects in the scene.
-* *properties editor*, it contains the properties of an object. It is context specific, so its content will change 
+* **outliner editor**, it contains a list of all the objects in the scene.
+* **properties editor**, it contains the properties of an object. It is context specific, so its content will change 
 accordingly to the selected object. It contains also a lot of context specific tabs with specific properties for 
 different context. 
-* *timeline and animation editor*, used to create and modify animation
-* *viewport*, that contains the 3D window in which your scene is shown and where you can add, remove or modify objects.
+* **timeline and animation editor**, used to create and modify animation
+* **viewport**, that contains the 3D window in which your scene is shown and where you can add, remove or modify 
+objects.
 
 ![blender ui editors](/assets/images/posts/blender-ui-1-editors.jpg "blender ui editors")
 
@@ -54,17 +55,17 @@ On the left side of the viewport you can find a series of tabs that contains som
  We have also the viewport shading button, that let use choose the desired type of visualization we want for our 
  scene:
  
- * bounding box
- * wireframe
- * solid, that shows also colors of the objects
- * texture mode, that shows also textures of the objects
- * materials, that as you can imagine adds the materials to your objects
- * rendered
+ * **bounding box**
+ * **wireframe**
+ * **solid**, that shows also colors of the objects
+ * **texture mode**, that shows also textures of the objects
+ * **materials**, that as you can imagine adds the materials to your objects
+ * **rendered**
    
  Finally we have the editing interaction mode selector, that allow us to switch between editing mode:
  
- * *object mode*, that allow us to deal with individual objects
- * *edit mode*, that allow us to change the objects
+ * **object mode**, that allow us to deal with individual objects
+ * **edit mode**, that allow us to change the objects
  
  The menus on the left of the editing mode selector will change accordingly to the mode selected.
  
@@ -73,25 +74,25 @@ On the left side of the viewport you can find a series of tabs that contains som
 To navigate in the 3D space, usually blender require a 3 button mouse. Anyway, if you're on a mac like me you can....
 So on the mac now we can do the same operation that you can do with a 3 button mouse:
 
-* *orbit around* in the scene by *dragging with two fingers*
-* *zoom in/out* in the scene with *pinch and zoom*
-* *pan* in the scene with *shift + drag with two fingers*
+* **orbit around** in the scene by *dragging with two fingers*
+* **zoom in/out** in the scene with *pinch and zoom*
+* **pan** in the scene with *shift + drag with two fingers*
 
-There are also some other useful 3D navigation commands:
+There are also some other basic useful 3D navigation commands:
 
-* *align view to cursor and show all objects* with *shift + C* (or alternatively in object mode View -> Align View ->
- Center Cursor and view all)
+ * align view to cursor and show all objects with *shift + C* (or alternatively in object mode *View -> Align 
+ View -> Center Cursor*)
  * align view to one side with the options *Left, Right, Top, Bottom, Front, Back* contained in the *View menu*
  * change between orthographic and perspective view with the menu option *View -> View Persp/Ortho*
  
- You can change the user preferences by going to File -> User Preferences. Here you can modify settings for:
- * Interface, so what Blender should show in the interface
- * Editing, so how we edit objects
- * Input, how mouse and keyboard are configured 
- * Add-ons, where you can manage plugins
- * Themes, to change the color of the interface
- * File, to configure standard paths
- * System, for system specific settings
+ You can change the user preferences by going to *File -> User Preferences*. Here you can modify settings for:
+ * **Interface**, so what Blender should show in the interface
+ * **Editing**, so how we edit objects
+ * **Input**, how mouse and keyboard are configured 
+ * **Add-ons**, where you can manage plugins
+ * **Themes**, to change the color of the interface
+ * **File**, to configure standard paths
+ * **System**, for system specific settings
  
  To be noted is the option "Emulate 3 Button mouse" in the input settings. This option let Blender emulates a 3 
  button mouse using the Alt button. Int this way you can use this setting to use Blender with standard keys for mouse.  
