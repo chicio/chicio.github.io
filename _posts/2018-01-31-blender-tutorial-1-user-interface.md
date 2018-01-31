@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Learning Blender: user interface"
+title: "Blender tutorial: user interface"
 description: "In this new series of post I will talk about learning to use Blender, the famous 3D computer graphics 
 software. A series of tutorial for beginners (like me)."
 date: 2018-01-31
@@ -12,7 +12,7 @@ seo:
 ---
 
 *In this new series of post I will talk about learning to use Blender, the famous 3D computer graphics 
- software. A series of tutorial for beginners (like me).*
+ software. A series of tutorial for beginners/newbies (like me).*
 
 ---
 
