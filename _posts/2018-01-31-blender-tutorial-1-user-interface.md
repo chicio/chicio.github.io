@@ -16,41 +16,41 @@ seo:
 
 ---
 
-If you like computer graphics, at some point during your studies in the field you will want to learn to use a 3D 
+If you like computer graphics, at some point during your studies you will want to learn to use a 3D 
 content creation software. That's why I started to study Blender, the most beautiful and famous open source 3D software 
 available for free in the market. In this series of posts I will guide you through its features with some tutorials 
 and references list. At the time of this writing the available version of Bender used for this tutorials is the 2.79. 
-All the tutorial are written while using Blender on a Mackbook Pro.   
+All the tutorial are written using Blender on a MacBook Pro.   
 Let's start from the user interface.
 
-The default layout is composed of individual panels, and inside each one of them you can find an editor. The main 
-editor are:
+The default layout is composed of individual panels, and inside each one of them we can find an editor. The main 
+editors are:
 
 * **info editor**, in the top left part of the screen. It contains the main menu of blender. It contains also a layout 
-switcher, to quickly change the layout of Blender based on your needs (animation, modeling...) and a renderer 
+switcher, to quickly change the layout of Blender based on our needs (animation, modeling...) and a renderer 
 switcher, to select the renderer engine.
 * **outliner editor**, it contains a list of all the objects in the scene.
 * **properties editor**, it contains the properties of an object. It is context specific, so its content will change 
 accordingly to the selected object. It contains also a lot of context specific tabs with specific properties for 
 different context. 
 * **timeline and animation editor**, used to create and modify animation
-* **viewport**, that contains the 3D window in which your scene is shown and where you can add, remove or modify 
+* **viewport**, that contains the 3D window in which our scene is shown and where we can add, remove or modify 
 objects.
 
 ![blender ui editors](/assets/images/posts/blender-ui-1-editors.jpg "blender ui editors")
 
-You can switch a panel from one editor to another by clicking on the icon that shows the current editor selected: a 
-list with all the available editors will be shown and you can choose one of them.
+We can switch a panel from one editor to another by clicking on the icon that shows the current editor selected: a 
+list with all the available editors will be shown and we can choose one of them.
 
 ![blender ui switch editor](/assets/images/posts/blender-ui-2-switch-editor.jpg "blender ui switch editor")
 
-On the left side of the viewport you can find a series of tabs that contains some operations, tools and actions you can
- apply to the 3D window content. This tabs will change based on the fact that you selected or not an object and also 
- based on which type of object you selected. You can also show the object properties sub-panel by clicking the plus (+) 
- button on the right. That sub-panel gives you some information about the object you selected in the 3D window.  
- At the bottom of the 3D window you can find the 3D manipulator widget, that allows you to scale, rotate and 
+On the left side of the viewport we can find a series of tabs that contain some operations, tools and actions we can
+ apply to the 3D window content. This tabs will change based on the fact that we selected or not an object and also 
+ based on which type of object we selected. We can also show the object properties sub-panel by clicking the plus (+) 
+ button on the right. That sub-panel gives us some information about the object we selected in the 3D window.  
+ At the bottom of the 3D window we can find the 3D manipulator widget, that allows us to scale, rotate and 
  translate object with the mouse drag.  
- Then we have the layer switcher, that will let you create layered scene (we will talk about layers in a future 
+ Then we have the layer switcher, that will let us create layered scene (we will talk about layers in a future 
  post).  
  We have also the viewport shading button, that let use choose the desired type of visualization we want for our 
  scene:
@@ -59,7 +59,7 @@ On the left side of the viewport you can find a series of tabs that contains som
  * **wireframe**
  * **solid**, that shows also colors of the objects
  * **texture mode**, that shows also textures of the objects
- * **materials**, that as you can imagine adds the materials to your objects
+ * **materials**, that let us adds the materials to our objects
  * **rendered**
    
  Finally we have the editing interaction mode selector, that allow us to switch between editing mode:
@@ -71,8 +71,9 @@ On the left side of the viewport you can find a series of tabs that contains som
  
  ![blender ui 3D window](/assets/images/posts/blender-ui-3-3Dwindow.jpg "blender ui 3Dwindow")
 
-To navigate in the 3D space, usually blender require a 3 button mouse. Anyway, if you're on a mac like me you can....
-So on the mac now we can do the same operation that you can do with a 3 button mouse:
+To navigate in the 3D space, usually blender require a 3 button mouse (we will see below how to emulate a 3 buttons 
+mouse). Anyway, as we're on a MacBook pro we can do the following basic operation with the "alternative" default 
+mapping:
 
 * **orbit around** in the scene by *dragging with two fingers*
 * **zoom in/out** in the scene with *pinch and zoom*
