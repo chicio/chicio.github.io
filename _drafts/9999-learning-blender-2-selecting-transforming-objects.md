@@ -67,7 +67,7 @@ the transform operation. You can change the transform orientation in the 3D mani
 
 ![blender moving objects 3](/assets/images/posts/blender-translating-objects-3.jpg "blender moving objects 3")
 
-The 3D manipulat widget will place the start of the transform based on the origin of an objects. We can change it by 
+The 3D manipulator widget will place the start of the transform based on the origin of an objects. We can change it by 
 selecting one of the option under Object -> Transform in object mode:
 
 * Geometry to origin

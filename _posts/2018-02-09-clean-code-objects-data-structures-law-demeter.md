@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Clean Code: meaningful names"
+title: "Clean Code: data structures vs objects and the law of demeter"
 description: "In this post I will talk about clean code: data structures, objects vs procedural and the law of demeter."
-date: 2018-03-03
-image: TODO
+date: 2018-02-09
+image: /assets/images/posts/uncle-bob-defender-of-clean-code.jpg
 tags: [clean code]
 comments: true
 seo:
@@ -14,7 +14,10 @@ In this post I will talk about clean code: data structures, objects vs procedura
 
 ---
 
-*Data structures and objects*. Two things each programmer have to deal with each day of his/her job life.
+In this [previous post](/2017/09/11/clean-code-meaningful-names.html "clean code meaningful names") I describe what Clean Code is and what does it mean to use 
+meaningful names in your code. 
+This time I will talk about *Data structures and objects*. Two things each programmer have to deal with each day of 
+his/her job life.
 But wait, do we really know the definition of them? Let's see what [Uncle Bob](https://en.wikipedia.org/wiki/Robert_Cecil_Martin "Robert Cecil Martin") says about them in its *Clean Code* book:
 
 >Objects hide their data behind abstractions and expose functions that operate on that data. Data structures expose 
@@ -34,9 +37,9 @@ structures. Object oriented code, on the other hand, makes it easy to add new cl
 >Procedural code makes it hard to add new data structures because all the functions must change. Object oriented code
  makes it hard to add new functions because all the classes must change.
 
-This set of rules must guide us when we have to choose between Object vs procedural implementation:
+This set of rules must guide us when we have to choose between objects vs procedural implementation:
 
-* Do you expect to add more and more functions to your code, and keep unmodified the data strcutures you use? Ok,
+* Do you expect to add more and more functions to your code, and keep unmodified the data structures you use? Ok,
 let's go with procedural code :relaxed:.
 * Do you expect to add new types without adding new functions to your code? Well, use objects :bowtie:.  
 

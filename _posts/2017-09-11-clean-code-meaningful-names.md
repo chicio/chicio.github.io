@@ -13,10 +13,17 @@ seo:
 *In this post I will talk about clean code and how important are the name you choose while you're developing software.*
 
 ---
-I always cared about the software I developed. I also always though that what makes a real professional software developer is how much he/she care about the software he/she is creating: the approch to the problem, the attention to details in code, the passion put into creating every single line of code, the focus on the mission to solve his/her customer problems with your software.  
-When I started to work at [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group") I discovered that I'm not the only one to think about software development in this way.  
-In fact an entire new approch to software developement has been create by [Robert Cecil Martin](https://en.wikipedia.org/wiki/Robert_Cecil_Martin "Robert Cecil Martin"), known as "Uncle Bob" (whatt??!?!!? :stuck_out_tongue:) and famous also to be the guy that invented the [SOLID principles](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design) "Solid principles"). The name of this new approch to software development is **clean code**.  
-So as I promised in [my first post](http://www.fabrizioduroni.it/2017/05/10/about-me.html "about me") on this blog I will publish a series of articles in which I will talk about the foundation of clean code and my personal experiences with it. So let's start the discussion with one of the priciples of clean code that impressed me the most: meaningful naming.  
+I always cared about the software I developed. I also always though that what makes a real professional software 
+developer is how much he/she care about the software he/she is creating: the approch to the problem, the attention to
+ details in code, the passion put into creating every single line of code, the focus on the mission to solve his/her 
+ customer problems with your software.  
+When I started to work at [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group") I discovered 
+that I'm not the only one to think about software development in this way.  
+In fact an entire new approch to software development has been create by [Robert Cecil Martin](https://en.wikipedia.org/wiki/Robert_Cecil_Martin "Robert Cecil Martin"), known as "Uncle Bob" (whatt??!?!!? :stuck_out_tongue:) and famous also to be the guy that invented the [SOLID principles](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design) "Solid principles"). The name of this new approch to software development is **clean code**.  
+So as I promised in [my first post](http://www.fabrizioduroni.it/2017/05/10/about-me.html "about me") on this blog I 
+will publish a series of articles in which I will talk about the foundation of clean code and my personal experiences
+ with it. So let's start the discussion with one of the principles of clean code that impressed me the most: 
+ meaningful naming.  
 
 ![Uncle bob meaningful names](/assets/images/posts/meaningful-names.jpg "Uncle bob meaningful names")
 
@@ -140,6 +147,6 @@ We're done with names :relieved:. You can find the complete example [here](https
 I hope that this article will convice you that the names you choose define 
 how much you code is "beautiful" in terms of readability and also, more import, maintainability. Quoting what [Grady Booch](https://en.wikipedia.org/wiki/Grady_Booch "Grady Booch") said about clean code: 
 
->Clean Code reads like a well-written prose.
+> Clean Code reads like a well-written prose.
 
 Choosing the right names is the first step to make your code more similar to a well-written prose.
