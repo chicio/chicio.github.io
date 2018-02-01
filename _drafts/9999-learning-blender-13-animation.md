@@ -64,6 +64,15 @@ that we can open by selecting graph editor from editor selector in an existing p
  
  ![blender animation interpolation mode](/assets/images/posts/blender-animation-interpolation-mode.jpg "blender animation interpolation mode")
 
-... 
- 
-That's all for camera and rendering. In the next post we will talk about animation.
+The graph editor in not the only animation editor. We can use also the dope sheet. It could be more faster to edit an
+ animation in it instead of the animation editor. In it we don't have the curve of interpolation of the animation. We
+  just have a representation of the keyframes and we can edit them by dragging after selection with a right click of 
+  the mouse.  
+  Last but not least we have animation path. To create an animation path we have to add a path by using the menu Add 
+  -> Curve -> Path. Then we need to add a constraint to the object we want to animate so that it will follow the path
+  . After that we can set the keyframes using the same approach  showed before.
+  
+ ![blender path add curve](/assets/images/posts/blender-path-add-curve.jpg "blender path add curve")
+ ![blender path set constraint](/assets/images/posts/blender-path-set-constraint.jpg "blender path set constraint")
+  
+That's all for animation. In the next post we will try to create a complete character.
