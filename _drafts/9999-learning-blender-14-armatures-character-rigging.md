@@ -43,4 +43,5 @@ edit mode, in the left panel of the 3D window we have the options extrude and su
 
 
 
+
 That's all for animation. In the next post we will try to create about character rigging.
