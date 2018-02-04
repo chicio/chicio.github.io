@@ -75,4 +75,4 @@ The graph editor in not the only animation editor. We can use also the dope shee
  ![blender path add curve](/assets/images/posts/blender-path-add-curve.jpg "blender path add curve")
  ![blender path set constraint](/assets/images/posts/blender-path-set-constraint.jpg "blender path set constraint")
   
-That's all for animation. In the next post we will try to create about character rigging.
+That's all for animation. In the next post we will talk about character rigging.

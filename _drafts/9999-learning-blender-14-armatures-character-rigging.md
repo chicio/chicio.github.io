@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Learning Blender: armatures and character rigging"
-description: "In this new post of the series "Learning Blender" I will talk about animations."
+description: "In this new post of the series "Blender tutorial" I will talk about character rigging."
 date: 2017-11-25
 image: TO DO
 tags: [computer graphics, blender]
@@ -41,7 +41,30 @@ edit mode, in the left panel of the 3D window we have the options extrude and su
 
 ![blender armature](/assets/images/posts/blender-armature.jpg "blender armature")
 
+We can now start to add the armature to an object. To do that we just have to place/create the bones inside our 
+object. After that we select the object and the bones (in this specific order), and we choose from the menu at the 
+bottom of the 3D window the option Object -> Parent -> Armature Deform. After this operation, we can go into pose 
+mode (by choosing it in the menu at the bottom of the 3D window). If we move one of our
+ bones in this mode, the part of the object/mesh that contains that bone will move accordingly.
+ 
+![blender set armature](/assets/images/posts/blender-set-armature.jpg "blender set armature")
+ 
+{% include youtube.html videoId="GpkMgUqWZJo" %}
+
+Sometimes we will also need to constraint a bone to the move of other bones. Instead of doing it manually, we can use
+ Inverse kinematics. To be more clear this is an extract of the blender doc:
+ 
+> IK simplifies the animation process, and makes it possible to make more advanced animations with lesser effort. IK 
+allows you to position the last bone in a bone chain and the other bones are positioned automatically
+
+We can add an inverse kinematic constraint on a bone by choosing it from the menu under the Bone constraint tab in 
+the properties panel. This tab will appear only when we are in pose mode.
+
+![blender inverse kinematics](/assets/images/posts/blender-inverse-kinematics.jpg "blender inverse kinematics")
+
+.....
 
 
 
-That's all for animation. In the next post we will try to create about character rigging.
+
+That's all for character rigging. In the next post we will talk about the rendering engine Cycles.
