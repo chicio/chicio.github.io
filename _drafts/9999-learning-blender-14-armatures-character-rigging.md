@@ -62,9 +62,9 @@ the properties panel. This tab will appear only when we are in pose mode.
 
 ![blender inverse kinematics](/assets/images/posts/blender-inverse-kinematics.jpg "blender inverse kinematics")
 
-.....
+After setting bones, armature and inverse kinematics we are ready to animate our character. To do that, we just need 
+to be in Pose mode and set the keyframes as we did for standard animation. 
 
-
-
+{% include youtube.html videoId="Q5m1rnjT6Rw" %}
 
 That's all for character rigging. In the next post we will talk about the rendering engine Cycles.
