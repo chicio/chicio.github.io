@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "React Native and RCTBundleURLProvider: build, run and debug on a iOS device from XCode"
+title: "React Native: the power of RCTBundleURLProvider to build, run and debug on a iOS device from XCode"
 description: "In this post I will talk about how to setup up your react native project on iOS to build, run and debug it on a real device."
 date: 2018-02-08
 image: /assets/images/posts/react-native-bundle-url-provider-setup.jpg
@@ -17,8 +17,9 @@ seo:
 
 In the last few days I was working in pair programming with my colleague [Mariano Patafio](https://www.linkedin.com/in/mariano-patafio-4a8b7426/ "Mariano Patafio") 
 on some new features for a React Native app. [Mariano](https://www.linkedin.com/in/mariano-patafio-4a8b7426/ "Mariano Patafio") 
-is a senior iOS and Android developer and a true "Apple fag" :laughing: (like me :stuck_out_tongue_closed_eyes:).
-At some point during our pair session we wanted to test the app on an iOS real device. The app we where working on 
+is a senior iOS and Android developer and a true ":apple: Apple fag :apple:" :laughing: (like me 
+:stuck_out_tongue_closed_eyes:).
+At some point during our pair session we wanted to test the app on a real iOS device. The app we where working on 
 was an existing iOS app in which we added some React Native views. If you follow the instructions contained in the 
 React Native doc about integrating it in an existing app, you will discover that with that setup you will not be able
  to run your app on a real device from XCode. It will work just in the simulator.  
@@ -88,7 +89,7 @@ Whaaaaaaattttt?!?!?!?!?!? :satisfied: This piece of code basically create a file
 address of your computer, extracted using an `ifconfig` command, concatenated with the domain `xip.io`. So 
 the file will contain a string like the following one: `<your computer IP address>.xip.io`. This is the string 
 returned by the `guessPackagerHost` method. In the screenshot below you can find the source code of this method and 
-the string that it returns 
+the string that it returns. 
 
 ![React Native my local ip](/assets/images/posts/react-native-my-local-ip.jpg "React Native my local ip")
    

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Blender tutorial: cycles"
+title: "Blender tutorial: cycles overview"
 description: "In this new post of the series "Blender tutorial" I will talk about Cycles."
 date: 2017-11-25
 image: TO DO
@@ -30,13 +30,14 @@ rendered scene and navigate through it. Wonderful :heart_eyes:!!!
 
 ![blender cycles start](/assets/images/posts/blender-cycles-start.jpg "blender cycles start")
  
- 
- 
- 
- 
-{% include youtube.html videoId="GpkMgUqWZJo" %}
+How do we create material for cycles? We can create a material from the same tab we previously saw. When the cycles 
+render is selected the option to customize the material change accordingly. In particular there's a *surface* option 
+where we can select from a list of BSDF the type of surface BSDF we want. The other option will change accordingly 
+based on this selection.
 
-
-
+![blender cycles start](/assets/images/posts/blender-cycles-start.jpg "blender cycles start")
+ 
+.....
+ 
 
 That's all my friends. I hope you enjoyed these series of tutorials about Blender.
