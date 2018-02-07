@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "React Native: build, run and debug on a iOS device from XCode"
+title: "React Native and RCTBundleURLProvider: build, run and debug on a iOS device from XCode"
 description: "In this post I will talk about how to setup up your react native project on iOS to build, run and debug it on a real device."
 date: 2018-02-08
 image: /assets/images/posts/react-native-bundle-url-provider-setup.jpg
@@ -10,8 +10,8 @@ seo:
  - type: "BlogPosting"
 ---
 
-*"In this post I will talk about how to setup up you React Native project on iOS to build, run and debug it on a real
- device from XCode."*
+*In this post I will talk about how to setup up you React Native project on iOS to build, run and debug it on a real
+ device from XCode.*
 
 ---
 
@@ -104,12 +104,12 @@ By taking the definition from the homepage of the service:
 >       www.10.0.0.1.xip.io   resolves to   10.0.0.1
 >    mysite.10.0.0.1.xip.io   resolves to   10.0.0.1
 >   foo.bar.10.0.0.1.xip.io   resolves to   10.0.0.1
- 
+>
 >...and so on. You can use these domains to access virtual
  hosts on your development web server from devices on your
  local network, like iPads, iPhones, and other computers.
- No configuration required!    
->
+ No configuration required!
+>    
 >How does it work?
  xip.io runs a custom DNS server on the public Internet.
  When your computer looks up a xip.io domain, the xip.io
