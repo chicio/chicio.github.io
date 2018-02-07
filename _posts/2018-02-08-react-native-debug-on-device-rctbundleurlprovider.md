@@ -2,7 +2,7 @@
 layout: post
 title: "React Native: build, run and debug on a iOS device from XCode"
 description: "In this post I will talk about how to setup up your react native project on iOS to build, run and debug it on a real device."
-date: 2018-03-01
+date: 2018-02-08
 image: /assets/images/posts/react-native-bundle-url-provider-setup.jpg
 tags: [react native, swift, ios, apple, mobile application development, javascript]
 comments: true
