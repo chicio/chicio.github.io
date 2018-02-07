@@ -93,7 +93,8 @@ the string that it returns.
 
 ![React Native my local ip](/assets/images/posts/react-native-my-local-ip.jpg "React Native my local ip")
    
-What is the `xip.io` string added after the IP address? xip.io is public free DNS server created at [basecamp](https://basecamp.com "basecamp"). 
+What is the `xip.io` string added after the IP address? xip.io is a public free DNS server created at [basecamp]
+(https://basecamp.com "basecamp"). 
 By taking the definition from the homepage of the service:
 
 >What is xip.io?
