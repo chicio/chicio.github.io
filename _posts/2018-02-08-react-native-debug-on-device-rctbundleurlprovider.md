@@ -19,7 +19,7 @@ In the last few days I was working in pair programming with my colleague [Marian
 on some new features for a React Native app. [Mariano](https://www.linkedin.com/in/mariano-patafio-4a8b7426/ "Mariano Patafio") 
 is a senior iOS and Android developer and a true ":apple: Apple fag :apple:" :laughing: (like me 
 :stuck_out_tongue_closed_eyes:).
-At some point during our pair session we wanted to test the app on a real iOS device. The app we where working on 
+At some point during our pair session we wanted to test the app on a real iOS device. The app we were working on 
 was an existing iOS app in which we added some React Native views. If you follow the instructions contained in the 
 React Native doc about integrating it in an existing app, you will discover that with that setup you will not be able
  to run your app on a real device from XCode. It will work just in the simulator.  
@@ -57,7 +57,7 @@ Native node server is running on the MacBook Pro where we are building the app).
 
 ![React Native error on device](/assets/images/posts/react-native-error-on-device-failed-bundle.jpg "React Native bridge delegate localhost")   
 
-How can we build on a real device? First of all we need to add a new build phase to our projectthat let us run the 
+How can we build on a real device? First of all we need to add a new build phase to our project that let us run the 
 `React Native Bundler` before the real build. The `React Native Bundler` is a shell script with name 
 `react-native-xcode.sh` that you can find inside your react native npm package under 
 `<you app root folder.>/node_modules/react-native/scripts/`. This script must take as input our React Native index.js. 
@@ -85,7 +85,7 @@ build phase. If we look at the source code of this script you will find the foll
 
 ![React Native ip txt generation](/assets/images/posts/react-native-ip-txt-generation.jpg "React Native ip txt generation")
 
-Whaaaaaaattttt?!?!?!?!?!? :satisfied: This piece of code basically create a file named `ip.txt` that contains the IP 
+Whaaaaaaattttt?!?!?!?!?!? :satisfied: This piece of code basically creates a file named `ip.txt` that contains the IP 
 address of your computer, extracted using an `ifconfig` command, concatenated with the domain `xip.io`. So 
 the file will contain a string like the following one: `<your computer IP address>.xip.io`. This is the string 
 returned by the `guessPackagerHost` method. In the screenshot below you can find the source code of this method and 
@@ -93,8 +93,8 @@ the string that it returns.
 
 ![React Native my local ip](/assets/images/posts/react-native-my-local-ip.jpg "React Native my local ip")
    
-What is the `xip.io` string added after the IP address? xip.io is a public free DNS server created at [basecamp]
-(https://basecamp.com "basecamp"). 
+What is the `xip.io` string added after the IP address? [xip.io](http://xip.io/ "xip.io") is a public free DNS server 
+created at [basecamp](https://basecamp.com "basecamp"). 
 By taking the definition from the homepage of the service:
 
 >What is xip.io?
@@ -123,5 +123,3 @@ By taking the definition from the homepage of the service:
 This basically means that xip.io is a domain name we can use to access our local packager environment on our mac from 
 our iPhone and iPad, based on the fact that the devices are all on the same network.   
 That's all, and as you can see everything works "like magic" :relaxed:.  
-
-                                                                                               

@@ -33,11 +33,12 @@ rendered scene and navigate through it. Wonderful :heart_eyes:!!!
 How do we create material for cycles? We can create a material from the same tab we previously saw. When the cycles 
 render is selected the option to customize the material change accordingly. In particular there's a *surface* option 
 where we can select from a list of BSDF the type of surface BSDF we want. The other option will change accordingly 
-based on this selection.
+based on this selection. We can also add texture like for standard material. To do that we simply have to go into the
+ color option and select the texture we want.
 
-![blender cycles start](/assets/images/posts/blender-cycles-start.jpg "blender cycles start")
+![blender cycles start](/assets/images/posts/blender-cycles-material.jpg "blender cycles start")
  
-.....
+....
  
 
 That's all my friends. I hope you enjoyed these series of tutorials about Blender.
