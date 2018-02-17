@@ -71,6 +71,7 @@ gulp.task('bundle-blog-scripts', function() {
 gulp.task('vendor-scripts', function() {
     return gulp.src([
         '_js/vendor/threejs/three.js',
+        '_js/vendor/threejs/Detector.js',
         '_js/vendor/threejs/OrbitControls.js',
         '_js/vendor/threejs/PLYLoader.js',
         '_js/vendor/webfont.js',

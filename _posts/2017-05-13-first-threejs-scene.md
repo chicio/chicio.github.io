@@ -264,7 +264,6 @@ loadFloor(textureLoader, function (mesh) {
     scene.add(mesh);
 });
 ```
-
 For the stars, we use the `textureLoader` to load a circle png texture. Whe the texture load is completed, we create 
 a lot of `Geometry` with random position. Whe also create the material using the texture obtained from the loader (and
 we set on it a transparent background). Now we can create some WebGL `Points` using the related three.js class. 

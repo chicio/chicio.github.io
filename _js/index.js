@@ -6,7 +6,7 @@ $(document).ready(function () {
     loadFonts();
     addTabsClickEvent(controller);
     addArrowDownClickEvent(isMobileDevice);
-    sceneThreeJS(isMobileDevice);
+    startThreeJSSceneIfSupported(isMobileDevice)
     whoIAmAnimation(controller);
     projectsAnimation(controller);
     heartAnimation();
@@ -374,6 +374,19 @@ function createRenderer() {
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.setSize($(window).width(), $(window).height());
     return renderer;
+}
+
+function startThreeJSSceneIfSupported(isMobileDevice) {
+    if (Detector.webgl) {
+        sceneThreeJS(isMobileDevice);
+    } else {
+        hideLoaderAnimation(function () {
+            resizeViewport(isMobileDevice);
+            profileAnimation(function () {
+                downArrowAnimation();
+            });
+        });
+    }
 }
 
 function sceneThreeJS(isMobileDevice) {
