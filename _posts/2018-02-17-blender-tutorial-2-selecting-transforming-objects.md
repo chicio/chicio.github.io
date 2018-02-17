@@ -10,7 +10,7 @@ seo:
  - type: "BlogPosting"
 ---
 
-*Second post of the "Blender tutorial" series. This time we will learn how to select and move objects*
+*Second post of the "Blender tutorial" series. This time we will learn how to select and move objects.*
 
 ---
 
