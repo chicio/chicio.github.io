@@ -32,7 +32,7 @@ function disableScroll() {
 function showBlog() {
     $(document).ready(function () {
         $(window).on("load", function() {
-            var showBlogTimeline = new TimelineMax({delay: 1.2});
+            var showBlogTimeline = new TimelineMax({delay: 0.6});
             showBlogTimeline.to("#loader", 0.2, {opacity: 0});
             showBlogTimeline.to("#loading-screen", 0.4, {
                 xPercent: -100, onComplete: function () {

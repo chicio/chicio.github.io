@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Blender tutorial: cycles overview"
+title: "Blender tutorial: Cycles overview"
 description: "In this new post of the series "Blender tutorial" I will talk about Cycles."
 date: 2017-11-25
 image: TO DO
@@ -38,7 +38,17 @@ based on this selection. We can also add texture like for standard material. To 
 
 ![blender cycles start](/assets/images/posts/blender-cycles-material.jpg "blender cycles start")
  
-....
+For what concern lights, Cycles support different type of lights. The type of lights and their setup are similar to the
+ one we can find in the standard Blender engine:
+
+* **point**
+* **sun**
+* **spot**
+* **hemi**
+* **area** 
+
+We can also use ambient occlusion to improve the realism of light. We can activate it like we did before under the 
+World tab in the properties. 
  
 
 That's all my friends. I hope you enjoyed these series of tutorials about Blender.

@@ -81,7 +81,7 @@ mapping:
 
 There are also some other basic useful 3D navigation commands:
 
- * align view to cursor and show all objects with *shift + C* (or alternatively in object mode *View -> Align 
+ * align view to cursor and show all objects with *shift + "c"* (or alternatively in object mode *View -> Align 
  View -> Center Cursor*)
  * align view to one side with the options *Left, Right, Top, Bottom, Front, Back* contained in the *View menu*
  * change between orthographic and perspective view with the menu option *View -> View Persp/Ortho*
@@ -98,4 +98,3 @@ There are also some other basic useful 3D navigation commands:
  To be noted is the option "Emulate 3 Button mouse" in the input settings. This option let Blender emulates a 3 
  button mouse using the Alt button. Int this way you can use this setting to use Blender with standard keys for mouse.  
  That's enough first post. See you in the second tutorial about selecting and translating objects.
- 
