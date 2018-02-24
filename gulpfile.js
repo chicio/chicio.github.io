@@ -3,6 +3,7 @@ var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var child = require('child_process');
 var gutil = require('gulp-util');
+var rev = require('gulp-rev-append');
 var browserSync = require('browser-sync').create();
 var uglify = require('gulp-uglify');
 var argv = require('yargs').argv;
@@ -29,7 +30,7 @@ gulp.task('serve', function() {
 });
 
 gulp.task('jekyll', function() {
-    var options = ['build', '--watch', '--incremental', "--profile"];
+    var options = ['build', '--watch', '--incremental', '--verbose', '--profile'];
     if (isTravis) {
         options = ['build', '--incremental'];
     }
@@ -206,6 +207,18 @@ gulp.task('css-critical', function() {
     });
 });
 
+gulp.task('rev-home', function() {
+    gulp.src('./home-dependencies.html')
+        .pipe(rev())
+        .pipe(gulp.dest('_includes'));
+});
+
+gulp.task('rev-blog', function() {
+    gulp.src('./blog-dependencies.html')
+        .pipe(rev())
+        .pipe(gulp.dest('_includes'));
+});
+
 gulp.task('default', [
     'css',
     'bundle-home-scripts',
@@ -214,6 +227,8 @@ gulp.task('default', [
     'images',
     'fonts',
     'models',
+    'rev-home',
+    'rev-blog',
     'jekyll',
     'serve'
 ]);
@@ -226,10 +241,14 @@ gulp.task('test', [
     'images',
     'fonts',
     'models',
+    'rev-home',
+    'rev-blog',
     'jekyll'
 ]);
 
 gulp.task('dev', [
+    'rev-home',
+    'rev-blog',
     'jekyll',
     'serve'
 ]);

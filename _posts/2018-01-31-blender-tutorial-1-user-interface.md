@@ -61,6 +61,8 @@ On the left side of the viewport we can find a series of tabs that contain some 
  * **texture mode**, that shows also textures of the objects
  * **materials**, that let us adds the materials to our objects
  * **rendered**
+ 
+{% include adsense-article-middle.html %}
    
  Finally we have the editing interaction mode selector, that allow us to switch between editing mode:
  

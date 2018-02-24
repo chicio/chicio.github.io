@@ -42,6 +42,8 @@ In this post I will briefly analyze some IDEs commonly used for mobile applicati
 coding speed that is possible to achieve by using them and I will explain to you why, at the
  time of this writing, I started to prefer the JetBrains IDEs family (not only for mobile application development 
  :bowtie:).
+ 
+{% include adsense-article-middle.html %}
 
 ### Xcode
 I always loved Xcode. I started to use it 8 years ago and it's still here with me during my daily job. It opens in a 

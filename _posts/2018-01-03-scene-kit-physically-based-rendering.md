@@ -293,6 +293,8 @@ class PhysicallyBasedMaterial {
 }
 ```
 
+{% include adsense-article-middle.html %}
+
 Now it's time to construct our scene :relieved:!! We start by creating a new class `PhysicallyBasedScene`, subclass
  of `SCNScene`. In this way we can customize the default initializer with the step needed to add all the element of 
  our scene, and also because in this way we have direct access to all the properties of `SCNScene`. We also define a 

@@ -56,7 +56,7 @@ defaults:
     values:
       image: /assets/images/fabrizio-duroni.jpg
 
-paginate:           10
+paginate:           5
 paginate_path:      /blog/page:num/
 
 # Debug options
@@ -93,3 +93,5 @@ exclude:
   - LICENSE.md
   - README.md
   - blog-material
+  - home-dependencies.html
+  - blog-dependencies.html

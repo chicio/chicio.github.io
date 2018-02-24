@@ -57,6 +57,8 @@ Native node server is running on the MacBook Pro where we are building the app).
 
 ![React Native error on device](/assets/images/posts/react-native-error-on-device-failed-bundle.jpg "React Native bridge delegate localhost")   
 
+{% include adsense-article-middle.html %}
+
 How can we build on a real device? First of all we need to add a new build phase to our project that let us run the 
 `React Native Bundler` before the real build. The `React Native Bundler` is a shell script with name 
 `react-native-xcode.sh` that you can find inside your react native npm package under 
@@ -95,7 +97,7 @@ the string that it returns.
    
 What is the `xip.io` string added after the IP address? [xip.io](http://xip.io/ "xip.io") is a public free DNS server 
 created at [basecamp](https://basecamp.com "basecamp"). 
-By taking the definition from the homepage of the service:
+Below you can find a quote from the homepage of the service:
 
 >What is xip.io?
  xip.io is a magic domain name that provides wildcard DNS
