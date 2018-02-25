@@ -13,8 +13,9 @@ seo:
 *In this post I will talk about clean code and how important are the name you choose while you're developing software.*
 
 ---
+
 I always cared about the software I developed. I also always though that what makes a real professional software 
-developer is how much he/she care about the software he/she is creating: the approch to the problem, the attention to
+developer is how much he/she care about the software he/she is creating: the approach to the problem, the attention to
  details in code, the passion put into creating every single line of code, the focus on the mission to solve his/her 
  customer problems with your software.  
 When I started to work at [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group") I discovered 

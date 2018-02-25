@@ -38,7 +38,8 @@ Basically the process to test asynchronous operation/closure is:
 * execute your closure, make your assert and call the method `fulfill` of `XCTestExpectation`
 
 So, what about a more complex example? Let's see how powerful expectation are by implementation a use case with some dependency that uses closure to complete some taks, and how we can unit test the use case and the closure used by its dependency objects.
-Suppose for example we have a [use case] class called `PasswordUpdateUseCase` with the following implementation:
+Suppose for example we have a [use case](https://en.wikipedia.org/wiki/Use_case "use case") class called 
+`PasswordUpdateUseCase` with the following implementation:
 
 ```swift
 public class PasswordUpdateUseCase {
