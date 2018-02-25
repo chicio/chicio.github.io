@@ -14,7 +14,7 @@ seo:
 
 ---
 
-In the [first post of the series "Learning Blender"](/2018/01/31/blender-tutorial-1-user-interface.html "Blender 
+In the [first post of the series "Blender tutorial"](/2018/01/31/blender-tutorial-1-user-interface.html "Blender 
 tutorial: user interface") we learned how the user interface is composed and the most important commands to navigate 
 inside a scene. This time we will be focus on selecting and moving objects inside the 3D view.  
 We can **select an object** by using the *right button of your mouse*. If you're on the MacBook like me, the right 
