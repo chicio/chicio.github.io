@@ -2,9 +2,9 @@
 layout: post
 title: "Code review: what it is and why it matters"
 description: "In this post I will talk about code review: what it is and why it matters."
-date: 2018-02-19
+date: 2018-03-02
 image: /assets/images/posts/01-technology-version-update.jpg
-tags: [swift, ios, apple, mobile application development, test driven development]
+tags: [agile, clean code, test driven development]
 comments: true
 seo:
  - type: "BlogPosting"
@@ -65,26 +65,43 @@ more experienced than you on that type of technology.
 
 ![technology version update](/assets/images/posts/01-technology-version-update.jpg "technology version update")
 
-In fact Angelo gave me another technology advice during the review. He suggested to change some pieces of code with 
+In fact Angelo gave me another technology advice during his review. He suggested to change some pieces of code with 
 others that leverage the power of functional programming. This is really interesting because it is easy 
 imagine how much knowledge you can absord from the experience of your code reviewer.
    
 ![functional update](/assets/images/posts/03-functional-field.jpg "functional update")
 ![functional update with new class](/assets/images/posts/04-new-fields-class.jpg "functional update with new class")
 
+Another important aspect that is one of the main subject of the code review is software design. In fact Angelo 
+discovered a series of improvement and refactoring opportunities in my code: 
 
+* the `Minesweeper` class doesn't need to receive the fields input at construction time but directly in the `play()` 
+method. In this way the `Minesweeper` class becomes a stateless object, and the same istance could be used to 
+resolve/unmask multiple fields input.
 
+![stateless object](/assets/images/posts/02-minesweeper-fields-as-parameter.jpg "stateless object")
 
+* The objects that are the building block of a [chain of responsability]("https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern" "chain of responsability")   
+named `FieldRowParser` could become more lighter and some of their responsibility could be assigned to some new 
+collaborators. Also the object that contains the parsing status could become more lighter.
 
+![lightweight chain](/assets/images/posts/05-lightweight-chain.jpg "lightweight chain")
+![parsing status](/assets/images/posts/07-parsing-status-become-parsing-content-lightweight.jpg "parsing status")
 
-```swift
-let expectation = XCTestExpectation(description: "Expectation description")
+As you can see from these kind of comments the code review could really improve the general architectural design of 
+your application :heart_eyes::relieved:.
+Code convention are another important thing to check during code review. For example Angelo told me to move all the 
+constants at the beginning of some of the classes. Usually tools like Github or Gitlab let you discuss your code 
+review by adding comments directly to the code.
 
-yourInstance.method(param: "aParam") {
-    <Your assert using XCTAssert...>
-    expectation.fulfill()
-}
+![constants position](/assets/images/posts/08-constants-beginning-of-file.jpg "constants position")
+![guidelines comments](/assets/images/posts/06-guidelines.jpg "guidelines comments")
 
-wait(for: [expectation], timeout: <time to wait the fulfillment of the expecation>)
-```
+Last but not least, if you are a real fan of clean code, you know that [meaningful names are important](/2017/09/11/clean-code-meaningful-names.html "clean code meaningful names"). So you can 
+suggest some more meaningful name for a class, variable or method.
 
+![rename](/assets/images/posts/10-rename-masker.jpg "rename")
+
+That's all for code review. I hope you understood how much important it is to do it and how you much your codebase 
+can improve if you use code review as a validation tool and as a tool to find new refactoring opportunities (anyway, 
+I hope Angelo will never be your reviewer :laughing::sparkling_heart:).
