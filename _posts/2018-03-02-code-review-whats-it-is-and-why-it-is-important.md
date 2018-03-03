@@ -14,12 +14,12 @@ seo:
 
 ---
 
-In some of my previous posts, for example [in this one](/2017/09/11/clean-code-meaningful-names.html "clean code 
-meaningful names"), I talked about my new experience at [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group") and how much
- here we care about code quality. In fact I already talked about the fact that we use to do [pair programming during 
- our daily job](/2018/01/16/ide-refactoring-android-studio-xcode-appcode-webstorm-jetbrains.html "pair programming").
-  But clean code and pair programming are not the only techniques we use to be sure that our software matches high code 
-  quality standard :sunglasses:.  
+In some of my previous posts (for example [in this one](/2017/09/11/clean-code-meaningful-names.html "clean code 
+meaningful names")), I talked about my new experience at [lastminute.com group](http://www.lastminutegroup.com 
+"lastminute.com group") and how much we care about code quality. In fact I already talked about the fact that we use 
+to [pair programming during our daily job](/2018/01/16/ide-refactoring-android-studio-xcode-appcode-webstorm-jetbrains.html "pair programming").
+  But pair programming are not the only techniques we use to be sure that our software matches high 
+  code quality standard :sunglasses:.  
   One of the most important procedure I use during my daily job with my colleagues is code review. What is it? Let's 
   see a standard definition from [wikipedia](https://en.wikipedia.org/wiki/Code_review "code review"):
   
