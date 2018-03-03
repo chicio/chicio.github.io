@@ -102,6 +102,6 @@ suggest some more meaningful name for a class, variable or method.
 
 ![rename](/assets/images/posts/10-rename-masker.jpg "rename")
 
-That's all for code review. I hope you understood how much important it is to do it and how you much your codebase 
+That's all for code review. I hope you understood how much important it is to do it and how much your codebase 
 can improve if you use code review as a validation tool and as a tool to find new refactoring opportunities (anyway, 
 I hope Angelo will never be your reviewer :laughing::sparkling_heart:).
