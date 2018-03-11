@@ -3,7 +3,6 @@ cookieConsent();
 loadFonts();
 $(document).ready(function () {
     disableScroll();
-    heartAnimation();
 });
 
 function loadFonts() {
@@ -68,14 +67,6 @@ function cookieConsent() {
                 "message": "This website uses cookies to ensure you get the best experience."
             }
         })});
-}
-
-function heartAnimation() {
-    TweenMax.from("#heart", 0.7, {
-        scale: 0.4,
-        repeat: -1,
-        yoyo: true
-    });
 }
 
 function runFuckAdBlock() {

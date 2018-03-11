@@ -9,7 +9,6 @@ $(document).ready(function () {
     startThreeJSSceneIfSupported(isMobileDevice)
     whoIAmAnimation(controller);
     projectsAnimation(controller);
-    heartAnimation();
 });
 
 function enableScroll() {
@@ -219,14 +218,6 @@ function createScrollMagicScene(controller, idElementTrigger, tween) {
     return new ScrollMagic.Scene({
         triggerElement: idElementTrigger
     }).setTween(tween).addTo(controller);
-}
-
-function heartAnimation() {
-    TweenMax.from("#heart", 0.7, {
-        scale: 0.4,
-        repeat: -1,
-        yoyo: true
-    });
 }
 
 function downArrowAnimation() {

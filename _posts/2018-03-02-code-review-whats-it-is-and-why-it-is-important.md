@@ -46,18 +46,31 @@ have fun and to engage in DeliberatePractice in order to improve their skills.
 During the dojo that I attended with Angelo we tried to resolve the [Minesweeper problem](http://codingdojo.org/kata/Minesweeper/ "Minesweeper").   
 Basically we had to write an automatic Minesweeper resolver (do you remember the Windows one? :heart_eyes:). At the 
 end of the dojo we didn't complete the task, so I decided to try to solve it in another way. I developed a 
-complete command line version of a Minesweeper resolver and let Angelo do the code review of my implementation. In this way I can show you the 
-power of code review :neckbeard: (and last but not least how much meticulous is Angelo during is code review 
-:cold_sweat::sweat_smile::cupid:).  
+complete command line version of a Minesweeper resolver and let Angelo do the code review of my implementation. 
+In this way I can show you the power of code review :neckbeard: (and last but not least how much meticulous is Angelo
+ during is code review :cold_sweat::sweat_smile::cupid:).
 
 {% include adsense-article-middle.html %} 
 
-So let's start to see which kind of observation I received from Angelo, that basically include most of the 
-observation you could receive during a code review. Before starting, you can look [this repository](https://github.com/chicio/Minesweeper "Minesweeper kata dojo") 
-if you want to have a look at the entire Minesweeper implementation I develop and, on the [Code review pull request](https://github.com/chicio/Minesweeper/pull/1) you can find the observation/new implementation from Angelo. Usually 
+Before starting, I suggest to you to have a look at [this repository](https://github.com/chicio/Minesweeper "Minesweeper kata dojo") 
+that contains the entire Minesweeper implementation I develop and, on the [Code review pull request](https://github.com/chicio/Minesweeper/pull/1) 
+opened on this repo you can find the observation/new implementation from Angelo. Usually 
 the code reviewer doesn't implement himself/herself the stuff of his/her observation, but in this case we did it so 
 that we can share the code before/after the code review in a pull request (and also to show you the skills of Angelo 
 :heart_eyes:).  
+To facilitate you in the navigation of the two different implementations I created two [class diagram](https://en.wikipedia.org/wiki/Class_diagram "class diagram"): 
+one that describe my implementation before the code review, and the second one 
+that shows the final result after Angelo's code review. The following one describes my implementation of the 
+minesweeper.
+  
+![fabrizio duroni minesweeper](/assets/images/posts/minesweeper-fabrizio.jpg "fabrizio duroni minesweeper")  
+
+This one describes Angelo's implementation.
+
+![angelo sciarra minesweeper](/assets/images/posts/minesweeper-angelo.jpg "angelo sciarra  minesweeper")  
+
+So let's start to see which kind of observation I received from Angelo, that basically include most of the 
+observation you could receive during a code review.    
 The first observation I received from Angelo is about the java JDK version I used for my project. I did the setup of 
 the project using JDK 1.5 instead of JDK 1.8 (as you may know, this is a more recent version). In general it is 
 common to receive suggestion about technology specific problems/setup/changes, especially if your code reviewer is 
