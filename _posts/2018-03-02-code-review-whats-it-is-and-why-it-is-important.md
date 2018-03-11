@@ -55,7 +55,7 @@ In this way I can show you the power of code review :neckbeard: (and last but no
 Before starting, I suggest you to have a look at [this repository](https://github.com/chicio/Minesweeper "Minesweeper kata dojo") 
 that contains the entire Minesweeper implementation I develop and, on the [Code review pull request](https://github.com/chicio/Minesweeper/pull/1) 
 opened on this repo you can find the observation/new implementation from Angelo. Usually 
-the code reviewer doesn't implement himself/herself the stuff of his/her observation, but in this case we did it so 
+the code reviewer doesn't implement by himself/herself the stuff of his/her observation, but in this case we did it so 
 that we can share the code before/after the code review in a pull request (and also to show you the skills of Angelo 
 :heart_eyes:).  
 To facilitate you in the navigation of the two different implementations I created two [class diagram](https://en.wikipedia.org/wiki/Class_diagram "class diagram"): 
