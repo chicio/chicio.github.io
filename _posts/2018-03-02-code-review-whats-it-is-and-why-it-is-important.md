@@ -52,7 +52,7 @@ In this way I can show you the power of code review :neckbeard: (and last but no
 
 {% include adsense-article-middle.html %} 
 
-Before starting, I suggest to you to have a look at [this repository](https://github.com/chicio/Minesweeper "Minesweeper kata dojo") 
+Before starting, I suggest you to have a look at [this repository](https://github.com/chicio/Minesweeper "Minesweeper kata dojo") 
 that contains the entire Minesweeper implementation I develop and, on the [Code review pull request](https://github.com/chicio/Minesweeper/pull/1) 
 opened on this repo you can find the observation/new implementation from Angelo. Usually 
 the code reviewer doesn't implement himself/herself the stuff of his/her observation, but in this case we did it so 
