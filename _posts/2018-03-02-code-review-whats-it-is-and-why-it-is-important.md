@@ -18,7 +18,7 @@ In some of my previous posts (for example [in this one](/2017/09/11/clean-code-m
 meaningful names")), I talked about my new experience at [lastminute.com group](http://www.lastminutegroup.com 
 "lastminute.com group") and how much we care about code quality. In fact I already talked about the fact that we do 
 [pair programming during our daily job](/2018/01/16/ide-refactoring-android-studio-xcode-appcode-webstorm-jetbrains.html "pair programming").
-  But pair programming are not the only techniques we use to be sure that our software matches high 
+  But pair programming is not the only techniques we use to be sure that our software matches high 
   code quality standard :sunglasses:.  
   One of the most important procedure I use during my daily job with my colleagues is code review. What is it? Let's 
   see a standard definition from [wikipedia](https://en.wikipedia.org/wiki/Code_review "code review"):
@@ -48,7 +48,7 @@ Basically we had to write an automatic Minesweeper resolver (do you remember the
 end of the dojo we didn't complete the task, so I decided to try to solve it in another way. I developed a 
 complete command line version of a Minesweeper resolver and let Angelo do the code review of my implementation. 
 In this way I can show you the power of code review :neckbeard: (and last but not least how much meticulous is Angelo
- during is code review :cold_sweat::sweat_smile::cupid:).
+ during his code review :cold_sweat::sweat_smile::cupid:).
 
 {% include adsense-article-middle.html %} 
 
@@ -95,7 +95,7 @@ resolve/unmask multiple fields input.
 ![stateless object](/assets/images/posts/02-minesweeper-fields-as-parameter.jpg "stateless object")
 
 * The objects that are the building block of a [chain of responsability]("https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern" "chain of responsability")   
-named `FieldRowParser` could become more lighter and some of their responsibility could be assigned to some new 
+named `FieldRowParser` could become lighter and some of their responsibility could be assigned to some new 
 collaborators. Also the object that contains the parsing status could become more lighter.
 
 ![lightweight chain](/assets/images/posts/05-lightweight-chain.jpg "lightweight chain")
