@@ -482,4 +482,4 @@ beautiful results of our work. Below you can find a video of the scene we create
 {% include youtube.html videoId="yDMdAtv-3Bg" %}
 
 That's it!! You've made it!! Now you can show to your friends your physically based scene and be proud of it 
-:sunglasses:. You can find this example with other scenes on [this github repository](https://github.com/chicio/Exploring-SceneKit "Exploring-SceneKit repo").
+:sunglasses:. You can find this example with other scenes in [this github repository](https://github.com/chicio/Exploring-SceneKit "Exploring-SceneKit repo").
