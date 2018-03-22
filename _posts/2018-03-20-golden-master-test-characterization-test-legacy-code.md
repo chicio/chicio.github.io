@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Golden master testing aka Characterization test: a powerful tool to win your fight against legacy code"
-description: "In this post I will talk about golden master test: what it is and how to use it."
+description: "In this post I will talk about golden master test aka characterization test: what it is and how to use it."
 date: 2018-03-20
 image: /assets/images/posts/golden-master.jpg
 tags: [test driven development, agile, clean code]
@@ -10,7 +10,7 @@ seo:
  - type: "BlogPosting"
 ---
 
-*In this post I will talk about golden master test: what it is and how to use it.*
+*In this post I will talk about golden master test aka characterization test: what it is and how to use it. *
 
 ---
 
