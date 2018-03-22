@@ -18,7 +18,8 @@ In the last few months the focus during my daily job was not only on mobile. I h
 and back-end application of [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group"). In 
 particular I worked with my team to the renew of the user personal area of all the main brands sites, volagratis
 .com, lastminute.com and rumbo.es. During the last week I did pair programming with [Emanuele Ianni](https://www.linkedin.com/in/emanueleianni/ "Emanuele Ianni"). 
-Emanuele is a senior full-stack software engineer and a true nerd :alien:/computer science lover:heart:. We were working
+Emanuele is a senior full-stack software engineer and a true nerd :alien:/computer science lover :heart:. We were 
+working
  on the implementation of a new feature for a family of microservices (based on Java +and Spring boot) that make up the 
  the backend of the user personal area on the websites and on the mobile apps of [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group"). 
  In one of this microservices we found some legacy code without tests, and unluckily in this parts we needed to add 
