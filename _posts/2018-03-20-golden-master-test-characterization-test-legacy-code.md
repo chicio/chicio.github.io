@@ -10,7 +10,7 @@ seo:
  - type: "BlogPosting"
 ---
 
-*In this post I will talk about golden master test aka characterization test: what it is and how to use it. *
+*In this post I will talk about golden master test aka characterization test: what it is and how to use it.*
 
 ---
 
