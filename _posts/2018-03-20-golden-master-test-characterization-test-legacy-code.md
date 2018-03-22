@@ -25,7 +25,7 @@ working
  the backend of the user personal area on the websites and on the mobile apps of [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group"). 
  In one of this microservices we found some legacy code without tests, and unluckily in this parts we needed to add 
  some new implementations to reach our goal. In this moment Emanuele shown to me the Golden master testing technique.  
- Soooo what is Golden master testing? As always (and maybe you can expect it because you are a huge fan of my blog 
+ Soooo what is golden master testing? As always (and maybe you can expect it because you are a huge fan of my blog 
  and you read all my previous posts :laughing:) Wikipedia gives us all the answer we need:
  
  > In computer programming, a **characterization test (also known as Golden Master Testing)** is a means to describe 
