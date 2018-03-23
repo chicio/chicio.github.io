@@ -23,8 +23,8 @@ Emanuele is a senior full-stack software engineer and a true nerd :alien:/comput
 working
  on the implementation of a new feature for a family of microservices (based on Java +and Spring boot) that make up the 
  the backend of the user personal area on the websites and on the mobile apps of [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group"). 
- In one of this microservices we found some legacy code without tests, and unluckily in this parts we needed to add 
- some new implementations to reach our goal. In this moment Emanuele shown to me the Golden master testing technique.  
+ In one of these microservices we found some legacy code without tests, and unluckily in these parts we needed to add 
+ some new implementations to reach our goal. In this moment Emanuele shown me the Golden master testing technique.  
  Soooo what is golden master testing? As always (and maybe you can expect it because you are a huge fan of my blog 
  and you read all my previous posts :laughing:) Wikipedia gives us all the answer we need:
  
@@ -259,6 +259,10 @@ public class TravelsAdapterTest {
         );
     }
 }
-```   
+```
+   
+In this example we generated just one test case, but usually a lot more of them. Basically we can apply a technique 
+named **"property testing"**: a lot of random input are generated so that there will be an high probability to 
+execute all the possible branch in our source code (and in this way have a higher test coverage).    
 So we put our `TravelsAdapter` under test and we can now start to work on this class without any kind of risk 
 :relieved:. Now it's time to test this technique in your legacy code :grin:. 
