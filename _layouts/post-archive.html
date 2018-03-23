@@ -10,11 +10,11 @@
                 {% for post in site.posts %}
                 <div class="container archive-list-post">
                     <a href="{{ post.url }}">
-                        <span class="archive-list-post-title">
-                            {{ post.title }}
-                        </span>
                         <span class="archive-list-post-date">
                             <time>| {{ post.date | date_to_string }}</time>
+                        </span>
+                        <span class="archive-list-post-title">
+                            {{ post.title }}
                         </span>
                     </a>
                 </div>
