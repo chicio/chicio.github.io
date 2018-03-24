@@ -87,7 +87,7 @@ public class TravelsAdapter {
 }
 ```  
 
-It seems quite really a mess. So we start to think "I want to see the tests of this class to understand what it 
+It's really a mess. So we start to think "I want to see the tests of this class to understand what it 
 does", but we search for them in the project and......there aren't any tests for this class!!! :fearful:. The logic 
 contained in this class seems a little bit twisted, and also it would take a lot of time to write a complete suite of
  test case because we need to understand from the beginning every single path contained in this class. This is a case
