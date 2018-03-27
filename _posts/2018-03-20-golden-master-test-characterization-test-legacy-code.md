@@ -16,15 +16,15 @@ seo:
 
 In the last few months the focus during my daily job was not only on mobile. I had the chance to work on some front-end 
 and back-end application of [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group"). In 
-particular I worked with my team to the renew of the user personal area of all the main brands sites, [volagratis.com](https://www.volagratis.com/ "volagratis"), [lastminute.com](https://www.it.lastminute.com/ "lastminute") and 
+particular, I worked with my team to renew the customer area of all the main brands sites: [volagratis
+.com](https://www.volagratis.com/ "volagratis"), [lastminute.com](https://www.it.lastminute.com/ "lastminute") and 
 [rumbo.es](https://www.rumbo.es/ "rumbo"). 
 During the last week I did pair programming with [Emanuele Ianni](https://www.linkedin.com/in/emanueleianni/ "Emanuele Ianni"). 
-Emanuele is a senior full-stack software engineer and a true nerd :alien:/computer science lover :heart:. We were 
-working
- on the implementation of a new feature for a family of microservices (based on Java +and Spring boot) that make up 
- the backend of the user personal area on the websites and on the mobile apps of [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group"). 
- In one of these microservices we found some legacy code without tests, and unluckily in these parts we needed to add 
- some new implementations to reach our goal. In this moment Emanuele shown me the Golden master testing technique.  
+Emanuele is a senior full-stack software engineer and a true nerd :alien:/computer science lover :heart:.
+ We needed to implement a new feature for a family of microservices (based on Java 1.8 and Spring Boot) that make up 
+ the back-end of the customer area, both for web and mobile apps of [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group").
+ Unfortunately, we found some legacy code without tests, exactly where we planned to add the feature. At
+  this moment Emanuele showed me the Golden master testing technique.
  Soooo what is golden master testing? As always (and maybe you can expect it because you are a huge fan of my blog 
  and you read all my previous posts :laughing:) Wikipedia gives us all the answer we need:
  
