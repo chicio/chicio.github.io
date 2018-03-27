@@ -21,7 +21,7 @@ particular I worked with my team to the renew of the user personal area of all t
 During the last week I did pair programming with [Emanuele Ianni](https://www.linkedin.com/in/emanueleianni/ "Emanuele Ianni"). 
 Emanuele is a senior full-stack software engineer and a true nerd :alien:/computer science lover :heart:. We were 
 working
- on the implementation of a new feature for a family of microservices (based on Java +and Spring boot) that make up the 
+ on the implementation of a new feature for a family of microservices (based on Java +and Spring boot) that make up 
  the backend of the user personal area on the websites and on the mobile apps of [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group"). 
  In one of these microservices we found some legacy code without tests, and unluckily in these parts we needed to add 
  some new implementations to reach our goal. In this moment Emanuele shown me the Golden master testing technique.  
