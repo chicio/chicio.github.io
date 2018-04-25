@@ -2,7 +2,7 @@
 layout: post
 title: "Clean Code: data structures vs objects and the law of demeter"
 description: "In this post I will talk about clean code: data structures, objects vs procedural and the law of demeter."
-date: 2018-03-01
+date: 2018-04-25
 image: /assets/images/posts/uncle-bob-defender-of-clean-code.jpg
 tags: [clean code]
 comments: true
