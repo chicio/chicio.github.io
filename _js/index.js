@@ -8,7 +8,6 @@ $(document).ready(function () {
     addArrowDownClickEvent(isMobileDevice);
     startThreeJSSceneIfSupported(isMobileDevice)
     whoIAmAnimation(controller);
-    projectsAnimation(controller);
 });
 
 function enableScroll() {
@@ -61,8 +60,6 @@ function addTabsClickEvent(controller) {
         if (isEducationTab() && educationTabHasNotBeenOpened(tabsNotOpened)) {
             timelineElementsAnimation(controller);
             updateTabsOpenedStatus(tabsNotOpened);
-        } else {
-            projectsAnimation(controller);
         }
     });
 }
@@ -143,30 +140,12 @@ function profileAnimation(completeFunction) {
     profileTimeline.to("#down-arrow", 0.5, {opacity: 1, ease: Power1.easeOut});
 }
 
-function projectAnimation(controller, imagePosition, idText, idImage) {
-    var xPercent = calculateXPercentNeeded(imagePosition);
-    var tweenImage = createTweenImage(idImage, xPercent.image);
-    var tweenText = createTweenText(idText, xPercent.text, function () {
-        sceneImage.destroy();
-        sceneText.destroy();
-    });
-    var sceneImage = createScrollMagicScene(controller, idImage, tweenImage);
-    var sceneText = createScrollMagicScene(controller, idText, tweenText);
-}
-
 function whoIAmAnimation(controller) {
     var whoAmIIconsRandomed = getRandomSortedIcons();
     var whoAmITimeline = createTimeLineWhoIAm(whoAmIIconsRandomed, "#who-am-i-description", function () {
         sceneWhoAmI.destroy();
     });
     var sceneWhoAmI = createScrollMagicScene(controller, "#who-am-i-description", whoAmITimeline);
-}
-
-function projectsAnimation(controller) {
-    projectAnimation(controller, "right", "#spectral-clara-lux-tracer-info", "#spectral-clara-lux-tracer-image");
-    projectAnimation(controller, "left", "#spectral-brdf-explorer-info", "#spectral-brdf-explorer-image");
-    projectAnimation(controller, "right", "#ray-tracing-info", "#ray-tracing-image");
-    projectAnimation(controller, "left", "#rangeuislider-info", "#rangeuislider-image");
 }
 
 function getRandomSortedIcons() {

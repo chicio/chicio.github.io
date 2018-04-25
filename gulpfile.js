@@ -22,7 +22,7 @@ gulp.task('serve', function() {
         server: {
             baseDir: siteRoot
         },
-        browser: ["safari"]
+        browser: ["chrome"]
     });
     gulp.watch(jsFiles, ['bundle-home-scripts']);
     gulp.watch(jsFiles, ['bundle-blog-scripts']);
