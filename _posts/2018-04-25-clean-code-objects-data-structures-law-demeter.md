@@ -17,18 +17,18 @@ In this post I will talk about clean code: data structures, objects vs procedura
 In this [previous post](/2017/09/11/clean-code-meaningful-names.html "clean code meaningful names") I described what
 Clean Code is and what does it mean to use
 meaningful names in your code.
-This time I will talk about *Data structures and objects*. Two things each programmer have to deal with each day of
-his/her job life.
+This time I will talk about *Data structures and objects*.
 But wait, do we really know the definition of them? Let's see what [Uncle Bob](https://en.wikipedia.org/wiki/Robert_Cecil_Martin "Robert Cecil Martin") says about them in its *Clean Code* book:
 
 >Objects hide their data behind abstractions and expose functions that operate on that data. Data structures expose
 their data and have no meaningful functions.
 
-It's easy to see that they are opposites. A lot of programmer are convinced of the fact that in software development
+It's easy to see that they are opposites. A lot of programmers are convinced of the fact that in software development
 everything should be an object. If you think about the nature of objects you will see that *there are times where you
-just want simple plain data structures and manipulate them in a procedural way*. This is a consequence of the fact that
+just want simple plain data structures that you can manipulate in a procedural way*. This is a consequence of the
+fact that
 adding new functions to an object may require much more work, because maybe you need to modify all the objects of the
-same type to add the a new function.
+same type to add a new function.
 This give us the following definitions, stated by [Uncle Bob](https://en.wikipedia.org/wiki/Robert_Cecil_Martin
 "Robert Cecil Martin") in its *Clean Code* book:
 
