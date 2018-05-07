@@ -73,7 +73,7 @@ inserted in the tag with a specific type, for example `0x03` *"Cover (Front)"*, 
  files (described [in this  post](XXXXXXXXXXX)) that support the following Apple OSes: macOS, iOS, watchOS and macOS 
  (so the entire Apple ecosystem :grin:)
  * `Mp3ID3Tagger`, a native macOS app written in Swift using the reactive programming paradigm and in particular its
-  Rx variant with the frameworks RxSwift and RxCocoa (Rx????!?!?!? WHATTTT?!?!?!? :cold_sweat:).
+  Rx (Reactive Extensions) variant with the frameworks RxSwift and RxCocoa (Rx????!?!?!? WHATTTT?!?!?!? :cold_sweat:).
   
 If you are still interested in knowing details about the creation of this two projects, you can follow the link s
 below:
