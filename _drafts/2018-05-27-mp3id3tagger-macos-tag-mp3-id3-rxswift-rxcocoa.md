@@ -52,7 +52,9 @@ sequence operators that operate on each item in the sequence. .... ReactiveX is 
 
 So RxSwift and RxCocoa let us create an abstraction from the platform specific UI implementation and let us implement
  our ViewModel by working in an event-driven way: the ViewModel only works with streams of data that comes from 
- `Observable` and `Subjects` of RxSwift. RxCocoa gives us an abstraction over Cocoa and Cocoa Touch specific 
+ `Observable` and `Subjects` of RxSwift. 
+ XXX DEFINIZIONE DI OBSERVABLE E SUBJECT
+ RxCocoa gives us an abstraction over Cocoa and Cocoa Touch specific 
  components and let us work with generic observable UI component. This basically means that:
   
   * RxSwift and RxCocoa are our Binder of the MVVM 
@@ -62,5 +64,30 @@ So RxSwift and RxCocoa let us create an abstraction from the platform specific U
   
 With this architecture we can also think about using the same Model and ViewModel on different platform. So if in the
  future I will develop an iOS version of Mp3ID3Tagger, I will only have to develop the View part.
-....
+So let's start to see how I implemented Mp3ID3Tagger, the app subject of this post.
+The first building block is the `BindableView` protocol, that represents the View part in the MVVM architecture. This 
+protocol must be implemented only by subclasses of the `NSViewController`. The protocol contains a property and a 
+function. The `viewModel` forces the class (the View) to have a property that represents its ViewModel. The function 
+`bindViewModel` is where the View and the View model are bound together. The `bindViewModel` must be called inside 
+one the lifecycle methods of the `NSViewController`. 
+
+```swift
+protocol BindableView where Self: NSViewController {
+    associatedtype ViewModelType
+    var viewModel: ViewModelType! { get set }
+    func bindViewModel()
+}
+```
+
+Then there's a `ViewModel` base class. This class is useful to centralize the setup of a `disposeBag`. The 
+`DisposeBag` it’s an RxSwift component that keeps a reference to all the `Disposable` you add to it. The `Observable`
+ are `Disposable`, so you can add them to it to have an ARC-like behaviour: when the `DisposeBag` will be released all
+  the `Disposable`  instances it keeps will be released as well. So by having the `ViewModel` base class all the 
+  ViewModel will have a `disposeBag` by default where they will add their disposables.
+
+
+
+ 
+
+ 
 
