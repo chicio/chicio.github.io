@@ -211,7 +211,9 @@ time observe their values. In fact in this class there are two functions:
  
 Below you can find the `Form` class with all the implementations also for its collaborators. In this way it's easy to
  note what I stated above: the set of all the `Variable` fields of this classes matches the set of the UI components 
- that we saw in the screenshot of the app that you saw above. 
+ that we saw in the screenshot of the app that you saw above. One last important thing to note: [the class 
+ `AttachedPictureField` forces the type of the attached picture to be saved to `FrontCover`. [In this way the 
+ ID3TagEditor will write the ID3 tag with the correct data to display the album cover on my renault clio](/blog/2018/05/25/born-id3tageditor-mp3id3tagger.html "mp3id3tagger id3tageditor")!!! :relieved: 
  
 
 ```swift
@@ -459,8 +461,15 @@ set a in the `value` property of a `Variable` field will be displayed on the UI 
 
 * each value inserted in the UI Cocoa specific field will be set in corresponding the `Variable` field on the view model.   
  
-In this way the View Model is completely decoupled from the View part (in this case the `NSViewController`). This is 
-absolutely fantastic!!!!! :heart_eyes::relaxed: 
+In this way the View Model is completely decoupled from the View part (in this case the `NSViewController`). This 
+means that we can reuse the same ViewModel to create other versions of Mp3ID3Tagger for other platforms. This is 
+absolutely fantastic!!!!! :heart_eyes::relaxed:.
+Last but not least in the controller we have also some other functions: 
+
+* `open(_ sender: Any?)` and `save(_ sender: Any?)` that manage the open an mp3 file and save of the same file
+* `bindSaveAction()` that observe the result of a save action
+* `openImage(imageUrl: URL)` and `bindAttachedPictureField()` that manage the bind and the subscription to an 
+open action of an image to be used as front cover for the id3 tag.  
  
 ```swift
 infix operator <-> : DefaultPrecedence
@@ -572,3 +581,8 @@ class Mp3ID3TaggerViewController: NSViewController, BindableView {
     }
 } 
 ```
+
+We're done with Mp3ID3Tagger. I hope you liked my architectural choices and how I developed it by leveraging the 
+power of RxSwift and RxCocoa :sunglasses::relieved:. Obviously don't forget to see the [official Mp3ID3Tagger repo](https://github.com/chicio/Mp3ID3Tagger "Mp3ID3Tagger")     
+and obviously to [download the Mp3ID3Tagger app from this link](https://github.com/chicio/Mp3ID3Tagger/raw/master/Release/Mp3ID3Tagger.dmg "mp3 tag macOS") and use it!!! 
+:heartpulse::sparkling_heart:

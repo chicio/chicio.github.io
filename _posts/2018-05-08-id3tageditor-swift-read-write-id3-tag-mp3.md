@@ -3,7 +3,7 @@ layout: post
 title: "ID3TagEditor: a Swift framework to read and write ID3 tag of your mp3 files for macOS, iOS, tvOS and watchOS"
 description: "Second part of a short series of post in which I describe my two latest project: ID3TagEditor and 
 Mp3ID3Tagger. In this post I will talk about ID3TagEditor framework."
-date: 2018-05-25
+date: 2018-05-08
 image: /assets/images/posts/id3tageditor-logo.jpg
 tags: tags: [swift, ios, apple, mobile application development, macos, tvos, watchos]
 comments: true
@@ -287,13 +287,18 @@ class ID3TagCreator {
 ``` 
 
 How is the frames data created? The answer is inside the `ID3FrameCreatorsChain` and the 
-`ID3FrameCreatorsChainFactory` classes. The classes creates a **Chain of responsibility**, where each subclass of the
- `ID3FrameCreatorsChain` class is a specialization with the responsibility to write a specific frame type. At the end
-  of the chain an `[Uint8]` array is returned. This is basically an array of byte, that is then converted into a data
+`ID3FrameCreatorsChainFactory` classes. The factory class creates a **Chain of responsibility**, where each subclass of
+ the `ID3FrameCreatorsChain` class is a specialization with the responsibility to write a specific frame type. At the
+  end of the chain an `[Uint8]` array is returned. This is basically an array of bytes, that is then converted into a data
    object at the end of the `create(id3Tag: ID3Tag) throws -> Data` of the `ID3TagCreator` class (where also the tag 
    header is added as we saw before). Below you can find the chain creation contained in the 
    `ID3FrameCreatorsChainFactory` class (again, we will see the details of the various classes contained in the chain
-    in other future posts :stuck_out_tongue_winking_eye: This framework contains too much cool swift stuff :flushed:).
+    in other future posts :stuck_out_tongue_winking_eye: This framework contains too much cool swift stuff :flushed:)
+    . One important thing to note: `ID3AttachedPicturesFramesCreator` class is able to create attached picture frames 
+    that sets the type of the cover to one from the list defined in the ID3 standard. In this way I can use my 
+    [ID3TagEditor framework to tag the mp3 with the correct data that I need to display the mp3 files cover on the 
+    media nav system of my clio](/blog/2018/05/25/born-id3tageditor-mp3id3tagger.html "born mo3id3tagger 
+    id3tageditor")!!! :relieved:
    
 ```swift
 class ID3FrameCreatorsChainFactory {
