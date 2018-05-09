@@ -73,10 +73,10 @@ inserted in the tag with a specific type, for example `0x03` *"Cover (Front)"*, 
 If you are still interested in knowing details about the creation of this two projects, you can follow the link s
 below:
 
-* [ID3TagEditor: a Swift framework to read and write ID3 tag of your mp3 files for macOS, iOS, tvOS and watchOS]           
-* [Mp3ID3Tagger: a native macOS app to edit the ID3 tag of your mp3 files written using RxSwift and RxCocoa]
+* [ID3TagEditor: a Swift framework to read and write ID3 tag of your mp3 files for macOS, iOS, tvOS and watchOS](/blog/2018/05/08/id3tageditor-swift-read-write-id3-tag-mp3.html "id3 tag swift")  
+* [Mp3ID3Tagger: a native macOS app to edit the ID3 tag of your mp3 files written using RxSwift and RxCocoa](/blog/2018/05/09/mp3id3tagger-macos-tag-mp3-id3-rxswift-rxcocoa.html "mp3 tag macos rxswift rxcocoa")
 
-XXXX photo loghi librerie           
+![mp3id3tagger id3tageditor](/assets/images/posts/mp3id3tagger-id3tageditor.jpg "mp3id3tagger id3tageditor")
 
 I hope you will see how much love and passion I put into this projects and I also hope you will find all the 
 technical details inside them interesting :sparkling_heart:.

@@ -16,7 +16,7 @@ seo:
 
 ---
 
-In [this previous post](/blog/2018/05/25/born-id3tageditor-mp3id3tagger.html "born id3tageditor mp3id3tagger") I 
+In [this previous post](/blog/2018/05/07/born-id3tageditor-mp3id3tagger.html "born id3tageditor mp3id3tagger") I 
 described the reason why I develop [Mp3ID3Tagger](https://github.com/chicio/Mp3ID3Tagger "mp3 id3 tag editor macos"),
  a macOS app to edit the id3 tag of your mp3 files that leverage on the power of [ID3TagEditor](/blog/2018/05/26/id3tageditor-swift-read-write-id3-tag-mp3.html). Below you can find 
  the app logo.
