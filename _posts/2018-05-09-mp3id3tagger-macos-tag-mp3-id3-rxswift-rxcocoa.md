@@ -16,7 +16,7 @@ seo:
 
 ---
 
-In [this previous post](/blog/2018/05/07/born-id3tageditor-mp3id3tagger.html "born id3tageditor mp3id3tagger") I 
+In [this previous post](/2018/05/07/born-id3tageditor-mp3id3tagger.html "born id3tageditor mp3id3tagger") I 
 described the reason why I develop [Mp3ID3Tagger](https://github.com/chicio/Mp3ID3Tagger "mp3 id3 tag editor macos"),
  a macOS app to edit the id3 tag of your mp3 files that leverage on the power of [ID3TagEditor](/blog/2018/05/26/id3tageditor-swift-read-write-id3-tag-mp3.html). Below you can find 
  the app logo.
@@ -86,16 +86,15 @@ The first building block is the `ViewModel` base class. This class is useful to 
    just one screen, so there's just one `ViewModel` subclass to represent that screen, the `Mp3ID3TaggerViewModel` 
    class. This class has 4 properties:
    
-   * `id3TagReader`, of type `ID3TagReader`. This class has the responsibility to read a tag from an mp3 file when
-    an `openAction` occurs. So `ID3TagReader` will be a subscriber of the `openAction` observable.
-   * `id3TagWriter`, of type `ID3TagWriter`.  This class has the responsibility to save a new tag to
-    the mp3 file currently opened (the last `openAction` value) when a `saveAction` occurs. So `ID3TagWriter` will be
-     a subscriber of the `saveAction` observable.
-     * `form`, of type `Form`. This class has the responsibility to fill the fields of the form on the UI with 
-     values of the ID3tag read by the `id3TagReader` when an mp3 file has been opened. It has also the responsibility
-      to collect the data contained in the form so that the `id3TagWriter` can write them when a `saveAction` occurs.
-    * `saveResult`, of type `PublishSubject<Bool>`. This subject publishes the result of a save action made by the 
-    `id3TagWriter`.
+* `id3TagReader`, of type `ID3TagReader`. This class has the responsibility to read a tag from an mp3 file when an 
+`openAction` occurs. So `ID3TagReader` will be a subscriber of the `openAction` observable.
+* `id3TagWriter`, of type `ID3TagWriter`.  This class has the responsibility to save a new tag to the mp3 file 
+currently opened (the last `openAction` value) when a `saveAction` occurs. So `ID3TagWriter` will be a subscriber of 
+the `saveAction` observable.
+* `form`, of type `Form`. This class has the responsibility to fill the fields of the form on the UI with values of 
+the ID3tag read by the `id3TagReader` when an mp3 file has been opened. It has also the responsibility to collect the
+ data contained in the form so that the `id3TagWriter` can write them when a `saveAction` occurs.
+* `saveResult`, of type `PublishSubject<Bool>`. This subject publishes the result of a save action made by the `id3TagWriter`.
         
 ```swift
 class Mp3ID3TaggerViewModel: ViewModel {

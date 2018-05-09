@@ -16,7 +16,7 @@ seo:
 
 ---
 
-In [this previous post](/blog/2018/05/07/born-id3tageditor-mp3id3tagger.html "born id3tageditor mp3id3tagger") I 
+In [this previous post](/2018/05/07/born-id3tageditor-mp3id3tagger.html "born id3tageditor mp3id3tagger") I 
 described the reason why I develop [ID3TagEditor](https://github.com/chicio/ID3TagEditor "id3 tag editor swift ios macOS tvOS watchOS"), a swift library 
 to edit ID3 tag of mp3 files with support for macOS, iOS, watchOS and tvOS. Below you can find the logo of the library.
 
