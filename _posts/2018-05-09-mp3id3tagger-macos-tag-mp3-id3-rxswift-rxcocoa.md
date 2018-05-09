@@ -5,7 +5,7 @@ description: "Third part of a short series of post in which I describe my two la
 Mp3ID3Tagger. In this post I will talk about Mp3ID3Tagger, a macOS application to edit id3 tag of your mp3 files."
 date: 2018-05-25
 image: /assets/images/posts/mp3id3tagger-logo.jpg
-tags: tags: [swift, macos, apple, rxswift, rxcocoa]
+tags: [swift, macos, apple, rxswift, rxcocoa]
 comments: true
 seo:
  - type: "BlogPosting"

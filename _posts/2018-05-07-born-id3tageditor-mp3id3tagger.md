@@ -4,7 +4,7 @@ title: "The born of ID3TagEditor and Mp3ID3Tagger and my journey into the ID3 ta
 description: "First part of a short series of post in which I describe my two latest project: ID3TagEditor and Mp3ID3Tagger. In this first post I will talk about why I started to develop them."
 date: 2018-05-07
 image: /assets/images/posts/mp3id3tagger-id3tageditor.jpg
-tags: tags: [swift, ios, apple, mobile application development, macOS development]
+tags: [swift, ios, apple, mobile application development, macOS development]
 comments: true
 seo:
  - type: "BlogPosting"

@@ -5,7 +5,7 @@ description: "Second part of a short series of post in which I describe my two l
 Mp3ID3Tagger. In this post I will talk about ID3TagEditor framework."
 date: 2018-05-08
 image: /assets/images/posts/id3tageditor-logo.jpg
-tags: tags: [swift, ios, apple, mobile application development, macos, tvos, watchos]
+tags: [swift, ios, apple, mobile application development, macos, tvos, watchos]
 comments: true
 seo:
  - type: "BlogPosting"
