@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "ID3TagEditor: a Swift framework to read and write ID3 tag of your mp3 files for macOS, iOS, tvOS and watchOS"
-description: "The second post of a short series of post in which I describe my two latest project: ID3TagEditor and 
+description: "The second of a short series of post in which I describe my two latest project: ID3TagEditor and 
 Mp3ID3Tagger. In this post I will talk about ID3TagEditor framework."
 date: 2018-05-08
 image: /assets/images/posts/id3tageditor-logo.jpg
@@ -11,14 +11,15 @@ seo:
  - type: "BlogPosting"
 ---
 
-*The second post of a short series of post in which I describe my two latest project: ID3TagEditor and 
+*The second of a short series of post in which I describe my two latest project: ID3TagEditor and 
  Mp3ID3Tagger. In this post I will describe how I created ID3TagEditor.*
 
 ---
 
 In [this previous post](/2018/05/07/born-id3tageditor-mp3id3tagger.html "born id3tageditor mp3id3tagger") I 
 described the reason why I develop [ID3TagEditor](https://github.com/chicio/ID3TagEditor "id3 tag editor swift ios macOS tvOS watchOS"), a swift library 
-to edit ID3 tag of mp3 files with support for macOS, iOS, watchOS and tvOS. Below you can find the logo of the library.
+to edit ID3 tag of mp3 files with support for macOS, iOS, watchOS and tvOS. In this post I will described how I 
+developed it. Below you can find the logo of the library.
 
 ![ID3TagEditor logo](/assets/images/posts/id3tageditor-logo.jpg "ID3TagEditor logo")
  
@@ -29,7 +30,7 @@ But before going deeper in the details of ID3TagEditor it useful to know how the
 > An ID3 tag is a data container within an MP3 audio file stored in a prescribed format
 
 This definition means that an ID3 tag is basically a chunk of information stored at the beginning of
- an mp3 file. The standard defines the format that any developer can use to read write this information.
+ an mp3 file. The standard defines the format that any developer can use to read and write this information.
  Let's see an example of an ID3 tag using a hex editor.
  
 ![ID3 tag example](/assets/images/posts/id3-tag-example.jpg "ID3 tag example")
@@ -40,7 +41,7 @@ This definition means that an ID3 tag is basically a chunk of information stored
  * ID3 tag file identifier, 3 bytes, usually represented as "ID3"
  * tag version, 2 bytes, a couple of number that represent the major version and the revision version (e.g. `0x03 0x00`)
  * flags, 1 bytes, contains three configurations flags represented as `%abc00000` (bit to 1)
- * size, 4 bytes. Quoting the ID3 standard the size is 
+ * size, 4 bytes. Quoting the ID3 standard the size is: 
   
   > the size of the complete tag after unsychronisation, including padding, excluding the header but not excluding the
    extended header. The ID3v2 tag size is encoded with four bytes where the most significant bit (bit 7) is set to 
@@ -49,7 +50,7 @@ This definition means that an ID3 tag is basically a chunk of information stored
     
 ![ID3 tag header](/assets/images/posts/id3-tag-header.jpg "ID3 tag header")
 
-A frame is composed of and header and a custom content. The frame header contains the following informations, that 
+A frame is composed of an header and a custom content. The frame header contains the following information, that 
 change in size between versions:
 
 * frame id, 3 bytes in version 2 and 4 bytes in version 3
@@ -58,14 +59,13 @@ header
 * option flags, 2 bytes available only in version 3
  
 So the frame header size is 10 bytes in version 3 and 6 bytes in version 2. After the header there is the custom 
-specific frame flags/options and the frame content. We will see the detail of the various frame flag while we go deep 
-into the ID3TagEditor details. Below you can find an example of a frame in a version 3 tag.
+specific frame flags/options and the frame content. Below you can find an example of a frame in a version 3 tag.
 
 ![ID3 frame example](/assets/images/posts/id3-frame-example.jpg "ID3 frame example")
 
 Last but not least at the end of the ID3 tag there are also 2 KB of offset (you can see it in the previous images, 
 that series of endless `0x00` at the end of the tag :relieved:). 
-How does ID3TagEditor read and write all this information? The main api of the library are two simple method:
+How does ID3TagEditor read and write all this information? The main api of the framework are two simple methods:
 
 ```swift
 /**
@@ -94,10 +94,10 @@ public func write(tag: ID3Tag, to path: String, andSaveTo newPath: String? = nil
 
 ```     
 
-So the ID3TagEditor framework is divide in two main parts: one for read/parse an mp3 file and one for write an ID3 
+So the ID3TagEditor framework has two main parts: one for read/parse an mp3 file and one for write an ID3 
 tag to the mp3 file.  
 Let's start from the read/parsing part. The main entry point of the library is the class 
-`ID3TagParser` that is instantiated from a `ID3TagParserFactory`. It main function is the called `parse`. As the name
+`ID3TagParser` that is instantiated from a `ID3TagParserFactory`. Its main function is the called `parse`. As the name
  suggest it parses the various frames. Before that there are three operation:
  
  * the version of the tag is extracted by a collaborator called `ID3TagVersionParser`
@@ -143,8 +143,8 @@ private func getFrameFrom(mp3: NSData, position: Int, version: ID3Version) -> Da
 ```
 
 How does the parsing for each frame work? How does ID3TagEditor recognize the correct frame and execute the correct 
-parsing based on the type of frame? The answer is inside the `ID3FrameContentParser` class, used inside the 
-`parseFramesFor(mp3: NSData, id3Tag: ID3Tag)` function. This class uses the **Command Pattern** to launch the correct
+parsing based on the frame type? The answer is inside the `ID3FrameContentParser` class, used inside the 
+`parseFramesFor(mp3: NSData, id3Tag: ID3Tag)` function. This class uses the [**Command Pattern**](https://en.wikipedia.org/wiki/Command_pattern) to launch the correct
  parsing operations for the current frame type. The list of frame parsing operation is stored inside inside a 
  dictionary where the key is the `FrameType` enum. This enum generically identify the frame type, and is mapped to 
  the correct ID3 frame identifier for each version in the `ID3FrameConfiguration` function `frameTypeFor(identifier: 
