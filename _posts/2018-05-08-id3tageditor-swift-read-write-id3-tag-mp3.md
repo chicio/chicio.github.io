@@ -145,7 +145,7 @@ private func getFrameFrom(mp3: NSData, position: Int, version: ID3Version) -> Da
 How does the parsing for each frame work? How does ID3TagEditor recognize the correct frame and execute the correct 
 parsing based on the frame type? The answer is inside the `ID3FrameContentParser` class, used inside the 
 `parseFramesFor(mp3: NSData, id3Tag: ID3Tag)` function. This class uses the [**Command Pattern**](https://en.wikipedia.org/wiki/Command_pattern) to launch the correct
- parsing operations for the current frame type. The list of frame parsing operation is stored inside inside a 
+ parsing operations for the current frame type. The list of frame parsing operations is stored inside inside a 
  dictionary where the key is the `FrameType` enum. This enum generically identify the frame type, and is mapped to 
  the correct ID3 frame identifier for each version in the `ID3FrameConfiguration` function `frameTypeFor(identifier: 
  frameIdentifier, version: version)`. As you can see below the extraction of the frame identifier is done in the 
@@ -286,7 +286,7 @@ class ID3TagCreator {
 }    
 ``` 
 
-How is the frames data created? The answer is inside the `ID3FrameCreatorsChain` and the 
+How are the frames data created? The answer is inside the `ID3FrameCreatorsChain` and the 
 `ID3FrameCreatorsChainFactory` classes. The factory class creates a **Chain of responsibility**, where each subclass of
  the `ID3FrameCreatorsChain` class is a specialization with the responsibility to write a specific frame type. At the
   end of the chain an `[Uint8]` array is returned. This is basically an array of bytes, that is then converted into a data
