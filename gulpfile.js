@@ -34,8 +34,8 @@ gulp.task('jekyll', function() {
     if (isTravis) {
         options = ['build', '--incremental'];
     }
-    const jekyll = child.spawn('jekyll', options);
-    const jekyllLogger = function(buffer) {
+    var jekyll = child.spawn('jekyll', options);
+    var jekyllLogger = function(buffer) {
         buffer.toString()
             .split(/\n/)
             .forEach(function (message) {

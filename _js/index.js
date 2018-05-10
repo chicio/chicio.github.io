@@ -6,7 +6,8 @@ $(document).ready(function () {
     loadFonts();
     addTabsClickEvent(controller);
     addArrowDownClickEvent(isMobileDevice);
-    startThreeJSSceneIfSupported(isMobileDevice)
+    startHeaderAnimation(isMobileDevice);
+    startThreeJSSceneIfSupported(isMobileDevice);
     whoIAmAnimation(controller);
 });
 
@@ -349,14 +350,16 @@ function createRenderer() {
 function startThreeJSSceneIfSupported(isMobileDevice) {
     if (Detector.webgl) {
         sceneThreeJS(isMobileDevice);
-    } else {
-        hideLoaderAnimation(function () {
-            resizeViewport(isMobileDevice);
-            profileAnimation(function () {
-                downArrowAnimation();
-            });
-        });
     }
+}
+
+function startHeaderAnimation(isMobileDevice) {
+    hideLoaderAnimation(function () {
+        resizeViewport(isMobileDevice);
+        profileAnimation(function () {
+            downArrowAnimation();
+        });
+    });
 }
 
 function sceneThreeJS(isMobileDevice) {
@@ -434,13 +437,7 @@ function sceneThreeJS(isMobileDevice) {
     };
     setWindowResizeListener(camera, renderer);
     THREE.DefaultLoadingManager.onLoad = function () {
-        hideLoaderAnimation(function () {
-            resizeViewport(isMobileDevice);
-            profileAnimation(function () {
-                render();
-                downArrowAnimation();
-                showRenderingSurfaceAnimation();
-            });
-        });
+        render();
+        showRenderingSurfaceAnimation();
     };
 }

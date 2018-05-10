@@ -1,8 +1,8 @@
 runFuckAdBlock();
 cookieConsent();
-loadFonts();
 $(document).ready(function () {
     disableScroll();
+    loadFonts();
 });
 
 function loadFonts() {
