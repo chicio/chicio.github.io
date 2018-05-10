@@ -3,7 +3,7 @@ layout: post
 title: "Mp3ID3Tagger: a native macOS app to edit the ID3 tag of your mp3 files written using RxSwift and RxCocoa"
 description: "Third part of a short series of post in which I describe my two latest project: ID3TagEditor and 
 Mp3ID3Tagger. In this post I will talk about Mp3ID3Tagger, a macOS application to edit id3 tag of your mp3 files."
-date: 2018-05-25
+date: 2018-05-09
 image: /assets/images/posts/mp3id3tagger-logo.jpg
 tags: [swift, macos, apple, rxswift, rxcocoa]
 comments: true

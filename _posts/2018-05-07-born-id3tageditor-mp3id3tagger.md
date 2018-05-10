@@ -15,42 +15,43 @@ first post I will talk about why I started to develop them.*
 
 ---
 
-Recently I bought a new car. After a lot of search I finally decided to buy the Renault Clio 2017 1.5 dci. I love this
-car. It has been a big step forward on my previous car. One of the most interesting feature of this car is its media
+Recently I bought a new car. After a lot of searches I finally decided to buy the Renault Clio 2017 1.5 dci. I love this
+car. It has been a big step forward on my previous car. One of its most interesting feature is its media
 entertainment system: the Media Nav Evolution system. This system has a 7'' touchscreen with map integration and a basic
  smartphone integration with Siri voice recognition and phone call support.
 
 ![media nav clio](/assets/images/posts/media-nav-clio.jpg "media nav clio")
 
-One of the thing the get my attention was the ability to start to listen to my mp3 collection while I'm driving (on my
-previous car I had a standard cd player). So I prepared an usb key with some of my mp3 and I started to listen to them.
-Now one thing got my attention: some of my songs where displayed on the touchscreen with information about the album 
-and, more important, they were displaying the cover of the album. I though: "Whoahh this is very cool!! I need to 
+One of the thing that caught my attention was the possibility to start to listen to my mp3 collection while I'm driving 
+(on my previous car I had a standard cd player). So I prepared an usb key with some of my mp3 and I started to listen to them.
+I suddenly made a great discovery: some of my songs were displayed on the touchscreen with information about the 
+album and they were displaying the cover of the album!!!!! :heart_eyes:. I though: "Whoahh this is very cool!! I need to 
 start to fill my mp3 with all this information. I want to see the cover of the album for each mp3 I have!!!!!!!".
- This is exactly the moment where my journey into the development of ID3TagEditor and Mp3ID3Tagger, but I was not yet
- aware of it :grin:
-So I sat in front of my mac, I opened iTunes and I started to tag my mp3 files. I saved them on a usb key and I went to
-my car to test them. The result was the following:
+ This is exactly the moment where my journey into the development of ID3TagEditor and Mp3ID3Tagger started, but I was
+  not yet aware of it :grin:
+So I sat in front of my MacBook, I opened iTunes and I started to tag my mp3 files. I saved them on a usb key and I 
+went to my car to test them. The result was the following:
 
 ![mp3 no cover](/assets/images/posts/mp3-song-no-cover.jpg "mp3 no cover")
 
-What the f**k is going on??!!?! :angry: The title and the album where displayed but the cover was not show on the screen.
-So came back to my desk and started to download some native macOS app that let the user edit what I discovered was
-called *ID3 tag*. I tried a lot of them, but none worked as expected. Then I found an app called Mp3Tag. This is Windows
- application that runs also on mac using Wine. So I downloaded it and tried to tag some mp3. I put them on a usb key and
-  then...
+What the hell is going on??!!?! :angry: The title and the album where displayed but the cover was not show on the 
+screen.
+So I got back to my desk and I started to download some native macOS app that let the user edit what I discovered was
+called *ID3 tag*. None of them worked as expected. Then I found an app called Mp3Tag. This is Windows
+ application that runs also on macOS using Wine. So I downloaded it and tried to tag some mp3. I put them on a usb key
+  and then...
 
 ![mp3 with cover](/assets/images/posts/mp3-song-with-cover.jpg "mp3 with cover")
 
-Mp3Tag was working as expected :relieved:. But then I started to ask myself:"What is doing Mp3Tag that the other native
+Mp3Tag was working as expected :relieved:. But then I started to ask myself: "What is doing Mp3Tag that the other native
 macOS application are not doing?". The only way to discover the reason behind this mystery was to compare an mp3 tagged
 with Mp3Tag with an mp3 tagged with one of the other applications. So I opened with an [HexFiend](https://ridiculousfish.com/hexfiend/ "an hex editor") an 
 mp3 tagged with iTunes and another one tagged with Mp3Tag and I compared them...
 
 ![mp3 compare itunes mp3tag](/assets/images/posts/mp3-tag-bit-cover.jpg "mp3 compare itunes mp3tag")
 
-Yep, a single bit could make a big difference :open_mouth:. The fact is that the [ID3 standard](http://id3.org/d3v2.3.0 
-"ID3 standard") accept multiple type of attached picture for an mp3: front cover, back cover, icon, artist photo ecc. This different 
+Yep, a single byte could make a big difference :open_mouth:. The fact is that the [ID3 standard](http://id3.org/d3v2.3.0 "ID3 standard") 
+accept multiple type of attached picture for an mp3: front cover, back cover, icon, artist photo ecc. This different 
 type of pictures are identified in the standard by a bit just after the MIME type. The problem is that iTunes and other "mp3 tagger" native 
 macOS applications don't let the user modify the type of the cover: all this application set the bit to `0x00` that 
 in the ID3 standard corresponds to the *"Other"* cover type. But the media nav system of my car displays cover 
