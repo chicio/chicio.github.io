@@ -287,15 +287,15 @@ class ID3TagCreator {
 ``` 
 
 How are the frames data created? The answer is inside the `ID3FrameCreatorsChain` and the 
-`ID3FrameCreatorsChainFactory` classes. The factory class creates a **Chain of responsibility**, where each subclass of
- the `ID3FrameCreatorsChain` class is a specialization with the responsibility to write a specific frame type. At the
-  end of the chain an `[Uint8]` array is returned. This is basically an array of bytes, that is then converted into a data
-   object at the end of the `create(id3Tag: ID3Tag) throws -> Data` of the `ID3TagCreator` class (where also the tag 
+`ID3FrameCreatorsChainFactory` classes. The factory class creates a [**Chain of responsibility**](https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern), where each 
+subclass of the `ID3FrameCreatorsChain` class is a specialization with the responsibility to write a specific frame type. At the
+  end of the chain an `[Uint8]` array is returned. This is basically an array of bytes, that is then converted into a
+   `Data` object at the end of the `create(id3Tag: ID3Tag) throws -> Data` of the `ID3TagCreator` class (where also the tag 
    header is added as we saw before). Below you can find the chain creation contained in the 
    `ID3FrameCreatorsChainFactory` class (again, we will see the details of the various classes contained in the chain
     in other future posts :stuck_out_tongue_winking_eye: This framework contains too much cool swift stuff :flushed:)
-    . One important thing to note: `ID3AttachedPicturesFramesCreator` class is able to create attached picture frames 
-    that sets the type of the cover to one from the list defined in the ID3 standard. In this way I can use my 
+    . One important thing to note: the `ID3AttachedPicturesFramesCreator` class is able to create attached picture 
+    frames that sets the type of the cover to one from the list defined in the ID3 standard. In this way I can use my 
     [ID3TagEditor framework to tag the mp3 with the correct data that I need to display the mp3 files cover on the 
     media nav system of my clio](/blog/2018/05/25/born-id3tageditor-mp3id3tagger.html "born mo3id3tagger 
     id3tageditor")!!! :relieved:
@@ -371,6 +371,6 @@ class ID3FrameCreatorsChainFactory {
 ```   
 
 That's it!!! This is the general structure of the ID3TagEditor framework. If you want to discover more about this 
-framework you can have a look at [its github repo](https://github.com/chicio/ID3TagEditor "ID3TagEditor repo") and start
- to make some contribution :heart::purple_heart:. Obviously, you must continue also to read my blog and wait for the 
+framework you can have a look at [my github repo](https://github.com/chicio/ID3TagEditor "ID3TagEditor repo") and start
+ to make some contribution :heart::purple_heart:. Obviously, you must also continue to read my blog and wait for the 
  other posts about other implementation details I promised above (if you're too lazy to go see by yourself :kissing_heart::satisfied:).
