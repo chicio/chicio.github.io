@@ -51,28 +51,30 @@ mp3 tagged with iTunes and another one tagged with Mp3Tag and I compared them...
 ![mp3 compare itunes mp3tag](/assets/images/posts/mp3-tag-bit-cover.jpg "mp3 compare itunes mp3tag")
 
 Yep, a single byte could make a big difference :open_mouth:. The fact is that the [ID3 standard](http://id3.org/d3v2.3.0 "ID3 standard") 
-accept multiple type of attached picture for an mp3: front cover, back cover, icon, artist photo ecc. This different 
-type of pictures are identified in the standard by a bit just after the MIME type. The problem is that iTunes and other "mp3 tagger" native 
-macOS applications don't let the user modify the type of the cover: all this application set the bit to `0x00` that 
-in the ID3 standard corresponds to the *"Other"* cover type. But the media nav system of my car displays cover 
-inserted in the tag with a specific type, for example `0x03` *"Cover (Front)"*, that is the default type inserted
- by Mp3Tag. The `0x00` *"Other"* type is discarded. 
+accept multiple types of attached picture for an mp3: front cover, back cover, icon, artist photo ecc. The 
+type of picture is represented as a byte just after the MIME type in the attached picture frame of the ID3 standard. 
+The problem is that iTunes and other "mp3 tagger" native macOS applications don't let the user modify the type of the 
+attached picture. All this application set the byte to `0x00` that in the ID3 standard corresponds to the *"Other"* 
+cover type. But the Media Nav Evolution system of my Renault Clio is able to read only attached picture frames inserted
+ in the tag with a specific type, for example `0x03` *"Cover (Front)"*, that is the default type inserted
+ by Mp3Tag. The attached picture frames that have the `0x00` *"Other"* type are discarded :unamused:. 
  My next question was: "How is it possible that there's not a **native macOS** app? There are only cross 
- platform/web solution. I want something that a real Apple fag would be happy to use...":apple::stuck_out_tongue:. 
- Honestly, I didn't found it. So I started to think: "I could develop this app, using some modern framework/programming 
+ platform/web solution. I want an app that a real Apple fag would be happy to use...":apple::stuck_out_tongue:. 
+ Honestly, I didn't find it. So I started to think: "I could develop this app, using some modern framework/programming 
  paradigm I studied in the last months...In this way I have a chance to create my first macOS app and add some other 
- interesting projects to my [Github profile](https://github.com/chicio/ "chicio github")...and also I can work on a project where I don't have to launch
-  the commands `npm install` or `mvn clean install` hundred times in a hour...". 
+ interesting projects to my [Github profile](https://github.com/chicio/ "chicio github")...and in this way I can 
+ work on a project where I don't have to launch the commands `npm install` or `npm run build` hundred times in a 
+ hour...". 
  Here we are after two months of work with the public release of:
  
- * `ID3TagEditor`, a pure Swift library (only `Foundation` framework dependencies) to read/modify ID3 tag of your mp3 
- files that support the following Apple platforms: macOS, iOS, watchOS and macOS 
+ * `ID3TagEditor`, a pure Swift framework (only Apple `Foundation` framework dependencies) to read/modify ID3 tag of 
+ your mp3 files with support for the following Apple platforms: macOS, iOS, watchOS and macOS 
  (so the entire Apple ecosystem :grin:)
  * `Mp3ID3Tagger`, a native macOS app written in Swift using the reactive programming paradigm and in particular its
   Rx (Reactive Extensions) variant with the frameworks RxSwift and RxCocoa (Rx????!?!?!? WHATTTT?!?!?!? :cold_sweat:).
   
-If you are still interested in knowing details about the creation of this two projects, you can follow the link s
-below:
+If you are still interested in knowing the details about the development of this two projects, you can follow the 
+links below:
 
 * [ID3TagEditor: a Swift framework to read and write ID3 tag of your mp3 files for macOS, iOS, tvOS and watchOS](/2018/05/08/id3tageditor-swift-read-write-id3-tag-mp3.html "id3 tag swift")  
 * [Mp3ID3Tagger: a native macOS app to edit the ID3 tag of your mp3 files written using RxSwift and RxCocoa](/2018/05/09/mp3id3tagger-macos-tag-mp3-id3-rxswift-rxcocoa.html "mp3 tag macos rxswift rxcocoa")
