@@ -46,8 +46,7 @@ called *ID3 tag*. None of them worked as expected. Then I found an app called Mp
 
 Mp3Tag was working as expected :relieved:. But then I started to ask myself: "What is doing Mp3Tag that the other native
 macOS application are not doing?". The only way to discover the reason behind this mystery was to compare an mp3 tagged
-with Mp3Tag with an mp3 tagged with one of the other applications. So I opened with my favourite hex editor [HexFiend]
-(https://ridiculousfish.com/hexfiend/ "an hex editor") an mp3 tagged with iTunes and another one tagged with Mp3Tag and I compared them...
+with Mp3Tag with an mp3 tagged with one of the other applications. So I opened with my favourite hex editor [HexFiend](https://ridiculousfish.com/hexfiend/ "an hex editor") an mp3 tagged with iTunes and another one tagged with Mp3Tag and I compared them...
 
 ![mp3 compare itunes mp3tag](/assets/images/posts/mp3-tag-bit-cover.jpg "mp3 compare itunes mp3tag")
 
