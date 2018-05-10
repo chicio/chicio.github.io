@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "ID3TagEditor: a Swift framework to read and write ID3 tag of your mp3 files for macOS, iOS, tvOS and watchOS"
-description: "Second part of a short series of post in which I describe my two latest project: ID3TagEditor and 
+description: "The second post of a short series of post in which I describe my two latest project: ID3TagEditor and 
 Mp3ID3Tagger. In this post I will talk about ID3TagEditor framework."
 date: 2018-05-08
 image: /assets/images/posts/id3tageditor-logo.jpg
@@ -11,7 +11,7 @@ seo:
  - type: "BlogPosting"
 ---
 
-*Second part of a short series of post in which I describe my two latest project: ID3TagEditor and 
+*The second post of a short series of post in which I describe my two latest project: ID3TagEditor and 
  Mp3ID3Tagger. In this post I will describe how I created ID3TagEditor.*
 
 ---
