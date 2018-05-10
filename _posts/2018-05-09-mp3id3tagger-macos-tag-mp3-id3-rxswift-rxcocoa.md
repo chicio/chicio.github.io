@@ -23,7 +23,7 @@ described the reason why I develop [Mp3ID3Tagger](https://github.com/chicio/Mp3I
  
 ![MP3ID3Tagger macOS app RxSwift](/assets/images/posts/mp3id3tagger-logo.jpg "MP3ID3Tagger macOS app RxSwift")
  
-So how did I developed MP3ID3Tagger? I was about to start the development following the classic approach to develop 
+So how did I develop MP3ID3Tagger? I was about to start the development following the classic approach to develop 
 an app on every Apple OS: [Model View Controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller 
 "Model View Controller") and plain Swift. But then I though: "This is the perfect project to test one of the last programming technique I 
 recently learned: Reactive Programming/Reaactive Extensions with RxSwift and RxCocoa!!!!!! In this way I can also try
@@ -41,7 +41,8 @@ clearly separate the UI development from the business logic. The main components
 updates the View and finally observes the View for changes in state and updates the View Model.
 
 From the definition above we see that the MVVM needs something to bind the view to the view model in a platform 
-independent way. This is why we need RxSwift, RxCocoa and Reactive Extensions. What are they? Let's see some quote 
+independent way. This is why we need [RxSwift](https://github.com/ReactiveX/RxSwift "RxSWift"), [RxCocoa](https://github.com/ReactiveX/RxSwift/tree/master/RxCocoa "RxCocoa") 
+and [Reactive Extensions (usually called ReactiveX)](http://reactivex.io/ "Rx"). What are they? Let's see some quote 
 for the definitions:
 
 >Reactive Extensions (also known as ReactiveX or Rx) is a set of tools allowing imperative programming languages to 
@@ -52,10 +53,10 @@ sequence operators that operate on each item in the sequence. .... ReactiveX is 
 
 The main components of RxSwift are:
 
- * `Observable`, that is something which emits notifications of change, and `Observer`, that is something which 
- subscribes to an Observable, in order to be notified when it has changed
- * `Subject`, that is something that acts both as an `Observable` and as an `Observer`
- * `Operator`, that are basically function that work on `Observable` and return `Observable`
+ * `Observables`, that are something which emit notifications of change, and `Observers`, that are something which 
+ subscribe to an Observable, in order to be notified when it has changed
+ * `Subjects`, that are entity that act both as an `Observable` and as an `Observer`
+ * `Operator`, that are basically functions that work on `Observable` and return `Observable`
  
 So RxSwift and RxCocoa let us create an abstraction from the platform specific UI implementation and let us implement
  our ViewModel by working in an event-driven way: the ViewModel only works with streams of data that comes from 
@@ -121,7 +122,7 @@ class Mp3ID3TaggerViewModel: ViewModel {
 } 
 ```
 
-Now we can see the details of all this collaborator of our view model. Let's start from the `ID3TagReader`.
+Now we can see the details of all these collaborators of our view model. Let's start from the `ID3TagReader`.
 This class keeps a reference to an instance of the `ID3TagEditor`. Its main function is `read(_ finish: @escaping 
 (ID3Tag?) -> ())`. In this function there is the subscribe to the `openAction` observable received at construction time 
 (passed by the `Mp3ID3TaggerViewModel`). Each new value received from the `openAction` is a path to a new mp3 file. 
@@ -210,7 +211,7 @@ time observe their values. In fact in this class there are two functions:
  
 Below you can find the `Form` class with all the implementations also for its collaborators. In this way it's easy to
  note what I stated above: the set of all the `Variable` fields of this classes matches the set of the UI components 
- that we saw in the screenshot of the app that you saw above. One last important thing to note: [the class 
+ that we saw in the screenshot of the app that you saw above. One last important thing to note: the class 
  `AttachedPictureField` forces the type of the attached picture to be saved to `FrontCover`. [In this way the 
  ID3TagEditor will write the ID3 tag with the correct data to display the album cover on my renault clio](/blog/2018/05/25/born-id3tageditor-mp3id3tagger.html "mp3id3tagger id3tageditor")!!! :relieved: 
  
@@ -451,14 +452,14 @@ protocol BindableView where Self: NSViewController {
 ``` 
 
 If we look at the implementation of the `bindViewModel` method, we can see where something "magical" is happening 
-:jack_o_lantern::crystal_ball:: an instance of `Mp3ID3TaggerViewModel` class is created and the UI components that 
+:crystal_ball:: an instance of `Mp3ID3TaggerViewModel` class is created and the UI components that 
 represents the various field of the form are bounded to the view model fields by using the custom opertator `<->`. 
 So this operator let us define the what is called **two way binding** or **bidirectional binding** using RxSwift: 
 
 * each `Variable` field of the view model is bounded to a field on the UI. This basically means that each value we 
 set a in the `value` property of a `Variable` field will be displayed on the UI Cocoa specific field.
 
-* each value inserted in the UI Cocoa specific field will be set in corresponding the `Variable` field on the view model.   
+* each value inserted in the UI Cocoa specific field will be set in the corresponding `Variable` field on the view model.   
  
 In this way the View Model is completely decoupled from the View part (in this case the `NSViewController`). This 
 means that we can reuse the same ViewModel to create other versions of Mp3ID3Tagger for other platforms. This is 
