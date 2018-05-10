@@ -4,10 +4,10 @@ $(document).ready(function () {
     var controller = new ScrollMagic.Controller();
     enableScroll();
     loadFonts();
-    addTabsClickEvent(controller);
+    addTabsClickEvent();
     addArrowDownClickEvent(isMobileDevice);
     startHeaderAnimation(isMobileDevice);
-    startThreeJSSceneIfSupported(isMobileDevice);
+    startThreeJSSceneIfSupported();
     whoIAmAnimation(controller);
 });
 
@@ -54,14 +54,10 @@ function cookieConsent() {
         })});
 }
 
-function addTabsClickEvent(controller) {
-    var tabsNotOpened = {educationAndExperience: true};
+function addTabsClickEvent() {
     $("#profile-tabs").find("a").click(function (event) {
-        showNewTab(event, $(this));
-        if (isEducationTab() && educationTabHasNotBeenOpened(tabsNotOpened)) {
-            timelineElementsAnimation(controller);
-            updateTabsOpenedStatus(tabsNotOpened);
-        }
+        event.preventDefault();
+        $(this).tab('show');
     });
 }
 
@@ -72,60 +68,6 @@ function addArrowDownClickEvent(isMobileDevice) {
             TweenLite.to(window, 2, {scrollTo: "#who-am-i-container"});
         });
     }
-}
-
-function educationTabHasNotBeenOpened(tabsOpened) {
-    return tabsOpened.educationAndExperience;
-}
-
-function updateTabsOpenedStatus(tabsOpened) {
-    tabsOpened.educationAndExperience = !tabsOpened.educationAndExperience
-}
-
-function createTweenTimelineElement(idElement, completeFunction) {
-    return TweenMax.staggerFrom(idElement, 1, {
-        opacity: 0,
-        onComplete: completeFunction
-    }, 0.5);
-}
-
-function getTriggerElementIdForTimelineElement(cssId, index, timelineLength, timelineElements) {
-    var idTriggerElement = cssId;
-    if (index === timelineLength - 1) {
-        idTriggerElement = "#" + $(timelineElements[timelineLength - 2]).attr('id');
-    }
-    return idTriggerElement;
-}
-
-function timelineElementsAnimation(controller) {
-    var timelineElements = $('*[id^="timeline-element"]');
-    var timelineLength = timelineElements.length;
-    timelineElements.each(function (index) {
-        var cssId = "#" + $(this).attr('id');
-        var timelineElementTween = createTweenTimelineElement(cssId, function () {
-            sceneTimeline.destroy();
-        });
-        var idTriggerElement = getTriggerElementIdForTimelineElement(
-            cssId,
-            index,
-            timelineLength,
-            timelineElements
-        );
-        var sceneTimeline = createScrollMagicScene(
-            controller,
-            idTriggerElement,
-            timelineElementTween
-        );
-    });
-}
-
-function showNewTab(event, element) {
-    event.preventDefault();
-    element.tab('show');
-}
-
-function isEducationTab() {
-    return $(".nav-tabs .active").attr("id") === "education-and-experience";
 }
 
 function profileAnimation(completeFunction) {
@@ -159,39 +101,12 @@ function getRandomSortedIcons() {
 
 function createTimeLineWhoIAm(whoIAmIconsRandomed, idWhoIAmDescription, completeFunction) {
     var whoIAmTimeline = new TimelineLite({onComplete: completeFunction});
-    whoIAmTimeline.from(idWhoIAmDescription, 1, {opacity: 0, ease: SlowMo.linear});
     whoIAmTimeline.staggerFrom(whoIAmIconsRandomed, 1, {
         opacity: 0,
         scale: 0,
         ease: Elastic.easeInOut
     }, 0.1);
     return whoIAmTimeline;
-}
-
-function calculateXPercentNeeded(imagePosition) {
-    var xPercentImage = -50;
-    var xPercentText = 50;
-    if (imagePosition === "right") {
-        xPercentImage = 50;
-        xPercentText = -50;
-    }
-    return {image: xPercentImage, text: xPercentText};
-}
-
-function createTweenImage(idImage, xPercentImage) {
-    return TweenLite.from(idImage, 0.7, {
-        opacity: 0,
-        xPercent: xPercentImage
-    });
-}
-
-function createTweenText(idText, xPercentText, completeFunction) {
-    return TweenLite.from(idText, 0.7, {
-        opacity: 0,
-        xPercent: xPercentText,
-        delay: 0.5,
-        onComplete: completeFunction
-    });
 }
 
 function createScrollMagicScene(controller, idElementTrigger, tween) {
@@ -347,9 +262,9 @@ function createRenderer() {
     return renderer;
 }
 
-function startThreeJSSceneIfSupported(isMobileDevice) {
+function startThreeJSSceneIfSupported() {
     if (Detector.webgl) {
-        sceneThreeJS(isMobileDevice);
+        sceneThreeJS();
     }
 }
 
@@ -362,7 +277,7 @@ function startHeaderAnimation(isMobileDevice) {
     });
 }
 
-function sceneThreeJS(isMobileDevice) {
+function sceneThreeJS() {
     var scene = new THREE.Scene();
     var camera = createCamera();
     var textureLoader = new THREE.TextureLoader();

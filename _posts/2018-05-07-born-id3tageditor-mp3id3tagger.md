@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The born of ID3TagEditor and Mp3ID3Tagger and my journey into the ID3 tag standard"
+title: "The birth of ID3TagEditor and Mp3ID3Tagger and my journey into the ID3 tag standard"
 description: "The first of a short series of post in which I describe my two latest project: ID3TagEditor and 
 Mp3ID3Tagger. In this post I will talk about why I started to develop them."
 date: 2018-05-07
