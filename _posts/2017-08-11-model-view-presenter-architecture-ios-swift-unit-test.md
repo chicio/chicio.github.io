@@ -370,7 +370,8 @@ class ProductsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 }
 ```
-You don't need unit tests for the controller: the presenter unit tests assure that our presentation logic is the one expected. The view controller is only updating iOS specific User Interface components (something we hope Apple tested for us :smirk:).
+You don't need unit tests for the controller: the presenter unit tests assure that our presentation logic is the one 
+expected. The view controller is only updating iOS specific User Interface components (something we hope Apple tested for us :smirk:).
 In the same way we developed this components, we can go on and implement our product detail by defining first of all a `ProductDetailView`:
 
 ```swift
@@ -453,6 +454,27 @@ class ProductDetailPresenterTests: XCTestCase {
         XCTAssertTrue(productDetailView.showErrorHasBeenCalled)
     }
 }
+
+....
+
+class ProductDetailViewSpy: ProductDetailView {
+    private(set) var showTitleHasBeenCalled: Bool = false
+    private(set) var showProductHasBeenCalled: Bool = false
+    private(set) var showErrorHasBeenCalled: Bool = false
+    
+    func show(title aTitle: String) {
+        showTitleHasBeenCalled = true
+    }
+    
+    func show(product: Product) {
+        showProductHasBeenCalled = true
+    }
+    
+    func showErrorWith(message: String) {
+        showErrorHasBeenCalled = true
+    }
+}
+
 ```
 
 Finally our `ProductDetailViewController` that is the view controller for this app section:
