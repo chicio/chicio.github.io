@@ -18,7 +18,7 @@ seo:
 
 In [this previous post](/2018/05/07/born-id3tageditor-mp3id3tagger.html "born id3tageditor mp3id3tagger") I 
 described the reason why I develop [Mp3ID3Tagger](https://github.com/chicio/Mp3ID3Tagger "mp3 id3 tag editor macos"),
- a macOS app to edit the id3 tag of your mp3 files that leverage on the power of [ID3TagEditor](/blog/2018/05/26/id3tageditor-swift-read-write-id3-tag-mp3.html). Below you can find 
+ a macOS app to edit the id3 tag of your mp3 files that leverage on the power of [ID3TagEditor](/2018/05/08/id3tageditor-swift-read-write-id3-tag-mp3.html). Below you can find 
  the app logo.
  
 ![MP3ID3Tagger macOS app RxSwift](/assets/images/posts/mp3id3tagger-logo.jpg "MP3ID3Tagger macOS app RxSwift")
@@ -213,7 +213,7 @@ Below you can find the `Form` class with all the implementations also for its co
  note what I stated above: the set of all the `Variable` fields of this classes matches the set of the UI components 
  that we saw in the screenshot of the app that you saw above. One last important thing to note: the class 
  `AttachedPictureField` forces the type of the attached picture to be saved to `FrontCover`. [In this way the 
- ID3TagEditor will write the ID3 tag with the correct data to display the album cover on my renault clio](/blog/2018/05/25/born-id3tageditor-mp3id3tagger.html "mp3id3tagger id3tageditor")!!! :relieved: 
+ ID3TagEditor will write the ID3 tag with the correct data to display the album cover on my renault clio](/2018/05/07/born-id3tageditor-mp3id3tagger.html "mp3id3tagger id3tageditor")!!! :relieved: 
  
 
 ```swift
