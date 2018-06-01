@@ -14,7 +14,7 @@ seo:
 
 ---
 
-As we see in [this post](/2017/06/02/swift-closure-syntax.html "what are closure") and also
+As we saw in [this post](/2017/06/02/swift-closure-syntax.html "what are closure") and also
  in [this other one](/2017/06/14/swift-closure-demystifying-autoclosure-escaping.html "autoclose and escaping"), closures 
  are one of the most important building block of Swift. They are extensively used inside the iOS SDK.  
 But in the previous posts about closures I didn't answer one very important question: how do can you unit test asynchronous operation and closure? It seems Apple has the answer for us!! Inside the iOS Testing framework we have **Expectation**.
