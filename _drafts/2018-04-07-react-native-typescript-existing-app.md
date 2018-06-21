@@ -178,7 +178,107 @@ module.exports = {
 };
 ``` 
 
-We are now ready to write our app. I will not enter in the detail of the app implementation on the React Native side.
- You can check [this github repository](https://github.com/chicio/React-Native-Typescript-Existing-App "React Native Typescript Existing App") 
-to have a look at the TypeScript components I created to have the app I shown you above.   
+We are now ready to write our app. Basically the screen that shows the nasa photo is the `NasaPhotoViewerScreen`. 
+This component uses `NasaPhotoInformationComponent` and some React Native standard component to show the information 
+that comes from the API. The informations are fetched using the `NasaPhotoService`. The `NasaPhotoViewerScreen` and 
+the `NasaPhotoService` are glued together using the [Model-View-Presenter](/2017/08/11/model-view-presenter-architecture-ios-swift-unit-test.html "Model View Presenter iOS") architecture   
+in the `NasaPhotoComponentPresenter`
+ 
+```typescript jsx
+export class NasaPhotoService {
+  async retrieve(): Promise<any> {
+    return fetch('https://api.nasa.gov/planetary/apod?api_key=1cygunHJsSwDug6zJjF3emev3QAP8yFLppohLuxb')
+      .then((response) => response.json())
+  }
+}
+
+...
+
+export class NasaPhotoComponentPresenter {
+  private nasaPhotoRepository: NasaPhotoRepository
+  private nasaPhotoView: NasaPhotoView
+
+  constructor(nasaPhotoView: NasaPhotoView, nasaPhotoRepository: NasaPhotoRepository) {
+    this.nasaPhotoRepository = nasaPhotoRepository
+    this.nasaPhotoView = nasaPhotoView
+  }
+
+  async onStart(): Promise<void> {
+    try {
+      const nasaPhoto = await this.nasaPhotoRepository.load();
+      this.nasaPhotoView.showValid(nasaPhoto);
+    } catch (_) {
+      this.nasaPhotoView.showAn("Network error")
+    }
+  }
+}
+
+...
+
+export class NasaPhotoViewerScreen extends React.Component<Props, State> implements NasaPhotoView {
+  private readonly presenter: NasaPhotoComponentPresenter
+
+  constructor(props: Props) {
+    super(props)
+    this.state = {
+      photo: NasaPhoto.empty()
+    }
+    this.presenter = new NasaPhotoComponentPresenter(
+      this,
+      new NasaPhotoRepository(new NasaPhotoService(), new NasaPhotoAdapter())
+    )
+  }
+
+  componentWillMount() {
+    this.presenter.onStart()
+  }
+
+  showAn(error: string): void {
+    alert(error)
+  }
+
+  showValid(photo: NasaPhoto): void {
+    this.setState({photo})
+  }
+
+  render() {
+    return (
+      <ScrollView style={styles.container}>
+        <Image
+          style={styles.image}
+          source={{uri: this.state.photo.url}}
+        />
+        <NasaPhotoInformationComponent
+          title={this.state.photo.title}
+          date={this.state.photo.date}
+          description={this.state.photo.description}
+        />
+      </ScrollView>
+    );
+  }
+}
+
+interface Props {
+  name: string
+}
+
+interface State {
+  photo: NasaPhoto
+}
+
+const styles = StyleSheet.create({
+  container: {
+    width: "100%",
+    height: "100%"
+  },
+  image: {
+    width: "100%",
+    height: 220,
+    resizeMode: "cover",
+  }
+});
+```
+
+ You can check all the code details in [this github repository](https://github.com/chicio/React-Native-Typescript-Existing-App "React Native Typescript Existing App") 
+and see all the TypeScript components I created to have the app I shown you above.   
 That's it!!! React Native + TypeScript: :hearts: true love :hearts:.   
