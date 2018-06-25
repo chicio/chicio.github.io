@@ -182,7 +182,8 @@ We are now ready to write our app. Basically the screen that shows the nasa phot
 This component uses `NasaPhotoInformationComponent` and some React Native standard component to show the information 
 that comes from the API. The informations are fetched using the `NasaPhotoService`. The `NasaPhotoViewerScreen` and 
 the `NasaPhotoService` are glued together using the [Model-View-Presenter](/2017/08/11/model-view-presenter-architecture-ios-swift-unit-test.html "Model View Presenter iOS") architecture   
-in the `NasaPhotoComponentPresenter`
+in the `NasaPhotoComponentPresenter`. As you can see from the code below, TypeScript has a syntax that let you feel 
+home if you have any experience in other language like Java, C# (many other :sunglasses:).
  
 ```typescript jsx
 export class NasaPhotoService {
