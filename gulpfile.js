@@ -30,7 +30,7 @@ gulp.task('serve', function() {
 });
 
 gulp.task('jekyll', function() {
-    var options = ['build', '--watch', '--incremental', '--verbose', '--profile'];
+    var options = ['build', '--watch', '--incremental', '--verbose', '--profile', '--future'];
     if (isTravis) {
         options = ['build', '--incremental'];
     }

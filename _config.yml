@@ -50,6 +50,8 @@ nav:
 
 ########## Configuration
 
+future: false
+
 defaults:
   - scope:
       path: "" # defaults for all files

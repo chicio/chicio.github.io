@@ -37,7 +37,7 @@ clearly separate the UI development from the business logic. The main components
 * the *Model*, that usually represents the business logic of the application. 
 * the *View*, as in the other architectural pattern, the view is the structure, layout, and appearance of what a user sees on the screen.
 * the *View model*, that usually represents an abstraction of the view exposing public properties and commands. 
-* the *Binder* interprets bindings defined in (typically) the View, observes the View Model for changes in state and 
+* the *Binder* interprets bindings defined in the View, observes the View Model for changes in state and 
 updates the View and finally observes the View for changes in state and updates the View Model.
 
 From the definition above we see that the MVVM needs something to bind the view to the view model in a platform 

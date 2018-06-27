@@ -3,7 +3,7 @@ layout: post
 title: "React Native + Typescript :purple_heart:, love at first sight. Setup in an existing app."
 description: "In this post I will show you how to setup React Native + Typescript in an existing app and how powerful
  they are together."
-date: 2018-04-07
+date: 2018-07-04
 image: /assets/images/posts/react-native-typescript.jpg
 tags: [react native, realm, swift, ios, apple, android, java, typescript, mobile application development, javascript]
 comments: true
@@ -15,19 +15,21 @@ seo:
 
 ---
 
-In the last few months at lastminute.com group I worked on a project where the main focus was to rebuild our 
-native apps of the main brands lastminute.com, Volagratis and Rumbo with a new interface and new features. It 
-was a disruptive project for our apps. Let's compare the old and the new home of the lastminute.com app. 
-The changes are impressive :sunglasses:.
+In the last few months at [lastminute.com group](http://www.lastminutegroup.com/ "lastminute.com group") I worked on 
+a project where the main focus was to rebuild our native apps of the main brands [lastminute.com](https://www
+.lastminute.com/ "Lastminute travel trips booking"), 
+[Volagratis](https://www.volagratis.com/ "Volagratis travel trips booking viaggi") and 
+[Rumbo](https://www.rumbo.es/ "Rumbo") with a new interface and new features. It was a disruptive project for our apps. 
+Let's compare the old and the new home of the lastminute.com app. The changes are quite impressive :sunglasses:.
 
 ![Compare home app lastminute.com](/assets/images/posts/compare-homes-lastminute.jpg "Compare home app lastminute.com")
 
-To do this "app relaunch" project we decided to use React Native (I already talked about this framework in some 
+For this "app relaunch" project we decided to use React Native (I already talked about this framework in some 
 previous posts that you can find in the [archive section](/blog/archive "archive")). We didn't rewrite the app from 
 scratch. We decided to integrated React Native in the existing code base and:
 
 * use the [Native Modules](https://facebook.github.io/react-native/docs/native-modules-ios.html "Native Modules") feature to 
-reuse some native code we already had in place (the login for example)
+reuse some native code we already had in place for some features (for example the login)
 * write the new stuff completely in React Native.  
     
 We also took another important decision when we started the project: we choose TypeScript instead of Javascript as 
@@ -54,7 +56,7 @@ can just follow the [React Native documentation regarding to the integration wit
  is a fast, reliable and secure dependencies manager release by Facebook in October 2016. 
  Our project directories structure will be the one contained in the screenshots below.
  
- ![react native typecript directories](/assets/images/posts/react-native-typescript-directories.jpg "react native typecript directories")
+![react native typecript directories](/assets/images/posts/react-native-typescript-directories.jpg "react native typecript directories")
  
  So let's start by installing TypeScript and React Native with the following commands from the root of our project:
  
@@ -185,7 +187,7 @@ the `NasaPhotoService` are glued together using the [Model-View-Presenter](/2017
 in the `NasaPhotoComponentPresenter`. As you can see from the code below, TypeScript has a syntax that let you feel 
 home if you have any experience in other language like Java, C# (many other :sunglasses:).
  
-```typescript jsx
+```jsx
 export class NasaPhotoService {
   async retrieve(): Promise<any> {
     return fetch('https://api.nasa.gov/planetary/apod?api_key=1cygunHJsSwDug6zJjF3emev3QAP8yFLppohLuxb')

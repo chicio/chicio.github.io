@@ -3,8 +3,8 @@ layout: post
 title: "Eat Your Own Dog Food: distribute a beta version of your iOS app using Apple Enterprise Developer Program"
 description: "In this post I will show you how to distribute a beta version of your iOS app using Apple Enterprise
 Developer Program."
-date: 2018-15-07
-image: XXXXX
+date: 2018-07-05
+image: /assets/images/posts/beta-enterprise-dogfood.jpg
 tags: [swift, ios, apple, mobile application development]
 comments: true
 seo:
@@ -17,11 +17,11 @@ seo:
 ---
 
 In a [previous post](/2018/05/07/react-native-typescript-exsisting-app.html "react native typescript") I talked about 
-the "app relaunch" project I was involved in the last few months at lastminute.com group. During one of the last 
-sprint before the release we started to think about putting in place an internal beta testing program to have more 
-testing data and eventually discover more bugs before the release on the app store (we really wanted to eat our food :smile:).
- At the beginning we were thinking about using the TestFlight environment with external testers. But this solution 
- didn't work for us because:
+the "app relaunch" project I was involved in the last few months at [lastminute.com group](http://www.lastminutegroup.com/ "lastminute.com group"). 
+During one of the last sprint before the release we started to think about putting in place an internal beta testing 
+program to have more testing data and eventually discover more bugs before the release on the app store (we really 
+wanted to eat our food :smile:). At the beginning we were thinking about using the TestFlight environment with 
+external testers. But this solution didn't work for us because:
  
 * we wanted to let everyone in the company be able to install the beta version without the need for any kind of 
  registration. The external testers in the TestFlight environment must be registered in the "External Tester" section
@@ -33,10 +33,10 @@ your tester. We also wanted to avoid the slow processing timing of TestFlight.
 
 So what do we did? We put in place our custom Beta distribution program using [Apple Enterprise Developer Program](https://developer.apple.com/programs/enterprise/).
 By enrolling in this program you have the ability to distribute you app inside your company without the need of the 
-Apple App Store. You can basically create your own Company App Store!!! :open_mouth:
+Apple App Store. You can basically create your own Company App Store!! :open_mouth:
 I worked on the creation of this custom internal Beta distribution program with my colleague 
 [Giordano Tamburelli](https://www.linkedin.com/in/giordano-tamburrelli-b532334/ "Giordano Tamburrelli"). Giordano is 
-the Team Leader of the Lynch Team (the agile team where I work at lastminute.com group). He has a Phd in Computer 
+the Team Leader of the Lynch Team, the agile team where I work at lastminute.com group. He has a Phd in Computer 
 Science at Politecnico di Milano university and a master degree in Computer science at the University of Illinois.
  He is one of the most skilled person I ever met, both from a technical and managerial point of view (yes you know, I'm just 
 kissing his ass :kissing_heart::stuck_out_tongue_closed_eyes:). Obviously, he is also one of the biggest nerd you could
@@ -49,9 +49,6 @@ kissing his ass :kissing_heart::stuck_out_tongue_closed_eyes:). Obviously, he is
   Jenkins (CI), maven (for the upload) and Nexus as our repository manger (we already use all these platform for the 
   distribution of our release version and to store development snapshots of the ipa).
  * Put in place a mini website, configured specifically for the distribution of the beta app.
- * Create some flyers to hang on the wall inside lastminute.com group offices with 
-    * QR code so that the use just need to scan it to access to the website and download the app
-    * instruction for additional step to follow just after the installation
     
 Let's start to see all this steps in details. To show you the details and some screenshots of the operation we made I
  will use a sample project `SampleBetaApp` with bundle identifier `it.chicio.SampleBetaApp`.  
@@ -149,23 +146,104 @@ mvn deploy:deploy-file -DgroupId="<group id project identifier>"
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>method</key>
-	<string>enterprise</string>
-	<key>signingCertificate</key>
-	<string>iOS Distribution</string>
-	<key>provisioningProfiles</key>
-	<dict>
-		<key>it.chicio.BETA.SampleBetaApp</key>
-		<string>SampleApp Beta Distribution</string>
-	</dict>
-</dict>
+    <dict>
+        <key>method</key>
+        <string>enterprise</string>
+        <key>signingCertificate</key>
+        <string>iOS Distribution</string>
+        <key>provisioningProfiles</key>
+        <dict>
+            <key>it.chicio.BETA.SampleBetaApp</key>
+            <string>SampleApp Beta Distribution</string>
+        </dict>
+    </dict>
 </plist>
 ```    
 
-At this moment we were ready to create the new Jenkins job to build our beta. We decided to trigger it using the the 
-webhook (AAAA CHECK). This job basically clone our app repository and then execute the lane `create_beta_ipa` that we
- defined before in the Fastlane Fastfile.  
-So in the end with all this steps above we obtained an ipa reachable at a public url. .......(sito su github pages e 
-conclusione) 
+At this moment we were ready to create the new Jenkins job to build our beta. We decided to trigger it using the Jenkins
+webhook trigger. In this way we were able to trigger the build and release of a new beta by just calling an url. This 
+job basically clone our app repository and then execute the lane `create_beta_ipa` that we defined before in the 
+Fastlane Fastfile.  
+So in the end with all this steps above we obtained an ipa reachable at a public url. We decided to publish our beta 
+using Github Pages (the same service that runs this website :hearts:). Why? Because we needed a server with HTTPS 
+already configured. Github pages let us created the beta website really fast. So we created a new account and 
+published a new html that contains the following code:
+
+```html
+<html>
+    <head>
+    </head>
+    <body>
+        <p>
+            <br />
+            <br />
+            <a href="itms-services://?action=download-manifest&url=<a base url>manifest.plist">
+                <p>Install the SampleAppBeta app</p>
+            </a>
+        </p>
+    </body>
+</html>
+```
+
+As you can see above, in this html there's a special link with the protocol `itms-services`. If a user clicks on this
+ link from safari on a iOS device, the download and the installation of the app will starts. If you look carefully at
+  the content of the link above, you will notice there's a reference to a url of a **manifest.plist** file. This is a 
+  file generated by XCode if you export an archive with an enteprise certificate and contains some metadata for the 
+  ipa, including the location/url of the ipa to be downloaded. In our case was the Nexus link to the ipa. This file can
+   be generated the first time and eventually edited if there's any change. This is a sample manifest file that could
+    be used for our SampleBetaApp.
   
+```xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>items</key>
+        <array>
+            <dict>
+                <key>assets</key>
+                <array>
+                    <dict>
+                        <key>kind</key>
+                        <string>software-package</string>
+                        <key>url</key>
+                        <string>http://www.example-url-to-where-the-ipa-is.com/SampleBetaApp.ipa</string>
+                    </dict>
+                    <dict>
+                        <key>kind</key>
+                        <string>display-image</string>
+                        <key>url</key>
+                        <string>https://www.example.com/image.57x57.png</string>
+                    </dict>
+                    <dict>
+                        <key>kind</key>
+                        <string>full-size-image</string>
+                        <key>url</key>
+                        <string>https://www.example.com/image.512x512.png</string>
+                    </dict>
+                </array>
+                <key>metadata</key>
+                <dict>
+                    <key>bundle-identifier</key>
+                    <string>it.chicio.SampleBetaApp</string>
+                    <key>bundle-version</key>
+                    <string>1.0.0</string>
+                    <key>kind</key>
+                    <string>software</string>
+                    <key>title</key>
+                    <string>beta-sample.com</string>
+                </dict>
+            </dict>
+        </array>
+    </dict>
+</plist>
+```  
+
+Now we are ready to distribute our beta app. One last thing: you will need to explain to the less experienced user 
+that they need to accept the enterprise provisioning profile from Settings -> Profiles & Device Management. If they 
+don't do it they will see the alert contained in the screenshot below. 
+
+![enterprise untrusted developer](/assets/images/posts/enterprise-untrusted-developer.jpg "enterprise untrusted developer") 
+
+That's it!!! Go to your boss and tell her/him you're ready to publish you custom iOS beta internal program!!! :sunglasses::apple: 
