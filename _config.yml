@@ -50,6 +50,8 @@ nav:
 
 ########## Configuration
 
+timezone: Europe/Rome
+
 future: false
 
 defaults:
