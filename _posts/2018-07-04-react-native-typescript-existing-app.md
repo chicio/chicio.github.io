@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "React Native + Typescript :purple_heart:, love at first sight. Setup in an existing app."
-description: "In this post I will show you how to setup React Native + Typescript in an existing app and how powerful
- they are together."
+description: "In this post I will show you how to setup React Native + Typescript in an existing app and I will show you
+how powerful they are when used together."
 date: 2018-07-04
 image: /assets/images/posts/react-native-typescript.jpg
 tags: [react native, realm, swift, ios, apple, android, java, typescript, mobile application development, javascript]
@@ -16,8 +16,8 @@ seo:
 ---
 
 In the last few months at [lastminute.com group](http://www.lastminutegroup.com/ "lastminute.com group") I worked on 
-a project where the main focus was to rebuild our native apps of the main brands [lastminute.com](https://www
-.lastminute.com/ "Lastminute travel trips booking"), 
+the following project: rebuild our native mobile apps of the main brands [lastminute.com](https://www.lastminute.com/ 
+"Lastminute travel trips booking"), 
 [Volagratis](https://www.volagratis.com/ "Volagratis travel trips booking viaggi") and 
 [Rumbo](https://www.rumbo.es/ "Rumbo") with a new interface and new features. It was a disruptive project for our apps. 
 Let's compare the old and the new home of the lastminute.com app. The changes are quite impressive :sunglasses:.
@@ -28,13 +28,13 @@ For this "app relaunch" project we decided to use React Native (I already talked
 previous posts that you can find in the [archive section](/blog/archive "archive")). We didn't rewrite the app from 
 scratch. We decided to integrated React Native in the existing code base and:
 
-* use the [Native Modules](https://facebook.github.io/react-native/docs/native-modules-ios.html "Native Modules") feature to 
-reuse some native code we already had in place for some features (for example the login)
+* use [Native Modules](https://facebook.github.io/react-native/docs/native-modules-ios.html "Native Modules") to 
+reuse some native code we already had in place for some features (for example the login).
 * write the new stuff completely in React Native.  
     
 We also took another important decision when we started the project: we choose TypeScript instead of Javascript as 
-main language to write our React stuff. What is TypeScript? ypeScript is an open-source programming language 
-developed and maintained by Microsoft. They describe it on its official website as:
+main language to write our React Native stuff. What is TypeScript? It is an open-source programming language 
+developed and maintained by Microsoft. They describe it on its official website with the following definition:
 
 >Typescript is typed superset of Javascript that compiles to plain Javascript. Any browser. Any host. Any OS. Open 
 source.
@@ -48,7 +48,8 @@ TypeScript is useful if you are a developer that comes from other strongly typed
  where we will show the photo of the day that we will read from the Nasa open API. Below you can find what we will 
  achieve. The first screen is a standard native screen. The second one is a React Native screen.
   
-![react native typecript app](/assets/images/posts/react-native-typescript-app-screens.jpg "react native typecript app")
+![react native typescript app](/assets/images/posts/react-native-typescript-app-screens.jpg "react native typescript 
+app")
 
 Let's start to setup our project for react native and TypesScript. First, React Native integration. For this task we 
 can just follow the [React Native documentation regarding to the integration with existing app](https://facebook.github.io/react-native/docs/integration-with-existing-apps.html).
@@ -58,7 +59,8 @@ can just follow the [React Native documentation regarding to the integration wit
  
 ![react native typecript directories](/assets/images/posts/react-native-typescript-directories.jpg "react native typecript directories")
  
- So let's start by installing TypeScript and React Native with the following commands from the root of our project:
+ So let's start by installing TypeScript and React Native. We can do it with the following commands from the root of 
+ our project:
  
  ```bash
  yarn add react-native
@@ -66,7 +68,7 @@ can just follow the [React Native documentation regarding to the integration wit
  yarn add --dev @types/react @types/react-native
  ``` 
  
- After that we need to configure TypeCcript in our project. We can start to do that by running the following command:
+ After that we need to configure TypeScript in our project. We can start to do that by running the following command:
  
  ```bash
 yarn tsc --init --pretty --jsx react
