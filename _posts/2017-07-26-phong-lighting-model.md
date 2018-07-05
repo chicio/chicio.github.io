@@ -41,8 +41,6 @@ In computer graphics often an approximation based on RGB triplets is used:
 * Light color is a RGB triplet 
 * The reflectance spectrum is a triple of percentage
 
-{% include adsense-article-middle.html %}
-
 So each component of the following equations will be described by a triplet of number (RGB or percentage).  
 The light that you see on a surface could be decomposed into four main components. Let's see them in detail and how they are 
 composed together to calculate the illumination of a surface point: Phong model.

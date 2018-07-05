@@ -53,8 +53,6 @@ Then I installed Gulp:
 $ npm install --save-dev gulp
 ```
 
-{% include adsense-article-middle.html %}
- 
 I decided to use the following gulp libraries to improve my work (using the same command used for Gulp to install them):
  
   - gulp-concat and gulp-uglify to concatenate all my css and js in a style.min.css, index.min.js and vendor.min.js (the 

@@ -45,8 +45,6 @@ But what does it really mean to "choose carefully"? :confused:. Choosing the rig
 * **Use solution domain names.** Your code will be read by other programmers. Math names, algorithm names, pattern names are all good choices.
 * **Use problem domain names.** If no "programmer oriented name" exists, go with names taken from the problem domain.
 
-{% include adsense-article-middle.html %}
-
 Let's see an example to understand the real value of naming classes, methods, functions and variable in the right way.
 For example, take a look at the following C++ code: 
 

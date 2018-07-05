@@ -43,8 +43,6 @@ coding speed that is possible to achieve by using them and I will explain to you
  time of this writing, I started to prefer the JetBrains IDEs family (not only for mobile application development 
  :bowtie:).
  
-{% include adsense-article-middle.html %}
-
 ### Xcode
 I always loved Xcode. I started to use it 8 years ago and it's still here with me during my daily job. It opens in a 
 few seconds and you can start to code very quickly. But.... what happens when your app code start to increase in terms 

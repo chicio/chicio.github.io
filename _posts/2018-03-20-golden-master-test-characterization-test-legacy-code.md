@@ -40,9 +40,6 @@ Emanuele is a senior full-stack software engineer and a true nerd :alien:/comput
  write tests in which we assert that the output from the source code must be the same we received before. In this way
   we can start to refactor a piece of code and be sure that our modifications didn't change the behaviour of the 
   source code. Whooaaa!! No more risky approaches to do refactoring without tests!!! :relieved: :clap:  
-
-{% include adsense-article-middle.html %}   
-  
   Now it's time for an example. In this article I will show you a simple example where I apply this technique to put 
   under test a piece of legacy code. You can find the entire source code in [this github repository](https://github.com/chicio/Golden-Master-Testing-Characterization-Test "Golden Master Testing Characterization Test repo").
   Suppose for example that you found this class, `TravelsAdapter`, in the code you're working on.

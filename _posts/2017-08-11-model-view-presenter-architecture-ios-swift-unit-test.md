@@ -281,8 +281,6 @@ class ProductsPresenterTests: XCTestCase {
 }
 ```
 
-{% include adsense-article-middle.html %}
-
 It easy to see that the unit tests for our presenter describe the entire presentation flow. This basically means that our unit tests are the documentation of our presentation logic. Cooool!!!! :sunglasses:
 Now the next big question is: who is going to implement our `ProductsView` protocol? As we said in the introduction, our view controllers become the View in the Model View Presenter architecture. They act as passive platform specific user interface components updater. This means that our protocol will be implemented by `ProductsViewController`. It have the responsibility to launch the `ProductsPresenter` action at the right time and implement all the real passive User Interface update operation.
 In particular we will have our `onStart()` presenter method call in the `viewDidLoad` and the `onSelected(product: Product)` when a product cell is tapped, that means a product has been selected. The final implementation will be: 

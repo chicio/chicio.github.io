@@ -60,8 +60,6 @@ We can rotate and scaling an object using the same tools we used for the transla
 * the transformation tools
 * the 3D manipulator widget
 
-{% include adsense-article-middle.html %}
-
 One important thing to consider when we are working with transformation is the transform orientation. This option 
 defines the orientation of the transform operation. This is very important because it influences the final result of 
 the transform operation. You can change the transform orientation in the 3D manipulator widget.

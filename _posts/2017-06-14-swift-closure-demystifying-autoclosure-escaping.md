@@ -47,9 +47,6 @@ and we store it as an instance variable of our class. We can store it because we
 Now in our controller we can define an array of operation that will be the datasource to our `UITableViewController`. 
 We can pass in the constructor of each `Operation` instance the function that corresponds to the operation that we want to execute. 
 This function will be executed in the table view delegate method `public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)` by accessing the corresponding element in the data source array, without the need to identify the exact cell type selected.
-
-{% include adsense-article-middle.html %}
-  
 Here you can find the complete `OperationsViewController`:  
 
 ```swift

@@ -141,8 +141,6 @@ React Native for the `RCTRootView` initializer, we will notice something very st
                     launchOptions:(NSDictionary *)launchOptions;
 ```   
 
-{% include adsense-article-middle.html %}
-
 Whaaaaaaattttt :laughing:?????!?!?!??? This basically means that the documentation in the getting started is 
 considering only the case where we will have a single `RCTRootView` instance. So we need to do something to our 
 `ReactViewController` so that we can keep multiple `RCTRootView` alive at the same time.

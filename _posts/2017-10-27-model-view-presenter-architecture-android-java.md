@@ -88,8 +88,6 @@ Now we can start to create our presenter. First of all we will define a `Product
 * **listening to the repository callback when the products are retrieve**. So our presenter will implement the `ProductsRepositoryListener` interface and pass to the view the updated product list.
 * **the show detail action in the** `onSelected(Product product)` method. In this case it will need to check that we have a valid product and eventually show its detail (or an error message).
 
-{% include adsense-article-middle.html %}
-
 First let's see our `ProductsView` interface:
 
 ```java

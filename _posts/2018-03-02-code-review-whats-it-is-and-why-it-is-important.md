@@ -48,10 +48,7 @@ Basically we had to write an automatic Minesweeper resolver (do you remember the
 end of the dojo we didn't complete the task, so I decided to try to solve it in another way. I developed a 
 complete command line version of a Minesweeper resolver and let Angelo do the code review of my implementation. 
 In this way I can show you the power of code review :neckbeard: (and last but not least how much meticulous is Angelo
- during his code review :cold_sweat::sweat_smile::cupid:).
-
-{% include adsense-article-middle.html %} 
-
+ during his code review :cold_sweat::sweat_smile::cupid:).  
 Before starting, I suggest you to have a look at [this repository](https://github.com/chicio/Minesweeper "Minesweeper kata dojo") 
 that contains the entire Minesweeper implementation I develop and, on the [Code review pull request](https://github.com/chicio/Minesweeper/pull/1) 
 opened on this repo you can find the observation/new implementation from Angelo. Usually 

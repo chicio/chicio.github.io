@@ -75,8 +75,6 @@ Now you would expect that everything works fine but...
 What's happening? The `RealmReact` project is expecting the React Native headers in a relative position with respect 
 to its original position. Arrrgghhh :rage:!! We need to find another way...  
 
-{% include adsense-article-middle.html %}
-
 What can we do? We can start by observing that the `RealmReact` project is just a "container project" for:
  * `RealmJS` project, that  generates two static libraries `libRealmJS.a` and `libGCDWebServers.a`
  * an Objective-C++ class `RealmReact`
