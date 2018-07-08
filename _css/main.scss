@@ -1027,6 +1027,24 @@ footer {
 
 .blog-archive {
   margin-bottom: 15px;
+
+  .archive-list-post {
+    .archive-post {
+      display: block;
+      margin-top: 20px;
+      margin-left:15px;
+      margin-right: 15px;
+
+      .archive-list-post-date{
+        color: #757575;
+        padding: 0;
+      }
+
+      .archive-list-post-title {
+        padding: 0;
+      }
+    }
+  }
 }
 
 .blog-post-title {
