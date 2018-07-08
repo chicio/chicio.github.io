@@ -8,14 +8,15 @@
             {% include blog-header.html %}
             <div class="row blog-archive">
                 {% for post in site.posts %}
-                <div class="container archive-list-post">
-                    <a href="{{ post.url }}">
-                        <span class="archive-list-post-date">
-                            <time>{{ post.date | date_to_string }} | </time>
-                        </span>
-                        <span class="archive-list-post-title">
+                <div class="container archive-list-post col-xs-12">
+                    <a class="row" href="{{ post.url }}" style="display: block;margin-top: 20px; margin-left: 15px;
+                    margin-right: 15px">
+                        <div class="col-sm-2 col-md-2 archive-list-post-date" style="color: #757575; padding: 0">
+                            <time>{{ post.date | date_to_string }}</time>
+                        </div>
+                        <div class="col-sm-10 col-md-10 archive-list-post-title" style="padding: 0">
                             {{ post.title }}
-                        </span>
+                        </div>
                     </a>
                 </div>
                 {% endfor %}
