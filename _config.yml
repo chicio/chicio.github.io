@@ -84,6 +84,7 @@ plugins:
   - octopress-minify-html
   - jekyll-paginate
   - jemoji
+  - jekyll-feed
 
 # Build settings
 exclude:
