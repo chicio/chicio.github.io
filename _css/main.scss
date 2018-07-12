@@ -110,6 +110,7 @@ canvas {
     background-color: transparent;
     position: relative;
     z-index: 100;
+    opacity: 0;
 
     a {
       text-decoration: none;
@@ -125,13 +126,8 @@ canvas {
       font-size: 18px;
     }
 
-    #profile-name {
-      opacity: 0;
-    }
-
     .profile-job {
       color: $primary-color-light;
-      opacity: 0;
     }
 
     .profile-icon {
@@ -142,10 +138,6 @@ canvas {
       background: $accent-color;
       color: #fff;
       border-radius: 0.5em;
-      -ms-transform: scale(0, 0);
-      -webkit-transform: scale(0, 0);
-      transform: scale(0, 0);
-      opacity: 0;
       margin-top: 10px;
     }
 
@@ -156,10 +148,6 @@ canvas {
       background: $accent-color;
       color: #fff;
       border-radius: 0.5em;
-      -ms-transform: scale(0, 0);
-      -webkit-transform: scale(0, 0);
-      transform: scale(0, 0);
-      opacity: 0;
       margin-top: 10px;
     }
 
@@ -186,7 +174,6 @@ canvas {
     width: 100px;
     height: 100px;
     margin: auto;
-    transform: scale(0, 0);
   }
 
   .down-arrow {

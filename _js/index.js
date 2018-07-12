@@ -7,7 +7,6 @@ $(document).ready(function () {
     addTabsClickEvent();
     addArrowDownClickEvent(isMobileDevice);
     startHeaderAnimation(isMobileDevice);
-    startThreeJSSceneIfSupported();
     whoIAmAnimation(controller);
 });
 
@@ -71,16 +70,11 @@ function addArrowDownClickEvent(isMobileDevice) {
 }
 
 function profileAnimation(completeFunction) {
-    var profileTimeline = new TimelineMax({onComplete: completeFunction});
-    profileTimeline.to("#profile-name", 0.5, {opacity: 1, ease: Bounce.easeOut});
-    profileTimeline.to("#profile-job", 0.5, {opacity: 1, ease: Bounce.easeOut});
-    profileTimeline.to("#profile-image", 0.8, {scale: 1, ease: Bounce.easeOut});
-    profileTimeline.staggerTo(".profile-icon", 0.25, {
-        scale: 1,
+    TweenMax.to("#center-content", 0.5, {
         opacity: 1,
-        ease: Bounce.ease
-    }, 0.1);
-    profileTimeline.to("#down-arrow", 0.5, {opacity: 1, ease: Power1.easeOut});
+        onComplete: completeFunction
+    });
+    downArrowAnimation();
 }
 
 function whoIAmAnimation(controller) {
@@ -117,10 +111,7 @@ function createScrollMagicScene(controller, idElementTrigger, tween) {
 
 function downArrowAnimation() {
     TweenMax.to("#down-arrow", 0.5, {
-        bottom: 45,
-        repeat: -1,
-        yoyo: true,
-        delay: 0.5
+        opacity: 1
     });
 }
 
@@ -135,7 +126,7 @@ function isAMobileDevice() {
 function showRenderingSurfaceAnimation() {
     TweenMax.to("#rendering-surface", 0.5, {
         opacity: 1,
-        delay: 0.5
+        delay: 0.2
     });
 }
 
@@ -272,7 +263,7 @@ function startHeaderAnimation(isMobileDevice) {
     hideLoaderAnimation(function () {
         resizeViewport(isMobileDevice);
         profileAnimation(function () {
-            downArrowAnimation();
+            startThreeJSSceneIfSupported();
         });
     });
 }
