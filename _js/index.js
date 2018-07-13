@@ -70,7 +70,7 @@ function addArrowDownClickEvent(isMobileDevice) {
 }
 
 function profileAnimation(completeFunction) {
-    TweenMax.to("#center-content", 0.5, {
+    TweenMax.to(".center-content", 0.5, {
         opacity: 1,
         onComplete: completeFunction
     });
