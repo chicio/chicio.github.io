@@ -253,8 +253,8 @@ function createRenderer() {
     return renderer;
 }
 
-function startThreeJSSceneIfSupported() {
-    if (Detector.webgl) {
+function startThreeJSSceneIfSupported(isMobileDevice) {
+    if (Detector.webgl && isMobileDevice === false) {
         sceneThreeJS();
     }
 }
@@ -263,7 +263,7 @@ function startHeaderAnimation(isMobileDevice) {
     hideLoaderAnimation(function () {
         resizeViewport(isMobileDevice);
         profileAnimation(function () {
-            startThreeJSSceneIfSupported();
+            startThreeJSSceneIfSupported(isMobileDevice);
         });
     });
 }

@@ -65,7 +65,7 @@ paginate_path:      /blog/page:num/
 
 # Debug options
 # minify_html: false
-# limit_posts: 2
+limit_posts: 1
 
 # Markdown
 markdown:           kramdown
