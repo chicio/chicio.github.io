@@ -13,12 +13,14 @@ seo:
 
 ---
 
-As reported on [official Apple swift documentation](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html#//apple_ref/doc/uid/TP40014097-CH10-ID158 "official Apple swift documentation") closures are: 
+As reported on the [official Apple swift documentation](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html#//apple_ref/doc/uid/TP40014097-CH10-ID158 "official Apple swift documentation") closures are: 
 
-> Closures are self-contained blocks of functionality that can be passed around and used in your code. They can capture and store references to any constants and variables from the context in which they are defined.
+> Closures are self-contained blocks of functionality that can be passed around and used in your code. They can 
+capture and store references to any constants and variables from the context in which they are defined.
 
 Closures are in many ways what blocks are in Objective-C (or lamba function in other languages).
-As it was for blocks, it is not easy to remeber their syntax. This post is intended to be a reference for me (and you, readers :wink:) about closure syntax. You could also take a look at [F$%&£&g closure syntax](http://fuckingclosuresyntax.com "F$%&£&g closure syntax").
+As it was for blocks, it is not easy to remeber their syntax. This post is intended to be a reference for me (and 
+you, readers :wink:) about closure syntax. You could also take a look at [F$%&£&g closure syntax](http://fuckingclosuresyntax.com "F$%&£&g closure syntax").
 
 Declared as a variable (valid also for `let` constants):
 
@@ -60,6 +62,6 @@ myFunction { (parameters) -> returnType in
 }
 ```
 
-There is also the possibility to use a shorthand for the parameter: you can call them using `$` followed by the index of the argument in the call. Last but not least, you can capture self avoing retain cycle using `[unowned self]` before the parameters.
-
+There is also the possibility to use a shorthand for the parameter: you can call them using `$` followed by the index
+ of the argument in the call. Last but not least, you can capture self avoing retain cycle using `[unowned self]` before the parameters.
 Go and show to the world the power of closure in Swift!! :sunglasses:
