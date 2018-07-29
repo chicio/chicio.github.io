@@ -255,7 +255,7 @@ export class NasaPhotoViewerScreen extends React.Component<Props, State> impleme
       <ScrollView style={styles.container}>
         <Image
           style={styles.image}
-          {% raw  %}source={{uri: this.state.photo.url}}{% endraw  %}
+          {% raw %}source={{uri: this.state.photo.url}}{% endraw %}
         />
         <NasaPhotoInformationComponent
           title={this.state.photo.title}

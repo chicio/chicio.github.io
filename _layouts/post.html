@@ -10,7 +10,7 @@
 				<div class="col-sm-12 blog-main">
 					<div class="row blog-post">
 						<h2 class="blog-post-title">{{ page.title }}</h2>
-						<p class="blog-post-meta">{{ page.date | date_to_string }}</p>
+						<p class="blog-post-meta">{{ page.date | date_to_string }} · {% include blog-reading-time.html content=content %}</p>
 						{{ content }}
 					</div>
 					<div class="blog-tags">
