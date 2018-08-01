@@ -90,5 +90,5 @@ class OperationsViewController: UITableViewController {
 ```
 
 You can download the complete example [here](https://github.com/chicio/Autoclosure-and-Escaping "autoclosure example link").  
-So basically: no if, no switch, only :heart: for `@autoclosure` and `@escaping` :heart_eyes:.
+So basically: no if, no switch, only love :heart: for `@autoclosure` and `@escaping` :heart_eyes:.
 
