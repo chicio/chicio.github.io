@@ -1,4 +1,7 @@
 @import "bootstrap";
+@import "./font-awesome/fontawesome.scss";
+@import "./font-awesome/brands.scss";
+@import "./font-awesome/solid.scss";
 
 $primary-color-dark: #303F9F;
 $primary-color: #3F51B5;
@@ -191,10 +194,6 @@ footer {
   background-color: $primary-color;
   color: $primary-color-light;
   padding: 10px 0 10px 0;
-
-  .copyright {
-    margin-top: 20px;
-  }
 
   .heart {
     display: inline-block;
@@ -533,16 +532,6 @@ footer {
       }
     }
   }
-}
-
-.share-icon {
-  font-size: 1.5em;
-  width: 1.5em;
-  text-align: center;
-  line-height: 1.5em;
-  background: $accent-color;
-  color: #ffffff;
-  border-radius: 0.5em;
 }
 
 /***************** Timeline *****************/
@@ -1065,8 +1054,9 @@ footer {
 .blog-footer-icon {
   font-size: 1.5em;
   width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5em !important;
   text-align: center;
-  line-height: 1.5em;
   background: $accent-color;
   color: #fff;
   border-radius: 0.5em;
