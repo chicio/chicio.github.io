@@ -139,7 +139,7 @@ To be noted, in the right lower corner you can see [Alessandro Romano](https://w
 frontend developer with many
  years of experience
  that he just got graduated from University of Insubria in Varese (student/worker at the same time like I was
- some years ago :simple_smile:).
+ some years ago :blush:).
 So, what do you think about design thinking and design sprint? Let me know in the comments section below :blush:.
 
 
