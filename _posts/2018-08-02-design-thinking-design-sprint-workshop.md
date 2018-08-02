@@ -130,6 +130,7 @@ can use and improve my creativity? Software development requires a lot of creati
 creativity that is required to be a UX designer :relieved:. I don't think I will ever be a designer but it was a good
 starting point to let me try to enter in the mindset of a UX designer (and also life is unpredictable so
 who knows? :blush:).
+Anyway...after the hard work...we had some relaxing moments :relieved:.
 
 ![relax](/assets/images/posts/offsite-relax.jpg "relax")
 
