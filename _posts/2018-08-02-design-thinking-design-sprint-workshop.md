@@ -134,6 +134,11 @@ Anyway...after the hard work...we had some relaxing moments :relieved:.
 
 ![relax](/assets/images/posts/offsite-relax.jpg "relax")
 
+To be noted, in the right lower corner you can see [Alessandro Romano](https://www.linkedin.com/in/alessandroromano92/ 
+"Alessandro Romano") during some swim stunts with our mascot. He is "the clean" a senior frontend developer with many
+ years of experience
+ that he just got graduated from University of Insubria in Varese (student/worker at the same time like I was
+ some years ago :simple_smile:).
 So, what do you think about design thinking and design sprint? Let me know in the comments section below :blush:.
 
 
