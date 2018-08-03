@@ -33,7 +33,7 @@ Thinking and the Design Sprint framework and we tried to apply it to came up wit
 projects we have on the mobile app. Our UX team is composed by:
 
 * [Diletta Assandri](https://www.linkedin.com/in/diletta-assandri-74b75745/ "Diletta Assandri") is a senior UX
-designer with many years of experiences in project all over the world with Accenture Italia. She is a truly passionate
+designer with many years of experiences in project all over the world with Accenture Italia. She is truly passionate
  for her work. She is one of the first designer I worked with that listen to what the developers have to say ("NON SI
   PUÒ FARE" (that we could translate as "this can't be done") is one of her biggest nightmares :laughing:).
 * [Federica Pisuttu](https://www.linkedin.com/in/federicapisuttu/ "Federica Pisuttu") is the last new entry in the team
@@ -53,7 +53,7 @@ and user testing. Sprints let your team reach clearly defined goals and delivera
  The process helps spark innovation, encourage user-centered thinking, align your team under a shared vision, and get
   you to product launch faster.
 
-So design thinking is an approach to design product based on iterations of a serious of step that includes:
+So design thinking is an approach to design product based on iterations of a series of step that includes:
  acquire a deep knowledge of the problem, prototyping and user test your new product ideas. The design sprint is the 
  formalisation of design thinking: it is a time constrained process (usually 5 days) where all the design 
  thinking steps
@@ -112,7 +112,7 @@ ideas created during the sprint.
 ![decide](/assets/images/posts/offsite-decide.jpg "decide")
 
 ### Prototyping
-In this phase you need to create some prototype. Which kind of prototype? Let's again how our UX designer explained
+In this phase you need to create some prototype. Which kind of prototype? Let's see again how our UX designer explained
 us the features of good prototype:
 
 > Your Sprint is an attempt to identify the solution to a problem. Your prototype is a chance to see how good the
@@ -136,10 +136,6 @@ Anyway...after the hard work...we had some relaxing moments :relieved:.
 
 To be noted, in the right lower corner you can see [Alessandro Romano](https://www.linkedin.com/in/alessandroromano92/ 
 "Alessandro Romano") during some swim stunts with the lastminute.com mascot :laughing:. He is "the clean" a senior 
-frontend developer with many
- years of experience
- that he just got graduated from University of Insubria in Varese (student/worker at the same time like I was
- some years ago :blush:).
+frontend developer with many years of experience that just got graduated from University of Insubria in Varese 
+(student/worker at the same time like I was some years ago :blush:).
 So, what do you think about design thinking and design sprint? Let me know in the comments section below :blush:.
-
-
