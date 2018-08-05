@@ -49,7 +49,7 @@ Now it is possible to give the definition of **radiance**, that is flux density 
 
 $$L=\frac{d\phi}{d\omega \ dA^{\perp}}$$
 
-In this case $dA^{\perp}$ is the projected area $dA^{\perp}$ on a surface perpendicular to $\omega$. So radiance describe 
+In this case $dA^{\perp}$ is the projected area $dA$ on a surface perpendicular to $\omega$. So radiance describe 
 the limit of measurement of incident light at the surface as a cone of incident directions of interest ${d\omega}$ becomes 
 very small, and as the local area of interest on the surface $dA$ also becomes very small (Pharr et al., 2010 [1]). It is 
 useful to make a distinction between radiance arriving at a point, usually called incident radiance and indicated with $L_{i}(p,\omega)$, 
