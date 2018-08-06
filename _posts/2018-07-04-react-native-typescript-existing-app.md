@@ -290,4 +290,4 @@ const styles = StyleSheet.create({
 
  You can check all the code of the sample described above in [this github repository](https://github.com/chicio/React-Native-Typescript-Existing-App "React Native Typescript Existing App") 
 and see all the TypeScript components I created for the app I shown you above.   
-That's it!!! React Native + TypeScript: :hearts:, love at first sight :hearts:.   
+That's it!!! React Native + TypeScript: :hearts: love at first sight :hearts:.   
