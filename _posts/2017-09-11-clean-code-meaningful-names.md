@@ -20,7 +20,8 @@ developer is how much he/she care about the software he/she is creating: the app
  customer problems with your software.  
 When I started to work at [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group") I discovered 
 that I'm not the only one to think about software development in this way.  
-In fact an entire new approch to software development has been create by [Robert Cecil Martin](https://en.wikipedia.org/wiki/Robert_Cecil_Martin "Robert Cecil Martin"), known as "Uncle Bob" (whatt??!?!!? :stuck_out_tongue:) and famous also to be the guy that invented the [SOLID principles](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design) "Solid principles"). The name of this new approch to software development is **clean code**.  
+In fact an entire new approach to software development has been create by [Robert Cecil Martin](https://en.wikipedia.org/wiki/Robert_Cecil_Martin "Robert Cecil Martin"),
+ known as "Uncle Bob" (whatt??!?!!? :stuck_out_tongue:) and famous also to be the guy that invented the [SOLID principles](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design) "Solid principles"). The name of this new approach to software development is **clean code**.  
 So as I promised in [my first post](http://www.fabrizioduroni.it/2017/05/10/about-me.html "about me") on this blog I 
 will publish a series of articles in which I will talk about the foundation of clean code and my personal experiences
  with it. So let's start the discussion with one of the principles of clean code that impressed me the most: 
@@ -145,7 +146,7 @@ private:
 
 Whoaaah!! I mean, the code now seems self explained. Each instruction appears more clear in its intents. Each class, struct and method doesn't need any additional comment/documentation. I think it's really amazing how some changes to the names could improve the quality of a piece of code dramatically like in our case.
 We're done with names :relieved:. You can find the complete example [here](https://github.com/chicio/Clean-Code-Meaningful-Names "Renaming clean code example")
-I hope that this article will convice you that the names you choose define 
+I hope that this article will convince you that the names you choose define 
 how much you code is "beautiful" in terms of readability and also, more import, maintainability. Quoting what [Grady Booch](https://en.wikipedia.org/wiki/Grady_Booch "Grady Booch") said about clean code: 
 
 > Clean Code reads like a well-written prose.

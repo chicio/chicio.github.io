@@ -38,7 +38,7 @@ difference between the official IDEs: Android Studio and Xcode. After seeing the
 able to achieve during an Android coding session, and how much slower it is to do the same things
  in Xcode for iOS, I realized how much more advanced is Android Studio with its set of refactoring features in 
  comparison with Xcode.  
-In this post I will briefly analyze some IDEs commonly used for mobile application development focusing on the 
+In this post I will briefly analysed some IDEs commonly used for mobile application development focusing on the 
 coding speed that is possible to achieve by using them and I will explain to you why, at the
  time of this writing, I started to prefer the JetBrains IDEs family (not only for mobile application development 
  :bowtie:).
