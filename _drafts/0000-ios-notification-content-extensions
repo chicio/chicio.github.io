@@ -1,0 +1,15 @@
+---
+layout: post
+title: "Rich iOS notifications with Notification Content Extensions"
+description: "In this post I will talk about iOS notification customization with Notification Content Extension"
+date: 2018-09-10
+image: /assets/images/posts/offsite-location.jpg
+tags: [swift, ios, apple, mobile application development]
+comments: true
+seo:
+ - type: "BlogPosting"
+---
+
+*In this post I will talk about iOS notification customization with Notification Content Extension*
+
+---
