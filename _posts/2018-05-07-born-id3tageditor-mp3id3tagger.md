@@ -29,7 +29,7 @@ I suddenly made a great discovery: some of my songs were displayed on the touchs
 album and they were displaying the cover of the album!!!!! :heart_eyes:. I though: "Whoahh this is very cool!! I need to 
 start to fill my mp3 with all this information. I want to see the cover of the album for each mp3 I have!!!!!!!".
  This is exactly the moment where my journey into the development of ID3TagEditor and Mp3ID3Tagger started, but I was
-  not yet aware of it :grin:
+  not yet aware of it :grin:. 
 So I sat in front of my MacBook, I opened iTunes and I started to tag my mp3 files. I saved them on a usb key and I 
 went to my car to test them. The result was the following:
 
