@@ -30,7 +30,7 @@ recently learned: Reactive Programming/Reaactive Extensions with RxSwift and RxC
  to use a different architectural pattern: the [Model View ViewModel (MVVM)](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel "Model View ViewModel")" :sunglasses:. 
 What kind of architectural pattern is the MVVM? What are Reactive Programming, Reactive Extensions, 
 RxSwift and RxCocoa???  
-Let's start from the first one. The MVVM is an architectural pattern invented by the Microsoft software engigneers 
+Let's start from the first one. The MVVM is an architectural pattern invented by the Microsoft software engineers 
 Ken Cooper and Ted Peters. As for other architecture patterns [I described in the past](/2017/08/11/model-view-presenter-architecture-ios-swift-unit-test.html "Model View Presenter"), the MVVM is useful to 
 clearly separate the UI development from the business logic. The main components of the MVVM are:
 

@@ -38,7 +38,7 @@ with respect to the normal to the mirror. The reflected ray and the incident ray
 normal.
 
 Now we are ready for our demonstration :sunglasses:.  
-From the law of reflaction reported above we know that: 
+From the law of refraction reported above we know that: 
 
 $$\Theta_R=\Theta_L$$
 
@@ -46,7 +46,7 @@ This equation could be rewritten as the dot product of the reflection direction 
 
 $${\hat {R}} \cdot {\hat {N}} = {\hat {L}} \cdot {\hat {N}}$$
 
-From the image above it's also evident for simmetry that: 
+From the image above it's also evident for symmetry that: 
 
 $${\hat {U}^{\prime}} = -{\hat {U}^{\prime \prime}}$$
 
@@ -66,7 +66,7 @@ Now we can see again from the image above that the vector projections ${\hat {N}
 
 $${\hat {R}} - ({\hat {L}} \cdot {\hat {N}}){\hat {N}} = -({\hat {L}} - ({\hat {L}} \cdot {\hat {N}}){\hat {N}})$$ 
 
-Now we have all we need to calculare our R vector:
+Now we have all we need to calculate our R vector:
 
 $${\hat {R}} - ({\hat {L}} \cdot {\hat {N}}){\hat {N}} = -({\hat {L}} - ({\hat {L}} \cdot {\hat {N}}){\hat {N}})$$ 
 
