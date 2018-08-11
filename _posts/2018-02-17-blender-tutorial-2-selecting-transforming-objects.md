@@ -84,5 +84,5 @@ widget.
 ![blender change objects pivot 1](/assets/images/posts/blender-change-pivot-objects-1.jpg "blender change objects 
 pivot 1")
 
-Tha's all for selection and transform of objects. In the next post we will start to explore the art of modeling in 
+That's all for selection and transform of objects. In the next post we will start to explore the art of modeling in 
 Blender.

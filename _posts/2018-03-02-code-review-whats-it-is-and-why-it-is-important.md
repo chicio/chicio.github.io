@@ -39,12 +39,12 @@ Angelo is a senior full-stack software engineer with many years of experience.
 You may wonder now what is also a coding dojo. So again, here we are with
  another [definition](http://codingdojo.org/WhatIsCodingDojo/ "coding dojo") :bowtie::
 
-> A Coding Dojo is a meeting where a bunch of coders get together to work on a programming challenge. They are there 
-have fun and to engage in DeliberatePractice in order to improve their skills.
+> A Coding Dojo is a meeting where a bunch of coders get together to work on a programming challenge. They have fun 
+and they engage in order to improve their skills.
 
  
 During the dojo that I attended with Angelo we tried to resolve the [Minesweeper problem](http://codingdojo.org/kata/Minesweeper/ "Minesweeper").   
-Basically we had to write an automatic Minesweeper resolver (do you remember the Windows one? :heart_eyes:). At the 
+Basically we had to write an automatic Minesweeper resolver (do you remember the Windows game? :heart_eyes:). At the 
 end of the dojo we didn't complete the task, so I decided to try to solve it in another way. I developed a 
 complete command line version of a Minesweeper resolver and let Angelo do the code review of my implementation. 
 In this way I can show you the power of code review :neckbeard: (and last but not least how much meticulous is Angelo
