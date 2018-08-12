@@ -41,7 +41,7 @@ project, instead of the other way around in a standard React Native installation
 
 ![React Native realm directories](/assets/images/posts/react-native-realm-1-directories.jpg "React Native realm directories")
 
-First, to add realm as a dependecy we need to install it through npm with following command.
+First, to add realm as a dependency we need to install it through npm with following command.
 
 ```shell
 npm install --save realm
