@@ -3,7 +3,7 @@ layout: post
 title: "Rich iOS notifications with Notification Content Extensions"
 description: "In this post I will talk about iOS notification customization with Notification Content Extension"
 date: 2018-09-10
-image: /assets/images/posts/offsite-location.jpg
+image: /assets/images/posts/XXXXXXX.jpg
 tags: [swift, ios, apple, mobile application development]
 comments: true
 seo:
@@ -13,3 +13,16 @@ seo:
 *In this post I will talk about iOS notification customization with Notification Content Extension*
 
 ---
+
+During a workshop I recently attended I had the opportunity to discover anew interesting extension type: Notification 
+Content App Extension. This extension has been added by Apple in iOS 10 let you customize the UI of your 
+notification. In this way you can send more engaging notification to your users :grin:.  
+Let's see in an example how you can create a notification with custom UI using this extension. To do that I will use 
+some assets taken from the [nasa photo journal](https://photojournal.jpl.nasa.gov/ "nasa photo journal"). You can 
+find the complete example contained in this post [in this github repository](https://github.com/chicio/Notification-Content-Extension-Example "notification content extension example"). 
+Let's start from the beginning: add a Notification Content extension to your app. To do that just select the + button
+ in the target section that appears after selecting the xcodeproj file. 
+
+![add target](/assets/images/posts/notification-content-extension-add-target.jpg "add target")
+
+....

@@ -16,7 +16,7 @@ seo:
 
 If we want to start to use React Native in an existing app, it's really easy. We can have our first React 
 Native component live inside our app by just following the [getting started tutorial for existing app](https://facebook.github.io/react-native/docs/integration-with-existing-apps.html "getting started tutorial for existing app"). But what 
-happen if we need to use multiple react native component in different parts of your existing app :fearful:? In this 
+happen if we need to use multiple react native component in different parts of our existing apps :fearful:? In this 
 tutorial I will show you how we can use multiple instances of `RCTRootView` to show different React Native components
  in different parts of your app. 
  Consider, for example, a simple iOS existing app with React Native. It has two very simple React Native components: 
