@@ -25,7 +25,7 @@ website:
  from an app built using Objective-C or Java. React Native uses the same fundamental UI building blocks as regular 
  iOS and Android apps. You just put those building blocks together using JavaScript and React.
 
-Cool :sunglasses:!!!! Isn't it? Write once, deploy everywhere with the same performance of native code. You can also 
+Cool :sunglasses:!!!! Isn't it? Write an app using Javascript with the same performance of native code. You can also 
 reuse your native component and bridge them to the javascript side.  
 Most of the time the React Native framework will help you also to manage dependencies inside you project. But sometimes, especially 
 if your project doesn't follow the standard React Native directories structure you can have some problem when you try 
