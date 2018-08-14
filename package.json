@@ -19,15 +19,15 @@
   },
   "homepage": "https://github.com/chicio/chicio.github.io#readme",
   "devDependencies": {
-    "browser-sync": "^2.18.8",
-    "critical": "^1.0.0",
+    "browser-sync": "^2.24.6",
+    "critical": "^1.3.4",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-rev-append": "^0.1.8",
-    "gulp-sass": "^3.1.0",
+    "gulp-sass": "^4.0.1",
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
-    "npm-check-updates": "^2.13.0",
-    "yargs": "^10.0.3"
+    "npm-check-updates": "^2.14.2",
+    "yargs": "^12.0.1"
   }
 }
