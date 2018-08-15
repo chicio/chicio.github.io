@@ -4,8 +4,7 @@
 <rss version="2.0"
      xmlns:atom="http://www.w3.org/2005/Atom"
      xmlns:dc="http://purl.org/dc/elements/1.1/"
-     xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
-     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2005/Atom">
+     xmlns:sy="http://purl.org/rss/1.0/modules/syndication/">
     <channel>
         <title>{{ site.title | xml_escape }}</title>
         <description>{% if site.description %}{{ site.description | xml_escape }}{% endif %}</description>
