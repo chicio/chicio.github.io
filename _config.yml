@@ -42,11 +42,11 @@ image: /assets/images/fabrizio-duroni.jpg
 
 nav:
   - name: "Home"
-    url:  "/"
+    url: "/"
   - name: "Blog"
-    url:  "/blog/"
+    url: "/blog/"
   - name: "About Me"
-    url:  "/2017/05/10/about-me.html"
+    url: "/2017/05/10/about-me.html"
 
 ########## Configuration
 
@@ -60,18 +60,18 @@ defaults:
     values:
       image: /assets/images/fabrizio-duroni.jpg
 
-paginate:           5
-paginate_path:      /blog/page:num/
+paginate: 5
+paginate_path: /blog/page:num/
 
 # Debug options
 # minify_html: false
 # limit_posts: 1
 
 # Markdown
-markdown:           kramdown
+markdown: kramdown
 highlighter: rouge
 kramdown:
-  input:            GFM
+  input: GFM
 
 # Jemoji
 emoji:
@@ -97,6 +97,5 @@ exclude:
   - material
   - LICENSE.md
   - README.md
-  - blog-material
   - home-dependencies.html
   - blog-dependencies.html
