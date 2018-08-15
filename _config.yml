@@ -77,6 +77,11 @@ kramdown:
 emoji:
   src: "/assets/images/"
 
+# RSS Feed
+feed_items: 30
+feed_update_period: monthly
+feed_update_frequency: 2
+
 # Plugin (gems) used by Jekyll
 plugins:
   - jekyll-seo-tag
@@ -84,7 +89,6 @@ plugins:
   - octopress-minify-html
   - jekyll-paginate
   - jemoji
-  - jekyll-feed
 
 # Build settings
 exclude:
