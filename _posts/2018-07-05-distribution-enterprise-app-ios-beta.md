@@ -193,7 +193,6 @@ As you can see above, in this html there's a special link with the protocol `itm
  sample manifest file that could be used for our SampleBetaApp.
   
 ```xml
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
