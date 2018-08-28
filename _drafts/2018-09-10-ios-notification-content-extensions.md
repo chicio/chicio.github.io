@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Rich iOS notifications with Notification Content Extensions"
+title: "Rich iOS notifications with Notification Content Extension"
 description: "In this post I will talk about iOS notification customization with Notification Content Extension"
 date: 2018-09-10
-image: /assets/images/posts/XXXXXXX.jpg
+image: /assets/images/posts/notification-content-extension-add-target.jpg
 tags: [swift, ios, apple, mobile application development]
 comments: true
 seo:
@@ -164,7 +164,6 @@ the notification.
 
 We're ready to test our implementation. Below you can find a video with the final result of our implementation.
 
-XXXXXXXXXX VIDEO
-
+{% include youtube.html videoId="7pDTklC4ocY" %}
 
 That's all for Notification Content Extension on iOS. Go and test them in you app :relaxed:.

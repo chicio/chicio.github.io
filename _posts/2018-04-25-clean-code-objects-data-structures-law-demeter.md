@@ -15,8 +15,7 @@ In this post I will talk about clean code: data structures, objects vs procedura
 ---
 
 In this [previous post](/2017/09/11/clean-code-meaningful-names.html "clean code meaningful names") I described what
-Clean Code is and what does it mean to use
-meaningful names in your code.
+Clean Code is and what does it mean to use meaningful names in your code.
 This time I will talk about *Data structures and objects*.
 But wait, do we really know the definition of them? Let's see what [Uncle Bob](https://en.wikipedia.org/wiki/Robert_Cecil_Martin "Robert Cecil Martin") says about them in its *Clean Code* book:
 
