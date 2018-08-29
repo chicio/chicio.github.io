@@ -14,7 +14,8 @@ seo:
 
 ---
 
-In a previous post I talked about [clean code](https://www.fabrizioduroni.it/2018/04/25/clean-code-objects-data-structures-law-demeter.html) and how much it is important to me. 
+In a previous post I talked about [clean code](/2018/04/25/clean-code-objects-data-structures-law-demeter.html) and 
+how much it is important to me. 
 In this new post I will talk about another topic of the uncle bob clean code book: functions.  
 How can we have write a good function/method? This is the list of the features that a function 
 must have to be considered "good":
@@ -68,7 +69,7 @@ Our function must contains instruction that are at the same level of abstraction
 must express a concept at the same level of the others contained in it. This basically means that we will have 
 function/method with higher concept at the top level of our classes/programs, and by going deeper in the source code 
 we will find functions/methods with lower concepts. This top-down relation between higher-lower level concept is 
-called *The stepdown rule*. Uncle Bob described this rule very well (and it is basically a remark of the concept 
+called **The stepdown rule**. Uncle Bob described this rule very well (and it is basically a remark of the concept 
 expresed in this paragraph):
 
 >We want the code to read like a top-down narrative. We want every function to be followed by those at the next 
@@ -87,14 +88,39 @@ There's one more thing that it is import to note: the most of the IDE available 
   
   
 #### **Low number of arguments**
-...     
- 
- 
+How much arguments should a perfect clean code function have? zero :expressionless::laughing:. Then we could have 
+monadic (1 argument), dyadic (2 arguments) or triads (3 arguments) functions. Functions with more than 3 arguments 
+should be avoided whenever possible. When the number of arguments start to growth to more than 3 arguments it is 
+possible wrap them in specific class that describe better their meaning. This kind of classes are called argument 
+objects. For example Uncle Bob shown us a beautiful example in his book, where he rewrote a factory method to create 
+a circle using arguments objects. Let's see his code snippet:
+
+```java
+/// Simple version
+Circle makeCircle(double x, double y, double radius);
+
+/// With arguments objects
+Circle makeCircle(Point center, double radius);
+```  
+
+Do you see how much more readable and clear it is the second version of the `makeCircle` function? Yes, I can see it :sunglasses:
+    
+  
 #### **Have no side effects**
+This is a consequence of the fact that our function should **do one thing**: our function should not generate side 
+effects when it is executed. In particular our functions should not:
 
-
+* create temporal coupling with other function by silently modifying states/other properties 
+* use output arguments (inout parameters) 
+  
+  
 #### **Command Query Separation**
+Let's see what Uncle Bob says about the command query separation:
 
+>Functions should either do something or answer something, but not both. Either your function should change the state
+ of an object, or it should return some information about that object. Doing both often leads to confusion.
+ 
+I think there's nothing else to ad to this point :stuck_out_tongue:. 
 
 #### **Prefer exception to error Codes**
 
