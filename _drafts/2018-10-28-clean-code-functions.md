@@ -121,8 +121,10 @@ Let's see what Uncle Bob says about the command query separation:
  of an object, or it should return some information about that object. Doing both often leads to confusion.
  
 I think there's nothing else to ad to this point :stuck_out_tongue:. 
-
+  
+  
 #### **Prefer exception to error Codes**
+This is a feature strictly related to languages that supports......
 
 
 #### **"Don't repeat yourself"**
