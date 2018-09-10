@@ -169,4 +169,4 @@ We're ready to test our implementation. Below you can find a video with the fina
 
 {% include youtube.html videoId="7pDTklC4ocY" %}
 
-That's all for Notification Content Extension on iOS. Go and test them in your app :relaxed:.
+That's all for Notification Content App Extension on iOS. Let's start to test them in your app :relaxed:.
