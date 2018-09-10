@@ -2,7 +2,7 @@
 layout: post
 title: "Rich iOS notifications with Notification Content Extension"
 description: "In this post I will talk about iOS notification customization with Notification Content Extension"
-date: 2018-09-10
+date: 2018-09-09
 image: /assets/images/posts/notification-content-extension-add-target.jpg
 tags: [swift, ios, apple, mobile application development]
 comments: true
@@ -10,22 +10,23 @@ seo:
  - type: "BlogPosting"
 ---
 
-*In this post I will talk about iOS notification customization with Notification Content Extension*
+*In this post I will talk about iOS notification customization with Notification Content App Extension*
 
 ---
 
-During a workshop I recently attended I had the opportunity to discover anew interesting extension type: Notification 
-Content App Extension. This extension has been added by Apple in iOS 10 let you customize the UI of your 
-notification. In this way you can send more engaging notification to your users :grin:.  
-Let's see in an example how you can create a notification with custom UI using this extension. To do that I will use 
+During a workshop I recently attended I had the opportunity to explore a new interesting app extension type available in
+ the iOS SDK: Notification Content App Extension. This extension has been added by Apple in iOS 10. By using this 
+ extension it is possible to customize the UI of your push and local notification. In this way you can show more 
+ engaging notification to your users :grin:.  
+Let's see an example where we create a notification with custom UI using this extension type. To do that I will use 
 some assets taken from the [nasa photo journal](https://photojournal.jpl.nasa.gov/ "nasa photo journal"). You can 
-find the complete example contained in this post [in this github repository](https://github.com/chicio/Notification-Content-Extension-Example "notification content extension example"). 
-Let's start from the beginning: add a Notification Content extension to your app. To do that just select the + button
+find the complete example [in this github repository](https://github.com/chicio/Notification-Content-Extension-Example "notification content extension example"). 
+Let's start from the beginning: add a Notification Content Extension to your app. To do that just select the + button
  in the target section that appears after selecting the xcodeproj file. 
 
 ![add target](/assets/images/posts/notification-content-extension-add-target.jpg "add target")
 
-In this extension we can find a `NotificationViewController` that adheres to the `UNNotificationContentExtension`. 
+The extension that is created contains a `NotificationViewController` that adheres to the `UNNotificationContentExtension`. 
 The documentation for this protocol says:
 
 > An object that presents a custom interface for a delivered local or remote notification.
@@ -35,15 +36,17 @@ The documentation for this protocol says:
   way your notifications are presented, possibly by adding custom colors and branding, or by incorporating media and 
   other dynamic content into your notification interface. 
 
-So by let a `UIViewController` inside the extension adhere to the `UNNotificationContentExtension` we have an 
-entry point for the customization of the user interface of the notification using its content. In the extension 
-there's also a `MainInterface.storyboard` that we can use to customize the interface of the notification. So let's 
-start by defining the interface in this storyboard. Below in the image there's the final result for the storyboard.
+So if a `UIViewController` inside a Notification Content Extension adhere to the `UNNotificationContentExtension`
+ we are able to access to the notification content and we can customize its UI. In the extension 
+there's also a `MainInterface.storyboard` that contains a single controller associated with the  
+`NotificationViewController` previously mentioned. We can use this storyboard to customize the notification UI using interface 
+builder.
+ So let's start by defining the interface in the storyboard. Below in the image there's the final result.
 
 ![notification storyboard](/assets/images/posts/notification-content-extension-storyboard-notification.jpg "notification storyboard")
 
-The we can fill the UI with the notification content we receive in the `func didReceive(_ notification: 
-UNNotification)` of the controller `NotificationViewController` that implements the protocol shown above. Below you 
+Then we can fill the UI with the notification content we receive in the `func didReceive(_ notification: 
+UNNotification)` of the `NotificationViewController` controller that implements the protocol shown above. Below you 
 can find its source code.
 
 ```swift
@@ -67,8 +70,8 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
 }
 ```
 
-Now to test our controller, we can create a local notification. We will use some data taken from the nasa photo 
-journal. We will create a `NasaLocalNotificationBuilder` that contains all the notification creation logic. This is 
+Now to test our controller and our new notification UI, we can create a local notification. We will use some data taken 
+from the nasa photo journal. We will create a `NasaLocalNotificationBuilder` that contains all the notification creation logic. This is 
 the final result.
 
 ```swift
@@ -136,7 +139,7 @@ class NasaLocalNotificationBuilder {
 }
 ```  
 
-Then we will call the notification builder  in the main controller of the app `ViewController` to generate the 
+Then we can call the notification builder in the main controller of the app `ViewController` to generate the 
 notification.
 
 ```swift
@@ -166,4 +169,4 @@ We're ready to test our implementation. Below you can find a video with the fina
 
 {% include youtube.html videoId="7pDTklC4ocY" %}
 
-That's all for Notification Content Extension on iOS. Go and test them in you app :relaxed:.
+That's all for Notification Content Extension on iOS. Go and test them in your app :relaxed:.
