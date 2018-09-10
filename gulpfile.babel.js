@@ -1,21 +1,22 @@
-var gulp = require('gulp');
-var concat = require('gulp-concat');
-var sass = require('gulp-sass');
-var child = require('child_process');
-var gutil = require('gulp-util');
-var rev = require('gulp-rev-append');
-var browserSync = require('browser-sync').create();
-var uglify = require('gulp-uglify');
-var argv = require('yargs').argv;
-var critical = require('critical');
+import gulp from "gulp";
+import gulpConcat from "gulp-concat";
+import gulpSass from "gulp-sass";
+import child from "child_process";
+import gulpUtil from "gulp-util";
+import gulpRevAppend from "gulp-rev-append";
+import {create} from "browser-sync";
+import gulpUglify from "gulp-uglify";
+import argv from "yargs";
+import critical from "critical";
 
-var isTravis = (argv.travis !== undefined);
-var isDevelopment = (argv.dev !== undefined);
-var cssFiles = '_css/**/*.?(s)css';
-var jsFiles = '_js/**/*.js';
-var siteRoot = '_site';
+const isTravis = argv.travis !== undefined;
+const isDevelopment = argv.dev !== undefined;
+const cssFiles = '_css/**/*.?(s)css';
+const jsFiles = '_js/**/*.js';
+const siteRoot = '_site';
 
-gulp.task('serve', function() {
+gulp.task('serve', () => {
+    const browserSync = create();
     browserSync.init({
         files: [siteRoot + '/**'],
         port: 4000,
@@ -29,48 +30,46 @@ gulp.task('serve', function() {
     gulp.watch(cssFiles, ['css']);
 });
 
-gulp.task('jekyll', function() {
-    var options = ['build', '--watch', '--incremental', '--verbose', '--profile', '--future'];
+gulp.task('jekyll', () => {
+    let options = ['build', '--watch', '--incremental', '--verbose', '--profile', '--future'];
     if (isTravis) {
         options = ['build', '--incremental'];
     }
-    var jekyll = child.spawn('jekyll', options);
-    var jekyllLogger = function(buffer) {
+    const jekyll = child.spawn('jekyll', options);
+    const jekyllLogger = buffer => {
         buffer.toString()
             .split(/\n/)
             .forEach(function (message) {
-                gutil.log('Jekyll: ' + message)
+                gulpUtil.log('Jekyll: ' + message)
             });
     };
     jekyll.stdout.on('data', jekyllLogger);
     jekyll.stderr.on('data', jekyllLogger);
 });
 
-gulp.task('css', function() {
+gulp.task('css', () => {
     gulp.src(cssFiles)
-        .pipe(sass({outputStyle: isDevelopment ? 'expanded' : 'compressed'}))
-        .pipe(concat('style.css'))
+        .pipe(gulpSass({outputStyle: isDevelopment ? 'expanded' : 'compressed'}))
+        .pipe(gulpConcat('style.css'))
         .pipe(gulp.dest('assets/styles'))
 });
 
-gulp.task('bundle-home-scripts', function() {
-    return gulp.src(['_js/index.js'])
-        .pipe(concat('index.min.js'))
-        .pipe(gulp.dest('assets/js'))
-        .pipe(isDevelopment ? gutil.noop() : uglify())
-        .pipe(gulp.dest('assets/js'));
-});
+gulp.task('bundle-home-scripts', () => gulp
+    .src(['_js/index.js'])
+    .pipe(gulpConcat('index.min.js'))
+    .pipe(gulp.dest('assets/js'))
+    .pipe(isDevelopment ? gulpUtil.noop() : gulpUglify())
+    .pipe(gulp.dest('assets/js')));
 
-gulp.task('bundle-blog-scripts', function() {
-    return gulp.src(['_js/blog.js'])
-        .pipe(concat('blog.min.js'))
-        .pipe(gulp.dest('assets/js'))
-        .pipe(isDevelopment ? gutil.noop() : uglify())
-        .pipe(gulp.dest('assets/js'));
-});
+gulp.task('bundle-blog-scripts', () => gulp
+    .src(['_js/blog.js'])
+    .pipe(gulpConcat('blog.min.js'))
+    .pipe(gulp.dest('assets/js'))
+    .pipe(isDevelopment ? gulpUtil.noop() : gulpUglify())
+    .pipe(gulp.dest('assets/js')));
 
-gulp.task('vendor-scripts', function() {
-    return gulp.src([
+gulp.task('vendor-scripts', () => gulp
+    .src([
         '_js/vendor/threejs/three.js',
         '_js/vendor/threejs/Detector.js',
         '_js/vendor/threejs/OrbitControls.js',
@@ -82,35 +81,31 @@ gulp.task('vendor-scripts', function() {
         '_js/vendor/scrollmagic/ScrollMagic.min.js',
         '_js/vendor/scrollmagic/plugins/animation.gsap.min.js',
         '_js/vendor/gsap/plugins/ScrollToPlugin.min.js'
-    ]).pipe(concat('vendor.min.js'))
-      .pipe(gulp.dest('assets/js'))
-      .pipe(isDevelopment ? gutil.noop() : uglify())
-      .pipe(gulp.dest('assets/js'));
-});
+    ])
+    .pipe(gulpConcat('vendor.min.js'))
+    .pipe(gulp.dest('assets/js'))
+    .pipe(isDevelopment ? gulpUtil.noop() : gulpUglify())
+    .pipe(gulp.dest('assets/js')));
 
-gulp.task('images', function() {
-    return gulp.src(['_images/**/*.png', '_images/**/*.jpg', '_images/**/*.jpeg', '_images/**/*.gif'])
-        .pipe(gulp.dest('assets/images'))
-});
+gulp.task('images', () => gulp
+    .src(['_images/**/*.png', '_images/**/*.jpg', '_images/**/*.jpeg', '_images/**/*.gif'])
+    .pipe(gulp.dest('assets/images')));
 
-gulp.task('fonts', function() {
-    return gulp.src('_fonts/**/*.*')
-        .pipe(gulp.dest('assets/fonts'))
-});
+gulp.task('fonts', () => gulp
+    .src('_fonts/**/*.*')
+    .pipe(gulp.dest('assets/fonts')));
 
-gulp.task('models', function() {
-    return gulp.src('_models/**/*.*')
-        .pipe(gulp.dest('assets/models'))
-});
+gulp.task('models', () => gulp
+    .src('_models/**/*.*')
+    .pipe(gulp.dest('assets/models')));
 
-gulp.task('force-copy', function() {
-    return gulp.src(['assets'])
-        .pipe(gulp.dest('_site/assets'))
-});
+gulp.task('force-copy', () => gulp
+    .src(['assets'])
+    .pipe(gulp.dest('_site/assets')));
 
 //**** Used in command line flow ****//
 
-gulp.task('css-critical', function() {
+gulp.task('css-critical', () => {
     critical.generate({
         base: '_site/',
         src: 'index.html',
@@ -118,10 +113,10 @@ gulp.task('css-critical', function() {
         dimensions: [{
             width: 320,
             height: 480
-        },{
+        }, {
             width: 768,
             height: 1024
-        },{
+        }, {
             width: 1280,
             height: 960
         }],
@@ -137,10 +132,10 @@ gulp.task('css-critical', function() {
         dimensions: [{
             width: 320,
             height: 480
-        },{
+        }, {
             width: 768,
             height: 1024
-        },{
+        }, {
             width: 1280,
             height: 960
         }],
@@ -156,10 +151,10 @@ gulp.task('css-critical', function() {
         dimensions: [{
             width: 320,
             height: 480
-        },{
+        }, {
             width: 768,
             height: 1024
-        },{
+        }, {
             width: 1280,
             height: 960
         }],
@@ -175,10 +170,10 @@ gulp.task('css-critical', function() {
         dimensions: [{
             width: 320,
             height: 480
-        },{
+        }, {
             width: 768,
             height: 1024
-        },{
+        }, {
             width: 1280,
             height: 960
         }],
@@ -194,10 +189,10 @@ gulp.task('css-critical', function() {
         dimensions: [{
             width: 320,
             height: 480
-        },{
+        }, {
             width: 768,
             height: 1024
-        },{
+        }, {
             width: 1280,
             height: 960
         }],
@@ -207,15 +202,15 @@ gulp.task('css-critical', function() {
     });
 });
 
-gulp.task('rev-home', function() {
+gulp.task('rev-home', () => {
     gulp.src('./home-dependencies.html')
-        .pipe(rev())
+        .pipe(gulpRevAppend())
         .pipe(gulp.dest('_includes'));
 });
 
-gulp.task('rev-blog', function() {
+gulp.task('rev-blog', () => {
     gulp.src('./blog-dependencies.html')
-        .pipe(rev())
+        .pipe(gulpRevAppend())
         .pipe(gulp.dest('_includes'));
 });
 
