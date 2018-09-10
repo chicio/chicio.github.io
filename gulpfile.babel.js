@@ -6,11 +6,11 @@ import gulpUtil from "gulp-util";
 import gulpRevAppend from "gulp-rev-append";
 import {create} from "browser-sync";
 import gulpUglify from "gulp-uglify";
-import argv from "yargs";
+import yargs from 'yargs';
 import critical from "critical";
 
-const isTravis = argv.travis !== undefined;
-const isDevelopment = argv.dev !== undefined;
+const isTravis = yargs.argv.travis !== undefined;
+const isDevelopment = yargs.argv.dev !== undefined;
 const cssFiles = '_css/**/*.?(s)css';
 const jsFiles = '_js/**/*.js';
 const siteRoot = '_site';
