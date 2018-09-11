@@ -6,8 +6,12 @@ import gulpUtil from "gulp-util";
 import gulpRevAppend from "gulp-rev-append";
 import {create} from "browser-sync";
 import gulpUglify from "gulp-uglify";
-import yargs from 'yargs';
+import yargs from "yargs";
 import critical from "critical";
+import source from "vinyl-source-stream";
+import buffer from "vinyl-buffer";
+import browserify from "browserify";
+import babelify from "babelify"
 
 const isTravis = yargs.argv.travis !== undefined;
 const isDevelopment = yargs.argv.dev !== undefined;
@@ -54,33 +58,28 @@ gulp.task('css', () => {
         .pipe(gulp.dest('assets/styles'))
 });
 
-gulp.task('bundle-home-scripts', () => gulp
-    .src(['_js/index.js'])
-    .pipe(gulpConcat('index.min.js'))
-    .pipe(gulp.dest('assets/js'))
+gulp.task('bundle-home-scripts', () => browserify({entries: '_js/index.js'})
+    .transform(babelify.configure({presets: ["env"]}))
+    .bundle()
+    .pipe(source('index.min.js'))
+    .pipe(buffer())
     .pipe(isDevelopment ? gulpUtil.noop() : gulpUglify())
     .pipe(gulp.dest('assets/js')));
 
-gulp.task('bundle-blog-scripts', () => gulp
-    .src(['_js/blog.js'])
-    .pipe(gulpConcat('blog.min.js'))
-    .pipe(gulp.dest('assets/js'))
+gulp.task('bundle-blog-scripts', () => browserify({entries: '_js/blog.js'})
+    .transform(babelify.configure({presets: ["env"]}))
+    .bundle()
+    .pipe(source('blog.min.js'))
+    .pipe(buffer())
     .pipe(isDevelopment ? gulpUtil.noop() : gulpUglify())
     .pipe(gulp.dest('assets/js')));
 
 gulp.task('vendor-scripts', () => gulp
     .src([
-        '_js/vendor/threejs/three.js',
-        '_js/vendor/threejs/Detector.js',
-        '_js/vendor/threejs/OrbitControls.js',
-        '_js/vendor/threejs/PLYLoader.js',
-        '_js/vendor/webfont.js',
         '_js/vendor/jquery.js',
         '_js/vendor/bootstrap.min.js',
-        '_js/vendor/gsap/TweenMax.min.js',
-        '_js/vendor/scrollmagic/ScrollMagic.min.js',
-        '_js/vendor/scrollmagic/plugins/animation.gsap.min.js',
-        '_js/vendor/gsap/plugins/ScrollToPlugin.min.js'
+        //'_js/vendor/gsap/TweenMax.min.js',
+        //'_js/vendor/gsap/plugins/ScrollToPlugin.min.js'
     ])
     .pipe(gulpConcat('vendor.min.js'))
     .pipe(gulp.dest('assets/js'))
@@ -239,11 +238,4 @@ gulp.task('test', [
     'rev-home',
     'rev-blog',
     'jekyll'
-]);
-
-gulp.task('dev', [
-    'rev-home',
-    'rev-blog',
-    'jekyll',
-    'serve'
 ]);

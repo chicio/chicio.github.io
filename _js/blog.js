@@ -1,16 +1,12 @@
-cookieConsent();
-$(document).ready(function () {
-    disableScroll();
-    loadFonts();
-});
+import {cookieConsent} from './cookie-consent.js'
+import {fontLoader} from "./font-loader";
+import {TimelineMax} from "gsap";
 
-function loadFonts() {
-    WebFont.load({
-        google: {families: ['Open Sans']},
-        active: showBlog(),
-        inactive: showBlog()
-    });
-}
+$(document).ready(function () {
+    cookieConsent();
+    disableScroll();
+    fontLoader(showBlog)
+});
 
 function isAMobileDevice() {
     var isMobile = false;
@@ -42,27 +38,4 @@ function showBlog() {
 function enableScroll() {
     $("html").css('overflow-y', 'auto');
     $("body").css('position', '');
-}
-
-function cookieConsent() {
-    window.addEventListener("load", function () {
-        window.cookieconsent.initialise({
-            "palette": {
-                "popup": {
-                    "background": "#9fa8da",
-                    "text": "#ffffff"
-                },
-                "button": {
-                    "background": "#448aff",
-                    "text": "#ffffff"
-                }
-            },
-            "theme": "classic",
-            "content": {
-                "dismiss": "Ok",
-                "href": window.location.protocol + "//" + window.location.host + "/cookie-policy.html",
-                "message": "This website uses cookies to ensure you get the best experience."
-            }
-        })
-    });
 }
