@@ -8,7 +8,6 @@ import "scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap"
 import {cookieConsent} from './cookie-consent'
 import {fontLoader} from './font-loader';
 import jQuery from "jquery";
-import "bootstrap"
 window.$ = window.jQuery = jQuery;
 
 $(document).ready(() => {
@@ -17,7 +16,6 @@ $(document).ready(() => {
     const controller = new ScrollMagic.Controller();
     enableScroll();
     fontLoader();
-    addTabsClickEvent();
     addArrowDownClickEvent(isMobileDevice);
     startHeaderAnimation(isMobileDevice);
     whoIAmAnimation(controller);
@@ -32,15 +30,6 @@ const resizeViewport = (isMobile) => {
         bg.height($(window).height() + 60);
     }
 };
-
-function addTabsClickEvent() {
-    $("#profile-tabs").find("a").click(event => {
-        event.preventDefault();
-        $(event.target).tab('show');
-        // alert(this);
-        // $(event).tab('show');
-    });
-}
 
 function addArrowDownClickEvent(isMobileDevice) {
     if (isMobileDevice === false) {

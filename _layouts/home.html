@@ -62,12 +62,16 @@
             </div>
         </div>
         <div class="profile-container container-fluid">
-            <ul class="nav nav-tabs nav-justified responsive" id="profile-tabs">
-                <li id="projects" class="active"><a href="#personal-projects">Projects</a></li>
-                <li id="education-and-experience"><a href="#experience">Experience</a></li>
+            <ul class="nav nav-tabs nav-justified responsive" role="tablist" id="profile-tabs">
+                <li id="projects" role="presentation" class="active">
+                    <a href="#personal-projects" role="tab" data-toggle="tab">Projects</a>
+                </li>
+                <li id="education-and-experience" role="presentation">
+                    <a href="#experience" role="tab" data-toggle="tab">Experience</a>
+                </li>
             </ul>
             <div class="tab-content responsive">
-                <div class="tab-pane active projects" id="personal-projects">
+                <div role="tabpanel" class="tab-pane active projects" id="personal-projects">
                     <div class="row project">
                         <div class="col-sm-6 col-md-6 center-block project-image-container project-image-container-right">
                             <img id="spectral-clara-lux-tracer-image"
@@ -248,7 +252,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="experience">
+                <div role="tabpanel" class="tab-pane" id="experience">
                     <div class="container">
                         <ul id="timeline" class="timeline">
                             <li id="timeline-element-lastminute" class="timeline-element">
