@@ -2,10 +2,14 @@ import OrbitControls from 'orbit-controls-es6';
 import * as THREE from 'three';
 import PLYLoader from 'three-ply-loader';
 import isWebGLEnabled from 'detector-webgl';
-import ScrollMagic from 'scrollmagic';
 import {TweenLite, TweenMax, TimelineLite, Elastic} from "gsap";
+import ScrollMagic from 'scrollmagic';
+import "scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap"
 import {cookieConsent} from './cookie-consent'
 import {fontLoader} from './font-loader';
+import jQuery from "jquery";
+import "bootstrap"
+window.$ = window.jQuery = jQuery;
 
 $(document).ready(() => {
     cookieConsent();
@@ -32,7 +36,9 @@ const resizeViewport = (isMobile) => {
 function addTabsClickEvent() {
     $("#profile-tabs").find("a").click(event => {
         event.preventDefault();
-        $(this).tab('show');
+        $(event.target).tab('show');
+        // alert(this);
+        // $(event).tab('show');
     });
 }
 

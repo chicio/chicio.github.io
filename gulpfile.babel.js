@@ -76,8 +76,8 @@ gulp.task('bundle-blog-scripts', () => browserify({entries: '_js/blog.js'})
 
 gulp.task('vendor-scripts', () => gulp
     .src([
-        '_js/vendor/jquery.js',
-        '_js/vendor/bootstrap.min.js',
+        // '_js/vendor/jquery.js',
+        // '_js/vendor/bootstrap.min.js',
         //'_js/vendor/gsap/TweenMax.min.js',
         //'_js/vendor/gsap/plugins/ScrollToPlugin.min.js'
     ])

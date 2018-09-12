@@ -37,10 +37,12 @@
     "yargs": "^12.0.1"
   },
   "dependencies": {
+    "bootstrap": "^4.1.3",
     "detector-webgl": "^2.0.0",
     "gsap": "^2.0.2",
-    "jquery": "^3.2.1",
+    "jquery": "^3.3.1",
     "orbit-controls-es6": "^1.0.12",
+    "popper.js": "^1.14.4",
     "scrollmagic": "^2.0.5",
     "three": "^0.96.0",
     "three-ply-loader": "^1.0.0",
