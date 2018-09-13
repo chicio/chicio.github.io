@@ -19,57 +19,13 @@ const sceneThreeJS = () => {
     let camera = camera3D();
     let renderer = renderer3D();
     let controls = orbitsControls(camera, renderer);
-    document.getElementById("rendering-surface").appendChild(renderer.domElement);
-    scene.background = new THREE.Color(0x303F9F);
-    scene.add(pointLight());
-    scene.add(new THREE.HemisphereLight(0x303F9F, 0x000000, 1));
+    setup(renderer, scene);
+    lights(scene);
     stars(textureLoader, stars => scene.add(stars));
-    meshWithPBRMaterial(
-        plyLoader,
-        'assets/models/lucy.ply',
-        {
-            color: 0x3F51B5,
-            roughness: 0.5,
-            metalness: 0.7,
-            clearCoat: 0.5,
-            clearCoatRoughness: 0.5,
-            reflectivity: 0.7
-        },
-        new THREE.Vector3(3, -3, 0),
-        new THREE.Vector3(0, -Math.PI / 3.0, 0),
-        mesh => scene.add(mesh)
-    );
-    meshWithPBRMaterial(
-        plyLoader,
-        'assets/models/dragon.ply',
-        {
-            color: 0x448AFF,
-            roughness: 0.1,
-            metalness: 0.9,
-            clearCoat: 0.0,
-            clearCoatRoughness: 0.2,
-            reflectivity: 1
-        },
-        new THREE.Vector3(-3, -3, 0),
-        new THREE.Vector3(0, -Math.PI, 0),
-        mesh => scene.add(mesh)
-    );
-    meshWithPBRMaterial(
-        plyLoader,
-        'assets/models/bunny.ply',
-        {
-            color: 0xCCFFFF,
-            roughness: 0.9,
-            metalness: 0.1,
-            clearCoat: 0.0,
-            clearCoatRoughness: 0.5,
-            reflectivity: 0.1
-        },
-        new THREE.Vector3(0, -3, 1.5),
-        new THREE.Vector3(0, -Math.PI, 0),
-        mesh => scene.add(mesh)
-    );
-    loadFloor(textureLoader, mesh => scene.add(mesh));
+    meshWithPBRMaterial(plyLoader, lucy(), mesh => scene.add(mesh));
+    meshWithPBRMaterial(plyLoader, dragon(), mesh => scene.add(mesh));
+    meshWithPBRMaterial(plyLoader, bunny(), mesh => scene.add(mesh));
+    floor(textureLoader, mesh => scene.add(mesh));
     const render = () => {
         requestAnimationFrame(render);
         controls.update();
@@ -82,6 +38,57 @@ const sceneThreeJS = () => {
     };
 };
 
+class Object3D {
+    constructor(path, properties, position, rotation) {
+        this.path = path;
+        this.properties = properties;
+        this.position = position;
+        this.rotation = rotation;
+    }
+}
+
+const lucy = () => new Object3D(
+    'assets/models/lucy.ply',
+    {
+        color: 0x3F51B5,
+        roughness: 0.5,
+        metalness: 0.7,
+        clearCoat: 0.5,
+        clearCoatRoughness: 0.5,
+        reflectivity: 0.7
+    },
+    new THREE.Vector3(3, -3, 0),
+    new THREE.Vector3(0, -Math.PI / 3.0, 0)
+);
+
+const dragon = () => new Object3D(
+    'assets/models/dragon.ply',
+    {
+        color: 0x448AFF,
+        roughness: 0.1,
+        metalness: 0.9,
+        clearCoat: 0.0,
+        clearCoatRoughness: 0.2,
+        reflectivity: 1
+    },
+    new THREE.Vector3(-3, -3, 0),
+    new THREE.Vector3(0, -Math.PI, 0)
+);
+
+const bunny = () => new Object3D(
+    'assets/models/bunny.ply',
+    {
+        color: 0xCCFFFF,
+        roughness: 0.9,
+        metalness: 0.1,
+        clearCoat: 0.0,
+        clearCoatRoughness: 0.5,
+        reflectivity: 0.1
+    },
+    new THREE.Vector3(0, -3, 1.5),
+    new THREE.Vector3(0, -Math.PI, 0)
+);
+
 const orbitsControls = (camera, renderer) => {
     let controls = new OrbitControls(camera, renderer.domElement);
     controls.enableZoom = false;
@@ -93,6 +100,16 @@ const orbitsControls = (camera, renderer) => {
     controls.mouseButtons = {};
     controls.dispose();
     return controls;
+};
+
+const setup = (renderer, scene) => {
+    document.getElementById("rendering-surface").appendChild(renderer.domElement);
+    scene.background = new THREE.Color(0x303F9F);
+};
+
+const lights = (scene) => {
+    scene.add(pointLight());
+    scene.add(new THREE.HemisphereLight(0x303F9F, 0x000000, 1));
 };
 
 const camera3D = () => {
@@ -121,7 +138,7 @@ const renderer3D = () => {
     renderer.gammaOutput = true;
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    renderer.setSize($(window).width(), $(window).height());
+    renderer.setSize(window.innerWidth, window.innerHeight);
     return renderer;
 };
 
@@ -145,12 +162,12 @@ const stars = (textureLoader, completeLoad) => {
     });
 };
 
-const meshWithPBRMaterial = (plyLoader, path, parameters, position, rotation, completeLoad) => {
-    plyLoader.load(path, geometry => {
-        let material = new THREE.MeshPhysicalMaterial(parameters);
+const meshWithPBRMaterial = (plyLoader, object, completeLoad) => {
+    plyLoader.load(object.path, geometry => {
+        let material = new THREE.MeshPhysicalMaterial(object.properties);
         let mesh = new THREE.Mesh(geometry, material);
-        mesh.position.set(position.x, position.y, position.z);
-        mesh.rotation.set(rotation.x, rotation.y, rotation.z);
+        mesh.position.set(object.position.x, object.position.y, object.position.z);
+        mesh.rotation.set(object.rotation.x, object.rotation.y, object.rotation.z);
         mesh.castShadow = true;
         mesh.matrixAutoUpdate = false;
         mesh.updateMatrix();
@@ -158,7 +175,7 @@ const meshWithPBRMaterial = (plyLoader, path, parameters, position, rotation, co
     });
 };
 
-const loadFloor = (textureLoader, completionFunction) => {
+const floor = (textureLoader, completionFunction) => {
     textureLoader.load("assets/models/textures/marble.jpg", function (texture) {
         texture.wrapS = THREE.RepeatWrapping;
         texture.wrapT = THREE.RepeatWrapping;
@@ -195,4 +212,3 @@ const setWindowResizeListener = (camera, renderer) => {
 };
 
 export {scene3D}
-

@@ -2,19 +2,22 @@ import {Elastic, TimelineLite, TweenLite, TweenMax} from "gsap";
 import ScrollMagic from 'scrollmagic';
 import "scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap"
 import jQuery from "jquery";
+window.$ = window.jQuery = jQuery;
+
 import {cookieConsent} from './cookie-consent'
 import {fontLoader} from './font-loader';
 import {isAMobileDevice} from "./mobile-device-detector";
 import {enableScroll} from "./scroll-manager";
 import {scene3D} from "./scene-3D";
+import {tabs} from "./tabs";
 
-window.$ = window.jQuery = jQuery;
 
 $(document).ready(() => {
     cookieConsent();
-    enableScroll();
-    fontLoader();
     startHeaderAnimation(isAMobileDevice());
+    fontLoader();
+    enableScroll();
+    tabs();
     whoIAmAnimation();
 });
 
@@ -36,8 +39,8 @@ function profileAnimation(completeFunction) {
 
 function whoIAmAnimation() {
     const controller = new ScrollMagic.Controller();
-    var whoAmIIconsRandomed = getRandomSortedIcons();
-    var whoAmITimeline = createTimeLineWhoIAm(whoAmIIconsRandomed, "#who-am-i-description", function () {
+    const whoAmIIconsRandomed = getRandomSortedIcons();
+    const whoAmITimeline = createTimeLineWhoIAm(whoAmIIconsRandomed, "#who-am-i-description", function () {
         sceneWhoAmI.destroy();
     });
     var sceneWhoAmI = createScrollMagicScene(controller, "#who-am-i-description", whoAmITimeline);
@@ -88,3 +91,4 @@ function startHeaderAnimation(isMobileDevice) {
         });
     });
 }
+

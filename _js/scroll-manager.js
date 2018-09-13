@@ -2,15 +2,14 @@ import {isAMobileDevice} from "./mobile-device-detector";
 
 const disableScroll = () => {
     if (isAMobileDevice()) {
-        $("html").css('overflow-y', 'hidden');
-        $("body").css('position', 'fixed');
+        document.querySelector("html").style.overflowY = "hidden";
+        document.querySelector("body").style.position = "fixed";
     }
 };
 
 const enableScroll = () => {
-    $("html").css('overflow-y', 'auto');
-    $("body").css('position', '');
+    document.querySelector("html").style.overflowY = "auto";
+    document.querySelector("body").style.position = "";
 };
 
 export {disableScroll, enableScroll}
-

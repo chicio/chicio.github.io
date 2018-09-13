@@ -3,7 +3,7 @@ import {cookieConsent} from './cookie-consent.js'
 import {fontLoader} from "./font-loader";
 import {disableScroll, enableScroll} from "./scroll-manager";
 
-$(document).ready(() => {
+document.addEventListener("DOMContentLoaded", () => {
     cookieConsent();
     disableScroll();
     fontLoader(showBlog)
