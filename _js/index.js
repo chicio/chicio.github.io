@@ -1,28 +1,25 @@
-import OrbitControls from 'orbit-controls-es6';
 import * as THREE from 'three';
 import PLYLoader from 'three-ply-loader';
 import isWebGLEnabled from 'detector-webgl';
-import {TweenLite, TweenMax, TimelineLite, Elastic} from "gsap";
+import {Elastic, TimelineLite, TweenLite, TweenMax} from "gsap";
 import ScrollMagic from 'scrollmagic';
 import "scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap"
+import jQuery from "jquery";
 import {cookieConsent} from './cookie-consent'
 import {fontLoader} from './font-loader';
 import {isAMobileDevice} from "./mobile-device-detector";
-import jQuery from "jquery";
+import {enableScroll} from "./scroll-manager";
+import {camera3D, meshWithPBRMaterial, orbitsControls, pointLight, renderer3D, stars} from "./scene-3D";
+
 window.$ = window.jQuery = jQuery;
 
 $(document).ready(() => {
     cookieConsent();
-    const isMobileDevice = isAMobileDevice();
-    const controller = new ScrollMagic.Controller();
     enableScroll();
     fontLoader();
-    addArrowDownClickEvent(isMobileDevice);
-    startHeaderAnimation(isMobileDevice);
-    whoIAmAnimation(controller);
+    startHeaderAnimation(isAMobileDevice());
+    whoIAmAnimation();
 });
-
-const enableScroll = () => $("html").css('overflow-y','auto');
 
 const resizeViewport = (isMobile) => {
     if (isMobile === true) {
@@ -32,15 +29,6 @@ const resizeViewport = (isMobile) => {
     }
 };
 
-function addArrowDownClickEvent(isMobileDevice) {
-    if (isMobileDevice === false) {
-        $("#down-arrow").click(event => {
-            event.preventDefault();
-            TweenLite.to(window, 2, {scrollTo: "#who-am-i-container"});
-        });
-    }
-}
-
 function profileAnimation(completeFunction) {
     TweenMax.to(".center-content", 0.5, {
         opacity: 1,
@@ -49,7 +37,8 @@ function profileAnimation(completeFunction) {
     downArrowAnimation();
 }
 
-function whoIAmAnimation(controller) {
+function whoIAmAnimation() {
+    const controller = new ScrollMagic.Controller();
     var whoAmIIconsRandomed = getRandomSortedIcons();
     var whoAmITimeline = createTimeLineWhoIAm(whoAmIIconsRandomed, "#who-am-i-description", function () {
         sceneWhoAmI.destroy();
@@ -101,69 +90,6 @@ function hideLoaderAnimation(completionFunction) {
     });
 }
 
-function createLight() {
-    var lightGeometry = new THREE.SphereGeometry(0);
-    var lightMaterial = new THREE.MeshStandardMaterial({
-        emissive: 0xffffee,
-        emissiveIntensity: 1,
-        color: 0x000000
-    });
-    var light = new THREE.PointLight(0xffffff, 1, 20, 2);
-    light.power = 1700;
-    light.castShadow = true;
-    light.shadow.mapSize.width = 512;
-    light.shadow.mapSize.heigth = 512;
-    light.shadow.radius = 1.5;
-    light.add(new THREE.Mesh(lightGeometry, lightMaterial));
-    light.position.set(0, 5, 3);
-    return light;
-}
-
-function createCamera() {
-    var camera = new THREE.PerspectiveCamera(75, $(window).width() / $(window).height(), 0.1, 1000);
-    camera.position.z = 8;
-    camera.position.y = 0;
-    camera.position.x = 0;
-    return camera;
-}
-
-function createHemisphereLight() {
-    return new THREE.HemisphereLight(0x303F9F, 0x000000, 1);
-}
-
-function loadStars(textureLoader, completeLoad) {
-    textureLoader.load("assets/models/textures/circle.png", function (texture) {
-        var starsGeometry = new THREE.Geometry();
-        for (var i = 0; i < 10000; i++) {
-            var star = new THREE.Vector3();
-            star.x = 2000 * Math.random() - 1000;
-            star.y = 2000 * Math.random();
-            star.z = 2000 * Math.random() - 1000;
-            starsGeometry.vertices.push(star)
-        }
-        var starsMaterial = new THREE.PointsMaterial({
-            color: 0x888888,
-            map: texture,
-            transparent: true,
-        });
-        var stars = new THREE.Points(starsGeometry, starsMaterial);
-        completeLoad(stars);
-    });
-}
-
-function loadPlyModelUsingPhysicalMaterial(plyLoader, path, parameters, position, rotation, completeLoad) {
-    plyLoader.load(path, function (geometry) {
-        var material = new THREE.MeshPhysicalMaterial(parameters);
-        var mesh = new THREE.Mesh(geometry, material);
-        mesh.position.set(position.x, position.y, position.z);
-        mesh.rotation.set(rotation.x, rotation.y, rotation.z);
-        mesh.castShadow = true;
-        mesh.matrixAutoUpdate = false;
-        mesh.updateMatrix();
-        completeLoad(mesh);
-    });
-}
-
 function loadFloor(textureLoader, completionFunction) {
     textureLoader.load("assets/models/textures/marble.jpg", function (texture) {
         texture.wrapS = THREE.RepeatWrapping;
@@ -185,37 +111,13 @@ function loadFloor(textureLoader, completionFunction) {
     });
 }
 
-function setWindowResizeListener(camera, renderer) {
-    window.addEventListener('resize', function () {
-        camera.aspect = $(window).width() / $(window).height();
+const setWindowResizeListener = (camera, renderer) => {
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
-        renderer.setSize($(window).width(), $(window).height());
+        renderer.setSize(window.innerWidth, window.innerHeight);
     }, false);
-}
-
-function createOrbitsControls(camera, renderer) {
-    var controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableZoom = false;
-    controls.autoRotate = true;
-    controls.enablePan = false;
-    controls.keyPanSpeed = 7.0;
-    controls.enableKeys = false;
-    controls.target = new THREE.Vector3(0, 0, 0);
-    controls.mouseButtons = {};
-    controls.dispose();
-    return controls;
-}
-
-function createRenderer() {
-    var renderer = new THREE.WebGLRenderer({alpha: true});
-    renderer.physicallyCorrectLights = true;
-    renderer.gammaInput = true;
-    renderer.gammaOutput = true;
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    renderer.setSize($(window).width(), $(window).height());
-    return renderer;
-}
+};
 
 function startThreeJSSceneIfSupported(isMobileDevice) {
     if (isWebGLEnabled && isMobileDevice === false) {
@@ -234,20 +136,20 @@ function startHeaderAnimation(isMobileDevice) {
 
 function sceneThreeJS() {
     PLYLoader(THREE);
-    var scene = new THREE.Scene();
-    var camera = createCamera();
-    var textureLoader = new THREE.TextureLoader();
-    var plyLoader = new THREE.PLYLoader();
-    var renderer = createRenderer();
-    var controls = createOrbitsControls(camera, renderer);
+    let plyLoader = new THREE.PLYLoader();
+    let scene = new THREE.Scene();
+    let textureLoader = new THREE.TextureLoader();
+    let camera = camera3D();
+    let renderer = renderer3D();
+    let controls = orbitsControls(camera, renderer);
     document.getElementById("rendering-surface").appendChild(renderer.domElement);
     scene.background = new THREE.Color(0x303F9F);
-    scene.add(createLight());
-    scene.add(createHemisphereLight());
-    loadStars(textureLoader, function (stars) {
+    scene.add(pointLight());
+    scene.add(new THREE.HemisphereLight(0x303F9F, 0x000000, 1));
+    stars(textureLoader, function (stars) {
         scene.add(stars);
     });
-    loadPlyModelUsingPhysicalMaterial(
+    meshWithPBRMaterial(
         plyLoader,
         'assets/models/lucy.ply',
         {
@@ -264,7 +166,7 @@ function sceneThreeJS() {
             scene.add(mesh);
         }
     );
-    loadPlyModelUsingPhysicalMaterial(
+    meshWithPBRMaterial(
         plyLoader,
         'assets/models/dragon.ply',
         {
@@ -281,7 +183,7 @@ function sceneThreeJS() {
             scene.add(mesh);
         }
     );
-    loadPlyModelUsingPhysicalMaterial(
+    meshWithPBRMaterial(
         plyLoader,
         'assets/models/bunny.ply',
         {
@@ -301,7 +203,7 @@ function sceneThreeJS() {
     loadFloor(textureLoader, function (mesh) {
         scene.add(mesh);
     });
-    var render = function () {
+    const render = () => {
         requestAnimationFrame(render);
         controls.update();
         renderer.render(scene, camera);

@@ -74,18 +74,6 @@ gulp.task('bundle-blog-scripts', () => browserify({entries: '_js/blog.js'})
     .pipe(isDevelopment ? gulpUtil.noop() : gulpUglify())
     .pipe(gulp.dest('assets/js')));
 
-gulp.task('vendor-scripts', () => gulp
-    .src([
-        // '_js/vendor/jquery.js',
-        // '_js/vendor/bootstrap.min.js',
-        //'_js/vendor/gsap/TweenMax.min.js',
-        //'_js/vendor/gsap/plugins/ScrollToPlugin.min.js'
-    ])
-    .pipe(gulpConcat('vendor.min.js'))
-    .pipe(gulp.dest('assets/js'))
-    .pipe(isDevelopment ? gulpUtil.noop() : gulpUglify())
-    .pipe(gulp.dest('assets/js')));
-
 gulp.task('images', () => gulp
     .src(['_images/**/*.png', '_images/**/*.jpg', '_images/**/*.jpeg', '_images/**/*.gif'])
     .pipe(gulp.dest('assets/images')));
@@ -217,7 +205,6 @@ gulp.task('default', [
     'css',
     'bundle-home-scripts',
     'bundle-blog-scripts',
-    'vendor-scripts',
     'images',
     'fonts',
     'models',
@@ -231,7 +218,6 @@ gulp.task('test', [
     'css',
     'bundle-home-scripts',
     'bundle-blog-scripts',
-    'vendor-scripts',
     'images',
     'fonts',
     'models',
