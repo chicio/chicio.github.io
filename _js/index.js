@@ -1,31 +1,20 @@
 import {Elastic, TimelineLite, TweenLite, TweenMax} from "gsap";
 import ScrollMagic from 'scrollmagic';
 import "scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap"
-import jQuery from "jquery";
-window.$ = window.jQuery = jQuery;
 import {cookieConsent} from './cookie-consent'
 import {fontLoader} from './font-loader';
-import {isAMobileDevice} from "./mobile-device-detector";
 import {enableScroll} from "./scroll-manager";
 import {scene3D} from "./scene-3D";
 import {tabs} from "./tabs";
 
 document.addEventListener("DOMContentLoaded", () => {
     cookieConsent();
-    startHeaderAnimation(isAMobileDevice());
+    startHeaderAnimation();
     fontLoader();
     enableScroll();
     tabs();
     whoIAmAnimation();
 });
-
-const resizeViewport = (isMobile) => {
-    if (isMobile === true) {
-        const bg = $("#profile-introduction, #rendering-surface, canvas");
-        $(window).resize(() => bg.height($(window).height() + 60));
-        bg.height($(window).height() + 60);
-    }
-};
 
 function profileAnimation(completeFunction) {
     TweenMax.to(".center-content", 0.5, {
@@ -53,7 +42,7 @@ function getRandomSortedIcons() {
 }
 
 function createTimeLineWhoIAm(whoIAmIconsRandomed, idWhoIAmDescription, completeFunction) {
-    var whoIAmTimeline = new TimelineLite({onComplete: completeFunction});
+    const whoIAmTimeline = new TimelineLite({onComplete: completeFunction});
     whoIAmTimeline.staggerFrom(whoIAmIconsRandomed, 1, {
         opacity: 0,
         scale: 0,
@@ -81,12 +70,11 @@ function hideLoaderAnimation(completionFunction) {
     });
 }
 
-function startHeaderAnimation(isMobileDevice) {
-    hideLoaderAnimation(function () {
-        resizeViewport(isMobileDevice);
-        profileAnimation(function () {
+const startHeaderAnimation = () => {
+    hideLoaderAnimation(() => {
+        profileAnimation(() => {
             scene3D();
         });
     });
-}
+};
 
