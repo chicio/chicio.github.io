@@ -1,5 +1,86 @@
 import * as THREE from "three";
 import OrbitControls from "orbit-controls-es6";
+import TweenMax from "gsap";
+import PLYLoader from "three-ply-loader";
+import isWebGLEnabled from "detector-webgl";
+import {isAMobileDevice} from "./mobile-device-detector";
+
+const scene3D = () => {
+    if (isWebGLEnabled && isAMobileDevice() === false) {
+        sceneThreeJS();
+    }
+};
+
+const sceneThreeJS = () => {
+    PLYLoader(THREE);
+    let plyLoader = new THREE.PLYLoader();
+    let scene = new THREE.Scene();
+    let textureLoader = new THREE.TextureLoader();
+    let camera = camera3D();
+    let renderer = renderer3D();
+    let controls = orbitsControls(camera, renderer);
+    document.getElementById("rendering-surface").appendChild(renderer.domElement);
+    scene.background = new THREE.Color(0x303F9F);
+    scene.add(pointLight());
+    scene.add(new THREE.HemisphereLight(0x303F9F, 0x000000, 1));
+    stars(textureLoader, stars => scene.add(stars));
+    meshWithPBRMaterial(
+        plyLoader,
+        'assets/models/lucy.ply',
+        {
+            color: 0x3F51B5,
+            roughness: 0.5,
+            metalness: 0.7,
+            clearCoat: 0.5,
+            clearCoatRoughness: 0.5,
+            reflectivity: 0.7
+        },
+        new THREE.Vector3(3, -3, 0),
+        new THREE.Vector3(0, -Math.PI / 3.0, 0),
+        mesh => scene.add(mesh)
+    );
+    meshWithPBRMaterial(
+        plyLoader,
+        'assets/models/dragon.ply',
+        {
+            color: 0x448AFF,
+            roughness: 0.1,
+            metalness: 0.9,
+            clearCoat: 0.0,
+            clearCoatRoughness: 0.2,
+            reflectivity: 1
+        },
+        new THREE.Vector3(-3, -3, 0),
+        new THREE.Vector3(0, -Math.PI, 0),
+        mesh => scene.add(mesh)
+    );
+    meshWithPBRMaterial(
+        plyLoader,
+        'assets/models/bunny.ply',
+        {
+            color: 0xCCFFFF,
+            roughness: 0.9,
+            metalness: 0.1,
+            clearCoat: 0.0,
+            clearCoatRoughness: 0.5,
+            reflectivity: 0.1
+        },
+        new THREE.Vector3(0, -3, 1.5),
+        new THREE.Vector3(0, -Math.PI, 0),
+        mesh => scene.add(mesh)
+    );
+    loadFloor(textureLoader, mesh => scene.add(mesh));
+    const render = () => {
+        requestAnimationFrame(render);
+        controls.update();
+        renderer.render(scene, camera);
+    };
+    setWindowResizeListener(camera, renderer);
+    THREE.DefaultLoadingManager.onLoad = () => {
+        render();
+        showRenderingSurfaceAnimation();
+    };
+};
 
 const orbitsControls = (camera, renderer) => {
     let controls = new OrbitControls(camera, renderer.domElement);
@@ -77,5 +158,41 @@ const meshWithPBRMaterial = (plyLoader, path, parameters, position, rotation, co
     });
 };
 
-export {orbitsControls, pointLight, renderer3D, stars, meshWithPBRMaterial, camera3D}
+const loadFloor = (textureLoader, completionFunction) => {
+    textureLoader.load("assets/models/textures/marble.jpg", function (texture) {
+        texture.wrapS = THREE.RepeatWrapping;
+        texture.wrapT = THREE.RepeatWrapping;
+        texture.repeat.set(100, 100);
+        let floorMat = new THREE.MeshStandardMaterial({
+            roughness: 0.7,
+            metalness: 0.1,
+            map: texture
+        });
+        let floorGeometry = new THREE.PlaneGeometry(1000, 1000);
+        let floorMesh = new THREE.Mesh(floorGeometry, floorMat);
+        floorMesh.receiveShadow = true;
+        floorMesh.rotation.x = -Math.PI / 2.0;
+        floorMesh.position.y = -3;
+        floorMesh.matrixAutoUpdate = false;
+        floorMesh.updateMatrix();
+        completionFunction(floorMesh);
+    });
+};
+
+const showRenderingSurfaceAnimation = () => {
+    TweenMax.to("#rendering-surface", 0.5, {
+        opacity: 1,
+        delay: 0.2
+    });
+};
+
+const setWindowResizeListener = (camera, renderer) => {
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    }, false);
+};
+
+export {scene3D}
 
