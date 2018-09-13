@@ -3,7 +3,6 @@ import ScrollMagic from 'scrollmagic';
 import "scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap"
 import jQuery from "jquery";
 window.$ = window.jQuery = jQuery;
-
 import {cookieConsent} from './cookie-consent'
 import {fontLoader} from './font-loader';
 import {isAMobileDevice} from "./mobile-device-detector";
@@ -11,8 +10,7 @@ import {enableScroll} from "./scroll-manager";
 import {scene3D} from "./scene-3D";
 import {tabs} from "./tabs";
 
-
-$(document).ready(() => {
+document.addEventListener("DOMContentLoaded", () => {
     cookieConsent();
     startHeaderAnimation(isAMobileDevice());
     fontLoader();
@@ -43,11 +41,11 @@ function whoIAmAnimation() {
     const whoAmITimeline = createTimeLineWhoIAm(whoAmIIconsRandomed, "#who-am-i-description", function () {
         sceneWhoAmI.destroy();
     });
-    var sceneWhoAmI = createScrollMagicScene(controller, "#who-am-i-description", whoAmITimeline);
+    const sceneWhoAmI = createScrollMagicScene(controller, "#who-am-i-description", whoAmITimeline);
 }
 
 function getRandomSortedIcons() {
-    var whoIAmIcons = $(".who-am-i-icon").toArray();
+    const whoIAmIcons = Array.from(document.querySelectorAll(".who-am-i-icon"));
     whoIAmIcons.sort(function () {
         return 0.5 - Math.random()
     });
