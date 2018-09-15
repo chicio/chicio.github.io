@@ -18,6 +18,7 @@ const sceneThreeJS = () => {
   let textureLoader = new THREE.TextureLoader()
   const camera = camera3D()
   const renderer = renderer3D()
+  const orbit = orbitsControls(camera, renderer)
   setup(renderer, camera, scene)
   lights(scene)
   stars(textureLoader, stars => scene.add(stars))
@@ -25,10 +26,7 @@ const sceneThreeJS = () => {
   meshWithPBRMaterial(plyLoader, dragon(), mesh => scene.add(mesh))
   meshWithPBRMaterial(plyLoader, bunny(), mesh => scene.add(mesh))
   floor(textureLoader, mesh => scene.add(mesh))
-  THREE.DefaultLoadingManager.onLoad = () => {
-    render(renderer, scene, camera)
-    showRenderingSurfaceAnimation()
-  }
+  THREE.DefaultLoadingManager.onLoad = () => renderLoop(renderer, scene, camera, orbit)
 }
 
 class Object3D {
@@ -101,10 +99,14 @@ const setup = (renderer, camera, scene) => {
   setWindowResizeListener(camera, renderer)
 }
 
-const render = (renderer, scene, camera) => {
-  orbitsControls(camera, renderer).update()
-  global.requestAnimationFrame(render)
-  renderer.render(scene, camera)
+const renderLoop = (renderer, scene, camera, orbit) => {
+  const renderFrame = () => {
+    global.requestAnimationFrame(renderFrame)
+    orbit.update()
+    renderer.render(scene, camera)
+  }
+  showRenderingSurfaceAnimation()
+  renderFrame()
 }
 
 const lights = (scene) => {
