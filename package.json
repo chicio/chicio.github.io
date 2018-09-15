@@ -3,6 +3,10 @@
   "version": "2.0.0",
   "description": "Fabrizio Duroni aka 'chicio' website",
   "main": "index.js",
+  "scripts": {
+    "start": "gulp",
+    "start-dev": "gulp --dev"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chicio/chicio.github.io.git"
@@ -21,14 +25,22 @@
   },
   "homepage": "https://github.com/chicio/chicio.github.io#readme",
   "devDependencies": {
+    "ajv": "6.5.3",
     "babel-core": "6.26.3",
     "babel-preset-env": "1.7.0",
     "babelify": "8.0.0",
     "browser-sync": "2.24.6",
     "browserify": "16.2.2",
     "critical": "1.3.4",
+    "eslint": "5.6.0",
+    "eslint-config-standard": "12.0.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-node": "7.0.1",
+    "eslint-plugin-promise": "4.0.1",
+    "eslint-plugin-standard": "4.0.0",
     "gulp": "3.9.1",
     "gulp-concat": "2.6.1",
+    "gulp-eslint": "5.0.0",
     "gulp-rev-append": "0.1.8",
     "gulp-sass": "4.0.1",
     "gulp-uglify": "3.0.0",

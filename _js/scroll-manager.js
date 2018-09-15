@@ -1,15 +1,15 @@
-import {isAMobileDevice} from "./mobile-device-detector";
+import { isAMobileDevice } from './mobile-device-detector'
 
 const disableScroll = () => {
-    if (isAMobileDevice()) {
-        document.querySelector("html").style.overflowY = "hidden";
-        document.querySelector("body").style.position = "fixed";
-    }
-};
+  if (isAMobileDevice()) {
+    document.querySelector('html').style.overflowY = 'hidden'
+    document.querySelector('body').style.position = 'fixed'
+  }
+}
 
 const enableScroll = () => {
-    document.querySelector("html").style.overflowY = "auto";
-    document.querySelector("body").style.position = "";
-};
+  document.querySelector('html').style.overflowY = 'auto'
+  document.querySelector('body').style.position = ''
+}
 
-export {disableScroll, enableScroll}
+export { disableScroll, enableScroll }
