@@ -26,11 +26,7 @@ const sceneThreeJS = () => {
     meshWithPBRMaterial(plyLoader, dragon(), mesh => scene.add(mesh));
     meshWithPBRMaterial(plyLoader, bunny(), mesh => scene.add(mesh));
     floor(textureLoader, mesh => scene.add(mesh));
-    const render = () => {
-        requestAnimationFrame(render);
-        controls.update();
-        renderer.render(scene, camera);
-    };
+    render(controls, renderer, scene, camera);
     setWindowResizeListener(camera, renderer);
     THREE.DefaultLoadingManager.onLoad = () => {
         render();
@@ -105,6 +101,12 @@ const orbitsControls = (camera, renderer) => {
 const setup = (renderer, scene) => {
     document.getElementById("rendering-surface").appendChild(renderer.domElement);
     scene.background = new THREE.Color(0x303F9F);
+};
+
+const render = (controls, renderer, scene, camera) => {
+    requestAnimationFrame(render);
+    controls.update();
+    renderer.render(scene, camera);
 };
 
 const lights = (scene) => {
