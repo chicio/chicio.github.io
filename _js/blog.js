@@ -1,19 +1,10 @@
-import {TimelineMax} from "gsap";
 import {cookieConsent} from './cookie-consent.js'
-import {fontLoader} from "./font-loader";
-import {disableScroll, enableScroll} from "./scroll-manager";
+import {loadFont} from "./load-font";
+import {disableScroll} from "./scroll-manager";
+import {blogAnimation} from "./blog-animation";
 
 document.addEventListener("DOMContentLoaded", () => {
+    loadFont(blogAnimation);
     cookieConsent();
     disableScroll();
-    fontLoader(showBlog)
 });
-
-const showBlog = () => {
-    const showBlogTimeline = new TimelineMax({delay: 0.2});
-    showBlogTimeline.to("#loader", 0.2, {opacity: 0});
-    showBlogTimeline.to("#loading-screen", 0.4, {
-        xPercent: -100,
-        onComplete: enableScroll
-    }, "+=0.4");
-};

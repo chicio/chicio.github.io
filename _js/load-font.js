@@ -1,6 +1,6 @@
 import WebFont from "webfontloader";
 
-const fontLoader = (finish) => {
+const loadFont = (finish) => {
     WebFont.load({
         google: {families: ['Open Sans']},
         active: finish ? finish() : undefined,
@@ -8,4 +8,4 @@ const fontLoader = (finish) => {
     });
 };
 
-export {fontLoader};
+export {loadFont};
