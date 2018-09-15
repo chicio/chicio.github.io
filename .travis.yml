@@ -4,12 +4,12 @@ node_js:
 before_install:
   - rvm install 2.4.1
 before_script:
-  - npm install -g gulp
   - gem install jekyll
   - gem install jekyll-seo-tag
   - gem install jekyll-sitemap
   - gem install octopress-minify-html
   - gem install jekyll-paginate
   - gem install jemoji
-script: gulp test --travis
+  - npm install
+script: npm run start-ci
 

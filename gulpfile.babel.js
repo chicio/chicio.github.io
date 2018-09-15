@@ -207,21 +207,7 @@ gulp.task('rev-blog', () => {
     .pipe(gulp.dest('_includes'))
 })
 
-gulp.task('default', [
-  'css',
-  'lint',
-  'bundle-home-scripts',
-  'bundle-blog-scripts',
-  'images',
-  'fonts',
-  'models',
-  'rev-home',
-  'rev-blog',
-  'jekyll',
-  'serve'
-])
-
-gulp.task('test', [
+gulp.task('build', [
   'css',
   'lint',
   'bundle-home-scripts',
@@ -232,4 +218,9 @@ gulp.task('test', [
   'rev-home',
   'rev-blog',
   'jekyll'
+])
+
+gulp.task('default', [
+  'build',
+  'serve'
 ])
