@@ -206,29 +206,36 @@ footer {
   width: 100%;
 }
 
-#profile-tabs {
-  display: flex;
-}
-
 .profile-container {
   background-color: $general-background;
 
-  .nav-justified > li, .nav-tabs.nav-justified > li {
+  .nav-tabs {
+    border:1px solid transparent;
+  }
+
+  .nav-tabs > li {
     width: 50%;
   }
 
-  .nav-tabs-justified > li > a, .nav-tabs.nav-justified > li > a {
+  .nav-tabs > li > .nav-link {
     border-radius: 0;
+    border-bottom: 1px solid #dee2e6;
+    border-left: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
     color: $primary-color;
     background-color: #FFFFFF;
-    border-bottom: 1px solid #dddddd;
   }
 
-  .nav-tabs-justified > li.active > a, .nav-tabs.nav-justified > li.active > a {
+  .nav-tabs > li > .nav-link:hover {
+    border-top: 1px solid transparent;
+  }
+
+  .nav-tabs > li.active > .nav-link {
     border-radius: 0;
+    border-right: 1px solid #dee2e6;
+    border: 1px solid transparent;
     color: $accent-color;
     background-color: $general-background;
-    border-bottom-color: transparent;
   }
 
   a.accordion-toggle {
@@ -340,6 +347,7 @@ footer {
     color: #FFFFFF;
 
     .who-am-i-description {
+      text-align: center;
       margin: 0;
       padding-left: 15px;
       padding-right: 15px;
@@ -360,7 +368,7 @@ footer {
         max-height: 50px;
         width: auto;
         height: auto;
-        margin: 20px 5px auto 5px;
+        margin: 20px 10px;
         display: inline;
       }
 
@@ -372,13 +380,13 @@ footer {
   }
 }
 
-@media (min-width: $screen-xs-min) {
+@include media-breakpoint-up(xs) {
   .break {
     display: none;
   }
 }
 
-@media (min-width: $screen-sm-min) {
+@include media-breakpoint-up(sm) {
   .profile-introduction {
     font-size: 28px;
 
@@ -405,10 +413,6 @@ footer {
       width: 150px;
       height: 150px;
     }
-  }
-
-  #profile-tabs {
-    display: table;
   }
 
   .project {
@@ -439,11 +443,7 @@ footer {
   }
 }
 
-@media (min-width: $screen-md-min) {
-  #profile-tabs {
-    display: table;
-  }
-
+@include media-breakpoint-up(md) {
   .project {
     margin: 50px 50px 50px 50px;
 
@@ -471,12 +471,6 @@ footer {
     .who-am-i {
       max-width: 1100px;
 
-      .who-am-i-description {
-        margin: 0;
-        padding-left: 0;
-        padding-right: 0;
-      }
-
       .who-am-i-icons {
 
         img {
@@ -493,11 +487,7 @@ footer {
   }
 }
 
-@media (min-width: $screen-lg) {
-  #profile-tabs {
-    display: table;
-  }
-
+@include media-breakpoint-up(lg) {
   #phone-number {
     display: none;
   }
@@ -544,7 +534,7 @@ footer {
   text-align: left;
 }
 
-@media (min-width: $screen-md-min) {
+@include media-breakpoint-up(md) {
   .timeline {
     text-align: justify;
   }
@@ -703,7 +693,7 @@ footer {
   margin-right: 80px;
 }
 
-@media (min-width: $screen-md-min) {
+@include media-breakpoint-up(md) {
   .timeline-heading {
     img {
       float: right;
@@ -726,7 +716,7 @@ footer {
   margin-top: 5px;
 }
 
-@media (max-width: $screen-md-min) {
+@include media-breakpoint-down(md) {
   ul.timeline:before {
     left: 40px;
   }
@@ -836,7 +826,7 @@ footer {
   }
 }
 
-@media (max-width: $screen-sm-min) {
+@include media-breakpoint-down(sm) {
   .blog-nav-item {
     padding: 10px;
     margin-right: 0;
@@ -1092,7 +1082,7 @@ footer {
   overflow:auto;
 }
 
-@media (min-width: $screen-xs-min) {
+@include media-breakpoint-up(xs) {
   .blog-header {
 
     .blog-logo {
@@ -1201,7 +1191,7 @@ footer {
   width: 90%;
 }
 
-@media (max-width: $screen-sm) {
+@include media-breakpoint-down(sm) {
 
   .recent-posts .col-lg-4 {
     margin-top: 20px;
@@ -1220,7 +1210,7 @@ footer {
   }
 }
 
-@media (max-width: $screen-md) {
+@include media-breakpoint-down(md)  {
   .recent-posts .card p{
     display: none;
   }
