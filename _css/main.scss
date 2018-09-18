@@ -199,6 +199,10 @@ footer {
   .heart {
     display: inline-block;
   }
+
+  .copyright {
+    justify-content: center;
+  }
 }
 
 .vertical-center-row {
@@ -647,6 +651,7 @@ footer {
   color: $primary-text-color;
   font-size: 30px;
   word-break: normal;
+  width: 100%;
 }
 
 .timeline-subtitle {
@@ -654,6 +659,7 @@ footer {
   word-break: keep-all;
   text-align: left;
   color: $accent-color;
+  width: 100%;
 }
 
 .timeline-heading {
@@ -676,6 +682,10 @@ footer {
   display: inline;
   margin-top: 25px;
   margin-left: 80px;
+
+  span {
+    width: 100%;
+  }
 }
 
 .timeline-date-inverted {
@@ -683,12 +693,21 @@ footer {
   display: inline;
   margin-top: 25px;
   margin-right: 80px;
+
+  span {
+    width: 100%;
+  }
 }
 
 @include media-breakpoint-up(md) {
   .timeline-heading {
+
     img {
       float: right;
+    }
+
+    h4 {
+      width: 100%;
     }
   }
 }
@@ -744,6 +763,7 @@ footer {
 
   .timeline-title {
     font-size: 21px;
+    width: 100%;
   }
 }
 

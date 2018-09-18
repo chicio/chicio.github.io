@@ -13540,6 +13540,10 @@ footer .heart {
   display: inline-block;
 }
 
+footer .copyright {
+  justify-content: center;
+}
+
 .vertical-center-row {
   display: table-cell;
   vertical-align: middle;
@@ -13943,6 +13947,7 @@ footer .heart {
   color: #212121;
   font-size: 30px;
   word-break: normal;
+  width: 100%;
 }
 
 .timeline-subtitle {
@@ -13950,6 +13955,7 @@ footer .heart {
   word-break: keep-all;
   text-align: left;
   color: #448AFF;
+  width: 100%;
 }
 
 .timeline-heading {
@@ -13974,6 +13980,10 @@ footer .heart {
   margin-left: 80px;
 }
 
+.timeline-date span {
+  width: 100%;
+}
+
 .timeline-date-inverted {
   float: right;
   display: inline;
@@ -13981,9 +13991,16 @@ footer .heart {
   margin-right: 80px;
 }
 
+.timeline-date-inverted span {
+  width: 100%;
+}
+
 @media (min-width: 768px) {
   .timeline-heading img {
     float: right;
+  }
+  .timeline-heading h4 {
+    width: 100%;
   }
 }
 
@@ -14033,6 +14050,7 @@ footer .heart {
   }
   .timeline-title {
     font-size: 21px;
+    width: 100%;
   }
 }
 
