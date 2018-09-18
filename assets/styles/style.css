@@ -13631,7 +13631,11 @@ footer .heart {
   margin: 50px 0 50px 0;
 }
 
-.project .project-image-container img {
+.project .project-image-container {
+  margin-bottom: 20px;
+}
+
+.project .project-image {
   margin: auto;
   -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.375);
@@ -13663,6 +13667,7 @@ footer .heart {
 .project .project-info .btn-default {
   border-color: #3F51B5;
   color: #3F51B5;
+  font-size: 14px;
 }
 
 .profile-container.container-fluid {
@@ -13741,12 +13746,6 @@ footer .heart {
     width: 150px;
     height: 150px;
   }
-  .project .project-image-container-right {
-    margin-left: 0;
-    float: right;
-    padding-left: 0;
-    padding-right: 15px;
-  }
   .project .project-info {
     padding-left: 15px;
     padding-right: 15px;
@@ -13766,9 +13765,6 @@ footer .heart {
 @media (min-width: 768px) {
   .project {
     margin: 50px 50px 50px 50px;
-  }
-  .project .project-image-container img {
-    margin: 0;
   }
   .profile-introduction .center-content.center-content-buttons {
     width: 250px;

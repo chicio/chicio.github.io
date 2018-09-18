@@ -14,6 +14,7 @@ $divider-color: #BDBDBD;
 $general-background: #FAFAFA;
 $masthead-height: 55px;
 $footer-height: 125px;
+$font-size-base: 14px;
 
 body {
   font: 20px 'Open Sans', sans-serif;
@@ -293,14 +294,15 @@ footer {
   margin: 50px 0 50px 0;
 
   .project-image-container {
+    margin-bottom: 20px;
+  }
 
-    img {
+  .project-image {
       margin: auto;
       -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
       box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.375);
       border-radius: 3px;
       border: 1px solid #d4d4d4;
-    }
   }
 
   .project-info {
@@ -326,6 +328,7 @@ footer {
     .btn-default {
       border-color: $primary-color;
       color: $primary-color;
+      font-size: $font-size-base;
     }
   }
 }
@@ -416,13 +419,6 @@ footer {
   }
 
   .project {
-    .project-image-container-right {
-      margin-left: 0;
-      float: right;
-      padding-left: 0;
-      padding-right: 15px;
-    }
-
     .project-info {
       padding-left: 15px;
       padding-right: 15px;
@@ -446,10 +442,6 @@ footer {
 @include media-breakpoint-up(md) {
   .project {
     margin: 50px 50px 50px 50px;
-
-    .project-image-container img {
-      margin: 0;
-    }
   }
 
   .profile-introduction {
