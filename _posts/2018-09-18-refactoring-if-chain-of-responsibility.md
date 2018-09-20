@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Refactoring: a real case of a nested if structure transformed into a chain of responsibility"
-description: "In this post my colleague Francesco Bonfadelli will show you how to transform a nested if structure into a chain of responsibility. "
+description: "In this post my colleague Francesco Bonfadelli will show you how to transform a nested if structure into a chain of responsibility."
 date: 2018-09-18
 image: /assets/images/posts/ifremoval.jpg
 tags: [test driven development, agile, clean code]
@@ -15,7 +15,7 @@ will show you how to transform a nested if structure into a chain of responsibil
 
 ---
 **An article written by my colleague [Francesco Bonfadelli](https://www.linkedin.com/in/fbonfadelli/ "Francesco 
-Bonfadelli"), a senior Android, iOS and Backend developer at [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group")**
+Bonfadelli"), a senior Android, iOS and Backend developer at [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group")**.
   
 In this post I am going to describe a step by step process used to transform a nested if structure into a chain of responsibility. 
 The purpose of this operation is to make the code easier to read, thus to change without introducing errors. 
