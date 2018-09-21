@@ -805,11 +805,9 @@ footer {
 }
 
 .blog-nav-item-footer {
-  position: relative;
-  display: inline-block;
   font-weight: 500;
   color: #cdddeb;
-  padding: 0 0 10px 0;
+  padding: 0 0 5px 0;
 
   &:hover,
   &:focus {
@@ -1070,6 +1068,7 @@ footer {
   background: $accent-color;
   color: #fff;
   border-radius: 0.5em;
+  margin: 5px;
 }
 
 .archive-list-post {
@@ -1102,7 +1101,7 @@ footer {
   overflow:auto;
 }
 
-@include media-breakpoint-up(xs) {
+@include media-breakpoint-up(md) {
   .blog-header {
 
     .blog-logo {

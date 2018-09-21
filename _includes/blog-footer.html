@@ -1,5 +1,5 @@
-<footer class="container-fluid text-center blog-footer">
-	<div class="row center-content blog-nav-footer">
+<footer class="container-fluid blog-footer">
+	<div class="d-flex justify-content-center">
 		<a href="/" class="blog-nav-item-footer">
 			Home
 		</a>
@@ -19,11 +19,11 @@
 		<a href="/blog/tags/" class="blog-nav-item-footer">
 			Tags
 		</a>
-		<div class="row">
-			{% include social-contacts.html icon-class="blog-footer-icon" break=false %}
-			<div class="row blog-copyright">
-				<h5>Made with <span id="heart" class="heart">💖</span> by {{ site.author }} 'Chicio'</h5>
-			</div>
-		</div>
+	</div>
+	<div class="d-flex justify-content-center">
+		{% include social-contacts.html icon-class="blog-footer-icon" break=false %}
+	</div>
+	<div class="d-flex justify-content-center blog-copyright">
+		<h5>Made with <span id="heart" class="heart">💖</span> by {{ site.author }} 'Chicio'</h5>
 	</div>
 </footer>
