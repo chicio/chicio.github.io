@@ -199,10 +199,6 @@ footer {
   .heart {
     display: inline-block;
   }
-
-  .copyright {
-    justify-content: center;
-  }
 }
 
 .vertical-center-row {
@@ -908,6 +904,9 @@ footer {
   line-height: 1.5;
   h3 {
     width: 100%;
+    font-size: 22px;
+  }
+  h4 {
     font-size: 20px;
   }
   hr {
@@ -937,6 +936,13 @@ footer {
 
   blockquote {
     color: #777;
+    margin: 0 0 20px;
+    border-left: 5px solid #eee;
+    padding: 10px 20px;
+
+    p {
+      margin: 0;
+    }
   }
 
   ul {
@@ -1250,6 +1256,13 @@ footer {
   height: 100%;
 }
 
+.blog-arrow {
+  margin: 20px 5px;
+  width: 100px;
+  background-color: $accent-color;
+  border-radius: 10px;
+}
+
 code.highlighter-rouge {
   background-color: #f9f2f4;
   padding: 2px 4px;
@@ -1258,6 +1271,8 @@ code.highlighter-rouge {
 
 div.highlighter-rouge {
   width: inherit;
+  margin-bottom: 20px;
+
   div {
     border: 1px solid rgba(0,0,0, 0.1);
     border-radius: 2px;
@@ -1278,4 +1293,9 @@ div.highlighter-rouge {
       word-wrap: normal;
     }
   }
+}
+
+/* bootstrap safari fix grid */
+.row:before, .row:after {
+  display: none !important;
 }

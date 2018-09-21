@@ -1,5 +1,5 @@
 import { TimelineMax } from 'gsap'
-import { enableScroll } from './scroll-manager'
+import { enableScroll } from '../common/scroll-manager'
 
 const blogAnimation = () => {
   const showBlogTimeline = new TimelineMax({ delay: 0.2 })

@@ -13540,10 +13540,6 @@ footer .heart {
   display: inline-block;
 }
 
-footer .copyright {
-  justify-content: center;
-}
-
 .vertical-center-row {
   display: table-cell;
   vertical-align: middle;
@@ -14192,6 +14188,10 @@ footer .copyright {
 
 .blog-main h3 {
   width: 100%;
+  font-size: 22px;
+}
+
+.blog-main h4 {
   font-size: 20px;
 }
 
@@ -14222,6 +14222,13 @@ footer .copyright {
 
 .blog-post blockquote {
   color: #777;
+  margin: 0 0 20px;
+  border-left: 5px solid #eee;
+  padding: 10px 20px;
+}
+
+.blog-post blockquote p {
+  margin: 0;
 }
 
 .blog-post ul {
@@ -14518,6 +14525,13 @@ footer .copyright {
   height: 100%;
 }
 
+.blog-arrow {
+  margin: 20px 5px;
+  width: 100px;
+  background-color: #448AFF;
+  border-radius: 10px;
+}
+
 code.highlighter-rouge {
   background-color: #f9f2f4;
   padding: 2px 4px;
@@ -14526,6 +14540,7 @@ code.highlighter-rouge {
 
 div.highlighter-rouge {
   width: inherit;
+  margin-bottom: 20px;
 }
 
 div.highlighter-rouge div {
@@ -14545,6 +14560,11 @@ div.highlighter-rouge .highlight code {
   white-space: pre;
   overflow-x: scroll;
   word-wrap: normal;
+}
+
+/* bootstrap safari fix grid */
+.row:before, .row:after {
+  display: none !important;
 }
 
 .highlight {

@@ -3,7 +3,7 @@ import OrbitControls from 'orbit-controls-es6'
 import TweenMax from 'gsap'
 import PLYLoader from 'three-ply-loader'
 import isWebGLEnabled from 'detector-webgl'
-import { isAMobileDevice } from './mobile-device-detector'
+import { isAMobileDevice } from '../common/mobile-device-detector'
 
 const scene3D = () => {
   if (isWebGLEnabled && isAMobileDevice() === false) {
