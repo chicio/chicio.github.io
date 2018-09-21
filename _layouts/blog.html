@@ -6,31 +6,29 @@
 		{% include blog-masthead.html %}
         <div class="container blog-posts">
 			{% include blog-header.html %}
-            <div class="row">
-                <div class="col-sm-12 blog-main">
-                    {% for post in paginator.posts %}
-                    <div class="row blog-post col-12">
-                        <h2 class="blog-post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
-                        <p class="blog-post-meta">{{ post.date | date_to_string }} · {% include blog-reading-time.html content=post.content %}</p>
-                        {{ post.content | markdownify }}
-                    </div>
-                    {% endfor %}
-                    <div class="row">
-                        <nav class="blog-arrows">
-                            <ul class="pager">
-                                {% if paginator.previous_page %}
-                                <li>
-                                    <a class="btn btn-default" href="{{ paginator.previous_page_path }}">Previous</a>
-                                </li>
-                                {% endif %}
-                                {% if paginator.next_page %}
-                                <li>
-                                    <a class="btn btn-default" href="{{ paginator.next_page_path }}">Next</a>
-                                </li>
-                                {% endif %}
-                            </ul>
-                        </nav>
-                    </div>
+            <div class="blog-main">
+                {% for post in paginator.posts %}
+                <div class="blog-post">
+                    <h2 class="blog-post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+                    <p class="blog-post-meta">{{ post.date | date_to_string }} · {% include blog-reading-time.html content=post.content %}</p>
+                    {{ post.content | markdownify }}
+                </div>
+                {% endfor %}
+                <div>
+                    <nav class="blog-arrows">
+                        <ul class="pager">
+                            {% if paginator.previous_page %}
+                            <li>
+                                <a class="btn btn-default" href="{{ paginator.previous_page_path }}">Previous</a>
+                            </li>
+                            {% endif %}
+                            {% if paginator.next_page %}
+                            <li>
+                                <a class="btn btn-default" href="{{ paginator.next_page_path }}">Next</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>

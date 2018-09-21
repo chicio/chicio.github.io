@@ -868,16 +868,13 @@ footer {
 }
 
 .blog-header {
-  padding-top: 50px;
-  padding-bottom: 20px;
-  margin-left: 10px;
+  margin-top: 50px;
+  margin-bottom: 20px;
 
   .blog-logo {
     width: 60px;
     height: 60px;
-    margin-top: -10px;
-    float: left;
-    margin-right: 15px;
+    margin-right: 10px;
     border-radius: 10px;
   }
 
@@ -890,7 +887,7 @@ footer {
   & .blog-title {
     margin-top: 0;
     margin-bottom: 0;
-    font-size: 20px;
+    font-size: 28px;
     font-weight: bold;
     color: $primary-text-color;
     display: block;
@@ -911,6 +908,7 @@ footer {
   line-height: 1.5;
   h3 {
     width: 100%;
+    font-size: 20px;
   }
   hr {
     width: 100%;
@@ -924,8 +922,6 @@ footer {
 }
 
 .blog-post {
-  margin-left: 10px;
-  margin-right: 10px;
   margin-bottom: 20px;
 
   img {
@@ -1084,6 +1080,9 @@ footer {
 
 .blog-copyright {
   margin-top: 5px;
+  h5 {
+    font-size: 14px;
+  }
 }
 
 #disqus_thread {
@@ -1107,7 +1106,6 @@ footer {
     .blog-logo {
       width: 80px;
       height: 80px;
-      margin-top: -2px;
     }
 
     .lead.blog-description {
@@ -1253,11 +1251,17 @@ footer {
   height: 100%;
 }
 
-.highlighter-rouge {
+code.highlighter-rouge {
+  background-color: #f9f2f4;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+div.highlighter-rouge {
   width: inherit;
   div {
     border: 1px solid rgba(0,0,0, 0.1);
-    border-radius: 2px;
+    border-radius: 4px;
   }
 
   .highlight {
