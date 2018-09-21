@@ -14195,6 +14195,16 @@ footer .copyright {
   line-height: 1.5;
 }
 
+.blog-main h3 {
+  width: 100%;
+}
+
+.blog-main hr {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .blog-posts {
   min-height: calc(100vh - 125px - 55px);
 }
@@ -14513,9 +14523,27 @@ footer .copyright {
   height: 100%;
 }
 
-pre {
+.highlighter-rouge {
+  width: inherit;
+}
+
+.highlighter-rouge div {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+
+.highlighter-rouge .highlight pre {
   white-space: pre;
   overflow: auto;
+  padding: 10px;
+}
+
+.highlighter-rouge .highlight code {
+  font: 14px 'Open Sans', sans-serif;
+  display: block;
+  white-space: pre;
+  overflow-x: scroll;
+  word-wrap: normal;
 }
 
 .highlight {
@@ -14832,12 +14860,6 @@ pre {
 }
 
 /* Literal.Number.Integer.Long */
-.highlight code {
-  display: block;
-  white-space: pre;
-  overflow-x: scroll;
-  word-wrap: normal;
-}
 
 /*!
  * Font Awesome Free 5.2.0 by @fontawesome - https://fontawesome.com

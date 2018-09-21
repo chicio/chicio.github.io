@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-sm-12 blog-main">
                     {% for post in paginator.posts %}
-                    <div class="row blog-post">
+                    <div class="row blog-post col-12">
                         <h2 class="blog-post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
                         <p class="blog-post-meta">{{ post.date | date_to_string }} · {% include blog-reading-time.html content=post.content %}</p>
                         {{ post.content | markdownify }}

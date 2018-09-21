@@ -911,6 +911,14 @@ footer {
 .blog-main {
   font-size: 18px;
   line-height: 1.5;
+  h3 {
+    width: 100%;
+  }
+  hr {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 }
 
 .blog-posts {
@@ -1246,7 +1254,26 @@ footer {
   height: 100%;
 }
 
-pre {
-  white-space: pre;
-  overflow: auto;
+.highlighter-rouge {
+  width: inherit;
+  div {
+    border: 1px solid rgba(0,0,0, 0.1);
+    border-radius: 2px;
+  }
+
+  .highlight {
+    pre {
+      white-space: pre;
+      overflow: auto;
+      padding: 10px;
+    }
+
+    code {
+      font: 14px 'Open Sans', sans-serif;
+      display: block;
+      white-space: pre;
+      overflow-x: scroll;
+      word-wrap: normal;
+    }
+  }
 }
