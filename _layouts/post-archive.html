@@ -6,17 +6,19 @@
         {% include blog-masthead.html %}
         <div class="container blog-posts">
             {% include blog-header.html %}
-            <div class="row blog-archive">
+            <div class="blog-archive">
                 {% for post in site.posts %}
-                <div class="container archive-list-post col-xs-12">
-                    <a class="row archive-post" href="{{ post.url }}">
-                        <div class="col-sm-2 col-md-2 archive-list-post-date">
-                            <time>{{ post.date | date_to_string }}</time>
-                        </div>
-                        <div class="col-sm-10 col-md-10 archive-list-post-title">
-                            {{ post.title }}
-                        </div>
-                    </a>
+                <div class="container archive-list-post">
+					<div class="row archive-post">
+                    	<div class="col-12 col-md-2 archive-list-post-date d-flex align-items-center">
+                        	<time>{{ post.date | date_to_string }}</time>
+                    	</div>
+                    	<div class="col-12 col-md-10 archive-list-post-title d-flex align-items-center">
+							<a href="{{ post.url }}">
+                        	{{ post.title }}
+							</a>
+                    	</div>
+					</div>
                 </div>
                 {% endfor %}
             </div>

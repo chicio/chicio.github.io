@@ -14289,13 +14289,11 @@ footer .copyright {
 
 .blog-archive {
   margin-bottom: 15px;
+  margin-top: 40px;
 }
 
 .blog-archive .archive-list-post .archive-post {
-  display: block;
   margin-top: 20px;
-  margin-left: 15px;
-  margin-right: 15px;
 }
 
 .blog-archive .archive-list-post .archive-post .archive-list-post-date {
@@ -14305,6 +14303,7 @@ footer .copyright {
 
 .blog-archive .archive-list-post .archive-post .archive-list-post-title {
   padding: 0;
+  line-height: 1.2;
 }
 
 .blog-post-title {
@@ -14531,7 +14530,7 @@ div.highlighter-rouge {
 
 div.highlighter-rouge div {
   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
 div.highlighter-rouge .highlight pre {
