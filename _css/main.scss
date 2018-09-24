@@ -196,9 +196,34 @@ footer {
   background-color: $primary-color;
   color: $primary-color-light;
   padding: 10px 0 10px 0;
+  height: $footer-height;
+  margin-bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  font-size: 14px;
+
 
   .heart {
     display: inline-block;
+  }
+
+  .nav-item-footer {
+    font-weight: 500;
+    color: #cdddeb;
+    padding: 0 0 5px 0;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+  .copyright {
+    margin-top: 5px;
+    h5 {
+      font-size: 14px;
+    }
   }
 }
 
@@ -443,7 +468,7 @@ footer {
     }
   }
 
-  .blog-footer {
+  footer {
     font-size: 16px;
   }
 }
@@ -797,44 +822,11 @@ footer {
   margin-right: 15px;
   height: 55px;
   line-height: 70px;
-
-  &:hover,
-  &:focus {
-    color: #fff;
-    text-decoration: none;
-  }
 }
 
-.blog-nav-item-footer {
-  font-weight: 500;
-  color: #cdddeb;
-  padding: 0 0 5px 0;
-
-  &:hover,
-  &:focus {
-    color: #fff;
-    text-decoration: none;
-  }
-}
-
-.blog-nav-footer {
-  & .active {
-    color: #fff;
-  }
-
-  & .active:after {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 0;
-    margin-left: -5px;
-    vertical-align: middle;
-    content: " ";
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid;
-    border-left: 5px solid transparent;
-  }
+.blog-nav-item:hover, .blog-nav-item:focus {
+  color: #fff;
+  text-decoration: none;
 }
 
 @include media-breakpoint-down(sm) {
@@ -846,8 +838,6 @@ footer {
 }
 
 .blog-nav {
-  display: flex;
-  align-items: center;
   height: 55px;
 
   & .active {
@@ -877,6 +867,7 @@ footer {
     height: 60px;
     margin-right: 10px;
     border-radius: 10px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.575);
   }
 
   .lead.blog-description {
@@ -1057,13 +1048,6 @@ footer {
   color: #999;
 }
 
-.blog-footer {
-  height: $footer-height;
-  margin-bottom: 0;
-  width: 100%;
-  overflow: hidden;
-  font-size: 14px;
-}
 
 .blog-footer-icon {
   font-size: 1.5em;
@@ -1085,13 +1069,6 @@ footer {
   a:hover {
     color: $accent-color;
     text-decoration: none;
-  }
-}
-
-.blog-copyright {
-  margin-top: 5px;
-  h5 {
-    font-size: 14px;
   }
 }
 
