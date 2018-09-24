@@ -177,6 +177,7 @@ canvas {
   .img-responsive {
     width: 100px;
     height: 100px;
+    border-radius: 50px;
     margin: auto;
   }
 
@@ -212,6 +213,7 @@ footer {
 
   .nav-tabs {
     border:1px solid transparent;
+    margin-bottom: 35px;
   }
 
   .nav-tabs > li {
@@ -291,7 +293,10 @@ footer {
 }
 
 .project {
-  margin: 50px 0 50px 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
 
   .project-image-container {
     margin-bottom: 20px;
@@ -344,7 +349,10 @@ footer {
   -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 
   .who-am-i {
-    margin: 50px auto 50px auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
     max-width: 1100px;
     color: #FFFFFF;
@@ -415,6 +423,7 @@ footer {
     .img-responsive {
       width: 150px;
       height: 150px;
+      border-radius: 75px;
     }
   }
 
@@ -440,10 +449,6 @@ footer {
 }
 
 @include media-breakpoint-up(md) {
-  .project {
-    margin: 50px 50px 50px 50px;
-  }
-
   .profile-introduction {
     .center-content {
       &.center-content-buttons {
@@ -486,7 +491,6 @@ footer {
 
   .project {
     max-width: 1100px;
-    margin: 50px auto 50px auto;
   }
 
   .who-am-i-container {
@@ -521,9 +525,9 @@ footer {
 .timeline {
   list-style: none;
   padding: 20px 0 20px;
-  margin-top: 20px;
   position: relative;
   text-align: left;
+  margin: 0;
 }
 
 @include media-breakpoint-up(md) {
@@ -544,7 +548,7 @@ footer {
 }
 
 .timeline > li {
-  margin-bottom: 20px;
+  padding-bottom: 20px;
   position: relative;
 }
 
@@ -670,6 +674,7 @@ footer {
     margin-right: auto;
     margin-bottom: 15px;
     display: block;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.175);
   }
 }
 
