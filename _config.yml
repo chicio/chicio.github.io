@@ -102,6 +102,6 @@ exclude:
   - material
   - LICENSE.md
   - README.md
-  - home-dependencies.html
-  - blog-dependencies.html
+  - dependencies-home.html
+  - dependencies-blog.html
   - CNAME

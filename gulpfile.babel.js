@@ -196,13 +196,13 @@ gulp.task('css-critical', () => {
 })
 
 gulp.task('rev-home', () => {
-  gulp.src('./home-dependencies.html')
+  gulp.src('./dependencies-home.html')
     .pipe(gulpRevAppend())
     .pipe(gulp.dest('_includes'))
 })
 
 gulp.task('rev-blog', () => {
-  gulp.src('./blog-dependencies.html')
+  gulp.src('./dependencies-blog.html')
     .pipe(gulpRevAppend())
     .pipe(gulp.dest('_includes'))
 })
