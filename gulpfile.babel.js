@@ -96,8 +96,6 @@ gulp.task('force-copy', () => gulp
   .src(['assets'])
   .pipe(gulp.dest('_site/assets')))
 
-//* *** Used in command line flow ****//
-
 gulp.task('css-critical', () => {
   critical.generate({
     base: '_site/',
@@ -207,6 +205,12 @@ gulp.task('rev-blog', () => {
     .pipe(gulp.dest('_includes'))
 })
 
+gulp.task('rev-css', () => {
+  gulp.src('./dependencies-css.html')
+    .pipe(gulpRevAppend())
+    .pipe(gulp.dest('_includes'))
+})
+
 gulp.task('build', [
   'css',
   'lint',
@@ -217,6 +221,7 @@ gulp.task('build', [
   'models',
   'rev-home',
   'rev-blog',
+  'rev-css',
   'jekyll'
 ])
 
