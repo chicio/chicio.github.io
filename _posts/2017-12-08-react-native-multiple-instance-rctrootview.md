@@ -124,8 +124,9 @@ React Native for the `RCTRootView` initializer, we will notice something very st
 /**
  * - Designated initializer -
  */
-- (instancetype)initWithBridge:(RCTBridge *)bridge moduleName:(NSString *)moduleName initialProperties:(NSDictionary 
-*)initialProperties NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithBridge:(RCTBridge *)bridge
+                    moduleName:(NSString *)moduleName
+             initialProperties:(NSDictionary *)initialProperties NS_DESIGNATED_INITIALIZER;
 
 /**
  * - Convenience initializer -
