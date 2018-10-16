@@ -120,7 +120,7 @@ If we try to run the app something very strange will happen:
 What's happening here? Well, there's something wrong in our code. If we take a look at the comments in the code of 
 React Native for the `RCTRootView` initializer, we will notice something very strange:
 
-```objective-c
+```objective_c
 /**
  * - Designated initializer -
  */
