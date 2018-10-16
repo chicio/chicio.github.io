@@ -219,10 +219,9 @@ Now if we try to run the app again everything will work as expected:
 
 * if we do a live reload, we will see our **React components refreshed just one time**
 * if we press cmd + ctrl + z in the simulator **1 dev menu will be shown**
+* **no more crashes with live reload in debug mode**
 
 ![React Native single dev menus](/assets/images/posts/react-native-single-debugger.gif "React Native single dev menus")   
-
-* **no more crashes with live reload in debug mode**
 
 The entire source code of the app used as example for this post is contained in [this github repo](https://github.com/chicio/React-Native-Multiple-RCTRootView "React native multiple RCTRootView"). 
 Now we're ready to use multiple React Native components at the same time in our app :relieved:.
