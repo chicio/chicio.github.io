@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "aaaa"
-description: "In this new post of the series "Blender tutorial" I will talk about outliner, layers, groups, hierarchies and scenes."
+title: "Blender tutorial: outliner, layers, groups, hierarchies and scenes."
+description: "In this new post of the series Blender tutorial I will talk about outliner, layers, groups, hierarchies and scenes."
 date: 2018-09-18
 image: /assets/images/posts/blender-outliner.jpg
 tags: [test driven development, agile, clean code]
@@ -10,7 +10,7 @@ seo:
  - type: "BlogPosting"
 ---
 
-*In this new post of the series "Blender tutorial" I will talk about outliner, layers, groups, hierarchies and scenes.*
+*In this new post of the series Blender tutorial I will talk about outliner, layers, groups, hierarchies and scenes.*
 
 ---
 In the [previous post of the series "Blender tutorial"](/2018/08/21/blender-tutorial-5-advanced-modeling.html) we talked about advanced modeling in Blender. In this post we will continue to explore the capabilities of Blender by analyzing outliner, layers, groups, hierarchies and scenes.  
