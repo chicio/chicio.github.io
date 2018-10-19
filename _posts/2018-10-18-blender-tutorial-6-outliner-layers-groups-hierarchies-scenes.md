@@ -2,12 +2,12 @@
 layout: post
 title: "Blender tutorial: outliner, layers, groups, hierarchies and scenes."
 description: "In this new post of the series "Blender tutorial" I will talk about outliner, layers, groups, hierarchies and scenes."
-date: 2018-10-18
+date: 2018-09-18
 image: /assets/images/posts/blender-outliner.jpg
-tags: [computer graphics, blender]
+tags: [test driven development, agile, clean code]
 comments: true
 seo:
-  - type: "BlogPosting"
+ - type: "BlogPosting"
 ---
 
 *In this new post of the series "Blender tutorial" I will talk about outliner, layers, groups, hierarchies and scenes.*

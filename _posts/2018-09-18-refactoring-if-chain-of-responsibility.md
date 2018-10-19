@@ -4,7 +4,7 @@ title: "Refactoring: a real case of a nested if structure transformed into a cha
 description: "In this post my colleague Francesco Bonfadelli will show you how to transform a nested if structure into a chain of responsibility."
 date: 2018-09-18
 image: /assets/images/posts/ifremoval.jpg
-tags: [test driven development, agile, clean code]
+tags: [computer graphics, blender]
 comments: true
 seo:
  - type: "BlogPosting"
