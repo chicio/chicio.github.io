@@ -16,8 +16,8 @@ seo:
 
 In the [previous post of the series "Blender tutorial"](/2018/08/21/blender-tutorial-5-advanced-modeling.html) we talked about advanced modeling in Blender. In this post we will continue to explore the capabilities of Blender by analyzing outliner, layers, groups, hierarchies and scenes.  
 Let's start from the **outliner**. This one contains the complete list of the objects contained in the scene. Each on of 
-them is represented with its material and geometry. It is possible to rename a mesh by right clicking on it and 
-choosing rename. At the right of each mesh we have the restriction column. In it we have 3 buttons:
+them is represented with its material and geometry. It is possible to rename a mesh by *right clicking* on it and 
+choosing *rename*. To the right of each mesh we have the *restriction column*. It contains 3 buttons:
 
 * *the first button let us hide meshes in the 3D window*
 * *the second button let us set a mesh as not selectable*
