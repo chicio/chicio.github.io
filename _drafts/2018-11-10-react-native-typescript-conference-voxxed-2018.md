@@ -48,7 +48,7 @@ When the presentation was ready we planned an internal dry run. We usually call 
  because they are planned during lunch time: the participant will enjoy their launch while the speakers show their 
  stuff. So we planned our "schiscia time" for the 8th October.  
  A lot of colleagues attended the talk. We received a lot of feedback that we collected to start a review process 
- from which we created the final presentation. The major observation we received were:
+ from which we created the final presentation. The two major observation we received were:
  
  * **less coding**. We created a lot of slides with screenshots taken directly from our IDEs with a lot of code, 
  especially in the section of the presentation where we described the new technology stack we "married". They 
@@ -63,11 +63,16 @@ When the presentation was ready we planned an internal dry run. We usually call 
    workflow with the new technology stack. In fact after choosing React + React Native + TypeScript we started to:
    * do pair programming without considering the technology skills 
    * do end-to-end user stories, from the backend service to the frontend (mobile app and web) 
-....
 
-
+So we started to review the slides and we basically created a new presentation :smile:. It took us almost a week to. 
+ After the review we made 2 simulations of the entire presentation during the week before the event to be more 
+ confident. Last but not least, the Human Resources department gave us a company t-shirt to promote our company brand
+  at the conference.
+  
+![voxxed 2018 tshirt](/assets/images/posts/voxxed-2018-tshirt.jpg "voxxed 2018 tshirt")  
 
 # The talk
 
+Then the day of the talk arrived. The Voxxed Days 2018 in Ticino was set to take place on 20th of October.
 
 # Conclusion 
