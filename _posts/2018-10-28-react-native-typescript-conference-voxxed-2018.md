@@ -97,7 +97,7 @@ audience.
 
 Tha's all for my first experience as a conference speaker. It has been a good experience. After 10 years in the IT 
 field (had I already been working for 10 years?!??! :cold_sweat:) it was a great pleasure to be on the other side of 
-the stage for one time.
+the stage.
 
  ![voxxed 2018 clean](/assets/images/posts/voxxed-2018-clean.jpg "voxxed 2018 clean")
 
