@@ -20,39 +20,35 @@ In the last few months I talked a lot about [React Native and Typescript](/2018/
 at lastminute.com group I acquired a strong knowledge of the Typescript + React + React Native technology stack. 
 There has been also some few changes in the team: [Emanuele Ianni](https://www.linkedin.com/in/emanueleianni/ "Emanuele Ianni"), (do 
 you remember I already talked about him [in my previous post?](/2018/03/20/golden-master-test-characterization-test-legacy-code.html)), my technical team leader left the company. He was supposed to do a talk at Voxxed 2018 about our 
-journey as a team into the world of React + React Native + Typescript. So I got the opportunity to go to the Voxxed to 
-replace him as a co-speaker of [Alessandro Romano](https://www.linkedin.com/in/alessandroromano92/ "Alessandro Romano"),
+journey as a team into the world of React + React Native + Typescript. So I got the opportunity to go in his place to the Voxxed as a co-speaker of [Alessandro Romano](https://www.linkedin.com/in/alessandroromano92/ "Alessandro Romano"),
  my other colleague selected as a speaker for this event. 
-Alessandro, also known as "the clean", is a senior software developer with many years of experience that just got 
+Alessandro, also known as "the Clean", is a senior software developer with many years of experience that just got 
 graduated from University of Insubria in Varese (do you remember I [already talked also about him?](/2018/08/02/design-thinking-design-sprint-workshop.html)).   
 The title of the talk was: **"React (Native) & Typescript": A journey to a unified team using a common language**.
 In this post I will talk about all the process we went into from the first draft preparation until the talk :grin:.
 
-### Slide preparation
-Let's start from the slide preparation. I started to work on the presentation with Alessandro two months before the 
-event. We decided to structure our talk like as a story telling. We started by describing how our team was composed 
-and how we transformed into the mythological creature of the fullstack developer thanks to our new technology stack 
-for the frontend side:
+### Slides preparation
+Let's start from the slides preparation. I started to work on the presentation with Alessandro two months before the 
+event. We decided to structure our talk as a story telling. We begin describing how our team was composed and how we applied agile methodologies: basically, we were divided in three silos, back-end, front-end and mobile doing separated user stories and ceremonies.
+Then we embraced a new journey, we challenged ourself to become a feature team having end-to-end user stories and unified ceremonies. The technology stack we chose was the main facilitator of this process and eventually transformed us into the mythological creature of the fullstack developers and it was composed of:
 
 * TypeScript as common language
-* React for the frontend of the customer area (manage of flight and hotel bookings) of our websites
+* React for the frontend of the customer area (manage all the products of your booking) of our websites
 * React Native for the frontend of the mobile apps of our main brands
 
 After this introduction we created a section for each of the technology above were we described the pros and cons of 
-each one. Last but not least we presented a real use case were we described how we implemented the same feature for 
-our mobile apps and our customer area using the technology above and how we shared the domain models between the two 
-environment using a pure TypeScript library.  
+each one. Last but not least we presented the Cross Selling feature: a real use case in which we were able to share the business logic between the two environments using a pure TypeScript library.  
 
 ### Company dry run, feedback and final present
 When the presentation was ready we planned an internal dry run. We usually call this kind of meetings "schiscia time"
- because they are planned during lunch time: the participant will enjoy their launch while the speakers show their 
+ because they are planned during lunch time: the participants will enjoy their launch while the speakers show their 
  stuff. So we planned our "schiscia time" for the 8th October.  
- A lot of colleagues attended the talk. We received a lot of feedback that we collected to start a review process 
- from which we created the final presentation. The two major observation we received were:
+ A lot of colleagues attended the talk and gave some very useful feedback.
+The two major observation we received were:
  
  * **less coding**. We created a lot of slides with screenshots taken directly from our IDEs with a lot of code, 
  especially in the section of the presentation where we described the new technology stack we "married". They 
- were not easy to read and on some of the slides they didn't bring to much value to the presentation. So we decided 
+ were not so easy to read and in some cases they were actually stealing the focus of our attendees. So we decided 
  to remove them. The only slides with code that we kept were the ones in the section "Share the code: cross selling 
  feature" where we present a real use case of development on our products. On this slides we changed the IDEs 
  screenshots with some formatted code using a syntax highlighter (and honestly, after that change the slides looked 
@@ -86,7 +82,7 @@ laptop for the presentation.
 
  ![voxxed 2018 pre talk](/assets/images/posts/voxxed-2018-pre-talk.jpg "voxxed 2018 pre talk")
 
-Then the room started to fill in. As schedule at 14.30 we started our presentation. The presentation went smooth.
+Then the room started to fill in. As scheduled at 14.30 we started our presentation. The presentation went smooth.
 We kept the scheduled time per slide we planned in our simulation. The change of speaker between the various part of 
 the presentation worked perfectly. At the end we answered to some questions and we received applause from the 
 audience.  
