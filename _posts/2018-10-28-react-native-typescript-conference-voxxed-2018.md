@@ -69,25 +69,24 @@ So we started to review the slides and we basically created a new presentation :
 
 ### The talk
 
-Then the day of the talk arrived. The Voxxed Days 2018 in Ticino was set to take place on 20th of October. We arrived
- at the Palazzo dei Congressi in Lugano at 8.45 AM. We check in and got our speaker badge. Then we moved in the rest 
- section to have breakfast.
+Then the day of the talk arrived after a not so quiet sleep. The Voxxed Days 2018 in Ticino was set to take place on 20th of October. We arrived
+ at the Palazzo dei Congressi in Lugano at 8.45 AM. We were excited to queue in the dedicated speakers area for the firt time after so many conferences attended! We checked-in and got our shiny speaker badge. Then we moved to the lounge section to enjoy breakfast.
  
  ![voxxed 2018 breakfast and badge](/assets/images/posts/voxxed-2018-breakfast.jpg "voxxed 2018 breakfast and badge")  
 
-Our talk was planned at 2.30 PM, so we had time to attend some other session. At 11.50 PM we decided to do a last 
+Our talk was planned at 2.30 PM, so we had time to attend some other sessions. At 11.50 PM we decided to do a last 
 presentation simulation to review some details and then we went to lunch. At 2.00 PM we started to feel the strain. 
 The start of our talk was really close. We entered in the room of our session at 2.15 and we did the setup of our 
 laptop for the presentation. 
 
- ![voxxed 2018 pre talk](/assets/images/posts/voxxed-2018-pre-talk.jpg "voxxed 2018 pre talk")
+ ![voxxed 2018 pre talk](/assets/images/posts/voxxed-2018-pre-talk.jpg "voxxed 2018 pre-talk")
 
 Then the room started to fill in. As scheduled at 14.30 we started our presentation. The presentation went smooth.
 We kept the scheduled time per slide we planned in our simulation. The change of speaker between the various part of 
 the presentation worked perfectly. At the end we answered to some questions and we received applause from the 
 audience.  
 
- ![voxxed 2018 pre talk](/assets/images/posts/voxxed-2018-talk.jpg "voxxed 2018 talk talk")
+ ![voxxed 2018 pre talk](/assets/images/posts/voxxed-2018-talk.jpg "voxxed 2018 talk")
 
 ### Conclusion 
 
