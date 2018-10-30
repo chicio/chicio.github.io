@@ -30,7 +30,7 @@ In this post I will talk about all the process we went into from the first draft
 ### Slides preparation
 Let's start from the slides preparation. I started to work on the presentation with Alessandro two months before the 
 event. We decided to structure our talk as a story telling. We begin describing how our team was composed and how we applied agile methodologies: basically, we were divided in three silos, back-end, front-end and mobile doing separated user stories and ceremonies.
-Then we embraced a new journey, we challenged ourself to become a feature team having end-to-end user stories and unified ceremonies. The technology stack we chose was the main facilitator of this process and eventually transformed us into the mythological creature of the fullstack developers and it was composed of:
+Then we embraced a new journey, we challenged ourself to become a feature team having end-to-end user stories and unified ceremonies. The technology stack we chose was the main facilitator of this process and eventually transformed us into the mythological creature of the fullstack developer and it was composed of:
 
 * TypeScript as common language
 * React for the frontend of the customer area (manage all the products of your booking) of our websites
