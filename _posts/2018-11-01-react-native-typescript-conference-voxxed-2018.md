@@ -67,7 +67,7 @@ The two major observation we received were:
    * do pair programming without considering the technology skills 
    * do end-to-end user stories, from the backend service to the frontend (mobile app and web) 
 
-So we started to review the slides and we basically created a new presentation :smile:. It took us almost a week to. 
+So we started to review the slides and we basically created a new presentation :smile:. It took us almost a week. 
  After the review we made 2 simulations of the entire presentation during the week before the event to be more 
  confident. Last but not least, the Human Resources department gave us a company t-shirt to promote our company brand
   at the conference.
