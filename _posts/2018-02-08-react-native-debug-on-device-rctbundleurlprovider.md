@@ -59,7 +59,7 @@ Native node server is running on the MacBook Pro where we are building the app).
 ![React Native error on device](/assets/images/posts/react-native-error-on-device-failed-bundle.jpg "React Native bridge delegate localhost")   
 
 How can we build on a real device? First of all we need to add a new build phase to our project that let us run the 
-`React Native Bundler` before the real build. The `React Native Bundler` is a shell script with name 
+`React Native Xcode Bundler` before the real build. The `React Native Xcode Bundler` is a shell script with name 
 `react-native-xcode.sh` that you can find inside your react native npm package under 
 `<you app root folder.>/node_modules/react-native/scripts/`. This script must take as input our React Native index.js. 
 
