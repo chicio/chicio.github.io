@@ -8,7 +8,7 @@
 			{% include blog-header.html %}
             <div class="blog-main">
                 {% for post in paginator.posts %}
-				{% include blog-post.html post=post %}
+				{% include blog-post.html post=post link-title=true %}
                 {% endfor %}
                 <div class="d-flex flex-row justify-content-center">
                     {% if paginator.previous_page %}

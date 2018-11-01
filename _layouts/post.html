@@ -7,7 +7,7 @@
 		<div class="container blog-posts">
 			{% include blog-header.html %}
 			<div class="blog-main">
-				{% include blog-post.html post=page %}
+				{% include blog-post.html post=page link-title=false %}
 			</div>
 			{% include blog-recent-posts.html %}
 			{% if page.comments %}
