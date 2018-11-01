@@ -8,11 +8,7 @@
 			{% include blog-header.html %}
             <div class="blog-main">
                 {% for post in paginator.posts %}
-                <div class="blog-post">
-                    <h2 class="blog-post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
-                    <p class="blog-post-meta">{{ post.date | date_to_string }} · {% include blog-reading-time.html content=post.content %}</p>
-                    {{ post.content | markdownify }}
-                </div>
+				{% include blog-post.html post=post %}
                 {% endfor %}
                 <div class="d-flex flex-row justify-content-center">
                     {% if paginator.previous_page %}

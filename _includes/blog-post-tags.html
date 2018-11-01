@@ -1,0 +1,11 @@
+<div class="blog-tags">
+	<ul>
+		{% for tag in include.tags %}
+		<li>
+			<a href="/blog/tags#{{ tag }}">
+				<span>{{ tag }}</span>
+			</a>
+		</li>
+		{% endfor %}
+	</ul>
+</div>

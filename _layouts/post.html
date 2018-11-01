@@ -7,23 +7,7 @@
 		<div class="container blog-posts">
 			{% include blog-header.html %}
 			<div class="blog-main">
-				<div class="blog-post">
-					<h2 class="blog-post-title">{{ page.title }}</h2>
-					<p class="blog-post-meta">{{ page.date | date_to_string }} · {% include blog-reading-time.html content=content %}</p>
-					{{ content }}
-				</div>
-				<div class="blog-tags">
-					<ul>
-						{% for tag in page.tags %}
-						<li>
-							<a href="/blog/tags#{{ tag }}">
-								<span>{{ tag }}</span>
-							</a>
-						</li>
-						{% unless forloop.last %}{% endunless %}
-						{% endfor %}
-					</ul>
-				</div>
+				{% include blog-post.html post=page %}
 			</div>
 			{% include blog-recent-posts.html %}
 			{% if page.comments %}
