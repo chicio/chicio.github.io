@@ -16,6 +16,8 @@ and Typescript with Alessandro Romano.*
 
 ---
 
+**An article written in collaboration with my colleague [Alessandro Romano](https://www.linkedin.com/in/alessandroromano92/ "Alessandro Romano")**.
+
 In the last few months I talked a lot about [React Native and Typescript](/2018/07/04/react-native-typescript-existing-app.html). In the team where I work 
 at lastminute.com group I acquired a strong knowledge of the Typescript + React + React Native technology stack. 
 There has been also some few changes in the team: [Emanuele Ianni](https://www.linkedin.com/in/emanueleianni/ "Emanuele Ianni"), (do 
