@@ -59,7 +59,7 @@ exclude:
   - dependencies-blog.html
   - dependencies-css.html
   - CNAME
-limit_posts: 1
+# limit_posts: 5
 # minify_html: false
 
 # Menu
