@@ -8,6 +8,7 @@ tags: [test driven development, agile, clean code]
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni, emanuele_ianni] 
 ---
 
 *In this post I will talk about golden master test aka characterization test: what it is and how to use it.*

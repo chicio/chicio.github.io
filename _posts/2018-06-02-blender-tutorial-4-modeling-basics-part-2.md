@@ -9,6 +9,7 @@ tags: [computer graphics, blender]
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni] 
 ---
 
 *In this new post of the series Blender tutorial I will continue to talk about the fundamental of modeling in Blender.*

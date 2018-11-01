@@ -8,6 +8,7 @@ tags: [swift, ios, apple, mobile application development, test driven developmen
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni] 
 ---
 
 *In this post I will talk about asynchronous testing in Swift.*

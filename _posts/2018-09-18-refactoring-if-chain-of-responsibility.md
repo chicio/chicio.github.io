@@ -8,14 +8,13 @@ tags: [computer graphics, blender]
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [francesco_bonfadelli] 
 ---
 
 *In this post my colleague [Francesco Bonfadelli](https://www.linkedin.com/in/fbonfadelli/ "Francesco Bonfadelli") 
 will show you how to transform a nested if structure into a chain of responsibility.*
 
 ---
-**An article written by my colleague [Francesco Bonfadelli](https://www.linkedin.com/in/fbonfadelli/ "Francesco 
-Bonfadelli"), a senior Android, iOS and Backend developer at [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group")**.
   
 In this post I am going to describe a step by step process used to transform a nested if structure into a chain of responsibility. 
 The purpose of this operation is to make the code easier to read, thus to change without introducing errors. 

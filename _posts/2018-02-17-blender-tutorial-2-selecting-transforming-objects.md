@@ -8,6 +8,7 @@ tags: [computer graphics, blender]
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni] 
 ---
 
 *Second post of the "Blender tutorial" series. This time we will learn how to select and move objects.*

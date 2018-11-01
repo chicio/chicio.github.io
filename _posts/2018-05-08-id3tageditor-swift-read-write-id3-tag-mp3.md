@@ -9,6 +9,7 @@ tags: [swift, ios, apple, mobile application development, macos, tvos, watchos]
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni] 
 ---
 
 *The second of a short series of post in which I describe my two latest project: ID3TagEditor and 

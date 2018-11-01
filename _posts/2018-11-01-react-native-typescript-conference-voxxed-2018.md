@@ -9,14 +9,13 @@ tags: [conference, react native, react, typescript, mobile application developme
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni, alessandro_romano]
 ---
 
 *In this post I will talk about my first experience as a speaker at a conference: a talk about React, React Native 
 and Typescript with Alessandro Romano.*
 
 ---
-
-**An article written in collaboration with my colleague [Alessandro Romano](https://www.linkedin.com/in/alessandroromano92/ "Alessandro Romano")**.
 
 In the last few months I talked a lot about [React Native and Typescript](/2018/07/04/react-native-typescript-existing-app.html). In the team where I work 
 at lastminute.com group I acquired a strong knowledge of the Typescript + React + React Native technology stack. 

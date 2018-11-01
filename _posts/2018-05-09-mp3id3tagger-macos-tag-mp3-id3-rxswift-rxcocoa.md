@@ -9,6 +9,7 @@ tags: [swift, macos, apple, rxswift, rxcocoa]
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni] 
 ---
 
 *The third of a short series of post in which I describe my two latest project: ID3TagEditor and 

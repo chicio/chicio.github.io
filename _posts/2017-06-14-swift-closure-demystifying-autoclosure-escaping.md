@@ -8,6 +8,7 @@ tags: [swift, ios, apple, mobile application development]
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni] 
 ---
 
 *In this post I will talk about Swift closure and the potential of the @escaping and @autoclosure attributes.*

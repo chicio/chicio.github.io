@@ -1,31 +1,22 @@
-# Fabrizio Duroni Website Jekyll config file.
+# Fabrizio Duroni config file.
 #
 
-########## Data
-
+# SEO config
 title: Fabrizio Duroni
 
-author: Fabrizio Duroni
-
-email: fabrizio.duroni@gmail.com
-
 description: >
- Fabrizio Duroni 'Chicio' official site with profile details. Main skills: mobile application development,
- computer graphics, web development.
+  Fabrizio Duroni 'Chicio' official site with profile details. Main skills: mobile application development,
+  computer graphics, web development.
 
 url: https://www.fabrizioduroni.it
-
-github_username: chicio
-
+author: Fabrizio Duroni
 twitter:
   username: chicio86
-
+  card: summary
 facebook:
   app_id: 443203399348229
   publisher: https://www.facebook.com/fabrizio.duroni
-
 logo: /assets/images/fabrizio-duroni.jpg
-
 social:
   name: Fabrizio Duroni
   links:
@@ -35,62 +26,24 @@ social:
     - https://plus.google.com/+FabrizioDuroni
     - https://github.com/chicio
     - https://it.pinterest.com/chicio86/
-
 lang: en_US
-
 image: /assets/images/fabrizio-duroni.jpg
 
-nav:
-  - name: "Home"
-    url: "/"
-  - name: "Blog"
-    url: "/blog/"
-  - name: "About Me"
-    url: "/2017/05/10/about-me.html"
-
-########## Configuration
-
+# Jekyll general Configuration
 timezone: Europe/Rome
-
 future: false
-
-defaults:
-  - scope:
-      path: "" # defaults for all files
-    values:
-      image: /assets/images/fabrizio-duroni.jpg
-
 paginate: 5
 paginate_path: /blog/page:num/
-
-# Debug options
-# minify_html: false
-limit_posts: 5
-
-# Markdown
 markdown: kramdown
 highlighter: rouge
 kramdown:
   input: GFM
-
-# Jemoji
-emoji:
-  src: "/assets/images/"
-
-# RSS Feed
-feed_items: 30
-feed_update_period: monthly
-feed_update_frequency: 2
-
-# Plugin (gems) used by Jekyll
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - octopress-minify-html
   - jekyll-paginate
   - jemoji
-
-# Build settings
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -106,3 +59,23 @@ exclude:
   - dependencies-blog.html
   - dependencies-css.html
   - CNAME
+limit_posts: 1
+# minify_html: false
+
+# Menu
+nav:
+  - name: "Home"
+    url: "/"
+  - name: "Blog"
+    url: "/blog/"
+  - name: "About Me"
+    url: "/2017/05/10/about-me.html"
+
+# Jemoji config
+emoji:
+  src: "/assets/images/"
+
+# RSS Feed config
+feed_items: 30
+feed_update_period: monthly
+feed_update_frequency: 2

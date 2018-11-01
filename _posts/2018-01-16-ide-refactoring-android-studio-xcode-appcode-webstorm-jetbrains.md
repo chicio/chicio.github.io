@@ -8,6 +8,7 @@ tags: [IDE, android, java, ios, swift, mobile application development]
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni, tommaso_resti, francesco_bonfadelli] 
 ---
 
 *In this posts I will compare the coding speed that it is possible to achieve in some of the JetBrains 

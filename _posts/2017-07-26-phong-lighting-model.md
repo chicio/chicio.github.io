@@ -8,6 +8,7 @@ tags: [computer graphics]
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni] 
 ---
 
 *In this post I will talk about phong reflection model: one of the oldest and most popular lighting model in computer graphics.*

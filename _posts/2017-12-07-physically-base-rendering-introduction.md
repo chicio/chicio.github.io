@@ -8,6 +8,7 @@ tags: [computer graphics, physically based rendering]
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni] 
 ---
 
 *In this post I will give you an informal introduction (and my personal understanding) about Physically based 

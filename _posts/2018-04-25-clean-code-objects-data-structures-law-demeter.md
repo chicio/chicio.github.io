@@ -8,6 +8,7 @@ tags: [clean code]
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni] 
 ---
 
 In this post I will talk about clean code: data structures, objects vs procedural and the law of demeter.

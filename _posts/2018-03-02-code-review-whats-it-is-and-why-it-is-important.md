@@ -8,6 +8,7 @@ tags: [agile, clean code, test driven development]
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni] 
 ---
 
 *In this post I will talk about code review: what it is and why it matters.*

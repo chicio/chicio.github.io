@@ -9,6 +9,7 @@ tags: [computer graphics, blender]
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni] 
 ---
 
 *In this new series of post I will talk about learning to use Blender, the famous 3D computer graphics 

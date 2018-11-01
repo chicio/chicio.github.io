@@ -7,6 +7,7 @@ tags: [test driven development, java]
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni] 
 ---
 
 *In this post I will talk about contract test: what they are and how you can use them.*

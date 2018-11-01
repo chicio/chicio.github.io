@@ -8,6 +8,7 @@ tags: [swift, ios, apple, mobile application development]
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni] 
 ---
 
 *In this post I will talk about iOS notification customization with Notification Content App Extension*

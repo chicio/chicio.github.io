@@ -8,6 +8,7 @@ tags: [react native, swift, ios, apple, mobile application development, javascri
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni, mariano_patafio] 
 ---
 
 *In this post I will talk about how to setup up you React Native project on iOS to build, run and debug it on a real

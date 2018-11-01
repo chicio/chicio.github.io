@@ -8,6 +8,7 @@ tags: [computer graphics, physically based rendering, swift, ios, apple, mobile 
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni] 
 ---
 
 *In this post I will guide you in the creation of a scene using SceneKit and its physically based rendering features.*

@@ -8,6 +8,7 @@ tags: [android, java, mobile application development, test driven development, a
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni] 
 ---
 
 *In this post I will talk about the model view presenter architectural pattern and how it can improve you unit test and your TDD workflow when developing an Android application.*

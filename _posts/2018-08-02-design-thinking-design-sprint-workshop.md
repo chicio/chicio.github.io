@@ -9,6 +9,7 @@ tags: [design, ux]
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni] 
 ---
 
 *In this new post I will talk about my experience with design sprint and design thinking during a

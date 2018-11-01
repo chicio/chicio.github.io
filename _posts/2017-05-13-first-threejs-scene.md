@@ -8,6 +8,7 @@ tags: [computer graphics, threejs, web development, javascript]
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni]
 ---
 
 *In this post I will show you how to create a scene using three.js with support for Physically Based Rendering.*

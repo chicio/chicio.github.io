@@ -8,6 +8,7 @@ tags: [clean code]
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni] 
 ---
 
 *In this post I will talk about clean code and how important are the name you choose while you're developing software.*

@@ -8,6 +8,7 @@ tags: [computer graphics]
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni] 
 ---
 
 *In this post I will talk about reflection vector used in some lighting models, for example the Phong reflection model. I will show you how this vector is calculated.*

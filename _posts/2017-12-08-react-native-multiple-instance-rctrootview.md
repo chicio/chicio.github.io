@@ -8,6 +8,7 @@ tags: [react native, swift, ios, apple, mobile application development, javascri
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni] 
 ---
 
 *In this post I show you how is it possible to use multiple RCTRootView instances in an existing iOS app.*

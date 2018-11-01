@@ -1045,10 +1045,28 @@ footer {
 }
 
 .blog-post-meta {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  margin-top: 5px;
   color: #999;
 }
 
+.blog-post-authors {
+  margin-top: 5px;
+
+  .blog-post-author {
+    margin-top: 5px;
+
+    img {
+      height: 30px;
+      width: 30px;
+      margin: 0 10px 0 0;
+    }
+
+    a {
+      font-size: 16px;
+    }
+  }
+}
 
 .blog-footer-icon {
   font-size: 1.5em;

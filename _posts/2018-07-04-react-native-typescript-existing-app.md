@@ -9,6 +9,7 @@ tags: [react native, realm, swift, ios, apple, android, java, typescript, mobile
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni] 
 ---
 
 *In this post I will show you how to setup React Native + Typescript in an existing app.*
