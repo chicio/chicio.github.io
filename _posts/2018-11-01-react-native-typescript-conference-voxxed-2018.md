@@ -31,15 +31,20 @@ In this post I will talk about all the process we went into from the first draft
 
 ### Slides preparation
 Let's start from the slides preparation. I started to work on the presentation with Alessandro two months before the 
-event. We decided to structure our talk as a story telling. We begin describing how our team was composed and how we applied agile methodologies: basically, we were divided in three silos, back-end, front-end and mobile doing separated user stories and ceremonies.
-Then we embraced a new journey, we challenged ourself to become a feature team having end-to-end user stories and unified ceremonies. The technology stack we chose was the main facilitator of this process and eventually transformed us into the mythological creature of the fullstack developer and it was composed of:
+event. We decided to structure our talk as a story telling. We begin describing how our team was composed and how we 
+applied agile methodologies: basically, we were divided in three silos, back-end, front-end and mobile doing 
+separated user stories and ceremonies.
+Then we embraced a new journey, we challenged ourself to become a feature team having end-to-end user stories and 
+unified ceremonies. The technology stack we chose was the main facilitator of this process and eventually transformed
+ us into the mythological creature of the fullstack developer and it was composed of:
 
 * TypeScript as common language
 * React for the frontend of the customer area (manage all the products of your booking) of our websites
 * React Native for the frontend of the mobile apps of our main brands
 
 After this introduction we created a section for each of the technology above were we described the pros and cons of 
-each one. Last but not least we presented the Cross Selling feature: a real use case in which we were able to share the business logic between the two environments using a pure TypeScript library.  
+each one. Last but not least we presented the Cross Selling feature: a real use case in which we were able to share 
+the business logic between the two environments using a pure TypeScript library.  
 
 ### Company dry run, feedback and final present
 When the presentation was ready we planned an internal dry run. We usually call this kind of meetings "schiscia time"
@@ -71,19 +76,21 @@ So we started to review the slides and we basically created a new presentation :
 
 ### The talk
 
-Then the day of the talk arrived after a not so quiet sleep. The Voxxed Days 2018 in Ticino was set to take place on 20th of October. We arrived
- at the Palazzo dei Congressi in Lugano at 8.45 AM. We were excited to queue in the dedicated speakers area for the firt time after so many conferences attended! We checked-in and got our shiny speaker badge. Then we moved to the lounge section to enjoy breakfast.
+Then the day of the talk arrived after a not so quiet sleep. The Voxxed Days 2018 in Ticino was set to take place on 
+20th of October. We arrived at the Palazzo dei Congressi in Lugano at 8.45 AM. We were excited to queue in the 
+dedicated speakers area for the firt time after so many conferences attended! We checked-in and got our shiny speaker
+ badge. Then we moved to the lounge section to enjoy breakfast.
  
  ![voxxed 2018 breakfast and badge](/assets/images/posts/voxxed-2018-breakfast.jpg "voxxed 2018 breakfast and badge")  
 
-Our talk was planned at 2.30 PM, so we had time to attend some other sessions. At 11.50 PM we decided to do a last 
+Our talk was planned at 2.30 PM, so we had time to attend some other sessions. At 11.50 AM we decided to do a last 
 presentation simulation to review some details and then we went to lunch. At 2.00 PM we started to feel the strain. 
-The start of our talk was really close. We entered in the room of our session at 2.15 and we did the setup of our 
+The start of our talk was really close. We entered in the room of our session at 2.15 PM and we did the setup of our 
 laptop for the presentation. 
 
  ![voxxed 2018 pre talk](/assets/images/posts/voxxed-2018-pre-talk.jpg "voxxed 2018 pre-talk")
 
-Then the room started to fill in. As scheduled at 14.30 we started our presentation. The presentation went smooth.
+Then the room started to fill in. As scheduled at 2.30 PM we started our presentation. The presentation went smooth.
 We kept the scheduled time per slide we planned in our simulation. The change of speaker between the various part of 
 the presentation worked perfectly. At the end we answered to some questions and we received applause from the 
 audience.  
