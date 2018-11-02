@@ -8,7 +8,7 @@ tags: [agile, clean code, test driven development]
 comments: true
 seo:
  - type: "BlogPosting"
-authors: [fabrizio_duroni] 
+authors: [angelo_sciarra, fabrizio_duroni] 
 ---
 
 *In this post I will talk about code review: what it is and why it matters.*
@@ -54,7 +54,7 @@ Before starting, I suggest you to have a look at [this repository](https://githu
 that contains the entire Minesweeper implementation I develop and, on the [Code review pull request](https://github.com/chicio/Minesweeper/pull/1) 
 opened on this repo you can find the observation/new implementation from Angelo. Usually 
 the code reviewer doesn't implement by himself/herself the stuff of his/her observation, but in this case we did it so 
-that we can share the code before/after the code review in a pull request (and also to show you the skills of Angelo 
+that we can share the code before/after the code review in a pull request (and also to show you the Angelo's skills 
 :heart_eyes:).  
 To facilitate you in the navigation of the two different implementations I created two [class diagram](https://en.wikipedia.org/wiki/Class_diagram "class diagram"): 
 one that describe my implementation before the code review, and the second one 
