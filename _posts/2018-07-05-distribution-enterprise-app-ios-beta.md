@@ -9,7 +9,7 @@ tags: [swift, ios, apple, mobile application development]
 comments: true
 seo:
  - type: "BlogPosting"
-authors: [fabrizio_duroni] 
+authors: [giordano_tamburrelli, fabrizio_duroni] 
 ---
 
 *In this post I will show you how to distribute a beta version of your iOS app using Apple Enterprise
