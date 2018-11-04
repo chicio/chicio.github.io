@@ -117,17 +117,32 @@ effects when it is executed. In particular our functions should not:
 #### **Command Query Separation**
 Let's see what Uncle Bob says about the command query separation:
 
->Functions should either do something or answer something, but not both. Either your function should change the state
+> Functions should either do something or answer something, but not both. Either your function should change the state
  of an object, or it should return some information about that object. Doing both often leads to confusion.
  
 I think there's nothing else to ad to this point :stuck_out_tongue:. 
   
   
 #### **Prefer exception to error Codes**
-This is a feature strictly related to languages that supports......
+This is a feature strictly related to languages that supports exceptions. Generally speaking if you need to return an
+ error to a user of your class, try to avoid as much as possible error code. Always use exceptions whenever possible.
+  In this way the user of your class will not abuse of nested if cases to check returned error code from your functions.
 
 
 #### **"Don't repeat yourself"**
 
+> Duplication may be the root of all evil in software.
 
+This quote from Uncle Bob's book is more expressive than any other explanation. Developers can choose from a wide 
+range of programming techniques to avoid duplication in their code. Generally speaking duplication make your code 
+hard to maintain, because often you need to propagate an a modification for a new feature in a lot of different 
+places. We can close this section with another quote from Uncle Bob that I think it is quite interesting:
+
+> It would appear that since the invention of the subroutine, innovations in software development have been an 
+ongoing attempt to eliminate duplication from our source code.
+  
+  
 #### **Conclusion**         
+
+
+
