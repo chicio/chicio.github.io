@@ -25,7 +25,7 @@ journey as a team into the world of React + React Native + Typescript. So I got 
  my other colleague selected as a speaker for this event. 
 Alessandro, also known as "the Clean", is a senior software developer with many years of experience that just got 
 graduated from University of Insubria in Varese (do you remember I [already talked also about him?](/2018/08/02/design-thinking-design-sprint-workshop.html)).   
-The title of the talk was: **"React (Native) & Typescript": A journey to a unified team using a common language**.
+The title of the talk was: **React (Native) & Typescript: A journey to a unified team using a common language**.
 In this post I will talk about all the process we went into from the first draft preparation until the talk :grin:.
 
 ### Slides preparation

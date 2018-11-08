@@ -22,10 +22,10 @@ must have to be considered "good":
 
 * Small
 * Do one thing
+* Have no side effects
 * One level of abstraction
 * Use descriptive names
 * Low number of arguments
-* Have no side effects
 * Command Query Separation
 * Prefer exception to error Codes
 * "Don't repeat yourself"
@@ -79,6 +79,14 @@ program as though it were a set of TO paragraphs, each of which is describing th
 referencing subsequent TO paragraphs at the next level down.
   
   
+#### **Have no side effects**
+This is a consequence of the fact that our function should **do one thing**: our function should not generate side 
+effects when it is executed. In particular our functions should not:
+
+* create temporal coupling with other function by silently modifying states/other properties 
+* use output arguments (inout parameters) 
+  
+      
 #### **Use descriptive names**
 This feature for "clean function" it is strictly correlated to my previous post [clean code: meaningful names](/2017/09/11/clean-code-meaningful-names.html "clean code meaningful names"). 
 There's one more thing that it is import to note: the most of the IDE available on the market today let the developer
@@ -106,13 +114,6 @@ Circle makeCircle(Point center, double radius);
 Do you see how much more readable and clear it is the second version of the `makeCircle` function? Yes, I can see it :sunglasses:
     
   
-#### **Have no side effects**
-This is a consequence of the fact that our function should **do one thing**: our function should not generate side 
-effects when it is executed. In particular our functions should not:
-
-* create temporal coupling with other function by silently modifying states/other properties 
-* use output arguments (inout parameters) 
-  
   
 #### **Command Query Separation**
 Let's see what Uncle Bob says about the command query separation:
@@ -130,7 +131,6 @@ This is a feature strictly related to languages that supports exceptions. Genera
 
 
 #### **"Don't repeat yourself"**
-
 > Duplication may be the root of all evil in software.
 
 This quote from Uncle Bob's book is more expressive than any other explanation. Developers can choose from a wide 
@@ -142,7 +142,7 @@ places. We can close this section with another quote from Uncle Bob that I think
 ongoing attempt to eliminate duplication from our source code.
   
   
-#### **Conclusion**         
-
-
-
+#### **Conclusion**
+That's all for Uncle Bob and functions. If you didn't read yet Uncle Bob "Clean Code" book it's time to catch up the 
+gap and get a copy for yourself :sparkling_heart:. 
+    
