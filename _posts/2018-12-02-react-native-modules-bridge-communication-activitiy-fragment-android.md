@@ -3,8 +3,8 @@ layout: post
 title: "React Native: a simple architecture for Native Modules communication with your native code on Android"
 description: "In this post I will talk about a simple architecture for communication between React Native Native 
 modules (aka bridges) and your native code."
-date: 2018-11-01
-image: XXXX
+date: 2018-12-02
+image: /assets/images/posts/native-modules-communication-android.jpg
 tags: [react native, javascript, swift, ios, apple, android, java, mobile application development]
 comments: true
 seo:
@@ -24,8 +24,8 @@ Sometimes when you integrated React Native in an existing app, you will want to 
 Modules bridges communicate with your activities and fragment, especially the ones that contain the React Native View
 . In this post I will show you an architecture to put in place this communication on Android, that will be compatible 
 with all the features of React Native (for example it will work als with the live reload functionality).
-This is an architecture I put in place with my colleague [Felice Giovinazzo](https://www.linkedin
-.com/in/felice-giovinazzo-17277b55/) in our apps at [lastminute.com group](XXXXXX).
+This is an architecture I put in place with my colleague [Felice Giovinazzo](https://www.linkedin.com/in/felice-giovinazzo-17277b55/) 
+in our apps at [lastminute.com group](https://lmgroup.lastminute.com/ "lastminute.com").
  Felice is a senior fullstack developer with many years of experiences (he is the "lastminute" veteran of our team) 
  and a computer graphics enthusiast like me :revolving_hearts::sparkling_heart:.  
 To realize this architecture I will create a simple app that show a React Native screen as a modal. I will then 
@@ -37,7 +37,7 @@ Below you can see the final result.
 The architecture we put in place is based on a **Event Bus** in which the Native Modules bridges notify the subscribed 
 Activities/Fragments of the actions to be executed. So each one of them is subscribed to specific events to which they
  are able to respond. 
- We choose [Otto](http://square.github.io/otto/) as event bus library (we don't want to reinvent the wheel :AAAAAA:). 
+ We choose [Otto](http://square.github.io/otto/) as event bus library (we don't want to reinvent the wheel :bomb:). 
 Let's start from the `MainActivity`. In it there's only a button with an action to start the React Native modal activity
 
 ```java
