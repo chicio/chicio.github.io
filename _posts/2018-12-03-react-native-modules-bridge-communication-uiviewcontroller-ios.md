@@ -149,5 +149,5 @@ class ReactNativeModal extends React.Component {
 ``` 
  
 That's all for our native modules communication architecture. If you want to know how we managed the same problem on 
-the Android platform :rocket: you can read [my other post about the same topic](XXXXX).
+the Android platform :rocket: you can read [my other post about the same topic](/2018/12/02/react-native-modules-bridge-communication-activitiy-fragment-android.html).
 
