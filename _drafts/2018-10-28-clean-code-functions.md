@@ -145,4 +145,3 @@ ongoing attempt to eliminate duplication from our source code.
 #### **Conclusion**
 That's all for Uncle Bob and functions. If you didn't read yet Uncle Bob "Clean Code" book it's time to catch up the 
 gap and get a copy for yourself :sparkling_heart:. 
-    
