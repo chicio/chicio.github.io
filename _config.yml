@@ -59,6 +59,7 @@ exclude:
   - dependencies-css.html
   - CNAME
   - pages-gem
+  - scripts
 # limit_posts: 5
 
 # Menu
