@@ -4,6 +4,7 @@
   "description": "Fabrizio Duroni aka 'chicio' website",
   "main": "index.js",
   "scripts": {
+    "preinstall": "scripts/install.sh",
     "build": "gulp",
     "build-debug": "gulp --debug"
   },
