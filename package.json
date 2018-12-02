@@ -4,9 +4,8 @@
   "description": "Fabrizio Duroni aka 'chicio' website",
   "main": "index.js",
   "scripts": {
-    "start": "gulp",
-    "start-dev": "gulp --dev",
-    "start-ci": "gulp --travis"
+    "build": "gulp",
+    "build-debug": "gulp --debug"
   },
   "repository": {
     "type": "git",
