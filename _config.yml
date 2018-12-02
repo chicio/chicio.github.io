@@ -41,7 +41,6 @@ kramdown:
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
-  - octopress-minify-html
   - jekyll-paginate
   - jemoji
 exclude:
@@ -60,7 +59,6 @@ exclude:
   - dependencies-css.html
   - CNAME
 # limit_posts: 5
-# minify_html: false
 
 # Menu
 nav:
