@@ -6,7 +6,7 @@ import gulpRevAppend from 'gulp-rev-append'
 import gulpUglify from 'gulp-uglify'
 import gulpEslint from 'gulp-eslint'
 import child from 'child_process'
-import { create } from 'browser-sync'
+// import { create } from 'browser-sync'
 import yargs from 'yargs'
 import critical from 'critical'
 import source from 'vinyl-source-stream'
@@ -17,23 +17,23 @@ import babelify from 'babelify'
 const isTravis = yargs.argv.travis !== undefined
 const isDevelopment = yargs.argv.dev !== undefined
 const cssFiles = '_css/**/*.?(s)css'
-const jsFiles = '_js/**/*.js'
-const siteRoot = '_site'
+// const jsFiles = '_js/**/*.js'
+// const siteRoot = '_site'
 
-gulp.task('serve', () => {
-  const browserSync = create()
-  browserSync.init({
-    files: [siteRoot + '/**'],
-    port: 4000,
-    server: {
-      baseDir: siteRoot
-    },
-    browser: ['chrome']
-  })
-  gulp.watch(jsFiles, ['bundle-home-scripts'])
-  gulp.watch(jsFiles, ['bundle-blog-scripts'])
-  gulp.watch(cssFiles, ['css'])
-})
+// gulp.task('serve', () => {
+//   const browserSync = create()
+//   browserSync.init({
+//     files: [siteRoot + '/**'],
+//     port: 4000,
+//     server: {
+//       baseDir: siteRoot
+//     },
+//     browser: ['chrome']
+//   })
+//   gulp.watch(jsFiles, ['bundle-home-scripts'])
+//   gulp.watch(jsFiles, ['bundle-blog-scripts'])
+//   gulp.watch(cssFiles, ['css'])
+// })
 
 gulp.task('jekyll', () => {
   let options = ['build', '--watch', '--incremental', '--verbose', '--profile', '--future']
@@ -211,7 +211,7 @@ gulp.task('rev-css', () => {
     .pipe(gulp.dest('_includes'))
 })
 
-gulp.task('build', [
+gulp.task('default', [
   'css',
   'lint',
   'bundle-home-scripts',
@@ -223,9 +223,5 @@ gulp.task('build', [
   'rev-blog',
   'rev-css',
   'jekyll'
-])
-
-gulp.task('default', [
-  'build',
-  'serve'
+  // 'serve'
 ])
