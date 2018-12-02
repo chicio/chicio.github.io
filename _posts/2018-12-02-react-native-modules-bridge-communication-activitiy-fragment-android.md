@@ -186,5 +186,4 @@ class ReactNativeModal extends React.Component {
 }
 ``` 
  
-That's all for our native modules communication architecture on Android. If you want to know how we managed the same 
-problem on the iOS platform :apple::iphone::heartbeat: you can read [my other post about the same topic](/2018/12/03/react-native-modules-bridge-communication-uiviewcontroller-ios.html).
+That's all for our native modules communication architecture on Android. You can find the complete example in [this github repository](https://github.com/chicio/React-Native-Native-Modules-Communication). If you want to know how we managed the same problem on the iOS platform :apple::iphone::heartbeat: you can read [my other post about the same topic](/2018/12/03/react-native-modules-bridge-communication-uiviewcontroller-ios.html).
