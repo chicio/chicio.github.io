@@ -6,5 +6,4 @@ before_install:
 before_script:
   - gem install github-pages
   - npm install
-script: npm run start-ci
-
+script: npm run build && jekyll build

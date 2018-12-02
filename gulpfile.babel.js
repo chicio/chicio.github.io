@@ -5,8 +5,7 @@ import gulpUtil from 'gulp-util'
 import gulpRevAppend from 'gulp-rev-append'
 import gulpUglify from 'gulp-uglify'
 import gulpEslint from 'gulp-eslint'
-import child from 'child_process'
-// import { create } from 'browser-sync'
+// import child from 'child_process'
 import yargs from 'yargs'
 import critical from 'critical'
 import source from 'vinyl-source-stream'
@@ -14,47 +13,30 @@ import buffer from 'vinyl-buffer'
 import browserify from 'browserify'
 import babelify from 'babelify'
 
-const isTravis = yargs.argv.travis !== undefined
-const isDevelopment = yargs.argv.dev !== undefined
+// const isTravis = yargs.argv.travis !== undefined
+const isDebug = yargs.argv.debug !== undefined
 const cssFiles = '_css/**/*.?(s)css'
-// const jsFiles = '_js/**/*.js'
-// const siteRoot = '_site'
 
-// gulp.task('serve', () => {
-//   const browserSync = create()
-//   browserSync.init({
-//     files: [siteRoot + '/**'],
-//     port: 4000,
-//     server: {
-//       baseDir: siteRoot
-//     },
-//     browser: ['chrome']
-//   })
-//   gulp.watch(jsFiles, ['bundle-home-scripts'])
-//   gulp.watch(jsFiles, ['bundle-blog-scripts'])
-//   gulp.watch(cssFiles, ['css'])
+// gulp.task('jekyll', () => {
+//   let options = ['build', '--watch', '--incremental', '--verbose', '--profile', '--future']
+//   if (isTravis) {
+//     options = ['build', '--incremental']
+//   }
+//   const jekyll = child.spawn('jekyll', options)
+//   const jekyllLogger = buffer => {
+//     buffer.toString()
+//       .split(/\n/)
+//       .forEach(function (message) {
+//         gulpUtil.log('Jekyll: ' + message)
+//       })
+//   }
+//   jekyll.stdout.on('data', jekyllLogger)
+//   jekyll.stderr.on('data', jekyllLogger)
 // })
-
-gulp.task('jekyll', () => {
-  let options = ['build', '--watch', '--incremental', '--verbose', '--profile', '--future']
-  if (isTravis) {
-    options = ['build', '--incremental']
-  }
-  const jekyll = child.spawn('jekyll', options)
-  const jekyllLogger = buffer => {
-    buffer.toString()
-      .split(/\n/)
-      .forEach(function (message) {
-        gulpUtil.log('Jekyll: ' + message)
-      })
-  }
-  jekyll.stdout.on('data', jekyllLogger)
-  jekyll.stderr.on('data', jekyllLogger)
-})
 
 gulp.task('css', () => {
   gulp.src(cssFiles)
-    .pipe(gulpSass({ outputStyle: isDevelopment ? 'expanded' : 'compressed' }))
+    .pipe(gulpSass({ outputStyle: isDebug ? 'expanded' : 'compressed' }))
     .pipe(gulpConcat('style.css'))
     .pipe(gulp.dest('assets/styles'))
 })
@@ -69,7 +51,7 @@ gulp.task('bundle-home-scripts', () => browserify({ entries: '_js/index.home.js'
   .bundle()
   .pipe(source('index.home.min.js'))
   .pipe(buffer())
-  .pipe(isDevelopment ? gulpUtil.noop() : gulpUglify())
+  .pipe(isDebug ? gulpUtil.noop() : gulpUglify())
   .pipe(gulp.dest('assets/js')))
 
 gulp.task('bundle-blog-scripts', () => browserify({ entries: '_js/index.blog.js' })
@@ -77,7 +59,7 @@ gulp.task('bundle-blog-scripts', () => browserify({ entries: '_js/index.blog.js'
   .bundle()
   .pipe(source('index.blog.min.js'))
   .pipe(buffer())
-  .pipe(isDevelopment ? gulpUtil.noop() : gulpUglify())
+  .pipe(isDebug ? gulpUtil.noop() : gulpUglify())
   .pipe(gulp.dest('assets/js')))
 
 gulp.task('images', () => gulp
@@ -222,6 +204,5 @@ gulp.task('default', [
   'rev-home',
   'rev-blog',
   'rev-css',
-  'jekyll'
-  // 'serve'
+  // 'jekyll'
 ])
