@@ -58,6 +58,7 @@ exclude:
   - dependencies-blog.html
   - dependencies-css.html
   - CNAME
+  -pages-gem
 # limit_posts: 5
 
 # Menu
