@@ -2,5 +2,4 @@
 
 # Run docker image using github pages function
 cd pages-gem
-expose SITE=../
-make server
+SITE=../ make server
