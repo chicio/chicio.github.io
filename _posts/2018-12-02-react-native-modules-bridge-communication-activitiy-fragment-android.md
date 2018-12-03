@@ -163,7 +163,7 @@ public class ReactNativeModalBridge extends ReactContextBaseJavaModule {
 }
 ``` 
 
-Now it's time to see the javascript code. Below you can see the `ReactNativeModal` component. In it there is a call 
+Now it's time to see the javascript code. Below you can see the `ReactNativeModal` component. Inside this component there is a call 
 to the native module `NativeModules.ReactNativeModalBridge.closeModal()` described above. In this way the modal will 
 be closed directly from the native side.
 

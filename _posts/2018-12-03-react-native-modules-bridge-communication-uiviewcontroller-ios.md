@@ -17,7 +17,7 @@ authors: [fabrizio_duroni]
 
 ---
 
-[As we saw in a previous post for fragments/Activities Android](XXX ARTICLE COMMUNICATION ANDROID), sometimes when you 
+[As we saw in a previous post for fragments/Activities Android](/2018/12/02/react-native-modules-bridge-communication-activitiy-fragment-android.html), sometimes when you 
 integrated React Native in an existing app, you will want to be able let your Native Modules bridges communicate with
  your UIVIewController, especially the ones that contain the React Native View. In this post I will show you an 
  architecture to put in place this communication on iOS, that will be compatible with all the features of React 
@@ -125,8 +125,8 @@ RCT_EXPORT_METHOD(closeModal) {
 @end
 ``` 
 
-Now it's time to see the javascript code. Below you can see the `ReactNativeModal` component. In it there is a call 
-to the native module `NativeModules.ReactNativeModalBridge.closeModal()` described above. In this way the modal will 
+Now it's time to see the javascript code. Below you can see the `ReactNativeModal` component. Inside this component 
+there is a call to the native module `NativeModules.ReactNativeModalBridge.closeModal()` described above. In this way the modal will 
 be closed directly from the native side.
 
 ```jsx
