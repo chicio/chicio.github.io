@@ -1,23 +1,18 @@
 import gulp from 'gulp'
 import gulpConcat from 'gulp-concat'
 import gulpSass from 'gulp-sass'
-import gulpUtil from 'gulp-util'
 import gulpRevAppend from 'gulp-rev-append'
 import gulpUglify from 'gulp-uglify'
 import gulpEslint from 'gulp-eslint'
-import yargs from 'yargs'
 import critical from 'critical'
 import source from 'vinyl-source-stream'
 import buffer from 'vinyl-buffer'
 import browserify from 'browserify'
 import babelify from 'babelify'
 
-const isDebug = yargs.argv.debug !== undefined
-const cssFiles = '_css/**/*.?(s)css'
-
 gulp.task('css', () => {
-  gulp.src(cssFiles)
-    .pipe(gulpSass({ outputStyle: isDebug ? 'expanded' : 'compressed' }))
+  gulp.src('_css/**/*.?(s)css')
+    .pipe(gulpSass({ outputStyle: 'compressed' }))
     .pipe(gulpConcat('style.css'))
     .pipe(gulp.dest('assets/styles'))
 })
@@ -32,7 +27,7 @@ gulp.task('bundle-home-scripts', () => browserify({ entries: '_js/index.home.js'
   .bundle()
   .pipe(source('index.home.min.js'))
   .pipe(buffer())
-  .pipe(isDebug ? gulpUtil.noop() : gulpUglify())
+  .pipe(gulpUglify())
   .pipe(gulp.dest('assets/js')))
 
 gulp.task('bundle-blog-scripts', () => browserify({ entries: '_js/index.blog.js' })
@@ -40,7 +35,7 @@ gulp.task('bundle-blog-scripts', () => browserify({ entries: '_js/index.blog.js'
   .bundle()
   .pipe(source('index.blog.min.js'))
   .pipe(buffer())
-  .pipe(isDebug ? gulpUtil.noop() : gulpUglify())
+  .pipe(gulpUglify())
   .pipe(gulp.dest('assets/js')))
 
 gulp.task('images', () => gulp
