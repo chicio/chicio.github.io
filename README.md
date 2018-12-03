@@ -36,5 +36,5 @@ tags pages. All blog posts are created using markdown files (thanks Jekyll :grin
 used gulp as build automation tool. I used docker to setup the github pages environment locally.  
 On the homepage you can find also a three.js integration with a physically based scene, to highlight my computer graphics passion.
 Soooo what are you waiting for???!! Go and checkout my [homepage](https://www.fabrizioduroni.it "homepage") and my 
-[blog](https://www.fabrizioduroni.it/blog/ "blog") :stuck_out_tongue_winking_eye:.
+[blog](https://www.fabrizioduroni.it/blog/ "blog") :stuck_out_tongue_winking_eye:!!.
 
