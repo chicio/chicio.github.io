@@ -2,7 +2,7 @@
 layout: post
 title: "React Native: a simple architecture for Native Modules communication with your Activities and Fragments on Android"
 description: "In this post I will talk about a simple architecture for communication between React Native Native 
-modules (aka bridges) and your native code."
+modules (aka bridges) and your native code on Android."
 date: 2018-12-02
 image: /assets/images/posts/native-modules-communication-android.jpg
 tags: [react native, javascript, swift, objective-c, ios, apple, android, java, mobile application development]
@@ -13,7 +13,7 @@ authors: [felice_giovinazzo, fabrizio_duroni]
 ---
 
 *In this post I will talk about a simple architecture for communication between React Native Native 
- modules (aka bridges) and your native code.*
+ modules (aka bridges) and your native code on Android.*
 
 ---
 

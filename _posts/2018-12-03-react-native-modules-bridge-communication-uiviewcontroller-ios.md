@@ -2,7 +2,7 @@
 layout: post
 title: "React Native: a simple architecture for Native Modules communication with your UIViewController on iOS"
 description: "In this post I will talk about a simple architecture for communication between React Native Native 
-modules (aka bridges) and your native code."
+modules (aka bridges) and your native code on iOS."
 date: 2018-12-03
 image: /assets/images/posts/native-modules-communication-ios.jpg
 tags: [react native, javascript, swift, objective-c, ios, apple, android, java, mobile application development]
@@ -13,7 +13,7 @@ authors: [fabrizio_duroni]
 ---
 
 *In this post I will talk about a simple architecture for communication between React Native Native 
- modules (aka bridges) and your native code.*
+ modules (aka bridges) and your native code on iOS.*
 
 ---
 
