@@ -87,4 +87,11 @@ In this post I will describe how you can create a Swift library package for the 
 
 Let's see in details the meaning of each option:
 
-* ....
+* `name`, the name of the package
+* `products`, the list of all products in the package. You can have `executable` or `library` products. In our case 
+we have `library` and for that we have to specify:
+  * `name`, the name of the product
+  * `targets`, the targets which are supposed to be used by other packages, i.e. the public API of a library package 
+* `dependencies`, a list of `package` dependencies for our package. At the moment ID3TagEditor doesn't have any 
+dependencies so we can just pass an empty array.
+* `targets`, the list of targets in the package. In our case we have ....

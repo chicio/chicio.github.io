@@ -6,7 +6,8 @@
   "scripts": {
     "prepare": "scripts/install.sh",
     "build": "gulp",
-    "start": "scripts/start.sh"
+    "start": "scripts/start.sh",
+    "shell": "scripts/shell.sh"
   },
   "repository": {
     "type": "git",
