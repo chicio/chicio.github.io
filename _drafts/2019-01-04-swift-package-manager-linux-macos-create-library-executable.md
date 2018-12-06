@@ -155,8 +155,8 @@ tests += ID3TagEditorTests.__allTests()
 XCTMain(tests)
 ```
 
-We are now ready to install Swift on Linux and test our work. To do this we will use Ubuntu distro. The version used is the 18.04 LTS.  
-How do we install Swift on linux? First of all we need to download the Swift release for linux from the [Swift download page](Ubuntu 18.04 "swift download page"). The version we are going to use is the one you can find at [this link](https://swift.org/builds/swift-4.2.1-release/ubuntu1804/swift-4.2.1-RELEASE/swift-4.2.1-RELEASE-ubuntu18.04.tar.gz). Then we need to install some additional packages.
+We are now ready to test our `ID3TagEditor` using the SPM on macOS and Linux. To do this we will use Ubuntu distro. The version used is the 18.04 LTS.  
+First of all, how do we install Swift on linux? First of all we need to download the Swift release for linux from the [Swift download page](Ubuntu 18.04 "swift download page"). The version we are going to use is the one you can find at [this link](https://swift.org/builds/swift-4.2.1-release/ubuntu1804/swift-4.2.1-RELEASE/swift-4.2.1-RELEASE-ubuntu18.04.tar.gz). Then we need to install some additional packages.
 
 ```shell
 sudo apt-get install clang libicu-dev
@@ -171,4 +171,19 @@ tar xzf swift-<VERSION>-<PLATFORM>.tar.gz
 export PATH=/<path to the Swift release folder>/usr/bin:"${PATH}"
 ```
 
-....
+Now we are ready to test our `ID3TagEditor` as a SPM library. To do this I created a new simple project indise the demo folder called `Demo Ubuntu`. This is a simple executable SPM project that has the `ID3TagEditor` as package dependecies. The executable is a command line application that opens a mp3 file, parses its ID3 tag and print it to the standard output. To test our work we can just clone the `ID3TagEditor` on Linux or macOS and launch the following commands inside in the root of the `Demo Ubuntu` project:
+
+```shell
+swift build
+swift run
+```
+
+Below you can see some screenshot taken from both macOS and Linux that shows the final output of the demo `Demo Ubuntu` after you execute the `swift run`.
+
+![id3tageditor SPM demo ubuntu](/assets/images/posts/spm-id3tageditor-demo-linux.jpg "id3tageditor SPM demo ubuntu")
+![id3tageditor SPM demo macOS](/assets/images/posts/spm-id3tageditor-demo-macos.jpg "id3tageditor SPM demo macOS")
+
+
+
+
+
