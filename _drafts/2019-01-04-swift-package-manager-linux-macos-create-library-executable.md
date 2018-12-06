@@ -86,12 +86,89 @@ In this post I will describe how you can create a Swift library package for the 
  ```
 
 Let's see in details the meaning of each option:
-
+  
 * `name`, the name of the package
 * `products`, the list of all products in the package. You can have `executable` or `library` products. In our case 
 we have `library` and for that we have to specify:
   * `name`, the name of the product
   * `targets`, the targets which are supposed to be used by other packages, i.e. the public API of a library package 
 * `dependencies`, a list of `package` dependencies for our package. At the moment ID3TagEditor doesn't have any 
-dependencies so we can just pass an empty array.
-* `targets`, the list of targets in the package. In our case we have ....
+dependencies so we can just pass an empty array.  
+* `targets`, the list of targets in the package. In our case we have two target:
+  * `ID3TagEditor`, that is the main target of the library and is a classic `.target`. For this target you specify its 
+  name, its dependencies and the path to the source files. In our case we have everything inside the `Source` folder. 
+  * `ID3TagEditorTests`, that is the `.testTarget` of the library. For this target we need to specify an additional 
+  `exclude` option. The tests excluded contains some references to bundle resources, **and at the moment of this 
+  writing the SPM doesn't support resource bundles**.
+* `swiftLanguageVersions`, that contains the set of supported Swift language versions.
+
+Next we need to create a `XCTestManifests.swift` file inside our `Tests` folder. This file contains an extension for each `XCTestCase` subclass we included in our test target. This extension contains an array `__allTest` that exposes a list of all our test methods inside our `XCTestCase` subclasses. At the end of this file you can find a `__allTests()` function that pass all the test methods to the `testCase()` utility function.  `__allTests()` and `testCase` are available on Linux platform (and in fact the `__allTests()` function is wrapped in a conditional check `#if !os(macOS)`). Below you can see a part of the `XCTestManifests.swift` file for the `ID3TagEditor` library.
+
+```swift
+import XCTest
+
+extension ID3AlbumArtistFrameCreatorTest {
+    static let __allTests = [
+        ("testFrameCreationWhenThereIsAnAlbumArtist", testFrameCreationWhenThereIsAnAlbumArtist),
+        ("testNoFrameCreationWhenThereIsNoAlbumArtist", testNoFrameCreationWhenThereIsNoAlbumArtist),
+    ]
+}
+
+extension ID3AlbumFrameCreatorTest {
+    static let __allTests = [
+        ("testFrameCreationWhenThereIsAnAlbum", testFrameCreationWhenThereIsAnAlbum),
+        ("testNoFrameCreationWhenThereIsNoAlbum", testNoFrameCreationWhenThereIsNoAlbum),
+    ]
+}
+
+extension ID3ArtistFrameCreatorTest {
+    static let __allTests = [
+        ("testFrameCreationWhenThereIsAnArtist", testFrameCreationWhenThereIsAnArtist),
+        ("testNoFrameCreationWhenThereIsNoArtist", testNoFrameCreationWhenThereIsNoArtist),
+    ]
+}
+
+...
+
+#if !os(macOS)
+public func __allTests() -> [XCTestCaseEntry] {
+    return [
+        testCase(ID3AlbumArtistFrameCreatorTest.__allTests),
+        testCase(ID3AlbumFrameCreatorTest.__allTests),
+        testCase(ID3ArtistFrameCreatorTest.__allTests),
+        ...
+    ]
+}
+#endif
+```
+
+Next we need `LinuxMain.swift` file in the root folder of our project. This file loads all the test on Linux (using the functions and extensions defined in the previous file `XCTestManifests.swift`).
+
+```swift
+import XCTest
+
+import ID3TagEditorTests
+
+var tests = [XCTestCaseEntry]()
+tests += ID3TagEditorTests.__allTests()
+
+XCTMain(tests)
+```
+
+We are now ready to install Swift on Linux and test our work. To do this we will use Ubuntu distro. The version used is the 18.04 LTS.  
+How do we install Swift on linux? First of all we need to download the Swift release for linux from the [Swift download page](Ubuntu 18.04 "swift download page"). The version we are going to use is the one you can find at [this link](https://swift.org/builds/swift-4.2.1-release/ubuntu1804/swift-4.2.1-RELEASE/swift-4.2.1-RELEASE-ubuntu18.04.tar.gz). Then we need to install some additional packages.
+
+```shell
+sudo apt-get install clang libicu-dev
+```
+
+Then we can extract from the archive we downloaded before the Swift release folder and we need to add to our shell enviroment `PATH` variable the path to /usr/bin folder contained inside the Swift release folder extracted from the archive.
+
+```shell
+tar xzf swift-<VERSION>-<PLATFORM>.tar.gz
+
+//Add this to your shell profile file
+export PATH=/<path to the Swift release folder>/usr/bin:"${PATH}"
+```
+
+....
