@@ -4,7 +4,7 @@ title: "Create a swift library compatible with the Swift Package Manager for mac
 description: "In this post I will talk about how to create a Swift library compatible with the Swift Package Manager for
  macOS and Linux"
 date: 2019-01-04
-image: XXX
+image: /assets/images/posts/spm-swift.jpg
 tags: [swift, objective-c, ios, apple, swift package manager]
 comments: true
 seo:
@@ -178,12 +178,9 @@ swift build
 swift run
 ```
 
-Below you can see some screenshot taken from both macOS and Linux that shows the final output of the demo `Demo Ubuntu` after you execute the `swift run`.
+Below you can see some screenshot taken from both macOS and Linux that shows the final output of the demo `Demo Ubuntu` after you execute the `swift run` command.
 
 ![id3tageditor SPM demo ubuntu](/assets/images/posts/spm-id3tageditor-demo-linux.jpg "id3tageditor SPM demo ubuntu")
 ![id3tageditor SPM demo macOS](/assets/images/posts/spm-id3tageditor-demo-macos.jpg "id3tageditor SPM demo macOS")
 
-
-
-
-
+Coool!! Now the ID3TagEditor is fully compatible with the SPM and could be used in Swift application for macOS and Linux. You can see the entire codebase of the `ID3TagEditor` in [this github repository](https://github.com/chicio/ID3TagEditor). Now you can start to port your libraries and applications on Linux with the Swift Package Manager :sparkles:.
