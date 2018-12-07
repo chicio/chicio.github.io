@@ -148,6 +148,6 @@ class ReactNativeModal extends React.Component {
 }
 ``` 
  
-That's all for our native modules communication architecture. If you want to know how we managed the same problem on 
+That's all for our native modules communication architecture iOS. You can find the complete example in [this github repository](https://github.com/chicio/React-Native-Native-Modules-Communication). If you want to know how we managed the same problem on 
 the Android platform :rocket: you can read [my other post about the same topic](/2018/12/02/react-native-modules-bridge-communication-activitiy-fragment-android.html).
 
