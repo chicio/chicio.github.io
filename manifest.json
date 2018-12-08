@@ -16,6 +16,11 @@
       "src": "assets/images/pwa-icon-384x384.jpg",
       "sizes": "384x384",
       "type": "image/png"
+    },
+    {
+      "src": "assets/images/pwa-icon-512x512.jpg",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
   "start_url": "./?utm_source=pwa",
