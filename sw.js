@@ -13,12 +13,12 @@ self.addEventListener('install', function(e) {
  );
 });
 
-
-self.addEventListener('fetch', function (event) {
+// Network falling back to the cache
+self.addEventListener('fetch', function(event) {
   console.log(event.request.url);
   event.respondWith(
-    caches.match(event.request).then(function (response) {
-      return response || fetch(event.request);
+    fetch(event.request).catch(function() {
+      return caches.match(event.request);
     })
   );
 });
