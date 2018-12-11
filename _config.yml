@@ -60,6 +60,7 @@ exclude:
   - CNAME
   - pages-gem
   - scripts
+  - chicio.github.io.code-workspace
 # limit_posts: 5
 
 # Menu
