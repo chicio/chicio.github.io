@@ -4,6 +4,7 @@ importScripts('/cache-polyfill.js');
 
 const siteCacheName = 'chicioCodingCache';
 const dependenciesUrls = [
+  /favicon.ico,
   {% include service-worker-home-urls.js %}
   {% include service-worker-blog-urls.js %}
   {% include service-worker-css-urls.js %}
