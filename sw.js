@@ -2,18 +2,17 @@
 ---
 importScripts('/cache-polyfill.js');
 
-var siteCacheName = 'chicioCodingCache';
+const siteCacheName = 'chicioCodingCache';
+const dependenciesUrls = [
+  {% include service-worker-home-urls.js %}
+  {% include service-worker-blog-urls.js %}
+  {% include service-worker-css-urls.js %}
+]
 
-self.addEventListener('install', function(event) {
+self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(siteCacheName).then(function(cache) {
-      return cache.addAll(
-        [
-          '/assets/js/index.blog.min.js?rev=fd91efd7c43ed686d213775ad3119206',
-          '/assets/js/index.home.min.js?rev=ac3166c4939fa4f64b868165bb2d7a6a',
-          '/assets/styles/style.css?rev=e523b46c9c5128be62b0db042e7ac2db',
-        ]
-      );
+      return cache.addAll(dependenciesUrls);
     })
   );
 });

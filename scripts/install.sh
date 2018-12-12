@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+# Install gulp cli
+npm install --global gulp-cli@2.0.1
+
 # Init pages-gem submodule
 git submodule update --init
 

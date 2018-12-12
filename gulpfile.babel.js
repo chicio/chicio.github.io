@@ -9,12 +9,14 @@ import source from 'vinyl-source-stream'
 import buffer from 'vinyl-buffer'
 import browserify from 'browserify'
 import babelify from 'babelify'
+import { exec } from 'child_process';
 
-gulp.task('css', () => {
+gulp.task('css', (done) => {
   gulp.src('_css/**/*.?(s)css')
     .pipe(gulpSass({ outputStyle: 'compressed' }))
     .pipe(gulpConcat('style.css'))
     .pipe(gulp.dest('assets/styles'))
+  done()  
 })
 
 gulp.task('lint', () => gulp.src('_js/**')
@@ -22,21 +24,19 @@ gulp.task('lint', () => gulp.src('_js/**')
   .pipe(gulpEslint.format())
   .pipe(gulpEslint.failOnError()))
 
-gulp.task('bundle-home-scripts', () => browserify({ entries: '_js/index.home.js' })
+const bundleJs = (section) => (
+  browserify({ entries: `_js/index.${section}.js` })
   .transform(babelify.configure({ presets: ['env'] }))
   .bundle()
-  .pipe(source('index.home.min.js'))
+  .pipe(source(`index.${section}.min.js`))
   .pipe(buffer())
   .pipe(gulpUglify())
-  .pipe(gulp.dest('assets/js')))
+  .pipe(gulp.dest('assets/js'))
+)
 
-gulp.task('bundle-blog-scripts', () => browserify({ entries: '_js/index.blog.js' })
-  .transform(babelify.configure({ presets: ['env'] }))
-  .bundle()
-  .pipe(source('index.blog.min.js'))
-  .pipe(buffer())
-  .pipe(gulpUglify())
-  .pipe(gulp.dest('assets/js')))
+gulp.task('bundle-home-scripts', () => bundleJs('home'))
+
+gulp.task('bundle-blog-scripts', () => bundleJs('blog'))
 
 gulp.task('images', () => gulp
   .src(['_images/**/*.png', '_images/**/*.jpg', '_images/**/*.jpeg', '_images/**/*.gif'])
@@ -49,10 +49,6 @@ gulp.task('fonts', () => gulp
 gulp.task('models', () => gulp
   .src('_models/**/*.*')
   .pipe(gulp.dest('assets/models')))
-
-gulp.task('force-copy', () => gulp
-  .src(['assets'])
-  .pipe(gulp.dest('_site/assets')))
 
 gulp.task('css-critical', () => {
   critical.generate({
@@ -151,25 +147,38 @@ gulp.task('css-critical', () => {
   })
 })
 
-gulp.task('rev-home', () => {
-  gulp.src('./dependencies-home.html')
+const revision = (section, done) => {
+  gulp.src(`./dependencies-${section}.html`)
     .pipe(gulpRevAppend())
     .pipe(gulp.dest('_includes'))
-})
+  done()
+}
 
-gulp.task('rev-blog', () => {
-  gulp.src('./dependencies-blog.html')
-    .pipe(gulpRevAppend())
-    .pipe(gulp.dest('_includes'))
-})
+gulp.task('rev-home', (done) => revision('home', done))
 
-gulp.task('rev-css', () => {
-  gulp.src('./dependencies-css.html')
-    .pipe(gulpRevAppend())
-    .pipe(gulp.dest('_includes'))
-})
+gulp.task('rev-blog', (done) => revision('blog', done))
 
-gulp.task('default', [
+gulp.task('rev-css', (done) => revision('css', done))
+
+const serviceWorkerUrlFor = (section, done) => {
+  exec(`./scripts/generate-service-worker-urls.sh ${section}`, (err, stdout, stderr) => {
+    done()
+  })
+}
+
+gulp.task('service-worker-home-urls', (done) => {
+  serviceWorkerUrlFor('home', done)
+});
+
+gulp.task('service-worker-blog-urls', (done) => {
+  serviceWorkerUrlFor('blog', done)
+});
+
+gulp.task('service-worker-css-urls', (done) => {
+  serviceWorkerUrlFor('css', done)
+});
+
+const build =  gulp.series(
   'css',
   'lint',
   'bundle-home-scripts',
@@ -180,4 +189,9 @@ gulp.task('default', [
   'rev-home',
   'rev-blog',
   'rev-css',
-])
+  'service-worker-home-urls',
+  'service-worker-blog-urls',
+  'service-worker-css-urls'
+)
+
+export default build;
