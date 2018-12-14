@@ -19,13 +19,13 @@ gulp.task('css', (done) => {
   done()  
 })
 
-gulp.task('lint', () => gulp.src('_js/**')
+gulp.task('lint', () => gulp.src('_jsbuild/**')
   .pipe(gulpEslint())
   .pipe(gulpEslint.format())
   .pipe(gulpEslint.failOnError()))
 
 const bundleJs = (section) => (
-  browserify({ entries: `_js/index.${section}.js` })
+  browserify({ entries: `_jsbuild/index.${section}.js` })
   .transform(babelify.configure({ presets: ['env'] }))
   .bundle()
   .pipe(source(`index.${section}.min.js`))

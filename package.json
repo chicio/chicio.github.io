@@ -4,7 +4,7 @@
   "description": "Fabrizio Duroni aka 'chicio' website",
   "main": "index.js",
   "scripts": {
-    "flow" : "cd _js && ../node_modules/.bin/flow && ../node_modules/.bin/flow-remove-types ../_js/ -d ../_jsbuild/",
+    "flow" : "scripts/flow.sh",
     "prepare": "scripts/install.sh",
     "build": "gulp",
     "start": "scripts/start.sh",
