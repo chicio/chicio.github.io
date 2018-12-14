@@ -1,4 +1,4 @@
-/* @flow */
+/*       */
 import { cookieConsent } from './common/cookie-consent'
 import { loadFont } from './common/load-font'
 import { enableScroll } from './common/scroll-manager'

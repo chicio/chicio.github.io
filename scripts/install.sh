@@ -1,7 +1,8 @@
 #!/usr/bin/env sh
 
-# Install gulp cli
+# Install gulp cli and flow typed
 npm install --global gulp-cli@2.0.1
+npm install --global flow-typed@2.5.1
 
 # Init pages-gem submodule
 git submodule update --init
