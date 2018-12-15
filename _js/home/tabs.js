@@ -1,19 +1,20 @@
+/* @flow */
 import { addCssClass, removeCssClass } from '../common/css-class'
 
 const tabs = () => {
-  const tabs = document.querySelectorAll('ul.nav-tabs > li')
-  forEach(tabs, (tab) => {
-    tab.addEventListener('click', (event) => tabClick(tabs, event))
+  const tabs: NodeList<HTMLElement> = document.querySelectorAll('ul.nav-tabs > li')
+  forEach(tabs, (tab: HTMLElement) => {
+    tab.addEventListener('click', (event: Event) => tabClick(tabs, event))
   })
 }
 
-const forEach = (list, operation) => {
-  for (let i = 0; i < list.length; i++) {
+const forEach = (list: NodeList<HTMLElement>, operation: (HTMLElement) => void) => {
+  for (let i: number = 0; i < list.length; i++) {
     operation(list.item(i))
   }
 }
 
-const tabClick = (tabs, event) => {
+const tabClick = (tabs: NodeList<HTMLElement> , event: Event) => {
   event.preventDefault()
   deactivateAll(tabs)
   activateTabFor(event)
@@ -21,19 +22,22 @@ const tabClick = (tabs, event) => {
   activateTabPaneFor(event)
 }
 
-const activateTabFor = (event) => addCssClass(event.currentTarget, 'active')
+const activateTabFor = (event: Event) => addCssClass(event.currentTarget, 'active')
 
-const deactivateAll = (tabs) => forEach(tabs, tab => removeCssClass(tab, 'active'))
+const deactivateAll = (tabs: NodeList<HTMLElement> ) => forEach(tabs, (tab: HTMLElement) => removeCssClass(tab, 'active'))
 
 const deactivateAllTabPanes = () => forEach(
   document.querySelectorAll('.tab-pane'),
-  (tabPane) => removeCssClass(tabPane, 'active')
+  (tabPane: HTMLElement) => removeCssClass(tabPane, 'active')
 )
 
-const activateTabPaneFor = (event) => {
-  const activePaneId = event.target.getAttribute('href')
-  const activePane = document.querySelector(activePaneId)
-  addCssClass(activePane, 'active')
+const activateTabPaneFor = (event: Event) => {
+  const el: Element = (event.target: any);
+  const activePaneId: ?string = el.getAttribute('href')
+  if (activePaneId) {
+    const activePane = document.querySelector(activePaneId)
+    addCssClass(activePane, 'active')  
+  }
 }
 
 export { tabs }

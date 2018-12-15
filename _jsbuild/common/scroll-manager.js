@@ -1,5 +1,4 @@
 /*  */
-
 import { isAMobileDevice } from './mobile-device-detector'
 
 const disableScroll = () => {
