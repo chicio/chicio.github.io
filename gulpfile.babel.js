@@ -19,6 +19,12 @@ gulp.task('css', (done) => {
   done()  
 })
 
+gulp.task('flow', (done) => {
+  exec(`./scripts/flow.sh`, (err, stdout, stderr) => {
+    done()
+  })
+})  
+
 gulp.task('lint', () => gulp.src('_jsbuild/**')
   .pipe(gulpEslint())
   .pipe(gulpEslint.format())
@@ -180,6 +186,7 @@ gulp.task('service-worker-css-urls', (done) => {
 
 const build =  gulp.series(
   'css',
+  'flow',
   'lint',
   'bundle-home-scripts',
   'bundle-blog-scripts',
