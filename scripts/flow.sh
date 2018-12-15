@@ -7,4 +7,4 @@ cd _js
 ../node_modules/.bin/flow 
 
 # Remove flow types
-../node_modules/.bin/flow-remove-types ../_js/ -d ../_jsbuild/ -i flow-typed/
+../node_modules/.bin/flow-remove-types ../_js/ -d ../_jsbuild/ -i flow-typed/ --pretty

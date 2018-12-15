@@ -1,15 +1,31 @@
+/*  */
+
 import { isAMobileDevice } from './mobile-device-detector'
 
 const disableScroll = () => {
   if (isAMobileDevice()) {
-    document.querySelector('html').style.overflowY = 'hidden'
-    document.querySelector('body').style.position = 'fixed'
+    changeHtmlOverflow('hidden')
+    changeBodyPosition('fixed')
   }
 }
 
 const enableScroll = () => {
-  document.querySelector('html').style.overflowY = 'auto'
-  document.querySelector('body').style.position = ''
+  changeHtmlOverflow('auto')
+  changeBodyPosition('')
+}
+
+const changeHtmlOverflow = (newValue) => {
+  let html = document.querySelector('html')
+  if (html) {
+    html.style.overflowY = newValue
+  }
+}
+
+const changeBodyPosition = (newValue) => {
+  let body = document.querySelector('body')
+  if (body) {
+    body.style.position = newValue
+  }
 }
 
 export { disableScroll, enableScroll }

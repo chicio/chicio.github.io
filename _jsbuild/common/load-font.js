@@ -1,7 +1,7 @@
-/*       */
+/*  */
 import WebFont from 'webfontloader'
 
-const loadFont = (finish               ) => {
+const loadFont = (finish) => {
   WebFont.load({
     google: { families: ['Open Sans'] },
     active: finish ? finish() : undefined,

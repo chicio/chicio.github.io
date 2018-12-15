@@ -3,7 +3,7 @@ import { addCssClass, removeCssClass } from '../common/css-class'
 const tabs = () => {
   const tabs = document.querySelectorAll('ul.nav-tabs > li')
   forEach(tabs, (tab) => {
-    tab.addEventListener('click', event => tabClick(tabs, event))
+    tab.addEventListener('click', (event: Event) => tabClick(tabs, event))
   })
 }
 
@@ -30,7 +30,7 @@ const deactivateAllTabPanes = () => forEach(
   (tabPane) => removeCssClass(tabPane, 'active')
 )
 
-const activateTabPaneFor = (event) => {
+const activateTabPaneFor = (event: Event) => {
   const activePaneId = event.target.getAttribute('href')
   const activePane = document.querySelector(activePaneId)
   addCssClass(activePane, 'active')
