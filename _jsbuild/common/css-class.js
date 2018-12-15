@@ -1,3 +1,4 @@
+/*  */
 const addCssClass = (element, className) => {
   if (element.classList) {
     element.classList.add(className)
