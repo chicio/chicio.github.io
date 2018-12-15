@@ -14,7 +14,7 @@ const forEach = (list: NodeList<HTMLElement>, operation: (HTMLElement) => void) 
   }
 }
 
-const tabClick = (tabs: NodeList<HTMLElement> , event: Event) => {
+const tabClick = (tabs: NodeList<HTMLElement>, event: Event) => {
   event.preventDefault()
   deactivateAll(tabs)
   activateTabFor(event)
@@ -24,7 +24,7 @@ const tabClick = (tabs: NodeList<HTMLElement> , event: Event) => {
 
 const activateTabFor = (event: Event) => addCssClass(event.currentTarget, 'active')
 
-const deactivateAll = (tabs: NodeList<HTMLElement> ) => forEach(tabs, (tab: HTMLElement) => removeCssClass(tab, 'active'))
+const deactivateAll = (tabs: NodeList<HTMLElement>) => forEach(tabs, (tab: HTMLElement) => removeCssClass(tab, 'active'))
 
 const deactivateAllTabPanes = () => forEach(
   document.querySelectorAll('.tab-pane'),
@@ -32,11 +32,11 @@ const deactivateAllTabPanes = () => forEach(
 )
 
 const activateTabPaneFor = (event: Event) => {
-  const el: Element = (event.target: any);
+  const el: Element = (event.target: any)
   const activePaneId: ?string = el.getAttribute('href')
   if (activePaneId) {
     const activePane = document.querySelector(activePaneId)
-    addCssClass(activePane, 'active')  
+    addCssClass(activePane, 'active')
   }
 }
 
