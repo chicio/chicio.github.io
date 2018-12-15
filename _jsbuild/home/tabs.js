@@ -22,7 +22,10 @@ const tabClick = (tabs, event) => {
   activateTabPaneFor(event)
 }
 
-const activateTabFor = (event) => addCssClass(event.currentTarget, 'active')
+const activateTabFor = (event) => {
+  const element = (event.currentTarget)
+  addCssClass(element, 'active')
+}
 
 const deactivateAll = (tabs) => forEach(tabs, (tab) => removeCssClass(tab, 'active'))
 
@@ -32,11 +35,13 @@ const deactivateAllTabPanes = () => forEach(
 )
 
 const activateTabPaneFor = (event) => {
-  const el = (event.target)
-  const activePaneId = el.getAttribute('href')
+  const element = (event.target)
+  const activePaneId = element.getAttribute('href')
   if (activePaneId) {
     const activePane = document.querySelector(activePaneId)
-    addCssClass(activePane, 'active')
+    if (activePane) {
+      addCssClass(activePane, 'active')
+    }
   }
 }
 

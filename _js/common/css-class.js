@@ -1,4 +1,5 @@
-const addCssClass = (element, className) => {
+/* @flow */
+const addCssClass = (element: HTMLElement, className: string) => {
   if (element.classList) {
     element.classList.add(className)
   } else {
@@ -6,7 +7,7 @@ const addCssClass = (element, className) => {
   }
 }
 
-const removeCssClass = (element, className) => {
+const removeCssClass = (element: HTMLElement, className: string) => {
   if (element.classList) {
     element.classList.remove(className)
   } else {
