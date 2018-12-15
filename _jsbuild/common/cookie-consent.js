@@ -1,5 +1,4 @@
 /*  */
-
 const cookieConsent = () => {
   window.addEventListener('load', () => {
     window.cookieconsent.initialise({

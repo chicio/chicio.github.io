@@ -1,3 +1,4 @@
+/*  */
 import { addCssClass, removeCssClass } from '../common/css-class'
 
 const tabs = () => {
@@ -13,7 +14,7 @@ const forEach = (list, operation) => {
   }
 }
 
-const tabClick = (tabs, event) => {
+const tabClick = (tabs , event) => {
   event.preventDefault()
   deactivateAll(tabs)
   activateTabFor(event)
@@ -23,7 +24,7 @@ const tabClick = (tabs, event) => {
 
 const activateTabFor = (event) => addCssClass(event.currentTarget, 'active')
 
-const deactivateAll = (tabs) => forEach(tabs, tab => removeCssClass(tab, 'active'))
+const deactivateAll = (tabs ) => forEach(tabs, (tab) => removeCssClass(tab, 'active'))
 
 const deactivateAllTabPanes = () => forEach(
   document.querySelectorAll('.tab-pane'),
@@ -31,9 +32,12 @@ const deactivateAllTabPanes = () => forEach(
 )
 
 const activateTabPaneFor = (event) => {
-  const activePaneId = event.target.getAttribute('href')
-  const activePane = document.querySelector(activePaneId)
-  addCssClass(activePane, 'active')
+  const el = (event.target);
+  const activePaneId = el.getAttribute('href')
+  if (activePaneId) {
+    const activePane = document.querySelector(activePaneId)
+    addCssClass(activePane, 'active')  
+  }
 }
 
 export { tabs }
