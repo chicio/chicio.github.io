@@ -1,3 +1,4 @@
+/* @flow */
 import { TweenLite, TweenMax } from 'gsap'
 import { scene3D } from './scene-3D'
 
