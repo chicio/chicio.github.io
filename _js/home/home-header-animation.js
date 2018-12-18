@@ -10,14 +10,14 @@ const homeHeaderAnimation = () => {
   })
 }
 
-const hideLoaderAnimation = (completionFunction) => {
+const hideLoaderAnimation = (completionFunction: () => void) => {
   TweenLite.to('#loader', 0.3, {
     opacity: 0,
     onComplete: completionFunction
   })
 }
 
-const profileAnimation = (completeFunction) => {
+const profileAnimation = (completeFunction: () => void) => {
   TweenMax.to('.center-content', 0.5, {
     opacity: 1,
     onComplete: completeFunction

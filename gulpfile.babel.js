@@ -20,7 +20,7 @@ gulp.task('css', (done) => {
 })
 
 gulp.task('flow', (done) => {
-  exec(`./scripts/flow.sh`, (err, stdout, stderr) => {
+  exec(`npm run flow`, (err, stdout, stderr) => {
     done()
   })
 })  
