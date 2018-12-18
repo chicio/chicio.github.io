@@ -1,20 +1,20 @@
 /* @flow */
 import { addCssClass, removeCssClass } from '../common/css-class'
 
-const tabs = () => {
+const tabs = (): void => {
   const tabs: NodeList<HTMLElement> = document.querySelectorAll('ul.nav-tabs > li')
   forEach(tabs, (tab: HTMLElement) => {
     tab.addEventListener('click', (event: Event) => tabClick(tabs, event))
   })
 }
 
-const forEach = (list: NodeList<HTMLElement>, operation: (HTMLElement) => void) => {
+const forEach = (list: NodeList<HTMLElement>, operation: (HTMLElement) => void): void => {
   for (let i: number = 0; i < list.length; i++) {
     operation(list.item(i))
   }
 }
 
-const tabClick = (tabs: NodeList<HTMLElement>, event: Event) => {
+const tabClick = (tabs: NodeList<HTMLElement>, event: Event): void => {
   event.preventDefault()
   deactivateAll(tabs)
   activateTabFor(event)
@@ -22,19 +22,19 @@ const tabClick = (tabs: NodeList<HTMLElement>, event: Event) => {
   activateTabPaneFor(event)
 }
 
-const activateTabFor = (event: Event) => {
+const activateTabFor = (event: Event): void => {
   const element: HTMLElement = (event.currentTarget: any)
   addCssClass(element, 'active')
 }
 
-const deactivateAll = (tabs: NodeList<HTMLElement>) => forEach(tabs, (tab: HTMLElement) => removeCssClass(tab, 'active'))
+const deactivateAll = (tabs: NodeList<HTMLElement>): void => forEach(tabs, (tab: HTMLElement) => removeCssClass(tab, 'active'))
 
-const deactivateAllTabPanes = () => forEach(
+const deactivateAllTabPanes = (): void => forEach(
   document.querySelectorAll('.tab-pane'),
   (tabPane: HTMLElement) => removeCssClass(tabPane, 'active')
 )
 
-const activateTabPaneFor = (event: Event) => {
+const activateTabPaneFor = (event: Event): void => {
   const element: HTMLElement = (event.target: any)
   const activePaneId: ?string = element.getAttribute('href')
   if (activePaneId) {
