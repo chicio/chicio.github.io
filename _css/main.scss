@@ -87,7 +87,7 @@ canvas {
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: 1;
+  z-index: 400;
   display: block;
 }
 
@@ -809,9 +809,10 @@ footer {
   background-color: $primary-color;
   -webkit-box-shadow: inset 0 -2px 5px rgba(0, 0, 0, .1);
   box-shadow: inset 0 -2px 5px rgba(0, 0, 0, .1);
-  position: relative;
+  position: fixed;
   width: 100%;
   height: $masthead-height;
+  z-index: 300;
 }
 
 .blog-nav-item {
@@ -846,7 +847,7 @@ footer {
 
   & .active:after {
     position: absolute;
-    bottom: -1px;
+    bottom: 0px;
     left: 50%;
     width: 0;
     height: 0;
@@ -913,7 +914,8 @@ footer {
 }
 
 .blog-posts {
-  min-height: calc(100vh - #{$footer-height} - #{$masthead-height});
+  margin-top: 100px;
+  min-height: calc(100vh - #{$footer-height});
 }
 
 .blog-post {
