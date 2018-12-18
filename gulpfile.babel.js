@@ -56,7 +56,7 @@ gulp.task('models', () => gulp
   .src('_models/**/*.*')
   .pipe(gulp.dest('assets/models')))
 
-gulp.task('css-critical', () => {
+gulp.task('css-critical', (done) => {
   critical.generate({
     base: '_site/',
     src: 'index.html',
@@ -151,6 +151,7 @@ gulp.task('css-critical', () => {
     minify: true,
     extract: false
   })
+  done()
 })
 
 const revision = (section, done) => {
