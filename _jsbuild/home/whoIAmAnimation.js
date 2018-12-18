@@ -1,3 +1,4 @@
+/*  */
 import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap'
 import { TimelineLite, Elastic } from 'gsap'
 import ScrollMagic from 'scrollmagic'
