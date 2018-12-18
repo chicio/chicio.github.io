@@ -1,5 +1,5 @@
 /* @flow */
-const cookieConsent = () => {
+const cookieConsent = (): void => {
   window.addEventListener('load', () => {
     window.cookieconsent.initialise({
       'palette': {
