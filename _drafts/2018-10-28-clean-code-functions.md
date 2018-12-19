@@ -14,8 +14,7 @@ seo:
 
 ---
 
-In a previous post I talked about [clean code](/2018/04/25/clean-code-objects-data-structures-law-demeter.html) and 
-how much it is important to me. 
+In a previous post I talked about [clean code](/2018/04/25/clean-code-objects-data-structures-law-demeter.html) and how much it is important to me. 
 In this new post I will talk about another topic of the uncle bob clean code book: functions.  
 How can we have write a good function/method? This is the list of the features that a function 
 must have to be considered "good":
@@ -143,5 +142,4 @@ ongoing attempt to eliminate duplication from our source code.
   
   
 #### **Conclusion**
-That's all for Uncle Bob and functions. If you didn't read yet Uncle Bob "Clean Code" book it's time to catch up the 
-gap and get a copy for yourself :sparkling_heart:. 
+That's all for Uncle Bob and functions. If you didn't read yet Uncle Bob "Clean Code" book it's time to catch up the gap and get a copy for yourself :sparkling_heart:. 
