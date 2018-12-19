@@ -18,7 +18,8 @@ authors: [fabrizio_duroni]
 Unit test in iOS application is in some way "hard". The architectural pattern implemented by default on iOS is the [Model View Controller](https://en.wikipedia.org/wiki/Model–view–controller "Model View Controller"). This architecture provides you a clear separation between the UI and the business logic.
 The problem is that most of the time you have to fight with "Massive View Controllers" that act as glue between the model and a lot of UI/view code and that, for this reason, are not so easy to test. This basically means that most of the time the [presentation logic](https://en.wikipedia.org/wiki/Presentation_logic "presentation logic"), how the business model is displayed to the user in the User Interface, is tested in the wrong way, or maybe worst it is not tested.  
 This is were the [Model View Presenter](https://en.wikipedia.org/wiki/Model–view–presenter "Model view presenter") could save us. In this architectural pattern all the *presentation logic is moved from the view controller to a new component, the presenter*. This means that it will manage *model objects* to retrieve the data and then prepare it to be displayed by the *view, that will be our View Controller*. This one becomes a passive interface that has the only responsibility to show data returned by the presenter in the specific platform User Interface component. In this way the presenter is a component without any platform specific dependency, that works only on the view and other model objects, injected at construction time. In this way all dependencies could be mocked and you can unit test basically everything!! :relaxed:  
-Now it's time to see the Model View Presenter in action!! :grin: We will create a simple app that shows a list on products in a `UITableView`. On the tap of a cell the product detail is shown. An error will be displayed if an error occurs when the products are retrieved or when it doesn't contain all the data needed to show its detail. We will develop this app using [Test Driven Development](https://en.wikipedia.org/wiki/Test-driven_development "Test Driven Development") technique, and I will show the unit tests created for each class implemented. These unit tests will also be written using the ["Given-then-when"](https://en.wikipedia.org/wiki/Given-When-Then "Given-then-when") structure, typically used in [Behaviour Driven Development](https://en.wikipedia.org/wiki/Behavior-driven_development "Behaviour Driven Development"). Even if not related to this article, I like this way of writing unit tests because they are more expressive, so I will use it in all my code. Below you can find a mockup of what we want to achieve.
+Now it's time to see the Model View Presenter in action!! :grin: We will create a simple app that shows a list on products in a `UITableView`. On the tap of a cell the product detail is shown. An error will be displayed if an error occurs when the products are retrieved or when it doesn't contain all the data needed to show its detail.   
+We will develop this app using [Test Driven Development](https://en.wikipedia.org/wiki/Test-driven_development "Test Driven Development") technique, and I will show the unit tests created for each class implemented. These unit tests will also be written using the ["Given-then-when"](https://en.wikipedia.org/wiki/Given-When-Then "Given-then-when") structure, typically used in [Behaviour Driven Development](https://en.wikipedia.org/wiki/Behavior-driven_development "Behaviour Driven Development"). Even if not related to this article, I like this way of writing unit tests because they are more expressive, so I will use it in all my code. Below you can find a mockup of what we want to achieve.
 
 ![Model view presenter mockup](/assets/images/posts/mockup-model-view-presenter.png "Model view presenter mockup")
 
@@ -118,7 +119,7 @@ if everything goes fine. If something goes wrong show on the view an error messa
 We start by defining the protocol `ProductView`, that contains all the valid operation of the view that our presenter will use:
 
 ```swift
-public protocol ProductsView {
+public protocol ProductsView: class {
     func showLoadingStatus()
     func hideLoadingStatus()
     func show(title aTitle: String)
@@ -132,7 +133,7 @@ Now we are ready to proceed with the `ProductsPresenter` implementation:
 
 ```swift
 public class ProductsPresenter {
-    private let productsView: ProductsView
+    private unowned let productsView: ProductsView
     private let productsRepository: Repository
     
     public init(productsView: ProductsView, productsRepository: Repository) {
@@ -165,6 +166,7 @@ public class ProductsPresenter {
         }
     }
 }
+
 ```
 
 Develop a class like this one in TDD it's easy, given the fact that we can mock every dependecies it has and we can test in detail all the presentation flow. The unit test of our presenter are shown below. *You can note that a lot of handcraft made mock objects are used but not reported here (you will find them in the complete project on Github reported at the end of this article)*.
@@ -374,7 +376,7 @@ expected. The view controller is only updating iOS specific User Interface compo
 In the same way we developed this components, we can go on and implement our product detail by defining first of all a `ProductDetailView`:
 
 ```swift
-public protocol ProductDetailView {
+public protocol ProductDetailView: class {
     func show(title aTitle: String)
     func show(product: Product)
     func showErrorWith(message: String)
@@ -385,14 +387,14 @@ Then our `ProductDetailPresenter` presenter, that will be responsible to check t
 
 ```swift
 public class ProductDetailPresenter {
-    private let productDetailView: ProductDetailView
+    private unowned let productDetailView: ProductDetailView
     private let product: Product?
-
+    
     public init(productDetailView: ProductDetailView, product: Product?) {
         self.productDetailView = productDetailView
         self.product = product
     }
-
+    
     public func onStart() {
         productDetailView.show(title: "Product")
         if let product = product {
@@ -520,6 +522,8 @@ class ProductDetailViewController: UIViewController, ProductDetailView {
 
 Yeaaaahh you made it!! You're at the end of this never ending post :satisfied:!!  
 Now you can start to create your high quality unit tested apps :relieved:.
+One final note about the implementation above: **the `productsView` property of the `ProductsPresenter` and `productDetailView` of the `ProductDetailPresenter` must  be `unowned` or `weak` to avoid a retain cycle between the presenters and the controllers.**
+
 
 ![Model view presenter ios unit tests](/assets/images/posts/model-view-presenter-ios.jpg "Model view presenter ios unit tests")
 
