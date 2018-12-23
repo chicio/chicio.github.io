@@ -25,10 +25,12 @@ gulp.task('flow', (done) => {
   })
 })  
 
-gulp.task('lint', () => gulp.src('_jsbuild/**')
+gulp.task('lint', () => (
+  gulp.src('_jsbuild/**')
   .pipe(gulpEslint())
   .pipe(gulpEslint.format())
   .pipe(gulpEslint.failOnError()))
+)
 
 const bundleJs = (section) => (
   browserify({ entries: `_jsbuild/index.${section}.js` })
@@ -44,17 +46,17 @@ gulp.task('bundle-home-scripts', () => bundleJs('home'))
 
 gulp.task('bundle-blog-scripts', () => bundleJs('blog'))
 
-gulp.task('images', () => gulp
-  .src(['_images/**/*.png', '_images/**/*.jpg', '_images/**/*.jpeg', '_images/**/*.gif'])
-  .pipe(gulp.dest('assets/images')))
+const copyFiles = (folder) => (
+  gulp
+  .src([`_${folder}/**/*.*`])
+  .pipe(gulp.dest(`assets/${folder}`))
+)
 
-gulp.task('fonts', () => gulp
-  .src('_fonts/**/*.*')
-  .pipe(gulp.dest('assets/fonts')))
+gulp.task('images', () => copyFiles('images'))
 
-gulp.task('models', () => gulp
-  .src('_models/**/*.*')
-  .pipe(gulp.dest('assets/models')))
+gulp.task('fonts', () => copyFiles('fonts'))
+
+gulp.task('models', () => copyFiles('models'))
 
 gulp.task('css-critical', (done) => {
   critical.generate({
