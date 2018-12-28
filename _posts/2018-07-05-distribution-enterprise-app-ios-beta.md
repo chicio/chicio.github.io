@@ -17,7 +17,7 @@ authors: [giordano_tamburrelli, fabrizio_duroni]
 
 ---
 
-In a [previous post](/2018/07/04/react-native-typescript-exsisting-app.html "react native typescript") I talked about 
+In a [previous post](/2018/07/04/react-native-typescript-existing-app.html "react native typescript") I talked about 
 the "app relaunch" project I was involved in the last few months at [lastminute.com group](http://www.lastminutegroup.com/ "lastminute.com group"). 
 During one of the last sprint before the release we started to think about putting in place an internal beta testing 
 program to have more testing data and eventually discover more bugs before the release on the App Store (we really 
