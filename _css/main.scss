@@ -510,7 +510,7 @@ footer {
 }
 
 @include media-breakpoint-up(lg) {
-  #phone-number {
+  .phone-number {
     display: none;
   }
 

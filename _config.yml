@@ -38,6 +38,7 @@ markdown: kramdown
 highlighter: rouge
 kramdown:
   input: GFM
+  auto_ids: false
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
