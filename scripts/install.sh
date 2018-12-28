@@ -4,6 +4,9 @@
 npm install --global gulp-cli@2.0.1
 npm install --global flow-typed@2.5.1
 
+# Install html proofer for unit tests
+gem install html-proofer
+
 # Init pages-gem submodule
 git submodule update --init
 
