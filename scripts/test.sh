@@ -7,4 +7,4 @@ npm run build
 npm run generate
 
 # Unit test website
-htmlproofer --check-favicon --assume-extension --http-status-ignore "999" ./_site
+htmlproofer --assume-extension --http-status-ignore "999" ./_site
