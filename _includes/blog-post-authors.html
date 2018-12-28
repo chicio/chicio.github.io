@@ -3,7 +3,8 @@
 	{% assign currentAuthor = site.data.authors[author] %}
 	<div class="blog-post-author d-inline-flex flex-row align-items-center">
 		<img src="{{currentAuthor.image}}"
-			 class="rounded-circle"/>
+			 class="rounded-circle"
+			 alt="{{currentAuthor.name}}"/>
 		<span><a href="{{currentAuthor.url}}">{{currentAuthor.name}}</a></span>
 	</div>
 	{% endfor %}
