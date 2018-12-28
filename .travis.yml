@@ -5,11 +5,11 @@ before_install:
   - rvm install 2.4.1
 env:
   global:
-  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true  
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true  
 addons:
   apt:
     packages:
-    - libcurl4-openssl-dev  
+      - libcurl4-openssl-dev  
 before_script:
   - gem install github-pages
   - npm install
