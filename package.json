@@ -9,7 +9,8 @@
     "build": "gulp",
     "generate": "jekyll build",
     "start": "scripts/start.sh",
-    "shell": "scripts/shell.sh"
+    "shell": "scripts/shell.sh",
+    "test": "scripts/test.sh"
   },
   "repository": {
     "type": "git",
