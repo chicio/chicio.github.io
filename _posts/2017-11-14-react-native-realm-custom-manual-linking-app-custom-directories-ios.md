@@ -59,8 +59,7 @@ So we need to find another way to install the library.
 
 ![React Native realm link fails](/assets/images/posts/react-native-realm-2-link-fails.jpg "React Native realm directories")
 
-Usually, if the previous command fails, you have to do the [manual linking](https://facebook.github
-.io/react-native/docs/linking-libraries-ios.html "manual linking"). 
+Usually, if the previous command fails, you have to do the [manual linking](https://facebook.github.io/react-native/docs/linking-libraries-ios.html "manual linking"). 
 To do it we navigate inside the `node_modules` folder, contained in the React Native folder of our project, to found the realm folder. 
 Inside it you will find an Xcode project named `RealmReact`, that you have to drag into our project. After that we 
 have to add a reference to 
