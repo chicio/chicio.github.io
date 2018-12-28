@@ -8,7 +8,7 @@
 						<div class="card col-lg-4">
 							<div class='img' style='background:url("{{ post.image }}") no-repeat 50% 50%; background-size: cover'></div>
 							<h4>{{ post.title }}</h4>
-							<p>{{ post.excerpt | remove: '<em>' | remove: '</em>' }}</p>
+							{{ post.excerpt | remove: '<em>' | remove: '</em>' }}
 							<a href="{{ post.url }}" class="card-button">Read More</a>
 						</div>
 					</a>
