@@ -297,9 +297,7 @@ subclass of the `ID3FrameCreatorsChain` class is a specialization with the respo
     in other future posts :stuck_out_tongue_winking_eye: This framework contains too much cool swift stuff :flushed:)
     . One important thing to note: the `ID3AttachedPicturesFramesCreator` class is able to create attached picture 
     frames that sets the type of the cover to one from the list defined in the ID3 standard. In this way I can use my 
-    [ID3TagEditor framework to tag the mp3 with the correct data that I need to display the mp3 files cover on the 
-    media nav system of my clio](/blog/2018/05/25/born-id3tageditor-mp3id3tagger.html "born mo3id3tagger 
-    id3tageditor")!!! :relieved:
+    [ID3TagEditor framework to tag the mp3 with the correct data that I need to display the mp3 files cover on the media nav system of my clio](/2018/05/07/born-id3tageditor-mp3id3tagger.html "born mo3id3tagger id3tageditor")!!! :relieved:
    
 ```swift
 class ID3FrameCreatorsChainFactory {

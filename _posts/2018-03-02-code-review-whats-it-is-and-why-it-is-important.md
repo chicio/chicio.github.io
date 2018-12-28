@@ -18,7 +18,7 @@ authors: [angelo_sciarra, fabrizio_duroni]
 In some of my previous posts (for example [in this one](/2017/09/11/clean-code-meaningful-names.html "clean code 
 meaningful names")), I talked about my new experience at [lastminute.com group](http://www.lastminutegroup.com 
 "lastminute.com group") and how much we care about code quality. In fact I already talked about the fact that we do 
-[pair programming during our daily job](2018/01/16/ide-refactoring-android-studio-xcode-appcode-webstorm-jetbrains.html "pair programming").
+[pair programming during our daily job](/2018/01/16/ide-refactoring-android-studio-xcode-appcode-webstorm-jetbrains.html "pair programming").
   But pair programming is not the only techniques we use to be sure that our software matches high 
   code quality standard :sunglasses:.  
   One of the most important procedure I use during my daily job with my colleagues is code review. What is it? Let's 
@@ -92,7 +92,7 @@ resolve/unmask multiple fields input.
 
 ![stateless object](/assets/images/posts/02-minesweeper-fields-as-parameter.jpg "stateless object")
 
-* The objects that are the building block of a [chain of responsability]("https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern" "chain of responsability")   
+* The objects that are the building block of a [chain of responsability](https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern "chain of responsability")   
 named `FieldRowParser` could become lighter and some of their responsibility could be assigned to some new 
 collaborators. Also the object that contains the parsing status could become more lighter.
 
