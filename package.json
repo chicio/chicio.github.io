@@ -7,6 +7,7 @@
     "flow" : "scripts/flow.sh",
     "prepare": "scripts/install.sh",
     "build": "gulp",
+    "generate": "jekyll build",
     "start": "scripts/start.sh",
     "shell": "scripts/shell.sh"
   },
