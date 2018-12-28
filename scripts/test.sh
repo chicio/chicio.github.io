@@ -7,4 +7,4 @@ npm run build
 npm run generate
 
 # Unit test website
-htmlproofer ./_site
+htmlproofer --http-status-ignore "999" ./_site 

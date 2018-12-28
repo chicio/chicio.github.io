@@ -263,7 +263,7 @@ with a single property `material` of type `SCNMaterial`. On this material proper
 * `normal.contents` property with an appropriate normal value.
 * `ambientOcclusion.contents` property with an appropriate ambient occlusion value
 
-As you can see, we have all the properties we discussed in my [introduction to physically based rendering](https://www.fabrizioduroni.it/2017-10-10-physically-based-rendering-introduction.html "physically based introduction post").
+As you can see, we have all the properties we discussed in my [introduction to physically based rendering](/2017/12/07/physically-base-rendering-introduction.html "physically based introduction post").
  We have also other properties that help us improve the realism, especially with indirect lighting for what concern the 
  [ambient occlusion](https://en.wikipedia.org/wiki/Ambient_occlusion "ambient occlusion") (this property/technique is
   not related to PBR but helps to improve the final rendering). Which kind of values accept this properties? As 

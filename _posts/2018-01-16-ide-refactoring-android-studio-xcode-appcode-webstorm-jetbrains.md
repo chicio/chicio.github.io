@@ -20,8 +20,7 @@ IDE, *Integrated Development Environment*, are the software developer toolboxes.
 [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group") my knowledge 
 of the Android platform was very limited. But... [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group") 
 is an [agile software development](https://en.wikipedia.org/wiki/Agile_software_development "agile software development") company 
-and one of the technique we use during our development workflow is [pair programming](https://en.wikipedia
-.org/wiki/Pair_programming "pair programming"): two developers work at the same feature on the same workstation. 
+and one of the technique we use during our development workflow is [pair programming](https://en.wikipedia.org/wiki/Pair_programming "pair programming"): two developers work at the same feature on the same workstation. 
 As reported on Wikipedia, one of the the main advantages of pair programming is knowledge sharing:
  
  >Knowledge is constantly shared between pair programmers, whether in the industry or in a classroom, many sources 
