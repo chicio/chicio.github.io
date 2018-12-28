@@ -9,6 +9,7 @@ npm run generate
 # Unit test website
 htmlproofer --check-html \
             --check-img-http \
+            --check-opengraph \
             --assume-extension \
             --url_ignore "https://www.volagratis.com/,https://www.rumbo.es/"  \
             --http-status-ignore "999" \
