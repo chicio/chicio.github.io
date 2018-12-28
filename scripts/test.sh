@@ -7,4 +7,4 @@ npm run build
 npm run generate
 
 # Unit test website
-htmlproofer --assume-extension --http-status-ignore "999" ./_site
+htmlproofer  --assume-extension --url_ignore "https://www.volagratis.com/,https://www.rumbo.es/" --http-status-ignore "999" ./_site
