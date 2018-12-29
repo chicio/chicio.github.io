@@ -7,7 +7,7 @@ const blogAnimation = () => {
   TweenLite.to('#loading-screen', 0.3, {
     opacity: 0,
     onComplete: onCompleteAnimation,
-    delay: 0.5
+    delay: 0.8
   })
 }
 
