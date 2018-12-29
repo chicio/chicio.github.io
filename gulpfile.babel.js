@@ -16,30 +16,30 @@ gulp.task('css', (done) => {
     .pipe(gulpSass({ outputStyle: 'compressed' }))
     .pipe(gulpConcat('style.css'))
     .pipe(gulp.dest('assets/styles'))
-  done()  
+  done()
 })
 
 gulp.task('flow', (done) => {
   exec(`npm run flow`, (err, stdout, stderr) => {
     done()
   })
-})  
+})
 
 gulp.task('lint', () => (
   gulp.src('_jsbuild/**')
-  .pipe(gulpEslint())
-  .pipe(gulpEslint.format())
-  .pipe(gulpEslint.failOnError()))
+    .pipe(gulpEslint())
+    .pipe(gulpEslint.format())
+    .pipe(gulpEslint.failOnError()))
 )
 
 const bundleJs = (section) => (
   browserify({ entries: `_jsbuild/index.${section}.js` })
-  .transform(babelify.configure({ presets: ['env'] }))
-  .bundle()
-  .pipe(source(`index.${section}.min.js`))
-  .pipe(buffer())
-  .pipe(gulpUglify())
-  .pipe(gulp.dest('assets/js'))
+    .transform(babelify.configure({ presets: ['env'] }))
+    .bundle()
+    .pipe(source(`index.${section}.min.js`))
+    .pipe(buffer())
+    .pipe(gulpUglify())
+    .pipe(gulp.dest('assets/js'))
 )
 
 gulp.task('bundle-home-scripts', () => bundleJs('home'))
@@ -48,8 +48,8 @@ gulp.task('bundle-blog-scripts', () => bundleJs('blog'))
 
 const copyFiles = (folder) => (
   gulp
-  .src([`_${folder}/**/*.*`])
-  .pipe(gulp.dest(`assets/${folder}`))
+    .src([`_${folder}/**/*.*`])
+    .pipe(gulp.dest(`assets/${folder}`))
 )
 
 gulp.task('images', () => copyFiles('images'))
@@ -189,7 +189,7 @@ gulp.task('service-worker-css-urls', (done) => {
 
 gulp.task('jekyll-build', (done) => exec(`jekyll build`, (err, stdout, stderr) => done()))
 
-const build =  gulp.series(
+const build = gulp.series(
   'css',
   'flow',
   'lint',
