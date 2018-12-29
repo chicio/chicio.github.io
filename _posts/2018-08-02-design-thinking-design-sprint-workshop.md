@@ -18,7 +18,7 @@ authors: [fabrizio_duroni]
 ---
 
 As I already told you in a [previous post](/2018/07/04/react-native-typescript-existing-app.html "react native
-typescript"), in the last few months I worked in the team Lynch at [lastminute.com group](http://lmgroup.lastminute.com/) 
+typescript"), in the last few months I worked in the team Lynch at [lastminute.com group](https://lmgroup.lastminute.com/) 
 on a big "app relaunch" project where we basically rewrote some sections of our main mobile apps using React Native 
 and we did a general restyle of them with a more modern and engaging design.
 As a reward for the hard work the team did, our customer area manager [Elena Bianchini](https://www.linkedin.com/in/elenabianchini/),

@@ -28,7 +28,7 @@ create games and other 3D applications without the need to know any computer gra
 stuff and so on. You basically describe a Scene in terms of objects and features and Apple will do everything for you :sunglasses:.  
 One of the most interesting thing about SceneKit on the computer graphics side has been introduced in 2016: 
 physically based rendering (PBR).  
-We've already seen what PBR is in [a previous post](http://www.fabrizioduroni.it/2017/12/07/physically-base-rendering-introduction.html "physically based rendering introduction post"), 
+We've already seen what PBR is in [a previous post](/2017/12/07/physically-base-rendering-introduction.html "physically based rendering introduction post"), 
 so you already know its theoretical foundation stuff (or go to check it out in case you missed it :wink:). So that 
 means that SceneKit could render physically based scene using its own entirely new physically based rendering engine. Is it worth 
 it? Sure!! :blush:  So, let's try it!
@@ -88,7 +88,7 @@ class LightFeatures {
 
 We are now ready to create our `PhysicallyBasedLight` as an child of `Light` class. Our physically based light will 
 be of type `.directional`, and we will customize its `intensity` and `temperature`. The intensity is the flux of the 
-light (again, go to check [my first post about physically based rendering](http://www.fabrizioduroni.it/2017/12/07/physically-base-rendering-introduction.html "physically based introduction post") 
+light (again, go to check [my first post about physically based rendering](/2017/12/07/physically-base-rendering-introduction.html "physically based introduction post") 
 if you don't know what it is :stuck_out_tongue:), and the second one is the color temperature expressed in Kelvin 
 (remember: 6500 K corresponds to pure white sunlight). We also activate other interesting features: by setting 
 `castsShadow` to `true` we activate the rendering of shadow using shadow mapping technique, and by setting 
@@ -371,7 +371,7 @@ private func createPhysicallyLightingEnviroment() {
 }
 ```
 
-Finally we can place our 4 objects: one basic plane mesh and 3 mesh taken from the [Stanford scan repository](http://graphics.stanford.edu/data/3Dscanrep/ "Stanford scan repository"). 
+Finally we can place our 4 objects: one basic plane mesh and 3 mesh taken from the [Stanford scan repository](https://graphics.stanford.edu/data/3Dscanrep/ "Stanford scan repository"). 
 These mesh are: the dragon, the happy buddha and Lucy. All this meshes will be rendered using the `PhysicallyBasedObject`. 
 We take the textures used to model the various material from [freepbr](https://freepbr.com "freepbr") website.
 

@@ -15,7 +15,7 @@ authors: [fabrizio_duroni]
 
 ---
 
-In a [previous post](http://www.fabrizioduroni.it/2017/07/26/phong-lighting-model.html "phong model post") I talked about the Phong lighting model. I described all the different components contained inside it and how they try to describe and simulate different kind of light components. In particular you will remember that there's a specular component that try to simulated the light reflected in a specific direction: the reflection direction. In the shader implementation this direction has been calculated using a GLSL method `reflect`:
+In a [previous post](/2017/07/26/phong-lighting-model.html "phong model post") I talked about the Phong lighting model. I described all the different components contained inside it and how they try to describe and simulate different kind of light components. In particular you will remember that there's a specular component that try to simulated the light reflected in a specific direction: the reflection direction. In the shader implementation this direction has been calculated using a GLSL method `reflect`:
 
 ```glsl
 vec3 reflectionDirection = reflect(-lightDirection, normalInterp);

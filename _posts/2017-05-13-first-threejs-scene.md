@@ -30,7 +30,7 @@ the end of this post you will have created a scene like the one in the following
 
 ![Threejs first scene](/assets/images/posts/threejs-scene.jpg "Threejs first scene")
   
-The mesh We will use are a simplified version of the ones available from the [Stanford scan repository](http://graphics.stanford.edu/data/3Dscanrep/
+The mesh We will use are a simplified version of the ones available from the [Stanford scan repository](https://graphics.stanford.edu/data/3Dscanrep/
 "Stanford scan repository") in PLY format.  
 Let's start from the setup. We can use a simple html page, similar to the one described in the three.js doc (shown below). 
 We will put our assets (mesh, textures etc.) in the folder `/assets/models`.
@@ -90,7 +90,7 @@ We create a renderer with the alpha property set to true, in case we want to int
 the background to be visible until the scene is loaded. We set the [gamma correction](https://en.wikipedia.org/wiki/Gamma_correction
 "gamma correction") for input and output colors by settings the properties `gammaInput` and `gammaOutput` to true. We 
 also enable shadow mapping by setting `shadowMap.enabled` to true, setting it to use the [percentage closer filtering](
-http://fabiensanglard.net/shadowmappingPCF/ "percentage closer filtering") with [bilinear filtering](https://en.wikipedia.org/wiki/Bilinear_filtering 
+https://fabiensanglard.net/shadowmappingPCF/ "percentage closer filtering") with [bilinear filtering](https://en.wikipedia.org/wiki/Bilinear_filtering 
 "bilinear filtering"). Finally we set the size of the renderer to the same size of the window where we will display the scene.
 
 ```javascript
@@ -354,7 +354,7 @@ function loadFloor(textureLoader, completionFunction) {
 }
 ```
 
-We are ready to render our scene. We just need to create the [rendering loop](http://users.iit.uni-miskolc.hu/~mileff/graphics/GraphicsChapter5.pdf 
+We are ready to render our scene. We just need to create the [rendering loop](https://users.iit.uni-miskolc.hu/~mileff/graphics/GraphicsChapter5.pdf 
 "rendering loop") with the following code: 
 
 ```javascript

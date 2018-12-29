@@ -134,7 +134,7 @@ type of the surface. Usually in these kind of engine/asstes pipeline the main pa
 What results can you achieve suing PBR? These are two example images: the first one is taken from my physically based 
 spectral path tracing engine [Spectral Clara Lux Tracer](https://github.com/chicio/Spectral-Clara-Lux-Tracer "Spectral Clara Lux Tracer") 
 and the second one is taken from PBRT, the physically based engine described in the 
-book ["Physically based rendering: from theory to implementation" by M. Pharr, W. Jakob, G. Humphreys](http://www.pbrt.org "Physically based rendering: from theory to implementation by M. Pharr, W. Jakob, G. Humphreys").
+book ["Physically based rendering: from theory to implementation" by M. Pharr, W. Jakob, G. Humphreys](https://www.pbrt.org "Physically based rendering: from theory to implementation by M. Pharr, W. Jakob, G. Humphreys").
 
 ![Pbr examples](/assets/images/posts/pbr-introduction-examples.jpg "Pbr examples")
 

@@ -16,8 +16,8 @@ authors: [fabrizio_duroni]
 
 ---
 
-In the last few months at [lastminute.com group](http://www.lastminutegroup.com/ "lastminute.com group") I worked on 
-the following project: rebuild the native mobile apps of the main brands [lastminute.com](https://www.lastminute.com/ 
+In the last few months at [lastminute.com group](https://lmgroup.lastminute.com/ "lastminute.com group") I worked on 
+the following project: rebuild the native mobile apps of the main brands [lastminute.com](https://lmgroup.lastminute.com/ 
 "Lastminute travel trips booking"), 
 [Volagratis](https://www.volagratis.com/ "Volagratis travel trips booking viaggi") and 
 [Rumbo](https://www.rumbo.es/ "Rumbo") with a new interface and new features. 
