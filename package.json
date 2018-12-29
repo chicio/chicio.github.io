@@ -4,12 +4,12 @@
   "description": "Fabrizio Duroni aka 'chicio' website",
   "main": "index.js",
   "scripts": {
-    "flow" : "scripts/flow.sh",
-    "prepare": "scripts/install.sh",
+    "flow" : "_scripts/flow.sh",
+    "prepare": "_scripts/install.sh",
     "build": "gulp",
-    "start": "scripts/start.sh",
-    "shell": "scripts/shell.sh",
-    "test": "scripts/test.sh"
+    "start": "_scripts/start.sh",
+    "shell": "_scripts/shell.sh",
+    "test": "_scripts/test.sh"
   },
   "repository": {
     "type": "git",

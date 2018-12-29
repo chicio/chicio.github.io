@@ -102,7 +102,7 @@ gulp.task('rev-blog', (done) => revision('blog', done))
 gulp.task('rev-css', (done) => revision('css', done))
 
 const serviceWorkerUrlFor = (section, done) => {
-  exec(`./scripts/generate-service-worker-urls.sh ${section}`, (err, stdout, stderr) => {
+  exec(`./_scripts/generate-service-worker-urls.sh ${section}`, (err, stdout, stderr) => {
     done()
   })
 }
