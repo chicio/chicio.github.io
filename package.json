@@ -1,10 +1,10 @@
 {
   "name": "fabrizio-duroni",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Fabrizio Duroni aka 'chicio' website",
   "main": "index.js",
   "scripts": {
-    "flow" : "_scripts/flow.sh",
+    "flow": "_scripts/flow.sh",
     "prepare": "_scripts/install.sh",
     "build": "gulp",
     "start": "_scripts/start.sh",
