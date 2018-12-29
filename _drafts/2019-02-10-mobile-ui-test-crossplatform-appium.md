@@ -11,7 +11,7 @@ seo:
 authors: [fabrizio_duroni]
 ---
 
-*In this post I will talk about how to use Appium to write cross platform end to end tests for you mobile apps..*
+*In this post I will talk about how to use Appium to write cross platform end to end tests for you mobile apps.*
 
 ---
 
