@@ -58,101 +58,33 @@ gulp.task('fonts', () => copyFiles('fonts'))
 
 gulp.task('models', () => copyFiles('models'))
 
+const criticalCss = (src, dest) => (
+  critical.generate({
+    base: '_site/',
+    src: `${src}.html`,
+    css: ['assets/styles/style.css'],
+    dimensions: [{
+      width: 320,
+      height: 480
+    }, {
+      width: 768,
+      height: 1024
+    }, {
+      width: 1280,
+      height: 960
+    }],
+    dest: `../_includes/${dest}.css`,
+    minify: true,
+    extract: false
+  })
+)
+
 gulp.task('css-critical', (done) => {
-  critical.generate({
-    base: '_site/',
-    src: 'index.html',
-    css: ['assets/styles/style.css'],
-    dimensions: [{
-      width: 320,
-      height: 480
-    }, {
-      width: 768,
-      height: 1024
-    }, {
-      width: 1280,
-      height: 960
-    }],
-    dest: '../_includes/critical.css',
-    minify: true,
-    extract: false
-  })
-
-  critical.generate({
-    base: '_site/',
-    src: 'blog/index.html',
-    css: ['assets/styles/style.css'],
-    dimensions: [{
-      width: 320,
-      height: 480
-    }, {
-      width: 768,
-      height: 1024
-    }, {
-      width: 1280,
-      height: 960
-    }],
-    dest: '../_includes/critical-blog.css',
-    minify: true,
-    extract: false
-  })
-
-  critical.generate({
-    base: '_site/',
-    src: 'blog/archive/index.html',
-    css: ['assets/styles/style.css'],
-    dimensions: [{
-      width: 320,
-      height: 480
-    }, {
-      width: 768,
-      height: 1024
-    }, {
-      width: 1280,
-      height: 960
-    }],
-    dest: '../_includes/critical-blog-post-archive.css',
-    minify: true,
-    extract: false
-  })
-
-  critical.generate({
-    base: '_site/',
-    src: 'blog/tags/index.html',
-    css: ['assets/styles/style.css'],
-    dimensions: [{
-      width: 320,
-      height: 480
-    }, {
-      width: 768,
-      height: 1024
-    }, {
-      width: 1280,
-      height: 960
-    }],
-    dest: '../_includes/critical-blog-tags.css',
-    minify: true,
-    extract: false
-  })
-
-  critical.generate({
-    base: '_site/',
-    src: '2017/05/10/about-me.html', // article used as template for critical css on all post pages.
-    css: ['assets/styles/style.css'],
-    dimensions: [{
-      width: 320,
-      height: 480
-    }, {
-      width: 768,
-      height: 1024
-    }, {
-      width: 1280,
-      height: 960
-    }],
-    dest: '../_includes/critical-blog-post.css',
-    minify: true,
-    extract: false
-  })
+  criticalCss('index', 'critical')
+  criticalCss('blog/index', 'critical-blog')
+  criticalCss('blog/archive/index', 'critical-blog-post-archive')
+  criticalCss('blog/tags/index', 'critical-blog-tags')
+  criticalCss('2017/05/10/about-me', 'critical-blog-post')
   done()
 })
 
@@ -204,7 +136,9 @@ const build = gulp.series(
   'service-worker-home-urls',
   'service-worker-blog-urls',
   'service-worker-css-urls',
-  'jekyll-build'
+  'jekyll-build', //First build for critical css
+  'css-critical', //Needs website already build in order to be executed
+  'jekyll-build' //Generate site with css critical
 )
 
 export default build;
