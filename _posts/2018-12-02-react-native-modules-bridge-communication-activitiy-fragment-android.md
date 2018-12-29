@@ -37,7 +37,7 @@ Below you can see the final result.
 The architecture we put in place is based on a **Event Bus** in which the Native Modules bridges notify the subscribed 
 Activities/Fragments of the actions to be executed. So each one of them is subscribed to specific events to which they
  are able to respond. 
- We choose [Otto](http://square.github.io/otto/) as event bus library (we don't want to reinvent the wheel :bomb:). 
+ We choose [Otto](https://square.github.io/otto/) as event bus library (we don't want to reinvent the wheel :bomb:). 
 Let's start from the `MainActivity`. In it there's only a button with an action to start the React Native modal activity
 
 ```java

@@ -17,8 +17,8 @@ authors: [fabrizio_duroni, tommaso_resti, francesco_bonfadelli]
 ---
 
 IDE, *Integrated Development Environment*, are the software developer toolboxes. When I started to work at 
-[lastminute.com group](http://www.lastminutegroup.com "lastminute.com group") my knowledge 
-of the Android platform was very limited. But... [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group") 
+[lastminute.com group](https://lmgroup.lastminute.com/ "lastminute.com group") my knowledge 
+of the Android platform was very limited. But... [lastminute.com group](https://lmgroup.lastminute.com/ "lastminute.com group") 
 is an [agile software development](https://en.wikipedia.org/wiki/Agile_software_development "agile software development") company 
 and one of the technique we use during our development workflow is [pair programming](https://en.wikipedia.org/wiki/Pair_programming "pair programming"): two developers work at the same feature on the same workstation. 
 As reported on Wikipedia, one of the the main advantages of pair programming is knowledge sharing:
@@ -67,7 +67,7 @@ version is 9.2.
 Really slow, isn't it?!?? :fearful:
 
 ### Android Studio
-Before [lastminute.com group](http://www.lastminutegroup.com "lastminute.com group"), I had used Android Studio just 
+Before [lastminute.com group](https://lmgroup.lastminute.com/ "lastminute.com group"), I had used Android Studio just 
 a few times for some very simple Android apps. Then I started to work with [Francesco](https://www.linkedin.com/in/fbonfadelli/ "Francesco Bonfadelli") 
 and he introduced me to the power of JetBrains IDEs. This IDE gives you the ability to navigate quickly in you source
  code, create and modify classes, and allows you to do a lot of other refactoring operations without leaving the 
