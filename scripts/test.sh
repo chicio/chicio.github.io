@@ -1,10 +1,7 @@
 #!/usr/bin/env sh
 
-# build site scrips/css/assets 
+# build site
 npm run build
-
-# Generate website
-npm run generate
 
 # Unit test website
 htmlproofer --check-html \

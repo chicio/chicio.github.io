@@ -7,11 +7,11 @@ npm install --global flow-typed@2.5.1
 # Install html proofer for unit tests
 gem install html-proofer
 
-# Init pages-gem submodule
-git submodule update --init
-
 # Install/Update core utils to use docker startup github-pages function
 brew install coreutils
+
+# Init pages-gem submodule
+git submodule update --init
 
 # Clean old docker images
 docker images -a | grep "gh-pages" | awk '{print $3}' | xargs docker rmi

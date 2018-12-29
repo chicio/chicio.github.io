@@ -187,6 +187,8 @@ gulp.task('service-worker-css-urls', (done) => {
   serviceWorkerUrlFor('css', done)
 });
 
+gulp.task('jekyll-build', (done) => exec(`jekyll build`, (err, stdout, stderr) => done()))
+
 const build =  gulp.series(
   'css',
   'flow',
@@ -201,7 +203,8 @@ const build =  gulp.series(
   'rev-css',
   'service-worker-home-urls',
   'service-worker-blog-urls',
-  'service-worker-css-urls'
+  'service-worker-css-urls',
+  'jekyll-build'
 )
 
 export default build;
