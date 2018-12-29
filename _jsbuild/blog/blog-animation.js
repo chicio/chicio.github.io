@@ -1,14 +1,19 @@
 /*  */
-import { TimelineMax } from 'gsap'
+import { TweenLite } from 'gsap'
 import { enableScroll } from '../common/scroll-manager'
+import { addCssClass } from '../common/css-class'
 
 const blogAnimation = () => {
-  const showBlogTimeline = new TimelineMax({ delay: 0.2 })
-  showBlogTimeline.to('#loader', 0.2, { opacity: 0 })
-  showBlogTimeline.to('#loading-screen', 0.4, {
-    xPercent: -100,
-    onComplete: enableScroll
-  }, '+=0.4')
+  TweenLite.to('#loading-screen', 0.3, {
+    opacity: 0,
+    onComplete: onCompleteAnimation,
+    delay: 0.5
+  })
+}
+
+const onCompleteAnimation = () => {
+  addCssClass(document.getElementById('loading-screen'), 'd-none')
+  enableScroll()
 }
 
 export { blogAnimation }
