@@ -24,7 +24,10 @@
     "computer-graphics",
     "react-native",
     "ios",
-    "android"
+    "android",
+    "mobile-apps",
+    "native-apps",
+    "native"
   ],
   "author": "Fabrizion Duroni",
   "license": "MIT",
