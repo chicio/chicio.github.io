@@ -1,6 +1,13 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [1.1.1](https://github.com/chicio/chicio.github.io/releases/tag/1.1.1)
+Release date: 2019-01-03.
+
+#### Fixed
+- Download of cv now works on every browser
+
+
 ## [1.1.0](https://github.com/chicio/chicio.github.io/releases/tag/1.1.0)
 Release date: 2019-01-02.
 
