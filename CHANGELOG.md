@@ -8,6 +8,7 @@ Release date: 2019-01-02.
 - Versioning using npm version
 - Added community templates (code of conduct, pull requests, issues)
 - Added instagram profile url
+- Bumb dependencies versions
 
 
 ## [1.0.0](https://github.com/chicio/chicio.github.io/releases/tag/1.0.0)
