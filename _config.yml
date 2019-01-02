@@ -61,6 +61,9 @@ exclude:
   - CNAME
   - pages-gem
   - chicio.github.io.code-workspace
+  - CODE_OF_CONDUCT.md
+  - CONTRIBUTING.md
+  - CHANGELOG.md
 # limit_posts: 5
 
 # Menu
