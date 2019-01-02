@@ -30,7 +30,9 @@ In this post I will describe how you can create a Swift library package for the 
  macOS and Linux for an existing project. Obviously, I will show you the entire process using my [ID3TagEditor](https://github.com/chicio/ID3TagEditor) as example.  
  First of all, if you are starting with a new library project, you will use the following SPM `init` command:
 
-`swift package init --type library` 
+```shell
+swift package init --type library
+```
  
  This command will create all the files and folders you need to develop your library. But in my case, I was working 
  on an existing project. This is why I created all the needed files manually and I will describe them in details 
