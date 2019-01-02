@@ -4,20 +4,21 @@
 <a href="{{ site.data.contacts.links.linkedin }}" target="_blank">
 	<i class="{{ include.icon-class }} fab fa-linkedin" aria-hidden="true"></i>
 </a>
-<a href="{{ site.data.contacts.links.twitter }}" target="_blank">
-	<i class="{{ include.icon-class }} fab fa-twitter" aria-hidden="true"></i>
-</a>
-{% if include.break %}
-<br class="break"/>
-{% endif %}
-<a href="{{ site.data.contacts.links.facebook }}" target="_blank">
-	<i class="{{ include.icon-class }} fab fa-facebook" aria-hidden="true"></i>
+<a href="mailto:{{ site.data.contacts.email }}">
+	<i class="{{ include.icon-class }} fas fa-envelope" aria-hidden="true"></i>
 </a>
 <a href="{{ site.data.contacts.links.medium }}" target="_blank">
 	<i class="{{ include.icon-class }} fab fa-medium" aria-hidden="true"></i>
 </a>
-<a href="mailto:{{ site.data.contacts.email }}">
-	<i class="{{ include.icon-class }} fas fa-envelope" aria-hidden="true"></i>
+<br/>
+<a href="{{ site.data.contacts.links.twitter }}" target="_blank">
+	<i class="{{ include.icon-class }} fab fa-twitter" aria-hidden="true"></i>
+</a>
+<a href="{{ site.data.contacts.links.facebook }}" target="_blank">
+	<i class="{{ include.icon-class }} fab fa-facebook" aria-hidden="true"></i>
+</a>
+<a href="{{ site.data.contacts.links.instagram }}" target="_blank">
+	<i class="{{ include.icon-class }} fab fa-instagram" aria-hidden="true"></i>
 </a>
 <a href="tel:{{ site.data.contacts.phone }}">
 	<i class="phone-number {{ include.icon-class }} fas fa-mobile-alt" aria-hidden="true"></i>
