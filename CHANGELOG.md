@@ -6,6 +6,7 @@ Release date: 2019-01-02.
 
 #### Added
 - Versioning using npm version
+- Added community templates (code of conduct, pull requests, issues)
 
 
 ## [1.0.0](https://github.com/chicio/chicio.github.io/releases/tag/1.0.0)
