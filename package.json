@@ -10,8 +10,7 @@
     "start": "_scripts/start.sh",
     "shell": "_scripts/shell.sh",
     "test": "_scripts/test.sh",
-    "preversion": "npm run test",
-    "version": "echo npm view version && git add ."
+    "version": "echo $npm_package_version && git add ."
   },
   "repository": {
     "type": "git",
