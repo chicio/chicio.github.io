@@ -24,7 +24,7 @@ A few times ago I published [ID3TagEditor](https://github.com/chicio/ID3TagEdito
 
 The library had a simple `Package.swift`, but honestly I never tested it with the Swift Package Manager (SPM)
  on Linux nor on macOS :sweat_smile: (this was the only feature that I didn't test :sweat_smile:).
-Soooo I though: "It's time to add full support for the Swift Package Manager to my ID3TagEditor library and port it 
+Soooo I though: "It's time to add full support for the Swift Package Manager to ID3TagEditor and port it 
 also on Linux!!!!" :sparkling_heart:
 In this post I will describe how you can create a Swift library package for the Swift Package Manager compatible with
  macOS and Linux for an existing project. Obviously, I will show you the entire process using my [ID3TagEditor](https://github.com/chicio/ID3TagEditor) as example.
