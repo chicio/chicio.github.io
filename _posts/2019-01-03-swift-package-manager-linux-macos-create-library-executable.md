@@ -2,7 +2,7 @@
 layout: post
 title: "Create a Swift library compatible with the Swift Package Manager for macOS and Linux"
 description: "In this post I will talk about how to create a Swift library with the Swift Package Manager for macOS and Linux."
-date: 2019-01-04
+date: 2019-01-03
 image: /assets/images/posts/spm-swift.jpg
 tags: [swift, objective-c, ios, apple, swift package manager]
 comments: true
