@@ -11,7 +11,7 @@ seo:
 authors: [fabrizio_duroni]
 ---
 
-*In this post I will talk about how to create a Swift library compatible with macOS and Linux*
+*In this post I will talk about how to create a Swift library compatible with macOS and Linux.*
 
 ---
 
