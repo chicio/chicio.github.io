@@ -64,6 +64,7 @@ exclude:
   - CODE_OF_CONDUCT.md
   - CONTRIBUTING.md
   - CHANGELOG.md
+  - PULL_REQUEST_TEMPLATE.md
 # limit_posts: 5
 
 # Menu
