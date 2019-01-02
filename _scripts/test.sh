@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-# build site
+# Build site
 npm run build
 
 # Unit test website

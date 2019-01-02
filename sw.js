@@ -2,7 +2,7 @@
 ---
 importScripts('/cache-polyfill.js');
 
-const siteCacheName = 'chicioCodingCache';
+const siteCacheName = 'chicioCodingCache{% include version.txt %}';
 const dependenciesUrls = [
   "/favicon.ico",
   {% include service-worker-home-urls.js %}
