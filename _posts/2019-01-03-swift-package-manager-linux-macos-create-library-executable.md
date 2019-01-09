@@ -16,7 +16,7 @@ authors: [fabrizio_duroni]
 ---
 
 A few times ago I published [ID3TagEditor](https://github.com/chicio/ID3TagEditor), a Swift library to read and modify
- the ID3 tag of mp3 files (I described it ). This library was compatible with iOS, Apple TV, watchOS and macOS. Then 
+ the ID3 tag of mp3 files (I described it in [this previous post](https://www.fabrizioduroni.it/2018/05/08/id3tageditor-swift-read-write-id3-tag-mp3.html "id3 tag editor")). This library was compatible with iOS, Apple TV, watchOS and macOS. Then 
  one day a user of my library **opened a new issue on the library github repo** with title "Build Error" and a description of a 
  **build error on Linux**.
  
