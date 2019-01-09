@@ -1,6 +1,13 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [1.1.2](https://github.com/chicio/chicio.github.io/releases/tag/1.1.2)
+Release date: 2019-01-09.
+
+#### Fixed
+- Service worker now delete all old caches.
+
+
 ## [1.1.1](https://github.com/chicio/chicio.github.io/releases/tag/1.1.1)
 Release date: 2019-01-03.
 
