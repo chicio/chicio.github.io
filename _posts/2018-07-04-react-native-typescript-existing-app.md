@@ -5,7 +5,7 @@ description: "In this post I will show you how to setup React Native + Typescrip
 how powerful they are when used together."
 date: 2018-07-04
 image: /assets/images/posts/react-native-typescript.jpg
-tags: [react native, swift, ios, apple, android, java, mobile application development, javascript]
+tags: [react native, swift, ios, apple, android, java, mobile application development, javascript, typescript]
 comments: true
 seo:
  - type: "BlogPosting"
