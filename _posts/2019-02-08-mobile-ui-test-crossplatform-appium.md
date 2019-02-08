@@ -22,7 +22,7 @@ In the last few months the mobile team "Team Cook" at [lastminute.com group](htt
 To put in place the e2e infrastructure we chose:
 
 - Jenkins as our CI platform. We were already using it for our build jobs and for the submssions on the stores or to [our internal beta programs](/2018/07/05/distribution-enterprise-app-ios-beta.html).
-- [Appium](http://appium.io/ "appium website") as end to end testing platform. We chose it because it let us test our apps for both iOS and Android with a single tests codebase. At the moment of this writing we used the Appium version 1.9.0. In particular we chose to use the Appium implementation based on:
+- [Appium](https://appium.io/ "appium website") as end to end testing platform. We chose it because it let us test our apps for both iOS and Android with a single tests codebase. At the moment of this writing we used the Appium version 1.9.0. In particular we chose to use the Appium implementation based on:
   - JavaScript, to be able to write our tests with a language with similar features to [TypeScript, the language we are using with React Native for our apps](/2018/07/04/react-native-typescript-existing-app.html "TypeScript React Native")
   - [WebdriverIO](https://webdriver.io/ "webdriverio"), JavaScript implementation of the Selenium 2.0 WebDriver API
   - [mocha](https://github.com/mochajs/mocha "mocha test framework"), a JavaScript testing framework
