@@ -31,5 +31,5 @@ What does basically means? PWAs are web application that combine the best of the
 * they can use hardware capabilities and are they able to receive push notifications
 
 Soooo I started to think: "Whoah, I can modify my blog/website to become a PWA, so that I can explore this new technology and I can also have something that 'feels like an app' for my blog!!!".  
-So how is it possible to transform a site build with Jekyll and published on Github Pages in a basic PWAs. In this post I will show you how I did it (and this article is part of the PWA described here).
-....
+So how is it possible to transform a site build with Jekyll and published on Github Pages in a basic PWAs. In this post I will show you how I did it (and this article is part of the PWA described here).  
+first 
