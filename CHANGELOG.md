@@ -1,6 +1,14 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [1.1.4](https://github.com/chicio/chicio.github.io/releases/tag/1.1.4)
+Release date: 2019-02-15.
+
+#### Added
+- new pages-gem release
+- update cache to support new seo stuff
+
+
 ## [1.1.2](https://github.com/chicio/chicio.github.io/releases/tag/1.1.2)
 Release date: 2019-01-09.
 

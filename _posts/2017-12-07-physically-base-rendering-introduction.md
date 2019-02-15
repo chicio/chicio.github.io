@@ -24,8 +24,8 @@ models to treat light as it behaves in the real world.
 Before giving an answer and try to give a detail definition of PBR we need to understand well some important 
 concepts.
   
-  
 #### **What is light?**
+
 Light is a form of electromagnetic radiation. Specifically, it is a small subset of the entire electromagnetic
 radiation spectrum with wavelength between 400 nm and 700 nm. The set of studies and techniques that try to describe and 
 measure how the electromagnetic radiation of light is propagated, reflected and transmitted is called radiometry. What 
@@ -60,8 +60,8 @@ the two types of radiance:
 
 $$L_{i}(p,\omega) \neq L_{o}(p,\omega)$$
   
-  
 #### **The rendering equation**
+
 The rendering equation was introduced by James Kajiya in 1986 [2]. Sometimes it is also called the LTE, Light Transport 
 Equation. It is the equation that describes the equilibrium distribution of radiance in a scene (Pharr et al., 2010 [3]). It 
 gives the total reflected radiance at a point as a sum of emitted and reflected light from a surface. This is the 
@@ -70,6 +70,7 @@ formula of the rendering equation:
 $$L_{o}(p,\omega) = L_{e}(p,\omega) + \int_{\Omega}f_{r}(p,\omega_{i},\omega_{0})L_{i}(p,\omega)\cos\theta_{i}d\omega_{i}$$
 
 In this formula the meaning of each symbols are:
+
 * $p$ is a point on a surface in the scene
 * $\omega_{o}$ is the outgoing light direction
 * $\omega_{i}$ is the incident light direction
@@ -82,8 +83,8 @@ In this formula the meaning of each symbols are:
 * $\cos\theta_{i}$ is given by the dot product between 𝜔: and the normal at point $p$, and is the attenuation factor of the 
 irradiance due to incident angle
   
-  
 #### **BRDF**
+
 One of the main component of the rendering equation previously described is the Bidirectional Reflectance Distribution 
 Function (BRDF). This function describes how light is reflected from a surface. It represents a constant of proportionality 
 between the differential exitant radiance and the differential irradiance at a point $p$ (Pharr et al., 2010 [1]). The 
@@ -93,6 +94,7 @@ The formula for this function in terms of radiometric quantities is the followin
 $$f_{r}(p,\omega_{i},\omega_{o}) = \frac{dL_{o}(p,\omega_{o})}{dE(p,\omega_{I})}$$
 
 The BRDF has two important properties:
+
 * it is a symmetric function, so for all pair of directions $$f_{r}(p,\omega_{i},\omega_{o}) = f_{r}(p,\omega_{o},\omega_{i})$$
 * it satisfies the **energy conservation principle**: *the light reflected is less than or equal to the incident light*.
 
@@ -108,8 +110,8 @@ The **[Fresnel equations](https://en.wikipedia.org/wiki/Fresnel_equations "Fresn
 behaviour of light between different surfaces. They also help us to get the balance between different kind of reflections 
 changes based on the angle at which you view the surface.
   
-  
 #### **Physically Based Rendering**
+
 So let's go back to our original question: What is PBR?
 PBR is a model that enclose a set of techniques that try to simulate how the light behaves in the real world.
 Taking an extraction from the Wikipedia definition:
@@ -142,7 +144,6 @@ How coooool are these images???? :sunglasses:
 We are at the end of the introduction. I hope now it is at least clear what is PBR :relaxed:!! See you for other 
 stuff about computer graphics and PBR :blush:.
   
-<br/>  
 *[1] M. Pharr and G. Humphreys, “Color and radiometry,” in Physically based rendering: from theory to implementation, 2nd Edition ed., Burlington, Massachusetts: Morgan Kaufmann, 2010, ch. 5, pp. 261-297.  
 [2] J. T. Kajiya, “The Rendering Equation,” in SIGGRAPH '86, Dallas, 1986, pp. 143-150.  
 [3] M. Pharr and G. Humphreys, “Light transport I: surface reflection,” in Physically based rendering: from theory to implementation, 2nd ed., Burlington, Morgan Kaufmann, 2010, ch. 15, pp. 760-770.*
