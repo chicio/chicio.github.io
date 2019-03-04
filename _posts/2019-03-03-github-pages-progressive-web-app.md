@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Transform your Github Pages blog into a Progressive Web App"
+title: "Progressive Web App: an app-like experience for your website users"
 description: "In this post I will talk about how I transformed my blog on Github Pages and Jekyll into a PWA."
-date: 2019-03-15
+date: 2019-03-03
 image: /assets/images/posts/pwa-logo.jpg
-tags: [pwa, web development, javascript],
+tags: [pwa, web development, javascript]
 comments: true
 seo:
  - type: "BlogPosting"
@@ -148,7 +148,7 @@ Anyway, there are some particular features of a service worker you must be aware
 
 So how do I created the service worker for my blog? I started by adding a `sw.js` file to the root of project. This is the standard position for a service worker source code. Then I added the registration script before the end of the body of my pages. Below you can find the registration script.
 
-```javascript
+```html
 <script>
   if('serviceWorker' in navigator) {
     navigator.serviceWorker
@@ -168,7 +168,7 @@ Then I started to write my service worker. To do that, first I studied the lifec
 
 So in the install event I followed the standard approach:
 
-* I opened the cache for my blog pwa with name `chicioCodingCache{% include version.txt %}`, where version.txt is a file that is automatically filled with the latest tag number on each `npm version` execution.
+* I opened the cache for my blog pwa with name `chicioCodingCache<include version.txt>`, where version.txt is a file that is automatically filled with the latest tag number on each `npm version` execution.
 * I added to the cache the files needed to make my pwa works (css and js of the site, and in the future also a HTML scaffolding structure :stuck_out_tongue_winking_eye:).
 
 In the activate event I added a strategy to manage the old caches: I just delete them and I kept only the new one created during the install phase.
