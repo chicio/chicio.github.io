@@ -168,7 +168,7 @@ Then I started to write my service worker. To do that, first I studied the lifec
 
 So in the install event I followed the standard approach:
 
-* I opened the cache for my blog pwa with name `chicioCodingCache<include version.txt>`, where version.txt is a file that is automatically filled with the latest tag number on each `npm version` execution.
+* I opened the cache for my blog pwa with name {% raw %}`chicioCodingCache{% include version.txt %}`{% endraw %}, where version.txt is a file that is automatically filled with the latest tag number on each `npm version` execution.
 * I added to the cache the files needed to make my pwa works (css and js of the site, and in the future also a HTML scaffolding structure :stuck_out_tongue_winking_eye:).
 
 In the activate event I added a strategy to manage the old caches: I just delete them and I kept only the new one created during the install phase.
@@ -186,12 +186,12 @@ Below you can find the complete implementation of the service worker.
 ---
 importScripts('/cache-polyfill.js');
 
-const siteCacheName = 'chicioCodingCache{% include version.txt %}';
+const siteCacheName = {% raw %}'chicioCodingCache{% include version.txt %}';{% endraw %}
 const dependenciesUrls = [
   "/favicon.ico",
-  {% include service-worker-home-urls.js %}
-  {% include service-worker-blog-urls.js %}
-  {% include service-worker-css-urls.js %}
+  {% raw %}{% include service-worker-home-urls.js %}{% endraw %}
+  {% raw %}{% include service-worker-blog-urls.js %}{% endraw %}
+  {% raw %}{% include service-worker-css-urls.js %}{% endraw %}
 ]
 
 self.addEventListener('install', (event) => {
