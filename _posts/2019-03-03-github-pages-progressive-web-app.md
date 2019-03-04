@@ -16,7 +16,7 @@ authors: [fabrizio_duroni]
 ---
 
 In the last few years the gap in terms of features available between web apps and mobile native apps has decreased more and more. Indeed a new standard is emergin that try to basically close this gap: Progressive Web App, PWA.
-What is a Progressive Web App :heart_eyes:? Let's see how Google defines it on its [developer site](developers.google.com "google developer pwa"):
+What is a Progressive Web App :heart_eyes:? Let's see how Google defines it on its [developer site](https://developers.google.com/ "google developer pwa"):
 
 >Progressive Web Apps are user experiences that have the reach of the web, and are:
 >
