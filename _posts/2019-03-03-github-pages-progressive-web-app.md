@@ -15,7 +15,7 @@ authors: [fabrizio_duroni]
 
 ---
 
-In the last few years the gap in terms of features available between web apps and mobile native apps has decreased more and more. Indeed a new standard is emergin that try to basically close this gap: Progressive Web App, PWA.
+In the last few years the gap in terms of features available between web apps and mobile native apps has decreased more and more. Indeed a new standard is emerging that tries to basically close this gap: Progressive Web App, PWA.
 What is a Progressive Web App :heart_eyes:? Let's see how Google defines it on its [developer site](https://developers.google.com/ "google developer pwa"):
 
 >Progressive Web Apps are user experiences that have the reach of the web, and are:
@@ -25,13 +25,13 @@ What is a Progressive Web App :heart_eyes:? Let's see how Google defines it on i
 >* Engaging - Feel like a natural app on the device, with an immersive user experience.
 >* This new level of quality allows Progressive Web Apps to earn a place on the user's home screen.
 
-What does basically means? PWAs are web application that combine the best of the web and the best of native mobile apps. They can reach a vast user base (as all web apps) but they also have native alike features like:
+What does it basically means? PWAs are web applications that combine the best of the web and the best of native mobile apps. They can reach a vast user base (as all web apps) but they also have native alike features like:
 
 * they can work offline
 * they can use hardware capabilities and are they able to receive push notifications
 
 Soooo I started to think: "Whoah, I can modify my blog/website to become a PWA, so that I can explore this new technology and I can also have something that 'feels like an app' for my blog!!!".  
-So how is it possible to transform a site build with Jekyll and published on Github Pages in a basic PWA? In this post I will show you how I did it (and this article is part of the PWA described here).  
+So how is it possible to transform a site built with Jekyll and published on Github Pages in a basic PWA? In this post I will show you how I did it (and this article is part of the PWA described here).  
 To create a basic PWA I need 3 things:
 
 * publish the site on HTTPS
@@ -58,7 +58,7 @@ A typical manifest file includes the following informations:
 * `theme_color`, that sets the color of the tool bar, and may be reflected in the app's preview in task switchers.
 
 There are also other options that could be set, like for example the `orientation`, if you want to enforce a specific orientation of your app. You can find a complete description of the fields above in the [Google Web Fundamentals - Web App Manifest](https://developers.google.com/web/fundamentals/web-app-manifest/ "Web app manifest") article.
-So I created all the assets needed for the my web app manifest (a new set of icons of different dimensions) and I put it in the root of my website. Below you can find the entire JSON.
+So I created all the assets needed for my web app manifest (a new set of icons of different dimensions) and I put them in the root of my website. Below you can find the entire JSON.
 
 ```json
 {
@@ -94,7 +94,7 @@ So I created all the assets needed for the my web app manifest (a new set of ico
 }
 ```
 
-One important thing to note is that not all the platforms adhere to the web app manifest standard. In fact Apple and Microsfot still uses some custom meta tags to define the icon of the Progressive Web App. So besides the web app manifest, to make my PWA works the same way on all the platforms I had to add the following meta tag in the head of my pages.
+One important thing to note is that not all the platforms adhere to the web app manifest standard. In fact Apple and Microsoft still use some custom meta tags to define the icon of the Progressive Web App. So besides the web app manifest, to make my PWA work the same way on all the platforms I had to add the following meta tag in the head of my pages.
 
 ```html
 <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
@@ -132,7 +132,7 @@ As you can see there's a list of meta tags named `apple-touch-icon` specific for
 
 A service worker is the heart of a Progressive Web App. Let's see the definition of what is a service worker taken from the [Google Web Fundamentals - Service worker](https://developers.google.com/web/fundamentals/primers/service-workers/ "Service Worker").
 
->A service worker is a script that your browser runs in the background, separate from a web page, opening the door to features that don't need a web page or user interaction. Today, they already include features like push notifications and background sync. In the future, service workers might support other things like periodic sync or geofencing. ... is the ability to intercept and handle network requests, including programmatically managing a cache of responses.
+>A service worker is a script that your browser runs in the background, separate from a web page, opening the door to features that don't need a web page or user interaction. Today, they already include features like push notifications and background sync. In the future, service workers might support other things like periodic sync or geofencing. ... is the ability to intercept and handle all the network requests, including programmatically managing a cache of responses.
 
 Whoooaaa!!! :open_mouth: Basically service workers let your web app inherit some features that are tipically found only in a native mobile app:
 
