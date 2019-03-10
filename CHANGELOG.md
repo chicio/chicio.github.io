@@ -7,7 +7,7 @@ Release date: 2019-03-10.
 #### Added
 - optimized css deferred load for all css
 - optimized images for lighthouse tests
-- new build workflow with only gems (n0 more docker)
+- new build workflow with only gems (no more docker)
 
 #### Fixed
 - install process now uses pages gem with bundler installation for gulp build
