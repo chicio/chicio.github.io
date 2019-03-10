@@ -5,8 +5,10 @@ All changes to Chicio coding will be documented in this file.
 Release date: 2019-03-10.
 
 #### Fixed
+
 - install for setup now in npm setup new command
 - fixed link target blank
+- fixed cookie consent SEO not complaint link
 
 ## [1.2.1](https://github.com/chicio/chicio.github.io/releases/tag/1.2.1)
 

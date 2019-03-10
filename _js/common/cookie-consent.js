@@ -16,7 +16,8 @@ const cookieConsent = (): void => {
       'content': {
         'dismiss': 'Ok',
         'href': window.location.protocol + '//' + window.location.host + '/cookie-policy.html',
-        'message': 'This website uses cookies to ensure you get the best experience.'
+        'message': 'This website uses cookies to ensure you get the best experience.',
+        'link': 'Learn more about cookie policy'
       }
     })
   })
