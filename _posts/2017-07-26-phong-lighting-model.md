@@ -101,16 +101,14 @@ Now we are ready to write the complete Phong reflection lighting equation:
 
 $$I_{\text{tot}}=k_{\text{e}}I_{\text{LE}}+k_{\text{a}}I_{\text{LA}}+\sum _{p\;\in \;{\text{lights}}}(k_{\text{d}}I_{p,{\text{LD}}} ({\hat {L}}_{p}\cdot {\hat {N}})+k_{\text{s}}I_{p,{\text{LS}}}({\hat {R}}_{p}\cdot {\hat {V}})^{n})$$
 
-Just a final note: we distinguished different type of light intensity based on the component. In fact most of the time this model is 
-implemented using a single general light intensity triplet for all the component for each light.
-How can you implement it in a OpenGL ES shader? The following code sample is a simple implementation of this model using RGB colors. 
-It is a fragment shader that could be used to implement per fragment lighting. This basically means that all lighting calculation is 
-done in the fragment shader on each fragment (maybe this is material for a new post :stuck_out_tongue_closed_eyes:). It was written 
+Just a final note: we distinguished different type of light intensity based on the component. In fact most of the time this model is implemented using a single general light intensity triplet for all the component for each light.
+How can you implement it in a OpenGL ES shader? The following code sample is a simple implementation of this model using RGB colors.
+It is a fragment shader that could be used to implement per fragment lighting. This basically means that all lighting calculation is done in the fragment shader on each fragment (maybe this is material for a new post :stuck_out_tongue_closed_eyes:). It was written 
 using OpenGL ES 3.0 and GLSL 3.0. It uses a single light for all the component calculation.
 
 <script src="https://gist.github.com/chicio/d983fff6ff304bd55bebd6ff05a2f9dd.js"></script>
 
-The following image is an example of the happy buddha Stanford mesh rendered using my [Spectral BRDF explorer](https://github.com/chicio/Spectral-BRDF-Explorer "Spectral BRDF explorer"){:target="_blank"} iOS renderer. The lighting is (obviously) calculated using the Phong reflection model. The surface simulated is bronze (you can find some of the constant we discussed before [here](http://devernay.free.fr/cours/opengl/materials.html "phong lighting constants")).
-Nice :smirk:!!!! 
+The following image is an example of the happy buddha Stanford mesh rendered using my [Spectral BRDF explorer](https://github.com/chicio/Spectral-BRDF-Explorer "Spectral BRDF explorer")iOS renderer. The lighting is (obviously) calculated using the Phong reflection model. The surface simulated is bronze (you can find some of the constant we discussed before [here](http://devernay.free.fr/cours/opengl/materials.html "phong lighting constants")).
+Nice :smirk:!!!!
 
 ![phong example - spectral brdf explorer](/assets/images/posts/phong-example.jpg "phong example - spectral brdf explorer")
