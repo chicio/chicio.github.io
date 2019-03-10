@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "flow": "_scripts/flow.sh",
-    "prepare": "_scripts/install.sh",
+    "setup": "_scripts/setup.sh",
     "build": "gulp",
     "start": "_scripts/start.sh",
     "test": "_scripts/test.sh",

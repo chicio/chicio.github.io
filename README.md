@@ -15,9 +15,10 @@ To run my website locally you need to install the following software:
 - Node
 - rvm (see [rvm.io](https://rvm.io/))
 
-After you finished the installation you can do the setup of the local environment by launching the following command from the root folder of this repo:
+After you finished the installation you can do the setup of the local environment by launching the following commands from the root folder of this repo:
 
 ```bash
+npm run setup
 npm install
 ```  
 
