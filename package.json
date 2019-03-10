@@ -60,7 +60,7 @@
     "vinyl-source-stream": "2.0.0"
   },
   "dependencies": {
-    "bootstrap": "4.2.1",
+    "bootstrap": "4.3.1",
     "detector-webgl": "2.0.0",
     "gsap": "2.0.2",
     "orbit-controls-es6": "2.0.0",

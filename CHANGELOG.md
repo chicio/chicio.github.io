@@ -8,6 +8,7 @@ Release date: 2019-03-10.
 - optimized css deferred load for all css
 - optimized images for lighthouse tests
 - new build workflow with only gems (no more docker)
+- new bootstrap 4.3.1
 
 #### Fixed
 - install process now uses pages gem with bundler installation for gulp build
