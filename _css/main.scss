@@ -9,7 +9,7 @@ $primary-color-light: #C5CAE9;
 $primary-color-text: #FFFFFF;
 $accent-color: #448AFF;
 $primary-text-color: #212121;
-$secondary-text-color: #757575;
+$secondary-text-color: #575757;
 $divider-color: #BDBDBD;
 $general-background: #FAFAFA;
 $masthead-height: 55px;
@@ -131,7 +131,7 @@ canvas {
     }
 
     .profile-job {
-      color: $primary-color-light;
+      color: $primary-color-text;
     }
 
     .profile-icon {

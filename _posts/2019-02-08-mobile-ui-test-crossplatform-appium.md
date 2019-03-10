@@ -32,14 +32,14 @@ To put in place the e2e infrastructure we chose:
   - [Appium desktop App](https://github.com/appium/appium-desktop)
 
 #### **Development**
-The first thing we did was installing all the siftware stack previously described on our CI machine. As a consequence of the fact that we want to run tests for both iOS and Android a macOS based CI machine is needed (because you need to install Xcode). Fortunately, our CI machine was already an Apple Computer so we didn't need to change anything.  
+The first thing we did was installing all the software stack previously described on our CI machine. As a consequence of the fact that we want to run tests for both iOS and Android a macOS based CI machine is needed (because you need to install Xcode). Fortunately, our CI machine was already an Apple Computer so we didn't need to change anything.  
 After that we created a new javascript project, that follows the structure of the [WebdriverIO sample code contained in the Appium github repository](https://github.com/appium/appium/tree/master/sample-code/javascript-webdriverio "appium webdriverio sample"). This sample project is written using ES5 syntax, so we decided to upgrade it to use ES6 syntax and compile it using Babel. This is possible by launching mocha and specifing babel as the compiler. This is the final command to launch our tests:
 
 ```shell
 mocha --compilers js:babel-core/register --timeout 6000000 test
 ```
 
-This is the final `package.json` with all the dependecies and scripts phases. 
+This is the final `package.json` with all the dependencies and scripts phases.
 
 ```json
 {

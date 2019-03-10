@@ -10,6 +10,7 @@ Release date: 2019-03-10.
 - fixed link target blank
 - fixed cookie consent SEO not complaint link
 - fixed links that do not have a discernible name
+- fixed accessbility colors
 
 ## [1.2.1](https://github.com/chicio/chicio.github.io/releases/tag/1.2.1)
 
