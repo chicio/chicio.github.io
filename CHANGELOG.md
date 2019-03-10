@@ -9,6 +9,7 @@ Release date: 2019-03-10.
 - install for setup now in npm setup new command
 - fixed link target blank
 - fixed cookie consent SEO not complaint link
+- fixed links that do not have a discernible name
 
 ## [1.2.1](https://github.com/chicio/chicio.github.io/releases/tag/1.2.1)
 
