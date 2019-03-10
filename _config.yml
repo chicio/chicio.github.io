@@ -65,6 +65,7 @@ exclude:
   - CONTRIBUTING.md
   - CHANGELOG.md
   - PULL_REQUEST_TEMPLATE.md
+  - vendor
 # limit_posts: 5
 
 # Menu

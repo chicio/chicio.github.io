@@ -119,7 +119,7 @@ gulp.task('service-worker-css-urls', (done) => {
   serviceWorkerUrlFor('css', done)
 });
 
-gulp.task('jekyll-build', (done) => exec(`jekyll build`, (err, stdout, stderr) => done()))
+gulp.task('jekyll-build', (done) => exec(`bundle exec jekyll build`, (err, stdout, stderr) => done()))
 
 const build = gulp.series(
   'css',

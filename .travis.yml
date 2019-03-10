@@ -1,8 +1,6 @@
 language: node_js
 node_js:
   - "8"
-before_install:
-  - rvm install 2.4.1
 env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true  
@@ -11,6 +9,5 @@ addons:
     packages:
       - libcurl4-openssl-dev  
 before_script:
-  - gem install github-pages
   - npm install
 script: npm run test

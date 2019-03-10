@@ -8,7 +8,6 @@
     "prepare": "_scripts/install.sh",
     "build": "gulp",
     "start": "_scripts/start.sh",
-    "shell": "_scripts/shell.sh",
     "test": "_scripts/test.sh",
     "version": "_scripts/version.sh"
   },

@@ -1,6 +1,18 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [1.2.0](https://github.com/chicio/chicio.github.io/releases/tag/1.2.0)
+Release date: 2019-03-10.
+
+#### Added
+- optimized css deferred load for all css
+- optimized images for lighthouse tests
+- new build workflow with only gems (no more docker)
+
+#### Fixed
+- install process now uses pages gem with bundler installation for gulp build
+
+
 ## [1.1.6](https://github.com/chicio/chicio.github.io/releases/tag/1.1.6)
 Release date: 2019-03-03.
 

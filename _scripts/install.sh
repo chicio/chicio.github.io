@@ -4,19 +4,13 @@
 npm install --global gulp-cli@2.0.1
 npm install --global flow-typed@2.5.1
 
-# Install html proofer for unit tests
-gem install html-proofer
+# Install rvm
+gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+curl -sSL https://get.rvm.io | bash -s stable --ruby
+source ~/.rvm/scripts/rvm
+rvm install 2.4.1
+rvm use 2.4.1
 
-# Install/Update core utils to use docker startup github-pages function
-brew install coreutils
-
-# Init pages-gem submodule
-git submodule update --init
-
-# Clean old docker images
-docker images -a | grep "gh-pages" | awk '{print $3}' | xargs docker rmi
-docker images -a | grep "ruby" | awk '{print $3}' | xargs docker rmi
-
-# Create github pages docker image
-cd pages-gem
-make image
+# Install gem dependecies
+gem install bundler
+bundle install --path vendor/bundle
