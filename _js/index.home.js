@@ -1,11 +1,11 @@
 /* @flow */
 import 'intersection-observer'
+import { TweenLite } from 'gsap'
 import { cookieConsent } from './common/cookie-consent'
 import { loadFont } from './common/load-font'
 import { enableScroll } from './common/scroll-manager'
 import { tabs } from './home/tabs'
 import { homeHeaderAnimation } from './home/home-header-animation'
-import { whoIAmAnimation } from './home/whoIAmAnimation'
 import { removeCssClass } from './common/css-class'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,23 +14,18 @@ document.addEventListener('DOMContentLoaded', () => {
   homeHeaderAnimation()
   enableScroll()
   tabs()
-  whoIAmAnimation()
-  lazyLoadImages()
+  lazyLoadImages('.who-am-i-icon, .project-image, .timeline-image')
 })
 
-const lazyLoadImages = () => {
+const lazyLoadImages = (selector: string) => {
   const intersectionObserver = new IntersectionObserver(onIntersection, { rootMargin: '50px 0px', threshold: 0.01 })
-  document.querySelectorAll('.project-image').forEach(image => {
-    console.log(image)
-    intersectionObserver.observe(image)
-  })
+  document.querySelectorAll(selector).forEach(image => intersectionObserver.observe(image))
 }
 
 const onIntersection = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0) {
       observer.unobserve(entry.target)
-      console.log(entry)
       loadImage(entry.target)
     }
   })
@@ -41,6 +36,9 @@ const loadImage = (image) => {
   fetchImage(src).then(() => {
     image.src = src
     removeCssClass(image, 'lazy')
+    TweenLite.from(image, 0.3, {
+      opacity: 0
+    })
   })
 }
 
