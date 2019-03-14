@@ -6,7 +6,9 @@
 				{% if forloop.index < 4 or found %}
 					<a href="{{ post.url }}">
 						<div class="card col-lg-4">
-							<div class='img' style='background:url("{{ post.image }}") no-repeat 50% 50%; background-size: cover'></div>
+							<div>
+								<img class='img blog-image lazy' src="" data-src="{{post.image}}"/>
+							</div>
 							<h4>{{ post.title }}</h4>
 							{{ post.excerpt | remove: '<em>' | remove: '</em>' }}
 							<a href="{{ post.url }}" class="card-button">Read More</a>

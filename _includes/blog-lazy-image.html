@@ -1,0 +1,2 @@
+{% capture description %}{{ include.description | replace: ' ', '-' | downcase }}{% endcapture %}
+{% include lazy-image.html id=description alt=include.description src=include.src class="blog-image" %}
