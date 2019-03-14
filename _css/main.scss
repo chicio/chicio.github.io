@@ -1162,8 +1162,8 @@ footer {
 .recent-posts .card {
   background-color: #FFFFFF;
   padding: 0 0 80px 0;
-  margin: 10px;
   width: 100%;
+  height: 100%;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius:4px;
@@ -1177,11 +1177,15 @@ footer {
   transform: scale(1.025);
 }
 
+.recent-posts .card .img-container {
+  overflow: hidden;
+  height: 200px;
+}
+
 .recent-posts .card .img {
-  width: 100%;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  height: 200px;
+  width: 100%;
 }
 
 .recent-posts .card h4 {
@@ -1194,7 +1198,6 @@ footer {
 .recent-posts h3 {
   color: $accent-color;
   font-weight: 500;
-  padding-left: 10px;
 }
 
 .recent-posts .card p {

@@ -22,8 +22,7 @@ const loadImage = (image) => {
     image.src = src
     removeCssClass(image, 'lazy')
     TweenLite.from(image, 0.3, {
-      opacity: 0,
-      delay: 0.5
+      opacity: 0
     })
   })
 }

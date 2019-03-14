@@ -5,13 +5,15 @@
 			{% if post.url != page.url %}
 				{% if forloop.index < 4 or found %}
 					<a href="{{ post.url }}">
-						<div class="card col-lg-4">
-							<div>
-								<img class='img blog-image lazy' src="" data-src="{{post.image}}"/>
+						<div class="col-lg-4">
+							<div class="card">
+								<div class="img-container"> 
+									<img class='img blog-image lazy' src="" data-src="{{post.image}}"/>
+								</div>
+								<h4>{{ post.title }}</h4>
+								{{ post.excerpt | remove: '<em>' | remove: '</em>' }}
+								<a href="{{ post.url }}" class="card-button">Read More</a>
 							</div>
-							<h4>{{ post.title }}</h4>
-							{{ post.excerpt | remove: '<em>' | remove: '</em>' }}
-							<a href="{{ post.url }}" class="card-button">Read More</a>
 						</div>
 					</a>
 				{% endif %}
