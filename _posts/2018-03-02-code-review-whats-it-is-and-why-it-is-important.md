@@ -43,8 +43,7 @@ You may wonder now what is also a coding dojo. So again, here we are with
 > A Coding Dojo is a meeting where a bunch of coders get together to work on a programming challenge. They have fun 
 and they engage in order to improve their skills.
 
- 
-During the dojo that I attended with Angelo we tried to resolve the [Minesweeper problem](http://codingdojo.org/kata/Minesweeper/ "Minesweeper").   
+During the dojo that I attended with Angelo we tried to resolve the [Minesweeper problem](http://codingdojo.org/kata/Minesweeper/ "Minesweeper").
 Basically we had to write an automatic Minesweeper resolver (do you remember the Windows game? :heart_eyes:). At the 
 end of the dojo we didn't complete the task, so I decided to try to solve it in another way. I developed a 
 complete command line version of a Minesweeper resolver and let Angelo do the code review of my implementation. 
@@ -61,11 +60,11 @@ one that describe my implementation before the code review, and the second one
 that shows the final result after Angelo's code review. The following one describes my implementation of the 
 minesweeper.
   
-![fabrizio duroni minesweeper](/assets/images/posts/minesweeper-fabrizio.jpg "fabrizio duroni minesweeper")  
+{% include blog-lazy-image.html description="fabrizio duroni minesweeper" src="/assets/images/posts/minesweeper-fabrizio.jpg" %}
 
 This one describes Angelo's implementation.
 
-![angelo sciarra minesweeper](/assets/images/posts/minesweeper-angelo.jpg "angelo sciarra  minesweeper")  
+{% include blog-lazy-image.html description="angelo sciarra minesweeper" src="/assets/images/posts/minesweeper-angelo.jpg" %}
 
 So let's start to see which kind of observation I received from Angelo, that basically include most of the 
 observation you could receive during a code review.    
@@ -74,14 +73,14 @@ the project using JDK 1.5 instead of JDK 1.8 (as you may know, this is a more re
 common to receive suggestion about technology specific problems/setup/changes, especially if your code reviewer is 
 more experienced than you on that type of technology.  
 
-![technology version update](/assets/images/posts/01-technology-version-update.jpg "technology version update")
+{% include blog-lazy-image.html description="technology version update" src="/assets/images/posts/01-technology-version-update.jpg" %}
 
 In fact Angelo gave me another technology advice during his review. He suggested to change some pieces of code with 
 others that leverage the power of functional programming. This is really interesting because it is easy 
 imagine how much knowledge you can absord from the experience of your code reviewer.
-   
-![functional update](/assets/images/posts/03-functional-field.jpg "functional update")
-![functional update with new class](/assets/images/posts/04-new-fields-class.jpg "functional update with new class")
+
+{% include blog-lazy-image.html description="functional update" src="/assets/images/posts/03-functional-field.jpg" %}
+{% include blog-lazy-image.html description="functional update with new class" src="/assets/images/posts/04-new-fields-class.jpg" %}
 
 Another important aspect that is one of the main subject of the code review is software design. In fact Angelo 
 discovered a series of improvement and refactoring opportunities in my code: 
@@ -90,28 +89,22 @@ discovered a series of improvement and refactoring opportunities in my code:
 method. In this way the `Minesweeper` class becomes a stateless object, and the same istance could be used to 
 resolve/unmask multiple fields input.
 
-![stateless object](/assets/images/posts/02-minesweeper-fields-as-parameter.jpg "stateless object")
+{% include blog-lazy-image.html description="stateless object" src="/assets/images/posts/02-minesweeper-fields-as-parameter.jpg" %}
 
-* The objects that are the building block of a [chain of responsability](https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern "chain of responsability")   
-named `FieldRowParser` could become lighter and some of their responsibility could be assigned to some new 
-collaborators. Also the object that contains the parsing status could become more lighter.
+* The objects that are the building block of a [chain of responsability](https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern "chain of responsability") named `FieldRowParser` could become lighter and some of their responsibility could be assigned to some new collaborators. Also the object that contains the parsing status could become more lighter.
 
-![lightweight chain](/assets/images/posts/05-lightweight-chain.jpg "lightweight chain")
-![parsing status](/assets/images/posts/07-parsing-status-become-parsing-content-lightweight.jpg "parsing status")
+{% include blog-lazy-image.html description="lightweight chain" src="/assets/images/posts/05-lightweight-chain.jpg" %}
+{% include blog-lazy-image.html description="parsing status" src="/assets/images/posts/07-parsing-status-become-parsing-content-lightweight.jpg" %}
 
-As you can see from these kind of comments the code review could really improve the general architectural design of 
-your application :heart_eyes::relieved:.
-Code convention are another important thing to check during code review. For example Angelo told me to move all the 
-constants at the beginning of some of the classes. Usually tools like Github or Gitlab let you discuss your code 
-review by adding comments directly to the code.
+As you can see from these kind of comments the code review could really improve the general architectural design of your application :heart_eyes::relieved:.
+Code convention are another important thing to check during code review. For example Angelo told me to move all the constants at the beginning of some of the classes. Usually tools like Github or Gitlab let you discuss your code review by adding comments directly to the code.
 
-![constants position](/assets/images/posts/08-constants-beginning-of-file.jpg "constants position")
-![guidelines comments](/assets/images/posts/06-guidelines.jpg "guidelines comments")
+{% include blog-lazy-image.html description="constants position" src="/assets/images/posts/08-constants-beginning-of-file.jpg" %}
+{% include blog-lazy-image.html description="guidelines comments" src="/assets/images/posts/06-guidelines.jpg" %}
 
-Last but not least, if you are a real fan of clean code, you know that [meaningful names are important](/2017/09/11/clean-code-meaningful-names.html "clean code meaningful names"). So you can 
-suggest some more meaningful name for a class, variable or method.
+Last but not least, if you are a real fan of clean code, you know that [meaningful names are important](/2017/09/11/clean-code-meaningful-names.html "clean code meaningful names"). So you can suggest some more meaningful name for a class, variable or method.
 
-![rename](/assets/images/posts/10-rename-masker.jpg "rename")
+{% include blog-lazy-image.html description="rename" src="/assets/images/posts/10-rename-masker.jpg" %}
 
 That's all for code review. I hope you understood how much important it is to do it and how much your codebase 
 can improve if you use code review as a validation tool and as a tool to find new refactoring opportunities (anyway, 
