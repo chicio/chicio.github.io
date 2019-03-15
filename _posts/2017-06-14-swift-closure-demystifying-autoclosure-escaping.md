@@ -25,7 +25,7 @@ An `@autoclosure` is a closure without parameter that is automatically created t
 This two attributes combined have great potential. Let's see an example where you can avoid multiple if/switch with the use of closure and these two attributes.  
 You could start "abusing" closures and use them everywhere after mastering these two attributes!! :stuck_out_tongue_winking_eye: (Maybe it's better to stay calm and don't abuse closures even after seeing this attributes :relieved:).
 
-{% include blog-lazy-image.html description="swift closure everywhere" first scene" src="/assets/images/posts/closure-everywhere.jpg" %}
+{% include blog-lazy-image.html description="swift closure everywhere" src="/assets/images/posts/closure-everywhere.jpg" %}
 
 For example we can have a `UITableView` and we want to execute different action for each cell displayed.
 If we don't use closure and the attributes `@autoclosure` and `@escaping`, we need to distinguish the cells using the position or eventually casting some specialization of a class used to represent the cell data.

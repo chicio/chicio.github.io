@@ -112,11 +112,11 @@ If we try to run the app something very strange will happen:
 * if we do a live reload, we will see our **React components refreshed multiple times**
 * if we press cmd + ctrl + z (shake gesture simulation) in the simulator **2 dev menu will be shown**
 
-![React Native multiple dev menus](/assets/images/posts/react-native-multiple-debugger.gif "React Native multiple dev menus")   
+{% include blog-lazy-image.html description="react native multiple dev menus" src="/assets/images/posts/react-native-multiple-debugger.gif" %}
 
 * if we do a **live reload while we're in debug mode the app could crash**
 
-![React Native crash multiple view](/assets/images/posts/react-native-crash-reload-with-debugger.jpg "React Native crash multiple view")   
+{% include blog-lazy-image.html description="react native crash multiple view" src="/assets/images/posts/react-native-crash-reload-with-debugger.jpg" %}
 
 What's happening here? Well, there's something wrong in our code. If we take a look at the comments in the code of 
 React Native for the `RCTRootView` initializer, we will notice something very strange:
@@ -173,14 +173,14 @@ delegate of the `RCTBridge`.
 ```swift
 class ReactNativeBridge {
     let bridge: RCTBridge
-    
+
     init() {
         bridge = RCTBridge(delegate: ReactNativeBridgeDelegate(), launchOptions: nil)
     }
 }
 
 class ReactNativeBridgeDelegate: NSObject, RCTBridgeDelegate {
-    
+
     func sourceURL(for bridge: RCTBridge!) -> URL! {
         return URL(string: "http://localhost:8081/index.bundle?platform=ios")
     }
@@ -196,7 +196,7 @@ class MainViewController: UIViewController {
     private let blueViewController: ReactViewController
     private let redViewController: ReactViewController
     private let reactNativeBridge: ReactNativeBridge
-    
+
     required init?(coder aDecoder: NSCoder) {
         reactNativeBridge = ReactNativeBridge()
         blueViewController = ReactViewController(moduleName: "BlueScreen",
@@ -205,11 +205,11 @@ class MainViewController: UIViewController {
                                                 bridge: reactNativeBridge.bridge)
         super.init(coder: aDecoder)
     }
-    
+
     @IBAction func showRedScreen(_ sender: Any) {
         navigationController?.pushViewController(redViewController, animated: true)
     }
-    
+
     @IBAction func showBlueScreen(_ sender: Any) {
         navigationController?.pushViewController(blueViewController, animated: true)
     }
@@ -224,5 +224,5 @@ Now if we try to run the app again everything will work as expected:
 
 ![React Native single dev menus](/assets/images/posts/react-native-single-debugger.gif "React Native single dev menus")   
 
-The entire source code of the app used as example for this post is contained in [this github repo](https://github.com/chicio/React-Native-Multiple-RCTRootView "React native multiple RCTRootView"). 
+The entire source code of the app used as example for this post is contained in [this github repo](https://github.com/chicio/React-Native-Multiple-RCTRootView "React native multiple RCTRootView").
 Now we're ready to use multiple React Native components at the same time in our app :relieved:.

@@ -69,40 +69,41 @@ What's happening? The `RealmReact` project is expecting the React Native headers
 to its original position. Arrrgghhh :rage:!! We need to find another way...  
 
 What can we do? We can start by observing that the `RealmReact` project is just a "container project" for:
- * `RealmJS` project, that  generates two static libraries `libRealmJS.a` and `libGCDWebServers.a`
- * an Objective-C++ class `RealmReact`
- * an Objective-C++ file `RealmAnalytics`  
- 
+
+* `RealmJS` project, that  generates two static libraries `libRealmJS.a` and `libGCDWebServers.a`
+* an Objective-C++ class `RealmReact`
+* an Objective-C++ file `RealmAnalytics`  
+
 So we can try to modify our main project by:
- * adding the `RealmJS` project and the Objective-C++ files/classes as references
- * linking the static libraries `libRealmJS.a` and `libGCDWebServers.a` to our main project and see if everything works
 
-![React Native realm custom manual link step 1](/assets/images/posts/react-native-realm-5-custom-manual-link-step-1.jpg "React Native realm custom manual link step 1")
-![React Native realm custom manual link step 2](/assets/images/posts/react-native-realm-5-custom-manual-link-step-2.jpg "React Native realm custom manual link step 1")
+* adding the `RealmJS` project and the Objective-C++ files/classes as references
+* linking the static libraries `libRealmJS.a` and `libGCDWebServers.a` to our main project and see if everything works
 
-Now we need to add to the `Header search path` option of our main project the paths that were setted in the `RealmReact` project. In this way 
-the `RealmJS` project will be able to find some headers it needs. You can find the complete list of the folder that 
+{% include blog-lazy-image.html description="react native realm custom manual link step 1" src="/assets/images/posts/react-native-realm-5-custom-manual-link-step-1.jpg" %}
+{% include blog-lazy-image.html description="react native realm custom manual link step 2" src="/assets/images/posts/react-native-realm-5-custom-manual-link-step-2.jpg" %}
+
+Now we need to add to the `Header search path` option of our main project the paths that were setted in the `RealmReact` project. In this way the `RealmJS` project will be able to find some headers it needs. You can find the complete list of the folder that 
 we need to add in the screenshot below.
 
-![React Native realm header search path](/assets/images/posts/react-native-realm-6-header-search-path.jpg "React Native realm header search path")
+{% include blog-lazy-image.html description="react native realm header search path" src="/assets/images/posts/react-native-realm-6-header-search-path.jpg" %}
 
 Now if we try to compile our app we expect that everything works fine but...ERROR :warning::fire:!!! The build fails :boom:!!! 
 
-![React Native realm C++ error](/assets/images/posts/react-native-realm-7-Cplusplus-error.jpg "React Native realm C++ error")
+{% include blog-lazy-image.html description="react Native realm c++ error" src="/assets/images/posts/react-native-realm-7-Cplusplus-error.jpg" %}
 
 It seems like that in order to be able to compile the C++ source code contained in `RealmJS` we need to set a recent C++ version 
 in our project setting that supports some new features like auto return type on static function. We can set it to C++ 14 
 and set the Standard Library to the LLVM one with C++ 11 support.
 
-![React Native realm C++ setup](/assets/images/posts/react-native-realm-8-Cplusplus-setup.jpg "React Native realm C++ setup")
+{% include blog-lazy-image.html description="react native realm c++ error" src="/assets/images/posts/react-native-realm-8-Cplusplus-setup.jpg" %}
 
 One final step is to remove the flag `-all_load` from the `Other linker flag` option of the main project (if you have it). 
 In this way we avoid to load all Objective-C symbols and have the "duplicated symbols" error.
 
-![React Native realm all_load flag](/assets/images/posts/react-native-realm-9-all_load.jpg "React Native realm all_load flag")   
- 
+{% include blog-lazy-image.html description="react native realm all_load flag" src="/assets/images/posts/react-native-realm-9-all_load.jpg" %}
+
 We are now ready to build our app and see if everything works. To do this we create a sample native view controller 
-that has a `RCTRootView` 
+that has a `RCTRootView`
 
 ```swift
 class ReactNativeRealmController: UIViewController {
@@ -171,9 +172,7 @@ AppRegistry.registerComponent('ReactNativeRealmScreen', () => ReactNativeRealmSc
 
 We are now ready to build our app and, as expected, everything works fine.
 
-![React Native realm build works](/assets/images/posts/react-native-realm-10-build-works.jpg "React Native realm build works")   
+{% include blog-lazy-image.html description="react native realm build works" src="/assets/images/posts/react-native-realm-10-build-works.jpg" %}
 
-That's it!! As I told you before you can find the complete example in [this github repo](https://github.com/chicio/React-Native-Realm-Manual-Link 'React Native realm manual link'). 
+That's it!! As I told you before you can find the complete example in [this github repo](https://github.com/chicio/React-Native-Realm-Manual-Link 'React Native realm manual link').
 We are now ready to create our React Native component with realm :bowtie:.  
-
-  
