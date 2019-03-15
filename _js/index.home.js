@@ -6,6 +6,7 @@ import { enableScroll } from './common/scroll-manager'
 import { tabs } from './home/tabs'
 import { homeHeaderAnimation } from './home/home-header-animation'
 import { lazyLoadImages } from './common/lazy-load-images'
+import { lazyLoadImageAnimation } from './common/lazy-load-image-animation'
 
 document.addEventListener('DOMContentLoaded', () => {
   loadFont()
@@ -13,5 +14,5 @@ document.addEventListener('DOMContentLoaded', () => {
   homeHeaderAnimation()
   enableScroll()
   tabs()
-  lazyLoadImages('#profile-image, .who-am-i-icon, .project-image, .timeline-image')
+  lazyLoadImages('.profile-image, .who-am-i-icon, .project-image, .timeline-image', (image: Element) => lazyLoadImageAnimation(image, 0.2))
 })

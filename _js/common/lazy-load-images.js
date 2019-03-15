@@ -1,29 +1,29 @@
 /* @flow */
-import { TweenLite } from 'gsap'
 import { removeCssClass } from './css-class'
 
-const lazyLoadImages = (selector: string) => {
-  const intersectionObserver = new IntersectionObserver(onIntersection, { rootMargin: '50px 0px', threshold: 0.01 })
+const lazyLoadImages = (selector: string, loadCompleted: (image: Element) => void) => {
+  const intersectionObserver: IntersectionObserver = new IntersectionObserver(
+    (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => onIntersection(entries, observer, loadCompleted),
+    { rootMargin: '50px 0px', threshold: 0.01 }
+  )
   document.querySelectorAll(selector).forEach(image => intersectionObserver.observe(image))
 }
 
-const onIntersection = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+const onIntersection = (entries: IntersectionObserverEntry[], observer: IntersectionObserver, loadCompleted: (image: Element) => void) => {
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0) {
       observer.unobserve(entry.target)
-      loadImage(entry.target)
+      loadImage(entry.target, loadCompleted)
     }
   })
 }
 
-const loadImage = (image) => {
-  const src = image.dataset.src
+const loadImage = (image: Element, loadCompleted: () => void) => {
+  const src: string = image.dataset.src
   fetchImage(src).then(() => {
     image.src = src
     removeCssClass(image, 'lazy')
-    TweenLite.from(image, 0.3, {
-      opacity: 0
-    })
+    loadCompleted(image)
   })
 }
 
