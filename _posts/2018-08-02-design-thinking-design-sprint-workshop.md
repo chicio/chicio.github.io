@@ -27,7 +27,7 @@ a manager with many years of experiences in big companies (e.g. Vodafone), decid
  breakfast ["Cascina Il Quercin"](https://www.tripadvisor.it/Hotel_Review-g1186672-d6420387-Reviews-Cascina_Il_Quercin-Castelnuovo_Calcea_Province_of_Asti_Piedmont.html).
 Below you can find some photos of this beautiful location (yes, I want you to be envy :grin:)
 
-![Cascina Il Quercin Castelnuovo Calcea](/assets/images/posts/offsite-location.jpg "Cascina Il Quercin Castelnuovo Calcea")
+{% include blog-lazy-image.html description="Cascina Il Quercin Castelnuovo Calcea" src="/assets/images/posts/offsite-location.jpg" %}
 
 What was the main topic of the workshop? Well, in this one day workshop our UX team shown us what is the Design
 Thinking and the Design Sprint framework and we tried to apply it to came up with a solution for one of the next big
@@ -62,7 +62,7 @@ So design thinking is an approach to design product based on iterations of a ser
 During the workshop we tried to simulate a design sprint. We had just one day, so we compressed all the phases of a
  sprint in just a few hours :grin:.
 
-![agenda](/assets/images/posts/offsite-agenda.jpg "agenda")
+{% include blog-lazy-image.html description="agenda" src="/assets/images/posts/offsite-agenda.jpg" %}
 
 We created two separated teams and then we started our design sprint.
 Let's see the various phases we went through and the final result.
@@ -89,7 +89,7 @@ creating some sketch. As the definition says, in this phase it is better to favo
 The more ideas you get, the better it is. So everyone in the two teams started to draw at the speed of light like a 10
 years old children :laughing:.
 
-![crazy 8](/assets/images/posts/offsite-crazy-8.jpg "crazy 8")
+{% include blog-lazy-image.html description="crazy 8" src="/assets/images/posts/offsite-crazy-8.jpg" %}
 
 ### One big idea
 The next phase is called "one big idea". In this phase we had to choose some of the ideas we created during the
@@ -101,7 +101,7 @@ UX designers explained us we had to follow these key points:
 * Focus on emotions.
 * Enough fidelity to start building a prototype.
 
-![one big idea](/assets/images/posts/offsite-one-big-idea.jpg "one big idea")
+{% include blog-lazy-image.html description="one big idea" src="/assets/images/posts/offsite-one-big-idea.jpg" %}
 
 ### Decide
 In this phase we decided which one were the best ideas created in the previous phases. We decided by doing another
@@ -110,7 +110,7 @@ member got “budget” of 3 dot stickers: we had to use them to vote what we th
 the best 3 ideas were chosen as the base to create a detail prototype. So the final prototype is a mix of the best
 ideas created during the sprint.
 
-![decide](/assets/images/posts/offsite-decide.jpg "decide")
+{% include blog-lazy-image.html description="decide" src="/assets/images/posts/offsite-decide.jpg" %}
 
 ### Prototyping
 In this phase you need to create some prototype. Which kind of prototype? Let's see again how our UX designer explained
@@ -133,7 +133,7 @@ starting point to let me try to enter in the mindset of a UX designer (and also 
 who knows? :blush:).
 Anyway...after the hard work...we had some relaxing moments :relieved:.
 
-![relax](/assets/images/posts/offsite-relax.jpg "relax")
+{% include blog-lazy-image.html description="relax" src="/assets/images/posts/offsite-relax.jpg" %}
 
 To be noted, in the right lower corner you can see [Alessandro Romano](https://www.linkedin.com/in/alessandroromano92/ 
 "Alessandro Romano") during some swim stunts with the lastminute.com mascot :laughing:. He is "the clean" a senior 

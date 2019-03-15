@@ -60,33 +60,32 @@ already explained before, we decided to create a new bundle identifier for the b
   (and maybe there's a high chance that, if you're reading this post you already release at least one app on the 
   Apple app store so you already know the stuff to do :smirk:).
   
-![enterprise profiles](/assets/images/posts/enterprise-profiles.jpg "enterprise profiles")
+{% include blog-lazy-image.html description="enterprise profiles" src="/assets/images/posts/enterprise-profiles.jpg" %}
 
  After that we created in our iOS project a new Beta configuration by duplicating the release one. In this way we 
  were able to generate an ipa similar to the release one and were also able to customize some settings of our 
  app.
- 
- ![beta configuration](/assets/images/posts/beta-configuration.jpg "beta configuration") 
- 
- The Build Setting that we customized are:
- 
- * Obviously the bundle identifier. Here we used the one created in the first step (Apple Enterprise developer 
+
+{% include blog-lazy-image.html description="beta configuration" src="/assets/images/posts/beta-configuration.jpg" %}
+
+The Build Setting that we customized are:
+
+* Obviously the bundle identifier. Here we used the one created in the first step (Apple Enterprise developer 
  Account configuration). The entry that we modified in the Build settings is named "Product Bundle Identifier".
- 
-  ![beta bundle identifier](/assets/images/posts/beta-bundle-identifier.jpg "beta bundle identifier") 
- 
- * The app icon. You can add a new asset in your main assets catalog. The entry that we modified in the Build settings is named
-  "Asset Catalog App Icon Set Name". 
- 
-  ![beta icon](/assets/images/posts/beta-icon.jpg "beta icon") 
- 
- * We added a new custom preprocessor macro in the "Preprocessor Macros" build setting to be able to detect in our 
+
+{% include blog-lazy-image.html description="beta bundle identifier" src="/assets/images/posts/beta-bundle-identifier.jpg" %}
+
+* The app icon. You can add a new asset in your main assets catalog. The entry that we modified in the Build settings is named "Asset Catalog App Icon Set Name".
+
+{% include blog-lazy-image.html description="beta icon" src="/assets/images/posts/beta-icon.jpg" %}
+
+* We added a new custom preprocessor macro in the "Preprocessor Macros" build setting to be able to detect in our 
  source code that we are running a beta version and eventually do some custom stuff. For example we added the build 
  version number in the about section only for the beta version. In this way our tester were able to tell us exactly 
  which version they were using. This macro is visible only to Objective-C. If you need to do the same thing in Swift 
  you need to customize the "Other Swift Flags" field.
   
- ![beta preprocessor macro](/assets/images/posts/beta-preprocessor-macro.jpg "beta preprocessor macro") 
+{% include blog-lazy-image.html description="beta preprocessor macro" src="/assets/images/posts/beta-preprocessor-macro.jpg" %}
   
 Then we created the scripts needed to automatize the build on Jenkins and the upload of our artifacts repository to 
 Nexus. As I said before we were already using Fastlane to automatize the releases of our app to the store. For the beta 
@@ -244,7 +243,7 @@ last thing: you will need to explain to the less experienced user that they need
 provisioning profile from *Settings -> Profiles & Device Management*. If they don't do it they will see the alert 
 contained in the screenshot below. 
 
-![enterprise untrusted developer](/assets/images/posts/enterprise-untrusted-developer.jpg "enterprise untrusted developer") 
+{% include blog-lazy-image.html description="enterprise untrusted developer" src="/assets/images/posts/enterprise-untrusted-developer.jpg" %}
 
 That's it!!! Go to your boss and tell her/him you're ready to create you custom iOS beta internal program!!! 
-:sunglasses::apple: 
+:sunglasses::apple:

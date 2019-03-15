@@ -19,6 +19,7 @@ During my daily job I'm used to write unit test for my code. In fact, I usually 
 In the last few months the mobile team "Team Cook" at [lastminute.com group](https://lmgroup.lastminute.com/ "lastminute.com group"), of which I'm a member, decided to try an end to end testing infrastructure for the mobile apps of our main brand [lastminute.com](https://www.lastminute.com/), [volagratis](https://www.volagratis.com/) and [rumbo](https://www.rumbo.es/). In this post I will described this testing infrastructure and how it works.  
 
 #### **Software**
+
 To put in place the e2e infrastructure we chose:
 
 - Jenkins as our CI platform. We were already using it for our build jobs and for the submssions on the stores or to [our internal beta programs](/2018/07/05/distribution-enterprise-app-ios-beta.html).
