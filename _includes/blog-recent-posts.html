@@ -8,7 +8,7 @@
 						<div class="col-lg-4">
 							<div class="card">
 								<div class="img-container"> 
-									<img class='img blog-image lazy' src="" data-src="{{post.image}}"/>
+										{% include blog-lazy-image.html class="img blog-image" src=post.image description=post.title %}
 								</div>
 								<h4>{{ post.title }}</h4>
 								{{ post.excerpt | remove: '<em>' | remove: '</em>' }}

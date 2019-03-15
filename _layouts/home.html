@@ -7,11 +7,7 @@
             <div id="rendering-surface" class="container-fluid"></div>
             <div class="row vertical-center-row text-center">
                 <div id="center-content" class="center-content">
-                    <img src=""
-                         data-src="/assets/images/fabrizio-duroni.jpg"
-                         id="profile-image"
-                         class="img-responsive img-circle lazy"
-                         alt="Fabrizio Duroni"/>
+                    {% include lazy-image.html id="profile-image" alt="Fabrizio Duroni" class="img-responsive img-circle" src="/assets/images/fabrizio-duroni.jpg" %}
                     <h1 id="profile-name">{{ site.author }}</h1>
                     <h3 id="profile-job" class="profile-job">Software Developer</h3>
                     {% include social-contacts.html icon-class="profile-icon" break=true %}
@@ -46,21 +42,15 @@
                     </p>
                 </div>
                 <div id="who-am-i-icons" class="row col-12 who-am-i-icons d-flex justify-content-center align-items-center">
-                    <img class="who-am-i-icon lazy" alt="Xcode" src=""  data-src="/assets/images/xcode.png"/>
-                    <img class="who-am-i-icon lazy" alt="Swift" src="" data-src="/assets/images/swift.png"/>
-                    <img class="who-am-i-icon lazy" alt="Android" src="" data-src="/assets/images/android.png"/>
-                    <img class="who-am-i-icon lazy" alt="C++" src="" data-src="/assets/images/cpp.png"/>
-                    <img alt="OpenGL ES"
-                         class="who-am-i-big-icon who-am-i-icon lazy"
-                         src=""
-                         data-src="/assets/images/opengl-es.png"/>
-                    <img class="who-am-i-big-icon who-am-i-icon lazy"
-                         alt="React"
-                         src=""
-                         data-src="/assets/images/react.png"/>
-                    <img class="who-am-i-icon lazy" alt="PHP" src="" data-src="/assets/images/php.png"/>
-                    <img class="who-am-i-icon lazy" alt="HTML - CSS -Javascript" src="" data-src="/assets/images/html-css-js.png"/>
-                    <img class="who-am-i-icon lazy" alt="Typescript" src="" data-src="/assets/images/typescript.png"/>
+                    {% include lazy-image.html alt="xcode" class="who-am-i-icon" src="/assets/images/xcode.png" %}
+                    {% include lazy-image.html alt="swift" class="who-am-i-icon" src="/assets/images/swift.png" %}
+                    {% include lazy-image.html alt="android" class="who-am-i-icon" src="/assets/images/android.png" %}
+                    {% include lazy-image.html alt="c++" class="who-am-i-icon" src="/assets/images/cpp.png" %}
+                    {% include lazy-image.html alt="opengl es" class="who-am-i-big-icon who-am-i-icon" src="/assets/images/opengl-es.png" %}
+                    {% include lazy-image.html alt="react" class="who-am-i-big-icon who-am-i-icon" src="/assets/images/react.png" %}
+                    {% include lazy-image.html alt="php" class="who-am-i-icon" src="/assets/images/php.png" %}
+                    {% include lazy-image.html alt="html css javascript" class="who-am-i-icon" src="/assets/images/html-css-js.png" %}
+                    {% include lazy-image.html alt="typescript" class="who-am-i-icon" src="/assets/images/typescript.png" %}
                 </div>
             </div>
         </div>
@@ -89,11 +79,7 @@
                 <div role="tabpanel" class="tab-pane active projects" id="personal-projects">
                     <div class="row project">
 						<div class="project-image-container col-12 col-lg-6 order-0">
-							<img id="spectral-clara-lux-tracer-image"
-                                 alt="Spectral Clara Lux Tracer"
-                                 src=""
-								 data-src="/assets/images/spectral-clara-lux-tracer.jpg"
-								 class="project-image mx-auto d-block img-fluid lazy">
+                            {% include lazy-image.html id="spectral-clara-lux-tracer-image" alt="spectral clara lux tracer" class="project-image mx-auto d-block img-fluid" src="/assets/images/spectral-clara-lux-tracer.jpg" %}
 						</div>
 						<div id="spectral-clara-lux-tracer-info" class="project-info col-12 col-lg-6 order-1">
                             <h1>Spectral Clara Lux Tracer</h1>
@@ -140,20 +126,20 @@
 							   href="https://github.com/chicio/Spectral-BRDF-Explorer" target="_blank" rel="noopener">Github repo</a>
 						</div>
 						<div class="project-image-container col-12 col-lg-6 order-0 order-lg-1">
-							<img id="spectral-brdf-explorer-image"
+                            {% include lazy-image.html 
+                                 id="spectral-brdf-explorer-image"
                                  alt="Spectral BRDF Explorer"
-                                 src=""
-								 data-src="/assets/images/spectral-brdf-explorer.png"
-								 class="project-image mx-auto d-block img-fluid lazy">
+								 src="/assets/images/spectral-brdf-explorer.png"
+								 class="project-image mx-auto d-block img-fluid" %}
 						</div>
 					</div>
                     <div class="row project">
 						<div class="project-image-container col-12 col-lg-6 order-0">
-							<img id="id3tageditor-image"
+                            {% include lazy-image.html 
+                                 id="id3tageditor-image"
                                  alt="id3tageditor"
-                                 src=""
-								 data-src="/assets/images/id3tageditor.jpg"
-								 class="project-image mx-auto d-block img-fluid lazy">
+                                 src="/assets/images/id3tageditor.jpg"
+								 class="project-image mx-auto d-block img-fluid" %}
 						</div>
 						<div id="id3tageditor-info" class="project-info col-12 col-lg-6 order-1">
                             <h1>ID3TagEditor</h1>
@@ -202,20 +188,20 @@
 							   target="_blank" rel="noopener">Download the app</a>
 						</div>
 						<div class="project-image-container col-12 col-lg-6 order-0 order-lg-1">
-							<img id="mp3id3tagger-image"
+                            {% include lazy-image.html 
+                                 id="mp3id3tagger-image"
                                  alt="mp3id3tagger"
-                                 src=""
-								 data-src="/assets/images/mp3id3tagger.jpg"
-								 class="project-image mx-auto d-block img-fluid lazy">
+                                 src="/assets/images/mp3id3tagger.jpg"
+								 class="project-image mx-auto d-block img-fluid" %}
 						</div>
 					</div>
                     <div class="row project">
 						<div class="project-image-container col-12 col-lg-6 order-0">
-							<img id="ray-tracing-image"
+                            {% include lazy-image.html 
+                                 id="ray-tracing-image"
                                  alt="Ray tracing"
-                                 src=""
-								 data-src="/assets/images/ray-tracing.jpg"
-								 class="project-image mx-auto d-block img-fluid lazy">
+                                 src="/assets/images/ray-tracing.jpg"
+								 class="project-image mx-auto d-block img-fluid" %}
 						</div>
                         <div id="ray-tracing-info" class="project-info col-12 col-lg-6 order-1">
                             <h1>Ray-tracing</h1>
@@ -265,11 +251,11 @@
 							   target="_blank" rel="noopener">Documentation</a>
 						</div>
 						<div class="project-image-container col-12 col-lg-6 order-0 order-lg-1">
-							<img id="rangeuislider-image"
-                                 alt="RangeUISlider"
-                                 src=""
-								 data-src="/assets/images/range-ui-slider.png"
-								 class="project-image mx-auto d-block img-fluid lazy">
+                            {% include lazy-image.html 
+                                id="rangeuislider-image"
+                                alt="RangeUISlider"
+                                src="/assets/images/range-ui-slider.png"
+                                class="project-image mx-auto d-block img-fluid" %}
 						</div>
                     </div>
                 </div>
@@ -282,7 +268,7 @@
                                 </div>
                                 <div class="timeline-panel">
                                     <div class="row timeline-heading">
-                                        <img class="timeline-image lazy" alt="Lastminute.com group" src="" data-src="/assets/images/lastminute-group.png">
+                                        {% include lazy-image.html class="timeline-image" alt="lastminute.com group" src="/assets/images/lastminute-group.png" %}
                                         <h4 class="timeline-title">Lastminute.com group</h4>
                                         <h4 class="timeline-subtitle">
                                             Mobile application developer
@@ -311,8 +297,10 @@
                                 <div class="timeline-panel">
 
                                     <div class="row timeline-heading">
-                                        <img class="timeline-image lazy" alt="Unimib"
-                                             src="" data-src="/assets/images/unimib.jpg">
+                                        {% include lazy-image.html
+                                             class="timeline-image" 
+                                             alt="unimib"
+                                             src="/assets/images/unimib.jpg" %}
                                         <h4 class="timeline-title">Milano-Bicocca University</h4>
                                         <h4 class="timeline-subtitle"> 
                                             Master's degree in Computer Science
@@ -350,7 +338,10 @@
                                 </div>
                                 <div class="timeline-panel">
                                     <div class="row timeline-heading">
-                                        <img class="timeline-image lazy" alt="Condé Nast" src="" data-src="/assets/images/condenast.png">
+                                        {% include lazy-image.html 
+                                            class="timeline-image"
+                                            alt="Condé Nast" 
+                                            src="/assets/images/condenast.png" %}
                                         <h4 class="timeline-title">Condé Nast Italia</h4>
                                         <h4 class="timeline-subtitle">
                                             Mobile/Web application developer
@@ -382,7 +373,7 @@
                                 </div>
                                 <div class="timeline-panel">
                                     <div class="row timeline-heading">
-                                        <img class="timeline-image lazy" alt="SHI" src="" data-src="/assets/images/shi.png">
+                                        {% include lazy-image.html class="timeline-image" alt="SHI" src="/assets/images/shi.png" %}
                                         <h4 class="timeline-title">SHI</h4>
                                         <h4 class="timeline-subtitle">
                                             iOS/Web Developer
@@ -417,8 +408,10 @@
                                 </div>
                                 <div class="timeline-panel">
                                     <div class="row timeline-heading">
-                                        <img class="timeline-image lazy" alt="Bottinelli Informatica"
-                                             src="" data-src="/assets/images/bottinelli-informatica.png">
+                                        {% include lazy-image.html 
+                                            class="timeline-image" 
+                                            alt="bottinelli informatica"
+                                            src="/assets/images/bottinelli-informatica.png" %}
                                         <h4 class="timeline-title">Bottinelli informatica</h4>
                                         <h4 class="timeline-subtitle">
                                             Developer
@@ -443,7 +436,10 @@
                                 </div>
                                 <div class="timeline-panel">
                                     <div class="row timeline-heading">
-                                        <img class="timeline-image lazy" alt="Avanade" src="" data-src="/assets/images/avanade.png">
+                                        {% include lazy-image.html 
+                                            class="timeline-image"
+                                            alt="Avanade" 
+                                            src="/assets/images/avanade.png" %}
                                         <h4 class="timeline-title">Avanade</h4>
                                         <h4 class="timeline-subtitle">
                                             PMO Consultant
@@ -489,7 +485,10 @@
                                 </div>
                                 <div class="timeline-panel">
                                     <div class="row timeline-heading">
-                                        <img class="timeline-image lazy" alt="Insubria" src="" data-src="/assets/images/insubria.png">
+                                        {% include lazy-image.html 
+                                            class="timeline-image"
+                                            alt="Insubria"
+                                            src="/assets/images/insubria.png" %}
                                         <h4 class="timeline-title">Insubria University</h4>
                                         <h4 class="timeline-subtitle">
                                             Bachelor's degree in Computer Science

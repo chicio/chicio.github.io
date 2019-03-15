@@ -1,4 +1,6 @@
-<img id="#{{include.id}}"
+<img {% if include.id %}
+     id="#{{include.id}}"
+     {% endif %}
      alt="{{include.alt}}"
      src=""
 		 data-src="{{include.src}}"
