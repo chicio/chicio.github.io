@@ -16,15 +16,11 @@ without using react-native link command*.
 
 ---
 
-What is React Native? It is one of the most successful and loved mobile development framework. It let you build *real native 
-mobile* application using Javascript. It has been developed by Facebook. Let's see the definition from the official 
-website: 
+What is React Native? It is one of the most successful and loved mobile development framework. It let you build *real native
+mobile* application using Javascript. It has been developed by Facebook. Let's see the definition from the official
+website:
 
->Build native mobile apps using JavaScript and React. React Native lets you build mobile apps using only JavaScript. 
- It uses the same design as React, letting you compose a rich mobile UI from declarative components. With React Native, 
- you don't build a “mobile web app”, an “HTML5 app”, or a “hybrid app”. You build a real mobile app that's indistinguishable 
- from an app built using Objective-C or Java. React Native uses the same fundamental UI building blocks as regular 
- iOS and Android apps. You just put those building blocks together using JavaScript and React.
+>Build native mobile apps using JavaScript and React. React Native lets you build mobile apps using only JavaScript. It uses the same design as React, letting you compose a rich mobile UI from declarative components. With React Native, you don't build a “mobile web app”, an “HTML5 app”, or a “hybrid app”. You build a real mobile app that's indistinguishable from an app built using Objective-C or Java. React Native uses the same fundamental UI building blocks as regular iOS and Android apps. You just put those building blocks together using JavaScript and React.
 
 Cool :sunglasses:!!!! Isn't it? Write an app using Javascript with the same performance of native code. You can also 
 reuse your native component and bridge them to the javascript side.  
@@ -33,20 +29,17 @@ if your project doesn't follow the standard React Native directories structure y
 to link you external library.  
 While I was working on an [existing native app integrated with React Native](https://facebook.github.io/react-native/docs/integration-with-existing-apps.html 'existing native app integrated with React Native') that 
 has a custom directories structure for the react-native and native code, I found some problem to add [Realm](https://realm.io 'https://realm.io'), the famous open source dbms, as a dependency to the project.  
-In this post I will show you an example of how you can add Realm to your app that has a custom React Native 
-installation. Let's start :cold_sweat:!!
-To describe the installation process I will use a sample app I created for this post called `ReactNativeRealmManualLink`. You can find 
-it with realm installed in [this github repo](https://github.com/chicio/React-Native-Realm-Manual-Link 'React Native realm manual link').   
-Suppose you have a project like the one I shared above, in which React Native is contained in a subfolder of the iOS 
-project, instead of the other way around in a standard React Native installation. 
+In this post I will show you an example of how you can add Realm to your app that has a custom React Native installation. Let's start :cold_sweat:!!
+To describe the installation process I will use a sample app I created for this post called `ReactNativeRealmManualLink`. You can findit with realm installed in [this github repo](https://github.com/chicio/React-Native-Realm-Manual-Link 'React Native realm manual link').  
+Suppose you have a project like the one I shared above, in which React Native is contained in a subfolder of the iOS project, instead of the other way around in a standard React Native installation.
 
-![React Native realm directories](/assets/images/posts/react-native-realm-1-directories.jpg "React Native realm directories")
+{% include blog-lazy-image.html description="react native realm directories" src="/assets/images/posts/react-native-realm-1-directories.jpg" %}
 
 First, to add realm as a dependency we need to install it through npm with following command.
 
 ```shell
 npm install --save realm
-``` 
+```
 
 Then we try to link the library to the native code with the standard React Native command.
 
@@ -57,7 +50,7 @@ react-native link realm
 But here something strange happens: as you can see from the screenshot below the command fails to link the library. 
 So we need to find another way to install the library.
 
-![React Native realm link fails](/assets/images/posts/react-native-realm-2-link-fails.jpg "React Native realm directories")
+{% include blog-lazy-image.html description="react native realm directories fails" src="/assets/images/posts/react-native-realm-2-link-fails.jpg" %}
 
 Usually, if the previous command fails, you have to do the [manual linking](https://facebook.github.io/react-native/docs/linking-libraries-ios.html "manual linking"). 
 To do it we navigate inside the `node_modules` folder, contained in the React Native folder of our project, to found the realm folder. 
@@ -65,12 +58,12 @@ Inside it you will find an Xcode project named `RealmReact`, that you have to dr
 have to add a reference to 
 the static library `libRealmReact` and compile the project.
 
-![React Native realm manual link step 1](/assets/images/posts/react-native-realm-3-manual-link-step-1.jpg "React Native realm manual link")
-![React Native realm manual link step 2](/assets/images/posts/react-native-realm-3-manual-link-step-2.jpg "React Native realm manual link")
+{% include blog-lazy-image.html description="react native realm directories step 1" src="/assets/images/posts/react-native-realm-3-manual-link-step-1.jpg" %}
+{% include blog-lazy-image.html description="react native realm directories step 2" src="/assets/images/posts/react-native-realm-3-manual-link-step-2.jpg" %}
 
 Now you would expect that everything works fine but...
 
-![React Native realm manual link fails](/assets/images/posts/react-native-realm-4-manual-link-fails.jpg "React Native realm manual link fails")
+{% include blog-lazy-image.html description="React Native realm manual link fails 4" src="/assets/images/posts/react-native-realm-4-manual-link-fails.jpg" %}
 
 What's happening? The `RealmReact` project is expecting the React Native headers in a relative position with respect 
 to its original position. Arrrgghhh :rage:!! We need to find another way...  

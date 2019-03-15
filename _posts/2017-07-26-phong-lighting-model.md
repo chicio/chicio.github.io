@@ -111,4 +111,4 @@ using OpenGL ES 3.0 and GLSL 3.0. It uses a single light for all the component c
 The following image is an example of the happy buddha Stanford mesh rendered using my [Spectral BRDF explorer](https://github.com/chicio/Spectral-BRDF-Explorer "Spectral BRDF explorer")iOS renderer. The lighting is (obviously) calculated using the Phong reflection model. The surface simulated is bronze (you can find some of the constant we discussed before [here](http://devernay.free.fr/cours/opengl/materials.html "phong lighting constants")).
 Nice :smirk:!!!!
 
-![phong example - spectral brdf explorer](/assets/images/posts/phong-example.jpg "phong example - spectral brdf explorer")
+{% include blog-lazy-image.html description="phong example spectral brdf explorer" src="/assets/images/posts/phong-example.jpg" %}
