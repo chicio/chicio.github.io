@@ -1,4 +1,5 @@
 /*  */
+import 'intersection-observer'
 import { removeCssClass } from './css-class'
 
 const lazyLoadImages = (selector, loadCompleted) => {
