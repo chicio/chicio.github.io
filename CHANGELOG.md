@@ -2,7 +2,7 @@
 All changes to Chicio coding will be documented in this file.
 
 ## [1.3.0](https://github.com/chicio/chicio.github.io/releases/tag/1.3.0)
-Release date: 2019-03-10.
+Release date: 2019-03-20.
 
 #### Added
 
