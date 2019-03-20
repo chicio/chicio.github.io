@@ -23,7 +23,7 @@ the following project: rebuild the native mobile apps of the main brands [lastmi
 [Rumbo](https://www.rumbo.es/ "Rumbo") with a new interface and new features. 
 Let's compare the old and the new home of the lastminute.com app. The changes are quite impressive :sunglasses:.
 
-![Compare home app lastminute.com](/assets/images/posts/compare-homes-lastminute.jpg "Compare home app lastminute.com")
+{% include blog-lazy-image.html description="compare home app lastminute.com" src="/assets/images/posts/compare-homes-lastminute.jpg" %}
 
 For this "app relaunch" project we decided to use React Native (I already talked about this framework in some 
 previous posts that you can find in the [archive section](/blog/archive "archive")). We didn't rewrite the apps from 
@@ -49,8 +49,7 @@ knowledge of Object Oriented programming because it let you reuse a lot of the p
  where we will show the photo of the day that we will read from the [Nasa open API](https://api.nasa.gov/ "Nasa open api
  "). Below  you can find what we will achieve. The first screen is a standard native screen. The second one is a React Native screen.
   
-![react native typescript app](/assets/images/posts/react-native-typescript-app-screens.jpg "react native typescript 
-app")
+{% include blog-lazy-image.html description="react native typescript app" src="/assets/images/posts/react-native-typescript-app-screens.jpg" %}
 
 Let's start to setup our project for React Native and TypesScript. First, React Native integration. For this task we 
 can just follow the [React Native documentation regarding the integration with existing app](https://facebook.github.io/react-native/docs/integration-with-existing-apps.html).
@@ -59,13 +58,12 @@ can just follow the [React Native documentation regarding the integration with e
  app). Yarn is a fast, reliable and secure dependencies manager released by Facebook in October 2016. 
  Our project directories structure will be the one contained in the screenshots below. The existing native codebase 
  is contained inside the `ios` and `android` folders.
- 
-![react native typecript directories](/assets/images/posts/react-native-typescript-directories.jpg "react native typecript directories")
- 
- So let's start by installing TypeScript and the types for React Native. We can do it with the following commands from 
- the root of our project:
- 
- ```bash
+
+{% include blog-lazy-image.html description="react native typescript directories" src="/assets/images/posts/react-native-typescript-directories.jpg" %}
+
+So let's start by installing TypeScript and the types for React Native. We can do it with the following commands from  the root of our project:
+
+```bash
  yarn add --dev typescript
  yarn add --dev @types/react @types/react-native
  ``` 
@@ -74,7 +72,7 @@ can just follow the [React Native documentation regarding the integration with e
  
  ```bash
 yarn tsc --init --pretty --jsx react
-``` 
+```
 
 Now we have a new file in the root of our project: the `tsconfig.json` file. This file is the configuration file for 
 the `tsc`, the TypeScript compiler. We can customize it for our needs (React). In particular, we need to enable the 

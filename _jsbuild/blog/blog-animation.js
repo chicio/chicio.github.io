@@ -12,7 +12,10 @@ const blogAnimation = () => {
 }
 
 const onCompleteAnimation = () => {
-  addCssClass(document.getElementById('loading-screen'), 'd-none')
+  const loadingScreen = document.getElementById('loading-screen')
+  if (loadingScreen) {
+    addCssClass(loadingScreen, 'd-none')
+  }
   enableScroll()
 }
 

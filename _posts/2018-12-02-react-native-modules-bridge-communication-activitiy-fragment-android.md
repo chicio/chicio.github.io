@@ -17,10 +17,7 @@ authors: [felice_giovinazzo, fabrizio_duroni]
 
 ---
 
-Sometimes a React Native app needs to access to the native API or needs/want to call some existing native code you 
-already have in place. This is why Native Modules have been created for 
-both [iOS](https://facebook.github.io/react-native/docs/native-modules-ios) and [Android](https://facebook.github.io/react-native/docs/native-modules-android).    
-Sometimes when you integrated React Native in an existing app, you will want to be able let your Native 
+Sometimes a React Native app needs to access to the native API or needs/want to call some existing native code you already have in place. This is why Native Modules have been created for both [iOS](https://facebook.github.io/react-native/docs/native-modules-ios) and [Android](https://facebook.github.io/react-native/docs/native-modules-android). Sometimes when you integrated React Native in an existing app, you will want to be able let your Native 
 Modules bridges communicate with your activities and fragment, especially the ones that contain the React Native View
 . In this post I will show you an architecture to put in place this communication on Android, that will be compatible 
 with all the features of React Native (for example it will work also with the live reload functionality).

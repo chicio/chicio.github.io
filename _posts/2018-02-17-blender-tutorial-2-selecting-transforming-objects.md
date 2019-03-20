@@ -25,9 +25,8 @@ mouse is emulated in some ways (my personal preferences is to use two fingers to
  color of the border will change based on the theme you selected. In the screenshot below we can see that I selected
   2 of the 3 objects in the scene. If we have multiple objects selected, the last one will have a different border. 
   In my case the cube is the last object selected.
-  
-![blender selecting objects 1](/assets/images/posts/blender-selecting-objects-1.jpg "blender selecting objects 1")
 
+{% include blog-lazy-image.html description="blender selecting objects 1" src="/assets/images/posts/blender-selecting-objects-1.jpg" %}
 
 To deselect an object we can just right click on it again. We can also **select all the objects** in a scene, 
 including cameras and lights, by pressing the *"a" key*.  
@@ -35,8 +34,8 @@ There's also a select menu that gives us more control over the selections we can
 **Circle select**, that lets us select objects based on a circle pattern of selection, and the **Border select**, that 
 lets us select objects based on a squared pattern of selection. There are also other option to select random objects
  or invert the current selection.
- 
-![blender selecting objects 2](/assets/images/posts/blender-selecting-objects-2.jpg "blender selecting objects 2")
+
+{% include blog-lazy-image.html description="blender selecting objects 2" src="/assets/images/posts/blender-selecting-objects-2.jpg" %}
 
 To **translate objects**, we can use the transform tools. We can find them under *Tools -> Transform*. As a 
 consequence of the fact that we are trying to translate an object in 3D space using the mouse pointer tha works in 2D space, it is 
@@ -47,14 +46,14 @@ one axis by pressing:
 * *"y" key* for the y axis
 * *"z" key* for the z axis
 
-![blender moving objects 1](/assets/images/posts/blender-translating-objects-1.jpg "blender moving objects 1")
+{% include blog-lazy-image.html description="blender moving objects 1" src="/assets/images/posts/blender-translating-objects-1.jpg" %}
 
 There's also the possibility to move an object with discrete values by using its location properties panel under the 
 properties editor or using the object properties panel in the 3D window. Finally we can move objects using also the 
 3D manipulator widget in the 3D window. We can activate it by pressing on its icon. After that when you select and 
 object you will see three axes. Drag one of them to translate the object in that direction.
 
-![blender moving objects 2](/assets/images/posts/blender-translating-objects-2.jpg "blender moving objects 2")
+{% include blog-lazy-image.html description="blender moving objects 2" src="/assets/images/posts/blender-translating-objects-2.jpg" %}
 
 We can rotate and scaling an object using the same tools we used for the translation:
 
@@ -65,7 +64,7 @@ One important thing to consider when we are working with transformation is the t
 defines the orientation of the transform operation. This is very important because it influences the final result of 
 the transform operation. You can change the transform orientation in the 3D manipulator widget.
 
-![blender moving objects 3](/assets/images/posts/blender-translating-objects-3.jpg "blender moving objects 3")
+{% include blog-lazy-image.html description="blender moving objects 3" src="/assets/images/posts/blender-translating-objects-3.jpg" %}
 
 The 3D manipulator widget will place the start of the **transform based on the origin of an objects**. We can 
 **change it** by selecting one of the option under Object -> Transform in object mode:
@@ -76,14 +75,13 @@ The 3D manipulator widget will place the start of the **transform based on the o
 * *Origin to Center of mass (surface)*
 * *Origin to center of mass (volume)*
 
-![blender change objects origin 1](/assets/images/posts/blender-change-origin-objects-1.jpg "blender change objects origin 1")
+{% include blog-lazy-image.html description="blender change objects origin 1" src="/assets/images/posts/blender-change-origin-objects-1.jpg" %}
 
 When we want to transform a group of objects at once we have a number of options to change the pivot point of the 
 selection. We can choose it by selecting one of the option available from the list near the 3D transform manipulator 
 widget.
 
-![blender change objects pivot 1](/assets/images/posts/blender-change-pivot-objects-1.jpg "blender change objects 
-pivot 1")
+{% include blog-lazy-image.html description="blender change objects pivot 1" src="/assets/images/posts/blender-change-pivot-objects-1.jpg" %}
 
 That's all for selection and transform of objects. In the next post we will start to explore the art of modeling in 
 Blender.

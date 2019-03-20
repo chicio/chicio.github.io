@@ -258,9 +258,6 @@ public class TravelsAdapterTest {
     }
 }
 ```
-   
-In this example we generated just one test case, but usually a lot more of them. Basically we can apply a technique 
-named **"property testing"**: a lot of random input are generated so that there will be an high probability to 
-execute all the possible branch in our source code (and in this way have a higher test coverage).    
-So we put our `TravelsAdapter` under test and we can now start to work on this class without any kind of risk 
-:relieved:. Now it's time to test this technique in your legacy code :grin:. 
+
+In this example we generated just one test case, but usually a lot more of them. Basically we can apply a technique named **"property testing"**: a lot of random input are generated so that there will be an high probability to execute all the possible branch in our source code (and in this way have a higher test coverage).
+So we put our `TravelsAdapter` under test and we can now start to work on this class without any kind of risk :relieved:. Now it's time to test this technique in your legacy code :grin:.

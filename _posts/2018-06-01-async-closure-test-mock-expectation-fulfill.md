@@ -16,13 +16,12 @@ authors: [fabrizio_duroni]
 ---
 
 As we saw in [this post](/2017/06/02/swift-closure-syntax.html "what are closure") and also
- in [this other one](/2017/06/14/swift-closure-demystifying-autoclosure-escaping.html "autoclose and escaping"), closures 
- are one of the most important building block of Swift. They are extensively used inside the iOS SDK.  
+ in [this other one](/2017/06/14/swift-closure-demystifying-autoclosure-escaping.html "autoclose and escaping"), closures are one of the most important building block of Swift. They are extensively used inside the iOS SDK.  
 But in the previous posts about closures I didn't answer one very important question: how can you do unit test 
 asynchronous operation and closure? It seems Apple has the answer for us!! Inside the iOS Testing framework we have 
 **expectations**.
 
-![Clarity closure expectation test](/assets/images/posts/expectation-closure.jpg "Clarity closure expectation test")
+{% include blog-lazy-image.html description="clarity closure expectation test" src="/assets/images/posts/expectation-closure.jpg" %}
 
 How do they work? To test that asynchronous operations (and closure) behave as expected, you create one or more 
 expectations within your test, and then fulfill those expectations when the asynchronous operation completes 

@@ -23,12 +23,12 @@ When I started to work at [lastminute.com group](https://lmgroup.lastminute.com/
 that I'm not the only one to think about software development in this way.  
 In fact an entire new approach to software development has been create by [Robert Cecil Martin](https://en.wikipedia.org/wiki/Robert_Cecil_Martin "Robert Cecil Martin"),
  known as "Uncle Bob" (whatt??!?!!? :stuck_out_tongue:) and famous also to be the guy that invented the [SOLID principles](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design) "Solid principles"). The name of this new approach to software development is **clean code**.  
-So as I promised in [my first post](/2017/05/10/about-me.html "about me") on this blog I 
+So as I promised in [my first post](/2017/05/10/about-me.html "about me") on this blog I
 will publish a series of articles in which I will talk about the foundation of clean code and my personal experiences
- with it. So let's start the discussion with one of the principles of clean code that impressed me the most: 
+ with it. So let's start the discussion with one of the principles of clean code that impressed me the most:
  meaningful naming.  
 
-![Uncle bob meaningful names](/assets/images/posts/meaningful-names.jpg "Uncle bob meaningful names")
+{% include blog-lazy-image.html description="uncle bob meaningful names" src="/assets/images/posts/meaningful-names.jpg" %}
 
 As stated by Uncle Bob in the beautiful meme above, this principle is simple: choose your name carefully.
 But what does it really mean to "choose carefully"? :confused:. Choosing the right names means the following thing: 

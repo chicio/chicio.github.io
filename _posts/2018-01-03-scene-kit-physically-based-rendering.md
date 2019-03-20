@@ -28,10 +28,7 @@ create games and other 3D applications without the need to know any computer gra
 stuff and so on. You basically describe a Scene in terms of objects and features and Apple will do everything for you :sunglasses:.  
 One of the most interesting thing about SceneKit on the computer graphics side has been introduced in 2016: 
 physically based rendering (PBR).  
-We've already seen what PBR is in [a previous post](/2017/12/07/physically-base-rendering-introduction.html "physically based rendering introduction post"), 
-so you already know its theoretical foundation stuff (or go to check it out in case you missed it :wink:). So that 
-means that SceneKit could render physically based scene using its own entirely new physically based rendering engine. Is it worth 
-it? Sure!! :blush:  So, let's try it!
+We've already seen what PBR is in [a previous post](/2017/12/07/physically-base-rendering-introduction.html "physically based rendering introduction post"), so you already know its theoretical foundation stuff (or go to check it out in case you missed it :wink:). So that means that SceneKit could render physically based scene using its own entirely new physically based rendering engine. Is it worth it? Sure!! :blush:  So, let's try it!
 In this post we will create a scene from scratch that uses the main PBR features you can 
 find inside SceneKit. At the end of this post you will be able to render the scene contained in the image below. So 
 it's time to start coding!!

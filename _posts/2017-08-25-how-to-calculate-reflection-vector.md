@@ -26,20 +26,20 @@ We will suppose as in the previous post about the phong model that all vectors a
 
 $$R = 2({\hat{N}}\cdot{\hat{L}}){\hat{N}} - {\hat{L}}$$
 
-How is this formula obtained? Let's start from a picture that represents our reflection vector and the other vectors 
+How is this formula obtained? Let's start from a picture that represents our reflection vector and the other vectors
 used in the calculation.
 
 ![Model view presenter ios unit tests](/assets/images/posts/reflection.png "Model view presenter ios unit tests")
 
 Before we start with the demonstration we also need to know what is the law of reflection: 
 
->The incident light ray L, the reflected ray R, and the normal N to the surface of the mirror all lie in the same plane. 
-The angle of reflection $\Theta_R\$ is equal to the angle of incidence of light $\Theta_L$. Both angles are measured 
-with respect to the normal to the mirror. The reflected ray and the incident ray are on the opposite sides of the 
+>The incident light ray L, the reflected ray R, and the normal N to the surface of the mirror all lie in the same plane.
+The angle of reflection $\Theta_R\$ is equal to the angle of incidence of light $\Theta_L$. Both angles are measured
+with respect to the normal to the mirror. The reflected ray and the incident ray are on the opposite sides of the
 normal.
 
 Now we are ready for our demonstration :sunglasses:.  
-From the law of refraction reported above we know that: 
+From the law of refraction reported above we know that:
 
 $$\Theta_R=\Theta_L$$
 
@@ -47,7 +47,7 @@ This equation could be rewritten as the dot product of the reflection direction 
 
 $${\hat {R}} \cdot {\hat {N}} = {\hat {L}} \cdot {\hat {N}}$$
 
-From the image above it's also evident for symmetry that: 
+From the image above it's also evident for symmetry that:
 
 $${\hat {U}^{\prime}} = -{\hat {U}^{\prime \prime}}$$
 
@@ -61,19 +61,19 @@ $${\hat {U}^{\prime \prime}} = {\hat {L}} - {\hat {N}^{\prime \prime}} = {\hat {
 
 As a consequence we obtain the following equation:
 
-$${\hat {R}} - ({\hat {R}} \cdot {\hat {N}}){\hat {N}} = -({\hat {L}} - ({\hat {L}} \cdot {\hat {N}}){\hat {N}})$$ 
+$${\hat {R}} - ({\hat {R}} \cdot {\hat {N}}){\hat {N}} = -({\hat {L}} - ({\hat {L}} \cdot {\hat {N}}){\hat {N}})$$
 
 Now we can see again from the image above that the vector projections ${\hat {N}^{\prime}}$ and ${\hat {N}^{\prime \prime}}$ are equals, that means we could change the previous equation by substituting the first one with the second one. So we obtain the following equation:
 
-$${\hat {R}} - ({\hat {L}} \cdot {\hat {N}}){\hat {N}} = -({\hat {L}} - ({\hat {L}} \cdot {\hat {N}}){\hat {N}})$$ 
+$${\hat {R}} - ({\hat {L}} \cdot {\hat {N}}){\hat {N}} = -({\hat {L}} - ({\hat {L}} \cdot {\hat {N}}){\hat {N}})$$
 
 Now we have all we need to calculate our R vector:
 
-$${\hat {R}} - ({\hat {L}} \cdot {\hat {N}}){\hat {N}} = -({\hat {L}} - ({\hat {L}} \cdot {\hat {N}}){\hat {N}})$$ 
+$${\hat {R}} - ({\hat {L}} \cdot {\hat {N}}){\hat {N}} = -({\hat {L}} - ({\hat {L}} \cdot {\hat {N}}){\hat {N}})$$
 
-$${\hat {R}} = ({\hat {L}} \cdot {\hat {N}}){\hat {N}} - ({\hat {L}} - ({\hat {L}} \cdot {\hat {N}}){\hat {N}})$$ 
+$${\hat {R}} = ({\hat {L}} \cdot {\hat {N}}){\hat {N}} - ({\hat {L}} - ({\hat {L}} \cdot {\hat {N}}){\hat {N}})$$
 
-$${\hat {R}} = ({\hat {L}} \cdot {\hat {N}}){\hat {N}} - {\hat {L}} + ({\hat {L}} \cdot {\hat {N}}){\hat {N}}$$ 
+$${\hat {R}} = ({\hat {L}} \cdot {\hat {N}}){\hat {N}} - {\hat {L}} + ({\hat {L}} \cdot {\hat {N}}){\hat {N}}$$
 
 $$R = 2({\hat{N}}\cdot{\hat{L}}){\hat{N}} - {\hat{L}}$$
 

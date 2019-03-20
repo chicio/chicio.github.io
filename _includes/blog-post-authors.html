@@ -2,9 +2,7 @@
 	{% for author in include.authors %}
 	{% assign currentAuthor = site.data.authors[author] %}
 	<div class="blog-post-author d-inline-flex flex-row align-items-center">
-		<img src="{{currentAuthor.image}}"
-			 class="rounded-circle"
-			 alt="{{currentAuthor.name}}"/>
+		{% include blog-lazy-image.html class="rounded-circle" description=currentAuthor.name src=currentAuthor.image %}
 		<span><a href="{{currentAuthor.url}}">{{currentAuthor.name}}</a></span>
 	</div>
 	{% endfor %}

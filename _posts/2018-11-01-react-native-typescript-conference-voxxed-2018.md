@@ -71,7 +71,7 @@ So we started to review the slides and we basically created a new presentation :
  confident. Last but not least, the Human Resources department gave us a company t-shirt to promote our company brand
   at the conference.
   
-![voxxed 2018 tshirt](/assets/images/posts/voxxed-2018-tshirt.jpg "voxxed 2018 tshirt")  
+{% include blog-lazy-image.html description="voxxed 2018 tshirt" src="/assets/images/posts/voxxed-2018-tshirt.jpg" %}
 
 ### The talk
 
@@ -79,37 +79,34 @@ Then the day of the talk arrived after a not so quiet sleep. The Voxxed Days 201
 20th of October. We arrived at the Palazzo dei Congressi in Lugano at 8.45 AM. We were excited to queue in the 
 dedicated speakers area for the firt time after so many conferences attended! We checked-in and got our shiny speaker
  badge. Then we moved to the lounge section to enjoy breakfast.
- 
- ![voxxed 2018 breakfast and badge](/assets/images/posts/voxxed-2018-breakfast.jpg "voxxed 2018 breakfast and badge")  
+
+{% include blog-lazy-image.html description="voxxed 2018 breakfast and badge" src="/assets/images/posts/voxxed-2018-breakfast.jpg" %}
 
 Our talk was planned at 2.30 PM, so we had time to attend some other sessions. At 11.50 AM we decided to do a last 
 presentation simulation to review some details and then we went to lunch. At 2.00 PM we started to feel the strain. 
 The start of our talk was really close. We entered in the room of our session at 2.15 PM and we did the setup of our 
-laptop for the presentation. 
+laptop for the presentation.
 
- ![voxxed 2018 pre talk](/assets/images/posts/voxxed-2018-pre-talk.jpg "voxxed 2018 pre-talk")
+{% include blog-lazy-image.html description="voxxed 2018 pre talk" src="/assets/images/posts/voxxed-2018-pre-talk.jpg" %}
 
 Then the room started to fill in. As scheduled at 2.30 PM we started our presentation. The presentation went smooth.
 We kept the scheduled time per slide we planned in our simulation. The change of speaker between the various part of 
 the presentation worked perfectly. At the end we answered to some questions and we received applause from the 
 audience.  
 
- ![voxxed 2018 pre talk](/assets/images/posts/voxxed-2018-talk.jpg "voxxed 2018 talk")
+{% include blog-lazy-image.html description="voxxed 2018  talk" src="/assets/images/posts/voxxed-2018-talk.jpg" %}
 
-### Conclusion 
+### Conclusion
 
 Tha's all for my first experience as a conference speaker. It has been a good experience. After 10 years in the IT 
 field (had I already been working for 10 years?!??! :cold_sweat:) it was a great pleasure to be on the other side of 
 the stage.
 
- ![voxxed 2018 clean](/assets/images/posts/voxxed-2018-clean.jpg "voxxed 2018 clean")
+{% include blog-lazy-image.html description="voxxed 2018 clean" src="/assets/images/posts/voxxed-2018-clean.jpg" %}
 
 Special thanks to all the team Lynch that give me the opportunity to be the "replacement" speaker for this conference.
  Special thanks also to  [Alessandro Romano](https://www.linkedin.com/in/alessandroromano92/ "Alessandro Romano") 
  "the clean". He is one of the best cospeaker and coworker you could ever find :heart:. If you want to know more 
  about the topic of our presentation, below you can find the full session recorded :bowtie:.
- 
+
  {% include youtube.html videoId="1x2B7S0XJU4" %}
-     
-
-

@@ -26,9 +26,9 @@ Simple and clear (I love this kind of definition :relieved:). Three.js is a libr
 simplify the computer graphics development for the web. It has a lot of different features, including the support for 
 [Physically Based Rendering](https://en.wikipedia.org/wiki/Physically_based_rendering "Physically Based Rendering").
 Let's see the potential of this library. In this post I will show you how to create a simple physically base scene. At 
-the end of this post you will have created a scene like the one in the following image: 
+the end of this post you will have created a scene like the one in the following image:
 
-![Threejs first scene](/assets/images/posts/threejs-scene.jpg "Threejs first scene")
+{% include blog-lazy-image.html description="threejs first scene" src="/assets/images/posts/threejs-scene.jpg" %}
   
 The mesh We will use are a simplified version of the ones available from the [Stanford scan repository](https://graphics.stanford.edu/data/3Dscanrep/
 "Stanford scan repository") in PLY format.  
@@ -152,8 +152,10 @@ light and we place it above the scene, to create some sort of street light effec
 the ability to cast generate shadow by setting `castShadow` to true, we force the shadow map size to 512x512 pixel (to 
 increase performance, as the default is 1024) and we give a little blur on the shadow by setting the `radius` property to 1.5.
 We also create a geometry and a material for the light:
-  - the geometry is a sphere with radius 0
-  - the material is a complete emissive physically based material
+
+* the geometry is a sphere with radius 0
+* the material is a complete emissive physically based material
+
 In fact, the `MeshStandardMaterial` is the three.js implementation of a physically based material (so it's real: three.js rocks with
 physically based rendering :open_mouth:).
 
@@ -263,6 +265,7 @@ loadFloor(textureLoader, function (mesh) {
     scene.add(mesh);
 });
 ```
+
 For the stars, we use the `textureLoader` to load a circle png texture. Whe the texture load is completed, we create 
 a lot of `Geometry` with random position. Whe also create the material using the texture obtained from the loader (and
 we set on it a transparent background). Now we can create some WebGL `Points` using the related three.js class. 
@@ -373,8 +376,7 @@ The entire scene code is showed below in the gist.
 Yeah!!! You made it!! You create a 3D computer graphics web application using three.js :blush:!! And it is also a 
 scene that supports advanced feature, in particular physically based rendering :open_mouth:!!
 
-![I know three.js](/assets/images/posts/i-know-threejs.jpg "I know three.js")
+{% include blog-lazy-image.html description="i know three js" src="/assets/images/posts/i-know-threejs.jpg" %}
 
-You know three.js now. You're ready to conquer the web 3D world now :smirk:. Ah!! I was forgetting: you can find a live 
+You know three.js now. You're ready to conquer the web 3D world now :smirk:. Ah!! I was forgetting: you can find a live
 demo of the scene we created on the [homepage of my website](/ "Fabrizio Duroni").
- 

@@ -16,15 +16,11 @@ without using react-native link command*.
 
 ---
 
-What is React Native? It is one of the most successful and loved mobile development framework. It let you build *real native 
-mobile* application using Javascript. It has been developed by Facebook. Let's see the definition from the official 
-website: 
+What is React Native? It is one of the most successful and loved mobile development framework. It let you build *real native
+mobile* application using Javascript. It has been developed by Facebook. Let's see the definition from the official
+website:
 
->Build native mobile apps using JavaScript and React. React Native lets you build mobile apps using only JavaScript. 
- It uses the same design as React, letting you compose a rich mobile UI from declarative components. With React Native, 
- you don't build a “mobile web app”, an “HTML5 app”, or a “hybrid app”. You build a real mobile app that's indistinguishable 
- from an app built using Objective-C or Java. React Native uses the same fundamental UI building blocks as regular 
- iOS and Android apps. You just put those building blocks together using JavaScript and React.
+>Build native mobile apps using JavaScript and React. React Native lets you build mobile apps using only JavaScript. It uses the same design as React, letting you compose a rich mobile UI from declarative components. With React Native, you don't build a “mobile web app”, an “HTML5 app”, or a “hybrid app”. You build a real mobile app that's indistinguishable from an app built using Objective-C or Java. React Native uses the same fundamental UI building blocks as regular iOS and Android apps. You just put those building blocks together using JavaScript and React.
 
 Cool :sunglasses:!!!! Isn't it? Write an app using Javascript with the same performance of native code. You can also 
 reuse your native component and bridge them to the javascript side.  
@@ -33,20 +29,17 @@ if your project doesn't follow the standard React Native directories structure y
 to link you external library.  
 While I was working on an [existing native app integrated with React Native](https://facebook.github.io/react-native/docs/integration-with-existing-apps.html 'existing native app integrated with React Native') that 
 has a custom directories structure for the react-native and native code, I found some problem to add [Realm](https://realm.io 'https://realm.io'), the famous open source dbms, as a dependency to the project.  
-In this post I will show you an example of how you can add Realm to your app that has a custom React Native 
-installation. Let's start :cold_sweat:!!
-To describe the installation process I will use a sample app I created for this post called `ReactNativeRealmManualLink`. You can find 
-it with realm installed in [this github repo](https://github.com/chicio/React-Native-Realm-Manual-Link 'React Native realm manual link').   
-Suppose you have a project like the one I shared above, in which React Native is contained in a subfolder of the iOS 
-project, instead of the other way around in a standard React Native installation. 
+In this post I will show you an example of how you can add Realm to your app that has a custom React Native installation. Let's start :cold_sweat:!!
+To describe the installation process I will use a sample app I created for this post called `ReactNativeRealmManualLink`. You can findit with realm installed in [this github repo](https://github.com/chicio/React-Native-Realm-Manual-Link 'React Native realm manual link').  
+Suppose you have a project like the one I shared above, in which React Native is contained in a subfolder of the iOS project, instead of the other way around in a standard React Native installation.
 
-![React Native realm directories](/assets/images/posts/react-native-realm-1-directories.jpg "React Native realm directories")
+{% include blog-lazy-image.html description="react native realm directories" src="/assets/images/posts/react-native-realm-1-directories.jpg" %}
 
 First, to add realm as a dependency we need to install it through npm with following command.
 
 ```shell
 npm install --save realm
-``` 
+```
 
 Then we try to link the library to the native code with the standard React Native command.
 
@@ -57,7 +50,7 @@ react-native link realm
 But here something strange happens: as you can see from the screenshot below the command fails to link the library. 
 So we need to find another way to install the library.
 
-![React Native realm link fails](/assets/images/posts/react-native-realm-2-link-fails.jpg "React Native realm directories")
+{% include blog-lazy-image.html description="react native realm directories fails" src="/assets/images/posts/react-native-realm-2-link-fails.jpg" %}
 
 Usually, if the previous command fails, you have to do the [manual linking](https://facebook.github.io/react-native/docs/linking-libraries-ios.html "manual linking"). 
 To do it we navigate inside the `node_modules` folder, contained in the React Native folder of our project, to found the realm folder. 
@@ -65,51 +58,52 @@ Inside it you will find an Xcode project named `RealmReact`, that you have to dr
 have to add a reference to 
 the static library `libRealmReact` and compile the project.
 
-![React Native realm manual link step 1](/assets/images/posts/react-native-realm-3-manual-link-step-1.jpg "React Native realm manual link")
-![React Native realm manual link step 2](/assets/images/posts/react-native-realm-3-manual-link-step-2.jpg "React Native realm manual link")
+{% include blog-lazy-image.html description="react native realm directories step 1" src="/assets/images/posts/react-native-realm-3-manual-link-step-1.jpg" %}
+{% include blog-lazy-image.html description="react native realm directories step 2" src="/assets/images/posts/react-native-realm-3-manual-link-step-2.jpg" %}
 
 Now you would expect that everything works fine but...
 
-![React Native realm manual link fails](/assets/images/posts/react-native-realm-4-manual-link-fails.jpg "React Native realm manual link fails")
+{% include blog-lazy-image.html description="React Native realm manual link fails 4" src="/assets/images/posts/react-native-realm-4-manual-link-fails.jpg" %}
 
 What's happening? The `RealmReact` project is expecting the React Native headers in a relative position with respect 
 to its original position. Arrrgghhh :rage:!! We need to find another way...  
 
 What can we do? We can start by observing that the `RealmReact` project is just a "container project" for:
- * `RealmJS` project, that  generates two static libraries `libRealmJS.a` and `libGCDWebServers.a`
- * an Objective-C++ class `RealmReact`
- * an Objective-C++ file `RealmAnalytics`  
- 
+
+* `RealmJS` project, that  generates two static libraries `libRealmJS.a` and `libGCDWebServers.a`
+* an Objective-C++ class `RealmReact`
+* an Objective-C++ file `RealmAnalytics`  
+
 So we can try to modify our main project by:
- * adding the `RealmJS` project and the Objective-C++ files/classes as references
- * linking the static libraries `libRealmJS.a` and `libGCDWebServers.a` to our main project and see if everything works
 
-![React Native realm custom manual link step 1](/assets/images/posts/react-native-realm-5-custom-manual-link-step-1.jpg "React Native realm custom manual link step 1")
-![React Native realm custom manual link step 2](/assets/images/posts/react-native-realm-5-custom-manual-link-step-2.jpg "React Native realm custom manual link step 1")
+* adding the `RealmJS` project and the Objective-C++ files/classes as references
+* linking the static libraries `libRealmJS.a` and `libGCDWebServers.a` to our main project and see if everything works
 
-Now we need to add to the `Header search path` option of our main project the paths that were setted in the `RealmReact` project. In this way 
-the `RealmJS` project will be able to find some headers it needs. You can find the complete list of the folder that 
+{% include blog-lazy-image.html description="react native realm custom manual link step 1" src="/assets/images/posts/react-native-realm-5-custom-manual-link-step-1.jpg" %}
+{% include blog-lazy-image.html description="react native realm custom manual link step 2" src="/assets/images/posts/react-native-realm-5-custom-manual-link-step-2.jpg" %}
+
+Now we need to add to the `Header search path` option of our main project the paths that were setted in the `RealmReact` project. In this way the `RealmJS` project will be able to find some headers it needs. You can find the complete list of the folder that 
 we need to add in the screenshot below.
 
-![React Native realm header search path](/assets/images/posts/react-native-realm-6-header-search-path.jpg "React Native realm header search path")
+{% include blog-lazy-image.html description="react native realm header search path" src="/assets/images/posts/react-native-realm-6-header-search-path.jpg" %}
 
 Now if we try to compile our app we expect that everything works fine but...ERROR :warning::fire:!!! The build fails :boom:!!! 
 
-![React Native realm C++ error](/assets/images/posts/react-native-realm-7-Cplusplus-error.jpg "React Native realm C++ error")
+{% include blog-lazy-image.html description="react Native realm c++ error" src="/assets/images/posts/react-native-realm-7-Cplusplus-error.jpg" %}
 
 It seems like that in order to be able to compile the C++ source code contained in `RealmJS` we need to set a recent C++ version 
 in our project setting that supports some new features like auto return type on static function. We can set it to C++ 14 
 and set the Standard Library to the LLVM one with C++ 11 support.
 
-![React Native realm C++ setup](/assets/images/posts/react-native-realm-8-Cplusplus-setup.jpg "React Native realm C++ setup")
+{% include blog-lazy-image.html description="react native realm c++ error" src="/assets/images/posts/react-native-realm-8-Cplusplus-setup.jpg" %}
 
 One final step is to remove the flag `-all_load` from the `Other linker flag` option of the main project (if you have it). 
 In this way we avoid to load all Objective-C symbols and have the "duplicated symbols" error.
 
-![React Native realm all_load flag](/assets/images/posts/react-native-realm-9-all_load.jpg "React Native realm all_load flag")   
- 
+{% include blog-lazy-image.html description="react native realm all_load flag" src="/assets/images/posts/react-native-realm-9-all_load.jpg" %}
+
 We are now ready to build our app and see if everything works. To do this we create a sample native view controller 
-that has a `RCTRootView` 
+that has a `RCTRootView`
 
 ```swift
 class ReactNativeRealmController: UIViewController {
@@ -178,9 +172,7 @@ AppRegistry.registerComponent('ReactNativeRealmScreen', () => ReactNativeRealmSc
 
 We are now ready to build our app and, as expected, everything works fine.
 
-![React Native realm build works](/assets/images/posts/react-native-realm-10-build-works.jpg "React Native realm build works")   
+{% include blog-lazy-image.html description="react native realm build works" src="/assets/images/posts/react-native-realm-10-build-works.jpg" %}
 
-That's it!! As I told you before you can find the complete example in [this github repo](https://github.com/chicio/React-Native-Realm-Manual-Link 'React Native realm manual link'). 
+That's it!! As I told you before you can find the complete example in [this github repo](https://github.com/chicio/React-Native-Realm-Manual-Link 'React Native realm manual link').
 We are now ready to create our React Native component with realm :bowtie:.  
-
-  
