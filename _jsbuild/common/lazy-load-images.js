@@ -27,10 +27,10 @@ const loadImage = (image, loadCompleted) => {
   })
 }
 
-const fetchImage = (url) => {
+const fetchImage = (src) => {
   return new Promise((resolve, reject) => {
     const image = new Image()
-    image.src = url
+    image.src = src
     image.onload = resolve
     image.onerror = reject
   })
