@@ -64,7 +64,23 @@ npm install --global flow-typed
 ```
 
 #### Adding types
-Let's start to add some types. Flow support the following primitive types
+Let's start to add some types. To show you how to add types with flow I will use as example a small piece of code used on this website. This piece of code contains the animation used to show images after they had been downloaded from the network. Below you can see the code.
+
+```javascript
+import { TweenLite } from 'gsap'
+
+const lazyLoadImageAnimation = (image, delay) => {
+  TweenLite.from(image, 0.3, {
+    opacity: 0,
+    delay
+  })
+}
+
+export { lazyLoadImageAnimation }
+```
+
+The first thing we have to do is to tell to flow that we want to check the types for this file. To do this we just have to add the comment `/* @flow */` at the top of the file.  
+Then we can start to add types. Flow support the following primitive types
 
 * boolean
 * number
@@ -74,7 +90,25 @@ Let's start to add some types. Flow support the following primitive types
 * any, a way to opt-out of using the type checker. A variable of type `any` will accept any type of value. Using any is completely unsafe, and should be avoided whenever possible.
 * mixed, will accept any type of value as `any`. The difference is that when you try to use a value of a mixed type you must first figure out what the actual type is or you’ll end up with an error.
 
-....(lazy load animation)
+...other example example for flow typed (command )
+
+```shell
+flow-typed install webfontloader@v1.x.x
+```
+
+```javascript
+import WebFont from 'webfontloader'
+
+const loadFont = (finish: ?(() => void)): void => {
+  WebFont.load({
+    google: { families: ['Open Sans'] },
+    active: finish ? finish() : undefined,
+    inactive: finish ? finish() : undefined
+  })
+}
+
+export { loadFont }
+```
 
 #### Flow vs TypeScript
 
