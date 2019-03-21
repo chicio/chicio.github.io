@@ -42,7 +42,7 @@ Then I decided to create a new script phase `flow` that launches the script `flo
 * I run flow to execute the static type checking on my code base with the command `../node_modules/.bin/flow`
 * I run flow-remove-types to strip flow type annotations from js files. The generated files are saved in the folder `../_jsbuild/` specified in the destination folder flag `-d`. I also specified the `--pretty` option in order to be able to remove the whitespaces that flow-remove-types leaves in the source when it removes the types annotation.
 
-This is the script (that you can find also [here](https://github.com/chicio/chicio.github.io/blob/master/_scripts/flow.sh "flow script")).
+Below you can see the entire script I created (that you can find also [here](https://github.com/chicio/chicio.github.io/blob/master/_scripts/flow.sh "flow script")).
 
 ```shell
 #!/usr/bin/env sh
@@ -57,7 +57,24 @@ cd _js
 ../node_modules/.bin/flow-remove-types ../_js/ -d ../_jsbuild/ -i flow-typed/ --pretty
 ```
 
+The final steup of the setup was to install [flow-typed](https://github.com/flow-typed/flow-typed "flow typed"). Flow-type is a repository of third-party library interface definitions for use with Flow. In the next section I will explain to you why I need it (and also you will need it :wink:). You need to install it globally. This could be done with the following command (I ran this command in the setup script I have for my site, that I launch when I have to prepare the development enviroment on a new computer):
+
+```shell
+npm install --global flow-typed
+```
+
 #### Adding types
+Let's start to add some types. Flow support the following primitive types
+
+* boolean
+* number
+* string
+* void(undefined)
+* null
+* any, a way to opt-out of using the type checker. A variable of type `any` will accept any type of value. Using any is completely unsafe, and should be avoided whenever possible.
+* mixed, will accept any type of value as `any`. The difference is that when you try to use a value of a mixed type you must first figure out what the actual type is or you’ll end up with an error.
+
+....(lazy load animation)
 
 #### Flow vs TypeScript
 
