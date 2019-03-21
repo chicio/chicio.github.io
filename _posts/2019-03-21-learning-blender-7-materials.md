@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Learning Blender: materials"
-description: "In this new post of the series "Learning Blender" I will talk about materials."
+title: "Blender tutorial: materials"
+description: "In this new post of the series Blender tutorial I will talk about materials."
 date: 2019-03-21
 image: /assets/images/posts/blender-create-material.jpg
 tags: [computer graphics, blender]
@@ -11,11 +11,11 @@ seo:
 authors: [fabrizio_duroni]
 ---
 
-*In this new post of the series "Learning Blender" I will talk about materials.*
+*In this new post of the series Blender tutorial I will talk about materials.*
 
 ---
 
-In the [previous post of the series "Learning Blender"](/2018/10/18/blender-tutorial-6-outliner-layers-groups-hierarchies-scenes.html) we talked about the outliner, layers, groups and 
+In the [previous post of the series "Blender tutorial"](/2018/10/18/blender-tutorial-6-outliner-layers-groups-hierarchies-scenes.html) we talked about the outliner, layers, groups and 
 hierarchies in Blender. In this post we will start to add some details to our models by learning how to use **materials**.  
 To set a material on an object we can select the material tab from the properties panel, and the press the new button.
 
