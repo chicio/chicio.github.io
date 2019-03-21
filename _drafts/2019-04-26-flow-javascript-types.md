@@ -25,9 +25,37 @@ What is [Flow](https://flow.org/)? Flow is a static type checker for javascript.
 >* JAVASCRIPT, YOUR WAY: Flow is designed to understand idiomatic JavaScript. It understands common JavaScript patterns and many of the weird things we JavaScript developers love to do.
 >* EASY INTEGRATION: Flow integrates well with many tools, making it easy to insert into your existing workflow and toolchain.
 
-It seems really cool!!! :sunglasses:. In this post I will described my experience with Flow. I will show you how I integrated it in the js build process and how I used it to do static type checking for the JavaScript codebase of this website.  
+It seems really cool!!! :sunglasses:. **In this post I will described my experience with Flow. I will show you how I integrated it in the js build process and how I used it to do static type checking for the JavaScript codebase of this website.**  
 
-#### Installation
+#### Installation and setup
+
+First of all, I added flow to my dev dependecies. I decided to use flow in combination with [flow-remove-types](https://github.com/flowtype/flow-remove-types), a small CLI tool for stripping Flow type annotations from files.
+
+```shell
+npm install --save-dev flow-remove-types
+npm install --save-dev flow-bin
+```
+
+Then I decided to create a new script phase `flow` that launches the script `flow.sh`. In this shell scriptwhere I do all the flow operations: 
+
+* I move into my js folder with `cd _js `
+* I run flow to execute the static type checking on my code base with the command `../node_modules/.bin/flow`
+* I run flow-remove-types to strip flow type annotations from js files. The generated files are saved in the folder `../_jsbuild/` specified in the destination folder flag `-d`. I also specified the `--pretty` option in order to be able to remove the whitespaces that flow-remove-types leaves in the source when it removes the types annotation.
+
+This is the script (that you can find also [here](XXXXX)).
+
+```shell
+#!/usr/bin/env sh
+
+# Enter into js source folder
+cd _js 
+
+# Run flow
+../node_modules/.bin/flow 
+
+# Remove flow types
+../node_modules/.bin/flow-remove-types ../_js/ -d ../_jsbuild/ -i flow-typed/ --pretty
+```
 
 #### Adding types
 
