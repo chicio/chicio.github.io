@@ -28,13 +28,12 @@ After creating we material a new list of option to customize it appears. We have
 * *Volume*, render object as a volume
 * *Halo*, render object as halo particles
 
-Most of the time (9/10 times) we will use the surface types. The other are for special effects we will see in the future. Then we have other options to customize the main components of the material. The definitions given below of these components are from an artist point of view. If your're interested in some deeper details on the computer graphics side, you can have a look at [this documentation](https://www.cs.uic.edu/~jbell/CourseNotes/ComputerGraphics/LightingAndShading.html "Lighting computer graphics")
+Most of the time (9/10 times) we will use the surface types. The other are for special effects we will see in the future. Then we have other options to customize the main components of the material. The definitions given below of these components are from an artist point of view. If you're interested in some deeper details on the computer graphics side, you can have a look at [this documentation](https://www.cs.uic.edu/~jbell/CourseNotes/ComputerGraphics/LightingAndShading.html "Lighting computer graphics")
 (on the web you can find plenty of resources about this topic). So the main material components are:
 
 * *diffuse*, the main color of the objects
 * *specular*, that define the highlights
-* *shading*, that defines the type light emission of the material, the ambient component that empirically models the 
-result of indirect lighting and other options (that we will see in details later)
+* *shading*, that defines the type light emission of the material, the ambient component that empirically models the result of indirect lighting and other options (that we will see in details later)
 * *transparency*
 * *mirror*
 * *subsurface scattering*, to model material in which light will enter on a point of the surface and will exit from 
