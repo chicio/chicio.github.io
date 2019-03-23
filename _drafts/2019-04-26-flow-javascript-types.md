@@ -36,7 +36,7 @@ npm install --save-dev flow-remove-types
 npm install --save-dev flow-bin
 ```
 
-Then I decided to create a new script phase `flow` that launches the script `flow.sh`. In this shell scriptwhere I do all the flow operations: 
+Then I decided to create a new script phase `flow` that launches the script `flow.sh`. In this shell scriptwhere I do all the flow operations:
 
 * I move into my js folder with `cd _js`
 * I run flow to execute the static type checking on my code base with the command `../node_modules/.bin/flow`
@@ -57,6 +57,7 @@ cd _js
 ../node_modules/.bin/flow-remove-types ../_js/ -d ../_jsbuild/ -i flow-typed/ --pretty
 ```
 
+As you may expect with all the npm script phase, I can invoke with in a shell with the command `npm run flow`.
 The final steup of the setup was to install [flow-typed](https://github.com/flow-typed/flow-typed "flow typed"). Flow-type is a repository of third-party library interface definitions for use with Flow. In the next section I will explain to you why I need it (and also you will need it :wink:). You need to install it globally. This could be done with the following command (I ran this command in the setup script I have for my site, that I launch when I have to prepare the development enviroment on a new computer):
 
 ```shell
@@ -90,8 +91,29 @@ Then we can start to add types. Flow support the following primitive types
 * any, a way to opt-out of using the type checker. A variable of type `any` will accept any type of value. Using any is completely unsafe, and should be avoided whenever possible.
 * mixed, will accept any type of value as `any`. The difference is that when you try to use a value of a mixed type you must first figure out what the actual type is or you’ll end up with an error.
 
-...other example example for flow typed (command )
+Obviously Flow support also object, classes and interface. So we can try to add the types to the parameters of the `lazyLoadImageAnimation` function. The first parameter is an DOM element that is then passed to the TweenLite `from` function. So we can try to give the [Element class type](https://developer.mozilla.org/en-US/docs/Web/API/Element) to the `image` parameter. The second parameter, `delay`, is a number used to tweak the TweenLite animation configuration. So, as you may expect :bowtie:, we can try to give the type `number` to it. Below you can find the final implementation with Flow types.
 
+```javascript
+/* @flow */
+import { TweenLite } from 'gsap'
+
+const lazyLoadImageAnimation = (image: Element, delay: number): void => {
+  TweenLite.from(image, 0.3, {
+    opacity: 0,
+    delay
+  })
+}
+
+export { lazyLoadImageAnimation }
+```
+
+If I try to run `npm run flow` I expect that exerything goes well, but instead...I received the following error: "XXXX"
+
+- descrivi errore
+- creazione tipo a mano
+
+
+...other example example for flow typed (command )
 ```shell
 flow-typed install webfontloader@v1.x.x
 ```
