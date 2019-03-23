@@ -3,6 +3,7 @@ declare module "gsap" {
 
   declare export class TweenLite extends Animation {
     static to(target: any, duration: number, vars: any): TweenLite;
+    static from(target: any, duration: number, vars: any): TweenLite;
   }
 
   declare export class TweenMax extends Animation {

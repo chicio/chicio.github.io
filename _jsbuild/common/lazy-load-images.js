@@ -14,9 +14,15 @@ const onIntersection = (entries, observer, loadCompleted) => {
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0) {
       observer.unobserve(entry.target)
-      loadImage(entry.target, loadCompleted)
+      eventuallyLoadImage(entry.target, loadCompleted)
     }
   })
+}
+
+const eventuallyLoadImage = (element, loadCompleted) => {
+  if (element instanceof HTMLImageElement) {
+    loadImage(element, loadCompleted)
+  }
 }
 
 const loadImage = (image, loadCompleted) => {

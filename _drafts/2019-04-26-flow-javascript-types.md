@@ -117,7 +117,6 @@ If I try to run `npm run flow` I expect that exerything goes well, but instead..
 ```shell
 flow-typed install webfontloader@v1.x.x
 ```
-
 ```javascript
 import WebFont from 'webfontloader'
 
