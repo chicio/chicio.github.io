@@ -107,16 +107,51 @@ const lazyLoadImageAnimation = (image: Element, delay: number): void => {
 export { lazyLoadImageAnimation }
 ```
 
-If I try to run `npm run flow` I expect that exerything goes well, but instead...I received the following error: "XXXX"
+If I try to run `npm run flow` I expect that exerything goes well, but instead...I received the following error: "**Cannot resolve module gsap.**". Below in the screenshot you can see the error reported.
 
-- descrivi errore
-- creazione tipo a mano
+{% include blog-lazy-image.html description="flow module error" src="/assets/images/posts/flow-error-module.jpg" %}
 
+What's happening here? The `TweenLite` class is imported from the third party library [`gsap`](XXXX) and Flow doesn't know the types definition for it. We have to provide this definition in order to enable Flow to do the type checking also on the parts of code that refer to a third library. This can be done in this way:
 
-...other example example for flow typed (command )
+* check to see if the [flow-typed](https://github.com/flow-typed/flow-typed "flow typed") repo contains the types definition for the library we are using and eventually install it
+* write the flow type definition for by yourself if it is not present in the flow-typed directory
+
+Unfortunately, in this case the flow-typed repository doesn't contain a type definition for the `gsap` library. So we will need to write it by ourself. How can we do that? First of all let's create a folder inside our project called `flow-typed` (what a coincidence!!!! :smirk:). This is the standard folder where flow searches for third party library types definition. If you want you can customize the search path with a custom folder in the `.flowconfig` file. Then we create a ne file `gsap.js` inside it. In this file we declare a new module definition with the syntax `declare module "<module name>"`. In this case it will be `declare module "gsap" `. Then we can declare a new class to be exported, `TweenLite`, that is the one we are using in our piece of code above. To this class we will add the definition for all the method we are using and for which we need the flow type definition. From the piece of code above it's easy to see that the only method we are using is `from(...)`, so we can add the types definition only for it. To do this we just have to declare the signature of the method with the types we expect for each parameter. One thing to be noted is that the first and the third parameter could accept different types as specified in the gsap documentation. This is why I put `any` as type. Basically I'm saying that for the first and third parameter I don't want to do any type check :laughing:. Below you can find the complete declaration implementation.
+
+```javascript
+declare module "gsap" {
+
+  declare export class TweenLite extends Animation {
+    static from(target: any, duration: number, vars: any): TweenLite;
+  }
+}
+```
+
+If we try to run again the command `npm run flow` everything will work as expected :relieved:.  
+Let's see another example. The piece of code below is used to load a webfont with the help of the `webfontloader` library.
+
+```javascript
+import WebFont from 'webfontloader'
+
+const loadFont = (finish) => {
+  WebFont.load({
+    google: { families: ['Open Sans'] },
+    active: finish ? finish() : undefined,
+    inactive: finish ? finish() : undefined
+  })
+}
+
+export { loadFont }
+```
+
+Let's start by adding the type for the `finish` parameter. The `finish` parameter is a function that could be null, so we need to use a [maybe type](https://flow.org/en/docs/types/maybe/ "flow maybe type"), usually known as Optional types. So we need to declare it as as optional function `?(() => void)`. Then again we have an import from an external library `webfontloader`. In this case the webfontloader module declaration could be taken from the [flow-typed](https://github.com/flow-typed/flow-typed "flow typed") repo. To do that, we can install the definition contained in the repo in our source code with the following command:
+
 ```shell
 flow-typed install webfontloader@v1.x.x
 ```
+
+Now we are ready to run the command `npm run flow` again. Everything works as expected and Flow says that our types are correct. This is the final version of the source could with all the types.
+
 ```javascript
 import WebFont from 'webfontloader'
 
@@ -133,4 +168,17 @@ export { loadFont }
 
 #### Flow vs TypeScript
 
+So how does it compare Flow to TypeScript? The main reason to choose Flow instead of TypeScript could be:
+
+* **It's a easy-to-use utility**. Flow is is not a complete language like TypeScript. It is an utility that you can add to your code. this could be as simple as just put [`/* @flow */` at the begininning of the file](https://medium.com/the-web-tub/comparing-flow-with-typescript-6a8ff7fd4cbb). In fact with flow you're still, writing JavaScript code.
+* **very good React support**. Flow comes from Facebook as React, so you will find easier to integrate Flow with React and React Native.
+
+The cons of Flow with respect to TypeScript are:
+
+* **smaller community compared to the TypeScript one.** This basically means that for Flow you will find fewer tutorials, online resources and library definitions.
+* **better IDE integrations**. TypeScript is much better supported in terms of automated refactoring tools
+
 #### Conclusion
+
+That's all for Flow!!! Let me know in the comments if you like it or if you prefer TypeScript.
+

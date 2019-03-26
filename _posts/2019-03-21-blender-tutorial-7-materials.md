@@ -19,7 +19,7 @@ In the [previous post of the series "Blender tutorial"](/2018/10/18/blender-tuto
 hierarchies in Blender. In this post we will start to add some details to our models by learning how to use **materials**.  
 To set a material on an object we can select the material tab from the properties panel, and the press the new button.
 
-![blender create material](/assets/images/posts/blender-create-material.jpg "blender create material")
+{% include blog-lazy-image.html description="blender create material" src="/assets/images/posts/blender-create-material.jpg" %}
 
 After creating we material a new list of option to customize it appears. We have the possibility to change the material's name. We can select the material type. The available options are:
 
@@ -42,14 +42,14 @@ another one. This component is useful to model translucency effects.
 * *shadows*
 * *other options*
 
-![blender material panel](/assets/images/posts/blender-material-panel.jpg "blender material panel")
+{% include blog-lazy-image.html description="blender material panel" src="/assets/images/posts/blender-material-panel.jpg" %}
 
 We can assign multiple material to the same objects. To do it we just need to :
 
 * add a new material slot using the plus button
 * select (in edit mode) the part of the object to which we want to apply the material and click the assign button 
 
-![blender multiple material](/assets/images/posts/blender-multiple-material.jpg "blender multiple material")
+{% include blog-lazy-image.html description="blender multiple material" src="/assets/images/posts/blender-multiple-material.jpg" %}
 
 Now let's star to have a deeper look at the **diffuse component**. As we said before, the diffuse component defines the 
 main color of our object. The default shader applied to it is the lambert shader. Lambertian is an ideal diffuse 
@@ -64,7 +64,7 @@ reflection that ideally reflect equally the light in all direction. We have also
 
  All the diffuse shader types have an intensity parameter to adjust their contribution to the final look of the objects.
 
-![blender material diffuse component](/assets/images/posts/blender-material-diffuse-component.jpg "blender material diffuse component")
+{% include blog-lazy-image.html description="blender material diffuse component" src="/assets/images/posts/blender-material-diffuse-component.jpg" %}
 
 After the diffuse component there's the **specular component**. This component is used to represent the 
 highlights/shininess of the surface. We can select the color as for the diffuse shader. We also have again a 
@@ -77,16 +77,16 @@ list of shader we can choose from:
 * *toon*
 * *wardiso*
 
-![blender material specular component](/assets/images/posts/blender-material-specular-component.jpg "blender material specular component")
+{% include blog-lazy-image.html description="blender material specular component" src="/assets/images/posts/blender-material-specular-component.jpg" %}
 
 For both the diffuse and specular component we have also the **ramp option**. With this option it is possible to apply gradient on the surface. The ramp option could be useful to add a little bit more pop to the material final look. The starting values for ramp contains two color, but we can add as many intermediate points as we want.
 
-![blender material ramp](/assets/images/posts/blender-material-ramp.jpg "blender material ramp")
+{% include blog-lazy-image.html description="blender ramp material" src="/assets/images/posts/blender-ramp-material.jpg" %}
 
 We have also some shading option that we can use to set other to surface components. In particular we can set the ambient and emit components using the slider contained in this section. We can also completely turn off the shader by
  using the shadeless option, or using the tangent shading option to create tangent specular highlights.
 
-![blender shading options](/assets/images/posts/blender-shading-options.jpg "blender shading options")
+{% include blog-lazy-image.html description="blender shading options" src="/assets/images/posts/blender-shading-options.jpg" %}
 
 Now we will take a look at how we can create **reflective material**. To create a reflective material we can activate the
  Mirror component. We have some options to customize the final result of our reflection:
@@ -99,7 +99,7 @@ Now we will take a look at how we can create **reflective material**. To create 
 
 Remember that the mirror material result is visible only in the final render view.
 
-![blender reflection](/assets/images/posts/blender-reflection.jpg "blender reflection")
+{% include blog-lazy-image.html description="blender reflection" src="/assets/images/posts/blender-reflection.jpg" %}
 
 After mirror material we can take a look at the **transparency component**. To make a transparent material we have to 
 activate this component. There are 3 option:
@@ -109,7 +109,7 @@ activate this component. There are 3 option:
 object plane with the color of the corresponding background pixel, according to the alpha channel of the pixel
 * *raytrace*, a realistic transparency configurable with Index Of Refraction (IOR) and other parameters.
 
-![blender transparency](/assets/images/posts/blender-transparency.jpg "blender transparency")
+{% include blog-lazy-image.html description="blender trasparency" src="/assets/images/posts/blender-transparency.jpg" %}
 
 Last but not least we have **subsurface scattering**. As reported on [wikipedia](https://en.wikipedia.org/wiki/Subsurface_scattering "Subsurface scattering"):
 
@@ -123,6 +123,6 @@ We have some parameter to modify the final result of this component:
 * *scattering weights*, to tweak if the effects it is more on front then on the back
 * *blend*
 
-![blender subsurface scattering](/assets/images/posts/blender-subsurface-scattering.jpg "blender subsurface scattering")
+{% include blog-lazy-image.html description="blender subsurface scattering" src="/assets/images/posts/blender-subsurface-scattering" %}
 
 In the next post we will talk about textures.
