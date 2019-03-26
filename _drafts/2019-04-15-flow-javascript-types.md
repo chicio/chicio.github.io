@@ -2,8 +2,8 @@
 layout: post
 title: "Flow, the static type checker for Javascript: How to use it and a brief comparison with TypeScript"
 description: "In this post I will talk about how I used Flow to do static type checking on the Javascript of a project and I will also do a brief comparison with its main rival TypeScript."
-date: 2019-04-26
-image: /assets/images/posts/appium.jpg
+date: 2019-04-15
+image: /assets/images/posts/flow.jpg
 tags: [web development, javascript, typescript]
 comments: true
 seo:
@@ -111,7 +111,7 @@ If I try to run `npm run flow` I expect that exerything goes well, but instead..
 
 {% include blog-lazy-image.html description="flow module error" src="/assets/images/posts/flow-error-module.jpg" %}
 
-What's happening here? The `TweenLite` class is imported from the third party library [`gsap`](XXXX) and Flow doesn't know the types definition for it. We have to provide this definition in order to enable Flow to do the type checking also on the parts of code that refer to a third library. This can be done in this way:
+What's happening here? The `TweenLite` class is imported from the third party library [`gsap`](https://greensock.com/gsap) and Flow doesn't know the types definition for it. We have to provide this definition in order to enable Flow to do the type checking also on the parts of code that refer to a third library. This can be done in this way:
 
 * check to see if the [flow-typed](https://github.com/flow-typed/flow-typed "flow typed") repo contains the types definition for the library we are using and eventually install it
 * write the flow type definition for by yourself if it is not present in the flow-typed directory
@@ -168,7 +168,7 @@ export { loadFont }
 
 #### Flow vs TypeScript
 
-So how does it compare Flow to TypeScript? The main reason to choose Flow instead of TypeScript could be:
+So how does it compare Flow to TypeScript? The main reasons to choose Flow instead of TypeScript are:
 
 * **It's a easy-to-use utility**. Flow is is not a complete language like TypeScript. It is an utility that you can add to your code. this could be as simple as just put [`/* @flow */` at the begininning of the file](https://medium.com/the-web-tub/comparing-flow-with-typescript-6a8ff7fd4cbb). In fact with flow you're still, writing JavaScript code.
 * **very good React support**. Flow comes from Facebook as React, so you will find easier to integrate Flow with React and React Native.
@@ -180,5 +180,4 @@ The cons of Flow with respect to TypeScript are:
 
 #### Conclusion
 
-That's all for Flow!!! Let me know in the comments if you like it or if you prefer TypeScript.
-
+This is my experience with Flow. In the end I think it's a good alternative to TypeScript, especially for the "true pure javascript lovers". Let me know in the comments if you like it :cupid: or if you prefer TypeScript :smiling_imp:.
