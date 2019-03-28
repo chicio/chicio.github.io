@@ -11,7 +11,7 @@ seo:
 authors: [fabrizio_duroni]
 ---
 
-*In this post I will do a brief comparison between Flow and TypeScript.*
+*In this post I will talk about how I used Flow to do static type checking on the Javascript of a project and I will also do a brief comparison with its main rival TypeScript.*
 
 ---
 
