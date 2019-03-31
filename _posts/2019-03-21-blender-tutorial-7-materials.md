@@ -123,6 +123,6 @@ We have some parameter to modify the final result of this component:
 * *scattering weights*, to tweak if the effects it is more on front then on the back
 * *blend*
 
-{% include blog-lazy-image.html description="blender subsurface scattering" src="/assets/images/posts/blender-subsurface-scattering" %}
+{% include blog-lazy-image.html description="blender subsurface scattering" src="/assets/images/posts/blender-subsurface-scattering.jpg" %}
 
 In the next post we will talk about textures.
