@@ -1,0 +1,5 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target" : { "namespace": "android_app", "package_name": "it.chicio.chiciocoding",
+               "sha256_cert_fingerprints": ["F5:30:B1:D8:93:86:AF:80:1A:07:FC:5D:D3:C9:92:DB:2D:0A:98:24:EE:37:6C:01:F8:2D:72:76:E0:CB:57:0F"] }
+}]
