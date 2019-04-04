@@ -1,0 +1,3 @@
+---
+layout: privacy-policy
+---
