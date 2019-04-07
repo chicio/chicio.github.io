@@ -89,13 +89,13 @@ we need to add in the screenshot below.
 
 Now if we try to compile our app we expect that everything works fine but...ERROR :warning::fire:!!! The build fails :boom:!!! 
 
-{% include blog-lazy-image.html description="react Native realm c++ error" src="/assets/images/posts/react-native-realm-7-Cplusplus-error.jpg" %}
+{% include blog-lazy-image.html description="react Native realm c++ error 1" src="/assets/images/posts/react-native-realm-7-Cplusplus-error.jpg" %}
 
 It seems like that in order to be able to compile the C++ source code contained in `RealmJS` we need to set a recent C++ version 
 in our project setting that supports some new features like auto return type on static function. We can set it to C++ 14 
 and set the Standard Library to the LLVM one with C++ 11 support.
 
-{% include blog-lazy-image.html description="react native realm c++ error" src="/assets/images/posts/react-native-realm-8-Cplusplus-setup.jpg" %}
+{% include blog-lazy-image.html description="react native realm c++ error 2" src="/assets/images/posts/react-native-realm-8-Cplusplus-setup.jpg" %}
 
 One final step is to remove the flag `-all_load` from the `Other linker flag` option of the main project (if you have it). 
 In this way we avoid to load all Objective-C symbols and have the "duplicated symbols" error.

@@ -56,7 +56,7 @@ If we try to build this app on an iPhone, and we open one of the React Native sc
 following error (obviously based on the fact that we are trying to access localhost from the iPhone, and our React 
 Native node server is running on the MacBook Pro where we are building the app).  
 
-{% include blog-lazy-image.html description="react native bridge delegate localhost" src="/assets/images/posts/react-native-error-on-device-failed-bundle.jpg" %}
+{% include blog-lazy-image.html description="react native error on device failed bundle" src="/assets/images/posts/react-native-error-on-device-failed-bundle.jpg" %}
 
 How can we build on a real device? First of all we need to add a new build phase to our project that let us run the 
 `React Native Xcode Bundler` before the real build. The `React Native Xcode Bundler` is a shell script with name 
