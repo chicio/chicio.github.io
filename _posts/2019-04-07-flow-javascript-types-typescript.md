@@ -58,7 +58,7 @@ cd _js
 ```
 
 As you may expect with a standard npm script phase, I can invoke it in a shell with the command `npm run flow`.
-The final step of the setup was to install [flow-typed](https://github.com/flow-typed/flow-typed "flow typed"). Flow-type is a repository of third-party library Flow interface definitions. In the next section I will explain to you why I need it (and also you will need it :wink:). Flow-typed must be installed globally. This could be done with the following command (I ran this command in the setup script I have for my website, that I launch when I have to prepare the development enviroment on a new computer):
+The final step of the setup was to install [flow-typed](https://github.com/flow-typed/flow-typed "flow typed"). Flow-type is a repository of third-party library Flow interface definitions. In the next section I will explain to you why I need it (and also you will need it :wink:). Flow-typed must be installed globally. This could be done with the following command (I ran this command in the setup script I have for my website, that I launch when I have to prepare the development environment on a new computer):
 
 ```shell
 npm install --global flow-typed
