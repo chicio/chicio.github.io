@@ -169,7 +169,7 @@ export { loadFont }
 
 So how does it compare Flow to TypeScript? The main reasons to choose Flow instead of TypeScript are:
 
-* **It's a easy-to-use utility**. Flow is is not a complete language like TypeScript. It is an utility that you can add to your code. this could be as simple as just put [`/* @flow */` at the begininning of the file](https://medium.com/the-web-tub/comparing-flow-with-typescript-6a8ff7fd4cbb). In fact with Flow you're still, writing JavaScript code.
+* **It's an easy-to-use utility**. Flow is is not a complete language like TypeScript. It is an utility that you can add to your code. this could be as simple as just put [`/* @flow */` at the beginning of the file](https://medium.com/the-web-tub/comparing-flow-with-typescript-6a8ff7fd4cbb). In fact with Flow you're still, writing JavaScript code.
 * **very good React support**. Flow comes from Facebook as React, so you will find easier to integrate Flow with React and React Native.
 
 The cons of Flow with respect to TypeScript are:
