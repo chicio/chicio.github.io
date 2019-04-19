@@ -47,9 +47,42 @@ const lazyLoadImages = (selector, loadCompleted) => {
 }
 ```
 
-As you can see above from the snippet above, in the inserction callback I'm calling the `onIntersection` function. What does it do? ...
+As you can see above from the snippet above, in the inserction callback I'm calling the `onIntersection` function. What does it do? This function check the `IntersectionObserverEntry` received from the Intersection Observer as parameter: if a `target` `Element` is inside the viewport it would have the `intersectionRatio` > 0. When this happen I can remove the observer and start the load of the image with the `loadImage` function.
 
-This is the final script.
+```javascript
+const onIntersection = (entries, observer, loadCompleted) => {
+  entries.forEach(entry => {
+    if (entry.intersectionRatio > 0) {
+      observer.unobserve(entry.target)
+      loadImage(entry.target, loadCompleted)
+    }
+  })
+}
+```
+
+The `loadImage` function downloads the image using the [Image](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/Image) object. At the end of the download I remove the `lazy` css class, that I used to hide the image until it has been download. Then the `loadCompleted` function is called, where the caller can do anything it want with the image (for example I'm doing a custom animation in order to avoid the `flash` effect when the image is show).
+
+```javascript
+const loadImage = (image, loadCompleted) => {
+  const src = image.dataset.src
+  fetchImage(src).then(() => {
+    image.src = src
+    removeCssClass(image, 'lazy')
+    loadCompleted(image)
+  })
+}
+
+const fetchImage = (src) => {
+  return new Promise((resolve, reject) => {
+    const image = new Image()
+    image.src = src
+    image.onload = resolve
+    image.onerror = reject
+  })
+}
+```
+
+This is the final script with the complete flow.
 
 ```javascript
 import 'intersection-observer'
@@ -93,9 +126,13 @@ const fetchImage = (src) => {
 export { lazyLoadImages }
 ```
 
-There's still one thing
+There's still one thing that I didn't discuss yet. How can we support this type of lazy loading for the browser that doesn't still have implemented the `IntersectionObserver` API? The answer is the [Interserction Observer Polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill). I installed as a dependency of my project.
 
-[Interserction Observer Polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)
+```
+npm install --save intersection-observer
+```
+
+This [polyfill](https://en.wikipedia.org/wiki/Polyfill_(programming) "polyfill programming") exposes an ad hoc implementation in vanilla javascript of the Intersection Observer, or it exposes the current browser implementation if it is already in place for the browser that the user is using.
 
 #### Conclusion
 
