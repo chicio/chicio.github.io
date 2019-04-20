@@ -14,7 +14,7 @@ seo:
 
 ---
 
-In the [previous post of the series "Blender tutorial"](2019/03/27/blender-tutorial-13-animation.html) we talked about animation. In this post we will talk about armatures and character rigging.  
+In the [previous post of the series "Blender tutorial"](/2019/03/27/blender-tutorial-13-animation.html) we talked about animation. In this post we will talk about armatures and character rigging.  
 Let's start from armatures. Armatures are composed of bones. We can create bones by selecting *Add -> Armature -> Single Bone*. Every bone is compose of:
 
 * a base

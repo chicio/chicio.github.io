@@ -14,7 +14,7 @@ seo:
 
 ---
 
-In the [previous post of the series "Blender tutorial"](2019/03/28/blender-tutorial-14-armatures-character-rigging.html) we talked about character rigging. In this post we will talk about the Cycles rendering engine. What is exactly Cycles?
+In the [previous post of the series "Blender tutorial"](/2019/03/28/blender-tutorial-14-armatures-character-rigging.html) we talked about character rigging. In this post we will talk about the Cycles rendering engine. What is exactly Cycles?
 Let's see a quote taken from Blender doc:
 
 > Cycles is Blender’s ray-tracing production render engine.
