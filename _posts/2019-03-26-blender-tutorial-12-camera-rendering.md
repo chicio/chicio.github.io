@@ -3,7 +3,7 @@ layout: post
 title: "Blender tutorial: camera and rendering"
 description: "In this new post of the series Blender tutorial I will talk about camera and rendering."
 date: 2019-03-26
-image: TO DO
+image: /assets/images/posts/blender-camera-options.jpg
 tags: [computer graphics, blender]
 comments: true
 seo:
