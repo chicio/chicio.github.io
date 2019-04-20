@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Blender tutorial: textures - part 1."
+title: "Blender tutorial: textures - part 1"
 description: "In this new post of the series Blender tutorial I will talk about textures."
-date: 2017-11-25
+date: 2019-03-22
 image: /assets/images/posts/blender-create-texture.jpg
 tags: [computer graphics, blender]
 comments: true
@@ -14,8 +14,7 @@ seo:
 
 ---
 
-In the [previous post of the series "Blender tutorial"](TODO) we talked about materials in Blender. In this post we 
-will start to learn how to use textures.  
+In the [previous post of the series "Blender tutorial"](/2019/03/21/blender-tutorial-7-materials.html) we talked about materials in Blender. In this post we will start to learn how to use textures.  
 As you may already know, textures are useful to add realism to a material. We can manage textures from the texture 
 tab inside the properties panel. From that panel we can create a new texture by clicking on the + button. After 
 creating a new texture, some options are displayed that let us customize how the texture looks like. The type of 

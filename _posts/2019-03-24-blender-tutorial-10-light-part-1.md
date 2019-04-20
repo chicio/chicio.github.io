@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Blender tutorial: light - part 1."
+title: "Blender tutorial: light - part 1"
 description: "In this new post of the series Blender tutorial I will talk about light."
-date: 2017-11-25
+date: 2019-03-24
 image: /assets/images/posts/blender-spot-light.jpg
 tags: [computer graphics, blender]
 comments: true
@@ -14,8 +14,7 @@ seo:
 
 ---
 
-In the [previous post of the series Blender tutorial](TODO) we talked about textures in Blender. In this post we 
-will explore lights in Blender.  
+In the [previous post of the series "Blender tutorial"](/2019/03/23/blender-tutorial-9-textures-part-2.html) we talked about textures in Blender. In this post we will explore lights in Blender.  
 First of all we need to clarify one thing: lights in Blender are called lamps. So in all menus and option we will 
 find that word to identify lights.  
 To add a light to our scenes, just use the option Add -> Lamp and select one of the light type available.  Let's add 

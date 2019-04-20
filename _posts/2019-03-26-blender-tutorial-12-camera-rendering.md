@@ -1,24 +1,21 @@
 ---
 layout: post
-title: "Learning Blender: camera and rendering"
-description: "In this new post of the series "Learning Blender" I will talk about camera and rendering."
-date: 2017-11-25
+title: "Blender tutorial: camera and rendering"
+description: "In this new post of the series Blender tutorial I will talk about camera and rendering."
+date: 2019-03-26
 image: TO DO
 tags: [computer graphics, blender]
 comments: true
 seo:
   - type: "BlogPosting"
 ---
- 
-*In this new post of the series "Learning Blender" I will talk about camera and rendering.*
+
+*In this new post of the series Blender tutorial I will talk about camera and rendering.*
 
 ---
 
-In the [previous post of the series "Learning Blender"](TODO) we talked about light in Blender. In this post we 
-will talk about camera and rendering. Let's start from camera.  
-If we select a camera, we can access its properties from the specific camera tab in the properties panel. Here we 
-have a section called "Display", that let us customize how we see the camera in the viewport (limits, names and so 
-on). Then we have a "Lens" section, where we can choose the type of the camera:
+In the [previous post of the series "Blender tutorial"](/2019/03/25/blender-tutorial-11-light-part-2.html) we talked about light in Blender. In this post we will talk about camera and rendering. Let's start from camera.  
+If we select a camera, we can access its properties from the specific camera tab in the properties panel. Here we have a section called "Display", that let us customize how we see the camera in the viewport (limits, names and so on). Then we have a "Lens" section, where we can choose the type of the camera:
 
 * orthogonal
 * perspective
@@ -30,17 +27,16 @@ For the perspective camera we can change:
 * the shift, so as the word say we can change the shift of the camera from its center
 * the clipping, the start end distance between which the object see by the camera will be rendered.
 
-For the orthographic camera the most important parameter is the orthographic scale, that represent the maximum 
-dimension (in scene units) of the portion of space captured from the camera.
+For the orthographic camera the most important parameter is the orthographic scale, that represent the maximum dimension (in scene units) of the portion of space captured from the camera.
 
-![blender camera options](/assets/images/posts/blender-camera-options.jpg "blender camera options")
+{% include blog-lazy-image.html description="blender camera options" src="/assets/images/posts/blender-camera-options.jpg" %}
 
 We can place cameras manually or we can use constraints. We can create a constraint by clicking the specific 
 constraint tab (the one with the chain as icon) in the properties panel of the camera and add a new constraint. We 
 can use for example a Damped Track and correlate the movement of our camera to the position of an object we select as
  the one to be tracked.
- 
-![blender camera constraints](/assets/images/posts/blender-camera-constraints.jpg "blender camera constraints")
+
+{% include blog-lazy-image.html description="blender camera constraints" src="/assets/images/posts/blender-camera-constraints.jpg" %}
 
 For what concerns rendering, we have the possibility to control it in the properties panel under the render tab (the 
 one with the camera). For example we can customize where the render will happen. By default the render will show the 
@@ -50,8 +46,8 @@ the dimensions of the render result in terms of width/height but also in terms o
  important, we can also customize the shading option (as we already see in a previous post about shadows), the 
  performance (for example by adjusting the number of thread that Blender will be allowed to use), and the format of 
  final output of the rendering.
- 
-![blender render option](/assets/images/posts/blender-render-option.jpg "blender render option")
+
+{% include blog-lazy-image.html description="blender render option" src="/assets/images/posts/blender-render-option.jpg" %}
 
 As we said before in Blender it is possible to render animation. We will go through all the details about animation 
 in a future post. For now we can see how to achieve cool rendering effects, for example motion blur. The motion blur 
@@ -60,21 +56,21 @@ effect by activating it in the rendering properties and setting the number of mo
 modify the shutter to change the final result of the motion blur (the default value for samples is 1, and we need to 
 modify it because with the value of 1 we will have no motion blur).
 
-![blender motion blur](/assets/images/posts/blender-motion-blur.jpg "blender motion blur")
+{% include blog-lazy-image.html description="blender motion blur" src="/assets/images/posts/blender-motion-blur.jpg" %}
 
 One last effect we can achieve with the Blender render is depth of field. This effect simulate the fact that only a 
 part of the scene is in focus, based on the focal distance from the camera. To setup the depth of field in our scene,
  first of all we have to activate it by increasing the distance option in the depth of field section of the 
  camera properties.  
 
-![blender depth of field 1](/assets/images/posts/blender-depth-of-field-1.jpg "blender depth of field 1")
+{% include blog-lazy-image.html description="blender depth of field 1" src="/assets/images/posts/blender-depth-of-field-1.jpg" %}
 
 After that we have to switch to the node editor, add a defocus filter, and connect the render image and depth to the 
 filter, and again the image to the composite final result.
 
-![blender depth of field 2](/assets/images/posts/blender-depth-of-field-2.jpg "blender depth of field 2")
-![blender depth of field 3](/assets/images/posts/blender-depth-of-field-3.jpg "blender depth of field 3")
-![blender depth of field 4](/assets/images/posts/blender-depth-of-field-4.jpg "blender depth of field 4")
-![blender depth of field 5](/assets/images/posts/blender-depth-of-field-5.jpg "blender depth of field 5")
- 
+{% include blog-lazy-image.html description="blender depth of field 2" src="/assets/images/posts/blender-depth-of-field-2.jpg" %}
+{% include blog-lazy-image.html description="blender depth of field 3" src="/assets/images/posts/blender-depth-of-field-3.jpg" %}
+{% include blog-lazy-image.html description="blender depth of field 4" src="/assets/images/posts/blender-depth-of-field-4.jpg" %}
+{% include blog-lazy-image.html description="blender depth of field 5" src="/assets/images/posts/blender-depth-of-field-5.jpg" %}
+
 That's all for camera and rendering. In the next post we will talk about animation.

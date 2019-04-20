@@ -2,7 +2,7 @@
 layout: post
 title: "Blender tutorial: textures - part 2"
 description: "In this new post of the series Blender tutorial  I will talk other about textures techniques."
-date: 2017-11-25
+date: 2019-03-23
 image: /assets/images/posts/blender-displacement-mapping.jpg
 tags: [computer graphics, blender]
 comments: true
@@ -14,8 +14,7 @@ seo:
 
 ---
 
-In the [previous post of the series "Blender tutorial "](TODO) we talked about textures in Blender. In this post we 
-will continue to learn how to use textures in Blender.  
+In the [previous post of the series "Blender tutorial"](/2019/03/22/blender-tutorial-8-textures-part-1.html) we talked about textures in Blender. In this post we will continue to learn how to use textures in Blender.  
 We will start with normal maps. This kind of texture let us simulate rough surfaces without adding geometric
  details to the mesh. We can set bump mapping in the texture tab under the Influence section. By checking the 
  Geometry -> Normal checkbox we let the texture be used as a reference to modify the normals of the mesh so that we 
