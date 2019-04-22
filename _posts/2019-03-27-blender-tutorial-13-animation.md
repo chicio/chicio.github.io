@@ -17,7 +17,7 @@ seo:
 In the [previous post of the series "Blender tutorial"](/2019/03/26/blender-tutorial-12-camera-rendering.html) we talked about camera and rendering options/effects in Blender. In this post we will talk about animation. Let's start from the timeline.
 The timeline is usually placed at the bottom of the default layout of Blender. In it you can select a specific frame 
 by clicking on it in the timeline. We also have some controls to start/stop/fast back and forward the animation. 
-There also the possibility to set a start and end frame of the animation. 
+There is also the possibility to set a start and end frame of the animation.
 
 {% include blog-lazy-image.html description="blender animation timeline" src="/assets/images/posts/blender-animation-timeline.jpg" %}
 
@@ -25,7 +25,7 @@ To create an animation we need first of all to set keyframes. To do this we have
 keyframe in the timeline, and the go in the space properties panel, change one of the spatial properties we want to 
 animate (location, rotation or scale) and right click on them to show a menu where we can select "Insert keyframes". 
 After that you will see the value of the property we decided to animate to become yellow (orange in my images below 
-because I have a custom theme.).
+because I have a custom theme).
 
 {% include blog-lazy-image.html description="blender animation set keyframe 1" src="/assets/images/posts/blender-animation-set-keyframe-1.jpg" %}
 {% include blog-lazy-image.html description="blender animation set keyframe 2" src="/assets/images/posts/blender-animation-set-keyframe-2.jpg" %}

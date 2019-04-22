@@ -2,7 +2,7 @@
 layout: post
 title: "Blender tutorial: Cycles overview"
 description: "In this new post of the series Blender tutorial I will talk about Cycles."
-date: 2017-11-25
+date: 2019-03-29
 image: /assets/images/posts/blender-cycles-start.jpg
 tags: [computer graphics, blender]
 comments: true

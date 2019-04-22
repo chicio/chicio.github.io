@@ -23,7 +23,7 @@ options in the world property panel. Inside it we have a section "world" in whic
 * paper sky, if enabled with blend sky it maps the background colors to a plane
 * real sky, if enabled place the horizon color in the middle (as real sky)
 
-In the same section there's also a ambient color property. The ambient color let us manage the overall light color.
+In the same section there's also an ambient color property. The ambient color let us manage the overall light color.
 
 {% include blog-lazy-image.html description="blender background ambient color" src="/assets/images/posts/blender-background-ambient-color.jpg" %}
 

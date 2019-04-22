@@ -58,7 +58,7 @@ allows you to position the last bone in a bone chain and the other bones are pos
 We can add an inverse kinematic constraint on a bone by choosing it from the menu under the Bone constraint tab in 
 the properties panel. This tab will appear only when we are in pose mode.
 
-{% include blog-lazy-image.html description="blender inverse kinematics" src="/assets/images/posts/blender-inverse-kinematics" %}
+{% include blog-lazy-image.html description="blender inverse kinematics" src="/assets/images/posts/blender-inverse-kinematics.jpg" %}
 
 After setting bones, armature and inverse kinematics we are ready to animate our character. To do that, we just need to be in Pose mode and set the keyframes as we did for standard animation.
 
