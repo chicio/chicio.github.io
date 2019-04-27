@@ -38,9 +38,70 @@ Let's start to see the real action: how I publish my blog PWA to the Google Play
 
 {% include blog-lazy-image.html description="pwa app create project" src="/assets/images/posts/pwa-app-01-create-project.png" %}
 
-Then I added the TWA support as a dependecy of the app. The TWA implementation is contained inside the custom tabs client library published on jitpack (because unfortunately at the moment of this writing the custom tabs client library contained inside Jetpack doesn't have the TWA support). So I added jitpack as repository to the project level gradle file and the I added the custom tabs client library as dependecy inside the module gradle file. This dependecies points to the custom tabs client library published on github and exposed through Jitpack. I had also to specify a specific commit hash in order to be sure that the library version downloaded has dependecies contains the TWA support. 
+Then I added the TWA support as a dependecy of the app. The TWA implementation is contained inside the custom tabs client library published on [Jitpack](https://jitpack.io/ "Jitpack") (because unfortunately at the moment of this writing the custom tabs client library contained inside Jetpack doesn't have the TWA support). So I added Jitpack as repository to the project level gradle file. Then I added the custom tabs client library as dependecy inside the module gradle file. This last dependecy points to the custom tabs client library published on github and exposed through Jitpack. I had also to specify a specific commit hash in order to be sure that the library version downloaded contains the TWA support.
 
 {% include blog-lazy-image.html description="pwa app jitpack" src="/assets/images/posts/pwa-app-02-jitpack-configuration.png" %}
 {% include blog-lazy-image.html description="pwa app custom tab library" src="/assets/images/posts/pwa-app-03-java8-and-custom-tab-dependecies.png" %}
 
-...
+After the depencies setup I added the TWA Activity. To do this I just had to modify the Android app manifest file by declaring a new TWA activity inside it. For the readers that are not mobile developer, the Android app manifest is a file contained in all the Android apps. Its main function is to present essential information about the application to the Android system including:
+
+* the Java package of the app
+* the components of the app including activities, services, broadcast receivers, and content providers that the app is composed of
+* which permissions the app must have in order to access protected parts of the API
+
+The declaration of the TWA inside the Android app manifest must include some important information:
+
+* a `meta-data` tag that must contain the url to be opened by the TWA
+* an `intent-filter` that adds the TWA to the Android Launcher
+* another `intent-filter` that allows the TWA to intercept Android Intents that open https://airhorner.com. The `android:host` attribute inside the data tag must point to the domain being opened by the TWA and specified in the `meta-data` tag. 
+
+{% include blog-lazy-image.html description="pwa app twa declaration" src="/assets/images/posts/pwa-app-04-twa-activity-declaration.png" %}
+
+Now I need to establish the link between our PWA website and our PWA app. This is a two way operation because I need to:
+
+* establish an association from app to the website
+* establish an association from the website to the app
+
+This associations will remove automatically the url address bar from the TWA activity. In this way the Android app will full screen as a standard one (and as a PWA in standalone mode :smirk:).  
+Let's start from the first association, from the app to the web site. To do this I created a new string resource inside the `strings.xml` file. This new string resouce contains the Digital AssetLink statement that you can see below.
+
+```xml
+<resources>
+    <string name="app_name">Chicio Coding</string>
+    <string name="asset_statements">
+        [{
+            \"relation\": [\"delegate_permission/common.handle_all_urls\"],
+            \"target\": {
+                \"namespace\": \"web\",
+                \"site\": \"https://www.fabrizioduroni.it\"}
+        }]
+    </string>
+</resources>
+```
+
+{% include blog-lazy-image.html description="pwa app Digital AssetLink statement" src="/assets/images/posts/pwa-app-05-associate-app-to-web-1.png" %}
+
+I can link this string resource statement inside the Android app manifest by adding a new `meta-data` tag as child of the `application` tag (NOT inside the TWA declaration).
+
+{% include blog-lazy-image.html description="pwa app Digital AssetLink statement manifest" src="/assets/images/posts/pwa-app-05-associate-app-to-web-2.png" %}
+
+It is possible to test that the association from app to the website has been completed. To do this I had to:
+
+* open Chrome on the development device, navigate to `chrome://flags`, search for an item called Enable command line on non-rooted devices and change it to ENABLED and then restart the browser.
+* on the terminal application of your OS, use the Android Debug Bridge (`adb`) to run the following command:
+
+```shell
+adb shell "echo '_ --disable-digital-asset-link-verification-for-url=\"https://www.fabrizioduroni.it\"' > /data/local/tmp/chrome-command-line"
+```
+
+After this setup if I run the app from Android Studio the address bar is gone :relieved:.  
+Now I need to finish the development by establishing an association from the website to the app. ..........
+
+
+
+```shell
+keytool -list -v -keystore <your keystore jks file> -alias <your alias> -storepass <your store psw> -keypass <your key psw>
+```
+
+
+{% include blog-lazy-image.html description="pwa app Digital AssetLink generator" src="/assets/images/posts/pwa-app-07-assetlink-generator.png" %}
