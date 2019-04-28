@@ -3,7 +3,7 @@ layout: post
 title: "Publish your Progressive Web App to the Google Play Store"
 description: "You can now publish your PWA to the Google Play Store using Trusted Web Activities"
 date: 2019-06-15
-image: XXXX
+image: /assets/images/posts/pwa-google-play-store.jpg
 tags: [android, pwa, java, mobile application development, web development, javascript]
 comments: true
 seo:
@@ -57,12 +57,12 @@ The declaration of the TWA inside the Android app manifest must include some imp
 
 {% include blog-lazy-image.html description="pwa app twa declaration" src="/assets/images/posts/pwa-app-04-twa-activity-declaration.png" %}
 
-Now I need to establish the link between our PWA website and our PWA app. This is a two way operation because I need to:
+Now I had to establish the link between our PWA website and our PWA app. This is a two way operation because I had to:
 
 * establish an association from app to the website
 * establish an association from the website to the app
 
-This associations will remove automatically the url address bar from the TWA activity. In this way the Android app will full screen as a standard one (and as a PWA in standalone mode :smirk:).  
+This associations removes automatically the url address bar from the TWA activity. In this way the Android app will be full screen as a standard one (and as a PWA in standalone mode :smirk:).  
 Let's start from the first association, from the app to the web site. To do this I created a new string resource inside the `strings.xml` file. This new string resouce contains the Digital AssetLink statement that you can see below.
 
 ```xml
@@ -81,7 +81,7 @@ Let's start from the first association, from the app to the web site. To do this
 
 {% include blog-lazy-image.html description="pwa app Digital AssetLink statement" src="/assets/images/posts/pwa-app-05-associate-app-to-web-1.png" %}
 
-I can link this string resource statement inside the Android app manifest by adding a new `meta-data` tag as child of the `application` tag (NOT inside the TWA declaration).
+Then I linked this string resource statement inside the Android app manifest by adding a new `meta-data` tag as a child of the `application` tag (NOT inside the TWA declaration).
 
 {% include blog-lazy-image.html description="pwa app Digital AssetLink statement manifest" src="/assets/images/posts/pwa-app-05-associate-app-to-web-2.png" %}
 
@@ -94,14 +94,27 @@ It is possible to test that the association from app to the website has been com
 adb shell "echo '_ --disable-digital-asset-link-verification-for-url=\"https://www.fabrizioduroni.it\"' > /data/local/tmp/chrome-command-line"
 ```
 
-After this setup if I run the app from Android Studio the address bar is gone :relieved:.  
-Now I need to finish the development by establishing an association from the website to the app. ..........
+After this debug setup the app is launched withoutthe address bar :relieved:.  
+Now I need to finish the development by establishing an association from the website to the app. To do that I needed 2 information about my app:
 
+* the package name
+* SHA-256 Fingerprint
 
+The first one was easy to get. I just needed to open the Android manifest file and get it. The second piece of information I needed is inside the keystore that contains the release signing key used to publish the app on the Google Play store. So the first operation I did was to generate a new release signing key. You can find the [standard procedure to get one in this page](https://developer.android.com/studio/publish/app-signing#generate-key). The key created was contained inside a keystore file. So in order to be able to extract the SHA-256 fingerprint from the keystore that contains my release signing key I used [keytool](https://docs.oracle.com/javase/6/docs/technotes/tools/windows/keytool.html 'keytool'). You can find the exact command I used below. The value for the SHA-256 fingerprint is printed under the Certificate fingerprints section.
 
 ```shell
 keytool -list -v -keystore <your keystore jks file> -alias <your alias> -storepass <your store psw> -keypass <your key psw>
 ```
 
+With both pieces of information at hand I was able to generate a web `assetlink.json` statement using the [assetlinks generator](https://developers.google.com/digital-asset-links/tools/generator). The `assetlink.json` generated must be served from the PWA domain from the URL `<your PWA domain>/.well-known/assetlinks.json`.
 
 {% include blog-lazy-image.html description="pwa app Digital AssetLink generator" src="/assets/images/posts/pwa-app-07-assetlink-generator.png" %}
+
+After publishing the `assetlink.json` to my PWA domain my app was ready to be published to the store. So I followed the standard procedure [to upload an app to the Google Play Store](https://developer.android.com/studio/publish/upload-bundle).
+If the two ways association fails, it is possible to check for error messages using the the Android Debug Bridge, by launching from the terminal the following command with the test device connected (or the emulator running).
+
+```shell
+adb logcat | grep -e OriginVerifier -e digital_asset_links
+```
+
+Now my blog PWA is published to Google Play store. Go and download it immediately :cupid: !!!!

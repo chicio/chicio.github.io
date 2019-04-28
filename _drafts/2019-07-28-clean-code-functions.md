@@ -2,8 +2,8 @@
 layout: post
 title: "Clean Code: functions"
 description: "In this post I will talk about clean code and functions."
-date: 2018-10-28
-image: /assets/images/posts/XXXXXXXX
+date: 2019-07-28
+image: /assets/images/posts/uncle-bob-defender-of-clean-code.jpg
 tags: [clean code]
 comments: true
 seo:
@@ -14,7 +14,7 @@ seo:
 
 ---
 
-In a previous post I talked about [clean code](/2018/04/25/clean-code-objects-data-structures-law-demeter.html) and how much it is important to me. 
+In a previous post I talked about [clean code](/2018/04/25/clean-code-objects-data-structures-law-demeter.html) and how much it is important to me.
 In this new post I will talk about another topic of the uncle bob clean code book: functions.  
 How can we have write a good function/method? This is the list of the features that a function 
 must have to be considered "good":

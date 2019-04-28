@@ -128,7 +128,7 @@ export { lazyLoadImages }
 
 There's still one thing that I didn't discuss yet. How can we support this type of lazy loading for the browser that doesn't still have implemented the `IntersectionObserver` API? The answer is the [Interserction Observer Polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill). I installed as a dependency of my project.
 
-```
+```shell
 npm install --save intersection-observer
 ```
 
