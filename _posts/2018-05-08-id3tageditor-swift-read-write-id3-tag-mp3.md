@@ -12,8 +12,7 @@ seo:
 authors: [fabrizio_duroni] 
 ---
 
-*The second of a short series of post in which I describe my two latest project: ID3TagEditor and 
- Mp3ID3Tagger. In this post I will describe how I created ID3TagEditor.*
+*The second of a short series of posts in which I describe my two latest projects: ID3TagEditor and Mp3ID3Tagger. In this post I will describe how I created ID3TagEditor.*
 
 ---
 
