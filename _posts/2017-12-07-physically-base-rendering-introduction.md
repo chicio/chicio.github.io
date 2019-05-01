@@ -138,7 +138,7 @@ spectral path tracing engine [Spectral Clara Lux Tracer](https://github.com/chic
 and the second one is taken from PBRT, the physically based engine described in the 
 book ["Physically based rendering: from theory to implementation" by M. Pharr, W. Jakob, G. Humphreys](https://www.pbrt.org "Physically based rendering: from theory to implementation by M. Pharr, W. Jakob, G. Humphreys").
 
-{% include blog-lazy-image.html description="pbr examples" src="/assets/images/posts/pbr-introduction-examples.jpg" %}
+{% include blog-lazy-image.html description="pbr examples" width="1050" height="450" src="/assets/images/posts/pbr-introduction-examples.jpg" %}
 
 How coooool are these images???? :sunglasses:
 We are at the end of the introduction. I hope now it is at least clear what is PBR :relaxed:!! See you for other 

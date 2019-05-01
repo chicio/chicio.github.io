@@ -1,1 +1,3 @@
-<img {% if include.id and include.id != "" and include.id != nil %}id="#{{include.id}}"{% endif %} alt="{{include.alt}}" src="" data-src="{{include.src}}" class="{{include.class}} lazy" data-proofer-ignore="true">
+{% capture imageWidth %}{{ include.width | default: '3' }}{% endcapture %}
+{% capture imageHeight %}{{ include.height | default: '2' }}{% endcapture %}
+<img {% if include.id and include.id != "" and include.id != nil %}id="#{{include.id}}"{% endif %} alt="{{include.alt}}" src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20{{imageWidth}}%20{{imageHeight}}%27%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23BDBDBD%22%2F%3E%0A%3C%2Fsvg%3E" data-src="{{include.src}}" class="{{include.class}} lazy" data-proofer-ignore="true">

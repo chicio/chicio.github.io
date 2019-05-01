@@ -28,7 +28,7 @@ simplify the computer graphics development for the web. It has a lot of differen
 Let's see the potential of this library. In this post I will show you how to create a simple physically base scene. At 
 the end of this post you will have created a scene like the one in the following image:
 
-{% include blog-lazy-image.html description="threejs first scene" src="/assets/images/posts/threejs-scene.jpg" %}
+{% include blog-lazy-image.html description="threejs first scene"  width="850" height="500" src="/assets/images/posts/threejs-scene.jpg" %}
   
 The mesh We will use are a simplified version of the ones available from the [Stanford scan repository](https://graphics.stanford.edu/data/3Dscanrep/
 "Stanford scan repository") in PLY format.  
@@ -376,7 +376,7 @@ The entire scene code is showed below in the gist.
 Yeah!!! You made it!! You create a 3D computer graphics web application using three.js :blush:!! And it is also a 
 scene that supports advanced feature, in particular physically based rendering :open_mouth:!!
 
-{% include blog-lazy-image.html description="i know three js" src="/assets/images/posts/i-know-threejs.jpg" %}
+{% include blog-lazy-image.html description="i know three js" width="400" height="400" src="/assets/images/posts/i-know-threejs.jpg" %}
 
 You know three.js now. You're ready to conquer the web 3D world now :smirk:. Ah!! I was forgetting: you can find a live
 demo of the scene we created on the [homepage of my website](/ "Fabrizio Duroni").

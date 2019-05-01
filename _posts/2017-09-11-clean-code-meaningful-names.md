@@ -28,7 +28,7 @@ will publish a series of articles in which I will talk about the foundation of c
  with it. So let's start the discussion with one of the principles of clean code that impressed me the most:
  meaningful naming.  
 
-{% include blog-lazy-image.html description="uncle bob meaningful names" src="/assets/images/posts/meaningful-names.jpg" %}
+{% include blog-lazy-image.html description="uncle bob meaningful names" width="300" height="300" src="/assets/images/posts/meaningful-names.jpg" %}
 
 As stated by Uncle Bob in the beautiful meme above, this principle is simple: choose your name carefully.
 But what does it really mean to "choose carefully"? :confused:. Choosing the right names means the following thing: 
