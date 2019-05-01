@@ -21,7 +21,7 @@ But in the previous posts about closures I didn't answer one very important ques
 asynchronous operation and closure? It seems Apple has the answer for us!! Inside the iOS Testing framework we have 
 **expectations**.
 
-{% include blog-lazy-image.html description="clarity closure expectation test" src="/assets/images/posts/expectation-closure.jpg" %}
+{% include blog-lazy-image.html description="clarity closure expectation test" width="500" height="500" src="/assets/images/posts/expectation-closure.jpg" %}
 
 How do they work? To test that asynchronous operations (and closure) behave as expected, you create one or more 
 expectations within your test, and then fulfill those expectations when the asynchronous operation completes 

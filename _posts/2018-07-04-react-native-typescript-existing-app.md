@@ -23,7 +23,7 @@ the following project: rebuild the native mobile apps of the main brands [lastmi
 [Rumbo](https://www.rumbo.es/ "Rumbo") with a new interface and new features. 
 Let's compare the old and the new home of the lastminute.com app. The changes are quite impressive :sunglasses:.
 
-{% include blog-lazy-image.html description="compare home app lastminute.com" src="/assets/images/posts/compare-homes-lastminute.jpg" %}
+{% include blog-lazy-image.html description="compare home app lastminute.com" width="1500" height="2400" src="/assets/images/posts/compare-homes-lastminute.jpg" %}
 
 For this "app relaunch" project we decided to use React Native (I already talked about this framework in some 
 previous posts that you can find in the [archive section](/blog/archive "archive")). We didn't rewrite the apps from 
@@ -49,7 +49,7 @@ knowledge of Object Oriented programming because it let you reuse a lot of the p
  where we will show the photo of the day that we will read from the [Nasa open API](https://api.nasa.gov/ "Nasa open api
  "). Below  you can find what we will achieve. The first screen is a standard native screen. The second one is a React Native screen.
   
-{% include blog-lazy-image.html description="react native typescript app" src="/assets/images/posts/react-native-typescript-app-screens.jpg" %}
+{% include blog-lazy-image.html description="react native typescript app" width="1500" height="2786" src="/assets/images/posts/react-native-typescript-app-screens.jpg" %}
 
 Let's start to setup our project for React Native and TypesScript. First, React Native integration. For this task we 
 can just follow the [React Native documentation regarding the integration with existing app](https://facebook.github.io/react-native/docs/integration-with-existing-apps.html).
@@ -59,7 +59,7 @@ can just follow the [React Native documentation regarding the integration with e
  Our project directories structure will be the one contained in the screenshots below. The existing native codebase 
  is contained inside the `ios` and `android` folders.
 
-{% include blog-lazy-image.html description="react native typescript directories" src="/assets/images/posts/react-native-typescript-directories.jpg" %}
+{% include blog-lazy-image.html description="react native typescript directories" width="273" height="363" src="/assets/images/posts/react-native-typescript-directories.jpg" %}
 
 So let's start by installing TypeScript and the types for React Native. We can do it with the following commands from  the root of our project:
 

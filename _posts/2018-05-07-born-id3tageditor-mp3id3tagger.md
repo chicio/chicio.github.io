@@ -22,7 +22,7 @@ car. It has been a big step forward on my previous car. One of its most interest
 entertainment system: the [Media Nav Evolution system](https://easyconnect.renault.co.uk/systems/medianav-evolution#fonctionnalites "Media Nav Evolution"). This system has a 7'' touchscreen 
 with map integration and a basic smartphone integration with Siri voice recognition and phone call support.
 
-{% include blog-lazy-image.html description="media nav clio" src="/assets/images/posts/media-nav-clio.jpg" %}
+{% include blog-lazy-image.html description="media nav clio" width="1500" height="843" src="/assets/images/posts/media-nav-clio.jpg" %}
 
 One of the thing that caught my attention was the possibility to start to listen to my mp3 collection while I'm driving 
 (on my previous car I had a standard cd player). So I prepared an usb key with some of my mp3 and I started to listen to them.
@@ -34,20 +34,20 @@ start to fill my mp3 with all this information. I want to see the cover of the a
 So I sat in front of my MacBook, I opened iTunes and I started to tag my mp3 files. I saved them on a usb key and I 
 went to my car to test them. The result was the following:
 
-{% include blog-lazy-image.html description="mp3 no cover" src="/assets/images/posts/mp3-song-no-cover.jpg" %}
+{% include blog-lazy-image.html description="mp3 no cover" width="1500" height="1380" src="/assets/images/posts/mp3-song-no-cover.jpg" %}
 
 What the hell is going on??!!?! :angry: The title and the album where displayed but the cover was not show on the 
 screen.
 So I got back to my desk and I started to download some native macOS app that let the user edit what I discovered was
 called *ID3 tag*. None of them worked as expected. Then I found an app called Mp3Tag. This is Windows application that runs also on macOS using Wine. So I downloaded it and tried to tag some mp3. I put them on a usb key and then...
 
-{% include blog-lazy-image.html description="mp3 with cover" src="/assets/images/posts/mp3-song-with-cover.jpg" %}
+{% include blog-lazy-image.html description="mp3 with cover" width="1500" height="1220" src="/assets/images/posts/mp3-song-with-cover.jpg" %}
 
 Mp3Tag was working as expected :relieved:. But then I started to ask myself: "What is doing Mp3Tag that the other native
 macOS application are not doing?". The only way to discover the reason behind this mystery was to compare an mp3 tagged
 with Mp3Tag with an mp3 tagged with one of the other applications. So I opened with my favourite hex editor [HexFiend](https://ridiculousfish.com/hexfiend/ "an hex editor") an mp3 tagged with iTunes and another one tagged with Mp3Tag and I compared them...
 
-{% include blog-lazy-image.html description="mp3 compare itunes mp3tag" src="/assets/images/posts/mp3-tag-bit-cover.jpg" %}
+{% include blog-lazy-image.html description="mp3 compare itunes mp3tag" width="1500" height="891" src="/assets/images/posts/mp3-tag-bit-cover.jpg" %}
 
 Yep, a single byte could make a big difference :open_mouth:. The fact is that the [ID3 standard](http://id3.org/d3v2.3.0 "ID3 standard") 
 accept multiple types of attached picture for an mp3: front cover, back cover, icon, artist photo ecc. The 
@@ -78,7 +78,6 @@ links below:
 * [ID3TagEditor: a Swift framework to read and write ID3 tag of your mp3 files for macOS, iOS, tvOS and watchOS](/2018/05/08/id3tageditor-swift-read-write-id3-tag-mp3.html "id3 tag swift")  
 * [Mp3ID3Tagger: a native macOS app to edit the ID3 tag of your mp3 files written using RxSwift and RxCocoa](/2018/05/09/mp3id3tagger-macos-tag-mp3-id3-rxswift-rxcocoa.html "mp3 tag macos rxswift rxcocoa")
 
-{% include blog-lazy-image.html description="mp3id3tagger id3tageditor" src="/assets/images/posts/mp3id3tagger-id3tageditor.jpg" %}
+{% include blog-lazy-image.html description="mp3id3tagger id3tageditor" width="1541" height="770" src="/assets/images/posts/mp3id3tagger-id3tageditor.jpg" %}
 
-I hope you will see how much love and passion I put into this projects and I also hope you will find all the 
-technical details inside them interesting :sparkling_heart:.
+I hope you will see how much love and passion I put into this projects and I also hope you will find all the technical details inside them interesting :sparkling_heart:.

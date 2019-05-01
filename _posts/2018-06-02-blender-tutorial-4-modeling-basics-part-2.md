@@ -27,7 +27,7 @@ its properties:
 * *auto smooth*
 * *add/subtract to pull in/out vertices while sculpting*
 
-{% include blog-lazy-image.html description="blender sculpting" src="/assets/images/posts/blender-sculpting.jpg" %}
+{% include blog-lazy-image.html description="blender sculpting" width="1500" height="956" src="/assets/images/posts/blender-sculpting.jpg" %}
 
 Sculpt mode supports also paint textures and strokes. But more important it supports symmetry: by selecting and axis 
 any change on one side will be mirrored on the other one.  
@@ -39,25 +39,22 @@ Another interesting option is the **edge loop modeling**. Basically this means t
    mesh. We can activate the extrude under *Mesh tools -> Extrude Region/Individual*. The extrude region will push out 
    the elements selected as a single block. The extrude individual will extrude the elements selected individually.  
 
-{% include blog-lazy-image.html description="blender extrude" src="/assets/images/posts/blender-extrude.jpg" %}
+{% include blog-lazy-image.html description="blender extrude" width="1500" height="956" src="/assets/images/posts/blender-extrude.jpg" %}
 
 Another useful tool that we can use for modeling is **smooth shading**. We can use these to smooth the surface of 
 objects where the polygons of the mesh have too much hard edges. We can find the it under *Tools -> Shading* while an 
 object is selected in Object mode or under *Shading -> Faces/Edges/Vertices* while an object is in Edit mode.  
 
-{% include blog-lazy-image.html description="blender smooth shading" src="/assets/images/posts/blender-smooth-shading.jpg" %}
+{% include blog-lazy-image.html description="blender smooth shading" width="1500" height="956"  src="/assets/images/posts/blender-smooth-shading.jpg" %}
 
-The last tool we can use for some simple modeling is the **subdiving mesh tool**. There are two ways to do subdivision: 
-tool:
+The last tool we can use for some simple modeling is the **subdiving mesh tool**. There are two ways to do subdivision:
 
 * *subdivision of the mesh itself*
 * *subdivision surface*
 
-Now we will look at subdivision of the mesh itself. To do it we need to be in edit mode on the object and select all 
-with the *a key*. We can find the subdivision option under *Tools -> Subdivide*. If we click on that a series of 
-subdivision properties will appear, that let us customize the number of cuts, the smoothness and other minor properties.
+Now we will look at subdivision of the mesh itself. To do it we need to be in edit mode on the object and select all with the *a key*. We can find the subdivision option under *Tools -> Subdivide*. If we click on that a series of subdivision properties will appear, that let us customize the number of cuts, the smoothness and other minor properties.
 
-{% include blog-lazy-image.html description="blender subdivision" src="/assets/images/posts/blender-subdivision.jpg" %}
+{% include blog-lazy-image.html description="blender subdivision" width="1500" height="956" src="/assets/images/posts/blender-subdivision.jpg" %}
 
 Remember: each number of cuts increment QUADRUPLICATE the number of polygon in your mesh.  
 In the next chapter we will talk about advanced modeling techniques and tools.

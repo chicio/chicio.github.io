@@ -65,4 +65,4 @@ the law of demeter**
 
 The next time you will write a piece of code try to consider these concepts and how they can improve your code.
 
-{% include blog-lazy-image.html description="Clean code uncle bob superman" src="/assets/images/posts/uncle-bob-defender-of-clean-code.jpg" %}
+{% include blog-lazy-image.html description="Clean code uncle bob superman" width="427" height="477" src="/assets/images/posts/uncle-bob-defender-of-clean-code.jpg" %}
