@@ -25,11 +25,11 @@ options in the world property panel. Inside it we have a section "world" in whic
 
 In the same section there's also an ambient color property. The ambient color let us manage the overall light color.
 
-{% include blog-lazy-image.html description="blender background ambient color" src="/assets/images/posts/blender-background-ambient-color.jpg" %}
+{% include blog-lazy-image.html description="blender background ambient color" width="1500" height="951" src="/assets/images/posts/blender-background-ambient-color.jpg" %}
 
 We can also choose to add a background image. To do that we have to go from the world tab directly to the texture tab. Blender will detect this operation and it will know that we are adding a texture to the background of our scene. From here we can choose the type of texture we want and we can apply it.
 
-{% include blog-lazy-image.html description="blender background texture" src="/assets/images/posts/blender-background-texture.jpg" %}
+{% include blog-lazy-image.html description="blender background texture" width="1500" height="948" src="/assets/images/posts/blender-background-texture.jpg" %}
 
 We also have a specific type of light to simulate the sun: the sun lamp. It behaves in a similar way to the Hemi lamp. One particular feature it has is the possibility to add a sky as background and simulate a sun in terms of shape and effects.  
 Last but not least we have ambient occlusion. It is a technique that let us simulate more accurately the ambient 
@@ -41,6 +41,6 @@ ambient occlusion is really slow in terms of rendering. Is it possible to improv
  our scene is an outdoor one, we can activate the environment light. This kind of effect will generate ambient 
  occlusion and eventually it will use (if we choose it) the sky/sky texture as color.
 
-{% include blog-lazy-image.html description="blender ambient occlusion enviroment lighting" src="/assets/images/posts/blender-ambient-occlusion-enviroment-lighting.jpg" %}
+{% include blog-lazy-image.html description="blender ambient occlusion enviroment lighting" width="1500" height="891" src="/assets/images/posts/blender-ambient-occlusion-enviroment-lighting.jpg" %}
 
 In the next post about Blender we will talk about cameras and rendering.

@@ -27,7 +27,7 @@ compared to the standard *Blender Render*. One of the most important thing to no
 the GPU of our computer to render our scenes in interactive mode. This basically means that we can see the final 
 rendered scene and navigate through it. Wonderful :heart_eyes:!!!
 
-{% include blog-lazy-image.html description="blender cycles start" src="/assets/images/posts/blender-cycles-start.jpg" %}
+{% include blog-lazy-image.html description="blender cycles start" width="1500" height="949" src="/assets/images/posts/blender-cycles-start.jpg" %}
 
 How do we create material for cycles? We can create a material from the same tab we previously saw. When the cycles 
 render is selected the option to customize the material change accordingly. In particular there's a *surface* option 
@@ -35,7 +35,7 @@ where we can select from a list of BSDF the type of surface BSDF we want. The ot
 based on this selection. We can also add texture like for standard material. To do that we simply have to go into the
  color option and select the texture we want.
 
-{% include blog-lazy-image.html description="blender cycles material" src="/assets/images/posts/blender-cycles-material.jpg" %}
+{% include blog-lazy-image.html description="blender cycles material" width="1500" height="948" src="/assets/images/posts/blender-cycles-material.jpg" %}
 
 For what concern lights, Cycles support different type of lights. The type of lights and their setup are similar to the
  one we can find in the standard Blender engine:
@@ -44,7 +44,7 @@ For what concern lights, Cycles support different type of lights. The type of li
 * **sun**
 * **spot**
 * **hemi**
-* **area** 
+* **area**
 
 We can also use ambient occlusion to improve the realism of light. We can activate it like we did before under the 
 World tab in the properties. 
