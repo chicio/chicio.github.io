@@ -109,7 +109,7 @@ export { lazyLoadImageAnimation }
 
 If I try to run `npm run flow` I expect that everything goes well, but instead...I received the following error: "**Cannot resolve module gsap.**". Below in the screenshot you can see the error reported.
 
-{% include blog-lazy-image.html description="flow module error" src="/assets/images/posts/flow-error-module.jpg" %}
+{% include blog-lazy-image.html description="flow module error" width="1500" height="255" src="/assets/images/posts/flow-error-module.jpg" %}
 
 What's happening here? The `TweenLite` class is imported from the third party library [`gsap`](https://greensock.com/gsap) and Flow doesn't know the types definition for it. I have to provide this definition in order to enable Flow to do the type checking also on the parts of code that refer to a third library. This can be done in two ways:
 

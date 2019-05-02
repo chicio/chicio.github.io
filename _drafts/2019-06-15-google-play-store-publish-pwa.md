@@ -36,12 +36,12 @@ So as you can read above, a Trusted Web Activity let you integrate web content t
 
 Let's start to see the real action: how I publish my blog PWA to the Google Play Store using TWA. First of all, I created a nw android project. This was a standard Android project with minimum API level 16. This let me cover the 99.6% of the Android user base. I choosed to create an empty project without any activity/fragment in it.
 
-{% include blog-lazy-image.html description="pwa app create project" src="/assets/images/posts/pwa-app-01-create-project.png" %}
+{% include blog-lazy-image.html description="pwa app create project" width="1500" height="1236" src="/assets/images/posts/pwa-app-01-create-project.jpg" %}
 
 Then I added the TWA support as a dependecy of the app. The TWA implementation is contained inside the custom tabs client library published on [Jitpack](https://jitpack.io/ "Jitpack") (because unfortunately at the moment of this writing the custom tabs client library contained inside Jetpack doesn't have the TWA support). So I added Jitpack as repository to the project level gradle file. Then I added the custom tabs client library as dependecy inside the module gradle file. This last dependecy points to the custom tabs client library published on github and exposed through Jitpack. I had also to specify a specific commit hash in order to be sure that the library version downloaded contains the TWA support.
 
-{% include blog-lazy-image.html description="pwa app jitpack" src="/assets/images/posts/pwa-app-02-jitpack-configuration.png" %}
-{% include blog-lazy-image.html description="pwa app custom tab library" src="/assets/images/posts/pwa-app-03-java8-and-custom-tab-dependecies.png" %}
+{% include blog-lazy-image.html description="pwa app jitpack" width="1500" height="889" src="/assets/images/posts/pwa-app-02-jitpack-configuration.jpg" %}
+{% include blog-lazy-image.html description="pwa app custom tab library" width="1500" height="889" src="/assets/images/posts/pwa-app-03-java8-and-custom-tab-dependecies.jpg" %}
 
 After the depencies setup I added the TWA Activity. To do this I just had to modify the Android app manifest file by declaring a new TWA activity inside it. For the readers that are not mobile developer, the Android app manifest is a file contained in all the Android apps. Its main function is to present essential information about the application to the Android system including:
 
@@ -55,7 +55,7 @@ The declaration of the TWA inside the Android app manifest must include some imp
 * an `intent-filter` that adds the TWA to the Android Launcher
 * another `intent-filter` that allows the TWA to intercept Android Intents that open https://airhorner.com. The `android:host` attribute inside the data tag must point to the domain being opened by the TWA and specified in the `meta-data` tag. 
 
-{% include blog-lazy-image.html description="pwa app twa declaration" src="/assets/images/posts/pwa-app-04-twa-activity-declaration.png" %}
+{% include blog-lazy-image.html description="pwa app twa declaration" width="1500" height="889" src="/assets/images/posts/pwa-app-04-twa-activity-declaration.jpg" %}
 
 Now I had to establish the link between our PWA website and our PWA app. This is a two way operation because I had to:
 
@@ -79,11 +79,11 @@ Let's start from the first association, from the app to the web site. To do this
 </resources>
 ```
 
-{% include blog-lazy-image.html description="pwa app Digital AssetLink statement" src="/assets/images/posts/pwa-app-05-associate-app-to-web-1.png" %}
+{% include blog-lazy-image.html description="pwa app Digital AssetLink statement" width="1500" height="889" src="/assets/images/posts/pwa-app-05-associate-app-to-web-1.jpg" %}
 
 Then I linked this string resource statement inside the Android app manifest by adding a new `meta-data` tag as a child of the `application` tag (NOT inside the TWA declaration).
 
-{% include blog-lazy-image.html description="pwa app Digital AssetLink statement manifest" src="/assets/images/posts/pwa-app-05-associate-app-to-web-2.png" %}
+{% include blog-lazy-image.html description="pwa app Digital AssetLink statement manifest" width="1500" height="889" src="/assets/images/posts/pwa-app-05-associate-app-to-web-2.jpg" %}
 
 It is possible to test that the association from app to the website has been completed. To do this I had to:
 
@@ -108,7 +108,7 @@ keytool -list -v -keystore <your keystore jks file> -alias <your alias> -storepa
 
 With both pieces of information at hand I was able to generate a web `assetlink.json` statement using the [assetlinks generator](https://developers.google.com/digital-asset-links/tools/generator). The `assetlink.json` generated must be served from the PWA domain from the URL `<your PWA domain>/.well-known/assetlinks.json`.
 
-{% include blog-lazy-image.html description="pwa app Digital AssetLink generator" src="/assets/images/posts/pwa-app-07-assetlink-generator.png" %}
+{% include blog-lazy-image.html description="pwa app Digital AssetLink generator"  width="1500" height="888" src="/assets/images/posts/pwa-app-07-assetlink-generator.jpg" %}
 
 After publishing the `assetlink.json` to my PWA domain my app was ready to be published to the store. So I followed the standard procedure [to upload an app to the Google Play Store](https://developer.android.com/studio/publish/upload-bundle).
 If the two ways association fails, it is possible to check for error messages using the the Android Debug Bridge, by launching from the terminal the following command with the test device connected (or the emulator running).

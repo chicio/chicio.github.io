@@ -524,6 +524,6 @@ Yeaaaahh you made it!! You're at the end of this never ending post :satisfied:!!
 Now you can start to create your high quality unit tested apps :relieved:.
 One final note about the implementation above: **the `productsView` property of the `ProductsPresenter` and `productDetailView` of the `ProductDetailPresenter` must  be `unowned` or `weak` to avoid a retain cycle between the presenters and the controllers.**
 
-{% include blog-lazy-image.html description="model view presenter ios unit tests" src="/assets/images/posts/model-view-presenter-ios.jpg" %}
+{% include blog-lazy-image.html description="model view presenter ios unit tests" width="600" height="400" src="/assets/images/posts/model-view-presenter-ios.jpg" %}
 
 Time to try it yourself in one of your project. If you wanna review the complete project code you can check [this Github repository](https://github.com/chicio/Model-View-Presenter "Model View Presenter iOS github repository").

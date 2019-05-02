@@ -39,7 +39,7 @@ When we choose a primitive mesh to be created, it will be placed where the 3D cu
 creation. After the creation of the mesh, a new panel at the bottom left of the 3D window will be shown. In this 
 panel we can customize the properties of the mesh.
 
-{% include blog-lazy-image.html description="blender modeling create primitive meshes" src="/assets/images/posts/blender-modeling-create-primitive-meshes.jpg" %}
+{% include blog-lazy-image.html description="blender modeling create primitive meshes" width="1500" height="952" src="/assets/images/posts/blender-modeling-create-primitive-meshes.jpg" %}
 
 As we said before, we can start from a primitive mesh and model a more complex one. So the first thing we need to 
 learn is how we can **select vertices, edges and faces**. How can we do that? First, we need to choose *edit mode*, by 
@@ -47,7 +47,7 @@ selecting the mesh and by choosing it from the editing/interaction mode menu com
  the *"tab" key*). After that, we can choose the selection mode between vertices, edge or faces in the bottom bar of 
  the 3D window or by pressing *"ctrl + tab" keys*.
 
-{% include blog-lazy-image.html description="blender select edges faces vertices" src="/assets/images/posts/blender-select-edges-faces-vertices.jpg" %}
+{% include blog-lazy-image.html description="blender select edges faces vertices" width="1500" height="952" src="/assets/images/posts/blender-select-edges-faces-vertices.jpg" %}
 
 After selecting the edges, vertices or faces that we want to modify, 3D axis will be shown near your selection. They
  are similar to the ones shown for transformations. By *dragging one of these axes* the selcted vertices, edges or 
@@ -56,7 +56,7 @@ After selecting the edges, vertices or faces that we want to modify, 3D axis wil
  mode: in this way we will be able to **select edges loops**, a series of connected closed edges series.  
   We can also improve the selection by using the more/less option to select entire levels of edges/vertices/faces.  
 
-{% include blog-lazy-image.html description="blender modified mesh" src="/assets/images/posts/blender-modified-mesh.jpg" %}
+{% include blog-lazy-image.html description="blender modified mesh" width="1500" height="952" src="/assets/images/posts/blender-modified-mesh.jpg" %}
 
 By selecting individual edges, vertices and faces you can start modeling you meshes. Anyway, sometimes you will need 
 to be able to do a more soft modeling than the one we already described above in this article (for example while 
@@ -65,10 +65,10 @@ use this kind of modeling, the modification on a vertices/edge/face will influen
  falloff. You can activate the proportional editing using the menu *Mesh -> Proportional Editing* in *edit mode* or 
  using the dedicated button in the bottom bar of the 3D window.
   
-{% include blog-lazy-image.html description="blender modeling proportional editing" src="/assets/images/posts/blender-modeling-proportional-editing.jpg" %}
+{% include blog-lazy-image.html description="blender modeling proportional editing" width="1500" height="952" src="/assets/images/posts/blender-modeling-proportional-editing.jpg" %}
 
 Below you can find an example of two meshes modified with and without the proportional editing enable. It's easy to see the difference.
 
-{% include blog-lazy-image.html description="blender modeling proportional editing example" src="/assets/images/posts/blender-modeling-proportional-editing-example.jpg" %}
+{% include blog-lazy-image.html description="blender modeling proportional editing example" width="1500" height="952" src="/assets/images/posts/blender-modeling-proportional-editing-example.jpg" %}
 
 In the next post we will continue to talk about the fundamental of modeling.

@@ -112,14 +112,13 @@ If we try to run the app something very strange will happen:
 * if we do a live reload, we will see our **React components refreshed multiple times**
 * if we press cmd + ctrl + z (shake gesture simulation) in the simulator **2 dev menu will be shown**
 
-{% include blog-lazy-image.html description="react native multiple dev menus" src="/assets/images/posts/react-native-multiple-debugger.gif" %}
+{% include blog-lazy-image.html description="react native multiple dev menus"  width="844" height="720" src="/assets/images/posts/react-native-multiple-debugger.gif" %}
 
 * if we do a **live reload while we're in debug mode the app could crash**
 
-{% include blog-lazy-image.html description="react native crash multiple view" src="/assets/images/posts/react-native-crash-reload-with-debugger.jpg" %}
+{% include blog-lazy-image.html description="react native crash multiple view" width="1500" height="944" src="/assets/images/posts/react-native-crash-reload-with-debugger.jpg" %}
 
-What's happening here? Well, there's something wrong in our code. If we take a look at the comments in the code of 
-React Native for the `RCTRootView` initializer, we will notice something very strange:
+What's happening here? Well, there's something wrong in our code. If we take a look at the comments in the code of React Native for the `RCTRootView` initializer, we will notice something very strange:
 
 ```objective_c
 /**

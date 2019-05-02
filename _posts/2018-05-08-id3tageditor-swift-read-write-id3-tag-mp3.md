@@ -21,7 +21,7 @@ described the reason why I developed [ID3TagEditor](https://github.com/chicio/ID
 macOS tvOS watchOS"), a swift library to edit ID3 tag of mp3 files with support for macOS, iOS, watchOS and tvOS. 
 In this post I will described how I developed it. Below you can find the library logo.
 
-{% include blog-lazy-image.html description="ID3TagEditor logo" src="/assets/images/posts/id3tageditor-logo.jpg" %}
+{% include blog-lazy-image.html description="ID3TagEditor logo" width="1280" height="770" src="/assets/images/posts/id3tageditor-logo.jpg" %}
 
 But before going deeper in the details of ID3TagEditor it useful to know how the ID3 tag standard works (you can find
  the full reference on the [official site](http://id3.org/ "id3 standard")). The definition reported on it for the 
@@ -33,7 +33,7 @@ This definition means that an ID3 tag is basically a chunk of information stored
  an mp3 file. The standard defines the format that any developer can use to read and write this information.
  Let's see an example of an ID3 tag using a hex editor.
 
-{% include blog-lazy-image.html description="ID3 tag example" src="/assets/images/posts/id3-tag-example.jpg" %}
+{% include blog-lazy-image.html description="ID3 tag example" width="1500" height="917" src="/assets/images/posts/id3-tag-example.jpg" %}
 
  A tag is composed by an header and a series of frames. The tag header has a size of 10 bytes contains the following 
  information (for both v2 and v3):
@@ -48,10 +48,9 @@ This definition means that an ID3 tag is basically a chunk of information stored
    zero in every byte, making a total of 28 bits. The zeroed bits are ignored, so a 257 bytes long tag is represented
     as $00 00 02 01. .... Only 28 bits(representing up to 256MB) are used in the size description...
 
-{% include blog-lazy-image.html description="ID3 tag header" src="/assets/images/posts/id3-tag-header.jpg" %}
+{% include blog-lazy-image.html description="ID3 tag header" width="1500" height="917" src="/assets/images/posts/id3-tag-header.jpg" %}
 
-A frame is composed of an header and a custom content. The frame header contains the following information, that 
-change in size between versions:
+A frame is composed of an header and a custom content. The frame header contains the following information, that change in size between versions:
 
 * frame id, 3 bytes in version 2 and 4 bytes in version 3
 * size, 3 bytes in version 2 and 4 bytes in version 3 that the describe the total size of the frame excluding the 
@@ -61,10 +60,10 @@ header
 So the frame header size is 10 bytes in version 3 and 6 bytes in version 2. After the header there is the custom 
 specific frame flags/options and the frame content. Below you can find an example of a frame in a version 3 tag.
 
-{% include blog-lazy-image.html description="ID3 frame example" src="/assets/images/posts/id3-frame-example.jpg" %}
+{% include blog-lazy-image.html description="ID3 frame example" width="1500" height="917"  src="/assets/images/posts/id3-frame-example.jpg" %}
 
 Last but not least at the end of the ID3 tag there are also 2 KB of offset (you can see it in the previous images, 
-that series of endless `0x00` at the end of the tag :relieved:). 
+that series of endless `0x00` at the end of the tag :relieved:).
 How does ID3TagEditor read and write all this information? The main api of the framework are two simple methods:
 
 ```swift

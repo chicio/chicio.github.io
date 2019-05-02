@@ -8,6 +8,7 @@ tags: [computer graphics, blender]
 comments: true
 seo:
   - type: "BlogPosting"
+authors: [fabrizio_duroni] 
 ---
 
 *In this new post of the series Blender tutorial I will talk about armatures and character rigging.*
@@ -31,13 +32,13 @@ Let's see the armature tab first. First we have a the display options, to manage
 also show the name, the color and more important we can activate the X-Ray mode that let us see the bone through the 
 character.
   
-{% include blog-lazy-image.html description="blender bones" src="/assets/images/posts/blender-bones.jpg" %}
+{% include blog-lazy-image.html description="blender bones" width="1500" height="891" src="/assets/images/posts/blender-bones.jpg" %}
   
 To create a complete armature we have some tools similar to the one we previously seen for modeling. After selecting 
 edit mode, in the left panel of the 3D window we have the options extrude and subdivide that let us create a complete
  skeleton for a character. In the scene we will find our armature object with all the bones connected.
 
-{% include blog-lazy-image.html description="blender armature" src="/assets/images/posts/blender-armature.jpg" %}
+{% include blog-lazy-image.html description="blender armature" width="1500" height="891" src="/assets/images/posts/blender-armature.jpg" %}
 
 We can now start to add the armature to an object. To do that we just have to place/create the bones inside our 
 object. After that we select the object and the bones (in this specific order), and we choose from the menu at the 
@@ -45,7 +46,7 @@ bottom of the 3D window the option Object -> Parent -> Armature Deform. After th
 mode (by choosing it in the menu at the bottom of the 3D window). If we move one of our
  bones in this mode, the part of the object/mesh that contains that bone will move accordingly.
 
-{% include blog-lazy-image.html description="blender set armature" src="/assets/images/posts/blender-set-armature.jpg" %}
+{% include blog-lazy-image.html description="blender set armature" width="1500" height="891" src="/assets/images/posts/blender-set-armature.jpg" %}
 
 {% include youtube.html videoId="GpkMgUqWZJo" %}
 
@@ -58,7 +59,7 @@ allows you to position the last bone in a bone chain and the other bones are pos
 We can add an inverse kinematic constraint on a bone by choosing it from the menu under the Bone constraint tab in 
 the properties panel. This tab will appear only when we are in pose mode.
 
-{% include blog-lazy-image.html description="blender inverse kinematics" src="/assets/images/posts/blender-inverse-kinematics.jpg" %}
+{% include blog-lazy-image.html description="blender inverse kinematics" width="1500" height="948" src="/assets/images/posts/blender-inverse-kinematics.jpg" %}
 
 After setting bones, armature and inverse kinematics we are ready to animate our character. To do that, we just need to be in Pose mode and set the keyframes as we did for standard animation.
 

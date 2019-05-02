@@ -60,27 +60,26 @@ one that describe my implementation before the code review, and the second one
 that shows the final result after Angelo's code review. The following one describes my implementation of the 
 minesweeper.
   
-{% include blog-lazy-image.html description="fabrizio duroni minesweeper" src="/assets/images/posts/minesweeper-fabrizio.jpg" %}
+{% include blog-lazy-image.html description="fabrizio duroni minesweeper" width="1075" height="1615" src="/assets/images/posts/minesweeper-fabrizio.jpg" %}
 
 This one describes Angelo's implementation.
 
-{% include blog-lazy-image.html description="angelo sciarra minesweeper" src="/assets/images/posts/minesweeper-angelo.jpg" %}
+{% include blog-lazy-image.html description="angelo sciarra minesweeper" width="1033" height="1620" src="/assets/images/posts/minesweeper-angelo.jpg" %}
 
-So let's start to see which kind of observation I received from Angelo, that basically include most of the 
-observation you could receive during a code review.    
+So let's start to see which kind of observation I received from Angelo, that basically include most of the observation you could receive during a code review.
 The first observation I received from Angelo is about the java JDK version I used for my project. I did the setup of 
 the project using JDK 1.5 instead of JDK 1.8 (as you may know, this is a more recent version). In general it is 
 common to receive suggestion about technology specific problems/setup/changes, especially if your code reviewer is 
 more experienced than you on that type of technology.  
 
-{% include blog-lazy-image.html description="technology version update" src="/assets/images/posts/01-technology-version-update.jpg" %}
+{% include blog-lazy-image.html description="technology version update" width="1500" height="901" src="/assets/images/posts/01-technology-version-update.jpg" %}
 
 In fact Angelo gave me another technology advice during his review. He suggested to change some pieces of code with 
 others that leverage the power of functional programming. This is really interesting because it is easy 
 imagine how much knowledge you can absord from the experience of your code reviewer.
 
-{% include blog-lazy-image.html description="functional update" src="/assets/images/posts/03-functional-field.jpg" %}
-{% include blog-lazy-image.html description="functional update with new class" src="/assets/images/posts/04-new-fields-class.jpg" %}
+{% include blog-lazy-image.html description="functional update" width="1500" height="901" src="/assets/images/posts/03-functional-field.jpg" %}
+{% include blog-lazy-image.html description="functional update with new class" width="1500" height="901" src="/assets/images/posts/04-new-fields-class.jpg" %}
 
 Another important aspect that is one of the main subject of the code review is software design. In fact Angelo 
 discovered a series of improvement and refactoring opportunities in my code: 
@@ -89,23 +88,21 @@ discovered a series of improvement and refactoring opportunities in my code:
 method. In this way the `Minesweeper` class becomes a stateless object, and the same istance could be used to 
 resolve/unmask multiple fields input.
 
-{% include blog-lazy-image.html description="stateless object" src="/assets/images/posts/02-minesweeper-fields-as-parameter.jpg" %}
+{% include blog-lazy-image.html description="stateless object" width="1500" height="901" src="/assets/images/posts/02-minesweeper-fields-as-parameter.jpg" %}
 
 * The objects that are the building block of a [chain of responsability](https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern "chain of responsability") named `FieldRowParser` could become lighter and some of their responsibility could be assigned to some new collaborators. Also the object that contains the parsing status could become more lighter.
 
-{% include blog-lazy-image.html description="lightweight chain" src="/assets/images/posts/05-lightweight-chain.jpg" %}
-{% include blog-lazy-image.html description="parsing status" src="/assets/images/posts/07-parsing-status-become-parsing-content-lightweight.jpg" %}
+{% include blog-lazy-image.html description="lightweight chain" width="1500" height="901" src="/assets/images/posts/05-lightweight-chain.jpg" %}
+{% include blog-lazy-image.html description="parsing status" width="1500" height="901" src="/assets/images/posts/07-parsing-status-become-parsing-content-lightweight.jpg" %}
 
 As you can see from these kind of comments the code review could really improve the general architectural design of your application :heart_eyes::relieved:.
 Code convention are another important thing to check during code review. For example Angelo told me to move all the constants at the beginning of some of the classes. Usually tools like Github or Gitlab let you discuss your code review by adding comments directly to the code.
 
-{% include blog-lazy-image.html description="constants position" src="/assets/images/posts/08-constants-beginning-of-file.jpg" %}
-{% include blog-lazy-image.html description="guidelines comments" src="/assets/images/posts/06-guidelines.jpg" %}
+{% include blog-lazy-image.html description="constants position" width="1500" height="893" src="/assets/images/posts/08-constants-beginning-of-file.jpg" %}
+{% include blog-lazy-image.html description="guidelines comments" width="1500" height="891" src="/assets/images/posts/06-guidelines.jpg" %}
 
 Last but not least, if you are a real fan of clean code, you know that [meaningful names are important](/2017/09/11/clean-code-meaningful-names.html "clean code meaningful names"). So you can suggest some more meaningful name for a class, variable or method.
 
-{% include blog-lazy-image.html description="rename" src="/assets/images/posts/10-rename-masker.jpg" %}
+{% include blog-lazy-image.html description="rename" width="1500" height="901" src="/assets/images/posts/10-rename-masker.jpg" %}
 
-That's all for code review. I hope you understood how much important it is to do it and how much your codebase 
-can improve if you use code review as a validation tool and as a tool to find new refactoring opportunities (anyway, 
-I hope Angelo will never be your reviewer :laughing::sparkling_heart:).
+That's all for code review. I hope you understood how much important it is to do it and how much your codebase can improve if you use code review as a validation tool and as a tool to find new refactoring opportunities (anyway, I hope Angelo will never be your reviewer :laughing::sparkling_heart:).
