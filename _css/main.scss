@@ -37,6 +37,10 @@ canvas {
   background-color: $primary-color;
 }
 
+.lazy {
+  background-color: $divider-color;
+}
+
 @mixin keyframes($animationName) {
   @-webkit-keyframes #{$animationName} {
     @content;
