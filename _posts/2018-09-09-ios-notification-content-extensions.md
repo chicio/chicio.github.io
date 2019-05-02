@@ -16,16 +16,12 @@ authors: [fabrizio_duroni]
 ---
 
 During a workshop I recently attended I had the opportunity to explore a new interesting app extension type available in
- the iOS SDK: Notification Content App Extension. This extension has been added by Apple in iOS 10. By using this 
- extension it is possible to customize the UI of your push and local notification. In this way you can show more 
- engaging notification to your users :grin:.  
-Let's see an example where we create a notification with custom UI using this extension type. To do that I will use 
-some assets taken from the [nasa photo journal](https://photojournal.jpl.nasa.gov/ "nasa photo journal"). You can 
-find the complete example [in this github repository](https://github.com/chicio/Notification-Content-Extension-Example "notification content extension example"). 
+ the iOS SDK: Notification Content App Extension. This extension has been added by Apple in iOS 10. By using this extension it is possible to customize the UI of your push and local notification. In this way you can show more  engaging notification to your users :grin:.  
+Let's see an example where we create a notification with custom UI using this extension type. To do that I will use some assets taken from the [nasa photo journal](https://photojournal.jpl.nasa.gov/ "nasa photo journal"). You can find the complete example [in this github repository](https://github.com/chicio/Notification-Content-Extension-Example "notification content extension example").
 Let's start from the beginning: add a Notification Content Extension to your app. To do that just select the + button
  in the target section that appears after selecting the xcodeproj file.
 
-{% include blog-lazy-image.html description="add target" src="/assets/images/posts/notification-content-extension-add-target.jpg" %}
+{% include blog-lazy-image.html description="add target" width="1500" height="885" src="/assets/images/posts/notification-content-extension-add-target.jpg" %}
 
 The extension that is created contains a `NotificationViewController` that adheres to the `UNNotificationContentExtension`. 
 The documentation for this protocol says:
@@ -40,7 +36,7 @@ The documentation for this protocol says:
 So if a `UIViewController` inside a Notification Content Extension adhere to the `UNNotificationContentExtension` we are able to access to the notification content and we can customize its UI. In the extension there's also a `MainInterface.storyboard` that contains a single controller associated with the `NotificationViewController` previously mentioned. We can use this storyboard to customize the notification UI using interface builder.
 So let's start by defining the interface in the storyboard. Below in the image there's the final result.
 
-{% include blog-lazy-image.html description="notification storyboard" src="/assets/images/posts/notification-content-extension-storyboard-notification.jpg" %}
+{% include blog-lazy-image.html description="notification storyboard" width="1500" height="885" src="/assets/images/posts/notification-content-extension-storyboard-notification.jpg" %}
 
 Then we can fill the UI with the notification content we receive in the `func didReceive(_ notification: 
 UNNotification)` of the `NotificationViewController` controller that implements the protocol shown above. Below you 
