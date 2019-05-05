@@ -56,9 +56,10 @@ exclude:
   - material
   - LICENSE.md
   - README.md
-  - dependencies-home.html
-  - dependencies-blog.html
-  - dependencies-css.html
+  - dependencies-js-home.html
+  - dependencies-js-blog.html
+  - dependencies-css-home.html
+  - dependencies-css-blog.html
   - CNAME
   - pages-gem
   - chicio.github.io.code-workspace

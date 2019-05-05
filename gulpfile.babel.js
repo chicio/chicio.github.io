@@ -11,13 +11,20 @@ import browserify from 'browserify'
 import babelify from 'babelify'
 import { exec } from 'child_process';
 
-gulp.task('css', (done) => {
-  gulp.src('_css/**/*.?(s)css')
+const CSS_HOME = 'style.home';
+const CSS_BLOG = 'style.blog';
+
+const css = (cssName, done) => {
+  gulp.src(`_css/${cssName}.scss`)
     .pipe(gulpSass({ outputStyle: 'compressed' }))
-    .pipe(gulpConcat('style.css'))
+    .pipe(gulpConcat(`${cssName}.css`))
     .pipe(gulp.dest('assets/styles'))
   done()
-})
+}
+
+gulp.task('css-home', (done) => css(CSS_HOME, done))
+
+gulp.task('css-blog', (done) => css(CSS_BLOG, done))
 
 gulp.task('flow', (done) => {
   exec(`npm run flow`, (err, stdout, stderr) => {
@@ -58,11 +65,11 @@ gulp.task('fonts', () => copyFiles('fonts'))
 
 gulp.task('models', () => copyFiles('models'))
 
-const criticalCss = (src, dest) => (
+const criticalCss = (src, dest, css) => (
   critical.generate({
     base: '_site/',
     src: `${src}.html`,
-    css: ['assets/styles/style.css'],
+    css: [`assets/styles/${css}.css`],
     dimensions: [{
       width: 320,
       height: 480
@@ -80,11 +87,11 @@ const criticalCss = (src, dest) => (
 )
 
 gulp.task('css-critical', (done) => {
-  criticalCss('index', 'critical')
-  criticalCss('blog/index', 'critical-blog')
-  criticalCss('blog/archive/index', 'critical-blog-post-archive')
-  criticalCss('blog/tags/index', 'critical-blog-tags')
-  criticalCss('2017/05/10/about-me', 'critical-blog-post')
+  criticalCss('index', 'critical', CSS_HOME)
+  criticalCss('blog/index', 'critical-blog', CSS_BLOG)
+  criticalCss('blog/archive/index', 'critical-blog-post-archive', CSS_BLOG)
+  criticalCss('blog/tags/index', 'critical-blog-tags', CSS_BLOG)
+  criticalCss('2017/05/10/about-me', 'critical-blog-post', CSS_BLOG)
   done()
 })
 
@@ -95,11 +102,13 @@ const revision = (section, done) => {
   done()
 }
 
-gulp.task('rev-home', (done) => revision('home', done))
+gulp.task('rev-js-home', (done) => revision('js-home', done))
 
-gulp.task('rev-blog', (done) => revision('blog', done))
+gulp.task('rev-js-blog', (done) => revision('js-blog', done))
 
-gulp.task('rev-css', (done) => revision('css', done))
+gulp.task('rev-css-home', (done) => revision('css-home', done))
+
+gulp.task('rev-css-blog', (done) => revision('css-blog', done))
 
 const serviceWorkerUrlFor = (section, done) => {
   exec(`./_scripts/generate-service-worker-urls.sh ${section}`, (err, stdout, stderr) => {
@@ -107,22 +116,27 @@ const serviceWorkerUrlFor = (section, done) => {
   })
 }
 
-gulp.task('service-worker-home-urls', (done) => {
-  serviceWorkerUrlFor('home', done)
+gulp.task('service-worker-js-home-urls', (done) => {
+  serviceWorkerUrlFor('js-home', done)
 });
 
-gulp.task('service-worker-blog-urls', (done) => {
-  serviceWorkerUrlFor('blog', done)
+gulp.task('service-worker-js-blog-urls', (done) => {
+  serviceWorkerUrlFor('js-blog', done)
 });
 
-gulp.task('service-worker-css-urls', (done) => {
-  serviceWorkerUrlFor('css', done)
+gulp.task('service-worker-css-home-urls', (done) => {
+  serviceWorkerUrlFor('css-home', done)
+});
+
+gulp.task('service-worker-css-blog-urls', (done) => {
+  serviceWorkerUrlFor('css-blog', done)
 });
 
 gulp.task('jekyll-build', (done) => exec(`bundle exec jekyll build`, (err, stdout, stderr) => done()))
 
 const build = gulp.series(
-  'css',
+  'css-home',
+  'css-blog',
   'flow',
   'lint',
   'bundle-home-scripts',
@@ -130,12 +144,14 @@ const build = gulp.series(
   'images',
   'fonts',
   'models',
-  'rev-home',
-  'rev-blog',
-  'rev-css',
-  'service-worker-home-urls',
-  'service-worker-blog-urls',
-  'service-worker-css-urls',
+  'rev-js-home',
+  'rev-js-blog',
+  'rev-css-home',
+  'rev-css-blog',
+  'service-worker-js-home-urls',
+  'service-worker-js-blog-urls',
+  'service-worker-css-home-urls',
+  'service-worker-css-blog-urls',
   'jekyll-build', //First build for critical css
   'css-critical', //Needs website already build in order to be executed
   'jekyll-build' //Generate site with css critical
