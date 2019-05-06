@@ -21,25 +21,25 @@
     padding-left: 15px;
     padding-right: 15px;
     text-align: justify;
+    color: $primary-text-color;
 
     .project-features {
       font-size: 16px;
       margin-top: 10px;
-      color: $secondary-text-color;
     }
 
     h1 {
       font-size: 26px;
-      color: $primary-text-color;
+      font-weight: bold;
     }
 
-    p {
-      color: $secondary-text-color;
+    a {
+      color: $accent-color;      
     }
 
     .btn-default {
-      border-color: $primary-color;
-      color: $primary-color;
+      color: $primary-color-text;
+      background-color: $accent-color;
       font-size: $font-size-base;
     }
   }

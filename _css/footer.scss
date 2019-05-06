@@ -1,12 +1,11 @@
 .footer {
   background-color: $primary-color;
-  color: $primary-color-light;
+  color: $primary-color-text;
   padding: 10px 0 0px 0;
   margin-bottom: 0;
   width: 100%;
   overflow: hidden;
   font-size: 14px;
-
   
   .footer-icon {
     font-size: 1.2em;
@@ -15,9 +14,9 @@
     line-height: 1.5em !important;
     text-align: center;
     background: $accent-color;
-    color: #fff;
     border-radius: 0.5em;
     margin: 5px;
+    color: $primary-color-text;
   }
 
   .heart {
@@ -26,7 +25,7 @@
 
   .nav-item-footer {
     font-weight: 500;
-    color: #cdddeb;
+    color: $primary-color-text;
     padding: 5px 5px 5px 5px;
     font-size: 15px;
     text-align: center;
@@ -39,7 +38,7 @@
 
     &:hover,
     &:focus {
-      color: #fff;
+      color: $primary-color-text;
       text-decoration: none;
     }
   }
