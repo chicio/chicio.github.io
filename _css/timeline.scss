@@ -55,6 +55,7 @@
   position: relative;
   -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  background-color: #fff;
 }
 
 .timeline > li > .timeline-panel:before {
@@ -75,8 +76,8 @@
   right: -14px;
   display: inline-block;
   border-top: 14px solid transparent;
-  border-left: 14px solid $general-background;
-  border-right: 0 solid $general-background;
+  border-left: 14px solid #fff;
+  border-right: 0 solid #fff;
   border-bottom: 14px solid transparent;
   content: " ";
 }
@@ -126,6 +127,7 @@
   margin-top: 0;
   color: $primary-text-color;
   font-size: 30px;
+  font-weight: bold;
   word-break: normal;
   width: 100%;
 }
@@ -134,7 +136,7 @@
   font-size: 17px;
   word-break: keep-all;
   text-align: left;
-  color: $accent-color;
+  color: $primary-text-color;
   width: 100%;
 }
 
@@ -155,7 +157,8 @@
 }
 
 .timeline-date {
-  display: inline;
+  float: left;
+  margin-top: 25px;
   margin-left: 80px;
 
   span {
@@ -164,7 +167,9 @@
 }
 
 .timeline-date-inverted {
-  display: inline;
+  float: right;
+  margin-right: 80px;
+  margin-top: 25px;
   margin-right: 80px;
 
   span {
@@ -188,7 +193,7 @@
 .timeline-body > p, .timeline-body > ul {
   margin-bottom: 0;
   font-size: 16px;
-  color: $secondary-text-color;
+  color: $primary-text-color;
 }
 
 .timeline-body > ul {

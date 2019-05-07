@@ -7,9 +7,21 @@
         <div class="container blog-posts">
 			{% include blog-header.html %}
             <div class="blog-main">
-                {% for post in paginator.posts %}
-				{% include blog-post.html post=post link-title=true %}
-                {% endfor %}
+                <div class="blog-posts-list">
+                    {% for post in paginator.posts %}
+                    <div class="blog-posts-post">
+                        <a href="{{post.url}}" class="blog-posts-post-link">
+                            <span class="blog-posts-post-title">{{post.title}}</span>
+                            <div class="blog-posts-post-img-container">
+                                {% include blog-lazy-image.html class="img blog-posts-post-img" src=post.image description=post.title %}
+                            </div>
+                            {% include blog-post-authors.html authors=post.authors enableUrl=false %}
+                            {% include blog-post-meta.html post=post %}
+                            <span class="blog-posts-post-description">{{post.description}}</span>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
                 <div class="d-flex flex-row justify-content-center">
                     {% if paginator.previous_page %}
 					<a class="btn btn-primary blog-arrow" href="{{ paginator.previous_page_path }}">Previous</a>
