@@ -33,7 +33,7 @@ image: /assets/images/chicio-coding-feature-graphic.jpg
 timezone: Europe/Rome
 future: false
 include: [".well-known"]
-paginate: 5
+paginate: 10
 paginate_path: /blog/page:num/
 markdown: kramdown
 highlighter: rouge
