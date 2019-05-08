@@ -59,7 +59,12 @@ exclude:
   - dependencies-js-home.html
   - dependencies-js-blog.html
   - dependencies-css-home.html
-  - dependencies-css-blog.html
+  - dependencies-css-blog-archive.html
+  - dependencies-css-blog-home.html
+  - dependencies-css-blog-post.html
+  - dependencies-css-blog-tags.html
+  - dependencies-css-privacy-policy.html
+  - dependencies-css-cookie-policy.html
   - CNAME
   - pages-gem
   - chicio.github.io.code-workspace
