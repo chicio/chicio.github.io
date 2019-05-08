@@ -1,6 +1,14 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [1.7.0](https://github.com/chicio/chicio.github.io/releases/tag/1.7.0)
+Release date: 2019-05-08.
+
+#### Added
+
+- new blog home
+- css optimized for each page
+
 ## [1.6.1](https://github.com/chicio/chicio.github.io/releases/tag/1.6.1)
 Release date: 2019-05-04.
 
