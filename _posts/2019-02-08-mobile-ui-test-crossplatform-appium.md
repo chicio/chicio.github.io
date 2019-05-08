@@ -4,7 +4,7 @@ title: "End to end (e2e) cross platform testing for your mobile apps with Appium
 description: "In this post I will talk about how to use Appium to write cross platform end to end tests for you mobile apps."
 date: 2019-02-08
 image: /assets/images/posts/appium.jpg
-tags: [javascript, swift, objective-c, ios, apple, android, java, mobile application development, react native, TDD]
+tags: [javascript, swift, objective-c, ios, apple, android, java, mobile application development, react native, test driven development]
 comments: true
 seo:
  - type: "BlogPosting"

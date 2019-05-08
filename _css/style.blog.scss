@@ -8,6 +8,7 @@
 @import "./blog-archive.scss";
 @import "./blog-header.scss";
 @import "./blog-post.scss";
+@import "./blog-tags.scss";
 
 @media (min-width: 1200px) {
   .container {
@@ -38,68 +39,6 @@
 
 .blog-posts {
   margin-top: 100px;
-}
-
-.blog-tags-list {
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-
-.blog-tags {
-  margin-top: 25px;
-  margin-bottom: 25px;
-
-  ul {
-    padding: 0;
-
-    li:before {
-      content: ""
-    }
-
-    li {
-      margin: 0;
-      font-weight: 300;
-      display: inline;
-      list-style-type: none;
-      text-transform: lowercase;
-
-      a {
-        display: inline-block;
-        margin: 4px;
-        color: #ffffff;
-        background-color: $primary-color;
-        text-decoration: none;
-        border-radius: 3px;
-
-        span {
-          float: left;
-          padding: .5px 5px;
-          border-radius: 3px;
-          font-size: 14px;
-        }
-
-        .count {
-          background-color: $primary-color-dark;
-          border-radius: 3px;
-        }
-      }
-    }
-  }
-}
-
-.blog-tag-post {
-  a {
-    color: $accent-color;
-  }
-
-  a:hover {
-    text-decoration: none;
-  }
-}
-
-.blog-tag-title {
-  font-size: 20px;
-  font-weight: bold;
 }
 
 .recent-posts a:hover{
