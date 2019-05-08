@@ -8,8 +8,8 @@
 		</a>
 		{% endif %}
 	</h2>
-	{% include blog-post-authors.html authors=include.post.authors %}
-	<p class="blog-post-meta">{{ include.post.date | date_to_string }} · {% include blog-reading-time.html content=include.post.content %}</p>
+	{% include blog-post-authors.html authors=include.post.authors enableUrl=true %}
+	{% include blog-post-meta.html post=include.post %}
 	{{ include.post.content | markdownify }}
 	{% include blog-post-tags.html tags=include.post.tags %}
 </div>

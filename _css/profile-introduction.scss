@@ -1,0 +1,238 @@
+.profile-introduction {
+  color: #ffffff;
+  background-color: $primary-color;
+  height: 100vh;
+  min-width: 100%;
+  display: table;
+  font-size: 18px;
+
+  #rendering-surface {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    left: 0;
+    background-color: #3F51B5;
+    opacity: 0;
+  }
+
+  .center-content {
+    background-color: transparent;
+    position: relative;
+    z-index: 100;
+    opacity: 0;
+
+    a {
+      text-decoration: none;
+    }
+
+    h1 {
+      font-size: 32px;
+    }
+
+    h3 {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    .profile-job {
+      color: $primary-color-text;
+    }
+
+    .profile-icon {
+      font-size: 1.5em;
+      width: 1.5em;
+      text-align: center;
+      line-height: 1.5em;
+      background: $accent-color;
+      color: #fff;
+      border-radius: 0.5em;
+      margin-top: 10px;
+    }
+
+    .profile-button {
+      font-size: 1.5em;
+      text-align: center;
+      line-height: 1.5em;
+      background: $accent-color;
+      color: #fff;
+      border-radius: 0.5em;
+      margin-top: 10px;
+    }
+
+    &.center-content-buttons {
+      text-align: center;
+      width: 200px;
+      margin-left: auto;
+      margin-right: auto;
+
+      .profile-icon {
+        padding-left: 5px;
+        padding-right: 5px;
+        font-size: 1.0em;
+        margin-top:10px;
+        width: 100%;
+        line-height: 45px;
+        height: 45px;
+        display: block;
+      }
+    }
+  }
+
+  .img-responsive {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    margin: auto;
+  }
+
+  .down-arrow {
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: $primary-color-text;
+    opacity: 0;
+  }
+}
+
+.profile-container {
+  background-color: $general-background;
+
+  &.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .nav-tabs {
+    border:1px solid transparent;
+    margin-bottom: 35px;
+  }
+
+  .nav-tabs > li {
+    width: 50%;
+  }
+
+  .nav-tabs > li > .nav-link {
+    border-radius: 0;
+    border-bottom: 1px solid #dee2e6;
+    border-left: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+    color: $accent-color;
+    font-weight: bold;
+    background-color: #FFFFFF;
+  }
+
+  .nav-tabs > li > .nav-link:hover {
+    border-top: 1px solid transparent;
+  }
+
+  .nav-tabs > li.active > .nav-link {
+    border-radius: 0;
+    border-right: 1px solid #dee2e6;
+    border: 1px solid transparent;
+    color: $accent-color;
+    font-weight: bold;
+    background-color: $general-background;
+  }
+
+  a.accordion-toggle {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    width: 100%;
+  }
+
+  div.panel-heading {
+    padding: 0;
+  }
+
+  .panel-group {
+    margin: 0;
+
+    .panel {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.175);
+      border-right: 0;
+      border-left: 0;
+      border-top: 0;
+      border-radius: 0;
+
+      + .panel {
+        margin-top: 0;
+      }
+
+      .panel-heading {
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+        height: 60px;
+
+        .panel-title {
+          display: flex;
+          align-items: center;
+          height: 100%;
+        }
+
+        + .panel-collapse {
+          > .panel-body {
+            border-top: 0;
+
+            .container {
+              padding-right: 0;
+              padding-left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .profile-introduction {
+    font-size: 28px;
+
+    .center-content {
+      background-color: transparent;
+      h1 {
+        font-size: 42px;
+      }
+      h3 {
+        font-size: 30px;
+      }
+      &.center-content-buttons {
+        width: 270px;
+
+        .profile-icon {
+          font-size: 0.7em;
+          line-height: 50px;
+          height: 50px;
+        }
+      }
+    }
+
+    .img-responsive {
+      width: 150px;
+      height: 150px;
+      border-radius: 75px;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .profile-introduction {
+    .center-content {
+      &.center-content-buttons {
+        width: 250px;
+
+        .profile-icon {
+          font-size: 0.8em;
+          line-height: 50px;
+          height: 50px;
+        }
+      }
+    }
+  }
+}

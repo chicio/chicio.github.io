@@ -1,0 +1,39 @@
+@media (min-width: 1200px) {
+  .container {
+    width: 970px;
+  }
+}
+
+.blog-body {
+  height: 100%;
+}
+
+.blog-main {
+  font-size: 18px;
+  line-height: 1.5;
+  h3 {
+    width: 100%;
+    font-size: 22px;
+  }
+  h4 {
+    font-size: 20px;
+  }
+  hr {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  ul {
+    font-size: 16px;
+  }
+}
+
+.blog-posts {
+  margin-top: 100px;
+}
+
+/* bootstrap safari fix grid */
+.row:before, .row:after {
+  display: none !important;
+}

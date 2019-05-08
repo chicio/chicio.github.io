@@ -33,7 +33,7 @@ image: /assets/images/chicio-coding-feature-graphic.jpg
 timezone: Europe/Rome
 future: false
 include: [".well-known"]
-paginate: 5
+paginate: 10
 paginate_path: /blog/page:num/
 markdown: kramdown
 highlighter: rouge
@@ -56,9 +56,15 @@ exclude:
   - material
   - LICENSE.md
   - README.md
-  - dependencies-home.html
-  - dependencies-blog.html
-  - dependencies-css.html
+  - dependencies-js-home.html
+  - dependencies-js-blog.html
+  - dependencies-css-home.html
+  - dependencies-css-blog-archive.html
+  - dependencies-css-blog-home.html
+  - dependencies-css-blog-post.html
+  - dependencies-css-blog-tags.html
+  - dependencies-css-privacy-policy.html
+  - dependencies-css-cookie-policy.html
   - CNAME
   - pages-gem
   - chicio.github.io.code-workspace

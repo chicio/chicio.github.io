@@ -3,7 +3,9 @@
 	{% assign currentAuthor = site.data.authors[author] %}
 	<div class="blog-post-author d-inline-flex flex-row align-items-center">
 		{% include blog-lazy-image.html class="rounded-circle" width="30" height="30" src=currentAuthor.image %}
-		<span><a href="{{currentAuthor.url}}">{{currentAuthor.name}}</a></span>
+		<span>
+				{% if include.enableUrl and include.enableUrl == true %}<a href="{{currentAuthor.url}}">{% endif %}{{currentAuthor.name}}{% if include.enableUrl and include.enableUrl == true %}</a>{% endif %}
+		</span>
 	</div>
 	{% endfor %}
 </div>

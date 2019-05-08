@@ -5,9 +5,15 @@ importScripts('/cache-polyfill.js');
 const siteCacheName = 'chicioCodingCache{% include version.txt %}';
 const dependenciesUrls = [
   "/favicon.ico",
-  {% include service-worker-home-urls.js %}
-  {% include service-worker-blog-urls.js %}
-  {% include service-worker-css-urls.js %}
+  {% include service-worker-css-home-urls.js %}
+  {% include service-worker-css-blog-archive-urls.js %}
+  {% include service-worker-css-blog-home-urls.js %}
+  {% include service-worker-css-blog-post-urls.js %}
+  {% include service-worker-css-blog-tags-urls.js %}
+  {% include service-worker-css-privacy-policy-urls.js %}
+  {% include service-worker-css-cookie-policy-urls.js %}
+  {% include service-worker-js-home-urls.js %}
+  {% include service-worker-js-blog-urls.js %}
 ]
 
 self.addEventListener('install', (event) => {
