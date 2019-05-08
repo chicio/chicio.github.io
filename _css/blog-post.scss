@@ -64,4 +64,37 @@
   }
 }
 
+code.highlighter-rouge {
+  background-color: #f9f2f4;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+div.highlighter-rouge {
+  width: inherit;
+  margin-bottom: 20px;
+
+  div {
+    border: 1px solid rgba(0,0,0, 0.1);
+    border-radius: 2px;
+  }
+
+  .highlight {
+    pre {
+      white-space: pre;
+      overflow: auto;
+      padding: 10px;
+      margin-bottom: 0;
+    }
+
+    code {
+      font: 14px 'Open Sans', sans-serif;
+      display: block;
+      white-space: pre;
+      overflow-x: scroll;
+      word-wrap: normal;
+    }
+  }
+}
+
 

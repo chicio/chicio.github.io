@@ -1,4 +1,17 @@
 .recent-posts {
+  margin-bottom: 35px;
+
+  .row{
+    margin-top:20px;
+  }
+
+  a {
+    color: $primary-text-color;
+    &:hover{
+      text-decoration:none;
+    }  
+  }
+
   .cards {
     display: flex;
     width: 100%;
