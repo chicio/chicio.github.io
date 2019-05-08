@@ -2,6 +2,12 @@
 @import "./common.scss";
 @import "./blog-posts-list.scss";
 @import "./blog-post-authors.scss";
+@import "./blog-post-meta.scss";
+@import "./youtube.scss";
+@import "./blog-masthead.scss";
+@import "./blog-archive.scss";
+@import "./blog-header.scss";
+@import "./blog-post.scss";
 
 @media (min-width: 1200px) {
   .container {
@@ -11,95 +17,6 @@
 
 .blog-body {
   height: 100%;
-}
-
-.blog-masthead {
-  background-color: $primary-color;
-  -webkit-box-shadow: inset 0 -2px 5px rgba(0, 0, 0, .1);
-  box-shadow: inset 0 -2px 5px rgba(0, 0, 0, .1);
-  position: fixed;
-  width: 100%;
-  height: $masthead-height;
-  z-index: 300;
-}
-
-.blog-nav-item {
-  position: relative;
-  display: inline-block;
-  font-weight: 500;
-  color: #cdddeb;
-  margin-right: 15px;
-  height: 55px;
-  line-height: 70px;
-  
-  @include media-breakpoint-down(sm) {
-      padding: 10px;
-      margin-right: 0;
-      line-height: 55px;
-  }
-}
-
-.blog-nav-item:hover, .blog-nav-item:focus {
-  color: #fff;
-  text-decoration: none;
-}
-
-.blog-nav {
-  height: 55px;
-
-  & .active {
-    color: #fff;
-  }
-
-  & .active:after {
-    position: absolute;
-    bottom: 0px;
-    left: 50%;
-    width: 0;
-    height: 0;
-    margin-left: -5px;
-    content: " ";
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid;
-    border-left: 5px solid transparent;
-  }
-}
-
-.blog-header {
-  margin-top: 50px;
-  margin-bottom: 20px;
-
-  .blog-logo {
-    width: 60px;
-    height: 60px;
-    margin-right: 10px;
-    border-radius: 10px;
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.575);
-  }
-
-  .lead.blog-description {
-    font-size: 12px;
-    color: $secondary-text-color;
-    margin-top: 2px;
-  }
-
-  & .blog-title {
-    margin-top: 0;
-    margin-bottom: 0;
-    font-size: 28px;
-    font-weight: bold;
-    color: $primary-text-color;
-    display: block;
-
-    a {
-      color: $primary-text-color;
-    }
-
-    a:hover {
-      text-decoration: none;
-      color: $primary-text-color;
-    }
-  }
 }
 
 .blog-main {
@@ -121,36 +38,6 @@
 
 .blog-posts {
   margin-top: 100px;
-}
-
-.blog-post {
-  margin-bottom: 50px;
-
-  img {
-    max-width: 100%;
-    display: block;
-    margin: 20px auto;
-  }
-
-  .emoji {
-    margin: auto;
-    display: inline;
-  }
-
-  blockquote {
-    color: #777;
-    margin: 0 0 20px;
-    border-left: 5px solid #eee;
-    padding: 10px 20px;
-
-    p {
-      margin: 0;
-    }
-  }
-
-  ul {
-    font-size: 16px;
-  }
 }
 
 .blog-tags-list {
@@ -213,101 +100,6 @@
 .blog-tag-title {
   font-size: 20px;
   font-weight: bold;
-}
-
-.blog-archive {
-  margin-bottom: 15px;
-  margin-top: 40px;
-
-  .archive-list-post {
-    .archive-post {
-      margin-top: 20px;
-
-      .archive-list-post-date {
-        color: $secondary-text-color;
-        padding: 0;
-      }
-
-      .archive-list-post-title {
-        padding: 0;
-        line-height: 1.2;
-      }
-    }
-  }
-}
-
-.blog-post-title {
-  margin-bottom: 5px;
-  font-size: 24px;
-  color: $accent-color;
-
-  a {
-    color: $accent-color;
-  }
-
-  a:hover {
-    text-decoration: none;
-    color: $accent-color;
-  }
-}
-
-.blog-post-meta {
-  margin-bottom: 15px;
-  margin-top: 5px;
-  color: $secondary-text-color;
-}
-
-.archive-list-post {
-  a {
-    color: $accent-color;
-  }
-
-  a:hover {
-    color: $accent-color;
-    text-decoration: none;
-  }
-}
-
-#disqus_thread {
-  margin-bottom: 30px;
-}
-
-
-.gist {
-  max-width:100%;
-  overflow:auto;
-}
-
-.gist .blob-wrapper.data {
-  max-height:500px;
-  overflow:auto;
-}
-
-@include media-breakpoint-up(md) {
-  .blog-header {
-
-    .blog-logo {
-      width: 80px;
-      height: 80px;
-    }
-
-    .lead.blog-description {
-      font-size: 22px;
-    }
-
-    & .blog-title {
-      font-size: 40px;
-    }
-  }
-
-  .blog-post-title {
-    font-size: 36px;
-  }
-
-  .gist .blob-wrapper.data {
-    max-height:600px;
-    overflow:auto;
-  }
 }
 
 .recent-posts a:hover{
@@ -418,25 +210,7 @@
   }
 }
 
-.embed-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.embed-container iframe, .embed-container object, .embed-container embed {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.blog-arrow {
+.blog-pages-button {
   margin: 20px 5px;
   width: 100px;
   background-color: $accent-color;
