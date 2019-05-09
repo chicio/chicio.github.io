@@ -26,21 +26,11 @@ const eventuallyLoadImage = (element: HTMLElement, loadCompleted: (image: HTMLIm
 }
 
 const loadImage = (image: HTMLImageElement, loadCompleted: (image: HTMLImageElement) => void) => {
-  const src: string = image.dataset.src
-  fetchImage(src).then(() => {
-    image.src = src
+  image.src = image.dataset.src
+  image.onload = () => {
     removeCssClass(image, 'lazy')
     loadCompleted(image)
-  })
-}
-
-const fetchImage = (src: string) => {
-  return new Promise((resolve, reject) => {
-    const image = new Image()
-    image.src = src
-    image.onload = resolve
-    image.onerror = reject
-  })
+  }
 }
 
 export { lazyLoadImages }

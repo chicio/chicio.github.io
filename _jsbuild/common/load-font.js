@@ -1,22 +1,13 @@
 /*  */
 import WebFont from 'webfontloader'
-import { addCssClass } from './css-class'
 
-const loadFont = (finish) => {
-  if (sessionStorage.getItem('fonts') === 'installed' && document.documentElement != null) {
-    addCssClass(document.documentElement, 'wf-active')
-  } else {
-    WebFont.load({
-      google: { families: ['Open Sans'] },
-      active: () => {
-        sessionStorage.setItem('fonts', 'installed')
-        if (finish !== null) {
-          finish()
-        }
-      },
-      inactive: finish ? finish() : undefined
-    })
-  }
+const loadFont = () => {
+  WebFont.load({
+    google: { families: ['Open Sans'] },
+    active: () => {
+      sessionStorage.setItem('font', 'installed')
+    }
+  })
 }
 
 export { loadFont }
