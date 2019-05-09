@@ -15,12 +15,12 @@ authors: [fabrizio_duroni]
 
 ---
 
-In the last few months I worked hard to improved the page speed of my website (yeah, the one you're visiting right now). I improved all my client side code in order to be able to reach a performance score above 90 points on [Lighthouse](https://developers.google.com/web/tools/lighthouse/), the offical Google Chrome tool to measure performance, accessibility, progressive web apps compliance and more on your web application.
+In the last few months I worked hard to improved the page speed of my website (yeah, the one you're visiting right now :heart_eyes:). I improved all my client side code in order to be able to reach a performance score above 90 points on [Lighthouse](https://developers.google.com/web/tools/lighthouse/), the offical Google Chrome tool to measure performance, accessibility, [progressive web apps](/2019/03/03/github-pages-progressive-web-app.html "progressive web app") compliance and more on your web application.
 One of the last thing that was contained in the report was a warning about offscreen images, like the one contained in the following screenshot:
 
 {% include blog-lazy-image.html description="intersection observer offscreen audit" width="1518" height="193" src="/assets/images/posts/intersection-observer-offscreen-audit.jpg" %}
 
-So I followed the link contained in the report that points to a page where are contained the [official Google Guidelines about loading offscreen images](https://developers.google.com/web/tools/lighthouse/audits/offscreen-images). The main topic of the page is the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) and how it can help you to load specific content only when it becomes visible in the viewport. I found also anothe article on the official Google developer website that explains in details how to leverage the power of Intersection Observer to lazy load the images in your web applications. So as you may imagine I "accepted the challenge" (like only [Barney Stinson](https://en.wikipedia.org/wiki/Barney_Stinson) in how I met your mother is used to do :stuck_out_tongue_winking_eye:) and I started to implement the lazy load of images for my website.
+So I followed the link contained in the report that points to a page where are contained the [official Google Guidelines about offscreen images loading](https://developers.google.com/web/tools/lighthouse/audits/offscreen-images). The main topic of the page is the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) and how it can help you to load specific content only when it becomes visible in the viewport. I found also another article on the official Google developer website that explains in details how to leverage the power of Intersection Observer to lazy load the images in your web applications. So as you may imagine I "accepted the challenge" (like only [Barney Stinson](https://en.wikipedia.org/wiki/Barney_Stinson) in how I met your mother is used to do :stuck_out_tongue_winking_eye:) and I started to implement the lazy load of images for my website.
 
 #### Implementation
 
@@ -47,7 +47,7 @@ const lazyLoadImages = (selector, loadCompleted) => {
 }
 ```
 
-As you can see above from the snippet above, in the inserction callback I'm calling the `onIntersection` function. What does it do? This function check the `IntersectionObserverEntry` received from the Intersection Observer as parameter: if a `target` `Element` is inside the viewport it would have the `intersectionRatio` > 0. When this happen I can remove the observer and start the load of the image with the `loadImage` function.
+As you can see in the snippet above, in the inserction callback I'm calling the `onIntersection` function. What does it do? This function checks the `IntersectionObserverEntry` received from the Intersection Observer as parameter. If a `target` `Element` is inside the viewport it would have the `intersectionRatio` > 0. When this happen I can remove the observer and start the load of the image with the `loadImage` function.
 
 ```javascript
 const onIntersection = (entries, observer, loadCompleted) => {
@@ -60,7 +60,7 @@ const onIntersection = (entries, observer, loadCompleted) => {
 }
 ```
 
-The `loadImage` function downloads the image by setting the image src file with the data contained in the `data-src` field. At the end of the download I remove the `lazy` css class, that I used to hide the image until it has been download. Then the `loadCompleted` function is called, where the caller can do anything it want with the image (for example I'm doing a custom animation in order to avoid the `flash` effect when the image is show).
+The `loadImage` function downloads the image by setting the image src field with the data contained in the `data-src` field. At the end of the download I remove the `lazy` css class, that I used to hide the image until it has been download. Then the `loadCompleted` function is called, where the caller can do anything it want with the image (for example I'm doing a custom animation in order to avoid a flash out effect when the image is show).
 
 ```javascript
 const loadImage = (image, loadCompleted) => {
@@ -106,7 +106,7 @@ const loadImage = (image, loadCompleted) => {
 export { lazyLoadImages }
 ```
 
-There's still one thing that I didn't discuss yet. How can we support this type of lazy loading for the browser that doesn't still have implemented the `IntersectionObserver` API? The answer is the [Interserction Observer Polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill). I installed as a dependency of my project.
+There's still one thing that I didn't discuss yet. How can we support this type of lazy loading for the browser that doesn't still have implemented the `IntersectionObserver` API? The answer is the [Interserction Observer Polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill). I installed it as a dependency of my project.
 
 ```shell
 npm install --save intersection-observer
