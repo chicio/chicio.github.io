@@ -6,15 +6,19 @@
 @import "./loader.scss";
 @import "./footer.scss";
 
-body {
-  font: 20px 'Open Sans', sans-serif;
-  line-height: 1.8;
-}
-
-html, body {
+html {
   max-width: 100%;
-  overflow-y: hidden;
   overflow-x: hidden;
+  
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+
+    &.wf-active {
+      font: 20px 'Open Sans', sans-serif;
+      line-height: 1.8;
+    }
+  }
 }
 
 p {
@@ -33,15 +37,6 @@ canvas {
 
 .break {
   display: inline
-}
-
-#loading-screen {
-  background-color: $primary-color;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: 400;
-  display: block;
 }
 
 .vertical-center-row {
