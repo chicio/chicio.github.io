@@ -2,7 +2,7 @@
 layout: post
 title: "Intersection Observer API: speed up your web applications with lazy loading"
 description: "Intersection Observer can improve your web application performance by helping you to implement lazy loading of images."
-date: 2019-05-13
+date: 2019-05-08
 image: /assets/images/posts/lighthouse-lazy-loading.png
 tags: [web development, javascript, typescript]
 comments: true
@@ -60,25 +60,15 @@ const onIntersection = (entries, observer, loadCompleted) => {
 }
 ```
 
-The `loadImage` function downloads the image using the [Image](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/Image) object. At the end of the download I remove the `lazy` css class, that I used to hide the image until it has been download. Then the `loadCompleted` function is called, where the caller can do anything it want with the image (for example I'm doing a custom animation in order to avoid the `flash` effect when the image is show).
+The `loadImage` function downloads the image by setting the image src file with the data contained in the `data-src` field. At the end of the download I remove the `lazy` css class, that I used to hide the image until it has been download. Then the `loadCompleted` function is called, where the caller can do anything it want with the image (for example I'm doing a custom animation in order to avoid the `flash` effect when the image is show).
 
 ```javascript
 const loadImage = (image, loadCompleted) => {
-  const src = image.dataset.src
-  fetchImage(src).then(() => {
-    image.src = src
+  image.src = image.dataset.src
+  image.onload = () => {
     removeCssClass(image, 'lazy')
     loadCompleted(image)
-  })
-}
-
-const fetchImage = (src) => {
-  return new Promise((resolve, reject) => {
-    const image = new Image()
-    image.src = src
-    image.onload = resolve
-    image.onerror = reject
-  })
+  }
 }
 ```
 
@@ -106,21 +96,11 @@ const onIntersection = (entries, observer, loadCompleted) => {
 }
 
 const loadImage = (image, loadCompleted) => {
-  const src = image.dataset.src
-  fetchImage(src).then(() => {
-    image.src = src
+  image.src = image.dataset.src
+  image.onload = () => {
     removeCssClass(image, 'lazy')
     loadCompleted(image)
-  })
-}
-
-const fetchImage = (src) => {
-  return new Promise((resolve, reject) => {
-    const image = new Image()
-    image.src = src
-    image.onload = resolve
-    image.onerror = reject
-  })
+  }
 }
 
 export { lazyLoadImages }

@@ -1,11 +1,12 @@
 /*  */
 import WebFont from 'webfontloader'
 
-const loadFont = (finish) => {
+const loadFont = () => {
   WebFont.load({
     google: { families: ['Open Sans'] },
-    active: finish ? finish() : undefined,
-    inactive: finish ? finish() : undefined
+    active: () => {
+      sessionStorage.setItem('font', 'installed')
+    }
   })
 }
 
