@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Intersection Observer API: speed up your web applications with lazy loading"
-description: "Intersection Observer can improve your web application performance by helping you to implement lazy loading of images."
+description: "Intersection Observer can improve your web application performance by helping you to implement lazy loading of resources inside your web pages."
 date: 2019-05-08
 image: /assets/images/posts/lighthouse-lazy-loading.png
 tags: [web development, javascript, typescript]
