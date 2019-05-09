@@ -1,6 +1,13 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [1.7.0](https://github.com/chicio/chicio.github.io/releases/tag/1.8.0)
+Release date: 2019-05-09.
+
+#### Added
+
+- fuck loader, I want speed!!! 
+
 ## [1.7.0](https://github.com/chicio/chicio.github.io/releases/tag/1.7.0)
 Release date: 2019-05-08.
 
