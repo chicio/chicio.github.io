@@ -9,15 +9,18 @@
 html {
   max-width: 100%;
   overflow-x: hidden;
-  
-  body {
-    max-width: 100%;
-    overflow-x: hidden;
 
-    &.wf-active {
+  &.wf-active {
+    body {
       font: 20px 'Open Sans', sans-serif;
       line-height: 1.8;
     }
+  }
+
+  body {
+    font: 20px Helvetica, Arial, sans-serif;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 }
 
