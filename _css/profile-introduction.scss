@@ -23,6 +23,16 @@
     z-index: 100;
     opacity: 0;
 
+    &.show {
+      animation: show-profile-introduction 0.5s linear 0.3s;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes show-profile-introduction {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
     a {
       text-decoration: none;
     }
@@ -68,6 +78,16 @@
       margin-left: auto;
       margin-right: auto;
 
+      &.show {
+        animation: show-profile-buttons 0.5s linear 0.3s;
+        animation-fill-mode: forwards;
+      }
+  
+      @keyframes show-profile-buttons {
+        from {opacity: 0;}
+        to {opacity: 1;}
+      }
+
       .profile-icon {
         padding-left: 5px;
         padding-right: 5px;
@@ -96,6 +116,16 @@
     text-align: center;
     color: $primary-color-text;
     opacity: 0;
+
+    &.show {
+      animation: show-down-arrow 0.5s;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes show-down-arrow {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
   }
 }
 

@@ -8,7 +8,7 @@ import { lazyLoadImages } from './common/lazy-load-images'
 document.addEventListener('DOMContentLoaded', () => {
   loadFont()
   cookieConsent()
-  homeHeaderAnimation()
   tabs()
   lazyLoadImages('.profile-image, .who-am-i-icon, .project-image, .timeline-image')
+  homeHeaderAnimation()
 })
