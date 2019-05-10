@@ -1,6 +1,13 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [1.9.0](https://github.com/chicio/chicio.github.io/releases/tag/1.9.0)
+Release date: 2019-05-09.
+
+#### Added
+
+- bye bye gsap, I want speed with css animation!!! 
+
 ## [1.8.0](https://github.com/chicio/chicio.github.io/releases/tag/1.8.0)
 Release date: 2019-05-09.
 
