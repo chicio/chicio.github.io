@@ -1,6 +1,6 @@
 /* @flow */
 import 'intersection-observer'
-import { removeCssClass } from './css-class'
+import { addCssClass, removeCssClass } from './css-class'
 
 const lazyLoadImages = (selector: string, loadCompleted: (image: HTMLImageElement) => void) => {
   const intersectionObserver: IntersectionObserver = new IntersectionObserver(
@@ -29,7 +29,7 @@ const loadImage = (image: HTMLImageElement, loadCompleted: (image: HTMLImageElem
   image.src = image.dataset.src
   image.onload = () => {
     removeCssClass(image, 'lazy')
-    loadCompleted(image)
+    addCssClass(image, 'lazy-show')
   }
 }
 

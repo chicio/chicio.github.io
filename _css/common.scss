@@ -34,8 +34,17 @@ canvas {
   background-color: $primary-color;
 }
 
+@keyframes show-lazy-element-animation {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
 .lazy {
   background-color: $divider-color;
+}
+
+.lazy-show {
+  animation: show-lazy-element-animation 0.5s;
 }
 
 .break {
