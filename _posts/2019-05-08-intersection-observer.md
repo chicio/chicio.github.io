@@ -11,7 +11,7 @@ seo:
 authors: [fabrizio_duroni]
 ---
 
-*Intersection Observer can improve your web applications performance and by helping you to implement lazy loading of images.*
+*Intersection Observer can improve your web applications performance by helping you to implement lazy loading of images.*
 
 ---
 
