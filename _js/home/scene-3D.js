@@ -1,9 +1,9 @@
 import * as THREE from 'three'
 import OrbitControls from 'orbit-controls-es6'
-import { TweenMax } from 'gsap'
 import PLYLoader from 'three-ply-loader'
 import isWebGLEnabled from 'detector-webgl'
 import { isAMobileDevice } from '../common/mobile-device-detector'
+import { animation } from '../common/animation'
 
 const scene3D = () => {
   if (isWebGLEnabled && isAMobileDevice() === false) {
@@ -198,12 +198,7 @@ const floor = (textureLoader, completionFunction) => {
   })
 }
 
-const showRenderingSurfaceAnimation = () => {
-  TweenMax.to('#rendering-surface', 0.5, {
-    opacity: 1,
-    delay: 0.2
-  })
-}
+const showRenderingSurfaceAnimation = () => animation('rendering-surface', 'show')
 
 const setWindowResizeListener = (camera, renderer) => {
   window.addEventListener('resize', () => {

@@ -1,35 +1,35 @@
 /*  */
 import 'intersection-observer'
-import { removeCssClass } from './css-class'
+import { addCssClass, removeCssClass } from './css-class'
 
-const lazyLoadImages = (selector, loadCompleted) => {
+const lazyLoadImages = (selector) => {
   const intersectionObserver = new IntersectionObserver(
-    (entries, observer) => onIntersection(entries, observer, loadCompleted),
+    onIntersection,
     { rootMargin: '50px 0px', threshold: 0.01 }
   )
   document.querySelectorAll(selector).forEach(image => intersectionObserver.observe(image))
 }
 
-const onIntersection = (entries, observer, loadCompleted) => {
+const onIntersection = (entries, observer) => {
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0) {
       observer.unobserve(entry.target)
-      eventuallyLoadImage(entry.target, loadCompleted)
+      eventuallyLoadImage(entry.target)
     }
   })
 }
 
-const eventuallyLoadImage = (element, loadCompleted) => {
+const eventuallyLoadImage = (element) => {
   if (element instanceof HTMLImageElement) {
-    loadImage(element, loadCompleted)
+    loadImage(element)
   }
 }
 
-const loadImage = (image, loadCompleted) => {
+const loadImage = (image) => {
   image.src = image.dataset.src
   image.onload = () => {
     removeCssClass(image, 'lazy')
-    loadCompleted(image)
+    addCssClass(image, 'lazy-show')
   }
 }
 

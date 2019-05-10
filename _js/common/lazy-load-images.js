@@ -1,35 +1,35 @@
 /* @flow */
 import 'intersection-observer'
-import { removeCssClass } from './css-class'
+import { addCssClass, removeCssClass } from './css-class'
 
-const lazyLoadImages = (selector: string, loadCompleted: (image: HTMLImageElement) => void) => {
+const lazyLoadImages = (selector: string): void => {
   const intersectionObserver: IntersectionObserver = new IntersectionObserver(
-    (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => onIntersection(entries, observer, loadCompleted),
+    onIntersection,
     { rootMargin: '50px 0px', threshold: 0.01 }
   )
   document.querySelectorAll(selector).forEach(image => intersectionObserver.observe(image))
 }
 
-const onIntersection = (entries: IntersectionObserverEntry[], observer: IntersectionObserver, loadCompleted: (image: HTMLImageElement) => void) => {
+const onIntersection = (entries: IntersectionObserverEntry[], observer: IntersectionObserver): void => {
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0) {
       observer.unobserve(entry.target)
-      eventuallyLoadImage(entry.target, loadCompleted)
+      eventuallyLoadImage(entry.target)
     }
   })
 }
 
-const eventuallyLoadImage = (element: HTMLElement, loadCompleted: (image: HTMLImageElement) => void) => {
+const eventuallyLoadImage = (element: HTMLElement): void => {
   if (element instanceof HTMLImageElement) {
-    loadImage(element, loadCompleted)
+    loadImage(element)
   }
 }
 
-const loadImage = (image: HTMLImageElement, loadCompleted: (image: HTMLImageElement) => void) => {
+const loadImage = (image: HTMLImageElement): void => {
   image.src = image.dataset.src
   image.onload = () => {
     removeCssClass(image, 'lazy')
-    loadCompleted(image)
+    addCssClass(image, 'lazy-show')
   }
 }
 

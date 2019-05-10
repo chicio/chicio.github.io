@@ -1,34 +1,11 @@
 /* @flow */
-import { TweenLite, TweenMax } from 'gsap'
-import { scene3D } from './scene-3D'
+import { animation } from '../common/animation'
 
 const homeHeaderAnimation = (): void => {
-  hideLoaderAnimation(() => {
-    profileAnimation(() => {
-      scene3D()
-    })
-  })
-}
-
-const hideLoaderAnimation = (completionFunction: () => void): void => {
-  TweenLite.to('#loader', 0.3, {
-    opacity: 0,
-    onComplete: completionFunction
-  })
-}
-
-const profileAnimation = (completeFunction: () => void): void => {
-  TweenMax.to('.center-content', 0.5, {
-    opacity: 1,
-    onComplete: completeFunction
-  })
-  downArrowAnimation()
-}
-
-const downArrowAnimation = (): void => {
-  TweenMax.to('#down-arrow', 0.5, {
-    opacity: 1
-  })
+  animation('loader', 'hide')
+  animation('center-content', 'show')
+  animation('center-content-buttons', 'show')
+  animation('down-arrow', 'show')
 }
 
 export { homeHeaderAnimation }
