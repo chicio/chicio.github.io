@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Publish your Progressive Web App to the Google Play Store"
-description: "You can now publish your PWA to the Google Play Store using Trusted Web Activities"
+description: "You can now publish your progressive web apps to the Google Play Store using Trusted Web Activities without writing a single line of Java/Kotlin code."
 date: 2019-06-15
 image: /assets/images/posts/pwa-google-play-store.jpg
 tags: [android, pwa, java, mobile application development, web development, javascript]
@@ -11,7 +11,7 @@ seo:
 authors: [fabrizio_duroni]
 ---
 
-*You can now publish your PWA to the Google Play Store using Trusted Web Activities.*
+*You can now publish your progressive web apps to the Google Play Store using Trusted Web Activities without writing a single line of Java/Kotlin code.*
 
 ---
 
