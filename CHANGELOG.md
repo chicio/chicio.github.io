@@ -6,7 +6,10 @@ Release date: 2019-05-11.
 
 #### Added
 
-- removed fontawesome full installation, switch to iconmoon 
+- removed fontawesome full installation, switch to iconmoon
+- prefetch blog url everywhere
+- font-face with local open sans font and font-display
+- updated intersection observer polifyll and threejs
 
 ## [1.9.0](https://github.com/chicio/chicio.github.io/releases/tag/1.9.0)
 Release date: 2019-05-10.

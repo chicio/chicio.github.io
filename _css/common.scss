@@ -1,4 +1,5 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
+@import "./opensans.scss";
 @import "./icomoon.scss";
 @import "./theme.scss";
 @import "./loader.scss";
@@ -8,15 +9,9 @@ html {
   max-width: 100%;
   overflow-x: hidden;
 
-  &.wf-active {
-    body {
-      font: 20px 'Open Sans', sans-serif;
-      line-height: 1.8;
-    }
-  }
-
   body {
-    font: 20px Helvetica, Arial, sans-serif;
+    font: 20px 'Open Sans', Helvetica, Arial, sans-serif;
+    line-height: 1.8;
     max-width: 100%;
     overflow-x: hidden;
   }
