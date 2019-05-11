@@ -1,6 +1,13 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [1.10.0](https://github.com/chicio/chicio.github.io/releases/tag/1.10.0)
+Release date: 2019-05-11.
+
+#### Added
+
+- removed fontawesome full installation, switch to iconmoon 
+
 ## [1.9.0](https://github.com/chicio/chicio.github.io/releases/tag/1.9.0)
 Release date: 2019-05-10.
 

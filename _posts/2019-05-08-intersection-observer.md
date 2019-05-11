@@ -15,7 +15,7 @@ authors: [fabrizio_duroni]
 
 ---
 
-In the last few months I worked hard to improved the page speed of my website (yeah, the one you're visiting right now :heart_eyes:). I improved all my client side code in order to be able to reach a performance score above 90 points on [Lighthouse](https://developers.google.com/web/tools/lighthouse/), the offical Google Chrome tool to measure performance, accessibility, [progressive web apps](/2019/03/03/github-pages-progressive-web-app.html "progressive web app") compliance and more on your web application.
+In the last few months I worked hard to improved the page speed of my website (yeah, the one you're visiting right now :heart_eyes:). I improved all my client side code in order to be able to reach a performance score above 90 points on [Lighthouse](https://developers.google.com/web/tools/lighthouse/), the official Google Chrome tool to measure performance, accessibility, [progressive web apps](/2019/03/03/github-pages-progressive-web-app.html "progressive web app") compliance and more on your web application.
 One of the last thing that was contained in the report was a warning about offscreen images, like the one contained in the following screenshot:
 
 {% include blog-lazy-image.html description="intersection observer offscreen audit" width="1518" height="193" src="/assets/images/posts/intersection-observer-offscreen-audit.jpg" %}
@@ -26,7 +26,7 @@ So I followed the link contained in the report that points to a page where are c
 
 First of all let's start by creating a function called `lazyLoadImages`. This function takes two parameter:
 
-* selector, that is a string that I will use to select all the document [`Element`](https://developer.mozilla.org/en-US/docs/Web/API/Element "document element") objects that I want to observe
+* selector, that is a string that I will use to select all the document [`Element`](https://developer.mozilla.org/en-US/docs/Web/API/Element "document element") objects that I wanted to observe
 * loadCompleted, a function that will be executed after the image has been downloaded
 
 This function will create a new instance of the `IntersectionObserver` object from the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API). This object constructor takes two parementer:
@@ -34,7 +34,7 @@ This function will create a new instance of the `IntersectionObserver` object fr
 * a callback, that is the function called when an object become visible given the current configuration
 * a configuration options, that let the developer customize how the Intersection Observer calculate the intersection with the viewport
 
-After the cretion of the `IntersectionObserver` object I attached it to the DOM elements I want to observe by calling its `observer(element)` method on the document [`Element`](https://developer.mozilla.org/en-US/docs/Web/API/Element "document element") objects selected using [querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll "document querySelectorAll") method with the `selector` received as parameter.
+After the creation of the `IntersectionObserver` object I attached it to the DOM elements I want to observe by calling its `observer(element)` method on the document [`Element`](https://developer.mozilla.org/en-US/docs/Web/API/Element "document element") objects selected using [querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll "document querySelectorAll") method with the `selector` received as parameter.
 
 ```javascript
 
@@ -47,7 +47,7 @@ const lazyLoadImages = (selector, loadCompleted) => {
 }
 ```
 
-As you can see in the snippet above, in the inserction callback I'm calling the `onIntersection` function. What does it do? This function checks the `IntersectionObserverEntry` received from the Intersection Observer as parameter. If a `target` `Element` is inside the viewport it would have the `intersectionRatio` > 0. When this happen I can remove the observer and start the load of the image with the `loadImage` function.
+As you can see in the snippet above, in the intersection callback I'm calling the `onIntersection` function. What does it do? This function checks the `IntersectionObserverEntry` received from the Intersection Observer as parameter. If a `target` `Element` is inside the viewport it would have the `intersectionRatio` > 0. When this happen I can remove the observer and start the load of the image with the `loadImage` function.
 
 ```javascript
 const onIntersection = (entries, observer, loadCompleted) => {
@@ -116,4 +116,4 @@ This [polyfill](https://en.wikipedia.org/wiki/Polyfill_(programming) "polyfill p
 
 #### Conclusion
 
-Inteserction Observer is a powerful API. It let you implmenent lazy loading for rsources loading and reach performance and architectural application pattern that I had a chance to see only in mobile native apps. The web is filling the gap with native apps, and Intersection Observer are another demonstration that the 90% of the existing native mobile apps could become powerful web apps. As a consequence of the fact that in my daily job I'm still a native mobile app developer, I'm still following the iOS, Android and React Native scene and I'm still studying all the new tools and SDKs improvement released by Apple, Google and Facebook. But, you know, technology goes fast I have to be prepared for the future :relaxed:. Sooo, long live Intersection Observer!!! Web applications will be much more performant with your help :green_heart:.
+Intersection Observer is a powerful API. It lets you implment lazy loading for resources loading and reach performance and architectural application pattern that I had a chance to see only in mobile native apps. The web is filling the gap with native apps, and Intersection Observer are another demonstration that the 90% of the existing native mobile apps could become powerful web apps. As a consequence of the fact that in my daily job I'm still a native mobile app developer, I'm still following the iOS, Android and React Native scene and I'm still studying all the new tools and SDKs improvement released by Apple, Google and Facebook. But, you know, technology goes fast I have to be prepared for the future :relaxed:. Sooo, long live Intersection Observer!!! Web applications will be much more performant with your help :green_heart:.
