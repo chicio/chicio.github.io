@@ -3,6 +3,7 @@ layout: post
 title: "Swift Closure: what they are and syntax"
 description: "In this post I will talk about Swift closure: what they are and their syntax"
 date: 2017-06-02
+image: /assets/images/posts/swift-closure.jpg
 tags: [swift, ios, apple, mobile application development]
 comments: true
 seo:
