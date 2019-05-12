@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('../fonts/icomoon/icomoon.eot?6l1zyy');
-  src:  url('../fonts/icomoon/icomoon.eot?6l1zyy#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon/icomoon.ttf?6l1zyy') format('truetype'),
-    url('../fonts/icomoon/icomoon.woff?6l1zyy') format('woff'),
-    url('../fonts/icomoon/icomoon.svg?6l1zyy#icomoon') format('svg');
+  src:  url('../fonts/icomoon/icomoon.eot?69u70w');
+  src:  url('../fonts/icomoon/icomoon.eot?69u70w#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon/icomoon.ttf?69u70w') format('truetype'),
+    url('../fonts/icomoon/icomoon.woff?69u70w') format('woff'),
+    url('../fonts/icomoon/icomoon.svg?69u70w#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -21,6 +21,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-chevron-down:before {
+  content: "\f078";
+}
 .icon-facebook-square:before {
   content: "\f082";
 }
@@ -33,6 +36,9 @@
 .icon-github:before {
   content: "\f09b";
 }
+.icon-briefcase:before {
+  content: "\f0b1";
+}
 .icon-envelope:before {
   content: "\f0e0";
 }
@@ -44,6 +50,12 @@
 }
 .icon-instagram:before {
   content: "\f16d";
+}
+.icon-graduation-cap:before {
+  content: "\f19d";
+}
+.icon-mortar-board:before {
+  content: "\f19d";
 }
 .icon-medium:before {
   content: "\f23a";

@@ -7,6 +7,7 @@ Release date: 2019-05-12.
 #### Added
 
 - moved scene3d home animation and cookie consent to the window.load event
+- added missing icons in icomoon font
 
 ## [1.10.0](https://github.com/chicio/chicio.github.io/releases/tag/1.10.0)
 Release date: 2019-05-11.
