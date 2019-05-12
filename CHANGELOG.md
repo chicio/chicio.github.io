@@ -1,6 +1,13 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [1.11.0](https://github.com/chicio/chicio.github.io/releases/tag/1.11.0)
+Release date: 2019-05-12.
+
+#### Added
+
+- moved scene3d home animation and cookie consent to the window.load event
+
 ## [1.10.0](https://github.com/chicio/chicio.github.io/releases/tag/1.10.0)
 Release date: 2019-05-11.
 

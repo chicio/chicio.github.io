@@ -6,9 +6,12 @@ import { homeHeaderAnimation } from './home/home-header-animation'
 import { scene3D } from './home/scene-3D'
 
 document.addEventListener('DOMContentLoaded', () => {
-  cookieConsent()
   tabs()
   lazyLoadImages('.profile-image, .who-am-i-icon, .project-image, .timeline-image')
+})
+
+window.addEventListener('load', () => {
   homeHeaderAnimation()
   scene3D()
+  cookieConsent()
 })
