@@ -9,6 +9,7 @@ Release date: to be released.
 - icomoon font display feature
 - disqus lazy loading
 - improving accessibility of highlight syntax
+- optimizing three js scene
 
 #### Fixed
 
