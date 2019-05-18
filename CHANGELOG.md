@@ -7,6 +7,7 @@ Release date: to be released.
 #### Added
 
 - icomoon font display feature
+- disqus lazy loading
 
 #### Fixed
 
