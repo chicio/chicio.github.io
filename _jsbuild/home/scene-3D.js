@@ -7,7 +7,7 @@ import { animation } from '../common/animation'
 
 const scene3D = () => {
   if (isWebGLEnabled && isAMobileDevice() === false) {
-    sceneThreeJS()
+    setTimeout(sceneThreeJS, 3000)
   }
 }
 
