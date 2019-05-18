@@ -1,6 +1,17 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [1.12.0](https://github.com/chicio/chicio.github.io/releases/tag/1.12.0)
+Release date: to be released.
+
+#### Added
+
+- icomoon font display feature
+
+#### Fixed
+
+- foreach on lazy loading for images
+
 ## [1.11.0](https://github.com/chicio/chicio.github.io/releases/tag/1.11.0)
 Release date: 2019-05-12.
 

@@ -11,12 +11,12 @@ const lazyLoadImages = (selector) => {
 }
 
 const onIntersection = (entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.intersectionRatio > 0) {
-      observer.unobserve(entry.target)
-      eventuallyLoadImage(entry.target)
+  for (let i = 0; i < entries.length; i++) {
+    if (entries[i].intersectionRatio > 0) {
+      observer.unobserve(entries[i].target)
+      eventuallyLoadImage(entries[i].target)
     }
-  })
+  }
 }
 
 const eventuallyLoadImage = (element) => {
