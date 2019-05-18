@@ -1,6 +1,12 @@
 .blog-post {
   margin-bottom: 50px;
 
+  ul {
+    li{
+      font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    }
+  }
+
   .blog-post-title {
     margin-bottom: 5px;
     font-size: 24px;
@@ -82,7 +88,7 @@ div.highlighter-rouge {
     }
 
     code {
-      font: 14px 'Open Sans', sans-serif;
+      font: 14px 'Open Sans', Helvetica, Arial, sans-serif;
       display: block;
       white-space: pre;
       overflow-x: scroll;
