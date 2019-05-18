@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import OrbitControls from 'orbit-controls-es6'
+import OrbitControls from 'three-orbitcontrols'
 import PLYLoader from 'three-ply-loader'
 import isWebGLEnabled from 'detector-webgl'
 import { isAMobileDevice } from '../common/mobile-device-detector'
