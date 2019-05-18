@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Web to native communication on iOS using WKScriptMessageHandler"
-description: "Did you know that is it possible to call native code from the Javascript code of a web page displayed inside a WKWebView?"
+description: "Did you know that is it possible to call Swift code from the JavaScript code of a web page displayed inside a WKWebView?"
 date: 2019-08-08
-image: /assets/images/posts/XXXX
+image: /assets/images/posts/swift-js.jpg
 tags: [swift, ios, apple, mobile application development]
 comments: true
 seo:
@@ -11,7 +11,7 @@ seo:
 authors: [fabrizio_duroni]
 ---
 
-*Did you know that is it possible to call native code from the Javascript code of a web page displayed inside a WKWebView?*
+*Did you know that is it possible to call Swift code from the JavaScript code of a web page displayed inside a WKWebView?*
 
 ---
 
