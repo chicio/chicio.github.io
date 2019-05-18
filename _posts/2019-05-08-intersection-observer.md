@@ -37,7 +37,6 @@ This function will create a new instance of the `IntersectionObserver` object fr
 After the creation of the `IntersectionObserver` object I attached it to the DOM elements I want to observe by calling its `observer(element)` method on the document [`Element`](https://developer.mozilla.org/en-US/docs/Web/API/Element "document element") objects selected using [querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll "document querySelectorAll") method with the `selector` received as parameter.
 
 ```javascript
-
 const lazyLoadImages = (selector, loadCompleted) => {
   const intersectionObserver: IntersectionObserver = new IntersectionObserver(
     (entries, observer) => onIntersection(entries, observer, loadCompleted),
