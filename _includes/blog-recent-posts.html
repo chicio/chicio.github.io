@@ -4,7 +4,7 @@
 		{% for post in site.posts limit:4 %}
 			{% if post.url != page.url %}
 				{% if forloop.index < 4 or found %}
-					<a href="{{ post.url }}">
+					<a href="{{ post.url }}" alt="{{ post.title }}">
 						<div class="col-lg-4">
 							<div class="card">
 								<div class="img-container"> 
