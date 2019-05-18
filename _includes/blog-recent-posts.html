@@ -4,7 +4,7 @@
 		{% for post in site.posts limit:4 %}
 			{% if post.url != page.url %}
 				{% if forloop.index < 4 or found %}
-					<a href="{{ post.url }}" alt="{{ post.title }}">
+					<a href="{{ post.url }}" aria-label="{{ post.title }}">
 						<div class="col-lg-4">
 							<div class="card">
 								<div class="img-container"> 
@@ -12,7 +12,7 @@
 								</div>
 								<h4>{{ post.title }}</h4>
 								{{ post.excerpt | remove: '<em>' | remove: '</em>' }}
-								<a href="{{ post.url }}" alt="{{ post.title }}" class="card-button">Read More</a>
+								<a href="{{ post.url }}" aria-label="{{ post.title }}" class="card-button">Read More</a>
 							</div>
 						</div>
 					</a>
