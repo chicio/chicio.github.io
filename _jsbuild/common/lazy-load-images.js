@@ -7,7 +7,10 @@ const lazyLoadImages = (selector) => {
     onIntersection,
     { rootMargin: '50px 0px', threshold: 0.01 }
   )
-  document.querySelectorAll(selector).forEach(image => intersectionObserver.observe(image))
+  const images = document.querySelectorAll(selector)
+  for (let i = 0; i < images.length; i++) {
+    intersectionObserver.observe(images[i])
+  }
 }
 
 const onIntersection = (entries, observer) => {
