@@ -286,7 +286,7 @@ class ID3TagCreator {
 ``` 
 
 How are the frames data created? The answer is inside the `ID3FrameCreatorsChain` and the 
-`ID3FrameCreatorsChainFactory` classes. The factory class creates a [**Chain of responsibility**](https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern), where each 
+`ID3FrameCreatorsChainFactory` classes. The factory class creates a [**Chain of responsibility**](https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern "chain of responsibility"), where each 
 subclass of the `ID3FrameCreatorsChain` class is a specialization with the responsibility to write a specific frame type. At the
   end of the chain an `[Uint8]` array is returned. This is basically an array of bytes, that is then converted into a
    `Data` object at the end of the `create(id3Tag: ID3Tag) throws -> Data` of the `ID3TagCreator` class (where also the tag 
