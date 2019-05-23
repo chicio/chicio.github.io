@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "React Native: the power of RCTBundleURLProvider to build, run and debug on an iOS device from Xcode"
-description: "In this post I will talk about how to setup up your react native project on iOS to build, run and debug it on a real device."
+description: "Do you know how to debug your react native app on a iOS device?"
 date: 2018-02-08
 image: /assets/images/posts/react-native-bundle-url-provider-setup.jpg
 tags: [react native, swift, ios, apple, mobile application development, javascript]
@@ -11,8 +11,7 @@ seo:
 authors: [fabrizio_duroni, mariano_patafio] 
 ---
 
-*In this post I will talk about how to setup up you React Native project on iOS to build, run and debug it on a real
- device from Xcode.*
+*Do you know how to debug your react native app on a iOS device?*
 
 ---
 
