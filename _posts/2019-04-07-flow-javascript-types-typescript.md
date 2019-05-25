@@ -42,7 +42,7 @@ Then I decided to create a new script phase `flow` that launches the script `flo
 * I run Flow to execute the static type checking on my code base with the command `../node_modules/.bin/flow`
 * I run flow-remove-types to strip Flow type annotations from JavaScript files. The generated files are saved in the folder `../_jsbuild/` specified in the destination folder flag `-d`. I also specified the `--pretty` option in order to be able to remove the whitespaces that flow-remove-types leaves in the source when it removes the types annotation.
 
-Below you can see the entire script I created (that you can find also [here](https://github.com/chicio/chicio.github.io/blob/master/_scripts/flow.sh "flow script")).
+Below you can see the entire script I created (that you can find [flow script also at this url](https://github.com/chicio/chicio.github.io/blob/master/_scripts/flow.sh "flow script")).
 
 ```shell
 #!/usr/bin/env sh
