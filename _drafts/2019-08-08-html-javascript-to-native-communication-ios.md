@@ -15,12 +15,12 @@ authors: [fabrizio_duroni]
 
 ---
 
-Sooner or later every mobile developer in the world had the following specific need: integrate a website page inside an app :weary:. Usually the feature to be developed requires a depp integration between web and native: the app must react to some changes in the web page based on the user interactions or some other events (automatic refresh, geolocation ecc.). The old way to do this integration was to catch some url change/page load using the classical UIWebView delegate methods. But starting from iOS 8 there's a better way to do this integration using `WKWebView`s and `WKScriptMessageHandler`. In this post I will show you how is it possible to use them to call Swift code from Javascript code inside a webpage.
+Sooner or later every mobile developer in the world had the following specific need: integrate a website page inside an app :weary:. Usually the feature to be developed requires a deep integration between web and native: the app must react to some changes in the web page based on the user interactions or some other events (automatic refresh, geolocation etc.). The old way to do this integration was to catch some url change/page load using the classical UIWebView delegate methods. But starting from iOS 8 there's a better way to do this integration using `WKWebView`s and `WKScriptMessageHandler`. In this post I will show you how is it possible to use them to call Swift code from Javascript code inside a webpage.
 
 #### Implementation
 
 Suppose for example we have a simple html page that contains a form with 2 input fields and a button. We want to be able to read the form data inserted when the user clicks on the button and do some action on the Swift code side. In this sample case we will show a simple `UIAlertController` that contains the form data.  
-Let's start by setting up the controller that will display the form, `FormViewController`. The first thing to do is to setup the `WKWebView` and add it to the main `UIView` of our controller. After that we can already setup the code that will load tha web page in the function `loadPage` (in this case, to keep the example as simple as possible, the webpage is loaded from a local file in the `Bundle`).
+Let's start by setting up the controller that will display the form, `FormViewController`. The first thing to do is to setup the `WKWebView` and add it to the main `UIView` of our controller. After that we can already setup the code that will load the web page in the function `loadPage` (in this case, to keep the example as simple as possible, the webpage is loaded from a local file in the `Bundle`).
 
 ```swift
 class FormViewController: UIViewController {
@@ -76,7 +76,7 @@ After the setup we can implement the `WKScriptMessageHandler` protocol method `u
 }
 ```
 
-This message will be converted to a Swift `Dictionary` and will be put in the `body` of the `WKScriptMessage` received by the `WebKit` SDK. So we can proced with the unwrap of each property of this dictionary and show them in a `UIAlertViewController`. Below you can find the final implementation of the `FormViewController`.
+This message will be converted to a Swift `Dictionary` and will be put in the `body` of the `WKScriptMessage` received by the `WebKit` SDK. So we can proceed with the unwrap of each property of this dictionary and show them in a `UIAlertViewController`. Below you can find the final implementation of the `FormViewController`.
 
 ```swift
 class FormViewController: UIViewController, WKScriptMessageHandler {
@@ -164,4 +164,4 @@ You can find the complete example in this [github repository](https://github.com
 #### Conclusion
 
 The `WKWebView` and the `WKScriptMessageHandler` are really powerful. They let you implement a deeper web to native integration that could significantly improve the general user experiences. `WKScriptMessageHandler`, 
-another usefule tool in the toolbox of every iOS Developer :iphone:.
+another useful tool in the toolbox of every iOS Developer :iphone:.

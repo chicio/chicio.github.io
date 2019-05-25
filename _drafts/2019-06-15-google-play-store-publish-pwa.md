@@ -15,12 +15,12 @@ authors: [fabrizio_duroni]
 
 ---
 
-A few months ago I [transformed my blog into a Progressive Web App](/2019/03/03/github-pages-progressive-web-app.html). As you may already know PWA let your websites behaves like a native mobile app but there's one thing that was still missing: the possibility to publish on the App Stores. Because even if a PWA as the advantage to be searchable as astandard website, this days user are used to search ofr apps on the App Stores for each platform. Well, starting from february 2019 this problem has been solved on the Android platform with the release of [Trusted Web Activities](https://developers.google.com/web/updates/2019/02/using-twa "trusted web activities").  
+A few months ago I [transformed my blog into a Progressive Web App](/2019/03/03/github-pages-progressive-web-app.html). As you may already know PWA let your websites behaves like a native mobile app but there's one thing that was still missing: the possibility to publish on the App Stores. Because even if a PWA as the advantage to be searchable as a standard website, this days user are used to search for apps on the App Stores for each platform. Well, starting from February 2019 this problem has been solved on the Android platform with the release of [Trusted Web Activities](https://developers.google.com/web/updates/2019/02/using-twa "trusted web activities").  
 In this post I will show you how I released the PWA of my blog to the Google Play Store using Trusted Web Activities (and also without writing a single line of Java/Kotlin code :smirk:).
 
 #### What is a Trusted Web Activity
 
-Let's start from the definition of Trusted Web Activitiy (TWA) taken from [the official Google developer website](https://developers.google.com/web/updates/2019/02/using-twa "trusted web activities").
+Let's start from the definition of Trusted Web Activity (TWA) taken from [the official Google developer website](https://developers.google.com/web/updates/2019/02/using-twa "trusted web activities").
 
 >There are a few things that make Trusted Web Activities (TWA) different from other ways to integrate web content with your app:
 >
@@ -38,12 +38,12 @@ Let's start to see the real action: how I publish my blog PWA to the Google Play
 
 {% include blog-lazy-image.html description="pwa app create project" width="1500" height="1236" src="/assets/images/posts/pwa-app-01-create-project.jpg" %}
 
-Then I added the TWA support as a dependecy of the app. The TWA implementation is contained inside the custom tabs client library published on [Jitpack](https://jitpack.io/ "Jitpack") (because unfortunately at the moment of this writing the custom tabs client library contained inside Jetpack doesn't have the TWA support). So I added Jitpack as repository to the project level gradle file. Then I added the custom tabs client library as dependecy inside the module gradle file. This last dependecy points to the custom tabs client library published on github and exposed through Jitpack. I had also to specify a specific commit hash in order to be sure that the library version downloaded contains the TWA support.
+Then I added the TWA support as a dependency of the app. The TWA implementation is contained inside the custom tabs client library published on [Jitpack](https://jitpack.io/ "Jitpack") (because unfortunately at the moment of this writing the custom tabs client library contained inside Jetpack doesn't have the TWA support). So I added Jitpack as repository to the project level gradle file. Then I added the custom tabs client library as dependency inside the module gradle file. This last dependency points to the custom tabs client library published on github and exposed through Jitpack. I had also to specify a specific commit hash in order to be sure that the library version downloaded contains the TWA support.
 
 {% include blog-lazy-image.html description="pwa app jitpack" width="1500" height="889" src="/assets/images/posts/pwa-app-02-jitpack-configuration.jpg" %}
 {% include blog-lazy-image.html description="pwa app custom tab library" width="1500" height="889" src="/assets/images/posts/pwa-app-03-java8-and-custom-tab-dependecies.jpg" %}
 
-After the depencies setup I added the TWA Activity. To do this I just had to modify the Android app manifest file by declaring a new TWA activity inside it. For the readers that are not mobile developer, the Android app manifest is a file contained in all the Android apps. Its main function is to present essential information about the application to the Android system including:
+After the dependencies setup I added the TWA Activity. To do this I just had to modify the Android app manifest file by declaring a new TWA activity inside it. For the readers that are not mobile developer, the Android app manifest is a file contained in all the Android apps. Its main function is to present essential information about the application to the Android system including:
 
 * the Java package of the app
 * the components of the app including activities, services, broadcast receivers, and content providers that the app is composed of
@@ -63,7 +63,7 @@ Now I had to establish the link between our PWA website and our PWA app. This is
 * establish an association from the website to the app
 
 This associations removes automatically the url address bar from the TWA activity. In this way the Android app will be full screen as a standard one (and as a PWA in standalone mode :smirk:).  
-Let's start from the first association, from the app to the web site. To do this I created a new string resource inside the `strings.xml` file. This new string resouce contains the Digital AssetLink statement that you can see below.
+Let's start from the first association, from the app to the web site. To do this I created a new string resource inside the `strings.xml` file. This new string resource contains the Digital AssetLink statement that you can see below.
 
 ```xml
 <resources>
@@ -94,7 +94,7 @@ It is possible to test that the association from app to the website has been com
 adb shell "echo '_ --disable-digital-asset-link-verification-for-url=\"https://www.fabrizioduroni.it\"' > /data/local/tmp/chrome-command-line"
 ```
 
-After this debug setup the app is launched withoutthe address bar :relieved:.  
+After this debug setup the app is launched without the address bar :relieved:.  
 Now I need to finish the development by establishing an association from the website to the app. To do that I needed 2 information about my app:
 
 * the package name
@@ -106,7 +106,7 @@ The first one was easy to get. I just needed to open the Android manifest file a
 keytool -list -v -keystore <your keystore jks file> -alias <your alias> -storepass <your store psw> -keypass <your key psw>
 ```
 
-With both pieces of information at hand I was able to generate a web `assetlink.json` statement using the [assetlinks generator](https://developers.google.com/digital-asset-links/tools/generator). The `assetlink.json` generated must be served from the PWA domain from the URL `<your PWA domain>/.well-known/assetlinks.json`.
+With both pieces of information at hand I was able to generate a web `assetlink.json` statement using the [asset links generator](https://developers.google.com/digital-asset-links/tools/generator). The `assetlink.json` generated must be served from the PWA domain from the URL `<your PWA domain>/.well-known/assetlinks.json`.
 
 {% include blog-lazy-image.html description="pwa app Digital AssetLink generator"  width="1500" height="888" src="/assets/images/posts/pwa-app-07-assetlink-generator.jpg" %}
 
