@@ -4,6 +4,7 @@ import gulpSass from 'gulp-sass'
 import gulpRevAppend from 'gulp-rev-append'
 import gulpUglify from 'gulp-uglify'
 import gulpEslint from 'gulp-eslint'
+import gulpImagemin from 'gulp-imagemin'
 import critical from 'critical'
 import source from 'vinyl-source-stream'
 import buffer from 'vinyl-buffer'
@@ -75,11 +76,16 @@ const copyFiles = (folder) => (
     .pipe(gulp.dest(`assets/${folder}`))
 )
 
-gulp.task('images', () => copyFiles('images'))
-
 gulp.task('fonts', () => copyFiles('fonts'))
 
 gulp.task('models', () => copyFiles('models'))
+
+gulp.task('images', () =>
+  gulp
+    .src([`_images/**/*.*`])
+    .pipe(gulpImagemin())
+    .pipe(gulp.dest(`assets/images`))
+)
 
 const criticalCss = (src, dest, css) => (
   critical.generate({

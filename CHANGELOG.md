@@ -1,6 +1,13 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [1.13.0](https://github.com/chicio/chicio.github.io/releases/tag/1.13.0)
+Release date: to be defined.
+
+#### Added
+
+- image optimization/compression with gulp-imagemin
+
 ## [1.12.0](https://github.com/chicio/chicio.github.io/releases/tag/1.12.0)
 Release date: 2019-05-18.
 
