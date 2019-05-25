@@ -117,4 +117,8 @@ If the two ways association fails, it is possible to check for error messages us
 adb logcat | grep -e OriginVerifier -e digital_asset_links
 ```
 
-Now my blog PWA is published to Google Play store. Go and download it immediately :cupid: !!!!
+Now my blog PWA is published to Google Play store. Below you can find a video that shows you the installation from the Google Play store and the first open of the app. In the video you can also see the debug messages related to the digital asset links verification.
+
+{% include youtube.html videoId="s0o0AheYw9M" %}
+
+ Go and download it immediately :cupid: !!!!
