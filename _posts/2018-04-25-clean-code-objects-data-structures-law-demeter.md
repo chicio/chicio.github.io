@@ -33,7 +33,7 @@ This give us the following definitions, stated by [Uncle Bob](https://en.wikiped
 "Robert Cecil Martin") in its *Clean Code* book:
 
 >Procedural code (code using data structures) makes it easy to add new functions without changing the existing data
-structures. Object oriented code, on the other hand, makes it easy to add new classes without chaging existing functions.
+structures. Object oriented code, on the other hand, makes it easy to add new classes without changing existing functions.
 
 >Procedural code makes it hard to add new data structures because all the functions must change. Object oriented code
  makes it hard to add new functions because all the classes must change.

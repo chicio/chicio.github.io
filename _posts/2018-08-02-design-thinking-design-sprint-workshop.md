@@ -56,7 +56,7 @@ and user testing. Sprints let your team reach clearly defined goals and delivera
 
 So design thinking is an approach to design product based on iterations of a series of step that includes:
  acquire a deep knowledge of the problem, prototyping and user test your new product ideas. The design sprint is the 
- formalisation of design thinking: it is a time constrained process (usually 5 days) where all the design 
+ formalization of design thinking: it is a time constrained process (usually 5 days) where all the design 
  thinking steps
  are applied in sequence.
 During the workshop we tried to simulate a design sprint. We had just one day, so we compressed all the phases of a

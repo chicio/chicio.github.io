@@ -121,8 +121,7 @@ Below you can find the complete `tsconfig.json` file configured for our needs.
 ```
 
 After that we need to install the [React Native TypeScript Transformer](https://github.com/ds300/react-native-typescript-transformer "React Native TypeScript Transformer"). 
-This transformer will allow the React Native cli to automatically transpile our TypeScript code into Javascript on 
-demand. This is the command to install the transformer:
+This transformer will allow the React Native cli to automatically transpile our TypeScript code into Javascript on demand. This is the command to install the transformer:
 
 ```bash
 yarn add --dev react-native-typescript-transformer
@@ -143,8 +142,7 @@ module.exports = {
 ```
 
 That's all for the main source code setup. Now we can start to set up also the testing infrastructure. We will use 
-[jest](https://jestjs.io/ "jest"), a testing framework from Facebook, and typemoq, a TypeScript specific mocking 
-library. 
+[jest](https://jestjs.io/ "jest"), a testing framework from Facebook, and [typemoq](https://github.com/florinn/typemoq "typemoq"), a TypeScript specific mocking library.
 To use Jest with Typescript we will install [ts-jest](https://github.com/kulshekhar/ts-jest "typescript jest 
 preprocessor"), a TypeScript preprocessor with source map support for Jest that lets us use Jest to test projects 
 written in TypeScript.
@@ -183,15 +181,10 @@ module.exports = {
         '../',
     ],
 };
-``` 
+```
 
-We are now ready to write our app. Basically the screen that shows the nasa photo is the `NasaPhotoViewerScreen`. 
-This component uses `NasaPhotoInformationComponent` and some React Native standard component to show the information 
-that comes from the API. The informations are fetched using the `NasaPhotoService`. The `NasaPhotoViewerScreen` and 
-the `NasaPhotoService` are glued together using the [Model-View-Presenter](/2017/08/11/model-view-presenter-architecture-ios-swift-unit-test.html "Model View Presenter iOS") architecture   
-in the `NasaPhotoComponentPresenter`. As you can see from the code below, TypeScript has a syntax that is similar to 
-other language like Java, C# (and many other :sunglasses:).
- 
+We are now ready to write our app. Basically the screen that shows the nasa photo is the `NasaPhotoViewerScreen`. This component uses `NasaPhotoInformationComponent` and some React Native standard component to show the information that comes from the API. The informations are fetched using the `NasaPhotoService`. The `NasaPhotoViewerScreen` and the `NasaPhotoService` are glued together using the [Model-View-Presenter](/2017/08/11/model-view-presenter-architecture-ios-swift-unit-test.html "Model View Presenter iOS") architecture in the `NasaPhotoComponentPresenter`. As you can see from the code below, TypeScript has a syntax that is similar to other language like Java, C# (and many other :sunglasses:).
+
 ```jsx
 export class NasaPhotoService {
   async retrieve(): Promise<any> {
@@ -287,6 +280,4 @@ const styles = StyleSheet.create({
 });
 ```
 
- You can check all the code of the sample described above in [this github repository](https://github.com/chicio/React-Native-Typescript-Existing-App "React Native Typescript Existing App") 
-and see all the TypeScript components I created for the app I shown you above.   
-That's it!!! React Native + TypeScript: :hearts: love at first sight :hearts:.   
+ You can check all the code of the sample described above in [this github repository](https://github.com/chicio/React-Native-Typescript-Existing-App "React Native Typescript Existing App") and see all the TypeScript components I created for the app I shown you above. That's it!!! React Native + TypeScript: :hearts: love at first sight :hearts:.

@@ -21,36 +21,26 @@ In a [previous post](/2018/07/04/react-native-typescript-existing-app.html "reac
 the "app relaunch" project I was involved in the last few months at [lastminute.com group](https://lmgroup.lastminute.com/ "lastminute.com group"). 
 During one of the last sprint before the release we started to think about putting in place an internal beta testing 
 program to have more testing data and eventually discover more bugs before the release on the App Store (we really 
-wanted to eat our food :smile:). We thought about using the TestFlight environment with 
-external testers. But this solution didn't work for us because:
- 
-* we wanted to let everyone in the company be able to install the beta version without the need for any kind of 
- registration. The external testers in the TestFlight environment must be registered in the "External Tester" section
-  of you app in the App Store Connect (someone said iTunes Connect?!?!?! :stuck_out_tongue_closed_eyes:). 
-* we wanted to associate the beta with a new bundle id so that we could have a custom monitoring section in the 
-[Fabric](https://get.fabric.io/ "Fabric") dashboard. 
-* we didn't want to go through the "light review" that Apple does each time you want to distribute a new build to 
-your external tester. We also wanted to avoid the slow processing timing of TestFlight.
+wanted to eat our food :smile:). We thought about using the TestFlight environment with external testers. But this solution didn't work for us because:
+
+* we wanted to let everyone in the company be able to install the beta version without the need for any kind of  registration. The external testers in the TestFlight environment must be registered in the "External Tester" section of you app in the App Store Connect (someone said iTunes Connect?!?!?! :stuck_out_tongue_closed_eyes:).
+* we wanted to associate the beta with a new bundle id so that we could have a custom monitoring section in the [Fabric](https://get.fabric.io/ "Fabric") dashboard.
+* we didn't want to go through the "light review" that Apple does each time you want to distribute a new build to your external tester. We also wanted to avoid the slow processing timing of TestFlight.
 
 So what do we did? We put in place our custom Beta distribution program using [Apple Enterprise Developer Program](https://developer.apple.com/programs/enterprise/).
-By enrolling in this program you have the ability to distribute you app inside your company without the need of the 
- App Store. You can basically create your own Company App Store!! :open_mouth:
-I worked on the creation of this custom internal Beta distribution program with my colleague 
-[Giordano Tamburrelli](https://www.linkedin.com/in/giordano-tamburrelli-b532334/ "Giordano Tamburrelli"). Giordano is 
-the Team Leader of the Lynch Team, the agile team where I work at lastminute.com group. He has a Phd in Computer 
-Science at Politecnico di Milano university and a master degree in Computer Science at the University of Illinois.
- He is one of the most skilled person I ever met, both from a technical and managerial point of view (yes you know, I'm just 
-kissing his ass :kissing_heart::stuck_out_tongue_closed_eyes:). Obviously, he is also one of the biggest nerd you could
+By enrolling in this program you have the ability to distribute you app inside your company without the need of the App Store. You can basically create your own Company App Store!! :open_mouth:
+I worked on the creation of this custom internal Beta distribution program with my colleague [Giordano Tamburrelli](https://www.linkedin.com/in/giordano-tamburrelli-b532334/ "Giordano Tamburrelli"). Giordano is the Team Leader of the Lynch Team, the agile team where I work at lastminute.com group. He has a Phd in Computer Science at Politecnico di Milano university and a master degree in Computer Science at the University of Illinois.
+ He is one of the most skilled person I ever met, both from a technical and managerial point of view (yes you know, I'm just kissing his ass :kissing_heart::stuck_out_tongue_closed_eyes:). Obviously, he is also one of the biggest nerd you could
  ever met :cupid::sparkling_heart:.
  So how did we decide to proceed? We basically did the following operation to put in place our beta program:
- 
- * Create a new bundle identifier and a new provisioning profile in our enterprise account. 
+
+ * Create a new bundle identifier and a new provisioning profile in our enterprise account.
  * Create inside our app a new configuration with some customization for the Beta build.
  * Add some new scripts to automatize the creation and the upload of new beta ipa using [Fastlane](https://fastlane.tools/ "App Release Automation Fastlane"),
   Jenkins (CI), maven (for the upload) and Nexus as our repository manger (we already use all these platforms for the 
   distribution of our release version and to store development snapshots of the ipa).
  * Put in place a mini website, configured specifically for the distribution of the beta app.
-    
+
 To show you the details and some screenshots of the operation we made I will use a sample project `SampleBetaApp` 
 with bundle identifier `it.chicio.SampleBetaApp`.  
 Let's start from the first step: configuration on the Apple developer account for our new enterprise program. As 

@@ -17,9 +17,7 @@ authors: [fabrizio_duroni, emanuele_ianni]
 
 In the last few months the focus during my daily job was not only on mobile. I had the chance to work on some front-end 
 and back-end application of [lastminute.com group](https://lmgroup.lastminute.com/ "lastminute.com group"). In 
-particular, I worked with my team to renew the customer area of all the main brands sites: [volagratis
-.com](https://www.volagratis.com/ "volagratis"), [lastminute.com](https://www.it.lastminute.com/ "lastminute") and 
-[rumbo.es](https://www.rumbo.es/ "rumbo"). 
+particular, I worked with my team to renew the customer area of all the main brands sites: [volagratis.com](https:/www.volagratis.com/ "volagratis"), [lastminute.com](https://www.it.lastminute.com/ "lastminute") and [rumbo.es](https://www.rumbo.es/ "rumbo"). 
 During the last week I did pair programming with [Emanuele Ianni](https://www.linkedin.com/in/emanueleianni/ "Emanuele Ianni"). 
 Emanuele is a senior full-stack software engineer and a true nerd :alien:/computer science lover :heart:.
  We needed to implement a new feature for a family of microservices (based on Java 1.8 and Spring Boot) that make up 
@@ -40,7 +38,7 @@ Emanuele is a senior full-stack software engineer and a true nerd :alien:/comput
  large and complex legacy code under test: we generated some output given some input for a piece of code, and we 
  write tests in which we assert that the output from the source code must be the same we received before. In this way
   we can start to refactor a piece of code and be sure that our modifications didn't change the behaviour of the 
-  source code. Whooaaa!! No more risky approaches to do refactoring without tests!!! :relieved: :clap:  
+  source code. Whoa!! No more risky approaches to do refactoring without tests!!! :relieved: :clap:  
   Now it's time for an example. In this article I will show you a simple example where I apply this technique to put 
   under test a piece of legacy code. You can find the entire source code in [this github repository](https://github.com/chicio/Golden-Master-Testing-Characterization-Test "Golden Master Testing Characterization Test repo").
   Suppose for example that you found this class, `TravelsAdapter`, in the code you're working on.

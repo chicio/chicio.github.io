@@ -21,7 +21,7 @@ Below you can find the same mockup we used for the iOS version.
 
 ![Model view presenter mockup](/assets/images/posts/mockup-model-view-presenter.png "Model view presenter mockup")
 
-Let's start by creating a `Product` class. We need also to create a `ProductsRepository` class: in our case it will be a fake one that return to listener a list of products after 3 seconds. We do this to simulate a web service call. This is our implementation for the `Product` class: 
+Let's start by creating a `Product` class. We need also to create a `ProductsRepository` class: in our case it will be a fake one that return to listener a list of products after 3 seconds. We do this to simulate a web service call. This is our implementation for the `Product` class:
 
 ```java
 public class Product {
@@ -266,7 +266,7 @@ public class ProductsPresenterTest {
 }
 ```
 
-It's easy to see that with our presenter we are able to test, also on Android, each UI operation without have to deal with platform dependent code in our unit test. As you can see our unit test are written, as on iOS, following the typical [Behaviour Driven Development](https://en.wikipedia.org/wiki/Behavior-driven_development "Behaviour Driven Development") given-than-when approch.
+It's easy to see that with our presenter we are able to test, also on Android, each UI operation without have to deal with platform dependent code in our unit test. As you can see our unit test are written, as on iOS, following the typical [Behaviour Driven Development](https://en.wikipedia.org/wiki/Behavior-driven_development "Behaviour Driven Development") given-than-when approach.
 Now the same question we had in the iOS version of the app will start floating around in your head: who is our view? Fragments!!! On Android we will use fragments as our View for all the UI operation :sunglasses:. So let's see our `ProductsFragment` implementation:
 
 ```java

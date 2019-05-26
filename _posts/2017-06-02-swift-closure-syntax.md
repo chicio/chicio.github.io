@@ -21,8 +21,7 @@ As reported on the [official Apple swift documentation](https://developer.apple.
 capture and store references to any constants and variables from the context in which they are defined.
 
 Closures are in many ways what blocks are in Objective-C (or lamba function in other languages).
-As it was for blocks, it is not easy to remeber their syntax. This post is intended to be a reference for me (and 
-you, readers :wink:) about closure syntax. You could also take a look at [F$%&£&g closure syntax](http://fuckingclosuresyntax.com "F$%&£&g closure syntax").
+As it was for blocks, it is not easy to remember their syntax. This post is intended to be a reference for me (and you, readers :wink:) about closure syntax. You could also take a look at [F$%&£&g closure syntax](http://fuckingclosuresyntax.com "F$%&£&g closure syntax").
 
 Declared as a variable (valid also for `let` constants):
 
@@ -65,5 +64,4 @@ myFunction { (parameters) -> returnType in
 ```
 
 There is also the possibility to use a shorthand for the parameter: you can call them using `$` followed by the index
- of the argument in the call. Last but not least, you can capture self avoing retain cycle using `[unowned self]` before the parameters.
-Go and show to the world the power of closure in Swift!! :sunglasses:
+ of the argument in the call. Last but not least, you can capture self and avoid retain cycle using `[unowned self]` before the parameters. Go and show to the world the power of closure in Swift!! :sunglasses:

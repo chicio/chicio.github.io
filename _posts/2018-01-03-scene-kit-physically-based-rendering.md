@@ -18,10 +18,7 @@ authors: [fabrizio_duroni]
 SceneKit is one of the Apple framework I love the most. What is SceneKit? Let's see the definition from the 
 developer apple website:
 
->SceneKit combines a high-performance rendering engine with a descriptive API for import, manipulation, and rendering
- of 3D assets. Unlike lower-level APIs such as Metal and OpenGL that require you to implement in precise detail the 
- rendering algorithms that display a scene, SceneKit requires only descriptions of your scene’s contents and the 
- actions or animations you want it to perform.
+>SceneKit combines a high-performance rendering engine with a descriptive API for import, manipulation, and rendering of 3D assets. Unlike lower-level APIs such as Metal and OpenGL that require you to implement in precise detail the rendering algorithms that display a scene, SceneKit requires only descriptions of your scene’s contents and the actions or animations you want it to perform.
 
 As you can see from the definition there's a lot of stuff inside it. Basically by using SceneKit you will be able to 
 create games and other 3D applications without the need to know any computer graphics algorithms, physics simulations 

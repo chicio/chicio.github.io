@@ -141,23 +141,19 @@ What's happening here? Well, there's something wrong in our code. If we take a l
                     launchOptions:(NSDictionary *)launchOptions;
 ```   
 
-Whaaaaaaattttt :laughing:?????!?!?!??? This basically means that the documentation in the getting started is 
-considering only the case where we will have a single `RCTRootView` instance. So we need to do something to our 
-`ReactViewController` so that we can keep multiple `RCTRootView` alive at the same time.
- The solution to our problem is contained in the comments of the initializer above: we need to use the designated 
- `RCTRootView` initializer to start to use multiple instances of them at the same time in the app. So the new 
- `ReactViewController` with the new `RCTRootView` initialization is the following one:
+What :laughing:?????!?!?!??? This basically means that the documentation in the getting started is considering only the case where we will have a single `RCTRootView` instance. So we need to do something to our `ReactViewController` so that we can keep multiple `RCTRootView` alive at the same time.
+ The solution to our problem is contained in the comments of the initializer above: we need to use the designated `RCTRootView` initializer to start to use multiple instances of them at the same time in the app. So the new `ReactViewController` with the new `RCTRootView` initialization is the following one:
 
 ```swift
 class ReactViewController: UIViewController {
-    
+
     init(moduleName: String, bridge: RCTBridge) {
         super.init(nibName: nil, bundle: nil)
         view = RCTRootView(bridge: bridge,
                            moduleName: moduleName,
                            initialProperties: nil)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -166,8 +162,7 @@ class ReactViewController: UIViewController {
 
 Where do we get an instance of `RCTBridge` for the new init of the `ReactViewController` and `RCTRootView`? A new
  object, `ReactNativeBridge`, creates a new `RCTBridge` instance and store it as a property.  
-The `RCTBridge` instance needs a `RCTBridgeDelegate`. Another new object, `ReactNativeBridgeDelegate`, will be the 
-delegate of the `RCTBridge`.
+The `RCTBridge` instance needs a `RCTBridgeDelegate`. Another new object, `ReactNativeBridgeDelegate`, will be the delegate of the `RCTBridge`.
 
 ```swift
 class ReactNativeBridge {
@@ -186,9 +181,7 @@ class ReactNativeBridgeDelegate: NSObject, RCTBridgeDelegate {
 }
 ```
 
-Now it is possible to modify the `MainViewController`. This controller will create a single `ReactNativeBridge` with a 
-single `RCTBridge` instance. This instance will be passed to the two `ReactViewController`. So they will basically 
-share the same bridge instance.
+Now it is possible to modify the `MainViewController`. This controller will create a single `ReactNativeBridge` with a single `RCTBridge` instance. This instance will be passed to the two `ReactViewController`. So they will basically share the same bridge instance.
 
 ```swift
 class MainViewController: UIViewController {
@@ -221,7 +214,7 @@ Now if we try to run the app again everything will work as expected:
 * if we press cmd + ctrl + z in the simulator **1 dev menu will be shown**
 * **no more crashes with live reload in debug mode**
 
-![React Native single dev menus](/assets/images/posts/react-native-single-debugger.gif "React Native single dev menus")   
+![React Native single dev menus](/assets/images/posts/react-native-single-debugger.gif "React Native single dev menus")
 
 The entire source code of the app used as example for this post is contained in [this github repo](https://github.com/chicio/React-Native-Multiple-RCTRootView "React native multiple RCTRootView").
 Now we're ready to use multiple React Native components at the same time in our app :relieved:.

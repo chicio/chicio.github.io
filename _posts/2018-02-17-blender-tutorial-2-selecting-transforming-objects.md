@@ -38,7 +38,7 @@ lets us select objects based on a squared pattern of selection. There are also o
 {% include blog-lazy-image.html description="blender selecting objects 2" width="1500" height="956" src="/assets/images/posts/blender-selecting-objects-2.jpg" %}
 
 To **translate objects**, we can use the transform tools. We can find them under *Tools -> Transform*. As a 
-consequence of the fact that we are trying to translate an object in 3D space using the mouse pointer tha works in 2D space, it is 
+consequence of the fact that we are trying to translate an object in 3D space using the mouse pointer that works in 2D space, it is 
 difficult to understand in which direction we are doing our translation. We can **constraint the move** to just 
 one axis by pressing:
 

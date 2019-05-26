@@ -63,7 +63,7 @@ Who did create this `ip.txt` file? Previously we added the execution of the `Rea
 
 {% include blog-lazy-image.html description="react native ip txt generation" width="1500" height="1454" src="/assets/images/posts/react-native-ip-txt-generation.jpg" %}
 
-Whaaaaaaattttt?!?!?!?!?!? :satisfied: This piece of code basically creates a file named `ip.txt` that contains the IP address of your computer, extracted using an `ifconfig` command, concatenated with the domain `xip.io`. So the file will contain a string like the following one: `<your computer IP address>.xip.io`. This is the string returned by the `guessPackagerHost` method. In the screenshot below you can find the source code of this method and the string that it returns.
+What?!?!?!?!?!? :satisfied: This piece of code basically creates a file named `ip.txt` that contains the IP address of your computer, extracted using an `ifconfig` command, concatenated with the domain `xip.io`. So the file will contain a string like the following one: `<your computer IP address>.xip.io`. This is the string returned by the `guessPackagerHost` method. In the screenshot below you can find the source code of this method and the string that it returns.
 
 {% include blog-lazy-image.html description="react native my local ip" width="1500" height="891" src="/assets/images/posts/react-native-my-local-ip.jpg" %}
 

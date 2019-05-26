@@ -27,7 +27,7 @@ with map integration and a basic smartphone integration with Siri voice recognit
 One of the thing that caught my attention was the possibility to start to listen to my mp3 collection while I'm driving 
 (on my previous car I had a standard cd player). So I prepared an usb key with some of my mp3 and I started to listen to them.
 I suddenly made a great discovery: some of my songs were displayed on the touchscreen with information about the 
-album and they were displaying the cover of the album!!!!! :heart_eyes:. I though: "Whoahh this is very cool!! I need to 
+album and they were displaying the cover of the album!!!!! :heart_eyes:. I though: "Whoah this is very cool!! I need to 
 start to fill my mp3 with all this information. I want to see the cover of the album for each mp3 I have!!!!!!!".
  This is exactly the moment where my journey into the development of ID3TagEditor and Mp3ID3Tagger started, but I was
   not yet aware of it :grin:.
@@ -50,7 +50,7 @@ with Mp3Tag with an mp3 tagged with one of the other applications. So I opened w
 {% include blog-lazy-image.html description="mp3 compare itunes mp3tag" width="1500" height="891" src="/assets/images/posts/mp3-tag-bit-cover.jpg" %}
 
 Yep, a single byte could make a big difference :open_mouth:. The fact is that the [ID3 standard](http://id3.org/d3v2.3.0 "ID3 standard") 
-accept multiple types of attached picture for an mp3: front cover, back cover, icon, artist photo ecc. The 
+accept multiple types of attached picture for an mp3: front cover, back cover, icon, artist photo etc. The 
 type of picture is represented as a byte just after the MIME type in the attached picture frame of the ID3 standard. 
 The problem is that iTunes and other "mp3 tagger" native macOS applications don't let the user modify the type of the 
 attached picture. All this application set the byte to `0x00` that in the ID3 standard corresponds to the *"Other"* 
@@ -70,7 +70,7 @@ cover type. But the Media Nav Evolution system of my Renault Clio is able to rea
  your mp3 files with support for the following Apple platforms: macOS, iOS, watchOS and macOS 
  (so the entire Apple ecosystem :grin:)
  * `Mp3ID3Tagger`, a native macOS app written in Swift using the reactive programming paradigm and in particular its
-  Rx (Reactive Extensions) variant with the frameworks RxSwift and RxCocoa (Rx????!?!?!? WHATTTT?!?!?!? :cold_sweat:).
+  Rx (Reactive Extensions) variant with the frameworks RxSwift and RxCocoa (Rx????!?!?!? WHAT?!?!?!? :cold_sweat:).
   
 If you are still interested in knowing the details about the development of this two projects, you can follow the 
 links below:

@@ -169,7 +169,7 @@ public class ProductsPresenter {
 
 ```
 
-Develop a class like this one in TDD it's easy, given the fact that we can mock every dependecies it has and we can test in detail all the presentation flow. The unit test of our presenter are shown below. *You can note that a lot of handcraft made mock objects are used but not reported here (you will find them in the complete project on Github reported at the end of this article)*.
+Develop a class like this one in TDD it's easy, given the fact that we can mock every dependencies it has and we can test in detail all the presentation flow. The unit test of our presenter are shown below. *You can note that a lot of handcraft made mock objects are used but not reported here (you will find them in the complete project on Github reported at the end of this article)*.
 
 ```swift 
 class ProductsPresenterTests: XCTestCase {
@@ -284,7 +284,7 @@ class ProductsPresenterTests: XCTestCase {
 }
 ```
 
-It easy to see that the unit tests for our presenter describe the entire presentation flow. This basically means that our unit tests are the documentation of our presentation logic. Cooool!!!! :sunglasses:
+It easy to see that the unit tests for our presenter describe the entire presentation flow. This basically means that our unit tests are the documentation of our presentation logic. Cool!!!! :sunglasses:
 Now the next big question is: who is going to implement our `ProductsView` protocol? As we said in the introduction, our view controllers become the View in the Model View Presenter architecture. They act as passive platform specific user interface components updater. This means that our protocol will be implemented by `ProductsViewController`. It have the responsibility to launch the `ProductsPresenter` action at the right time and implement all the real passive User Interface update operation.
 In particular we will have our `onStart()` presenter method call in the `viewDidLoad` and the `onSelected(product: Product)` when a product cell is tapped, that means a product has been selected. The final implementation will be: 
 
@@ -520,7 +520,7 @@ class ProductDetailViewController: UIViewController, ProductDetailView {
 }
 ```
 
-Yeaaaahh you made it!! You're at the end of this never ending post :satisfied:!!  
+Yeah you made it!! You're at the end of this never ending post :satisfied:!!  
 Now you can start to create your high quality unit tested apps :relieved:.
 One final note about the implementation above: **the `productsView` property of the `ProductsPresenter` and `productDetailView` of the `ProductDetailPresenter` must  be `unowned` or `weak` to avoid a retain cycle between the presenters and the controllers.**
 

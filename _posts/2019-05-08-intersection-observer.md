@@ -29,7 +29,7 @@ First of all let's start by creating a function called `lazyLoadImages`. This fu
 * selector, that is a string that I will use to select all the document [`Element`](https://developer.mozilla.org/en-US/docs/Web/API/Element "document element") objects that I wanted to observe
 * loadCompleted, a function that will be executed after the image has been downloaded
 
-This function will create a new instance of the `IntersectionObserver` object from the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API). This object constructor takes two parementer:
+This function will create a new instance of the `IntersectionObserver` object from the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API). This object constructor takes two parameter:
 
 * a callback, that is the function called when an object become visible given the current configuration
 * a configuration options, that let the developer customize how the Intersection Observer calculate the intersection with the viewport
@@ -105,7 +105,7 @@ const loadImage = (image, loadCompleted) => {
 export { lazyLoadImages }
 ```
 
-There's still one thing that I didn't discuss yet. How can we support this type of lazy loading for the browser that doesn't still have implemented the `IntersectionObserver` API? The answer is the [Interserction Observer Polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill). I installed it as a dependency of my project.
+There's still one thing that I didn't discuss yet. How can we support this type of lazy loading for the browser that doesn't still have implemented the `IntersectionObserver` API? The answer is the [Intersection Observer Polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill). I installed it as a dependency of my project.
 
 ```shell
 npm install --save intersection-observer
@@ -115,4 +115,4 @@ This [polyfill](https://en.wikipedia.org/wiki/Polyfill_(programming) "polyfill p
 
 #### Conclusion
 
-Intersection Observer is a powerful API. It lets you implment lazy loading for resources loading and reach performance and architectural application pattern that I had a chance to see only in mobile native apps. The web is filling the gap with native apps, and Intersection Observer are another demonstration that the 90% of the existing native mobile apps could become powerful web apps. As a consequence of the fact that in my daily job I'm still a native mobile app developer, I'm still following the iOS, Android and React Native scene and I'm still studying all the new tools and SDKs improvement released by Apple, Google and Facebook. But, you know, technology goes fast I have to be prepared for the future :relaxed:. Sooo, long live Intersection Observer!!! Web applications will be much more performant with your help :green_heart:.
+Intersection Observer is a powerful API. It lets you implement lazy loading for resources loading and reach performance and architectural application pattern that I had a chance to see only in mobile native apps. The web is filling the gap with native apps, and Intersection Observer are another demonstration that the 90% of the existing native mobile apps could become powerful web apps. As a consequence of the fact that in my daily job I'm still a native mobile app developer, I'm still following the iOS, Android and React Native scene and I'm still studying all the new tools and SDKs improvement released by Apple, Google and Facebook. But, you know, technology goes fast I have to be prepared for the future :relaxed:. Sooo, long live Intersection Observer!!! Web applications will be much more performant with your help :green_heart:.

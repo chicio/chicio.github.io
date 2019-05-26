@@ -30,7 +30,7 @@ to link you external library.
 While I was working on an [existing native app integrated with React Native](https://facebook.github.io/react-native/docs/integration-with-existing-apps.html 'existing native app integrated with React Native') that 
 has a custom directories structure for the react-native and native code, I found some problem to add [Realm](https://realm.io 'https://realm.io'), the famous open source dbms, as a dependency to the project.  
 In this post I will show you an example of how you can add Realm to your app that has a custom React Native installation. Let's start :cold_sweat:!!
-To describe the installation process I will use a sample app I created for this post called `ReactNativeRealmManualLink`. You can findit with realm installed in [this github repo](https://github.com/chicio/React-Native-Realm-Manual-Link 'React Native realm manual link').  
+To describe the installation process I will use a sample app I created for this post called `ReactNativeRealmManualLink`. You can find it with realm installed in [this github repo](https://github.com/chicio/React-Native-Realm-Manual-Link 'React Native realm manual link').  
 Suppose you have a project like the one I shared above, in which React Native is contained in a subfolder of the iOS project, instead of the other way around in a standard React Native installation.
 
 {% include blog-lazy-image.html description="react native realm directories" width="500" height="355" src="/assets/images/posts/react-native-realm-1-directories.jpg" %}
@@ -64,7 +64,7 @@ Now you would expect that everything works fine but...
 
 {% include blog-lazy-image.html description="React Native realm manual link fails 4" width="1289" height="786" src="/assets/images/posts/react-native-realm-4-manual-link-fails.jpg" %}
 
-What's happening? The `RealmReact` project is expecting the React Native headers in a relative position with respect to its original position. Arrrgghhh :rage:!! We need to find another way...  
+What's happening? The `RealmReact` project is expecting the React Native headers in a relative position with respect to its original position. Argh :rage:!! We need to find another way...  
 
 What can we do? We can start by observing that the `RealmReact` project is just a "container project" for:
 
@@ -80,12 +80,11 @@ So we can try to modify our main project by:
 {% include blog-lazy-image.html description="react native realm custom manual link step 1" width="1500" height="915" src="/assets/images/posts/react-native-realm-5-custom-manual-link-step-1.jpg" %}
 {% include blog-lazy-image.html description="react native realm custom manual link step 2" width="1500" height="916" src="/assets/images/posts/react-native-realm-5-custom-manual-link-step-2.jpg" %}
 
-Now we need to add to the `Header search path` option of our main project the paths that were setted in the `RealmReact` project. In this way the `RealmJS` project will be able to find some headers it needs. You can find the complete list of the folder that 
-we need to add in the screenshot below.
+Now we need to add to the `Header search path` option of our main project the paths that were set in the `RealmReact` project. In this way the `RealmJS` project will be able to find some headers it needs. You can find the complete list of the folder that we need to add in the screenshot below.
 
 {% include blog-lazy-image.html description="react native realm header search path" width="1500" height="916" src="/assets/images/posts/react-native-realm-6-header-search-path.jpg" %}
 
-Now if we try to compile our app we expect that everything works fine but...ERROR :warning::fire:!!! The build fails :boom:!!! 
+Now if we try to compile our app we expect that everything works fine but...ERROR :warning::fire:!!! The build fails :boom:!!!
 
 {% include blog-lazy-image.html description="react Native realm c++ error 1"  width="1500" height="914" src="/assets/images/posts/react-native-realm-7-Cplusplus-error.jpg" %}
 

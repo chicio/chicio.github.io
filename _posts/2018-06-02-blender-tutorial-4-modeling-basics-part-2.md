@@ -47,7 +47,7 @@ object is selected in Object mode or under *Shading -> Faces/Edges/Vertices* whi
 
 {% include blog-lazy-image.html description="blender smooth shading" width="1500" height="956"  src="/assets/images/posts/blender-smooth-shading.jpg" %}
 
-The last tool we can use for some simple modeling is the **subdiving mesh tool**. There are two ways to do subdivision:
+The last tool we can use for some simple modeling is the **subdividing mesh tool**. There are two ways to do subdivision:
 
 * *subdivision of the mesh itself*
 * *subdivision surface*

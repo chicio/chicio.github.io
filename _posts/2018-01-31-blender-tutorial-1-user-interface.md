@@ -68,14 +68,15 @@ There are also some other basic useful 3D navigation commands:
 * change between orthographic and perspective view with the menu option *View -> View Persp/Ortho*
 
  You can change the user preferences by going to *File -> User Preferences*. Here you can modify settings for:
- * **Interface**, so what Blender should show in the interface
- * **Editing**, so how we edit objects
- * **Input**, how mouse and keyboard are configured 
- * **Add-ons**, where you can manage plugins
- * **Themes**, to change the color of the interface
- * **File**, to configure standard paths
- * **System**, for system specific settings
- 
+
+* **Interface**, so what Blender should show in the interface
+* **Editing**, so how we edit objects
+* **Input**, how mouse and keyboard are configured 
+* **Add-ons**, where you can manage plugins
+* **Themes**, to change the color of the interface
+* **File**, to configure standard paths
+* **System**, for system specific settings
+
  To be noted is the option "Emulate 3 Button mouse" in the input settings. This option let Blender emulates a 3 
  button mouse using the Alt button. Int this way you can use this setting to use Blender with standard keys for mouse.  
  That's enough first post. See you in the second tutorial about selecting and translating objects.

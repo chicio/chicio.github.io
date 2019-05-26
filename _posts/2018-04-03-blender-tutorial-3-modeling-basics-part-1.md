@@ -50,7 +50,7 @@ selecting the mesh and by choosing it from the editing/interaction mode menu com
 {% include blog-lazy-image.html description="blender select edges faces vertices" width="1500" height="952" src="/assets/images/posts/blender-select-edges-faces-vertices.jpg" %}
 
 After selecting the edges, vertices or faces that we want to modify, 3D axis will be shown near your selection. They
- are similar to the ones shown for transformations. By *dragging one of these axes* the selcted vertices, edges or 
+ are similar to the ones shown for transformations. By *dragging one of these axes* the selected vertices, edges or 
  faces will move accordingly to the direction of the dragging.  
  We can improve the selection of edges by pressing *"ctrl + alt + right click" keys* while we are in edge selection 
  mode: in this way we will be able to **select edges loops**, a series of connected closed edges series.  

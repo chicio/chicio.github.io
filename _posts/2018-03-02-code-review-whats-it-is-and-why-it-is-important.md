@@ -29,8 +29,7 @@ meaningful names")), I talked about my new experience at [lastminute.com group](
   >* Error Detection: discovering logical or transitional errors.  
   >* Vulnerability Exposure: identifying and averting common vulnerabilities like Cross-Site Scripting, 
   Injection, Buffer Overflow, Excessive Disclosure, etc.
-  >* Malware Discovery ~ This often-overlooked and very special code-review objective looks for segments of code that 
-   appear extraneous, questionable, or flat-out weird. The intent is to discover back doors, Trojans, and time bombs.
+  >* Malware Discovery ~ This often-overlooked and very special code-review objective looks for segments of code that appear extraneous, questionable, or flat-out weird. The intent is to discover back doors, Trojans, and time bombs.
     In today’s world malevolent code is a very real threat and should not be overlooked, especially by Government agencies. 
 
 The definition is simple and clear. Basically you go through the code of another guy (or from a couple if they are 
@@ -44,21 +43,14 @@ You may wonder now what is also a coding dojo. So again, here we are with
 and they engage in order to improve their skills.
 
 During the dojo that I attended with Angelo we tried to resolve the [Minesweeper problem](http://codingdojo.org/kata/Minesweeper/ "Minesweeper").
-Basically we had to write an automatic Minesweeper resolver (do you remember the Windows game? :heart_eyes:). At the 
-end of the dojo we didn't complete the task, so I decided to try to solve it in another way. I developed a 
-complete command line version of a Minesweeper resolver and let Angelo do the code review of my implementation. 
+Basically we had to write an automatic Minesweeper resolver (do you remember the Windows game? :heart_eyes:). At the end of the dojo we didn't complete the task, so I decided to try to solve it in another way. I developed a complete command line version of a Minesweeper resolver and let Angelo do the code review of my implementation.
 In this way I can show you the power of code review :neckbeard: (and last but not least how much meticulous is Angelo
  during his code review :cold_sweat::sweat_smile::cupid:).  
-Before starting, I suggest you to have a look at [this repository](https://github.com/chicio/Minesweeper "Minesweeper kata dojo") 
-that contains the entire Minesweeper implementation I develop and, on the [Code review pull request](https://github.com/chicio/Minesweeper/pull/1) 
-opened on this repo you can find the observation/new implementation from Angelo. Usually 
+Before starting, I suggest you to have a look at [this repository](https://github.com/chicio/Minesweeper "Minesweeper kata dojo") that contains the entire Minesweeper implementation I develop and, on the [Code review pull request](https://github.com/chicio/Minesweeper/pull/1) opened on this repo you can find the observation/new implementation from Angelo. Usually 
 the code reviewer doesn't implement by himself/herself the stuff of his/her observation, but in this case we did it so 
 that we can share the code before/after the code review in a pull request (and also to show you the Angelo's skills 
 :heart_eyes:).  
-To facilitate you in the navigation of the two different implementations I created two [class diagram](https://en.wikipedia.org/wiki/Class_diagram "class diagram"): 
-one that describe my implementation before the code review, and the second one 
-that shows the final result after Angelo's code review. The following one describes my implementation of the 
-minesweeper.
+To facilitate you in the navigation of the two different implementations I created two [class diagram](https://en.wikipedia.org/wiki/Class_diagram "class diagram"): one that describe my implementation before the code review, and the second one that shows the final result after Angelo's code review. The following one describes my implementation of the minesweeper.
   
 {% include blog-lazy-image.html description="fabrizio duroni minesweeper" width="1075" height="1615" src="/assets/images/posts/minesweeper-fabrizio.jpg" %}
 
@@ -76,7 +68,7 @@ more experienced than you on that type of technology.
 
 In fact Angelo gave me another technology advice during his review. He suggested to change some pieces of code with 
 others that leverage the power of functional programming. This is really interesting because it is easy 
-imagine how much knowledge you can absord from the experience of your code reviewer.
+imagine how much knowledge you can absorb from the experience of your code reviewer.
 
 {% include blog-lazy-image.html description="functional update" width="1500" height="901" src="/assets/images/posts/03-functional-field.jpg" %}
 {% include blog-lazy-image.html description="functional update with new class" width="1500" height="901" src="/assets/images/posts/04-new-fields-class.jpg" %}
@@ -85,12 +77,12 @@ Another important aspect that is one of the main subject of the code review is s
 discovered a series of improvement and refactoring opportunities in my code: 
 
 * the `Minesweeper` class doesn't need to receive the fields input at construction time but directly in the `play()` 
-method. In this way the `Minesweeper` class becomes a stateless object, and the same istance could be used to 
+method. In this way the `Minesweeper` class becomes a stateless object, and the same instance could be used to 
 resolve/unmask multiple fields input.
 
 {% include blog-lazy-image.html description="stateless object" width="1500" height="901" src="/assets/images/posts/02-minesweeper-fields-as-parameter.jpg" %}
 
-* The objects that are the building block of a [chain of responsability](https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern "chain of responsability") named `FieldRowParser` could become lighter and some of their responsibility could be assigned to some new collaborators. Also the object that contains the parsing status could become more lighter.
+* The objects that are the building block of a [chain of responsibility](https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern "chain of responsability") named `FieldRowParser` could become lighter and some of their responsibility could be assigned to some new collaborators. Also the object that contains the parsing status could become more lighter.
 
 {% include blog-lazy-image.html description="lightweight chain" width="1500" height="901" src="/assets/images/posts/05-lightweight-chain.jpg" %}
 {% include blog-lazy-image.html description="parsing status" width="1500" height="901" src="/assets/images/posts/07-parsing-status-become-parsing-content-lightweight.jpg" %}

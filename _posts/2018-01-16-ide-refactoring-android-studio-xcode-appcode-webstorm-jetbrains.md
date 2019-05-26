@@ -16,20 +16,10 @@ authors: [fabrizio_duroni, tommaso_resti, francesco_bonfadelli]
 
 ---
 
-IDE, *Integrated Development Environment*, are the software developer toolboxes. When I started to work at 
-[lastminute.com group](https://lmgroup.lastminute.com/ "lastminute.com group") my knowledge 
-of the Android platform was very limited. But... [lastminute.com group](https://lmgroup.lastminute.com/ "lastminute.com group") 
-is an [agile software development](https://en.wikipedia.org/wiki/Agile_software_development "agile software development") company 
-and one of the technique we use during our development workflow is [pair programming](https://en.wikipedia.org/wiki/Pair_programming "pair programming"): two developers work at the same feature on the same workstation. 
+IDE, *Integrated Development Environment*, are the software developer toolboxes. When I started to work at [lastminute.com group](https://lmgroup.lastminute.com/ "lastminute.com group") my knowledge of the Android platform was very limited. But... [lastminute.com group](https://lmgroup.lastminute.com/ "lastminute.com group") is an [agile software development](https://en.wikipedia.org/wiki/Agile_software_development "agile software development") company and one of the technique we use during our development workflow is [pair programming](https://en.wikipedia.org/wiki/Pair_programming "pair programming"): two developers work at the same feature on the same workstation.
 As reported on Wikipedia, one of the the main advantages of pair programming is knowledge sharing:
  
- >Knowledge is constantly shared between pair programmers, whether in the industry or in a classroom, many sources 
- suggest that students show higher confidence when programming in pairs, and many learn whether it be from tips on 
- programming language rules to overall design skill. In "promiscuous pairing", each programmer communicates and 
- works with all the other programmers on the team rather than pairing only with one partner, which causes knowledge 
- of the system to spread throughout the whole team. Pair programming allows the programmers to examine their 
- partner's code and provide feedback which is necessary to increase their own ability to develop monitoring 
- mechanisms for their own learning activities.
+ >Knowledge is constantly shared between pair programmers, whether in the industry or in a classroom, many sources suggest that students show higher confidence when programming in pairs, and many learn whether it be from tips on programming language rules to overall design skill. In "promiscuous pairing", each programmer communicates and works with all the other programmers on the team rather than pairing only with one partner, which causes knowledge of the system to spread throughout the whole team. Pair programming allows the programmers to examine their partner's code and provide feedback which is necessary to increase their own ability to develop monitoring mechanisms for their own learning activities.
 
 This is why I started to work with my colleague [Francesco Bonfadelli](https://www.linkedin.com/in/fbonfadelli/ 
 "Francesco Bonfadelli"), a senior Android, iOS and Backend developer. During our pair programming sessions I learned a 
@@ -38,7 +28,7 @@ difference between the official IDEs: Android Studio and Xcode. After seeing the
 able to achieve during an Android coding session, and how much slower it is to do the same things
  in Xcode for iOS, I realized how much more advanced is Android Studio with its set of refactoring features in 
  comparison with Xcode.  
-In this post I will briefly analysed some IDEs commonly used for mobile application development focusing on the 
+In this post I will briefly analyzed some IDEs commonly used for mobile application development focusing on the 
 coding speed that is possible to achieve by using them and I will explain to you why, at the
  time of this writing, I started to prefer the JetBrains IDEs family (not only for mobile application development 
  :bowtie:).
@@ -78,7 +68,7 @@ the end of all the previous operation. At the time of this writing the available
 
 {% include youtube.html videoId="Xp3v9VsgFjw" %}
 
-**Only 50 seconds and I did all the stuff (and I wans't pushing hard on the keyboard..
+**Only 50 seconds and I did all the stuff (and I wasn't pushing hard on the keyboard..
 .:stuck_out_tongue_winking_eye:).**
 As you can see, Android Studio gives you the ability to write code at the speed of light!!! :flushed:.
 
@@ -95,15 +85,13 @@ that you can find in Android Studio. However it's not all peace and light in thi
 ### Final thoughts 
 Android Studio and AppCode are based on IntelliJ IDEA, the famous Java IDE from JetBrains. But that's half of 
 the story: JetBrains IDE family is really big.
- You can find an IDE for each of your favourite language:
- * CLion, for C and C++
- * PhpStorm
- * PyCharm
- * RubyMine for Ruby
- * GoLand for GO
- * Rider for C#
- 
-So no worries: if you want to start to improve you coding speed probably there's an IDE for your favourite language. 
-Xcode will always have a special place in my heart. I will still continue to use it in my daily job as a mobile 
-developer. But... the coding speed I gained with the JetBrains IDEs could not be ignored :smiling_imp:. This is why I 
-started to prefer them :heart:. 
+You can find an IDE for each of your favourite language:
+
+* CLion, for C and C++
+* PhpStorm
+* PyCharm
+* RubyMine for Ruby
+* GoLand for GO
+* Rider for C#
+
+So no worries: if you want to start to improve you coding speed probably there's an IDE for your favourite language. Xcode will always have a special place in my heart. I will still continue to use it in my daily job as a mobile developer. But... the coding speed I gained with the JetBrains IDEs could not be ignored :smiling_imp:. This is why I started to prefer them :heart:. 

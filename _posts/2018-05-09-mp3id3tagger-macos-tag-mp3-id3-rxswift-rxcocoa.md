@@ -21,13 +21,13 @@ In [this previous post](/2018/05/07/born-id3tageditor-mp3id3tagger.html "born id
 described the reason why I develop [Mp3ID3Tagger](https://github.com/chicio/Mp3ID3Tagger "mp3 id3 tag editor macos"),
  a macOS app to edit the id3 tag of your mp3 files that leverage on the power of [ID3TagEditor](/2018/05/08/id3tageditor-swift-read-write-id3-tag-mp3.html). Below you can find 
  the app logo.
- 
+
 ![MP3ID3Tagger macOS app RxSwift](/assets/images/posts/mp3id3tagger-logo.jpg "MP3ID3Tagger macOS app RxSwift")
- 
+
 So how did I develop MP3ID3Tagger? I was about to start the development following the classic approach to develop 
 an app on every Apple OS: [Model View Controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller 
 "Model View Controller") and plain Swift. But then I though: "This is the perfect project to test one of the last programming technique I 
-recently learned: Reactive Programming/Reaactive Extensions with RxSwift and RxCocoa!!!!!! In this way I can also try
+recently learned: Reactive Programming/Reactive Extensions with RxSwift and RxCocoa!!!!!! In this way I can also try
  to use a different architectural pattern: the [Model View ViewModel (MVVM)](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel "Model View ViewModel")" :sunglasses:. 
 What kind of architectural pattern is the MVVM? What are Reactive Programming, Reactive Extensions, 
 RxSwift and RxCocoa???  
@@ -454,7 +454,7 @@ protocol BindableView where Self: NSViewController {
 
 If we look at the implementation of the `bindViewModel` method, we can see where something "magical" is happening 
 :crystal_ball:: an instance of `Mp3ID3TaggerViewModel` class is created and the UI components that 
-represents the various field of the form are bounded to the view model fields by using the custom opertator `<->`. 
+represents the various field of the form are bounded to the view model fields by using the custom operator `<->`. 
 So this operator let us define the what is called **two way binding** or **bidirectional binding** using RxSwift: 
 
 * each `Variable` field of the view model is bounded to a field on the UI. This basically means that each value we 
@@ -464,8 +464,8 @@ set a in the `value` property of a `Variable` field will be displayed on the UI 
  
 In this way the View Model is completely decoupled from the View part (in this case the `NSViewController`). This 
 means that we can reuse the same ViewModel to create other versions of Mp3ID3Tagger for other platforms. This is 
-absolutely fantastic!!!!! :heart_eyes::relaxed:.
-Last but not least in the controller we have also some other functions: 
+absolutely fantastic! :heart_eyes::relaxed:.
+Last but not least in the controller we have also some other functions:
 
 * `open(_ sender: Any?)` and `save(_ sender: Any?)` that manage the open an mp3 file and save of the same file
 * `bindSaveAction()` that observe the result of a save action

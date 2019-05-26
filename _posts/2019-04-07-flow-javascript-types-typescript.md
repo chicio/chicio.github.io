@@ -29,7 +29,7 @@ It seems really cool!!! :sunglasses:. In this post I will described my experienc
 
 #### Installation and setup
 
-First of all, I added Flow to my dev dependecies. I decided to use Flow in combination with [flow-remove-types](https://github.com/flowtype/flow-remove-types "flow remove types"), a small CLI tool for stripping Flow type annotations from files.
+First of all, I added Flow to my dev dependencies. I decided to use Flow in combination with [flow-remove-types](https://github.com/flowtype/flow-remove-types "flow remove types"), a small CLI tool for stripping Flow type annotations from files.
 
 ```shell
 npm install --save-dev flow-remove-types

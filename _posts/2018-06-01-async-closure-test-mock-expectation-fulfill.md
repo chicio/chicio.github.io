@@ -93,7 +93,7 @@ Now it's time to mock our `PasswordService`. We need to mock it so that it has t
 
 * it exposes a status property that let us know if the method `update` has been called
 * it simulates an asynchronous call inside the `update` method
-* it can fullfil the expecation of our test in time
+* it can fulfill the expectation of our test in time
 
 A lot of stuff to do. Let's see how we can implement it. We will call it `PasswordNetworkServiceSpy`.
 

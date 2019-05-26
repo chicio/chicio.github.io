@@ -16,22 +16,13 @@ rendering.*
 
 ---
 
-Physically Based Rendering (PBR) is one of the latest and most exciting trend in computer graphics. PBR is 
-"everywhere" in computer graphics. But wait, what is it PBR :fearful:? PBR uses physically correct lighting and shading 
-models to treat light as it behaves in the real world. 
- As a consequence of the fact that what could be seen in a computer graphics application is decided by how light is represented, with PBR
- it is possible to reach a new level of realism. But wait, what do we mean with "physically correct"?  
-Before giving an answer and try to give a detail definition of PBR we need to understand well some important 
-concepts.
+Physically Based Rendering (PBR) is one of the latest and most exciting trend in computer graphics. PBR is "everywhere" in computer graphics. But wait, what is it PBR :fearful:? PBR uses physically correct lighting and shading models to treat light as it behaves in the real world. As a consequence of the fact that what could be seen in a computer graphics application is decided by how light is represented, with PBR it is possible to reach a new level of realism. But wait, what do we mean with "physically correct"?  
+Before giving an answer and try to give a detail definition of PBR we need to understand well some important concepts.
   
 #### **What is light?**
 
 Light is a form of electromagnetic radiation. Specifically, it is a small subset of the entire electromagnetic
-radiation spectrum with wavelength between 400 nm and 700 nm. The set of studies and techniques that try to describe and 
-measure how the electromagnetic radiation of light is propagated, reflected and transmitted is called radiometry. What 
-are the fundamental quantities described by radiometry? The first one is the called **flux**, it describes the amount
- of radiant energy emitted, reflected or transmitted from a surface per unit time. The radiant energy is the energy 
- of an electromagnetic radiation. The unit measure of flux is joules per seconds $\frac{J}{s}$, and it is usually reported with the Greek letter $\phi$.  
+radiation spectrum with wavelength between 400 nm and 700 nm. The set of studies and techniques that try to describe and measure how the electromagnetic radiation of light is propagated, reflected and transmitted is called radiometry. What are the fundamental quantities described by radiometry? The first one is the called **flux**, it describes the amount of radiant energy emitted, reflected or transmitted from a surface per unit time. The radiant energy is the energy of an electromagnetic radiation. The unit measure of flux is joules per seconds $\frac{J}{s}$, and it is usually reported with the Greek letter $\phi$.  
 Other two important quantities of radiometry are **irradiance** and **radiant exitance**. The first one described flux 
 arriving at a surface per unit area. The second one describe flux leaving a surface per unit area (Pharr et al., 2010 [1]). 
 Formally irradiance is described with the following equation:
@@ -100,8 +91,8 @@ The BRDF has two important properties:
 
 A lot of models has been developed to describe the BRDF of different surfaces. In particular, in the last years 
 the **microfacet** models have gained attention. In these kind of models the surface is represented as composed by 
-infinitely small microfactes that model in a more realistic way the vast majority of surfaces in the real world. Each 
-one of these microfactes has is geometric definition (in particular its normal).  
+infinitely small microfacets that model in a more realistic way the vast majority of surfaces in the real world. Each 
+one of these microfacets has is geometric definition (in particular its normal).  
 Some specific material surfaces, for example glass, reflect and transmit light at the same time. So a fraction of light 
 goes through the material. For this reason, there’s another function, the Bidirectional Transmittance Distribution 
 Function, BTDF, defined in the same way as the BRDF, but with the directions $\omega_{i}$ and $\omega_{o}$ placed in the 
@@ -126,7 +117,7 @@ objects perpendicular to the viewer, and accurate modeling of roughness resultin
 You can see from the definition that PBR is a model that uses all the concepts we saw previously in this article to try 
 to get the most accurate results in terms of realism in a computer graphics applications. PBR engines and asset pipelines 
 let the artist define materials in terms of more realistic components, instead of tweaking ad-hoc parameters based on the 
-type of the surface. Usually in these kind of engine/asstes pipeline the main parameter used to specify a surface features are:
+type of the surface. Usually in these kind of engine/assets pipeline the main parameter used to specify a surface features are:
 
 * albedo/diffuse: this component controls the base color/reflectivity of the surface
 * metallic: this component specifies the is the surface is metallic or not
@@ -134,13 +125,12 @@ type of the surface. Usually in these kind of engine/asstes pipeline the main pa
 * normal: this component is a classical normal map of the surface
 
 What results can you achieve suing PBR? These are two example images: the first one is taken from my physically based 
-spectral path tracing engine [Spectral Clara Lux Tracer](https://github.com/chicio/Spectral-Clara-Lux-Tracer "Spectral Clara Lux Tracer") 
-and the second one is taken from PBRT, the physically based engine described in the 
+spectral path tracing engine [Spectral Clara Lux Tracer](https://github.com/chicio/Spectral-Clara-Lux-Tracer "Spectral Clara Lux Tracer") and the second one is taken from PBRT, the physically based engine described in the 
 book ["Physically based rendering: from theory to implementation" by M. Pharr, W. Jakob, G. Humphreys](https://www.pbrt.org "Physically based rendering: from theory to implementation by M. Pharr, W. Jakob, G. Humphreys").
 
 {% include blog-lazy-image.html description="pbr examples" width="1050" height="450" src="/assets/images/posts/pbr-introduction-examples.jpg" %}
 
-How coooool are these images???? :sunglasses:
+How cool are these images???? :sunglasses:
 We are at the end of the introduction. I hope now it is at least clear what is PBR :relaxed:!! See you for other 
 stuff about computer graphics and PBR :blush:.
   

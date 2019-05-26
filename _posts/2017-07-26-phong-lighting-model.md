@@ -15,16 +15,10 @@ authors: [fabrizio_duroni]
 
 ---
 
-We live in the era of Physically Based Rendering (PBR). Everyone in the computer graphics field know it is the future. I will talk a lot about 
-it in some future post. But now, for this first post about computer graphics theory, I would like to talk about one of the most popular 
-lighting model used in computer graphics: the Phong reflection post.  
-Why? Because even if PBR is winning the war (I know you're scared about PBR theoretical foundation :fearful: :stuck_out_tongue:), the 
-Phong reflection model is still used in a lot of application, and it is also a good starting point for everyone who 
-want to start a journey in the computer graphics field.
-In this post I will show you what it is in detail and we will see an implementation in OpenGL ES GLSL shading language. All 
-the vectors reported in this article will be [normalized](https://en.wikipedia.org/wiki/Unit_vector "unit vector").
-First of all we need to do a classification of the lighting models available in computer graphics. 
-The light at any give point on a surface in a scene is influenced by:  
+We live in the era of Physically Based Rendering (PBR). Everyone in the computer graphics field know it is the future. I will talk a lot about it in some future post. But now, for this first post about computer graphics theory, I would like to talk about one of the most popular lighting model used in computer graphics: the Phong reflection post.  
+Why? Because even if PBR is winning the war (I know you're scared about PBR theoretical foundation :fearful: :stuck_out_tongue:), the Phong reflection model is still used in a lot of application, and it is also a good starting point for everyone who want to start a journey in the computer graphics field.
+In this post I will show you what it is in detail and we will see an implementation in OpenGL ES GLSL shading language. All the vectors reported in this article will be [normalized](https://en.wikipedia.org/wiki/Unit_vector "unit vector").
+First of all we need to do a classification of the lighting models available in computer graphics. The light at any give point on a surface in a scene is influenced by:  
 
 * Direct illumination: light directly arriving on the surface
 * Indirect illumination: light arriving on the surface after having bounced off other surfaces  
@@ -35,30 +29,25 @@ As a consequence of this fact lighting methods can be:
 * Global models: both direct and indirect illuminations are considered  
 
 The Phong reflection model is an empirical (so based on observations) local illumination model.
-Let's see how we is it composed. 
-In real world light is modeled by its spectrum, and each surface by its reflectance spectrum.
+Let's see how we is it composed. In real world light is modeled by its spectrum, and each surface by its reflectance spectrum.
 In computer graphics often an approximation based on RGB triplets is used:  
 
-* Light color is a RGB triplet 
+* Light color is a RGB triplet
 * The reflectance spectrum is a triple of percentage
 
 So each component of the following equations will be described by a triplet of number (RGB or percentage).  
-The light that you see on a surface could be decomposed into four main components. Let's see them in detail and how they are 
-composed together to calculate the illumination of a surface point: Phong model.
+The light that you see on a surface could be decomposed into four main components. Let's see them in detail and how they are composed together to calculate the illumination of a surface point: Phong model.
 
 #### **Emissive component**
-This is the light component emitted by the surface material. Is a purely additive component. As you can image, few surface 
-material in nature are emissive (e.g.: light  :laughing:). So the emissive illumination $I_{\text{emissive}}$ of a surface 
-point is obtained by multiplying the emissive constant of a surface $k_{\text{e}}$ by the light emissive intensity $I_{\text{LE}}$ 
-(expressed as we said before as a RGB triplet, and this will be valid for all light intensity define in the following formulas of this post). 
-The emissive light intensity could be the intensity of the scene light (or an average if you have multiple scene lights): pratically 
+
+This is the light component emitted by the surface material. Is a purely additive component. As you can image, few surface material in nature are emissive (e.g.: light  :laughing:). So the emissive illumination $I_{\text{emissive}}$ of a surface point is obtained by multiplying the emissive constant of a surface $k_{\text{e}}$ by the light emissive intensity $I_{\text{LE}}$ (expressed as we said before as a RGB triplet, and this will be valid for all light intensity define in the following formulas of this post). The emissive light intensity could be the intensity of the scene light (or an average if you have multiple scene lights): practically 
 speaking you can use the scene light RGB color. The emissive constant $k_{\text{e}}$ is a surface property that express its emissive 
 reflectance.
 
 $$I_{\text{emissive}}=k_{\text{e}}I_{\text{LE}}$$
   
-  
 #### **Ambient component**
+
 This is light component used to model empirically the contribution of indirect illumination of bouncing lights in the 
 scene on a surface. It depends entirely on the surface material (no geometry influences). So the ambient 
 illumination $I_{\text{ambient}}$ of a surface point is obtained by multiplying the ambient constant of a 
@@ -69,8 +58,8 @@ you have multiple scene lights).
 
 $$I_{\text{ambient}}=k_{\text{a}}I_{\text{LA}}$$
   
-  
 #### **Diffusive component**  
+
 This light component represents  the amount of reflected light given an incident light. Lambertian surfaces are considered: 
 The incident light is equally reflected (with a given amount) in all directions. The amount of reflected light depends on 
 the incident angle of the light with respect to the surface’s normal. The diffuse illumination $I_{\text{diffuse}}$ of a 
@@ -81,17 +70,9 @@ So the final formula for the diffuse component is:
 
 $$I_{\text{diffuse}}=k_{\text{d}}I_{\text{LD}}({\hat {L}}\cdot{\hat {N}})$$
   
-  
 #### **Specular component**
-This light componet represents the amount of reflected light in a specific direction (mirror alike reflection). Light is 
-reflected in a different way depending on the incident light direction. Shiny materials are the one with a high specular component. 
-The perceived specular light depends on the position of the observer with respect to the surface. In particular, the specular 
-illumination is influenced by $\cos\alpha$, that is the cosine of the angle between the direction from the surface point towards 
-the view ${\hat {V}}$ and the direction that a perfectly reflected ray of light would take from this point on the surface ${\hat {R}}$. 
-The size of the specular highlights is regulated by a shininess constant $$n$$, based on the surface material properties. Given all this 
-information the specular component formula obtained by multiplying the specular surface constant $k_{\text{s}}$ with the light specular 
-intensity $I_{\text{LS}}$ and with dot product of the reflection direction ${\hat {R}}$ and the the direction from the surface 
-point towards the view ${\hat {V}}$ squared to the shininess constant $$n$$:
+
+This light component represents the amount of reflected light in a specific direction (mirror alike reflection). Light is reflected in a different way depending on the incident light direction. Shiny materials are the one with a high specular component. The perceived specular light depends on the position of the observer with respect to the surface. In particular, the specular illumination is influenced by $\cos\alpha$, that is the cosine of the angle between the direction from the surface point towards the view ${\hat {V}}$ and the direction that a perfectly reflected ray of light would take from this point on the surface ${\hat {R}}$. The size of the specular highlights is regulated by a shininess constant $$n$$, based on the surface material properties. Given all this information the specular component formula obtained by multiplying the specular surface constant $k_{\text{s}}$ with the light specular intensity $I_{\text{LS}}$ and with dot product of the reflection direction ${\hat {R}}$ and the the direction from the surface point towards the view ${\hat {V}}$ squared to the shininess constant $$n$$:
 
 $$I_{\text{specular}}=k_{\text{s}}I_{\text{LS}}({\hat {R}}\cdot {\hat {V}})^{n}$$
 
