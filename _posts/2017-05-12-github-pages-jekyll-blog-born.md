@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Gihub Pages and Jekyll: chicio coding birth"
+title: "Github Pages and Jekyll: chicio coding birth"
 description: "So, how was created this blog? Let's go through the development process of its creation. Boring and fun at the same time."
 date: 2017-05-12
 image: /assets/images/fabrizio-duroni.jpg
@@ -33,7 +33,7 @@ Github Pages supports Jekyll. Also in this case let's see the definition from th
 
 This seems the perfect combination for a personal site + blog!!!
 Let's see what I used to develop this blog:  
- 
+
   - Github Pages
   - Jekyll 
   - Node + Gulp as a task/build runner for development
@@ -67,7 +67,7 @@ I decided to use the following gulp libraries to improve my work (using the same
   - browser-sync for live reloading during development
   - travis for CI
   
-Below you can find the complete gulpfile: 
+Below you can find the complete gulpfile:
 
 <script src="https://gist.github.com/chicio/ce1b5339fa2f30c0c14fceb3616d60d3.js"></script>  
  
@@ -75,7 +75,7 @@ As you can see I have two gulp task. I use the first from my local environment d
 by travis to make a test build on each commit. All the assets created are saved in the assets folder. Jekyll copies each 
 folder that is not prefix with and underscore. I also installed some gems to improve and automatize some function of 
 my site:
- 
+
   - jekyll-seo-tag, to automatically create meta and JSON-LD
   - jekyll-sitemap, to automatically generate the sitemap
   - octopress-minify-html, to minify the HTML
@@ -83,24 +83,20 @@ my site:
   - jemoji, to support emojii in posts  
 
 Each of this gem has its own configuration values in the _config.yml or in the front matter using the YAML format.  
-With this setup it was easy to develop: I just needed to execute the command 
- 
+With this setup it was easy to develop. To start the development environment I just have to execute the shell command below.
+
 ```shell
 $ gulp
 ```
- 
-that launch the default gulp task and start to write my HTML/CSS/Javascript code. The website is updated on each modification 
-and live rendered in the browser (thank you browser-sync :relaxed:).  
+
+This command launch the default gulp task and start to write my HTML/CSS/Javascript code. The website is updated on each modification and live rendered in the browser (thank you browser-sync :relaxed:).  
 After the implementation made also some infrastructure setup to customize my github pages website.
 In particular I added two things:
   
-  - I bought a custom domain, fabrizioduroni.it, to substitute the default github pages url for user site ("username".github.io). I bought 
-  my domain from the italian dns provider register.it.
+  - I bought a custom domain, fabrizioduroni.it, to substitute the default github pages url for user site ("username".github.io).
   - I added CloudFlare CDN in order to:
     - speed up the content loading and reach the 99% score on the Google Pagespeed test
     - add HTTPS and HTTP/2 support  
-    
+
 In this way the pages load faster than light :zap:.  
 That's it. My website + blog is up and running!! 
-  
-  

@@ -7,6 +7,7 @@ Release date: to be defined.
 #### Added
 
 - image optimization/compression with gulp-imagemin
+- fixing article using the vscode 'Spell Right' plugin
 
 ## [1.12.0](https://github.com/chicio/chicio.github.io/releases/tag/1.12.0)
 Release date: 2019-05-18.

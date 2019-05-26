@@ -185,7 +185,7 @@ function createLight() {
 ```
 
 For the hemisphere light, we create it using the `HemisphereLight` class.
-We set the sky color to dark blue (0x303F9F), the ground color to black (0x000000) and its intendisty to 1.
+We set the sky color to dark blue (0x303F9F), the ground color to black (0x000000) and its intensity to 1.
 
 ```javascript
 function createHemisphereLight() {
@@ -266,9 +266,9 @@ loadFloor(textureLoader, function (mesh) {
 });
 ```
 
-For the stars, we use the `textureLoader` to load a circle png texture. Whe the texture load is completed, we create 
-a lot of `Geometry` with random position. Whe also create the material using the texture obtained from the loader (and
-we set on it a transparent background). Now we can create some WebGL `Points` using the related three.js class. 
+For the stars, we use the `textureLoader` to load a circle png texture. When the texture load is completed, we create 
+a lot of `Geometry` objects with random position. We also create the material using the texture obtained from the loader (and
+we set on it a transparent background). Now we can create some `Points` objects using the specific three.js class.
 
 ```javascript
 function loadStars(textureLoader, completeLoad) {
