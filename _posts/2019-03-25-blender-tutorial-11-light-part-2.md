@@ -42,6 +42,6 @@ ambient occlusion is really slow in terms of rendering. Is it possible to improv
  our scene is an outdoor one, we can activate the environment light. This kind of effect will generate ambient 
  occlusion and eventually it will use (if we choose it) the sky/sky texture as color.
 
-{% include blog-lazy-image.html description="blender ambient occlusion enviroment lighting" width="1500" height="891" src="/assets/images/posts/blender-ambient-occlusion-enviroment-lighting.jpg" %}
+{% include blog-lazy-image.html description="blender ambient occlusion environment lighting" width="1500" height="891" src="/assets/images/posts/blender-ambient-occlusion-enviroment-lighting.jpg" %}
 
 In the next post about Blender we will talk about cameras and rendering.

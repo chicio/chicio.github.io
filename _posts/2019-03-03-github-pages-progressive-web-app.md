@@ -30,7 +30,7 @@ What does it basically means? PWAs are web applications that combine the best of
 * they can work offline
 * they can use hardware capabilities and are they able to receive push notifications
 
-Soooo I started to think: "Whoah, I can modify my blog/website to become a PWA, so that I can explore this new technology and I can also have something that 'feels like an app' for my blog!!!".  
+So I started to think: "Whoah, I can modify my blog/website to become a PWA, so that I can explore this new technology and I can also have something that 'feels like an app' for my blog!!!".  
 So how is it possible to transform a site built with Jekyll and published on Github Pages in a basic PWA? In this post I will show you how I did it (and this article is part of the PWA described here).  
 To create a basic PWA I need 3 things:
 
@@ -134,7 +134,7 @@ A service worker is the heart of a Progressive Web App. Let's see the definition
 
 >A service worker is a script that your browser runs in the background, separate from a web page, opening the door to features that don't need a web page or user interaction. Today, they already include features like push notifications and background sync. In the future, service workers might support other things like periodic sync or geofencing. ... is the ability to intercept and handle all the network requests, including programmatically managing a cache of responses.
 
-Whoooaaa!!! :open_mouth: Basically service workers let your web app inherit some features that are tipically found only in a native mobile app:
+Whoa!!! :open_mouth: Basically service workers let your web app inherit some features that are typically found only in a native mobile app:
 
 * push notification
 * offline support
@@ -231,5 +231,5 @@ self.addEventListener('fetch', (event) => {
 ```
 
 #### Conclusion
-By adding all the above implementation my blog is now a Progrssive Web App (that's right, the article you're reading part of a PWA :smirk:). If you want to see the entire source code of my website/blog discussed here you can have a look at [this repository](https://github.com/chicio/chicio.github.io "chicio coding repository").  
+By adding all the above implementation my blog is now a Progressive Web App (that's right, the article you're reading part of a PWA :smirk:). If you want to see the entire source code of my website/blog discussed here you can have a look at [this repository](https://github.com/chicio/chicio.github.io "chicio coding repository").  
 So now it's time to start to develop you first PWA or transform you website/ web application in PWA. If you want, you could share your experience with me in the comments below :two_hearts:.
