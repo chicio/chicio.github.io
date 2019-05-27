@@ -75,7 +75,7 @@ So we started to review the slides and we basically created a new presentation :
 
 ### The talk
 
-Then the day of the talk arrived after a not so quiet sleep. The Voxxed Days 2018 in Ticino was set to take place on 20th of October. We arrived at the Palazzo dei Congressi in Lugano at 8.45 AM. We were excited to queue in the dedicated speakers area for the firt time after so many conferences attended! We checked-in and got our shiny speaker badge. Then we moved to the lounge section to enjoy breakfast.
+Then the day of the talk arrived after a not so quiet sleep. The Voxxed Days 2018 in Ticino was set to take place on 20th of October. We arrived at the "Palazzo dei Congressi" in Lugano at 8.45 AM. We were excited to queue in the dedicated speakers area for the first time after so many conferences attended! We checked-in and got our shiny speaker badge. Then we moved to the lounge section to enjoy breakfast.
 
 {% include blog-lazy-image.html description="voxxed 2018 breakfast and badge" width="1450" height="950" src="/assets/images/posts/voxxed-2018-breakfast.jpg" %}
 
