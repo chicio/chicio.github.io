@@ -22,7 +22,7 @@ A few times ago I published [ID3TagEditor](https://github.com/chicio/ID3TagEdito
 
 The library had a simple `Package.swift`, but honestly I never tested it with the Swift Package Manager (SPM)
  on Linux nor on macOS :sweat_smile: (this was the only feature that I didn't test :sweat_smile:).
-Soooo I though: "It's time to add full support for the Swift Package Manager to ID3TagEditor and port it also on Linux!!!!" :sparkling_heart:
+So I though: "It's time to add full support for the Swift Package Manager to ID3TagEditor and port it also on Linux!!!!" :sparkling_heart:
 In this post I will describe how you can create a Swift library package for the Swift Package Manager compatible with
  macOS and Linux for an existing project. Obviously, I will show you the entire process using my [ID3TagEditor](https://github.com/chicio/ID3TagEditor) as example.  
  First of all, if you are starting with a new library project, you will use the following SPM `init` command:
@@ -161,7 +161,7 @@ First of all, how do I install Swift on linux? I downloaded the Swift release fo
 sudo apt-get install clang libicu-dev
 ```
 
-Then I extracted from the archive previously downloaded the Swift release folder and I added to my shell enviroment variable `PATH` the path to /usr/bin folder contained inside the this release folder.
+Then I extracted from the archive previously downloaded the Swift release folder and I added to my shell environment variable `PATH` the path to /usr/bin folder contained inside the this release folder.
 
 ```shell
 tar xzf swift-<VERSION>-<PLATFORM>.tar.gz
@@ -170,7 +170,7 @@ tar xzf swift-<VERSION>-<PLATFORM>.tar.gz
 export PATH=/<path to the Swift release folder>/usr/bin:"${PATH}"
 ```
 
-The setup was done. Now I was able to test  `ID3TagEditor` as a SPM library on Linux. To do this I created a new project inside the demo folder of the ID3TagEditor project called `Demo Ubuntu`. This is an executable SPM project that has `ID3TagEditor` as package dependecies. The executable is a command line application that opens a mp3 file, parses its ID3 tag and print it to the standard output. To test my work I just cloned the `ID3TagEditor` on Linux (and also on macOS :stuck_out_tongue_winking_eye:) and launched the following commands in the root folder of the `Demo Ubuntu` project:
+The setup was done. Now I was able to test  `ID3TagEditor` as a SPM library on Linux. To do this I created a new project inside the demo folder of the ID3TagEditor project called `Demo Ubuntu`. This is an executable SPM project that has `ID3TagEditor` as package dependencies. The executable is a command line application that opens a mp3 file, parses its ID3 tag and print it to the standard output. To test my work I just cloned the `ID3TagEditor` on Linux (and also on macOS :stuck_out_tongue_winking_eye:) and launched the following commands in the root folder of the `Demo Ubuntu` project:
 
 ```shell
 swift build
@@ -182,4 +182,4 @@ Below you can see some screenshot taken from both Linux and macOS that shows the
 {% include blog-lazy-image.html description="id3tageditor SPM demo ubuntu" width="1500" height="870" src="/assets/images/posts/spm-id3tageditor-demo-linux.jpg" %}
 {% include blog-lazy-image.html description="id3tageditor SPM demo macOS" width="1500" height="938" src="/assets/images/posts/spm-id3tageditor-demo-macos.jpg" %}
 
-Coool!! Now the ID3TagEditor is fully compatible with the SPM and could be used in Swift applications for both macOS and Linux. You can see the entire codebase of the `ID3TagEditor` in [this github repository](https://github.com/chicio/ID3TagEditor). Now you can start to port your libraries and applications on Linux with the Swift Package Manager :sparkles:.
+Cool! Now the ID3TagEditor is fully compatible with the SPM and could be used in Swift applications for both macOS and Linux. You can see the entire codebase of the `ID3TagEditor` in [this github repository](https://github.com/chicio/ID3TagEditor). Now you can start to port your libraries and applications on Linux with the Swift Package Manager :sparkles:.
