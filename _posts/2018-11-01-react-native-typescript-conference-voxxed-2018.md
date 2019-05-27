@@ -18,13 +18,8 @@ and Typescript with Alessandro Romano.*
 ---
 
 In the last few months I talked a lot about [React Native and Typescript](/2018/07/04/react-native-typescript-existing-app.html). In the team where I work 
-at lastminute.com group I acquired a strong knowledge of the Typescript + React + React Native technology stack. 
-There has been also some few changes in the team: [Emanuele Ianni](https://www.linkedin.com/in/emanueleianni/ "Emanuele Ianni"), (do 
-you remember I already talked about him [in my previous post?](/2018/03/20/golden-master-test-characterization-test-legacy-code.html)), my technical team leader left the company. He was supposed to do a talk at Voxxed 2018 about our 
-journey as a team into the world of React + React Native + Typescript. So I got the opportunity to go in his place to the Voxxed as a co-speaker of [Alessandro Romano](https://www.linkedin.com/in/alessandroromano92/ "Alessandro Romano"),
- my other colleague selected as a speaker for this event. 
-Alessandro, also known as "the Clean", is a senior software developer with many years of experience that just got 
-graduated from University of Insubria in Varese (do you remember I [already talked also about him?](/2018/08/02/design-thinking-design-sprint-workshop.html)).   
+at lastminute.com group I acquired a strong knowledge of the Typescript + React + React Native technology stack. There has been also some few changes in the team: [Emanuele Ianni](https://www.linkedin.com/in/emanueleianni/ "Emanuele Ianni"), (do you remember I already talked about him [in my previous post?](/2018/03/20/golden-master-test-characterization-test-legacy-code.html)), my technical team leader left the company. He was supposed to do a talk at Voxxed 2018 about our journey as a team into the world of React + React Native + Typescript. So I got the opportunity to go in his place to the Voxxed as a co-speaker of [Alessandro Romano](https://www.linkedin.com/in/alessandroromano92/ "Alessandro Romano"),
+ my other colleague selected as a speaker for this event. Alessandro, also known as "the Clean", is a senior software developer with many years of experience that just got graduated from University of Insubria in Varese (do you remember I [already talked also about him?](/2018/08/02/design-thinking-design-sprint-workshop.html)).
 The title of the talk was: **React (Native) & Typescript: A journey to a unified team using a common language**.
 In this post I will talk about all the process we went into from the first draft preparation until the talk :grin:.
 
@@ -95,7 +90,7 @@ audience.
 
 ### Conclusion
 
-Tha's all for my first experience as a conference speaker. It has been a good experience. After 10 years in the IT 
+That's all for my first experience as a conference speaker. It has been a good experience. After 10 years in the IT 
 field (had I already been working for 10 years?!??! :cold_sweat:) it was a great pleasure to be on the other side of 
 the stage.
 

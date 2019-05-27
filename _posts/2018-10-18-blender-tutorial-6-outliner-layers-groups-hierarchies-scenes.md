@@ -47,9 +47,7 @@ the 3D window. We can create scenes that:
 {% include blog-lazy-image.html description="blender scene" width="1500" height="948" src="/assets/images/posts/blender-scene.jpg" %}
 
 Last but not least we have **hierarchies**. We can create hierarchies of objects by selecting them and by choosing *Object
- ->  Parent*. Here we can find all the possible type of parental relationships that we can create. After creating a 
- hierarchies of objects, they will be shown grouped in the putliner. We will use  hierarchies extensively when we 
- will talk about animation.
+ ->  Parent*. Here we can find all the possible type of parental relationships that we can create. After creating a hierarchies of objects, they will be shown grouped in the outliner. We will use  hierarchies extensively when we  will talk about animation.
 
 {% include blog-lazy-image.html description="blender hierarchies" width="1500" height="950" src="/assets/images/posts/blender-hierarchies.jpg" %}
 
