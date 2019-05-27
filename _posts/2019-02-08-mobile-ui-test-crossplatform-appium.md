@@ -22,7 +22,7 @@ In the last few months the mobile team "Team Cook" at [lastminute.com group](htt
 
 To put in place the e2e infrastructure we chose:
 
-- Jenkins as our CI platform. We were already using it for our build jobs and for the submssions on the stores or to [our internal beta programs](/2018/07/05/distribution-enterprise-app-ios-beta.html).
+- Jenkins as our CI platform. We were already using it for our build jobs and for the submissions on the stores or to [our internal beta programs](/2018/07/05/distribution-enterprise-app-ios-beta.html).
 - [Appium](https://appium.io/ "appium website") as end to end testing platform. We chose it because it let us test our apps for both iOS and Android with a single tests codebase. At the moment of this writing we used the Appium version 1.9.0. In particular we chose to use the Appium implementation based on:
   - JavaScript, to be able to write our tests with a language with similar features to [TypeScript, the language we are using with React Native for our apps](/2018/07/04/react-native-typescript-existing-app.html "TypeScript React Native")
   - [WebdriverIO](https://webdriver.io/ "webdriverio"), JavaScript implementation of the Selenium 2.0 WebDriver API
@@ -34,7 +34,7 @@ To put in place the e2e infrastructure we chose:
 
 #### **Development**
 The first thing we did was installing all the software stack previously described on our CI machine. As a consequence of the fact that we want to run tests for both iOS and Android a macOS based CI machine is needed (because you need to install Xcode). Fortunately, our CI machine was already an Apple Computer so we didn't need to change anything.  
-After that we created a new javascript project, that follows the structure of the [WebdriverIO sample code contained in the Appium github repository](https://github.com/appium/appium/tree/master/sample-code/javascript-webdriverio "appium webdriverio sample"). This sample project is written using ES5 syntax, so we decided to upgrade it to use ES6 syntax and compile it using Babel. This is possible by launching mocha and specifing babel as the compiler. This is the final command to launch our tests:
+After that we created a new javascript project, that follows the structure of the [WebdriverIO sample code contained in the Appium github repository](https://github.com/appium/appium/tree/master/sample-code/javascript-webdriverio "appium webdriverio sample"). This sample project is written using ES5 syntax, so we decided to upgrade it to use ES6 syntax and compile it using Babel. This is possible by launching mocha and specifying babel as the compiler. This is the final command to launch our tests:
 
 ```shell
 mocha --compilers js:babel-core/register --timeout 6000000 test
@@ -140,5 +140,5 @@ After that we launched the appium server on the CI machine previously configured
 npm run test
 ```
 
-This job is autmatically triggered (cron) every day at 8 PM. That's it!!! This is how we tested our apps with Appium.
-Tha's all for appium and mobile end to end tests. If you have any question don't hesitate to comment on this post below :sparkling_heart:.
+This job is automatically triggered (cron) every day at 8 PM. That's it!!! This is how we tested our apps with Appium.
+That's all for appium and mobile end to end tests. If you have any question don't hesitate to comment on this post below :sparkling_heart:.
