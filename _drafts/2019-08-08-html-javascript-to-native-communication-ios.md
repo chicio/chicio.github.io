@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Web to native communication on iOS using WKScriptMessageHandler"
+title: "Web to native (Swift) communication on iOS using WKScriptMessageHandler"
 description: "Did you know that is it possible to call Swift code from the JavaScript code of a web page displayed inside a WKWebView?"
 date: 2019-08-08
 image: /assets/images/posts/swift-js.jpg
@@ -163,5 +163,4 @@ You can find the complete example in this [github repository](https://github.com
 
 #### Conclusion
 
-The `WKWebView` and the `WKScriptMessageHandler` are really powerful. They let you implement a deeper web to native integration that could significantly improve the general user experiences. `WKScriptMessageHandler`, 
-another useful tool in the toolbox of every iOS Developer :iphone:.
+The `WKWebView` and the `WKScriptMessageHandler` are really powerful. They let you implement a deeper web to native integration that could significantly improve the general user experiences. `WKScriptMessageHandler`, another useful tool in the toolbox of every iOS Developer :iphone:.

@@ -93,10 +93,10 @@ This command launch the default gulp task and start to write my HTML/CSS/Javascr
 After the implementation made also some infrastructure setup to customize my github pages website.
 In particular I added two things:
   
-  - I bought a custom domain, fabrizioduroni.it, to substitute the default github pages url for user site ("username".github.io).
-  - I added CloudFlare CDN in order to:
-    - speed up the content loading and reach the 99% score on the Google Pagespeed test
-    - add HTTPS and HTTP/2 support  
+- I bought a custom domain, fabrizioduroni.it, to substitute the default github pages url for user site ("username".github.io).
+- I added CloudFlare CDN in order to:
+  - speed up the content loading and reach the 99% score on the Google Pagespeed test
+  - add HTTPS and HTTP/2 support  
 
 In this way the pages load faster than light :zap:.  
 That's it. My website + blog is up and running!! 
