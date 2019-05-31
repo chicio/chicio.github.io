@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Flow, the static type checker for Javascript: how to use it and a brief comparison with TypeScript"
-description: "In this post I will talk about how I used Flow to do static type checking on the Javascript of a project and I will also do a brief comparison with its main rival TypeScript."
+description: "Sick and tired of TypeScript? Give a chance to Flow, the JavaScript static type checker from Facebook."
 date: 2019-04-07
 image: /assets/images/posts/flow.jpg
 tags: [web development, javascript, typescript]
@@ -11,7 +11,7 @@ seo:
 authors: [fabrizio_duroni]
 ---
 
-*In this post I will talk about how I used Flow to do static type checking on the Javascript code of my blog and I will also do a brief comparison with its main rival TypeScript.*
+*Sick and tired of TypeScript? Give a chance to Flow, the JavaScript static type checker from Facebook.*
 
 ---
 
