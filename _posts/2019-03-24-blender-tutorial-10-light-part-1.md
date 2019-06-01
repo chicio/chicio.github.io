@@ -37,7 +37,7 @@ For example for a point light we can customize:
 For the point light (and also some other kind of light) it is possible to enable shadows. To do that we have to 
 choose ray shadow in the light properties panel and customize the look and feel of the shadow. Here we can also 
 define the number of samples to be used to generate the shadows: the higher the better shadow we obtain (if you 
-want to know more about ray tracing shadows, you can read [this article](https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing/implementing-the-raytracing-algorithm)"ray tracing shadow rays"). 
+want to know more about ray tracing shadows, you can read [this lecture](http://run.usc.edu/cs420-s14/lec15-ray-tracing/15-ray-tracing.pdf "ray tracing shadow rays").
 To actually render the shadow, we need also to set the shadow flag enable in the renderer settings properties panel.
 
 {% include blog-lazy-image.html description="blender shadow enable 1" width="1500" height="950" src="/assets/images/posts/blender-shadow-enable-1.jpg" %}
