@@ -2,7 +2,7 @@
 layout: post
 title: "Publish your Progressive Web App to the Google Play Store"
 description: "You can now publish your progressive web apps to the Google Play Store using Trusted Web Activities without writing a single line of Java/Kotlin code."
-date: 2019-06-15
+date: 2019-06-13
 image: /assets/images/posts/pwa-google-play-store.jpg
 tags: [android, pwa, java, mobile application development, web development, javascript]
 comments: true
@@ -38,7 +38,7 @@ Let's start to see the real action: how I publish my blog PWA to the Google Play
 
 {% include blog-lazy-image.html description="pwa app create project" width="1500" height="1236" src="/assets/images/posts/pwa-app-01-create-project.jpg" %}
 
-Then I added the TWA support as a dependency of the app. The TWA implementation is contained inside the custom tabs client library published on [Jitpack](https://jitpack.io/ "Jitpack") (because unfortunately at the moment of this writing the custom tabs client library contained inside Jetpack doesn't have the TWA support). So I added Jitpack as repository to the project level gradle file. Then I added the custom tabs client library as dependency inside the module gradle file. This last dependency points to the custom tabs client library published on github and exposed through Jitpack. I had also to specify a specific commit hash in order to be sure that the library version downloaded contains the TWA support.
+Then I added the TWA support as a dependency of the app. The TWA implementation is contained inside the custom tabs client library published on [Jitpack](https://jitpack.io/ "Jitpack") (because unfortunately at the moment of this writing the custom tabs client library contained inside Jetpack doesn't have the TWA support). So I added Jitpack as repository to the project level gradle file. Then I added the custom tabs client library as dependency inside the module gradle file. This last dependency points to the custom tabs client library published on github and exposed through Jitpack. I had to specify a specific commit hash in order to be sure that the library version downloaded contains the TWA support.
 
 {% include blog-lazy-image.html description="pwa app jitpack" width="1500" height="889" src="/assets/images/posts/pwa-app-02-jitpack-configuration.jpg" %}
 {% include blog-lazy-image.html description="pwa app custom tab library" width="1500" height="889" src="/assets/images/posts/pwa-app-03-java8-and-custom-tab-dependecies.jpg" %}
@@ -121,4 +121,4 @@ Now my blog PWA is published to Google Play store. Below you can find a video th
 
 {% include youtube.html videoId="s0o0AheYw9M" %}
 
- Go and download it immediately :cupid: !!!!
+ Go and download it immediately :cupid:!!!!
