@@ -1,6 +1,6 @@
 {
   "name": "fabrizio-duroni",
-  "version": "1.12.0",
+  "version": "1.12.1",
   "description": "Fabrizio Duroni aka 'chicio' website",
   "main": "index.js",
   "scripts": {
