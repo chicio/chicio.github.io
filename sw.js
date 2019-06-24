@@ -17,6 +17,7 @@ const dependenciesUrls = [
 ]
 
 self.addEventListener('install', (event) => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(siteCacheName).then((cache) => {
       return cache.addAll(dependenciesUrls);
