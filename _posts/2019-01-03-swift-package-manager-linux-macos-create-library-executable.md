@@ -38,9 +38,9 @@ swift package init --type library
  file contains some Swift code that defines the properties of the project using the `PackageDescription` module API. At 
  the moment of this writing there are 3 API versions of the PackageDescription API:
 
-* [Version 3](https://github.com/apple/swift-package-manager/blob/master/Documentation/PackageDescriptionV3.md)
-* [Version 4](https://github.com/apple/swift-package-manager/blob/master/Documentation/PackageDescriptionV4.md)
-* [Version 4.2](https://github.com/apple/swift-package-manager/blob/master/Documentation/PackageDescriptionV4_2.md)
+* [Version 3](https://github.com/apple/swift-package-manager/blob/b73299ef84e1e55c789052d0d1eafec30a95a805/Documentation/PackageDescriptionV3.md)
+* [Version 4](https://github.com/apple/swift-package-manager/blob/b73299ef84e1e55c789052d0d1eafec30a95a805/Documentation/PackageDescriptionV4.md)
+* [Version 4.2](https://github.com/apple/swift-package-manager/blob/b73299ef84e1e55c789052d0d1eafec30a95a805/Documentation/PackageDescriptionV4_2.md)
 
  For my [ID3TagEditor](https://github.com/chicio/ID3TagEditor) I used the [Version 4.2](https://github.com/apple/swift-package-manager/blob/master/Documentation/PackageDescriptionV4_2.md).   
 
