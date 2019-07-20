@@ -116,8 +116,7 @@ Do you see how much more readable and clear it is the second version of the `mak
 
 Let's see what Uncle Bob says about the command query separation:
 
-> Functions should either do something or answer something, but not both. Either your function should change the state
- of an object, or it should return some information about that object. Doing both often leads to confusion.
+> Functions should either do something or answer something, but not both. Either your function should change the state of an object, or it should return some information about that object. Doing both often leads to confusion.
 
 I think there's nothing else to ad to this point :stuck_out_tongue:.
 
