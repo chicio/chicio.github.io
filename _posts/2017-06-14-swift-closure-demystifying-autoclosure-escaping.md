@@ -21,7 +21,7 @@ As reported in the official swift documentation and as we saw in in one of my [p
 
 In this post I will show you two interesting closure features: `@autoclosure` and `@escaping`.  
 An `@escaping` closure is passed as a parameter to a function, but it is not executed inside it. So, basically the closure is executed after the function returns. The classical example is a closure being stored in a variable outside that function.  
-An `@autoclosure` is a closure without parameter that is automatically created to wrap an expression that’s being passed as an argument to a function.
+An `@autoclosure` attribute can be applied to a closure parameter for a function, and automatically creates a closure from an expression you pass in.
 This two attributes combined have great potential. Let's see an example where you can avoid multiple if/switch with the use of closure and these two attributes.  
 You could start "abusing" closures and use them everywhere after mastering these two attributes!! :stuck_out_tongue_winking_eye: (Maybe it's better to stay calm and don't abuse closures even after seeing this attributes :relieved:).
 
