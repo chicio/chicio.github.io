@@ -1,6 +1,13 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [1.13.1](https://github.com/chicio/chicio.github.io/releases/tag/1.13.1)
+Release date: 2019-07-28.
+
+#### Fixed
+
+- home loader z-index now is animated to put it behind the socials button (now everything is clickable)
+
 ## [1.13.0](https://github.com/chicio/chicio.github.io/releases/tag/1.13.0)
 Release date: 2019-07-20.
 
