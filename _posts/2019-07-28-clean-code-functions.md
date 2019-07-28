@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Clean Code: functions"
-description: "In this post I will talk about clean code and functions."
+description: "Let's learn how to write function in a clean way"
 date: 2019-07-28
 image: /assets/images/posts/uncle-bob-defender-of-clean-code.jpg
 tags: [clean code]
