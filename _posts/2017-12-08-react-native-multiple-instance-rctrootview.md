@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "React Native: use multiple RCTRootView instances in an existing iOS app"
-description: "In this post I show you how is it possible to use multiple RCTRootView instances in an existing iOS app."
+description: "In this post I show you how it is possible to use multiple RCTRootView instances in an existing iOS app."
 date: 2017-12-08
 image: /assets/images/posts/react-native-crash-reload-with-debugger.jpg
 tags: [react native, swift, objective-c, ios, apple, mobile application development, javascript]
@@ -11,7 +11,7 @@ seo:
 authors: [fabrizio_duroni] 
 ---
 
-*In this post I show you how is it possible to use multiple RCTRootView instances in an existing iOS app.*
+*In this post I show you how it is possible to use multiple RCTRootView instances in an existing iOS app.*
 
 ---
 
