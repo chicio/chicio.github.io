@@ -16,8 +16,7 @@ seo:
 
 In a previous post I talked about [clean code](/2018/04/25/clean-code-objects-data-structures-law-demeter.html) and how much it is important to me.
 In this new post I will talk about another topic of the uncle bob clean code book: functions.  
-How can we have write a good function/method? This is the list of the features that a function 
-must have to be considered "good":
+How can we have write a good function/method? This is the list of the features that a function must have to be considered "good":
 
 * Small
 * Do one thing
@@ -73,7 +72,7 @@ expresed in this paragraph):
 
 >We want the code to read like a top-down narrative. We want every function to be followed by those at the next 
 level of abstraction so that we can read the program, descending one level of abstraction at a time as we read down 
-the list of functions. I call this The Stepdown Rule To say this differently, we want to be able to read the 
+the list of functions. I call this The Stepdown Rule. To say this differently, we want to be able to read the 
 program as though it were a set of TO paragraphs, each of which is describing the current level of abstraction and 
 referencing subsequent TO paragraphs at the next level down.
   
@@ -140,4 +139,4 @@ ongoing attempt to eliminate duplication from our source code.
   
 #### **Conclusion**
 
-That's all for Uncle Bob and functions. If you didn't read yet Uncle Bob "Clean Code" book it's time to catch up the gap and get a copy for yourself :sparkling_heart:. 
+That's all for Uncle Bob and functions. If you didn't read yet Uncle Bob "Clean Code" book it's time to catch up the gap and get a copy for yourself :sparkling_heart:.
