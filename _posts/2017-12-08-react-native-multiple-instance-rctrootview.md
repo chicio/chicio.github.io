@@ -81,7 +81,7 @@ multiple instances of the `ReactViewController`. The UI of the app is very simpl
 of the `MainViewController`. A tap on the first one shows the `ReactViewController` with a `RCTRootView` that contains the 
 `RedComponent`. A tap on the second one shows the `ReactViewController` with a `RCTRootView` that contains the 
 `BlueComponent`.  
-This basically means that in this apps there are multiple `RCTRootView`, one for each controller created. This 
+This basically means that in this app there are multiple `RCTRootView`, one for each controller created. This 
 instances are kept alive at the same time (because the `MainViewController` keeps a reference to the two `ReactViewController`). The code to 
 start the React Native components is the same contained in the 
 [getting started tutorial for existing app](https://facebook.github.io/react-native/docs/integration-with-existing-apps.html "getting started tutorial for existing app").
