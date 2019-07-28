@@ -88,7 +88,7 @@ effects when it is executed. In particular our functions should not:
 
 This feature for "clean function" it is strictly correlated to my previous post [clean code: meaningful names](/2017/09/11/clean-code-meaningful-names.html "clean code meaningful names"). 
 There's one more thing that it is import to note: the most of the IDE available on the market today let the developer
- speed up their writing abilities with a lot of autocomplete and refactoring features (check out my [previous article](2018/01/16/ide-refactoring-android-studio-xcode-appcode-webstorm-jetbrains.html "xcode android studio refactoring") 
+ speed up their writing abilities with a lot of autocomplete and refactoring features (check out my [previous article](/2018/01/16/ide-refactoring-android-studio-xcode-appcode-webstorm-jetbrains.html "xcode android studio refactoring") 
  to better understand what I mean). So don't be afraid and use very long and expressive functions/methods name. Your 
  code will really become like a beautiful poem to read :heart_eyes:.
   
