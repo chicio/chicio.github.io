@@ -8,6 +8,7 @@ tags: [clean code]
 comments: true
 seo:
  - type: "BlogPosting"
+authors: [fabrizio_duroni]
 ---
 
 *Let's learn how to write function in a clean way.*
