@@ -34,11 +34,15 @@ So as you can read above, a Trusted Web Activity let you integrate web content t
 
 #### Implementation
 
-Let's start to see the real action: how I publish my blog PWA to the Google Play Store using TWA. First of all, I created a nw android project. This was a standard Android project with minimum API level 16. This let me cover the 99.6% of the Android user base. I choosed to create an empty project without any activity/fragment in it.
+Let's start to see the real action: how I publish my blog PWA to the Google Play Store using TWA. First of all, I created a nw android project. This was a standard Android project with minimum API level 16. This let me cover the 99.6% of the Android user base. I chosed to create an empty project without any activity/fragment in it.
 
 {% include blog-lazy-image.html description="pwa app create project" width="1500" height="1236" src="/assets/images/posts/pwa-app-01-create-project.jpg" %}
 
-Then I added the TWA support as a dependency of the app. The TWA implementation is contained inside the custom tabs client library published on [Jitpack](https://jitpack.io/ "Jitpack") (because unfortunately at the moment of this writing the custom tabs client library contained inside Jetpack doesn't have the TWA support). So I added Jitpack as repository to the project level gradle file. Then I added the custom tabs client library as dependency inside the module gradle file. This last dependency points to the custom tabs client library published on github and exposed through Jitpack. I had to specify a specific commit hash in order to be sure that the library version downloaded contains the TWA support.
+Then I added the TWA support as a dependency of the app. The TWA implementation is contained inside the custom tabs client library published on [Jitpack](https://jitpack.io/ "Jitpack") (because unfortunately at the moment of this writing the custom tabs client library contained inside Jetpack doesn't have the TWA support). So I added Jitpack as repository to the project level gradle file. Then I added the custom tabs client library as dependency inside the module gradle file. This last dependency points to the custom tabs client library published on github and exposed through Jitpack. I had to specify a specific commit hash in order to be sure that the library version downloaded contains the TWA support. Precisely, I added the following line of code to the gradle file.
+
+```gradle
+implementation 'com.github.GoogleChrome.custom-tabs-client:customtabs:7a2c1374a3'
+```
 
 {% include blog-lazy-image.html description="pwa app jitpack" width="1500" height="889" src="/assets/images/posts/pwa-app-02-jitpack-configuration.jpg" %}
 {% include blog-lazy-image.html description="pwa app custom tab library" width="1500" height="889" src="/assets/images/posts/pwa-app-03-java8-and-custom-tab-dependecies.jpg" %}
