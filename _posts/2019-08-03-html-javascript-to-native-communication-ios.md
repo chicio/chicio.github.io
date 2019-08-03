@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Web to native (Swift) communication on iOS using WKScriptMessageHandler"
-description: "Did you know that is it possible to call Swift code from the JavaScript code of a web page displayed inside a WKWebView?"
-date: 2019-08-08
+title: "Web to native code communication on iOS using WKScriptMessageHandler"
+description: "Did you know that is it possible to call Swift/Objective-C code from the JavaScript code of a web page displayed inside a WKWebView?"
+date: 2019-08-03
 image: /assets/images/posts/swift-js.jpg
-tags: [swift, ios, apple, mobile application development]
+tags: [swift, objective-c, ios, apple, mobile application development, javascript, web development]
 comments: true
 seo:
  - type: "BlogPosting"
@@ -15,7 +15,7 @@ authors: [fabrizio_duroni]
 
 ---
 
-Sooner or later every mobile developer in the world had the following specific need: integrate a website page inside an app :weary:. Usually the feature to be developed requires a deep integration between web and native: the app must react to some changes in the web page based on the user interactions or some other events (automatic refresh, geolocation etc.). The old way to do this integration was to catch some url change/page load using the classical UIWebView delegate methods. But starting from iOS 8 there's a better way to do this integration using `WKWebView`s and `WKScriptMessageHandler`. In this post I will show you how is it possible to use them to call Swift code from Javascript code inside a webpage.
+Sooner or later every mobile developer in the world had the following specific need: integrate a website page inside an app. Usually the integration to be developed requires a deep integration between web and native: the app must react to some changes in the web page based on the user interactions or some other events (automatic refresh, geolocation etc.). The old way to do this integration was to catch some url change/page load using the classical UIWebView delegate methods. But starting from iOS 8 (this is old but gold :trophy::stuck_out_tongue_winking_eye:) there's a better way to do this integration using `WKWebView`s and `WKScriptMessageHandler`. In this post I will show you how is it possible to use them to call Swift code from Javascript code inside a webpage.
 
 #### Implementation
 
@@ -158,7 +158,7 @@ Let's see now the implementation of the web page. It will contain a standard htm
 </html>
 ```
 
-One important note to thing: `window.webkit.messageHandlers` is expose on the `window` as a global only when your page is displayed on a iOS device inside a `WKWebView`. This means that if you're planning to show your webpage with this kind of binding also on other platform, you will need to implement a guard on the `webkit.messageHandlers` object.
+One important thing to note: `window.webkit.messageHandlers` is expose on the `window` as a global object only when your page is displayed on a iOS device inside a `WKWebView`. This means that if you're planning to show your webpage with this kind of binding also on other platform, you will need to implement a guard on the `webkit.messageHandlers` object.
 You can find the complete example in this [github repository](https://github.com/chicio/Explore-WKScriptMessageHandler "WKScriptMessageHandler github repository").
 
 #### Conclusion
