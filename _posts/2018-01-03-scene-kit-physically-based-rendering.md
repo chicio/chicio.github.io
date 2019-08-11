@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "SceneKit and physically based rendering"
-description: "In this post I will guide you in the creation of a scene using SceneKit and its physically based rendering features."
+description: "Let's try to build a scene using SceneKit and its physically based rendering features."
 date: 2018-01-03
 image: /assets/images/posts/physically-based-rendering-scene-right.jpg
 tags: [computer graphics, physically based rendering, swift, ios, apple, mobile application development]
@@ -15,7 +15,7 @@ authors: [fabrizio_duroni]
 
 ---
 
-SceneKit is one of the Apple framework I love the most. What is SceneKit? Let's see the definition from the 
+SceneKit is one of the framework inside the iOS SDK that I love the most. What is SceneKit? Let's see the definition from the 
 developer apple website:
 
 >SceneKit combines a high-performance rendering engine with a descriptive API for import, manipulation, and rendering of 3D assets. Unlike lower-level APIs such as Metal and OpenGL that require you to implement in precise detail the rendering algorithms that display a scene, SceneKit requires only descriptions of your scene’s contents and the actions or animations you want it to perform.
@@ -30,13 +30,10 @@ In this post we will create a scene from scratch that uses the main PBR features
 find inside SceneKit. At the end of this post you will be able to render the scene contained in the image below. So 
 it's time to start coding!!
 
-![Physically based scene right](/assets/images/posts/physically-based-rendering-scene-right.jpg "Physically based scene right")
+{% include blog-lazy-image.html description="Physically based scene right" width="1500" height="682" src="/assets/images/posts/physically-based-rendering-scene-right.jpg" %}
 
-The general approach used in the construction of the scene will be the following: for each main scene category 
-component we will create a class that encapsulate the creation of the corresponding `SCNNode`, the base SceneKit unit 
-element, and its setup to obtain the feature we want.  
-The first class we are going to create is the `Light` class that encapsulate the base features we need to set up the 
-light: position, rotation and generic color. Light in SceneKit are represented using the `SCNLight` class. 
+The general approach used in the construction of the scene will be the following: for each main scene category component we will create a class that encapsulate the creation of the corresponding `SCNNode`, the base SceneKit unit element, and its setup to obtain the feature we want.  
+The first class we are going to create is the `Light` class that encapsulate the base features we need to set up the light: position, rotation and generic color. Light in SceneKit are represented using the `SCNLight` class.
 
 ```swift
 class Light {
@@ -84,7 +81,7 @@ We are now ready to create our `PhysicallyBasedLight` as an child of `Light` cla
 be of type `.directional`, and we will customize its `intensity` and `temperature`. The intensity is the flux of the 
 light (again, go to check [my first post about physically based rendering](/2017/12/07/physically-base-rendering-introduction.html "physically based introduction post") 
 if you don't know what it is :stuck_out_tongue:), and the second one is the color temperature expressed in Kelvin 
-(remember: 6500 K corresponds to pure white sunlight). We also activate other interesting features: by setting 
+(remember: 6500 K corresponds to pure white sunlight). We activate other interesting features: by setting 
 `castsShadow` to `true` we activate the rendering of shadow using shadow mapping technique, and by setting 
 `orthographicScale` to `10` we extend a little bit the visible area of the scene from the light, so we are improving the
 construction of the shadow map.
@@ -192,11 +189,11 @@ class Camera {
 }
 ```
 
-Now its time to think about the objects we want to display in the scene. For that reason we create a `Object` class 
+Now it's time to think about the objects we want to display in the scene. For that reason we create a `Object` class 
 that will represent each kind of object we want to show in the scene. Obviously as for the previous classes, also 
 the `Object` class will expose a `node` property of type `SCNNode` that represents our object in the scene. We define
  this class with multiple initializer that let as create object instances using various configurations: init as an empty
- object, init using a `SCNGeomtry` instance, using a mesh loaded as a `MDLObject` using the [Model I\O](https://developer.apple.com/documentation/modelio "Model I\O")
+ object, init using a `SCNGeometry` instance, using a mesh loaded as a `MDLObject` using the [Model I\O](https://developer.apple.com/documentation/modelio "Model I\O")
  Apple framework. This framework let us import/export 3D models in a wide range of common available formats.
 
 ```swift
@@ -257,7 +254,7 @@ with a single property `material` of type `SCNMaterial`. On this material proper
 * `normal.contents` property with an appropriate normal value.
 * `ambientOcclusion.contents` property with an appropriate ambient occlusion value
 
-As you can see, we have all the properties we discussed in my [introduction to physically based rendering](/2017/12/07/physically-base-rendering-introduction.html "physically based introduction post").
+As you can see, we have all the properties we discussed in my [introduction to physically based rendering post](/2017/12/07/physically-base-rendering-introduction.html "physically based introduction post").
  We have also other properties that help us improve the realism, especially with indirect lighting for what concern the 
  [ambient occlusion](https://en.wikipedia.org/wiki/Ambient_occlusion "ambient occlusion") (this property/technique is
   not related to PBR but helps to improve the final rendering). Which kind of values accept this properties? As 
@@ -290,7 +287,7 @@ class PhysicallyBasedMaterial {
 
 Now it's time to construct our scene :relieved:!! We start by creating a new class `PhysicallyBasedScene`, subclass
  of `SCNScene`. In this way we can customize the default initializer with the step needed to add all the element of 
- our scene, and also because in this way we have direct access to all the properties of `SCNScene`. We also define a 
+ our scene, and also because in this way we have direct access to all the properties of `SCNScene`. We define a 
  protocol, `Scene`, that we will use to manage some gesture and animate the scene. So in the initializer we will call
  three methods: `createCamera()` in which we will create the camera, `createLight()` in which we will create the 
  lights, `createObjects()` in which we will create the objects. NB: we need to define also the initializer with 
@@ -445,7 +442,7 @@ The meshes are stored as [wavefront obj file](https://en.wikipedia.org/wiki/Wave
 As you can see from the previous code, we use a class called `MeshLoader`. How does it work? It uses the [Model I/O](https://developer.apple.com/documentation/modelio "Model I/O") 
 Apple framework to load the obj file as a `MDLAsset` and then we extract the first `MDLObject`.
 
-```Swift
+```swift
 class MeshLoader {
     
     static func loadMeshWith(name: String, ofType type: String) -> MDLObject {
