@@ -11,8 +11,7 @@ seo:
 authors: [fabrizio_duroni, tommaso_resti, francesco_bonfadelli] 
 ---
 
-*In this posts I will compare the coding speed that it is possible to achieve in some of the JetBrains 
- IDEs and Xcode, in terms of code creation and refactoring.*
+*In this posts I will compare the coding speed that it is possible to achieve with Android Studio, Xcode, and some JetBrains IDEs in terms of code creation and refactoring.*
 
 ---
 
