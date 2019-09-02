@@ -66,9 +66,7 @@ cover type. But the Media Nav Evolution system of my Renault Clio is able to rea
  hour...". 
  Here we are after two months of work with the public release of:
  
- * `ID3TagEditor`, a pure Swift framework (only Apple `Foundation` framework dependencies) to read/modify ID3 tag of 
- your mp3 files with support for the following Apple platforms: macOS, iOS, watchOS and macOS 
- (so the entire Apple ecosystem :grin:)
+ * `ID3TagEditor`, a pure Swift framework (only Apple `Foundation` framework dependencies) to read/modify ID3 tag of your mp3 files with support for the entire Apple ecosystem (macOS, iOS, watchOS) and Linux :heart_eyes:
  * `Mp3ID3Tagger`, a native macOS app written in Swift using the reactive programming paradigm and in particular its
   Rx (Reactive Extensions) variant with the frameworks RxSwift and RxCocoa (Rx????!?!?!? WHAT?!?!?!? :cold_sweat:).
   

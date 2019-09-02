@@ -22,7 +22,7 @@ described the reason why I develop [Mp3ID3Tagger](https://github.com/chicio/Mp3I
  a macOS app to edit the id3 tag of your mp3 files that leverage on the power of [ID3TagEditor](/2018/05/08/id3tageditor-swift-read-write-id3-tag-mp3.html). Below you can find 
  the app logo.
 
-![MP3ID3Tagger macOS app RxSwift](/assets/images/posts/mp3id3tagger-logo.jpg "MP3ID3Tagger macOS app RxSwift")
+{% include blog-lazy-image.html description="MP3ID3Tagger macOS app RxSwift" width="1280" height="770" src="/assets/images/posts/mp3id3tagger-logo.jpg" %}
 
 So how did I develop MP3ID3Tagger? I was about to start the development following the classic approach to develop 
 an app on every Apple OS: [Model View Controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller 

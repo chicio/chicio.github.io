@@ -18,7 +18,7 @@ authors: [fabrizio_duroni]
 
 In [this previous post](/2018/05/07/born-id3tageditor-mp3id3tagger.html "born id3tageditor mp3id3tagger") I 
 described the reason why I developed [ID3TagEditor](https://github.com/chicio/ID3TagEditor "id3 tag editor swift ios 
-macOS tvOS watchOS"), a swift library to edit ID3 tag of mp3 files with support for macOS, iOS, watchOS and tvOS. 
+macOS tvOS watchOS linux"), a swift library to edit ID3 tag of mp3 files with support for macOS, iOS, watchOS and tvOS. 
 In this post I will described how I developed it. Below you can find the library logo.
 
 {% include blog-lazy-image.html description="ID3TagEditor logo" width="1280" height="770" src="/assets/images/posts/id3tageditor-logo.jpg" %}
@@ -35,7 +35,7 @@ This definition means that an ID3 tag is basically a chunk of information stored
 
 {% include blog-lazy-image.html description="ID3 tag example" width="1500" height="917" src="/assets/images/posts/id3-tag-example.jpg" %}
 
- A tag is composed by an header and a series of frames. The tag header has a size of 10 bytes contains the following 
+ A tag is composed of a header and a series of frames. The tag header has a size of 10 bytes contains the following 
  information (for both v2 and v3):
  
  * ID3 tag file identifier, 3 bytes, usually represented as "ID3"
