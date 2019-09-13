@@ -4,7 +4,7 @@
     <body class="blog-body">
         {% include blog-masthead.html %}
         <style>
-            body {
+            html {
                 overscroll-behavior-y: contain;
             }
             .startPull {
@@ -14,6 +14,14 @@
             .endPull {
                 transform: translateY(-100px) !important;
                 transition: 0.4s ease-in-out;
+            }
+
+            .visiblePull {
+                visibility: visible;
+            }
+
+            .hiddenPull {
+                visibility: hidden;
             }
         </style>
         <script type="text/javascript">
@@ -47,27 +55,37 @@
                         currentPoint.y = e.screenY
                     }
                     const changeY = Math.abs(startPoint.y - currentPoint.y)
+                    //console.log(startPoint.y - currentPoint.y)
+                    console.log(window.scrollY)
+                    console.log(startPoint.y - currentPoint.y)
 
-                    if (changeY < 100) {
-                        pullToRefreshElement.style.transform = `translateY(-${100 - changeY}px)`
-                        blogBody.style.transform = `translateY(-${100 - changeY}px)`
-                    } else {
-                        pullToRefreshElement.style.transform = `translateY(0px)`
-                        blogBody.style.transform = `translateY(0px)`
+                    if(window.scrollY <= 0 && startPoint.y - currentPoint.y <= 0) {
+                        e.preventDefault();
+                        pullToRefreshElement.classList.add("visiblePull")
+                        pullToRefreshElement.classList.remove("hiddenPull")
+
+                        if (changeY < 100) {
+                            pullToRefreshElement.style.transform = `translateY(-${100 - changeY}px)`
+                            blogBody.style.transform = `translateY(-${100 - changeY}px)`
+                        } else {
+                            pullToRefreshElement.style.transform = `translateY(0px)`
+                            blogBody.style.transform = `translateY(0px)`
+                        }
+
+                        if(changeY >= 100 && !isLoading) {
+                            isLoading = true
+                            setTimeout(() => {
+                                isLoading = false
+                                pullToRefreshElement.classList.add("endPull")
+                                pullToRefreshElement.classList.add("hiddenPull")
+                                pullToRefreshElement.classList.remove("visiblePull")
+                                blogBody.classList.add("endPull")
+                                pullToRefreshElement.style.transform = ``
+                                blogBody.style.transform = ``
+                            }, 3000)
+                        }
                     }
-
-                    if(changeY >= 100 && !isLoading) {
-                        isLoading = true
-                        setTimeout(() => {
-                            isLoading = false
-                            pullToRefreshElement.classList.add("endPull")
-                            blogBody.classList.add("endPull")
-                            pullToRefreshElement.style.transform = ``
-                            blogBody.style.transform = ``
-                        }, 3000)
-                    }
-
-                })
+                }, {passive: false})
                 document.addEventListener('touchend', (e) => {
                     if(!isLoading) {
                         pullToRefreshElement.classList.add("endPull")
@@ -78,7 +96,7 @@
                 })
             })
         </script>
-        <div id="pullToRefresh" class="startPull" style="height: 100px; background-color: #BDBDBD; margin-top: 55px;">    
+        <div id="pullToRefresh" class="startPull hiddenPull" style="height: 100px; background-color: #FF0000; margin-top: 55px;">    
         </div>    
         <div class="container blog-posts startPull" style="margin-top: 10px">
 			{% include blog-header.html %}
