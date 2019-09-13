@@ -2,8 +2,85 @@
 <html lang="en">
 	{% include head.html critical-css="critical-blog.css" content-type="website" %}
     <body class="blog-body">
-		{% include blog-masthead.html %}
-        <div class="container blog-posts">
+        {% include blog-masthead.html %}
+        <style>
+            body {
+                overscroll-behavior-y: contain;
+            }
+            .startPull {
+                transform: translateY(-100px); 
+            }
+
+            .endPull {
+                transform: translateY(-100px) !important;
+                transition: 0.4s ease-in-out;
+            }
+        </style>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', () => {
+                const startPoint = { x: 0, y: 0 }
+                const currentPoint = { x: 0, y: 0 }
+                const pullToRefreshElement = document.querySelector("#pullToRefresh")
+                const blogBody = document.querySelector(".container.blog-posts")
+                let isLoading = false
+                
+                document.addEventListener('touchstart', (e) => {
+                    if(typeof e['targetTouches'] !== undefined) {
+                        startPoint.x = e.targetTouches[0].screenX
+                        startPoint.y = e.targetTouches[0].screenY
+                    } else {
+                        startPoint.x = e.screenX
+                        startPoint.y = e.screenY
+                    }
+                    
+                    pullToRefreshElement.classList.add("startPull")
+                    pullToRefreshElement.classList.remove("endPull")
+                    blogBody.classList.add("startPull")
+                    blogBody.classList.remove("endPull")
+                })
+                document.addEventListener('touchmove', (e) => {
+                    if(typeof e['targetTouches'] !== undefined) {
+                        currentPoint.x = e.targetTouches[0].screenX
+                        currentPoint.y = e.targetTouches[0].screenY
+                    } else {
+                        currentPoint.x = e.screenX
+                        currentPoint.y = e.screenY
+                    }
+                    const changeY = Math.abs(startPoint.y - currentPoint.y)
+
+                    if (changeY < 100) {
+                        pullToRefreshElement.style.transform = `translateY(-${100 - changeY}px)`
+                        blogBody.style.transform = `translateY(-${100 - changeY}px)`
+                    } else {
+                        pullToRefreshElement.style.transform = `translateY(0px)`
+                        blogBody.style.transform = `translateY(0px)`
+                    }
+
+                    if(changeY >= 100 && !isLoading) {
+                        isLoading = true
+                        setTimeout(() => {
+                            isLoading = false
+                            pullToRefreshElement.classList.add("endPull")
+                            blogBody.classList.add("endPull")
+                            pullToRefreshElement.style.transform = ``
+                            blogBody.style.transform = ``
+                        }, 3000)
+                    }
+
+                })
+                document.addEventListener('touchend', (e) => {
+                    if(!isLoading) {
+                        pullToRefreshElement.classList.add("endPull")
+                        blogBody.classList.add("endPull")
+                        pullToRefreshElement.style.transform = ``
+                        blogBody.style.transform = ``
+                    }
+                })
+            })
+        </script>
+        <div id="pullToRefresh" class="startPull" style="height: 100px; background-color: #BDBDBD; margin-top: 55px;">    
+        </div>    
+        <div class="container blog-posts startPull" style="margin-top: 10px">
 			{% include blog-header.html %}
             <div class="blog-main">
                 <div class="blog-posts-list">
