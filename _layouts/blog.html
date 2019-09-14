@@ -41,7 +41,7 @@
 		{% include style.html styleInclude="dependencies-css-blog-home.html" %}
         {% include dependencies-js-blog.html %}
             <script type="text/javascript">
-                document.addEventListener('DOMContentLoaded', () => {
+                window.addEventListener('load', () => {
                     class TouchCoordinates {
                         constructor (x, y) {
                             this.x = x
@@ -52,6 +52,7 @@
                     let startPoint = new TouchCoordinates(0, 0)
                     let currentPoint = new TouchCoordinates(0, 0)
                     const pullToRefreshElement = document.querySelector("#pull-to-refresh")
+                    const pullToRefreshElementHeight = pullToRefreshElement.offsetHeight
                     const pullToRefreshStatusElement = document.querySelector("#pull-to-refresh-status")
                     const pullToRefreshLoaderElement = document.querySelector("#pull-to-refresh-loader")
                     const blogBody = document.querySelector(".container.blog-posts")
@@ -102,16 +103,16 @@
                             pullToRefreshElement.classList.add("visible-pull")
                             pullToRefreshElement.classList.remove("hidden-pull")
     
-                            if (changeY < 100) {
-                                pullToRefreshElement.style.transform = `translateY(-${100 - changeY}px)`
-                                pullToRefreshLoaderElement.style.opacity = changeY/100;
-                                blogBody.style.transform = `translateY(-${100 - changeY}px)`
+                            if (changeY < pullToRefreshElementHeight) {
+                                pullToRefreshElement.style.transform = `translateY(-${pullToRefreshElementHeight - changeY}px)`
+                                pullToRefreshLoaderElement.style.opacity = changeY/pullToRefreshElementHeight;
+                                blogBody.style.transform = `translateY(-${pullToRefreshElementHeight - changeY}px)`
                             } else {
                                 pullToRefreshElement.style.transform = `translateY(0px)`
                                 blogBody.style.transform = `translateY(0px)`
                             }
     
-                            if(changeY >= 100 && !isLoading) {
+                            if(changeY >= pullToRefreshElementHeight && !isLoading) {
                                 isLoading = true
                                 pullToRefreshStatusElement.innerHTML = "Refreshing"
                                 pullToRefreshLoaderElement.classList.add("animate")
