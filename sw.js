@@ -55,19 +55,29 @@ self.addEventListener('fetch', (event) => {
 });
 
 self.addEventListener('message', (event) => {
-  console.log("SW Received Message: " + JSON.stringify(event.data));
-  if (event.data.message === 'refresh') {
+  const isARefresh = (event) => event.data.message === 'refresh';
+
+  const createDeleteOperationFor = (url, siteCache, requests) => siteCache
+    .delete(requests
+    .find((request) => request.url === url));
+
+  const createDeleteOperationsForImages = (siteCache, requests) => requests
+    .filter((request) => request.url.endsWith('.jpg') && request.url.includes('posts'))
+    .map((request) => siteCache.delete(request))
+
+  const sendShouldRefreshMessageToClient = (event) => event.ports[0].postMessage({shouldRefresh: true});
+
+  if (isARefresh(event)) {
+    const refreshMessage = {shouldRefresh: true};
     caches.open(siteCacheName).then((siteCache) => {
       siteCache.keys().then((requests) => {
-        const deleteRequestToBeRefreshed = siteCache.delete(requests.find((request) => request.url === event.data.url))
-        const deleteRequestsForImagesToBeRefreshed = requests
-          .filter((request) => request.url.endsWith('.jpg') && request.url.includes('posts'))
-          .map((request) => siteCache.delete(request))
-        console.log(deleteRequestsForImagesToBeRefreshed.length)  
+        const deleteRequestToBeRefreshed = createDeleteOperationFor(event.data.url, siteCache, requests)
+        const deleteRequestsForImagesToBeRefreshed = createDeleteOperationsForImages(siteCache, requests)
         Promise.all([deleteRequestToBeRefreshed, ...deleteRequestsForImagesToBeRefreshed])
-          .then(() => event.ports[0].postMessage({shouldRefresh: true}))
-          .catch(() => event.ports[0].postMessage({shouldRefresh: true}));
+          .then(() => sendShouldRefreshMessageToClient(event))
+          .catch(() => sendShouldRefreshMessageToClient(event));
       });
     });  
   }
 });
+
