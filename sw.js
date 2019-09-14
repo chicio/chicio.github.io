@@ -63,8 +63,8 @@ self.addEventListener('message', (event) => {
         cacheNames.filter((cacheName) => {
           return cacheName === siteCacheName
         }).map((cacheName) => {
-          caches.delete(cacheName).then(() => {
-            return event.ports[0].postMessage("SW Says 'Hello back!'");
+          return caches.delete(cacheName).then(() => {
+            return event.ports[0].postMessage("SW Says 'clean cache complete'");
           })
         })
       );
