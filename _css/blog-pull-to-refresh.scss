@@ -1,0 +1,61 @@
+html {
+  overscroll-behavior-y: contain;
+}
+
+.pullable-content {
+  margin-top: 10px
+}
+
+.pull-to-refresh {
+  height: 100px; 
+  background-color: $general-background; 
+  margin-top: 55px;
+  margin-bottom: 10px;
+  box-shadow: inset 0px -2px 6px 1px $divider-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+
+  &.visible-pull {
+    visibility: visible;
+  }
+  
+  &.hidden-pull {
+    visibility: hidden;
+  }
+  
+  .pull-to-refresh-status {
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .pull-to-refresh-loader {
+    border: 3px solid $primary-color-dark;
+    border-top: 3px solid $primary-color-light;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+    opacity: 0;
+  
+    &.animate {
+      animation: spin 2s linear infinite;
+    }
+  
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  }
+}
+
+.start-pull {
+  transform: translateY(-100px); 
+}
+
+.end-pull {
+  transform: translateY(-100px) !important;
+  transition: 0.4s ease-in-out;
+}

@@ -3,13 +3,13 @@
 	{% include head.html critical-css="critical-blog.css" content-type="website" %}
     <body class="blog-body">
         {% include blog-masthead.html %}
-        <div id="pull-to-refresh" class="pull-to-refresh startPull hiddenPull">    
+        <div id="pull-to-refresh" class="pull-to-refresh start-pull hidden-pull">    
             <div id="pull-to-refresh-loader" class="pull-to-refresh-loader"></div>
             <div id="pull-to-refresh-status" class="pull-to-refresh-status">
                 Pull down to refresh
             </div>
         </div>    
-        <div class="container blog-posts startPull" style="margin-top: 10px">
+        <div class="container blog-posts start-pull pullable-content">
 			{% include blog-header.html %}
             <div class="blog-main">
                 <div class="blog-posts-list">
@@ -40,64 +40,6 @@
         {% include footer.html %}
 		{% include style.html styleInclude="dependencies-css-blog-home.html" %}
         {% include dependencies-js-blog.html %}
-        <style>
-                html {
-                    overscroll-behavior-y: contain;
-                }
-    
-                .pull-to-refresh {
-                    height: 100px; 
-                    background-color: #FAFAFA; 
-                    margin-top: 55px;
-                    box-shadow: inset 0px -2px 6px 1px #BDBDBD;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: flex-end;
-                    align-items: center;
-                    padding: 10px;
-                }
-    
-                .pull-to-refresh-status {
-                    font-weight: bold;
-                    font-size: 14px;
-                }
-    
-                .startPull {
-                    transform: translateY(-100px); 
-                }
-    
-                .endPull {
-                    transform: translateY(-100px) !important;
-                    transition: 0.4s ease-in-out;
-                }
-    
-                .visiblePull {
-                    visibility: visible;
-                }
-    
-                .hiddenPull {
-                    visibility: hidden;
-                }
-    
-                .pull-to-refresh-loader {
-                    border: 3px solid #303F9F;
-                    border-top: 3px solid #C5CAE9;
-                    border-radius: 50%;
-                    width: 30px;
-                    height: 30px;
-                    margin-bottom: 10px;
-                    opacity: 0;
-                }
-    
-                .pull-to-refresh-loader.animate {
-                    animation: spin 2s linear infinite;
-                }
-    
-                @keyframes spin {
-                    0% { transform: rotate(0deg); }
-                    100% { transform: rotate(360deg); }
-                }
-            </style>
             <script type="text/javascript">
                     const sendToServiceWoker = (message) => {
                         return new Promise(function(resolve, reject){
@@ -132,10 +74,10 @@
                             startPoint.y = e.screenY
                         }
                         
-                        pullToRefreshElement.classList.add("startPull")
-                        pullToRefreshElement.classList.remove("endPull")
-                        blogBody.classList.add("startPull")
-                        blogBody.classList.remove("endPull")
+                        pullToRefreshElement.classList.add("start-pull")
+                        pullToRefreshElement.classList.remove("end-pull")
+                        blogBody.classList.add("start-pull")
+                        blogBody.classList.remove("end-pull")
                     })
                     document.addEventListener('touchmove', (e) => {
                         if(typeof e['targetTouches'] !== undefined) {
@@ -149,8 +91,8 @@
     
                         if(window.scrollY <= 0 && startPoint.y - currentPoint.y <= 0) {
                             e.preventDefault();
-                            pullToRefreshElement.classList.add("visiblePull")
-                            pullToRefreshElement.classList.remove("hiddenPull")
+                            pullToRefreshElement.classList.add("visible-pull")
+                            pullToRefreshElement.classList.remove("hidden-pull")
     
                             if (changeY < 100) {
                                 pullToRefreshElement.style.transform = `translateY(-${100 - changeY}px)`
@@ -170,10 +112,10 @@
                                     setTimeout(() => {
                                         isLoading = false
                                         pullToRefreshStatusElement.innerHTML = "Refresh completed"
-                                        pullToRefreshElement.classList.add("endPull")
-                                        pullToRefreshElement.classList.add("hiddenPull")
-                                        pullToRefreshElement.classList.remove("visiblePull")
-                                        blogBody.classList.add("endPull")
+                                        pullToRefreshElement.classList.add("end-pull")
+                                        pullToRefreshElement.classList.add("hidden-pull")
+                                        pullToRefreshElement.classList.remove("visible-pull")
+                                        blogBody.classList.add("end-pull")
                                         pullToRefreshElement.style.transform = ``
                                         blogBody.style.transform = ``
                                         pullToRefreshLoaderElement.style.opacity = 0;
@@ -185,8 +127,8 @@
     
                     document.addEventListener('touchend', (e) => {
                         if(!isLoading) {
-                            pullToRefreshElement.classList.add("endPull")
-                            blogBody.classList.add("endPull")
+                            pullToRefreshElement.classList.add("end-pull")
+                            blogBody.classList.add("end-pull")
                             pullToRefreshElement.style.transform = ``
                             blogBody.style.transform = ``
                             pullToRefreshLoaderElement.style.opacity = 0;
