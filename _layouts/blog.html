@@ -50,11 +50,10 @@
                     }
 
                     let startPoint = new TouchCoordinates(0, 0)
-                    let currentPoint = new TouchCoordinates(0, 0)
-                    const pullToRefreshElement = document.querySelector("#pull-to-refresh")
-                    const pullToRefreshElementHeight = pullToRefreshElement.offsetHeight
-                    const pullToRefreshStatusElement = document.querySelector("#pull-to-refresh-status")
-                    const pullToRefreshLoaderElement = document.querySelector("#pull-to-refresh-loader")
+                    const pullToRefresh = document.querySelector("#pull-to-refresh")
+                    const pullToRefreshHeight = pullToRefresh.offsetHeight
+                    const pullToRefreshStatus = document.querySelector("#pull-to-refresh-status")
+                    const pullToRefreshLoader = document.querySelector("#pull-to-refresh-loader")
                     const blogBody = document.querySelector(".container.blog-posts")
                     let isLoading = false
 
@@ -88,46 +87,47 @@
                     
                     document.addEventListener('touchstart', (e) => {
                         startPoint = getTouchesCoordinatesFrom(e)                        
-                        pullToRefreshElement.classList.add("start-pull")
-                        pullToRefreshElement.classList.remove("end-pull")
+                        pullToRefresh.classList.add("start-pull")
+                        pullToRefresh.classList.remove("end-pull")
                         blogBody.classList.add("start-pull")
                         blogBody.classList.remove("end-pull")
                     })
 
                     document.addEventListener('touchmove', (e) => {
-                        currentPoint = getTouchesCoordinatesFrom(e)
-                        const changeY = Math.abs(startPoint.y - currentPoint.y)
+                        const currentPoint  = getTouchesCoordinatesFrom(e)
+                        const yMovement = startPoint.y - currentPoint.y
     
-                        if(window.scrollY <= 0 && startPoint.y - currentPoint.y <= 0) {
+                        if (window.scrollY <= 0 && yMovement <= 0 && !isLoading) {
                             e.preventDefault();
-                            pullToRefreshElement.classList.add("visible-pull")
-                            pullToRefreshElement.classList.remove("hidden-pull")
+                            const yAbsoluteMovement = Math.abs(yMovement)
+                            pullToRefresh.classList.add("visible-pull")
+                            pullToRefresh.classList.remove("hidden-pull")
     
-                            if (changeY < pullToRefreshElementHeight) {
-                                pullToRefreshElement.style.transform = `translateY(-${pullToRefreshElementHeight - changeY}px)`
-                                pullToRefreshLoaderElement.style.opacity = changeY/pullToRefreshElementHeight;
-                                blogBody.style.transform = `translateY(-${pullToRefreshElementHeight - changeY}px)`
+                            if (yAbsoluteMovement < pullToRefreshHeight) {
+                                pullToRefresh.style.transform = `translateY(-${pullToRefreshHeight - yAbsoluteMovement}px)`
+                                blogBody.style.transform = `translateY(-${pullToRefreshHeight - yAbsoluteMovement}px)`
+                                pullToRefreshLoader.style.opacity = yAbsoluteMovement/pullToRefreshHeight;
                             } else {
-                                pullToRefreshElement.style.transform = `translateY(0px)`
+                                pullToRefresh.style.transform = `translateY(0px)`
                                 blogBody.style.transform = `translateY(0px)`
+                                pullToRefreshLoader.style.opacity = 1;
                             }
     
-                            if(changeY >= pullToRefreshElementHeight && !isLoading) {
+                            if (yAbsoluteMovement >= pullToRefreshHeight) {
                                 isLoading = true
-                                pullToRefreshStatusElement.innerHTML = "Refreshing"
-                                pullToRefreshLoaderElement.classList.add("animate")
+                                pullToRefreshStatus.innerHTML = "Refreshing"
+                                pullToRefreshLoader.classList.add("animate")
                                 sendMessageToServiceWoker({message: "refresh", url: window.location.href}).then((data) => {
                                     setTimeout(() => {
-                                        isLoading = false
-                                        pullToRefreshStatusElement.innerHTML = "Refresh completed"
-                                        pullToRefreshElement.classList.add("end-pull")
-                                        pullToRefreshElement.classList.add("hidden-pull")
-                                        pullToRefreshElement.classList.remove("visible-pull")
+                                        pullToRefreshStatus.innerHTML = "Refresh completed"
+                                        pullToRefresh.classList.add("end-pull")
+                                        pullToRefresh.classList.add("hidden-pull")
+                                        pullToRefresh.classList.remove("visible-pull")
                                         blogBody.classList.add("end-pull")
-                                        pullToRefreshElement.style.transform = ``
+                                        pullToRefresh.style.transform = ``
                                         blogBody.style.transform = ``
-                                        pullToRefreshLoaderElement.style.opacity = 0;
-                                    }, 2000)
+                                        pullToRefreshLoader.style.opacity = 0;
+                                    }, 1500)
                                 }).catch((error) => console.log(error))
                             }
                         }
@@ -135,11 +135,11 @@
     
                     document.addEventListener('touchend', (e) => {
                         if(!isLoading) {
-                            pullToRefreshElement.classList.add("end-pull")
+                            pullToRefresh.classList.add("end-pull")
                             blogBody.classList.add("end-pull")
-                            pullToRefreshElement.style.transform = ``
+                            pullToRefresh.style.transform = ``
                             blogBody.style.transform = ``
-                            pullToRefreshLoaderElement.style.opacity = 0;
+                            pullToRefreshLoader.style.opacity = 0;
                         }
                     })
     
@@ -160,9 +160,9 @@
                         }
                     }
     
-                    pullToRefreshElement.addEventListener(endTransitionEvent(), function() {
-                        pullToRefreshStatusElement.innerHTML = "Pull down to refresh"
-                        pullToRefreshLoaderElement.classList.remove("animate")
+                    pullToRefresh.addEventListener(endTransitionEvent(), function() {
+                        pullToRefreshStatus.innerHTML = "Pull down to refresh"
+                        pullToRefreshLoader.classList.remove("animate")
                         window.location.reload()                            
                     });
                 })

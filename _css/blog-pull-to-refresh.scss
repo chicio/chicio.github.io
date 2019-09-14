@@ -41,7 +41,7 @@ html {
     opacity: 0;
   
     &.animate {
-      animation: spin 2s linear infinite;
+      animation: spin 1.25s linear infinite;
     }
   
     @keyframes spin {
