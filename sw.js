@@ -14,7 +14,7 @@ const dependenciesUrls = [
   {% include service-worker-css-cookie-policy-urls.js %}
   {% include service-worker-js-home-urls.js %}
   {% include service-worker-js-blog-urls.js %}
-]
+];
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
@@ -26,6 +26,7 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('activate', (event) => {
+  event.waitUntil(clients.claim());
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
@@ -40,14 +41,33 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.open(siteCacheName).then(async (cache) => {
-      return cache.match(event.request).then((response) => {
-        return response || fetch(event.request).then((response) => {
-          cache.put(event.request, response.clone());
-          return response;
+    event.respondWith(
+      caches.open(siteCacheName).then(async (cache) => {
+        return cache.match(event.request).then((response) => {
+          return response || fetch(event.request).then((response) => {
+            cache.put(event.request, response.clone());
+            return response;
+          });
         });
-      });
+      })
+    );  
+});
+
+self.addEventListener('message', (event) => {
+  console.log("SW Received Message: " + event.data);
+  shouldRefresh = event.data.value;
+  //TODO: refresh cache
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.filter((cacheName) => {
+          return cacheName === siteCacheName
+        }).map((cacheName) => {
+          caches.delete(cacheName).then(() => {
+            return event.ports[0].postMessage("SW Says 'Hello back!'");
+          })
+        })
+      );
     })
   );
 });

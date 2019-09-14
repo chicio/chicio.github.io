@@ -3,167 +3,6 @@
 	{% include head.html critical-css="critical-blog.css" content-type="website" %}
     <body class="blog-body">
         {% include blog-masthead.html %}
-        <style>
-            html {
-                overscroll-behavior-y: contain;
-            }
-
-            .pull-to-refresh {
-                height: 100px; 
-                background-color: #FAFAFA; 
-                margin-top: 55px;
-                box-shadow: inset 0px -2px 6px 1px #BDBDBD;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-end;
-                align-items: center;
-                padding: 10px;
-            }
-
-            .pull-to-refresh-status {
-                font-weight: bold;
-                font-size: 14px;
-            }
-
-            .startPull {
-                transform: translateY(-100px); 
-            }
-
-            .endPull {
-                transform: translateY(-100px) !important;
-                transition: 0.4s ease-in-out;
-            }
-
-            .visiblePull {
-                visibility: visible;
-            }
-
-            .hiddenPull {
-                visibility: hidden;
-            }
-
-            .pull-to-refresh-loader {
-                border: 3px solid #303F9F;
-                border-top: 3px solid #C5CAE9;
-                border-radius: 50%;
-                width: 30px;
-                height: 30px;
-                margin-bottom: 10px;
-                opacity: 0;
-            }
-
-            .pull-to-refresh-loader.animate {
-                animation: spin 2s linear infinite;
-            }
-
-            @keyframes spin {
-                0% { transform: rotate(0deg); }
-                100% { transform: rotate(360deg); }
-            }
-        </style>
-        <script type="text/javascript">
-            document.addEventListener('DOMContentLoaded', () => {
-                const startPoint = { x: 0, y: 0 }
-                const currentPoint = { x: 0, y: 0 }
-                const pullToRefreshElement = document.querySelector("#pull-to-refresh")
-                const pullToRefreshStatusElement = document.querySelector("#pull-to-refresh-status")
-                const pullToRefreshLoaderElement = document.querySelector("#pull-to-refresh-loader")
-                const blogBody = document.querySelector(".container.blog-posts")
-                let isLoading = false
-                
-                document.addEventListener('touchstart', (e) => {
-                    if(typeof e['targetTouches'] !== undefined) {
-                        startPoint.x = e.targetTouches[0].screenX
-                        startPoint.y = e.targetTouches[0].screenY
-                    } else {
-                        startPoint.x = e.screenX
-                        startPoint.y = e.screenY
-                    }
-                    
-                    pullToRefreshElement.classList.add("startPull")
-                    pullToRefreshElement.classList.remove("endPull")
-                    blogBody.classList.add("startPull")
-                    blogBody.classList.remove("endPull")
-                })
-                document.addEventListener('touchmove', (e) => {
-                    if(typeof e['targetTouches'] !== undefined) {
-                        currentPoint.x = e.targetTouches[0].screenX
-                        currentPoint.y = e.targetTouches[0].screenY
-                    } else {
-                        currentPoint.x = e.screenX
-                        currentPoint.y = e.screenY
-                    }
-                    const changeY = Math.abs(startPoint.y - currentPoint.y)
-                    //console.log(startPoint.y - currentPoint.y)
-                    console.log(window.scrollY)
-                    console.log(startPoint.y - currentPoint.y)
-
-                    if(window.scrollY <= 0 && startPoint.y - currentPoint.y <= 0) {
-                        e.preventDefault();
-                        pullToRefreshElement.classList.add("visiblePull")
-                        pullToRefreshElement.classList.remove("hiddenPull")
-
-                        if (changeY < 100) {
-                            pullToRefreshElement.style.transform = `translateY(-${100 - changeY}px)`
-                            pullToRefreshLoaderElement.style.opacity = changeY/100;
-                            blogBody.style.transform = `translateY(-${100 - changeY}px)`
-                        } else {
-                            pullToRefreshElement.style.transform = `translateY(0px)`
-                            blogBody.style.transform = `translateY(0px)`
-                        }
-
-                        if(changeY >= 100 && !isLoading) {
-                            isLoading = true
-                            pullToRefreshStatusElement.innerHTML = "Refreshing"
-                            pullToRefreshLoaderElement.classList.add("animate")
-                            setTimeout(() => {
-                                isLoading = false
-                                pullToRefreshStatusElement.innerHTML = "Refresh completed"
-                                pullToRefreshElement.classList.add("endPull")
-                                pullToRefreshElement.classList.add("hiddenPull")
-                                pullToRefreshElement.classList.remove("visiblePull")
-                                blogBody.classList.add("endPull")
-                                pullToRefreshElement.style.transform = ``
-                                blogBody.style.transform = ``
-                                pullToRefreshLoaderElement.style.opacity = 0;
-                            }, 3000)
-                        }
-                    }
-                }, {passive: false})
-
-                document.addEventListener('touchend', (e) => {
-                    if(!isLoading) {
-                        pullToRefreshElement.classList.add("endPull")
-                        blogBody.classList.add("endPull")
-                        pullToRefreshElement.style.transform = ``
-                        blogBody.style.transform = ``
-                        pullToRefreshLoaderElement.style.opacity = 0;
-                    }
-                })
-
-                const endTransitionEvent = () => {
-                    var t;
-                    var el = document.createElement('fakeelement');
-                    var transitions = {
-                        'transition':'transitionend',
-                        'OTransition':'oTransitionEnd',
-                        'MozTransition':'transitionend',
-                        'WebkitTransition':'webkitTransitionEnd'
-                    }
-
-                    for(t in transitions){
-                        if( el.style[t] !== undefined ){
-                            return transitions[t];
-                        }
-                    }
-                }
-
-                pullToRefreshElement.addEventListener(endTransitionEvent(), function() {
-                    pullToRefreshStatusElement.innerHTML = "Pull down to refresh"
-                    pullToRefreshLoaderElement.classList.remove("animate")
-                });
-            })
-        </script>
         <div id="pull-to-refresh" class="pull-to-refresh startPull hiddenPull">    
             <div id="pull-to-refresh-loader" class="pull-to-refresh-loader"></div>
             <div id="pull-to-refresh-status" class="pull-to-refresh-status">
@@ -200,6 +39,185 @@
         </div>
         {% include footer.html %}
 		{% include style.html styleInclude="dependencies-css-blog-home.html" %}
-		{% include dependencies-js-blog.html %}
+        {% include dependencies-js-blog.html %}
+        <style>
+                html {
+                    overscroll-behavior-y: contain;
+                }
+    
+                .pull-to-refresh {
+                    height: 100px; 
+                    background-color: #FAFAFA; 
+                    margin-top: 55px;
+                    box-shadow: inset 0px -2px 6px 1px #BDBDBD;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    align-items: center;
+                    padding: 10px;
+                }
+    
+                .pull-to-refresh-status {
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+    
+                .startPull {
+                    transform: translateY(-100px); 
+                }
+    
+                .endPull {
+                    transform: translateY(-100px) !important;
+                    transition: 0.4s ease-in-out;
+                }
+    
+                .visiblePull {
+                    visibility: visible;
+                }
+    
+                .hiddenPull {
+                    visibility: hidden;
+                }
+    
+                .pull-to-refresh-loader {
+                    border: 3px solid #303F9F;
+                    border-top: 3px solid #C5CAE9;
+                    border-radius: 50%;
+                    width: 30px;
+                    height: 30px;
+                    margin-bottom: 10px;
+                    opacity: 0;
+                }
+    
+                .pull-to-refresh-loader.animate {
+                    animation: spin 2s linear infinite;
+                }
+    
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+            </style>
+            <script type="text/javascript">
+                    const sendToServiceWoker = (msg) => {
+                        return new Promise(function(resolve, reject){
+                            var messageChannel = new MessageChannel();
+                            messageChannel.port1.onmessage = function(event){
+                                if(event.data.error){
+                                    reject(event.data.error);
+                                }else{
+                                    resolve(event.data);
+                                }
+                            };
+                            navigator.serviceWorker.controller.postMessage(
+                                "Client 1 says '"+msg+"'", 
+                                [messageChannel.port2]
+                            );
+                        });
+                    }
+    
+                document.addEventListener('DOMContentLoaded', () => {
+                    const startPoint = { x: 0, y: 0 }
+                    const currentPoint = { x: 0, y: 0 }
+                    const pullToRefreshElement = document.querySelector("#pull-to-refresh")
+                    const pullToRefreshStatusElement = document.querySelector("#pull-to-refresh-status")
+                    const pullToRefreshLoaderElement = document.querySelector("#pull-to-refresh-loader")
+                    const blogBody = document.querySelector(".container.blog-posts")
+                    let isLoading = false
+                    
+                    document.addEventListener('touchstart', (e) => {
+                        if(typeof e['targetTouches'] !== undefined) {
+                            startPoint.x = e.targetTouches[0].screenX
+                            startPoint.y = e.targetTouches[0].screenY
+                        } else {
+                            startPoint.x = e.screenX
+                            startPoint.y = e.screenY
+                        }
+                        
+                        pullToRefreshElement.classList.add("startPull")
+                        pullToRefreshElement.classList.remove("endPull")
+                        blogBody.classList.add("startPull")
+                        blogBody.classList.remove("endPull")
+                    })
+                    document.addEventListener('touchmove', (e) => {
+                        if(typeof e['targetTouches'] !== undefined) {
+                            currentPoint.x = e.targetTouches[0].screenX
+                            currentPoint.y = e.targetTouches[0].screenY
+                        } else {
+                            currentPoint.x = e.screenX
+                            currentPoint.y = e.screenY
+                        }
+                        const changeY = Math.abs(startPoint.y - currentPoint.y)
+    
+                        if(window.scrollY <= 0 && startPoint.y - currentPoint.y <= 0) {
+                            e.preventDefault();
+                            pullToRefreshElement.classList.add("visiblePull")
+                            pullToRefreshElement.classList.remove("hiddenPull")
+    
+                            if (changeY < 100) {
+                                pullToRefreshElement.style.transform = `translateY(-${100 - changeY}px)`
+                                pullToRefreshLoaderElement.style.opacity = changeY/100;
+                                blogBody.style.transform = `translateY(-${100 - changeY}px)`
+                            } else {
+                                pullToRefreshElement.style.transform = `translateY(0px)`
+                                blogBody.style.transform = `translateY(0px)`
+                            }
+    
+                            if(changeY >= 100 && !isLoading) {
+                                isLoading = true
+                                pullToRefreshStatusElement.innerHTML = "Refreshing"
+                                pullToRefreshLoaderElement.classList.add("animate")
+                                sendToServiceWoker({message: "refresh", value: true}).then((data) => {
+                                    setTimeout(() => {
+                                        isLoading = false
+                                        pullToRefreshStatusElement.innerHTML = "Refresh completed"
+                                        pullToRefreshElement.classList.add("endPull")
+                                        pullToRefreshElement.classList.add("hiddenPull")
+                                        pullToRefreshElement.classList.remove("visiblePull")
+                                        blogBody.classList.add("endPull")
+                                        pullToRefreshElement.style.transform = ``
+                                        blogBody.style.transform = ``
+                                        pullToRefreshLoaderElement.style.opacity = 0;
+                                    }, 2000)
+                                    console.log(data)
+                                }).catch((error) => console.log(error))
+                            }
+                        }
+                    }, {passive: false})
+    
+                    document.addEventListener('touchend', (e) => {
+                        if(!isLoading) {
+                            pullToRefreshElement.classList.add("endPull")
+                            blogBody.classList.add("endPull")
+                            pullToRefreshElement.style.transform = ``
+                            blogBody.style.transform = ``
+                            pullToRefreshLoaderElement.style.opacity = 0;
+                        }
+                    })
+    
+                    const endTransitionEvent = () => {
+                        var t;
+                        var el = document.createElement('fakeelement');
+                        var transitions = {
+                            'transition':'transitionend',
+                            'OTransition':'oTransitionEnd',
+                            'MozTransition':'transitionend',
+                            'WebkitTransition':'webkitTransitionEnd'
+                        }
+    
+                        for(t in transitions){
+                            if( el.style[t] !== undefined ){
+                                return transitions[t];
+                            }
+                        }
+                    }
+    
+                    pullToRefreshElement.addEventListener(endTransitionEvent(), function() {
+                        pullToRefreshStatusElement.innerHTML = "Pull down to refresh"
+                        pullToRefreshLoaderElement.classList.remove("animate")
+                        window.location.reload()
+                    });
+                })
+            </script>
     </body>
 </html>
