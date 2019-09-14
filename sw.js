@@ -41,6 +41,7 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+    console.log(event.request)
     event.respondWith(
       caches.open(siteCacheName).then(async (cache) => {
         return cache.match(event.request).then((response) => {
@@ -54,20 +55,19 @@ self.addEventListener('fetch', (event) => {
 });
 
 self.addEventListener('message', (event) => {
-  console.log("SW Received Message: " + event.data);
-  shouldRefresh = event.data.value;
-  //TODO: refresh cache
-  event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.filter((cacheName) => {
-          return cacheName === siteCacheName
-        }).map((cacheName) => {
-          return caches.delete(cacheName).then(() => {
-            return event.ports[0].postMessage("SW Says 'clean cache complete'");
-          })
-        })
-      );
-    })
-  );
+  console.log("SW Received Message: " + JSON.stringify(event.data));
+  if (event.data.message === 'refresh') {
+    caches.open(siteCacheName).then((siteCache) => {
+      siteCache.keys().then((requests) => {
+        const deleteRequestToBeRefreshed = siteCache.delete(requests.find((request) => request.url === event.data.url))
+        const deleteRequestsForImagesToBeRefreshed = requests
+          .filter((request) => request.url.endsWith('.jpg') && request.url.includes('posts'))
+          .map((request) => siteCache.delete(request))
+        console.log(deleteRequestsForImagesToBeRefreshed.length)  
+        Promise.all([deleteRequestToBeRefreshed, ...deleteRequestsForImagesToBeRefreshed])
+          .then(() => event.ports[0].postMessage({shouldRefresh: true}))
+          .catch(() => event.ports[0].postMessage({shouldRefresh: true}));
+      });
+    });  
+  }
 });

@@ -99,22 +99,19 @@
                 }
             </style>
             <script type="text/javascript">
-                    const sendToServiceWoker = (msg) => {
+                    const sendToServiceWoker = (message) => {
                         return new Promise(function(resolve, reject){
                             var messageChannel = new MessageChannel();
                             messageChannel.port1.onmessage = function(event){
-                                if(event.data.error){
+                                if (event.data.error){
                                     reject(event.data.error);
-                                }else{
+                                } else {
                                     resolve(event.data);
                                 }
                             };
-                            navigator.serviceWorker.controller.postMessage(
-                                "Client 1 says '"+msg+"'", 
-                                [messageChannel.port2]
-                            );
+                            navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
                         });
-                    }
+                    } 
     
                 document.addEventListener('DOMContentLoaded', () => {
                     const startPoint = { x: 0, y: 0 }
@@ -124,6 +121,7 @@
                     const pullToRefreshLoaderElement = document.querySelector("#pull-to-refresh-loader")
                     const blogBody = document.querySelector(".container.blog-posts")
                     let isLoading = false
+                    let shouldRefresh = false;
                     
                     document.addEventListener('touchstart', (e) => {
                         if(typeof e['targetTouches'] !== undefined) {
@@ -167,7 +165,8 @@
                                 isLoading = true
                                 pullToRefreshStatusElement.innerHTML = "Refreshing"
                                 pullToRefreshLoaderElement.classList.add("animate")
-                                sendToServiceWoker({message: "refresh", value: true}).then((data) => {
+                                sendToServiceWoker({message: "refresh", url: window.location.href}).then((data) => {
+                                    shouldRefresh = data.shouldRefresh
                                     setTimeout(() => {
                                         isLoading = false
                                         pullToRefreshStatusElement.innerHTML = "Refresh completed"
@@ -179,7 +178,6 @@
                                         blogBody.style.transform = ``
                                         pullToRefreshLoaderElement.style.opacity = 0;
                                     }, 2000)
-                                    console.log(data)
                                 }).catch((error) => console.log(error))
                             }
                         }
@@ -215,7 +213,9 @@
                     pullToRefreshElement.addEventListener(endTransitionEvent(), function() {
                         pullToRefreshStatusElement.innerHTML = "Pull down to refresh"
                         pullToRefreshLoaderElement.classList.remove("animate")
-                        window.location.reload()
+                        if (shouldRefresh) {
+                            window.location.reload()                            
+                        }
                     });
                 })
             </script>
