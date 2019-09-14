@@ -41,7 +41,6 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-    console.log(event.request)
     event.respondWith(
       caches.open(siteCacheName).then(async (cache) => {
         return cache.match(event.request).then((response) => {
