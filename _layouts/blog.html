@@ -41,11 +41,27 @@
 		{% include style.html styleInclude="dependencies-css-blog-home.html" %}
         {% include dependencies-js-blog.html %}
             <script type="text/javascript">
-                    const sendToServiceWoker = (message) => {
-                        return new Promise(function(resolve, reject){
-                            var messageChannel = new MessageChannel();
-                            messageChannel.port1.onmessage = function(event){
-                                if (event.data.error){
+                document.addEventListener('DOMContentLoaded', () => {
+                    class TouchCoordinates {
+                        constructor (x, y) {
+                            this.x = x
+                            this.y = y
+                        }
+                    }
+
+                    let startPoint = new TouchCoordinates(0, 0)
+                    let currentPoint = new TouchCoordinates(0, 0)
+                    const pullToRefreshElement = document.querySelector("#pull-to-refresh")
+                    const pullToRefreshStatusElement = document.querySelector("#pull-to-refresh-status")
+                    const pullToRefreshLoaderElement = document.querySelector("#pull-to-refresh-loader")
+                    const blogBody = document.querySelector(".container.blog-posts")
+                    let isLoading = false
+
+                    const sendMessageToServiceWoker = (message) => {
+                        return new Promise((resolve, reject) => {
+                            const messageChannel = new MessageChannel();
+                            messageChannel.port1.onmessage = (event) => {
+                                if (event.data.error) {
                                     reject(event.data.error);
                                 } else {
                                     resolve(event.data);
@@ -54,39 +70,31 @@
                             navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
                         });
                     } 
-    
-                document.addEventListener('DOMContentLoaded', () => {
-                    const startPoint = { x: 0, y: 0 }
-                    const currentPoint = { x: 0, y: 0 }
-                    const pullToRefreshElement = document.querySelector("#pull-to-refresh")
-                    const pullToRefreshStatusElement = document.querySelector("#pull-to-refresh-status")
-                    const pullToRefreshLoaderElement = document.querySelector("#pull-to-refresh-loader")
-                    const blogBody = document.querySelector(".container.blog-posts")
-                    let isLoading = false
-                    let shouldRefresh = false;
+                    
+                    const getTouchesCoordinatesFrom = (event) => {
+                        if(typeof event['targetTouches'] !== undefined) {
+                            return new TouchCoordinates(
+                                event.targetTouches[0].screenX,
+                                event.targetTouches[0].screenY
+                            )
+                        } else {
+                            return new TouchCoordinates(
+                                event.screenX,
+                                event.screenY
+                            )
+                        }
+                    }
                     
                     document.addEventListener('touchstart', (e) => {
-                        if(typeof e['targetTouches'] !== undefined) {
-                            startPoint.x = e.targetTouches[0].screenX
-                            startPoint.y = e.targetTouches[0].screenY
-                        } else {
-                            startPoint.x = e.screenX
-                            startPoint.y = e.screenY
-                        }
-                        
+                        startPoint = getTouchesCoordinatesFrom(e)                        
                         pullToRefreshElement.classList.add("start-pull")
                         pullToRefreshElement.classList.remove("end-pull")
                         blogBody.classList.add("start-pull")
                         blogBody.classList.remove("end-pull")
                     })
+
                     document.addEventListener('touchmove', (e) => {
-                        if(typeof e['targetTouches'] !== undefined) {
-                            currentPoint.x = e.targetTouches[0].screenX
-                            currentPoint.y = e.targetTouches[0].screenY
-                        } else {
-                            currentPoint.x = e.screenX
-                            currentPoint.y = e.screenY
-                        }
+                        currentPoint = getTouchesCoordinatesFrom(e)
                         const changeY = Math.abs(startPoint.y - currentPoint.y)
     
                         if(window.scrollY <= 0 && startPoint.y - currentPoint.y <= 0) {
@@ -107,8 +115,7 @@
                                 isLoading = true
                                 pullToRefreshStatusElement.innerHTML = "Refreshing"
                                 pullToRefreshLoaderElement.classList.add("animate")
-                                sendToServiceWoker({message: "refresh", url: window.location.href}).then((data) => {
-                                    shouldRefresh = data.shouldRefresh
+                                sendMessageToServiceWoker({message: "refresh", url: window.location.href}).then((data) => {
                                     setTimeout(() => {
                                         isLoading = false
                                         pullToRefreshStatusElement.innerHTML = "Refresh completed"
@@ -155,9 +162,7 @@
                     pullToRefreshElement.addEventListener(endTransitionEvent(), function() {
                         pullToRefreshStatusElement.innerHTML = "Pull down to refresh"
                         pullToRefreshLoaderElement.classList.remove("animate")
-                        if (shouldRefresh) {
-                            window.location.reload()                            
-                        }
+                        window.location.reload()                            
                     });
                 })
             </script>
