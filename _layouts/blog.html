@@ -85,6 +85,12 @@
                             )
                         }
                     }
+
+                    const dragUpdate = (pullToRefreshTransform, blogBodyTransform, pullToRefreshLoaderOpacity) => {
+                        pullToRefresh.style.transform = `translateY(-${pullToRefreshTransform}px)`
+                        blogBody.style.transform = `translateY(-${blogBodyTransform}px)`
+                        pullToRefreshLoader.style.opacity = pullToRefreshLoaderOpacity;
+                    }
                     
                     document.addEventListener('touchstart', (e) => {
                         startPoint = getTouchesCoordinatesFrom(e)                        
@@ -105,13 +111,13 @@
                             pullToRefresh.classList.remove("hidden-pull")
     
                             if (yAbsoluteMovement < pullToRefreshHeight) {
-                                pullToRefresh.style.transform = `translateY(-${pullToRefreshHeight - yAbsoluteMovement}px)`
-                                blogBody.style.transform = `translateY(-${pullToRefreshHeight - yAbsoluteMovement}px)`
-                                pullToRefreshLoader.style.opacity = yAbsoluteMovement/pullToRefreshHeight;
+                                dragUpdate(
+                                    pullToRefreshHeight - yAbsoluteMovement, 
+                                    pullToRefreshHeight - yAbsoluteMovement,
+                                    yAbsoluteMovement/pullToRefreshHeight
+                                )
                             } else {
-                                pullToRefresh.style.transform = `translateY(0px)`
-                                blogBody.style.transform = `translateY(0px)`
-                                pullToRefreshLoader.style.opacity = 1;
+                                dragUpdate(0, 0,1)
                             }
     
                             if (yAbsoluteMovement >= pullToRefreshHeight) {
@@ -147,7 +153,6 @@
                     })
     
                     pullToRefresh.addEventListener("transitionend", function() {
-                        console.log("transitionend")
                         if (shouldRefresh) {
                             window.location.reload()                            
                         } else {
