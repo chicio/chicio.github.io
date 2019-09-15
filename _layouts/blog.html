@@ -2,8 +2,9 @@
 <html lang="en">
 	{% include head.html critical-css="critical-blog.css" content-type="website" %}
     <body class="blog-body">
-		{% include blog-masthead.html %}
-        <div class="container blog-posts">
+        {% include blog-masthead.html %}
+        {% include blog-pull-to-refresh.html %}
+        <div class="container blog-posts start-pull pullable-content">
 			{% include blog-header.html %}
             <div class="blog-main">
                 <div class="blog-posts-list">
@@ -33,6 +34,6 @@
         </div>
         {% include footer.html %}
 		{% include style.html styleInclude="dependencies-css-blog-home.html" %}
-		{% include dependencies-js-blog.html %}
+        {% include dependencies-js-blog.html %}
     </body>
 </html>

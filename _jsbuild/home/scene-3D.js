@@ -13,9 +13,9 @@ const scene3D = () => {
 
 const sceneThreeJS = () => {
   PLYLoader(THREE)
-  let plyLoader = new THREE.PLYLoader()
-  let scene = new THREE.Scene()
-  let textureLoader = new THREE.TextureLoader()
+  const plyLoader = new THREE.PLYLoader()
+  const scene = new THREE.Scene()
+  const textureLoader = new THREE.TextureLoader()
   const camera = camera3D()
   const renderer = renderer3D()
   const orbit = orbitsControls(camera, renderer)
@@ -81,7 +81,7 @@ const bunny = () => new Object3D(
 )
 
 const orbitsControls = (camera, renderer) => {
-  let controls = new OrbitControls(camera, renderer.domElement)
+  const controls = new OrbitControls(camera, renderer.domElement)
   controls.enableZoom = false
   controls.autoRotate = true
   controls.enablePan = false
@@ -115,7 +115,7 @@ const lights = (scene) => {
 }
 
 const camera3D = () => {
-  let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
   camera.position.z = 8
   camera.position.y = 0
   camera.position.x = 0
@@ -123,7 +123,7 @@ const camera3D = () => {
 }
 
 const pointLight = () => {
-  let light = new THREE.PointLight(0xffffff, 1, 20, 2)
+  const light = new THREE.PointLight(0xffffff, 1, 20, 2)
   light.power = 1700
   light.castShadow = true
   light.shadow.mapSize.width = 512
@@ -134,7 +134,7 @@ const pointLight = () => {
 }
 
 const renderer3D = () => {
-  let renderer = new THREE.WebGLRenderer({ alpha: true })
+  const renderer = new THREE.WebGLRenderer({ alpha: true })
   renderer.physicallyCorrectLights = true
   renderer.gammaInput = true
   renderer.gammaOutput = true
@@ -146,28 +146,28 @@ const renderer3D = () => {
 
 const stars = (textureLoader, completeLoad) => {
   textureLoader.load('assets/models/textures/circle.png', function (texture) {
-    let starsGeometry = new THREE.Geometry()
+    const starsGeometry = new THREE.Geometry()
     for (let i = 0; i < 10000; i++) {
-      let star = new THREE.Vector3()
+      const star = new THREE.Vector3()
       star.x = 2000 * Math.random() - 1000
       star.y = 2000 * Math.random()
       star.z = 2000 * Math.random() - 1000
       starsGeometry.vertices.push(star)
     }
-    let starsMaterial = new THREE.PointsMaterial({
+    const starsMaterial = new THREE.PointsMaterial({
       color: 0x888888,
       map: texture,
       transparent: true
     })
-    let stars = new THREE.Points(starsGeometry, starsMaterial)
+    const stars = new THREE.Points(starsGeometry, starsMaterial)
     completeLoad(stars)
   })
 }
 
 const meshWithPBRMaterial = (plyLoader, object, completeLoad) => {
   plyLoader.load(object.path, geometry => {
-    let material = new THREE.MeshPhysicalMaterial(object.properties)
-    let mesh = new THREE.Mesh(geometry, material)
+    const material = new THREE.MeshPhysicalMaterial(object.properties)
+    const mesh = new THREE.Mesh(geometry, material)
     mesh.position.set(object.position.x, object.position.y, object.position.z)
     mesh.rotation.set(object.rotation.x, object.rotation.y, object.rotation.z)
     mesh.castShadow = true
@@ -182,13 +182,13 @@ const floor = (textureLoader, completionFunction) => {
     texture.wrapS = THREE.RepeatWrapping
     texture.wrapT = THREE.RepeatWrapping
     texture.repeat.set(100, 100)
-    let floorMat = new THREE.MeshStandardMaterial({
+    const floorMat = new THREE.MeshStandardMaterial({
       roughness: 0.7,
       metalness: 0.1,
       map: texture
     })
-    let floorGeometry = new THREE.PlaneGeometry(1000, 1000)
-    let floorMesh = new THREE.Mesh(floorGeometry, floorMat)
+    const floorGeometry = new THREE.PlaneGeometry(1000, 1000)
+    const floorMesh = new THREE.Mesh(floorGeometry, floorMat)
     floorMesh.receiveShadow = true
     floorMesh.rotation.x = -Math.PI / 2.0
     floorMesh.position.y = -3

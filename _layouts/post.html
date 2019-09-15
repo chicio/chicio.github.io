@@ -3,7 +3,8 @@
 	{% include head.html critical-css="critical-blog-post.css" %}
 	<body class="blog-body">
 		{% include blog-masthead.html %}
-		<div class="container blog-posts">
+		{% include blog-pull-to-refresh.html %}
+		<div class="container blog-posts start-pull pullable-content">
 			{% include blog-header.html %}
 			<div class="blog-main">
 				{% include blog-post.html post=page link-title=false %}

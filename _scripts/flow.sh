@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+# Clean old build
+rm -Rf _jsbuild/**
+
 # Enter into js source folder
 cd _js 
 
