@@ -55,6 +55,7 @@
                     const pullToRefreshStatus = document.querySelector("#pull-to-refresh-status")
                     const pullToRefreshLoader = document.querySelector("#pull-to-refresh-loader")
                     const blogBody = document.querySelector(".container.blog-posts")
+                    let shouldRefresh = false
                     let isLoading = false
 
                     const sendMessageToServiceWoker = (message) => {
@@ -118,6 +119,7 @@
                                 pullToRefreshStatus.innerHTML = "Refreshing"
                                 pullToRefreshLoader.classList.add("animate")
                                 sendMessageToServiceWoker({message: "refresh", url: window.location.href}).then((data) => {
+                                    shouldRefresh = data.shouldRefresh
                                     setTimeout(() => {
                                         pullToRefreshStatus.innerHTML = "Refresh completed"
                                         pullToRefresh.classList.add("end-pull")
@@ -140,6 +142,7 @@
                             pullToRefresh.style.transform = ``
                             blogBody.style.transform = ``
                             pullToRefreshLoader.style.opacity = 0;
+                            shouldRefresh = false
                         }
                     })
     
@@ -161,9 +164,12 @@
                     }
     
                     pullToRefresh.addEventListener(endTransitionEvent(), function() {
-                        pullToRefreshStatus.innerHTML = "Pull down to refresh"
-                        pullToRefreshLoader.classList.remove("animate")
-                        window.location.reload()                            
+                        if (shouldRefresh) {
+                            window.location.reload()                            
+                        } else {
+                            pullToRefreshStatus.innerHTML = "Pull down to refresh"
+                            pullToRefreshLoader.classList.remove("animate")
+                        }
                     });
                 })
             </script>

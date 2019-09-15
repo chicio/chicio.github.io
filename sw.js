@@ -64,7 +64,7 @@ self.addEventListener('message', (event) => {
     .filter((request) => request.url.endsWith('.jpg') && request.url.includes('posts'))
     .map((request) => siteCache.delete(request))
 
-  const sendShouldRefreshMessageToClient = (event) => event.ports[0].postMessage("readyToRefresh");
+  const sendShouldRefreshMessageToClient = (event) => event.ports[0].postMessage({shouldRefresh: true});
 
   if (isARefresh(event)) {
     const refreshMessage = {shouldRefresh: true};
