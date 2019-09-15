@@ -1,5 +1,6 @@
 /* @flow */
 import { sendMessageToServiceWorker } from '../common/service-worker'
+import { addCssClass, removeCssClass } from '../common/css-class'
 
 const pullToRefresh = (): void => {
   if (!('serviceWorker' in navigator)) {
@@ -29,41 +30,41 @@ const pullToRefresh = (): void => {
   const isDraggingForPullToRefresh = (yMovement: number): boolean => window.scrollY <= 0 && yMovement <= 0
 
   const closePullToRefresh = (): void => {
-    pullToRefreshElement.classList.add('end-pull')
-    pullableContent.classList.add('end-pull')
+    addCssClass(pullToRefreshElement, 'end-pull')
+    addCssClass(pullableContent, 'end-pull')
     pullToRefreshElement.style.transform = ''
     pullableContent.style.transform = ''
     pullToRefreshLoaderElement.style.opacity = '0'
   }
 
   const preparePullToRefreshToStart = (): void => {
-    pullToRefreshElement.classList.add('start-pull')
-    pullToRefreshElement.classList.remove('end-pull')
-    pullableContent.classList.add('start-pull')
-    pullableContent.classList.remove('end-pull')
+    addCssClass(pullToRefreshElement, 'start-pull')
+    removeCssClass(pullToRefreshElement, 'end-pull')
+    addCssClass(pullableContent, 'start-pull')
+    removeCssClass(pullableContent, 'end-pull')
   }
 
   const showPullToRefresh = (): void => {
-    pullToRefreshElement.classList.add('visible-pull')
-    pullToRefreshElement.classList.remove('hidden-pull')
+    addCssClass(pullToRefreshElement, 'visible-pull')
+    removeCssClass(pullToRefreshElement, 'hidden-pull')
   }
 
   const setRefreshingStatus = (): void => {
     pullToRefreshStatusElement.innerHTML = 'Refreshing'
-    pullToRefreshLoaderElement.classList.add('animate')
+    addCssClass(pullToRefreshLoaderElement, 'animate')
   }
 
   const isPullToRefreshDragCompleted = (yAbsoluteMovement: number): boolean => yAbsoluteMovement >= pullToRefreshElementHeight
 
   const setRefreshStatusCompleted = (): void => {
     pullToRefreshStatusElement.innerHTML = 'Refresh completed'
-    pullToRefreshElement.classList.add('hidden-pull')
-    pullToRefreshElement.classList.remove('visible-pull')
+    addCssClass(pullToRefreshElement, 'hidden-pull')
+    removeCssClass(pullToRefreshElement, 'visible-pull')
   }
 
   const resetPullToRefreshStatus = (): void => {
     pullToRefreshStatusElement.innerHTML = 'Pull down to refresh'
-    pullToRefreshLoaderElement.classList.remove('animate')
+    removeCssClass(pullToRefreshLoaderElement, 'animate')
   }
 
   document.addEventListener('touchstart', (event: TouchEvent) => {
