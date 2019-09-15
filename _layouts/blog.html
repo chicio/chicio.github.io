@@ -146,24 +146,8 @@
                         }
                     })
     
-                    const endTransitionEvent = () => {
-                        var t;
-                        var el = document.createElement('fakeelement');
-                        var transitions = {
-                            'transition':'transitionend',
-                            'OTransition':'oTransitionEnd',
-                            'MozTransition':'transitionend',
-                            'WebkitTransition':'webkitTransitionEnd'
-                        }
-    
-                        for(t in transitions){
-                            if( el.style[t] !== undefined ){
-                                return transitions[t];
-                            }
-                        }
-                    }
-    
-                    pullToRefresh.addEventListener(endTransitionEvent(), function() {
+                    pullToRefresh.addEventListener("transitionend", function() {
+                        console.log("transitionend")
                         if (shouldRefresh) {
                             window.location.reload()                            
                         } else {
