@@ -1,3 +1,4 @@
+import { sendMessageToServiceWorker } from '../common/service-worker'
 
 const pullToRefresh = () => {
   if (!('serviceWorker' in navigator)) {
@@ -24,20 +25,6 @@ const pullToRefresh = () => {
   const pullableContent = document.querySelector('.pullable-content')
   const pullToRefreshStatusRepository = createPullToRefreshStatusRepository()
   let dragStartPoint = createTouchCoordinates(0, 0)
-
-  const sendMessageToServiceWoker = (message) => {
-    return new Promise((resolve, reject) => {
-      const messageChannel = new MessageChannel()
-      messageChannel.port1.onmessage = (event) => {
-        if (event.data.error) {
-          reject(event.data.error)
-        } else {
-          resolve(event.data)
-        }
-      }
-      navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2])
-    })
-  }
 
   const getTouchesCoordinatesFrom = (event) => {
     if (event.targetTouches && event.targetTouches.length) {
@@ -117,7 +104,7 @@ const pullToRefresh = () => {
         pullToRefreshStatusRepository.startRefresh()
         dragUpdate(0, 1)
         setRefreshingStatus()
-        sendMessageToServiceWoker({ message: 'refresh', url: window.location.href }).then((data) => {
+        sendMessageToServiceWorker({ message: 'refresh', url: window.location.href }).then((data) => {
           pullToRefreshStatusRepository.completeRefresh()
           setTimeout(() => {
             setRefreshStatusCompleted()
