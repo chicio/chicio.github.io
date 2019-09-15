@@ -11,7 +11,7 @@ seo:
 authors: [fabrizio_duroni]
 ---
 
-*Javascript Interface can be helpful when you need to call native code from a webview on Android.*
+*Javascript Interface can be helpful when you need to call native code from a WebView on Android.*
 
 ---
 
