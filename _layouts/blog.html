@@ -86,9 +86,9 @@
                         }
                     }
 
-                    const dragUpdate = (pullToRefreshTransform, blogBodyTransform, pullToRefreshLoaderOpacity) => {
-                        pullToRefresh.style.transform = `translateY(-${pullToRefreshTransform}px)`
-                        blogBody.style.transform = `translateY(-${blogBodyTransform}px)`
+                    const dragUpdate = (dragMovement, pullToRefreshLoaderOpacity) => {
+                        pullToRefresh.style.transform = `translateY(${dragMovement}px)`
+                        blogBody.style.transform = `translateY(${dragMovement}px)`
                         pullToRefreshLoader.style.opacity = pullToRefreshLoaderOpacity;
                     }
                     
@@ -109,19 +109,10 @@
                             const yAbsoluteMovement = Math.abs(yMovement)
                             pullToRefresh.classList.add("visible-pull")
                             pullToRefresh.classList.remove("hidden-pull")
-    
-                            if (yAbsoluteMovement < pullToRefreshHeight) {
-                                dragUpdate(
-                                    pullToRefreshHeight - yAbsoluteMovement, 
-                                    pullToRefreshHeight - yAbsoluteMovement,
-                                    yAbsoluteMovement/pullToRefreshHeight
-                                )
-                            } else {
-                                dragUpdate(0, 0,1)
-                            }
-    
+
                             if (yAbsoluteMovement >= pullToRefreshHeight) {
                                 isLoading = true
+                                dragUpdate(0, 1)
                                 pullToRefreshStatus.innerHTML = "Refreshing"
                                 pullToRefreshLoader.classList.add("animate")
                                 sendMessageToServiceWoker({message: "refresh", url: window.location.href}).then((data) => {
@@ -137,6 +128,11 @@
                                         pullToRefreshLoader.style.opacity = 0;
                                     }, 1500)
                                 }).catch((error) => console.log(error))
+                            } else {
+                                dragUpdate(
+                                    yAbsoluteMovement - pullToRefreshHeight, 
+                                    yAbsoluteMovement/pullToRefreshHeight
+                                )
                             }
                         }
                     }, {passive: false})
