@@ -2,6 +2,7 @@
 import { cookieConsent } from './common/cookie-consent.js'
 import { lazyLoadImages } from './common/lazy-load-images'
 import { disqus } from './blog/disqus'
+import { pullToRefresh } from './blog/pull-to-refresh.js'
 
 document.addEventListener('DOMContentLoaded', () => {
   lazyLoadImages('.blog-image')
@@ -10,4 +11,5 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('load', () => {
   cookieConsent()
   disqus()
+  pullToRefresh()
 })
