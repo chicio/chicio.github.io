@@ -3,12 +3,7 @@
 	{% include head.html critical-css="critical-blog.css" content-type="website" %}
     <body class="blog-body">
         {% include blog-masthead.html %}
-        <div id="pull-to-refresh" class="pull-to-refresh start-pull hidden-pull">    
-            <div id="pull-to-refresh-loader" class="pull-to-refresh-loader"></div>
-            <div id="pull-to-refresh-status" class="pull-to-refresh-status">
-                Pull down to refresh
-            </div>
-        </div>    
+        {% include blog-pull-to-refresh.html %}
         <div class="container blog-posts start-pull pullable-content">
 			{% include blog-header.html %}
             <div class="blog-main">
@@ -120,6 +115,17 @@
                     }
 
                     const isPullToRefreshDragCompleted = (yAbsoluteMovement) => yAbsoluteMovement >= pullToRefreshHeight
+
+                    const setRefreshStatusCompleted = () => {
+                        pullToRefreshStatus.innerHTML = "Refresh completed"
+                        pullToRefresh.classList.add("hidden-pull")
+                        pullToRefresh.classList.remove("visible-pull")
+                    }
+
+                    const resetPullToRefreshStatus = () => {
+                        pullToRefreshStatus.innerHTML = "Pull down to refresh"
+                        pullToRefreshLoader.classList.remove("animate")
+                    }
                     
                     document.addEventListener('touchstart', (e) => {
                         startPoint = getTouchesCoordinatesFrom(e)       
@@ -142,12 +148,10 @@
                                 sendMessageToServiceWoker({message: "refresh", url: window.location.href}).then((data) => {
                                     shouldRefresh = data.shouldRefresh
                                     setTimeout(() => {
-                                        pullToRefreshStatus.innerHTML = "Refresh completed"
-                                        pullToRefresh.classList.add("hidden-pull")
-                                        pullToRefresh.classList.remove("visible-pull")
+                                        setRefreshStatusCompleted()
                                         closePullToRefresh()
                                     }, 1500)
-                                }).catch((error) => console.log(error))
+                                })
                             } else {
                                 dragUpdate(yAbsoluteMovement - pullToRefreshHeight, yAbsoluteMovement/pullToRefreshHeight)
                             }
@@ -165,8 +169,7 @@
                         if (shouldRefresh) {
                             window.location.reload()                            
                         } else {
-                            pullToRefreshStatus.innerHTML = "Pull down to refresh"
-                            pullToRefreshLoader.classList.remove("animate")
+                            resetPullToRefreshStatus()
                         }
                     });
                 })
