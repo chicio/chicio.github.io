@@ -1,103 +1,83 @@
+/* @flow */
 import { sendMessageToServiceWorker } from '../common/service-worker'
 
-const pullToRefresh = () => {
+const pullToRefresh = (): void => {
   if (!('serviceWorker' in navigator)) {
     return
   }
 
-  const createTouchCoordinates = (x, y) => ({ x, y })
+  const pullToRefreshElement: ?HTMLElement = document.querySelector('#pull-to-refresh')
+  const pullToRefreshStatusElement: ?HTMLElement = document.querySelector('#pull-to-refresh-status')
+  const pullToRefreshLoaderElement: ?HTMLElement = document.querySelector('#pull-to-refresh-loader')
+  const pullableContent: ?HTMLElement = document.querySelector('.pullable-content')
 
-  const createPullToRefreshStatusRepository = () => ({
-    refreshStarted: false,
-    refreshCompleted: false,
-    startRefresh () {
-      this.refreshStarted = true
-    },
-    completeRefresh () {
-      this.refreshCompleted = true
-    }
-  })
+  invariant(pullToRefreshElement instanceof HTMLElement)
+  invariant(pullToRefreshStatusElement instanceof HTMLElement)
+  invariant(pullToRefreshLoaderElement instanceof HTMLElement)
+  invariant(pullableContent instanceof HTMLElement)
 
-  const pullToRefreshElement = document.querySelector('#pull-to-refresh')
-  const pullToRefreshElementHeight = pullToRefreshElement.offsetHeight
-  const pullToRefreshStatusElement = document.querySelector('#pull-to-refresh-status')
-  const pullToRefreshLoaderElement = document.querySelector('#pull-to-refresh-loader')
-  const pullableContent = document.querySelector('.pullable-content')
+  const pullToRefreshElementHeight: number = pullToRefreshElement.offsetHeight
   const pullToRefreshStatusRepository = createPullToRefreshStatusRepository()
   let dragStartPoint = createTouchCoordinates(0, 0)
 
-  const getTouchesCoordinatesFrom = (event) => {
-    if (event.targetTouches && event.targetTouches.length) {
-      return createTouchCoordinates(
-        event.targetTouches[0].screenX,
-        event.targetTouches[0].screenY
-      )
-    } else {
-      return createTouchCoordinates(
-        event.screenX,
-        event.screenY
-      )
-    }
-  }
-
-  const dragUpdate = (dragMovement, pullToRefreshLoaderOpacity) => {
+  const dragUpdate = (dragMovement: number, pullToRefreshLoaderOpacity: number): void => {
     pullToRefreshElement.style.transform = `translateY(${dragMovement}px)`
     pullableContent.style.transform = `translateY(${dragMovement}px)`
-    pullToRefreshLoaderElement.style.opacity = pullToRefreshLoaderOpacity
+    pullToRefreshLoaderElement.style.opacity = `${pullToRefreshLoaderOpacity}`
   }
 
-  const isDraggingForPullToRefresh = (yMovement) => window.scrollY <= 0 && yMovement <= 0
+  const isDraggingForPullToRefresh = (yMovement: number): boolean => window.scrollY <= 0 && yMovement <= 0
 
-  const closePullToRefresh = () => {
+  const closePullToRefresh = (): void => {
     pullToRefreshElement.classList.add('end-pull')
     pullableContent.classList.add('end-pull')
-    pullToRefreshElement.style.transform = ``
-    pullableContent.style.transform = ``
-    pullToRefreshLoaderElement.style.opacity = 0
+    pullToRefreshElement.style.transform = ''
+    pullableContent.style.transform = ''
+    pullToRefreshLoaderElement.style.opacity = '0'
   }
 
-  const preparePullToRefreshToStart = () => {
+  const preparePullToRefreshToStart = (): void => {
     pullToRefreshElement.classList.add('start-pull')
     pullToRefreshElement.classList.remove('end-pull')
     pullableContent.classList.add('start-pull')
     pullableContent.classList.remove('end-pull')
   }
 
-  const showPullToRefresh = () => {
+  const showPullToRefresh = (): void => {
     pullToRefreshElement.classList.add('visible-pull')
     pullToRefreshElement.classList.remove('hidden-pull')
   }
 
-  const setRefreshingStatus = () => {
+  const setRefreshingStatus = (): void => {
     pullToRefreshStatusElement.innerHTML = 'Refreshing'
     pullToRefreshLoaderElement.classList.add('animate')
   }
 
-  const isPullToRefreshDragCompleted = (yAbsoluteMovement) => yAbsoluteMovement >= pullToRefreshElementHeight
+  const isPullToRefreshDragCompleted = (yAbsoluteMovement: number): boolean => yAbsoluteMovement >= pullToRefreshElementHeight
 
-  const setRefreshStatusCompleted = () => {
+  const setRefreshStatusCompleted = (): void => {
     pullToRefreshStatusElement.innerHTML = 'Refresh completed'
     pullToRefreshElement.classList.add('hidden-pull')
     pullToRefreshElement.classList.remove('visible-pull')
   }
 
-  const resetPullToRefreshStatus = () => {
+  const resetPullToRefreshStatus = (): void => {
     pullToRefreshStatusElement.innerHTML = 'Pull down to refresh'
     pullToRefreshLoaderElement.classList.remove('animate')
   }
 
-  document.addEventListener('touchstart', (e) => {
-    dragStartPoint = getTouchesCoordinatesFrom(e)
+  document.addEventListener('touchstart', (event: TouchEvent) => {
+    dragStartPoint = getTouchesCoordinatesFrom(event)
     preparePullToRefreshToStart()
   }, { passive: false })
 
-  document.addEventListener('touchmove', (e) => {
-    const dragCurrentPoint = getTouchesCoordinatesFrom(e)
-    const yMovement = dragStartPoint.y - dragCurrentPoint.y
-    const yAbsoluteMovement = Math.abs(yMovement)
+  document.addEventListener('touchmove', (event: TouchEvent) => {
+    const dragCurrentPoint = getTouchesCoordinatesFrom(event)
+    const yMovement: number = dragStartPoint.y - dragCurrentPoint.y
+    const yAbsoluteMovement: number = Math.abs(yMovement)
 
     if (isDraggingForPullToRefresh(yMovement) && !pullToRefreshStatusRepository.refreshStarted) {
-      e.preventDefault()
+      event.preventDefault()
       showPullToRefresh()
 
       if (isPullToRefreshDragCompleted(yAbsoluteMovement)) {
@@ -130,6 +110,32 @@ const pullToRefresh = () => {
       resetPullToRefreshStatus()
     }
   })
+}
+
+const createTouchCoordinates = (x: number, y: number): {x: number, y: number} => ({ x, y })
+
+const createPullToRefreshStatusRepository = () => ({
+  refreshStarted: false,
+  refreshCompleted: false,
+  startRefresh () {
+    this.refreshStarted = true
+  },
+  completeRefresh () {
+    this.refreshCompleted = true
+  }
+})
+
+const invariant = (statement: boolean) => {
+  if (!statement) {
+    throw new Error('Pull to refresh invariant failed')
+  }
+}
+
+const getTouchesCoordinatesFrom = (event: TouchEvent): {x: number, y: number} => {
+  return createTouchCoordinates(
+    event.targetTouches[0].screenX,
+    event.targetTouches[0].screenY
+  )
 }
 
 export { pullToRefresh }

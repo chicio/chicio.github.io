@@ -11,8 +11,8 @@ const sendMessageToServiceWorker = (message: any): Promise<any> => {
         }
       }
     }
-    if (navigator.serviceWorker) {
-      navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2])
+    if (navigator.serviceWorker && navigator.serviceWorker.controller) {
+      navigator.serviceWorker.controller.postMessage(message, ([messageChannel.port2]: any))
     }
   })
 }
