@@ -4,13 +4,7 @@
     <body>
         <img src="/assets/images/no-wifi.png" alt="no network">
         <p>Opss!?! Seems like you're offline</p>
-        <a class="btn btn-default" id="reloadButton" href="/" alt="reload">Reload</a>
+        <button class="btn btn-default" id="reloadButton" onClick="window.location.reload(true);">Reload</button>
         {% include style.html styleInclude="dependencies-css-error.html" %}
     </body>
-    <script type="text/javascript">
-        window.addEventListener('load', () => {
-            var a = document.getElementById('reloadButton'); 
-            a.href = window.location.href
-        })
-    </script>
 </html>
