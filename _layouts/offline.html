@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+    {% include head.html critical-css="critical-error.css" %}
+    <body>
+        <img src="/assets/images/no-wifi.png">
+        <p>Opss!?! Seems like you're offline</p>
+        <a class="btn btn-default" id="reloadButton" href="/">Reload</a>
+        {% include style.html styleInclude="dependencies-css-error.html" %}
+    </body>
+    <script type="text/javascript">
+        window.addEventListener('load', () => {
+            var a = document.getElementById('reloadButton'); 
+            a.href = document.referrer
+        })
+    </script>
+</html>
