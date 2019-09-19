@@ -28,7 +28,10 @@ const pullToRefresh = (): void => {
     pullToRefreshLoaderElement.style.opacity = `${pullToRefreshLoaderOpacity}`
   }
 
-  const isDraggingForPullToRefresh = (yMovement: number): boolean => window.scrollY <= 0 && yMovement <= 0
+  const isDraggingForPullToRefresh = (yMovement: number): boolean => {
+    const scrollY = window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop
+    return scrollY === 0 && yMovement <= 0
+  }
 
   const closePullToRefresh = (): void => {
     addCssClass(pullToRefreshElement, 'end-pull')
@@ -80,6 +83,7 @@ const pullToRefresh = (): void => {
 
     if (isDraggingForPullToRefresh(yMovement) && !pullToRefreshStatusRepository.refreshStarted) {
       event.preventDefault()
+      event.stopPropagation()
       showPullToRefresh()
 
       if (isPullToRefreshDragCompleted(yAbsoluteMovement)) {
