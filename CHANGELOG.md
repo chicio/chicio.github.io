@@ -1,6 +1,14 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [1.15.0](https://github.com/chicio/chicio.github.io/releases/tag/1.15.0)
+Release date: 2019-09-19.
+
+#### Added
+
+- offline network management
+- lazy load images reload on network error
+
 ## [1.14.0](https://github.com/chicio/chicio.github.io/releases/tag/1.14.0)
 Release date: 2019-09-15.
 
