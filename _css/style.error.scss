@@ -9,7 +9,7 @@ html {
   color: $primary-color-text;
   display: table;
   font-family: sans-serif;
-  height: 100%;
+  height: 100vh;
   text-align: center;
   width: 100%;
 }
@@ -20,7 +20,7 @@ body {
   align-items: center;
   flex-direction: column;
   background-color: $primary-color-dark;
-  height: 100%;
+  height: 100vh;
 }
 
 h1 {
