@@ -50,6 +50,12 @@ canvas {
   width: 100%;
 }
 
+.btn-default {
+  color: $primary-color-text;
+  background-color: $accent-color;
+  font-size: $font-size-base;
+}
+
 @include media-breakpoint-up(xs) {
   .break {
     display: none;

@@ -20,6 +20,7 @@ const CSS_BLOG_POST = `${CSS_BLOG}.post`;
 const CSS_BLOG_TAGS = `${CSS_BLOG}.tags`;
 const CSS_PRIVACY_POLICY = `style.privacypolicy`;
 const CSS_COOKIE_POLICY = `style.cookiepolicy`;
+const CSS_ERROR = `style.error`;
 
 const css = (cssName, done) => {
   gulp.src(`_css/${cssName}.scss`)
@@ -42,6 +43,8 @@ gulp.task('css-blog-tags', (done) => css(CSS_BLOG_TAGS, done))
 gulp.task('css-privacy-policy', (done) => css(CSS_PRIVACY_POLICY, done))
 
 gulp.task('css-cookie-policy', (done) => css(CSS_COOKIE_POLICY, done))
+
+gulp.task('css-error', (done) => css(CSS_ERROR, done))
 
 gulp.task('flow', (done) => {
   exec(`npm run flow`, (err, stdout, stderr) => {
@@ -116,6 +119,7 @@ gulp.task('css-critical', (done) => {
   criticalCss('2017/05/10/about-me', 'critical-blog-post', CSS_BLOG_POST)
   criticalCss('privacy-policy', 'critical-privacy-policy', CSS_PRIVACY_POLICY)
   criticalCss('cookie-policy', 'critical-cookie-policy', CSS_COOKIE_POLICY)
+  criticalCss('offline', 'critical-error', CSS_ERROR)
   done()
 })
 
@@ -143,6 +147,8 @@ gulp.task('rev-css-blog-tags', (done) => revision('css-blog-tags', done))
 gulp.task('rev-css-privacy-policy', (done) => revision('css-privacy-policy', done))
 
 gulp.task('rev-css-cookie-policy', (done) => revision('css-cookie-policy', done))
+
+gulp.task('rev-css-error', (done) => revision('css-error', done))
 
 const serviceWorkerUrlFor = (section, done) => {
   exec(`./_scripts/generate-service-worker-urls.sh ${section}`, (err, stdout, stderr) => {
@@ -186,6 +192,10 @@ gulp.task('service-worker-css-cookie-policy-urls', (done) => {
   serviceWorkerUrlFor('css-cookie-policy', done)
 });
 
+gulp.task('service-worker-css-error-urls', (done) => {
+  serviceWorkerUrlFor('css-error', done)
+});
+
 gulp.task('jekyll-build', (done) => exec(`bundle exec jekyll build`, (err, stdout, stderr) => done()))
 
 const build = gulp.series(
@@ -196,6 +206,7 @@ const build = gulp.series(
   'css-blog-tags',
   'css-privacy-policy',
   'css-cookie-policy',
+  'css-error',
   'flow',
   'lint',
   'bundle-home-scripts',
@@ -212,6 +223,7 @@ const build = gulp.series(
   'rev-css-blog-tags',
   'rev-css-privacy-policy',
   'rev-css-cookie-policy',
+  'rev-css-error',
   'service-worker-js-home-urls',
   'service-worker-js-blog-urls',
   'service-worker-css-home-urls',
@@ -221,6 +233,7 @@ const build = gulp.series(
   'service-worker-css-blog-tags-urls',
   'service-worker-css-privacy-policy-urls',
   'service-worker-css-cookie-policy-urls',
+  'service-worker-css-error-urls',
   'jekyll-build', //First build for critical css
   'css-critical', //Needs website already build in order to be executed
   'jekyll-build' //Generate site with css critical

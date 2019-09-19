@@ -16,23 +16,29 @@ const lazyLoadImages = (selector: string): void => {
 const onIntersection = (entries: IntersectionObserverEntry[], observer: IntersectionObserver): void => {
   for (let i: number = 0; i < entries.length; i++) {
     if (entries[i].intersectionRatio > 0) {
-      observer.unobserve(entries[i].target)
-      eventuallyLoadImage(entries[i].target)
+      eventuallyLoadImage(entries[i].target, observer)
     }
   }
 }
 
-const eventuallyLoadImage = (element: HTMLElement): void => {
+const eventuallyLoadImage = (element: HTMLElement, observer: IntersectionObserver): void => {
   if (element instanceof HTMLImageElement) {
-    loadImage(element)
+    loadImage(element, observer)
   }
 }
 
-const loadImage = (image: HTMLImageElement): void => {
+const loadImage = (image: HTMLImageElement, observer: IntersectionObserver): void => {
+  const placeholderUrl: string = image.src
   image.src = image.dataset.src
   image.onload = () => {
-    removeCssClass(image, 'lazy')
-    addCssClass(image, 'lazy-show')
+    if (image.src !== placeholderUrl) {
+      observer.unobserve(image)
+      removeCssClass(image, 'lazy')
+      addCssClass(image, 'lazy-show')
+    }
+  }
+  image.onerror = () => {
+    image.src = placeholderUrl
   }
 }
 

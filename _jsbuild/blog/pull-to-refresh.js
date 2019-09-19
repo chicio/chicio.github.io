@@ -28,10 +28,7 @@ const pullToRefresh = () => {
     pullToRefreshLoaderElement.style.opacity = `${pullToRefreshLoaderOpacity}`
   }
 
-  const isDraggingForPullToRefresh = (yMovement) => {
-    const scrollY = window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop
-    return scrollY === 0 && yMovement <= 0
-  }
+  const isDraggingForPullToRefresh = (yMovement) => window.scrollY <= 0 && yMovement <= 0
 
   const closePullToRefresh = () => {
     addCssClass(pullToRefreshElement, 'end-pull')

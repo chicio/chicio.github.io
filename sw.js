@@ -3,12 +3,12 @@
 importScripts('/cache-polyfill.js')
 
 const siteCacheName = 'chicioCodingCache{% include version.txt %}'
-const offlineUrl = '/offline.html'
-const offlineImageUrl = '/assets/images/no-wifi.png'
+const offlinePageUrl = '/offline.html'
 const dependenciesUrls = [
   "/favicon.ico",
-  offlineUrl,
-  offlineImageUrl,
+  offlinePageUrl,
+  '/assets/images/no-wifi.png',
+  {% include service-worker-css-error-urls.js %}
   {% include service-worker-css-home-urls.js %}
   {% include service-worker-css-blog-archive-urls.js %}
   {% include service-worker-css-blog-home-urls.js %}
@@ -56,7 +56,7 @@ self.addEventListener('fetch', (event) => {
               if (event.request.mode === 'navigate' ||  
                   (event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html'))
               ) {
-                return caches.match(offlineUrl)
+                return caches.match(offlinePageUrl)
               }
             })
         })
