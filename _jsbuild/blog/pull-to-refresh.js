@@ -19,6 +19,7 @@ const pullToRefresh = () => {
 
   const pullToRefreshElementHeight = pullToRefreshElement.offsetHeight
   const pullToRefreshStatusRepository = createPullToRefreshStatusRepository()
+  const decelerationFactor = 0.5
   let dragStartPoint = createTouchCoordinates(0, 0)
 
   const dragUpdate = (dragMovement, pullToRefreshLoaderOpacity) => {
@@ -74,7 +75,7 @@ const pullToRefresh = () => {
 
   document.addEventListener('touchmove', (event) => {
     const dragCurrentPoint = getTouchesCoordinatesFrom(event)
-    const yMovement = dragStartPoint.y - dragCurrentPoint.y
+    const yMovement = (dragStartPoint.y - dragCurrentPoint.y) * decelerationFactor
     const yAbsoluteMovement = Math.abs(yMovement)
 
     if (isDraggingForPullToRefresh(yMovement) && !pullToRefreshStatusRepository.refreshStarted) {

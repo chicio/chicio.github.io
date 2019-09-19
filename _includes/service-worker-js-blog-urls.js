@@ -1,1 +1,1 @@
-"/assets/js/index.blog.min.js?rev=6765c18b2245dadac96ecdf2c0786a63",
+"/assets/js/index.blog.min.js?rev=a155500f2a958119ba19c2b4b967fb7f",
