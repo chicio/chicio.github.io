@@ -45,26 +45,6 @@ self.addEventListener('activate', (event) => {
 })
 
 self.addEventListener('fetch', (event) => {
-    event.respondWith(
-      caches.open(siteCacheName).then(async (cache) => {
-        return cache.match(event.request).then((cacheResponse) => {
-          return cacheResponse || fetch(event.request)
-            .then((fetchResponse) => {
-              cache.put(event.request, fetchResponse.clone())
-              return fetchResponse
-            }).catch((error) => {
-              if (event.request.mode === 'navigate' ||  
-                  (event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html'))
-              ) {
-                return caches.match(offlinePageUrl)
-              }
-            })
-        })
-      })
-    )  
-})
-
-self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches
     .open(siteCacheName)
