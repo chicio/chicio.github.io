@@ -47,11 +47,11 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
     event.respondWith(
       caches.open(siteCacheName).then(async (cache) => {
-        return cache.match(event.request).then((response) => {
-          return response || fetch(event.request)
-            .then((response) => {
-              cache.put(event.request, response.clone())
-              return response
+        return cache.match(event.request).then((cacheResponse) => {
+          return cacheResponse || fetch(event.request)
+            .then((fetchResponse) => {
+              cache.put(event.request, fetchResponse.clone())
+              return fetchResponse
             }).catch((error) => {
               if (event.request.mode === 'navigate' ||  
                   (event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html'))
@@ -62,6 +62,31 @@ self.addEventListener('fetch', (event) => {
         })
       })
     )  
+})
+
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches
+    .open(siteCacheName)
+    .then((cache) => (
+      cache
+      .match(event.request)
+      .then((cacheResponse) => {
+        return cacheResponse || fetch(event.request)
+          .then((fetchResponse) => {
+            cache.put(event.request, fetchResponse.clone())
+            return fetchResponse
+          })
+      })
+      .catch(() => {
+        if (event.request.mode === 'navigate' ||  
+            (event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html'))
+        ) {
+          return caches.match(offlinePageUrl)
+        }
+      })
+    ))
+  )  
 })
 
 self.addEventListener('message', (event) => {

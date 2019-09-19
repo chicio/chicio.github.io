@@ -1,1 +1,1 @@
-"/assets/styles/style.blog.post.css?rev=1af06a6dba728f61b1588f99a356b64a",
+"/assets/styles/style.blog.post.css?rev=e91ed3347bffd2e50befc9393e861b60",

@@ -62,10 +62,12 @@
         width: 90%;
       }
 
-      &:hover {
-        transform: scale(1.025);
+      @include media-breakpoint-up(lg) {
+        &:hover {
+          transform: scale(1.025);
+        }
       }
-
+  
       .img-container {
         overflow: hidden;
         height: 200px;

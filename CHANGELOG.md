@@ -1,6 +1,14 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [1.16.0](https://github.com/chicio/chicio.github.io/releases/tag/1.16.0)
+Release date: 2019-09-19.
+
+#### Fixed
+
+- fixed offline fallback for safari (iOS 13)
+- fixed hover for recent post (now only for screens > lg)
+
 ## [1.15.0](https://github.com/chicio/chicio.github.io/releases/tag/1.15.0)
 Release date: 2019-09-19.
 
