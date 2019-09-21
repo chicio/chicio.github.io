@@ -45,6 +45,7 @@ self.addEventListener('activate', (event) => {
   )
 })
 
+workbox.setConfig({ debug: false })
 workbox.googleAnalytics.initialize();
 
 self.addEventListener('fetch', (event) => {

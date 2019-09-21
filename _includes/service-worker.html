@@ -1,11 +1,12 @@
 <script>
   if('serviceWorker' in navigator) {
-    navigator.serviceWorker
-             .register('/sw.js')
-             .then(function() { 
-               console.log("Service Worker installed"); 
-              });
+    window.addEventListener('load', function() {
+      navigator.serviceWorker
+              .register('/sw.js')
+              .then((registration) => { console.log("Service Worker registration: ", registration); })
+              .catch((err) => { console.error('Service Worker registration failed:', err); });
+    })
   } else {
-    console.log('Service worker installation FAILED')
+    console.log('Service worker not supported')
   }
 </script>
