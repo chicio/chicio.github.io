@@ -2,12 +2,13 @@
 All changes to Chicio coding will be documented in this file.
 
 ## [1.17.0](https://github.com/chicio/chicio.github.io/releases/tag/1.17.0)
-Release date: 2019-09-X.
+Release date: 2019-09-21.
 
 #### Added
 
 - Google analytics offline tracking (Workbox!!)
 - Improved service worker registration
+- Migration to global site tag (gtag) for google analytcis
 
 ## [1.16.0](https://github.com/chicio/chicio.github.io/releases/tag/1.16.0)
 Release date: 2019-09-19.
