@@ -1,10 +1,12 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-97399890-1"></script>
 <script>
-    if (window.location.host.search('fabrizioduroni.it') !== -1) {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+    window['ga-disable-UA-97399890-1'] = window.location.host.search('fabrizioduroni.it') !== -1 ? false : true;
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-97399890-1');
 
-        gtag('config', 'UA-97399890-1');
+    function track(action, category) {
+        gtag('event', action, { 'event_category': category });
     }
 </script>
