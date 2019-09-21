@@ -1,5 +1,6 @@
 ---
 ---
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
 importScripts('/cache-polyfill.js')
 
 const siteCacheName = 'chicioCodingCache{% include version.txt %}'
@@ -43,6 +44,8 @@ self.addEventListener('activate', (event) => {
     })
   )
 })
+
+workbox.googleAnalytics.initialize();
 
 self.addEventListener('fetch', (event) => {
   event.respondWith(
