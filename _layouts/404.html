@@ -4,7 +4,9 @@
     <body>
         <h1>404!</h1>
         <p>Opss!?! Keep calm and go to</p>
-        <a class="btn btn-default" href="/">homepage</a>
+        <a class="btn btn-default" 
+           onclick="track('{{ site.data.tracking.action.open_home }}', '{{  site.data.tracking.category.notfound }}', '{{ site.data.tracking.label.body }}')"
+           href="/" >homepage</a>
         {% include style.html styleInclude="dependencies-css-error.html" %}
     </body>
 </html>

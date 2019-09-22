@@ -4,7 +4,9 @@
     <body>
         <img src="/assets/images/no-wifi.png" alt="no network">
         <p>Opss!?! Seems like you're offline</p>
-        <button class="btn btn-default" id="reloadButton" onClick="window.location.reload(true);">Reload</button>
+        <button class="btn btn-default" 
+                id="reloadButton" 
+                onclick="track('{{ site.data.tracking.action.reload }}', '{{  site.data.tracking.category.offline }}', '{{ site.data.tracking.label.body }}'); window.location.reload(true);">Reload</button>
         {% include style.html styleInclude="dependencies-css-error.html" %}
     </body>
 </html>

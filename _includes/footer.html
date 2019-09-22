@@ -1,23 +1,33 @@
 <footer class="container-fluid footer">
 	<div class="d-flex justify-content-center flex-wrap">
-		<a href="/" class="nav-item-footer">
+		<a href="/" 
+			 onclick="track('{{ site.data.tracking.action.open_home }}', '{{ include.track-category }}', '{{ site.data.tracking.label.footer }}')"
+			 class="nav-item-footer">
 			Home
 		</a>
-		<a href="/blog/" class="nav-item-footer">
+		<a href="/blog/"
+			 onclick="track('{{ site.data.tracking.action.open_blog }}', '{{ include.track-category }}', '{{ site.data.tracking.label.footer }}')"
+		   class="nav-item-footer">
 			Blog
 		</a>
-		<a href="/2017/05/10/about-me.html" class="nav-item-footer">
+		<a href="/2017/05/10/about-me.html"
+			 onclick="track('{{ site.data.tracking.action.open_about_me }}', '{{ include.track-category }}', '{{ site.data.tracking.label.footer }}')"
+		   class="nav-item-footer">
 			About Me
 		</a>
-		<a href="/blog/archive/" class="nav-item-footer">
+		<a href="/blog/archive/"
+		   onclick="track('{{ site.data.tracking.action.open_blog_archive }}', '{{ include.track-category }}', '{{ site.data.tracking.label.footer }}')"
+		   class="nav-item-footer">
 			Archive
 		</a>
-		<a href="/blog/tags/" class="nav-item-footer last">
+		<a href="/blog/tags/"
+		   onclick="track('{{ site.data.tracking.action.open_blog_tags }}', '{{ include.track-category }}', '{{ site.data.tracking.label.footer }}')"
+		   class="nav-item-footer last">
 			Tags
 		</a>
 	</div>
 	<div class="d-flex justify-content-center social-links">
-		{% include social-contacts.html icon-class="footer-icon" %}
+		{% include social-contacts.html icon-class="footer-icon" track-category=include.track-category track-label=site.data.tracking.label.footer %}
 	</div>
 	<div class="d-flex justify-content-center copyright">
 		<h5>Made with <span id="heart" class="heart">💝</span> by {{ site.author }} 'Chicio'</h5>

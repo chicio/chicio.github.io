@@ -10,15 +10,15 @@
                     {% include lazy-image.html alt="Fabrizio Duroni" class="img-responsive img-circle profile-image" width="300" height="300" src="/assets/images/fabrizio-duroni.jpg" %}
                     <h1 id="profile-name">{{ site.author }}</h1>
                     <h3 id="profile-job" class="profile-job">Software Developer</h3>
-                    {% include social-contacts.html icon-class="profile-icon" %}
+                    {% include social-contacts.html icon-class="profile-icon" track-category=site.data.tracking.category.home track-label=site.data.tracking.label.body %}
                     <br class="break"/>
                 </div>
 				<div id="center-content-buttons" class="center-content center-content-buttons">
-					<a class="profile-icon" onclick="track('download_curriculum_vitae', 'home')" href="/curriculum-vitae.pdf" download="fabrizio-duroni-curriculum-vitae.pdf">
+					<a class="profile-icon" onclick="track('{{ site.data.tracking.action.download_curriculum_vitae }}', '{{ site.data.tracking.category.home }}', '{{ site.data.tracking.label.body }}')" href="/curriculum-vitae.pdf" download="fabrizio-duroni-curriculum-vitae.pdf">
 						<i id="curriculum-vitae" class="fa fa-id-card-o" aria-hidden="true"></i>
 						Curriculum Vitae
 					</a>
-					<a class="profile-icon" onclick="track('open_blog', 'home')" href="/blog/">
+					<a class="profile-icon" onclick="track('{{ site.data.tracking.action.open_blog }}', '{{ site.data.tracking.category.home }}', '{{ site.data.tracking.label.body }}')" href="/blog/">
 						<i id="blog" class="fa fa-pencil-square" aria-hidden="true"></i>
 						Blog
 					</a>
@@ -57,6 +57,7 @@
             <ul class="nav nav-tabs" role="tablist" id="profile-tabs">
                 <li id="projects" role="presentation" class="nav-item active">
                     <a href="#personal-projects"
+                       onclick="track('{{ site.data.tracking.action.open_personal_projects_tab }}', '{{  site.data.tracking.category.home }}', '{{ site.data.tracking.label.body }}')"
 					   class="nav-link text-center"
 					   aria-controls="personal-projects"
 					   role="tab"
@@ -66,6 +67,7 @@
                 </li>
                 <li id="education-and-experience" role="presentation">
                     <a href="#experience"
+                       onclick="track('{{ site.data.tracking.action.open_education_and_experiences_tab }}', '{{  site.data.tracking.category.home }}', '{{ site.data.tracking.label.body }}')"
 					   class="nav-link text-center"
 					   aria-controls="experience"
 					   role="tab"
@@ -98,8 +100,10 @@
                                 <li>Objective-C, C++</li>
                             </ul>
                             <a class="btn btn-default" href="https://github.com/chicio/Spectral-Clara-Lux-Tracer"
+                               onclick="track('{{ site.data.tracking.action.open_sclt_github }}', '{{  site.data.tracking.category.home }}', '{{ site.data.tracking.label.body }}')"
                                target="_blank" rel="noopener">Github repo</a>
                             <a class="btn btn-default"
+                               onclick="track('{{ site.data.tracking.action.open_sclt_thesis }}', '{{  site.data.tracking.category.home }}', '{{ site.data.tracking.label.body }}')"
                                href="https://drive.google.com/file/d/0BxeVnHLvT8-7dkxQRjV6M29TeUk/view"
                                target="_blank" rel="noopener">Thesis</a>
                         </div>
@@ -122,6 +126,7 @@
 								<li>Objective-C, Java, C++</li>
 							</ul>
 							<a class="btn btn-default"
+                               onclick="track('{{ site.data.tracking.action.open_spectral_brdf_explorer_github }}', '{{  site.data.tracking.category.home }}', '{{ site.data.tracking.label.body }}')"
 							   href="https://github.com/chicio/Spectral-BRDF-Explorer" target="_blank" rel="noopener">Github repo</a>
 						</div>
 						<div class="project-image-container col-12 col-lg-6 order-0 order-lg-1">
@@ -162,8 +167,10 @@
                                 <li>attached pictures (cover images)</li>
                             </ul>
                             <a class="btn btn-default" href="https://github.com/chicio/ID3TagEditor"
+                               onclick="track('{{ site.data.tracking.action.open_id3tageditor_github }}', '{{  site.data.tracking.category.home }}', '{{ site.data.tracking.label.body }}')"
                                target="_blank" rel="noopener">Github repo</a>
                             <a class="btn btn-default" href="{{ site.url }}/ID3TagEditor"
+                               onclick="track('{{ site.data.tracking.action.open_id3tageditor_doc }}', '{{  site.data.tracking.category.home }}', '{{ site.data.tracking.label.body }}')"
                                target="_blank" rel="noopener">Documentation</a>
                         </div>
                     </div>
@@ -186,8 +193,10 @@
 								<li>attached picture set as Front cover</li>
 							</ul>
 							<a class="btn btn-default" href="https://github.com/chicio/Mp3ID3Tagger"
+                               onclick="track('{{ site.data.tracking.action.open_mp3id3tagger_github }}', '{{  site.data.tracking.category.home }}', '{{ site.data.tracking.label.body }}')"
 							   target="_blank" rel="noopener">Github repo</a>
 							<a class="btn btn-default" href="https://github.com/chicio/Mp3ID3Tagger/raw/master/Release/Mp3ID3Tagger.dmg"
+                               onclick="track('{{ site.data.tracking.action.open_mp3id3tagger_dmg }}', '{{  site.data.tracking.category.home }}', '{{ site.data.tracking.label.body }}')"
 							   target="_blank" rel="noopener" data-proofer-ignore="true">Download the app</a>
 						</div>
 						<div class="project-image-container col-12 col-lg-6 order-0 order-lg-1">
@@ -230,6 +239,7 @@
                                 <li>Objective-C</li>
                             </ul>
                             <a class="btn btn-default" href="https://github.com/chicio/Ray-tracing"
+                               onclick="track('{{ site.data.tracking.action.open_ray_tracing_github }}', '{{  site.data.tracking.category.home }}', '{{ site.data.tracking.label.body }}')"
                                target="_blank" rel="noopener">Github repo</a>
                         </div>
                     </div>
@@ -251,8 +261,10 @@
 								<li>Swift</li>
 							</ul>
 							<a class="btn btn-default" href="https://github.com/chicio/RangeUISlider"
+                               onclick="track('{{ site.data.tracking.action.open_rangeuislider_github }}', '{{  site.data.tracking.category.home }}', '{{ site.data.tracking.label.body }}')"
 							   target="_blank" rel="noopener">Github repo</a>
 							<a class="btn btn-default" href="{{ site.url }}/RangeUISlider"
+                               onclick="track('{{ site.data.tracking.action.open_rangeuislider_doc }}', '{{  site.data.tracking.category.home }}', '{{ site.data.tracking.label.body }}')"
 							   target="_blank" rel="noopener">Documentation</a>
 						</div>
 						<div class="project-image-container col-12 col-lg-6 order-0 order-lg-1">
@@ -561,7 +573,7 @@
                 </div>
             </div>
         </div>
-		{% include footer.html %}
+		{% include footer.html track-category=site.data.tracking.category.home %}
         {% include style.html styleInclude="dependencies-css-home.html" %}
         {% include dependencies-js-home.html %}
     </body>

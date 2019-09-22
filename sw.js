@@ -1,7 +1,8 @@
 ---
 ---
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
-importScripts('/cache-polyfill.js')
+importScripts('/sw-cache-polyfill.js')
+importScripts('/sw-analytics.js')
 
 const siteCacheName = 'chicioCodingCache{% include version.txt %}'
 const offlinePageUrl = '/offline.html'
@@ -87,12 +88,15 @@ self.addEventListener('message', (event) => {
   const sendRefreshCompletedMessageToClient = (event) => event.ports[0].postMessage({refreshCompleted: true})
 
   if (isARefresh(event)) {
-    const refreshMessage = {shouldRefresh: true}
     caches.open(siteCacheName).then((siteCache) => {
       siteCache.keys().then((requests) => {
         const deleteRequestToBeRefreshed = createDeleteOperationFor(event.data.url, siteCache, requests)
         const deleteRequestsForImagesToBeRefreshed = createDeleteOperationsForImages(siteCache, requests)
-        Promise.all([deleteRequestToBeRefreshed, ...deleteRequestsForImagesToBeRefreshed])
+        Promise.all([
+          deleteRequestToBeRefreshed, 
+          ...deleteRequestsForImagesToBeRefreshed, 
+          sendAnalyticsEvent(event.data.clientId, '{{ site.data.tracking.action.pull_to_refresh }}', '', '{{ site.data.tracking.label.body }}')
+        ])
           .then(() => sendRefreshCompletedMessageToClient(event))
           .catch(() => sendRefreshCompletedMessageToClient(event))
       })

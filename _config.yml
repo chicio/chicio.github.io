@@ -8,6 +8,7 @@ description: >
   Fabrizio Duroni 'Chicio Coding' official site with profile details. Official blog chicio coding. Main skills: mobile application development,
   computer graphics, web development.
 
+domain: fabrizioduroni.it  
 url: https://www.fabrizioduroni.it
 author: Fabrizio Duroni
 twitter:
@@ -79,10 +80,13 @@ exclude:
 nav:
   - name: "Home"
     url: "/"
+    tracking: "open_home"
   - name: "Blog"
     url: "/blog/"
+    tracking: "open_blog"
   - name: "About Me"
     url: "/2017/05/10/about-me.html"
+    tracking: "open_about_me"
 
 # Jemoji config
 emoji:
@@ -92,3 +96,6 @@ emoji:
 feed_items: 30
 feed_update_period: monthly
 feed_update_frequency: 2
+
+# Analytics config
+tracking_id: UA-97399890-1

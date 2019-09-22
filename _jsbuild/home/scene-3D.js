@@ -44,8 +44,8 @@ const lucy = () => new Object3D(
     color: 0x3F51B5,
     roughness: 0.5,
     metalness: 0.7,
-    clearCoat: 0.5,
-    clearCoatRoughness: 0.5,
+    clearcoat: 0.5,
+    clearcoatRoughness: 0.5,
     reflectivity: 0.7
   },
   new THREE.Vector3(3, -3, 0),
@@ -58,8 +58,8 @@ const dragon = () => new Object3D(
     color: 0x448AFF,
     roughness: 0.1,
     metalness: 0.9,
-    clearCoat: 0.0,
-    clearCoatRoughness: 0.2,
+    clearcoat: 0.0,
+    clearcoatRoughness: 0.2,
     reflectivity: 1
   },
   new THREE.Vector3(-3, -3, 0),
@@ -72,8 +72,8 @@ const bunny = () => new Object3D(
     color: 0xCCFFFF,
     roughness: 0.9,
     metalness: 0.1,
-    clearCoat: 0.0,
-    clearCoatRoughness: 0.5,
+    clearcoat: 0.0,
+    clearcoatRoughness: 0.5,
     reflectivity: 0.1
   },
   new THREE.Vector3(0, -3, 1.5),
