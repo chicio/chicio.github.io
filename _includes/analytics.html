@@ -1,12 +1,13 @@
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-97399890-1"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.tracking_id }}"></script>
 <script>
-    window['ga-disable-UA-97399890-1'] = window.location.host.search('fabrizioduroni.it') !== -1 ? false : true;
+    window['ga-disable-{{ site.tracking_id }}'] = window.location.host.search('{{ site.domain }}') !== -1 ? false : true;
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'UA-97399890-1');
+    gtag('config', '{{ site.tracking_id }}');
 
-    function track(action, category) {
-        gtag('event', action, { 'event_category': category });
+    function track(action, category, label) {
+        const payload = label ? { 'event_category': category, 'event_label' : label }  : { 'event_category': category }
+        gtag('event', action, payload);
     }
 </script>

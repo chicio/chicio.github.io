@@ -4,12 +4,15 @@ import { lazyLoadImages } from './common/lazy-load-images'
 import { disqus } from './blog/disqus'
 import { pullToRefresh } from './blog/pull-to-refresh.js'
 
-document.addEventListener('DOMContentLoaded', () => {
-  lazyLoadImages('.blog-image')
-})
-
-window.addEventListener('load', () => {
-  cookieConsent()
-  disqus()
-  pullToRefresh()
-})
+window.ChicioCodingBlog = {
+  init: (trackingCategory) => {
+    document.addEventListener('DOMContentLoaded', () => {
+      lazyLoadImages('.blog-image')
+    })
+    window.addEventListener('load', () => {
+      cookieConsent()
+      disqus()
+      pullToRefresh(trackingCategory)
+    })
+  }
+}

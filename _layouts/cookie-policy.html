@@ -2,9 +2,9 @@
 <html lang="en">
 {% include head.html critical-css="critical-blog-post.css" %}
 <body class="blog-body">
-{% include blog-masthead.html %}
+{% include blog-masthead.html track-category=site.data.tracking.category.cookie_policy %}
 <div class="container blog-posts">
-	{% include blog-header.html %}
+	{% include blog-header.html track-category=site.data.tracking.category.cookie_policy %}
 	<div class="blog-main">
 		<div class="blog-post">
 			<h1><strong>Cookies Policy</strong></h1>
@@ -70,8 +70,8 @@
 		</div>
 	</div>
 </div>
-{% include footer.html %}
+{% include footer.html track-category=site.data.tracking.category.cookie_policy %}
 {% include style.html styleInclude="dependencies-css-cookie-policy.html" %}
-{% include dependencies-js-blog.html %}
+{% include dependencies-js-blog.html track-category=site.data.tracking.category.cookie_policy %}
 </body>
 </html>

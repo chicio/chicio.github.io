@@ -4,7 +4,7 @@
 	<div class="blog-post-author d-inline-flex flex-row align-items-center">
 		{% include blog-lazy-image.html class="rounded-circle" width="30" height="30" src=currentAuthor.image %}
 		<span>
-				{% if include.enableUrl and include.enableUrl == true %}<a href="{{currentAuthor.url}}">{% endif %}{{currentAuthor.name}}{% if include.enableUrl and include.enableUrl == true %}</a>{% endif %}
+				{% if include.enableUrl and include.enableUrl == true %}<a onclick="track('{{ site.data.tracking.action.open_blog_author }}', '{{  include.track-category }}', '{{ include.track-label }}')" href="{{currentAuthor.url}}">{% endif %}{{currentAuthor.name}}{% if include.enableUrl and include.enableUrl == true %}</a>{% endif %}
 		</span>
 	</div>
 	{% endfor %}

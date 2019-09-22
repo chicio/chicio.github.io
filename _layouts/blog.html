@@ -2,20 +2,22 @@
 <html lang="en">
 	{% include head.html critical-css="critical-blog.css" content-type="website" %}
     <body class="blog-body">
-        {% include blog-masthead.html %}
+        {% include blog-masthead.html track-category=site.data.tracking.category.blog_home %}
         {% include blog-pull-to-refresh.html %}
         <div class="container blog-posts start-pull pullable-content">
-			{% include blog-header.html %}
+			{% include blog-header.html track-category=site.data.tracking.category.blog_home %}
             <div class="blog-main">
                 <div class="blog-posts-list">
                     {% for post in paginator.posts %}
                     <div class="blog-posts-post">
-                        <a href="{{post.url}}" class="blog-posts-post-link">
+                        <a href="{{post.url}}"
+                           onclick="track('{{ site.data.tracking.action.open_blog_post }}', '{{  site.data.tracking.category.blog_home }}', '{{ site.data.tracking.label.body }}')"
+                           class="blog-posts-post-link">
                             <span class="blog-posts-post-title">{{post.title}}</span>
                             <div class="blog-posts-post-img-container">
                                 {% include blog-lazy-image.html class="img blog-posts-post-img" src=post.image description=post.title %}
                             </div>
-                            {% include blog-post-authors.html authors=post.authors enableUrl=false %}
+                            {% include blog-post-authors.html authors=post.authors enableUrl=false track-category=site.data.tracking.category.blog_home track-label=site.data.tracking.label.body %}
                             {% include blog-post-meta.html post=post %}
                             <span class="blog-posts-post-description">{{post.description}}</span>
                         </a>
@@ -24,16 +26,20 @@
                 </div>
                 <div class="d-flex flex-row justify-content-center">
                     {% if paginator.previous_page %}
-					<a class="btn btn-primary blog-pages-button" href="{{ paginator.previous_page_path }}">Previous</a>
+                    <a class="btn btn-primary blog-pages-button" 
+                       onclick="track('{{ site.data.tracking.action.open_blog_previous_page }}', '{{  site.data.tracking.category.blog_home }}', '{{ site.data.tracking.label.body }}')"
+                       href="{{ paginator.previous_page_path }}">Previous</a>
                     {% endif %}
                     {% if paginator.next_page %}
-					<a class="btn btn-primary blog-pages-button" href="{{ paginator.next_page_path }}">Next</a>
+					<a class="btn btn-primary blog-pages-button" 
+                       onclick="track('{{ site.data.tracking.action.open_blog_next_page }}', '{{  site.data.tracking.category.blog_home }}', '{{ site.data.tracking.label.body }}')"
+                       href="{{ paginator.next_page_path }}">Next</a>
                     {% endif %}
                 </div>
             </div>
         </div>
-        {% include footer.html %}
+        {% include footer.html track-category=site.data.tracking.category.blog_home %}
 		{% include style.html styleInclude="dependencies-css-blog-home.html" %}
-        {% include dependencies-js-blog.html %}
+        {% include dependencies-js-blog.html track-category=site.data.tracking.category.blog_home %}
     </body>
 </html>

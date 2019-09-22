@@ -2,10 +2,10 @@
 <html lang="en">
 	{% include head.html critical-css="critical-blog-tags.css" content-type="website" %}
     <body class="blog-body">
-        {% include blog-masthead.html %}
+        {% include blog-masthead.html track-category=site.data.tracking.category.blog_tags %}
 		{% include blog-pull-to-refresh.html %}
 		<div class="container blog-posts start-pull pullable-content">
-			{% include blog-header.html %}
+			{% include blog-header.html track-category=site.data.tracking.category.blog_tags %}
             <div class="blog-tags-list">
                 <div class="blog-main">
                     {% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
@@ -16,7 +16,8 @@
                             {% unless forloop.last %}
                             {% capture this_tag %}{{ tags_list[item] }}{% endcapture %}
                             <li>
-                                <a href="#{{ this_tag }}">
+                                <a href="#{{ this_tag }}"
+                                   onclick="track('{{ site.data.tracking.action.open_blog_tag }}', '{{ site.data.tracking.category.blog_tags }}', '{{ site.data.tracking.label.body }}')">
                                     <span>{{ this_tag }}</span>
                                     <span class="count">{{ site.tags[this_tag].size }}</span>
                                 </a>
@@ -36,9 +37,11 @@
                             {% if post.title != null %}
                             <li class="blog-tag-post">
                                 {% if post.link %}
-                                <a href="{{ post.link }}">
+                                <a href="{{ post.link }}"
+                                   onclick="track('{{ site.data.tracking.action.open_blog_post }}', '{{ site.data.tracking.category.blog_tags }}', '{{ site.data.tracking.label.body }}')">
                                 {% else %}
-                                <a href="{{ post.url }}">
+                                <a href="{{ post.url }}"
+                                   onclick="track('{{ site.data.tracking.action.open_blog_post }}', '{{ site.data.tracking.category.blog_tags }}', '{{ site.data.tracking.label.body }}')">
                                 {% endif %}
                                     <span class="tag-post-title">{{ post.title }}</span>
                                 </a>
@@ -52,8 +55,8 @@
                 </div>
             </div>
         </div>
-        {% include footer.html %}
+        {% include footer.html track-category=site.data.tracking.category.blog_tags %}
 		{% include style.html styleInclude="dependencies-css-blog-tags.html" %}        
-		{% include dependencies-js-blog.html %}
+		{% include dependencies-js-blog.html track-category=site.data.tracking.category.blog_tags %}
     </body>
 </html>

@@ -2,20 +2,20 @@
 <html lang="en">
 	{% include head.html critical-css="critical-blog-post.css" %}
 	<body class="blog-body">
-		{% include blog-masthead.html %}
+		{% include blog-masthead.html track-category=site.data.tracking.category.blog_post %}
 		{% include blog-pull-to-refresh.html %}
 		<div class="container blog-posts start-pull pullable-content">
-			{% include blog-header.html %}
+			{% include blog-header.html track-category=site.data.tracking.category.blog_post %}
 			<div class="blog-main">
 				{% include blog-post.html post=page link-title=false %}
 			</div>
-			{% include blog-recent-posts.html %}
+			{% include blog-recent-posts.html track-category=site.data.tracking.category.blog_post track-label=site.data.tracking.label.body %}
 			{% if page.comments %}
 				{% include disquis.html %}
 			{% endif %}
 		</div>
-		{% include footer.html %}
+		{% include footer.html track-category=site.data.tracking.category.blog_post %}
 		{% include style.html styleInclude="dependencies-css-blog-post.html" %}
-		{% include dependencies-js-blog.html %}
+		{% include dependencies-js-blog.html track-category=site.data.tracking.category.blog_post %}
 	</body>
 </html>
