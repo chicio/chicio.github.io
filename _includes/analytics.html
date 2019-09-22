@@ -1,6 +1,6 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.tracking_id }}"></script>
 <script>
-    // window['ga-disable-{{ site.tracking_id }}'] = window.location.host.search('{{ site.domain }}') !== -1 ? false : true;
+    window['ga-disable-{{ site.tracking_id }}'] = window.location.host.search('{{ site.domain }}') !== -1 ? false : true;
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());

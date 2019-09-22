@@ -95,7 +95,7 @@ self.addEventListener('message', (event) => {
         Promise.all([
           deleteRequestToBeRefreshed, 
           ...deleteRequestsForImagesToBeRefreshed, 
-          sendAnalyticsEvent(event.data.clientId, '{{ site.data.tracking.action.pull_to_refresh }}', '', '{{ site.data.tracking.label.body }}')
+          sendAnalyticsEvent(event.data.clientId, '{{ site.data.tracking.action.pull_to_refresh }}', event.data.trackingCategory, '{{ site.data.tracking.label.body }}')
         ])
           .then(() => sendRefreshCompletedMessageToClient(event))
           .catch(() => sendRefreshCompletedMessageToClient(event))

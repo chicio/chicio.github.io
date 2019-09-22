@@ -6,7 +6,9 @@ Release date: 2019-09-22
 
 #### Added
 
-- Events tracking on all site
+- Events tracking on all site (also service worker!!!!)
+- improved analytics configuration
+- clean liquid templating
 
 #### Fixed
 

@@ -3,20 +3,22 @@
 //See: https://codelabs.developers.google.com/codelabs/pwa-integrating-analytics/index.html?index=..%2F..dev-pwa-training#6
 
 const sendAnalyticsEvent = (clientId, action, category, label) => {
-  console.log(self.location.hostname)
+  if (!self.location.hostname.includes('{{ site.domain }}')) {
+    return Promise.resolve();
+  }
 
   if (!action && !category) {
     return Promise.resolve();
   }
 
   const payloadData = {
-    v: 1, // Version Number
-    cid: clientId, // Client ID
-    tid: '{{ site.tracking_id }}', // Tracking ID
-    t: 'event', // Hit Type
-    ec: category, // Event Category
-    ea: action, // Event Action
-    el: label // Event Label
+    v: 1,
+    cid: clientId,
+    tid: '{{ site.tracking_id }}',
+    t: 'event', 
+    ec: category,
+    ea: action,
+    el: label
   };
 
   const payloadString = Object.keys(payloadData)
@@ -31,11 +33,8 @@ const sendAnalyticsEvent = (clientId, action, category, label) => {
     if (!response.ok) {
       return response.text()
         .then(responseText => {
-          throw new Error('Service worker bad response from Google Analytics:\n' + response.status);
+          throw new Error('Service worker bad response from Google Analytics:\n' + response);
         });
-    } else {
-      console.log(response)
-      console.log('Service worker analytics event: ' + action + '/' + category + '/' + label + '/' + clientId);
-    }
+    } 
   });
 };

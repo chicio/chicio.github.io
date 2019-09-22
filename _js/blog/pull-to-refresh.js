@@ -3,7 +3,7 @@ import { sendMessageToServiceWorker } from '../common/service-worker'
 import { addCssClass, removeCssClass } from '../common/css-class'
 import { getTrackingClientId } from '../common/tracking'
 
-const pullToRefresh = (): void => {
+const pullToRefresh = (trackingCategory: string): void => {
   if (!('serviceWorker' in navigator)) {
     return
   }
@@ -88,7 +88,7 @@ const pullToRefresh = (): void => {
         pullToRefreshStatusRepository.startRefresh()
         dragUpdate(0, 1)
         setRefreshingStatus()
-        sendMessageToServiceWorker({ message: 'refresh', url: window.location.href, clientId: getTrackingClientId() }).then((data) => {
+        sendMessageToServiceWorker({ message: 'refresh', url: window.location.href, clientId: getTrackingClientId(), trackingCategory }).then((data) => {
           pullToRefreshStatusRepository.completeRefresh()
           setTimeout(() => {
             setRefreshStatusCompleted()
