@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "React Native + Typescript, love at first sight. Setup in an existing app."
+title: "React Native + Typescript, love at first sight. Setup in an existing app"
 description: "In this post I will show you how to setup React Native + Typescript in an existing app and I will show you
 how powerful they are when used together."
 date: 2018-07-04
