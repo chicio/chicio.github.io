@@ -1,6 +1,14 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [1.19.0](https://github.com/chicio/chicio.github.io/releases/tag/1.19.0)
+Release date: 2019-09-22
+
+#### Added
+
+- Updated cookieconsent
+- Update MathJax
+
 ## [1.18.0](https://github.com/chicio/chicio.github.io/releases/tag/1.18.0)
 Release date: 2019-09-22
 

@@ -3,11 +3,11 @@ const cookieConsent = () => {
   window.cookieconsent.initialise({
     palette: {
       popup: {
-        background: '#9fa8da',
+        background: '#303F9F',
         text: '#ffffff'
       },
       button: {
-        background: '#448aff',
+        background: '#0F67FF',
         text: '#ffffff'
       }
     },
