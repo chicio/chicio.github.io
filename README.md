@@ -22,7 +22,6 @@ After you finished the installation you can do the setup of the local environmen
 
 ```bash
 npm run setup
-npm install
 ```  
 
 Then you can build and launch my website locally with the following commands from the root folder of this repo:
