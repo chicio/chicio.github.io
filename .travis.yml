@@ -11,5 +11,4 @@ addons:
       - zsh
 before_script:
   - npm run setup
-  - npm install
 script: npm run test
