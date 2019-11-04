@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env zsh
 
 # Install gulp cli and flow typed
 npm install --global gulp-cli@2.0.1
