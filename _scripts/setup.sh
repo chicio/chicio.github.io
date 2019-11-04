@@ -12,3 +12,6 @@ rvm use 2.6.0
 # Install gem dependecies
 gem install bundler
 bundle install --path vendor/bundle
+
+# Install npm dependecies
+npm install
