@@ -53,7 +53,7 @@ gulp.task('flow', (done) => {
 })
 
 gulp.task('lint', () => (
-  gulp.src('_jsbuild/**')
+  gulp.src('_js/**')
     .pipe(gulpEslint())
     .pipe(gulpEslint.format())
     .pipe(gulpEslint.failOnError()))

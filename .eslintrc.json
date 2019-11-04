@@ -1,6 +1,19 @@
 {
-    "extends": "standard",
+    "extends": [
+        "plugin:flowtype/recommended"
+    ],
+    "plugins": [
+        "flowtype"
+    ],
     "env": {
         "browser": true
+    },
+    "rules": {
+        "flowtype/no-types-missing-file-annotation": 0
+    },
+    "settings": {
+        "flowtype": {
+          "onlyFilesWithFlowAnnotation": true
+        }
     }
 }
