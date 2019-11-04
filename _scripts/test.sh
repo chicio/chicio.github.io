@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+source ~/.rvm/scripts/rvm
+rvm use 2.6.0
+
 # Build site
 npm run build
 
