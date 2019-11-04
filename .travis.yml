@@ -8,6 +8,7 @@ addons:
   apt:
     packages:
       - libcurl4-openssl-dev  
+      - zsh
 before_script:
   - npm run setup
   - npm install
