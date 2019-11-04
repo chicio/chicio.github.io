@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env zsh
 
 # Build site
 npm run build

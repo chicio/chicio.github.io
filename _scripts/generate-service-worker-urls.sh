@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env zsh
 
 # Generate service worker url for a specific section
 section_name=$1

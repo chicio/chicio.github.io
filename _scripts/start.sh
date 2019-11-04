@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env zsh
 
 # Clean previous build
 rm -Rf _site/

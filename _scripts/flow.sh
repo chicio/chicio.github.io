@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env zsh
 
 # Clean old build
 rm -Rf _jsbuild/**
