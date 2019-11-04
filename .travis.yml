@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "8"
+  - 13.0.1
 env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true  
