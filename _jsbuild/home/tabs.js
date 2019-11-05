@@ -8,9 +8,6 @@ const tabs = () => {
   })
 }
 
-
-
-
 const forEach = (list, operation) => {
   for (let i = 0; i < list.length; i++) {
     operation(list.item(i))

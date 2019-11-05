@@ -1,5 +1,4 @@
 /* @flow */
-/* global ga */
 
 const getTrackingClientId = (): string => {
   var id: string = ''

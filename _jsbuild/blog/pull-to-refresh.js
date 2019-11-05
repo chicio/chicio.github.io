@@ -88,7 +88,7 @@ const pullToRefresh = (trackingCategory) => {
         pullToRefreshStatusRepository.startRefresh()
         dragUpdate(0, 1)
         setRefreshingStatus()
-        sendMessageToServiceWorker({ message: 'refresh', url: window.location.href, clientId: getTrackingClientId(), trackingCategory }).then((data) => {
+        sendMessageToServiceWorker({ message: 'refresh', url: window.location.href, clientId: getTrackingClientId(), trackingCategory }).then(() => {
           pullToRefreshStatusRepository.completeRefresh()
           setTimeout(() => {
             setRefreshStatusCompleted()

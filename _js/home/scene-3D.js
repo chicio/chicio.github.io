@@ -101,7 +101,7 @@ const setup = (renderer, camera, scene) => {
 
 const renderLoop = (renderer, scene, camera, orbit) => {
   const renderFrame = () => {
-    global.requestAnimationFrame(renderFrame)
+    requestAnimationFrame(renderFrame)
     orbit.update()
     renderer.render(scene, camera)
   }

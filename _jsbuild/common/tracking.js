@@ -1,5 +1,4 @@
 /*  */
-/* global ga */
 
 const getTrackingClientId = () => {
   var id = ''
