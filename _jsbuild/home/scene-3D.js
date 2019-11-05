@@ -17,7 +17,7 @@ import {
   RepeatWrapping,
   MeshStandardMaterial,
   PlaneGeometry
-} from 'three'
+} from 'three/build/three.module.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
 import isWebGLEnabled from 'detector-webgl'
@@ -40,7 +40,7 @@ const sceneThreeJS = () => {
   setup(renderer, camera, scene)
   lights(scene)
   stars(textureLoader, stars => scene.add(stars))
-  // meshWithPBRMaterial(plyLoader, lucy(), mesh => scene.add(mesh))
+  meshWithPBRMaterial(plyLoader, lucy(), mesh => scene.add(mesh))
   meshWithPBRMaterial(plyLoader, dragon(), mesh => scene.add(mesh))
   meshWithPBRMaterial(plyLoader, bunny(), mesh => scene.add(mesh))
   floor(textureLoader, mesh => scene.add(mesh))
@@ -56,19 +56,19 @@ class Object3D {
   }
 }
 
-// const lucy = () => new Object3D(
-//   'assets/models/lucy.ply',
-//   {
-//     color: 0x3F51B5,
-//     roughness: 0.5,
-//     metalness: 0.7,
-//     clearcoat: 0.5,
-//     clearcoatRoughness: 0.5,
-//     reflectivity: 0.7
-//   },
-//   new Vector3(3, -3, 0),
-//   new Vector3(0, -Math.PI / 3.0, 0)
-// )
+const lucy = () => new Object3D(
+  'assets/models/lucy.ply',
+  {
+    color: 0x3F51B5,
+    roughness: 0.5,
+    metalness: 0.7,
+    clearcoat: 0.5,
+    clearcoatRoughness: 0.5,
+    reflectivity: 0.7
+  },
+  new Vector3(3, -3, 0),
+  new Vector3(0, -Math.PI / 3.0, 0)
+)
 
 const dragon = () => new Object3D(
   'assets/models/dragon.ply',
@@ -190,8 +190,7 @@ const meshWithPBRMaterial = (plyLoader, object, completeLoad) => {
     mesh.position.set(object.position.x, object.position.y, object.position.z)
     mesh.rotation.set(object.rotation.x, object.rotation.y, object.rotation.z)
     mesh.castShadow = true
-    mesh.matrixAutoUpdate = false
-    mesh.updateMatrix()
+    mesh.receiveShadow = true
     completeLoad(mesh)
   })
 }
