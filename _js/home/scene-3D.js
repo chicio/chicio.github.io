@@ -1,6 +1,25 @@
-import * as THREE from 'three'
-import OrbitControls from 'three-orbitcontrols'
-import PLYLoader from 'three-ply-loader'
+import {
+  Scene,
+  TextureLoader,
+  DefaultLoadingManager,
+  Vector3,
+  Color,
+  HemisphereLight,
+  PerspectiveCamera,
+  PointLight,
+  WebGLRenderer,
+  PCFSoftShadowMap,
+  Geometry,
+  PointsMaterial,
+  Points,
+  MeshPhysicalMaterial,
+  Mesh,
+  RepeatWrapping,
+  MeshStandardMaterial,
+  PlaneGeometry
+} from 'three/build/three.module.js'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
 import isWebGLEnabled from 'detector-webgl'
 import { isAMobileDevice } from '../common/mobile-device-detector'
 import { animation } from '../common/animation'
@@ -12,10 +31,9 @@ const scene3D = () => {
 }
 
 const sceneThreeJS = () => {
-  PLYLoader(THREE)
-  const plyLoader = new THREE.PLYLoader()
-  const scene = new THREE.Scene()
-  const textureLoader = new THREE.TextureLoader()
+  const plyLoader = new PLYLoader()
+  const scene = new Scene()
+  const textureLoader = new TextureLoader()
   const camera = camera3D()
   const renderer = renderer3D()
   const orbit = orbitsControls(camera, renderer)
@@ -26,7 +44,7 @@ const sceneThreeJS = () => {
   meshWithPBRMaterial(plyLoader, dragon(), mesh => scene.add(mesh))
   meshWithPBRMaterial(plyLoader, bunny(), mesh => scene.add(mesh))
   floor(textureLoader, mesh => scene.add(mesh))
-  THREE.DefaultLoadingManager.onLoad = () => renderLoop(renderer, scene, camera, orbit)
+  DefaultLoadingManager.onLoad = () => renderLoop(renderer, scene, camera, orbit)
 }
 
 class Object3D {
@@ -48,8 +66,8 @@ const lucy = () => new Object3D(
     clearcoatRoughness: 0.5,
     reflectivity: 0.7
   },
-  new THREE.Vector3(3, -3, 0),
-  new THREE.Vector3(0, -Math.PI / 3.0, 0)
+  new Vector3(3, -3, 0),
+  new Vector3(0, -Math.PI / 3.0, 0)
 )
 
 const dragon = () => new Object3D(
@@ -62,8 +80,8 @@ const dragon = () => new Object3D(
     clearcoatRoughness: 0.2,
     reflectivity: 1
   },
-  new THREE.Vector3(-3, -3, 0),
-  new THREE.Vector3(0, -Math.PI, 0)
+  new Vector3(-3, -3, 0),
+  new Vector3(0, -Math.PI, 0)
 )
 
 const bunny = () => new Object3D(
@@ -76,8 +94,8 @@ const bunny = () => new Object3D(
     clearcoatRoughness: 0.5,
     reflectivity: 0.1
   },
-  new THREE.Vector3(0, -3, 1.5),
-  new THREE.Vector3(0, -Math.PI, 0)
+  new Vector3(0, -3, 1.5),
+  new Vector3(0, -Math.PI, 0)
 )
 
 const orbitsControls = (camera, renderer) => {
@@ -87,7 +105,7 @@ const orbitsControls = (camera, renderer) => {
   controls.enablePan = false
   controls.keyPanSpeed = 7.0
   controls.enableKeys = false
-  controls.target = new THREE.Vector3(0, 0, 0)
+  controls.target = new Vector3(0, 0, 0)
   controls.mouseButtons = {}
   controls.dispose()
   return controls
@@ -95,7 +113,7 @@ const orbitsControls = (camera, renderer) => {
 
 const setup = (renderer, camera, scene) => {
   document.getElementById('rendering-surface').appendChild(renderer.domElement)
-  scene.background = new THREE.Color(0x303F9F)
+  scene.background = new Color(0x303F9F)
   setWindowResizeListener(camera, renderer)
 }
 
@@ -111,11 +129,11 @@ const renderLoop = (renderer, scene, camera, orbit) => {
 
 const lights = (scene) => {
   scene.add(pointLight())
-  scene.add(new THREE.HemisphereLight(0x303F9F, 0x000000, 1))
+  scene.add(new HemisphereLight(0x303F9F, 0x000000, 1))
 }
 
 const camera3D = () => {
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+  const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
   camera.position.z = 8
   camera.position.y = 0
   camera.position.x = 0
@@ -123,7 +141,7 @@ const camera3D = () => {
 }
 
 const pointLight = () => {
-  const light = new THREE.PointLight(0xffffff, 1, 20, 2)
+  const light = new PointLight(0xffffff, 1, 20, 2)
   light.power = 1700
   light.castShadow = true
   light.shadow.mapSize.width = 512
@@ -134,61 +152,61 @@ const pointLight = () => {
 }
 
 const renderer3D = () => {
-  const renderer = new THREE.WebGLRenderer({ alpha: true })
+  const renderer = new WebGLRenderer({ alpha: true })
   renderer.physicallyCorrectLights = true
   renderer.gammaInput = true
   renderer.gammaOutput = true
   renderer.shadowMap.enabled = true
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap
+  renderer.shadowMap.type = PCFSoftShadowMap
   renderer.setSize(window.innerWidth, window.innerHeight)
   return renderer
 }
 
 const stars = (textureLoader, completeLoad) => {
   textureLoader.load('assets/models/textures/circle.png', function (texture) {
-    const starsGeometry = new THREE.Geometry()
+    const starsGeometry = new Geometry()
     for (let i = 0; i < 10000; i++) {
-      const star = new THREE.Vector3()
+      const star = new Vector3()
       star.x = 2000 * Math.random() - 1000
       star.y = 2000 * Math.random()
       star.z = 2000 * Math.random() - 1000
       starsGeometry.vertices.push(star)
     }
-    const starsMaterial = new THREE.PointsMaterial({
+    const starsMaterial = new PointsMaterial({
       color: 0x888888,
       map: texture,
       transparent: true
     })
-    const stars = new THREE.Points(starsGeometry, starsMaterial)
+    const stars = new Points(starsGeometry, starsMaterial)
     completeLoad(stars)
   })
 }
 
 const meshWithPBRMaterial = (plyLoader, object, completeLoad) => {
-  plyLoader.load(object.path, geometry => {
-    const material = new THREE.MeshPhysicalMaterial(object.properties)
-    const mesh = new THREE.Mesh(geometry, material)
+  plyLoader.load(object.path, (geometry) => {
+    geometry.computeVertexNormals()
+    const material = new MeshPhysicalMaterial(object.properties)
+    const mesh = new Mesh(geometry, material)
     mesh.position.set(object.position.x, object.position.y, object.position.z)
     mesh.rotation.set(object.rotation.x, object.rotation.y, object.rotation.z)
     mesh.castShadow = true
-    mesh.matrixAutoUpdate = false
-    mesh.updateMatrix()
+    mesh.receiveShadow = true
     completeLoad(mesh)
   })
 }
 
 const floor = (textureLoader, completionFunction) => {
   textureLoader.load('assets/models/textures/marble.jpg', function (texture) {
-    texture.wrapS = THREE.RepeatWrapping
-    texture.wrapT = THREE.RepeatWrapping
+    texture.wrapS = RepeatWrapping
+    texture.wrapT = RepeatWrapping
     texture.repeat.set(100, 100)
-    const floorMat = new THREE.MeshStandardMaterial({
+    const floorMat = new MeshStandardMaterial({
       roughness: 0.7,
       metalness: 0.1,
       map: texture
     })
-    const floorGeometry = new THREE.PlaneGeometry(1000, 1000)
-    const floorMesh = new THREE.Mesh(floorGeometry, floorMat)
+    const floorGeometry = new PlaneGeometry(1000, 1000)
+    const floorMesh = new Mesh(floorGeometry, floorMat)
     floorMesh.receiveShadow = true
     floorMesh.rotation.x = -Math.PI / 2.0
     floorMesh.position.y = -3

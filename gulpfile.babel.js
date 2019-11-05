@@ -61,7 +61,7 @@ gulp.task('lint', () => (
 
 const bundleJs = (section) => (
   browserify({ entries: `_jsbuild/index.${section}.js` })
-    .transform(babelify.configure({ presets: ['@babel/preset-env'] }))
+    .transform(babelify, { global: true, presets: ['@babel/preset-env'] })
     .bundle()
     .pipe(source(`index.${section}.min.js`))
     .pipe(buffer())
