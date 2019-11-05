@@ -65,7 +65,7 @@ const bundleJs = (section) => (
     .bundle()
     .pipe(source(`index.${section}.min.js`))
     .pipe(buffer())
-    .pipe(gulpUglify())
+    //.pipe(gulpUglify())
     .pipe(gulp.dest('assets/js'))
 )
 
