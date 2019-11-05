@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import OrbitControls from 'three-orbitcontrols'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import PLYLoader from 'three-ply-loader'
 import isWebGLEnabled from 'detector-webgl'
 import { isAMobileDevice } from '../common/mobile-device-detector'
@@ -145,7 +145,7 @@ const renderer3D = () => {
 }
 
 const stars = (textureLoader, completeLoad) => {
-  textureLoader.load('assets/models/textures/circle.png', function (texture) {
+  textureLoader.load('assets/models/textures/circle.png', (texture) => {
     const starsGeometry = new THREE.Geometry()
     for (let i = 0; i < 10000; i++) {
       const star = new THREE.Vector3()
@@ -165,7 +165,7 @@ const stars = (textureLoader, completeLoad) => {
 }
 
 const meshWithPBRMaterial = (plyLoader, object, completeLoad) => {
-  plyLoader.load(object.path, geometry => {
+  plyLoader.load(object.path, (geometry) => {
     const material = new THREE.MeshPhysicalMaterial(object.properties)
     const mesh = new THREE.Mesh(geometry, material)
     mesh.position.set(object.position.x, object.position.y, object.position.z)

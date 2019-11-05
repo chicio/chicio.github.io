@@ -35,9 +35,9 @@
   },
   "homepage": "https://github.com/chicio/chicio.github.io#readme",
   "devDependencies": {
-    "@babel/core": "7.6.0",
-    "@babel/preset-env": "7.6.0",
-    "@babel/register": "7.6.0",
+    "@babel/core": "7.6.4",
+    "@babel/preset-env": "7.6.3",
+    "@babel/register": "7.6.2",
     "ajv": "6.10.2",
     "babel-eslint": "10.0.3",
     "babelify": "10.0.0",
@@ -66,7 +66,7 @@
     "bootstrap": "4.3.1",
     "detector-webgl": "2.0.0",
     "intersection-observer": "0.7.0",
-    "three": "0.108.0",
+    "three": "0.110.0",
     "three-orbitcontrols": "2.102.2",
     "three-ply-loader": "1.0.0"
   }
