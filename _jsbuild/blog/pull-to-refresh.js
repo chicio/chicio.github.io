@@ -3,6 +3,12 @@ import { sendMessageToServiceWorker } from '../common/service-worker'
 import { addCssClass, removeCssClass } from '../common/css-class'
 import { getTrackingClientId } from '../common/tracking'
 
+const tryToActivatePullToRefresh = (trackingCategory, shouldActivatePullToRefresh) => {
+  if (shouldActivatePullToRefresh === true) {
+    pullToRefresh(trackingCategory)
+  }
+}
+
 const pullToRefresh = (trackingCategory) => {
   if (!('serviceWorker' in navigator)) {
     return
@@ -142,4 +148,4 @@ const getTouchesCoordinatesFrom = (event) => {
   )
 }
 
-export { pullToRefresh }
+export { tryToActivatePullToRefresh }

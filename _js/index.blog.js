@@ -1,18 +1,20 @@
 /* @flow */
-import { cookieConsent } from './common/cookie-consent.js'
+import { cookieConsent } from './common/cookie-consent'
 import { lazyLoadImages } from './common/lazy-load-images'
 import { disqus } from './blog/disqus'
-import { pullToRefresh } from './blog/pull-to-refresh.js'
+import { tryToActivatePullToRefresh } from './blog/pull-to-refresh'
+import { registerToServicerWorker } from './common/service-worker'
 
 window.ChicioCodingBlog = {
-  init: (trackingCategory: string) => {
+  init: (trackingCategory: string, shouldActivatePullToRefresh: boolean) => {
     document.addEventListener('DOMContentLoaded', () => {
       lazyLoadImages('.blog-image')
     })
     window.addEventListener('load', () => {
+      registerToServicerWorker()
       cookieConsent()
+      tryToActivatePullToRefresh(trackingCategory, shouldActivatePullToRefresh)
       disqus()
-      pullToRefresh(trackingCategory)
     })
   }
 }

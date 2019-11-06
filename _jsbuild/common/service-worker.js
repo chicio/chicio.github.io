@@ -1,4 +1,15 @@
 /*  */
+
+const registerToServicerWorker = () => {
+  if ('serviceWorker' in navigator && navigator.serviceWorker) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(() => { console.log('Service Worker registration completed') })
+      .catch((err) => { console.error('Service Worker registration failed:', err) })
+  } else {
+    console.log('Service worker not supported')
+  }
+}
+
 const sendMessageToServiceWorker = (message) => {
   return new Promise((resolve, reject) => {
     const messageChannel = new MessageChannel()
@@ -17,4 +28,4 @@ const sendMessageToServiceWorker = (message) => {
   })
 }
 
-export { sendMessageToServiceWorker }
+export { sendMessageToServiceWorker, registerToServicerWorker }
