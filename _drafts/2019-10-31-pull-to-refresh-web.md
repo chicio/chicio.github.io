@@ -39,7 +39,7 @@ Below you can find the entire html code snippet.
 </div>
 ```
 
-Let's see what I did on the CSS side.  .....
+Let's see what I did on the CSS side. The code reported below here is written in SASS (the XXXXX......), but you can easily transform it in plain CSS if you need. First of all there's a new CSS property used in the `html` rule: `overscroll-behavior-y`. This property let the developers change the browser behaviour when the user researches the edge of the page with a scroll gesture. This is a property supported by Chrome, Firefox and Opera (fuck you Safari!!! :XXXXX:). By setting it's value to `contains`, we can for example disable the native browser pull to refresh on Chrome and avoid the page bounce effect when the user starts to overflow the borders while dragging. Then I defined a property `pullable-content` that I used on the entire content of the page that I want to move in parallel with the pull to refresh. The next class is `pull-to-refresh` and contains all the styles needed to layout the pull to refresh in all its states. As you can see I defined all the animation I needed for this UI component here except for the translation applied while dragging that will be computed on the JavaScript side (because this are simple animation and [CSS is performant enough for this kind of animations](XXXXXXXXXXX)). Last but not least I defined 2 classes to reset the pull to refresh layout status when the pull to refresh is started or has reached the end and starts the refresh of the content (they will be applied, like other contained here, with JavaScript DOM API).
 
 ```scss
 html {
