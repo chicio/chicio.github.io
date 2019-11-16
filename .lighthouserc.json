@@ -1,15 +1,22 @@
 {
   "ci": {
     "collect": {
-      "numberOfRuns": 3,
+      "numberOfRuns": 1,
       "staticDistDir": "./_site",
       "startServerCommand": "npm start",
-      "url": "http://localhost:4000/"
+      "url": [
+        "http://localhost:4000/",
+        "http://localhost:4000/blog/"
+      ]
     },
     "assert": {
       "preset": "lighthouse:recommended",
       "assertions": {
-        "uses-webp-images": "off"
+        "uses-optimized-images": "off",
+        "uses-webp-images": "off",
+        "uses-responsive-images": "off",
+        "unused-css-rules": "off",
+        "first-cpu-idle": "off"
       }
     },
     "upload": {
