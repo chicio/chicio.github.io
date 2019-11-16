@@ -17,7 +17,9 @@
         "uses-responsive-images": "off",
         "unused-css-rules": "off",
         "first-cpu-idle": "off",
-        "uses-text-compression": "off"
+        "uses-text-compression": "off",
+        "redirects-http": "off",
+        "uses-http2": "off"
       }
     },
     "upload": {
