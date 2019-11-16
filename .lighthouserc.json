@@ -19,7 +19,8 @@
         "first-cpu-idle": "off",
         "uses-text-compression": "off",
         "redirects-http": "off",
-        "uses-http2": "off"
+        "uses-http2": "off",
+        "is-on-https": "off"
       }
     },
     "upload": {
