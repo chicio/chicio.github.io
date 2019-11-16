@@ -108,7 +108,15 @@ html {
 #### JavaScript
 
 On the JavaScript side, I wrote the the pull to refresh widget as a standalone widget that export one single function `pullToRefresh()`. The first thing that this widget does is to check the browser support for service worker. Then it checks for some HTML component that are needed by the widget by using the `invariant` function. This HTML components are the loader, the loader message status and the content to be refreshed. The widget will throw an error if one of this HTML component is not present on the page where the it is instantiated.  
-Then 3 new listener are attached to the 3 touches event on the entire document: `'touchstart'`, `'touchmove'` and `'touchend'`. In the `'touchstart'` ....
+Then 3 new listener are attached to the 3 touches event on the entire document: `'touchstart'`, `'touchmove'` and `'touchend'`. In the `'touchstart'` event I get the starting touches coordinates and I prepare the pull to refresh DOM by adding the CSS classes needed with the function `preparePullToRefreshToStart()`. The `touchemove` is the core of the widget. In this event I try to understand if the user is doing a drag gesture by using the function `isDraggingForPullToRefresh()` that does some checks using the `window.scrollY` property and the `yMovement` calculated by doing the difference between the gesture starting coordinates (that I get from the `touchstart` event) and the current touches coordinates.
+
+```javascript
+const dragCurrentPoint = getTouchesCoordinatesFrom(event)
+const yMovement = (dragStartPoint.y - dragCurrentPoint.y) * decelerationFactor
+```
+
+When I detect a drag gesture (so as we said above `isDraggingForPullToRefresh() == true`) I start to check if the pull to refresh is completed with the function `isPullToRefreshDragCompleted()`, that does a check to understand if the total drag gesture movement is equal to pull to refresh contained DOM element. If this function return false, then the pull to refresh DOM is updated by the function `dragUpdate()`, that applies some CSS transform that translate the pull to refresh into the viewport to make it more and more visible (and increase the visibility of the loader that it is still stop). When `isPullToRefreshDragCompleted()` is `true`, the user reached the end of the pull to refresh drag gesture and the refresh of the content is started. How do I refresh the content? I send a message to the service worker using the function `sendMessageToServiceWorker` to refresh the content. The the service worker completes
+
 
 ```javascript
 import { sendMessageToServiceWorker } from '../common/service-worker'
