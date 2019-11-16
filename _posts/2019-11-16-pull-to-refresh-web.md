@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Implement a pull to refresh for you web application"
+title: "Implement a pull to refresh component for you web application"
 description: "Implementing a pull to refresh component in vanilla js for your progressive web app (PWA) it's really easy. Let's do it now!"
 date: 2019-11-16
 image: /assets/images/posts/pull-to-refresh.jpg
