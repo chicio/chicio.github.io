@@ -5,6 +5,7 @@ env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true  
 addons:
+  chrome: stable
   apt:
     packages:
       - libcurl4-openssl-dev  
