@@ -210,10 +210,8 @@ const pullToRefresh = (trackingCategory) => {
         setRefreshingStatus()
         sendMessageToServiceWorker({ message: 'refresh', url: window.location.href, clientId: getTrackingClientId(), trackingCategory }).then(() => {
           pullToRefreshStatusRepository.completeRefresh()
-          setTimeout(() => {
-            setRefreshStatusCompleted()
-            closePullToRefresh()
-          }, 1500)
+          setRefreshStatusCompleted()
+          closePullToRefresh()
         })
       } else {
         dragUpdate(yAbsoluteMovement - pullToRefreshElementHeight, yAbsoluteMovement / pullToRefreshElementHeight)
