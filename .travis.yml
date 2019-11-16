@@ -13,4 +13,4 @@ before_script:
   - npm run setup
 script: npm run test
 after_success:
-  - lhci autorun --upload.target=temporary-public-storage
+  - lhci autorun 
