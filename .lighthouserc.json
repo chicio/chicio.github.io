@@ -16,7 +16,8 @@
         "uses-webp-images": "off",
         "uses-responsive-images": "off",
         "unused-css-rules": "off",
-        "first-cpu-idle": "off"
+        "first-cpu-idle": "off",
+        "uses-text-compression": "off"
       }
     },
     "upload": {
