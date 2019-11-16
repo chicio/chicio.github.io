@@ -115,8 +115,25 @@ const dragCurrentPoint = getTouchesCoordinatesFrom(event)
 const yMovement = (dragStartPoint.y - dragCurrentPoint.y) * decelerationFactor
 ```
 
-When I detect a drag gesture (so as we said above `isDraggingForPullToRefresh() == true`) I start to check if the pull to refresh is completed with the function `isPullToRefreshDragCompleted()`, that does a check to understand if the total drag gesture movement is equal to pull to refresh contained DOM element. If this function return false, then the pull to refresh DOM is updated by the function `dragUpdate()`, that applies some CSS transform that translate the pull to refresh into the viewport to make it more and more visible (and increase the visibility of the loader that it is still stop). When `isPullToRefreshDragCompleted()` is `true`, the user reached the end of the pull to refresh drag gesture and the refresh of the content is started. How do I refresh the content? I send a message to the service worker using the function `sendMessageToServiceWorker` to refresh the content. The the service worker completes
+When I detect a drag gesture (so as we said above `isDraggingForPullToRefresh() == true`) I start to check if the pull to refresh is completed with the function `isPullToRefreshDragCompleted()`, that does a check to understand if the total drag gesture movement is equal to pull to refresh contained DOM element. If this function return false, then the pull to refresh DOM is updated by the function `dragUpdate()`, that applies some CSS transform that translate the pull to refresh into the viewport to make it more and more visible (and increase the visibility of the loader that it is still stop). When `isPullToRefreshDragCompleted()` is `true`, the user reached the end of the pull to refresh drag gesture and the refresh of the content is started. How do I refresh the content? I send a message to the service worker using the function `sendMessageToServiceWorker` to refresh the content. When the service worker answers that the refresh of the content is completed we update the pull to refresh status with the message 'Refresh completed' and we close it using the functions `setRefreshStatusCompleted()` and `closePullToRefresh()`. In particular the `closePullToRefresh()` function launches a CSS transform transition animation to close the pull to refresh. To reload the content of the page when the animation is completed I defined a `transitionend` listener attached to the `pullToRefreshElement` container element (the one that is animated) that launches a `window.location.reload()` to reload the page and show the new fresh content. In all this steps I keep track that the refresh phases completed correctly by setting some status flag in a status repository that I create with the function `createPullToRefreshStatusRepository()`. 
 
+```javascript
+//...other code...
+const createPullToRefreshStatusRepository = () => ({
+  refreshStarted: false,
+  refreshCompleted: false,
+  startRefresh () {
+    this.refreshStarted = true
+  },
+  completeRefresh () {
+    this.refreshCompleted = true
+  }
+})
+//...other code...
+```
+
+As I said before, each flag is updated when the correct phase is completed (e.g. a touch listener is launched or the service worker warn us that the refresh is completed).  
+Below you can find the complete pull to refresh widget code discussed above. Inside it there are also some utilities classes that I use on my website to increase the compatibility on older browser (in this case used only to keep consistencies in the entire website JavaScript code case because a modern browser with Service Worker support is required).
 
 ```javascript
 import { sendMessageToServiceWorker } from '../common/service-worker'
@@ -210,8 +227,10 @@ const pullToRefresh = (trackingCategory) => {
         setRefreshingStatus()
         sendMessageToServiceWorker({ message: 'refresh', url: window.location.href, clientId: getTrackingClientId(), trackingCategory }).then(() => {
           pullToRefreshStatusRepository.completeRefresh()
-          setRefreshStatusCompleted()
-          closePullToRefresh()
+          setTimeout(() => {
+            setRefreshStatusCompleted()
+            closePullToRefresh()
+          }, 1500)
         })
       } else {
         dragUpdate(yAbsoluteMovement - pullToRefreshElementHeight, yAbsoluteMovement / pullToRefreshElementHeight)
@@ -263,7 +282,7 @@ const getTouchesCoordinatesFrom = (event) => {
 export { tryToActivatePullToRefresh }
 ```
 
-Finally I instantiated the pull to refresh widget inside the blog main js file `index.blog.js` file. Below you can find the startup code for the pull to refresh widget inside a `load` event listener.
+The widget above is instantiated the blog main js file `index.blog.js` file. Below you can find the startup code that I placed inside a `load` event listener (that on my website code does also other things).
 
 ```javascript
 import { pullToRefresh } from './blog/pull-to-refresh'
@@ -278,6 +297,8 @@ window.addEventListener('load', () => {
 ```
 
 #### Service Worker
+
+...
 
 ```javascript
 const sendMessageToServiceWorker = (message: any): Promise<any> => {
