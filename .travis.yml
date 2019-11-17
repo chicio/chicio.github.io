@@ -5,6 +5,8 @@ cache:
   npm: true
 node_js:
   - '10'
+before_install:
+  - npm install -g @lhci/cli@0.3.x  
 env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true  
