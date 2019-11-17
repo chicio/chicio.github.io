@@ -10,8 +10,8 @@ addons:
     packages:
       - libcurl4-openssl-dev  
       - zsh
-before_script:
+script:
   - npm run setup
-script: npm run test
+  - npm run test
 after_success:
   - lhci autorun 
