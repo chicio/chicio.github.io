@@ -13,3 +13,5 @@ addons:
 script:
   - npm run setup
   - npm run test
+after_success:
+  - lhci autorun  
