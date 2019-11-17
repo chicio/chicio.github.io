@@ -1,12 +1,6 @@
-dist: xenial
 language: node_js
-cache:
-  bundler: true
-  npm: true
 node_js:
-  - '10'
-before_install:
-  - npm install -g @lhci/cli@0.3.x  
+  - 13.0.1
 env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true  
@@ -16,6 +10,8 @@ addons:
     packages:
       - libcurl4-openssl-dev  
       - zsh
+before_install:
+  - npm install -g @lhci/cli@0.3.x        
 script:
   - npm run setup
   - npm run test
