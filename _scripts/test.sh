@@ -17,3 +17,6 @@ bundle exec htmlproofer --check-html \
                         --http-status-ignore "999" \
                         ./_site
                         
+# Run lighthouse ci tests
+lhci autorun
+                        

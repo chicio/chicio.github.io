@@ -10,10 +10,6 @@ addons:
     packages:
       - libcurl4-openssl-dev  
       - zsh
-before_install:
-  - npm install -g @lhci/cli@0.3.x        
 script:
   - npm run setup
   - npm run test
-after_success:
-  - lhci autorun 
