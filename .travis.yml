@@ -1,4 +1,7 @@
 language: node_js
+cache:
+  bundler: true
+  npm: true
 node_js:
   - 13.0.1
 env:
