@@ -10,6 +10,8 @@
   .blog-tag-post {
     a {
       color: $accent-color;
+      display: block;
+      min-height: 46px;
     }
   
     a:hover {
