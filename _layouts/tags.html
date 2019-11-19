@@ -16,7 +16,7 @@
                         {% capture this_tag %}{{ tags_list[item] }}{% endcapture %}
                         <a href="#{{ this_tag }}"
                             onclick="track('{{ site.data.tracking.action.open_blog_tag }}', '{{ site.data.tracking.category.blog_tags }}', '{{ site.data.tracking.label.body }}')">
-                            {{ this_tag }}
+                            <span>{{ this_tag }}</span>
                         </a>
                         {% endunless %}
                         {% endfor %}

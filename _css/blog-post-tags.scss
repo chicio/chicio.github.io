@@ -4,12 +4,16 @@
 
   a {
     display: inline-block;
-    margin: 4px;
-    color: #ffffff;
-    background-color: $primary-color;
-    text-decoration: none;
-    border-radius: 3px;
-    font-size: 14px;
-    padding: .5px 5px;
+    height: 46px;
+
+    span {
+      margin: 4px;
+      color: #ffffff;
+      background-color: $primary-color;
+      text-decoration: none;
+      border-radius: 3px;
+      font-size: 14px;
+      padding: .5px 5px;  
+    }
   }
 }
