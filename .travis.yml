@@ -2,15 +2,8 @@ language: node_js
 os: osx
 node_js:
   - 13.0.1
-env:
-  global:
-    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true  
 addons:
   chrome: stable
-  apt:
-    packages:
-      - libcurl4-openssl-dev  
-      - zsh
 script:
   - npm run setup
   - npm run test
