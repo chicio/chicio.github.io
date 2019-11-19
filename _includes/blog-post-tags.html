@@ -1,12 +1,8 @@
 <div class="blog-tags">
-	<ul>
 		{% for tag in include.tags %}
-		<li>
 			<a onclick="track('{{ site.data.tracking.action.open_blog_tag }}', '{{ site.data.tracking.category.blog_post }}', '{{ site.data.tracking.label.body }}')"
 			   href="/blog/tags#{{ tag }}">
 				<span>{{ tag }}</span>
 			</a>
-		</li>
 		{% endfor %}
-	</ul>
 </div>

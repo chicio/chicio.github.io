@@ -2,40 +2,14 @@
   margin-top: 25px;
   margin-bottom: 25px;
 
-  ul {
-    padding: 0;
-
-    li:before {
-      content: ""
-    }
-
-    li {
-      margin: 0;
-      font-weight: 300;
-      display: inline;
-      list-style-type: none;
-      text-transform: lowercase;
-
-      a {
-        display: inline-block;
-        margin: 4px;
-        color: #ffffff;
-        background-color: $primary-color;
-        text-decoration: none;
-        border-radius: 3px;
-
-        span {
-          float: left;
-          padding: .5px 5px;
-          border-radius: 3px;
-          font-size: 14px;
-        }
-
-        .count {
-          background-color: $primary-color-dark;
-          border-radius: 3px;
-        }
-      }
-    }
+  a {
+    display: inline-block;
+    margin: 4px;
+    color: #ffffff;
+    background-color: $primary-color;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 14px;
+    padding: .5px 5px;
   }
 }
