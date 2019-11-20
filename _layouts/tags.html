@@ -11,44 +11,35 @@
                     {% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
                     {% assign tags_list = site_tags | split:',' | sort %}
                     <div class="blog-tags">
-                        <ul>
-                            {% for item in (0..site.tags.size) %}
-                            {% unless forloop.last %}
-                            {% capture this_tag %}{{ tags_list[item] }}{% endcapture %}
-                            <li>
-                                <a href="#{{ this_tag }}"
-                                   onclick="track('{{ site.data.tracking.action.open_blog_tag }}', '{{ site.data.tracking.category.blog_tags }}', '{{ site.data.tracking.label.body }}')">
-                                    <span>{{ this_tag }}</span>
-                                    <span class="count">{{ site.tags[this_tag].size }}</span>
-                                </a>
-                            </li>
-                            {% endunless %}
-                            {% endfor %}
-                        </ul>
+                        {% for item in (0..site.tags.size) %}
+                        {% unless forloop.last %}
+                        {% capture this_tag %}{{ tags_list[item] }}{% endcapture %}
+                        <a href="#{{ this_tag }}"
+                            onclick="track('{{ site.data.tracking.action.open_blog_tag }}', '{{ site.data.tracking.category.blog_tags }}', '{{ site.data.tracking.label.body }}')">
+                            <span>{{ this_tag }}</span>
+                        </a>
+                        {% endunless %}
+                        {% endfor %}
                     </div>
                     {% for item in (0..site.tags.size) %}{% unless forloop.last %}
                     {% capture this_tag %}{{ tags_list[item] | strip_newlines }}{% endcapture %}
-                    <article>
+                    <article class="blog-tag-post">
                         <div class="blog-tag-title" id="{{ this_tag }}">
                             {{ this_tag }}
                         </div>
-                        <ul>
-                            {% for post in site.tags[this_tag] %}
-                            {% if post.title != null %}
-                            <li class="blog-tag-post">
-                                {% if post.link %}
-                                <a href="{{ post.link }}"
-                                   onclick="track('{{ site.data.tracking.action.open_blog_post }}', '{{ site.data.tracking.category.blog_tags }}', '{{ site.data.tracking.label.body }}')">
-                                {% else %}
-                                <a href="{{ post.url }}"
-                                   onclick="track('{{ site.data.tracking.action.open_blog_post }}', '{{ site.data.tracking.category.blog_tags }}', '{{ site.data.tracking.label.body }}')">
-                                {% endif %}
-                                    <span class="tag-post-title">{{ post.title }}</span>
-                                </a>
-                            </li>
+                        {% for post in site.tags[this_tag] %}
+                        {% if post.title != null %}
+                            {% if post.link %}
+                            <a href="{{ post.link }}"
+                                onclick="track('{{ site.data.tracking.action.open_blog_post }}', '{{ site.data.tracking.category.blog_tags }}', '{{ site.data.tracking.label.body }}')">
+                            {% else %}
+                            <a href="{{ post.url }}"
+                                onclick="track('{{ site.data.tracking.action.open_blog_post }}', '{{ site.data.tracking.category.blog_tags }}', '{{ site.data.tracking.label.body }}')">
                             {% endif %}
-                            {% endfor %}
-                        </ul>
+                                {{ post.title }}
+                            </a>
+                        {% endif %}
+                        {% endfor %}
                     </article>
                     {% endunless %}
                     {% endfor %}
