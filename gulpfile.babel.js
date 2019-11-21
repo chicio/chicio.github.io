@@ -11,6 +11,7 @@ import buffer from 'vinyl-buffer'
 import browserify from 'browserify'
 import babelify from 'babelify'
 import { exec } from 'child_process';
+import * as fs from 'fs';
 
 const CSS_HOME = 'style.home';
 const CSS_BLOG = 'style.blog';
@@ -105,23 +106,30 @@ const criticalCss = (src, dest, css) => (
       width: 1280,
       height: 960
     }],
-    dest: `../_includes/${dest}.css`,
-    minify: true,
-    extract: false
+    extract: true,
+    inline: true
+  }, (err, result) => {
+    if (err === null) {
+      fs.writeFileSync(`assets/styles/${css}.css`, result.uncritical);
+      fs.writeFileSync(`../_includes/${dest}.css`, result.css)
+    } else {
+    }
   })
 )
 
-gulp.task('css-critical', (done) => {
-  criticalCss('index', 'critical', CSS_HOME)
-  criticalCss('blog/index', 'critical-blog', CSS_BLOG_HOME)
-  criticalCss('blog/archive/index', 'critical-blog-post-archive', CSS_BLOG_ARCHIVE)
-  criticalCss('blog/tags/index', 'critical-blog-tags', CSS_BLOG_TAGS)
-  criticalCss('2017/06/14/swift-closure-demystifying-autoclosure-escaping', 'critical-blog-post', CSS_BLOG_POST)
-  criticalCss('privacy-policy', 'critical-privacy-policy', CSS_PRIVACY_POLICY)
-  criticalCss('cookie-policy', 'critical-cookie-policy', CSS_COOKIE_POLICY)
-  criticalCss('offline', 'critical-error', CSS_ERROR)
-  done()
-})
+gulp.task('css-critical', (done) => Promise.all([
+    criticalCss('index', 'critical', CSS_HOME),
+    criticalCss('blog/index', 'critical-blog', CSS_BLOG_HOME),
+    criticalCss('blog/archive/index', 'critical-blog-post-archive', CSS_BLOG_ARCHIVE),
+    criticalCss('blog/tags/index', 'critical-blog-tags', CSS_BLOG_TAGS),
+    criticalCss('2017/06/14/swift-closure-demystifying-autoclosure-escaping', 'critical-blog-post', CSS_BLOG_POST),
+    criticalCss('privacy-policy', 'critical-privacy-policy', CSS_PRIVACY_POLICY),
+    criticalCss('cookie-policy', 'critical-cookie-policy', CSS_COOKIE_POLICY),
+    criticalCss('offline', 'critical-error', CSS_ERROR),        
+  ]).then(() => {
+    done()
+  })
+)
 
 const revision = (section, done) => {
   gulp.src(`./dependencies-${section}.html`)
