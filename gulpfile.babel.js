@@ -5,29 +5,31 @@ import gulpRevAppend from 'gulp-rev-append'
 import gulpUglify from 'gulp-uglify'
 import gulpEslint from 'gulp-eslint'
 import gulpImagemin from 'gulp-imagemin'
+import gulpPurifyCss from 'gulp-purifycss'
 import critical from 'critical'
 import source from 'vinyl-source-stream'
 import buffer from 'vinyl-buffer'
 import browserify from 'browserify'
 import babelify from 'babelify'
-import { exec } from 'child_process';
-import * as fs from 'fs';
+import { exec } from 'child_process'
+import * as fs from 'fs'
 
-const CSS_HOME = 'style.home';
-const CSS_BLOG = 'style.blog';
-const CSS_BLOG_ARCHIVE = `${CSS_BLOG}.archive`;
-const CSS_BLOG_HOME = `${CSS_BLOG}.home`;
-const CSS_BLOG_POST = `${CSS_BLOG}.post`;
-const CSS_BLOG_TAGS = `${CSS_BLOG}.tags`;
-const CSS_PRIVACY_POLICY = `style.privacypolicy`;
-const CSS_COOKIE_POLICY = `style.cookiepolicy`;
-const CSS_ERROR = `style.error`;
+const CSS_HOME = 'style.home'
+const CSS_BLOG = 'style.blog'
+const CSS_BLOG_ARCHIVE = `${CSS_BLOG}.archive`
+const CSS_BLOG_HOME = `${CSS_BLOG}.home`
+const CSS_BLOG_POST = `${CSS_BLOG}.post`
+const CSS_BLOG_TAGS = `${CSS_BLOG}.tags`
+const CSS_PRIVACY_POLICY = `style.privacypolicy`
+const CSS_COOKIE_POLICY = `style.cookiepolicy`
+const CSS_ERROR = `style.error`
+const CSS_BASE_PATH = 'assets/styles'
 
 const css = (cssName, done) => {
   gulp.src(`_css/${cssName}.scss`)
     .pipe(gulpSass({ outputStyle: 'compressed' }))
     .pipe(gulpConcat(`${cssName}.css`))
-    .pipe(gulp.dest('assets/styles'))
+    .pipe(gulp.dest(CSS_BASE_PATH))
   done()
 }
 
@@ -95,7 +97,7 @@ const criticalCss = (src, dest, css) => (
   critical.generate({
     base: '_site/',
     src: `${src}.html`,
-    css: [`assets/styles/${css}.css`],
+    css: [`../assets/styles/${css}.css`],
     dimensions: [{
       width: 320,
       height: 480
@@ -125,10 +127,15 @@ gulp.task('css-critical', (done) => Promise.all([
     criticalCss('privacy-policy', 'critical-privacy-policy', CSS_PRIVACY_POLICY),
     criticalCss('cookie-policy', 'critical-cookie-policy', CSS_COOKIE_POLICY),
     criticalCss('offline', 'critical-error', CSS_ERROR),        
-  ]).then(() => {
-    done()
-  })
+  ]).then(() => done())
 )
+
+gulp.task('purify-css-blog-home', (done) => {
+  gulp.src(`_site/assets/styles/${CSS_BLOG_HOME}.css`)
+    .pipe(gulpPurifyCss(['./_site/assets/js/index.blog.min.js', './_site/blog/index.html'], { minify: true }))
+    .pipe(gulp.dest(`assets/styles/`));
+  done()
+});
 
 const revision = (section, done) => {
   gulp.src(`./dependencies-${section}.html`)
@@ -218,7 +225,7 @@ const build = gulp.series(
   'lint',
   'bundle-home-scripts',
   'bundle-blog-scripts',
-  'images',
+  //'images',
   'fonts',
   'models',
   'rev-js-home',
@@ -243,7 +250,8 @@ const build = gulp.series(
   'service-worker-css-error-urls',
   'jekyll-build', //First build for critical css
   'css-critical', //Needs website already build in order to be executed
+  'purify-css-blog-home',
   'jekyll-build' //Generate site with css critical
 )
 
-export default build;
+export default build
