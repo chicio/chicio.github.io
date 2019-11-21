@@ -112,8 +112,7 @@ const criticalCss = (src, dest, css) => (
     if (err === null) {
       fs.writeFileSync(`assets/styles/${css}.css`, result.uncritical);
       fs.writeFileSync(`../_includes/${dest}.css`, result.css)
-    } else {
-    }
+    } 
   })
 )
 
