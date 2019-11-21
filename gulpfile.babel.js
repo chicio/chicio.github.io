@@ -106,7 +106,7 @@ const criticalCss = (src, dest, css) => (
       height: 1024
     }, {
       width: 1280,
-      height: 960
+      height: 1024
     }],
     extract: true,
     inline: true
@@ -123,7 +123,7 @@ gulp.task('css-critical', (done) => Promise.all([
     criticalCss('blog/index', 'critical-blog', CSS_BLOG_HOME),
     criticalCss('blog/archive/index', 'critical-blog-post-archive', CSS_BLOG_ARCHIVE),
     criticalCss('blog/tags/index', 'critical-blog-tags', CSS_BLOG_TAGS),
-    criticalCss('2017/06/14/swift-closure-demystifying-autoclosure-escaping', 'critical-blog-post', CSS_BLOG_POST),
+    criticalCss('2017/05/10/about-me', 'critical-blog-post', CSS_BLOG_POST),
     criticalCss('privacy-policy', 'critical-privacy-policy', CSS_PRIVACY_POLICY),
     criticalCss('cookie-policy', 'critical-cookie-policy', CSS_COOKIE_POLICY),
     criticalCss('offline', 'critical-error', CSS_ERROR),        
@@ -132,7 +132,10 @@ gulp.task('css-critical', (done) => Promise.all([
 
 gulp.task('purify-css-blog-home', (done) => {
   gulp.src(`_site/assets/styles/${CSS_BLOG_HOME}.css`)
-    .pipe(gulpPurifyCss(['./_site/assets/js/index.blog.min.js', './_site/blog/index.html'], { minify: true }))
+    .pipe(gulpPurifyCss(['./_site/assets/js/index.blog.min.js', './_site/blog/index.html'], {
+       minify: true,
+       whitelist: ['icon-']
+    }))
     .pipe(gulp.dest(`assets/styles/`));
   done()
 });
