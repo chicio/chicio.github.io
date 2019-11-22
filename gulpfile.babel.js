@@ -109,7 +109,11 @@ const criticalCss = (src, dest, css) => (
       height: 1024
     }],
     extract: true,
-    inline: true
+    inline: true,
+    ignore: {
+      atrule: ['@font-face'],
+      rule: [/footer-icon/, /icon-/, /phone-number/]
+    }
   }, (err, result) => {
     if (err === null) {
       fs.writeFileSync(`assets/styles/${css}.css`, result.uncritical);
@@ -253,7 +257,7 @@ const build = gulp.series(
   'service-worker-css-error-urls',
   'jekyll-build', //First build for critical css
   'css-critical', //Needs website already build in order to be executed
-  'purify-css-blog-home',
+  // 'purify-css-blog-home',
   'jekyll-build' //Generate site with css critical
 )
 
