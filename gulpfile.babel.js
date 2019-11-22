@@ -138,7 +138,7 @@ gulp.task('purify-css-blog-home', (done) => {
   gulp.src(`_site/assets/styles/${CSS_BLOG_HOME}.css`)
     .pipe(gulpPurifyCss(['./_site/assets/js/index.blog.min.js', './_site/blog/index.html'], {
        minify: true,
-       whitelist: ['icon-']
+       whitelist: ['*footer-container*']
     }))
     .pipe(gulp.dest(`assets/styles/`));
   done()
@@ -257,7 +257,7 @@ const build = gulp.series(
   'service-worker-css-error-urls',
   'jekyll-build', //First build for critical css
   'css-critical', //Needs website already build in order to be executed
-  // 'purify-css-blog-home',
+  //'purify-css-blog-home',
   'jekyll-build' //Generate site with css critical
 )
 
