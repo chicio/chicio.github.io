@@ -5,7 +5,8 @@ import gulpRevAppend from 'gulp-rev-append'
 import gulpUglify from 'gulp-uglify'
 import gulpEslint from 'gulp-eslint'
 import gulpImagemin from 'gulp-imagemin'
-import gulpPurifyCss from 'gulp-purifycss'
+//import gulpPurifyCss from 'gulp-purifycss'
+import purgecss from 'gulp-purgecss'
 import critical from 'critical'
 import source from 'vinyl-source-stream'
 import buffer from 'vinyl-buffer'
@@ -134,15 +135,27 @@ gulp.task('css-critical', (done) => Promise.all([
   ]).then(() => done())
 )
 
-gulp.task('purify-css-blog-home', (done) => {
-  gulp.src(`_site/assets/styles/${CSS_BLOG_HOME}.css`)
-    .pipe(gulpPurifyCss(['./_site/assets/js/index.blog.min.js', './_site/blog/index.html'], {
-       minify: true,
-       whitelist: ['*footer-container*']
-    }))
-    .pipe(gulp.dest(`assets/styles/`));
-  done()
-});
+// gulp.task('purify-css-blog-home', (done) => {
+//   gulp.src(`_site/assets/styles/${CSS_BLOG_HOME}.css`)
+//     .pipe(gulpPurifyCss(['./_site/assets/js/index.blog.min.js', './_site/blog/index.html'], {
+//        minify: true,
+//        whitelist: ['container-fluid', 'footer-container']
+//     }))
+//     .pipe(gulp.dest(`assets/styles/`));
+//   done()
+// });
+
+gulp.task('purge-css-blog-home', () => 
+  gulp
+    .src(`_site/assets/styles/${CSS_BLOG_HOME}.css`)
+    .pipe(
+      purgecss({
+        content: ['./_site/blog/index.html'],
+        whitelist: ['img', 'blog-posts-post-img', 'blog-image', 'lazy', 'lazy-show']
+      })
+    )
+    .pipe(gulp.dest('assets/styles/'))
+)
 
 const revision = (section, done) => {
   gulp.src(`./dependencies-${section}.html`)
@@ -256,8 +269,9 @@ const build = gulp.series(
   'service-worker-css-cookie-policy-urls',
   'service-worker-css-error-urls',
   'jekyll-build', //First build for critical css
+  'purge-css-blog-home',
   'css-critical', //Needs website already build in order to be executed
-  //'purify-css-blog-home',
+// 'purify-css-blog-home',
   'jekyll-build' //Generate site with css critical
 )
 

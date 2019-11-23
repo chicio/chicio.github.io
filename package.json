@@ -56,7 +56,7 @@
     "gulp-concat": "2.6.1",
     "gulp-eslint": "6.0.0",
     "gulp-imagemin": "6.1.1",
-    "gulp-purifycss": "0.2.0",
+    "gulp-purgecss": "1.2.0",
     "gulp-rev-append": "0.1.8",
     "gulp-sass": "4.0.2",
     "gulp-uglify": "3.0.2",
