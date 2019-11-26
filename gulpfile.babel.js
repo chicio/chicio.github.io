@@ -147,7 +147,7 @@ const purgeCss = (cssName, content, done) => {
   done()  
 }
 
-gulp.task('purge-css-blog-home', (done) => purgeCss(CSS_BLOG_HOME, ['./_site/blog/index.html'], done))
+gulp.task('purge-css-blog-home', (done) => purgeCss(CSS_BLOG_HOME, ['./_site/blog/index.html', './_site/assets/js/index.blog.min.js'], done))
 
 const revision = (section, done) => {
   gulp.src(`./dependencies-${section}.html`)
