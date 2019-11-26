@@ -4,18 +4,6 @@
 @import "./theme.scss";
 @import "./footer.scss";
 
-html {
-  max-width: 100%;
-  overflow-x: hidden;
-
-  body {
-    font: 20px 'Open Sans', Helvetica, Arial, sans-serif;
-    line-height: 1.8;
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-}
-
 p {
   font-size: 16px;
 }
