@@ -134,17 +134,20 @@ gulp.task('css-critical', (done) => Promise.all([
   ]).then(() => done())
 )
 
-gulp.task('purge-css-blog-home', () => 
+const purgeCss = (cssName, content, done) => {
   gulp
-    .src(`_site/assets/styles/${CSS_BLOG_HOME}.css`)
-    .pipe(
-      purgecss({
-        content: ['./_site/blog/index.html'],
-        whitelist: ['img', 'blog-posts-post-img', 'blog-image', 'lazy', 'lazy-show', 'html']
-      })
-    )
-    .pipe(gulp.dest('assets/styles/'))
-)
+  .src(`_site/assets/styles/${cssName}.css`)
+  .pipe(
+    purgecss({
+      content: content,
+      whitelist: ['img', 'blog-posts-post-img', 'blog-image', 'lazy', 'lazy-show', 'html']
+    })
+  )
+  .pipe(gulp.dest('assets/styles/'))
+  done()  
+}
+
+gulp.task('purge-css-blog-home', (done) => purgeCss(CSS_BLOG_HOME, ['./_site/blog/index.html'], done))
 
 const revision = (section, done) => {
   gulp.src(`./dependencies-${section}.html`)
