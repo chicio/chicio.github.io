@@ -147,7 +147,21 @@ const purgeCss = (cssName, content, done) => {
   done()  
 }
 
+gulp.task('purge-css-home', (done) => purgeCss(CSS_HOME, ['./_site/index.html', './_site/assets/js/index.home.min.js'], done))
+
+gulp.task('purge-css-blog-archive', (done) => purgeCss(CSS_BLOG_ARCHIVE, ['./_site/archive/index.html', './_site/assets/js/index.blog.min.js'], done))
+
 gulp.task('purge-css-blog-home', (done) => purgeCss(CSS_BLOG_HOME, ['./_site/blog/index.html', './_site/assets/js/index.blog.min.js'], done))
+
+gulp.task('purge-css-blog-post', (done) => purgeCss(CSS_BLOG_POST, ['./_site/20**/**.html', './_site/assets/js/index.blog.min.js'], done))
+
+gulp.task('purge-css-blog-tags', (done) => purgeCss(CSS_BLOG_POST, ['./_site/tags/index.html', './_site/assets/js/index.blog.min.js'], done))
+
+gulp.task('purge-css-privacy-policy', (done) => purgeCss(CSS_PRIVACY_POLICY, ['./_site/privacy-policy.html', './_site/assets/js/index.blog.min.js'], done))
+
+gulp.task('purge-css-cookie-policy', (done) => purgeCss(CSS_PRIVACY_POLICY, ['./_site/cookie-policy.html', './_site/assets/js/index.blog.min.js'], done))
+
+gulp.task('purge-css-error', (done) => purgeCss(CSS_ERROR, ['./_site/offline.html', './_site/assets/js/index.blog.min.js'], done))
 
 const revision = (section, done) => {
   gulp.src(`./dependencies-${section}.html`)
@@ -261,7 +275,7 @@ const build = gulp.series(
   'service-worker-css-cookie-policy-urls',
   'service-worker-css-error-urls',
   'jekyll-build', //First build for critical css
-  // 'purge-css-blog-home',
+  'purge-css-blog-home',
   'css-critical', //Needs website already build in order to be executed
   'jekyll-build' //Generate site with css critical
 )
