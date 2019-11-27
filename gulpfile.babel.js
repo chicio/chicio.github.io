@@ -154,7 +154,12 @@ gulp.task('purge-css-home', (done) => purgeCss(
   done
 ))
 
-gulp.task('purge-css-blog-archive', (done) => purgeCss(CSS_BLOG_ARCHIVE, ['./_site/archive/index.html', './_site/assets/js/index.blog.min.js'], done))
+gulp.task('purge-css-blog-archive', (done) => purgeCss(
+  CSS_BLOG_ARCHIVE, 
+  ['./_site/blog/archive/index.html', './_site/assets/js/index.blog.min.js'], 
+  ['html'],
+  done
+))
 
 gulp.task('purge-css-blog-home', (done) => purgeCss(
   CSS_BLOG_HOME, 
