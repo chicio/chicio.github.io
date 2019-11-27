@@ -289,11 +289,12 @@ const build = gulp.series(
   'service-worker-css-privacy-policy-urls',
   'service-worker-css-cookie-policy-urls',
   'service-worker-css-error-urls',
-  'jekyll-build', //First build for critical css
+  'jekyll-build', //First build for critical/purge css
   'purge-css-home',
   'purge-css-blog-home',
-  'css-critical', //Needs website already build in order to be executed
-  'jekyll-build' //Generate site with css critical
+  'purge-css-blog-archive',
+  'css-critical', 
+  'jekyll-build' //Generate site with css critical path and purge from unused rules
 )
 
 export default build
