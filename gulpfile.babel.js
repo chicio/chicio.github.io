@@ -150,7 +150,7 @@ const purgeCss = (cssName, content, whitelist, done) => {
 gulp.task('purge-css-home', (done) => purgeCss(
   CSS_HOME, 
   ['./_site/index.html', './_site/assets/js/index.home.min.js'], 
-  ['img', 'blog-posts-post-img', 'blog-image', 'lazy', 'lazy-show', 'html'],
+  ['html'],
   done
 ))
 
@@ -164,13 +164,18 @@ gulp.task('purge-css-blog-archive', (done) => purgeCss(
 gulp.task('purge-css-blog-home', (done) => purgeCss(
   CSS_BLOG_HOME, 
   ['./_site/blog/index.html', './_site/assets/js/index.blog.min.js'], 
-  ['img', 'blog-posts-post-img', 'blog-image', 'lazy', 'lazy-show', 'html'],
+  ['html'],
+  done
+))
+
+gulp.task('purge-css-blog-tags', (done) => purgeCss(
+  CSS_BLOG_TAGS, 
+  ['./_site/blog/tags/index.html', './_site/assets/js/index.blog.min.js'], 
+  ['html'],
   done
 ))
 
 gulp.task('purge-css-blog-post', (done) => purgeCss(CSS_BLOG_POST, ['./_site/20**/**.html', './_site/assets/js/index.blog.min.js'], done))
-
-gulp.task('purge-css-blog-tags', (done) => purgeCss(CSS_BLOG_POST, ['./_site/tags/index.html', './_site/assets/js/index.blog.min.js'], done))
 
 gulp.task('purge-css-privacy-policy', (done) => purgeCss(CSS_PRIVACY_POLICY, ['./_site/privacy-policy.html', './_site/assets/js/index.blog.min.js'], done))
 
@@ -293,6 +298,7 @@ const build = gulp.series(
   'purge-css-home',
   'purge-css-blog-home',
   'purge-css-blog-archive',
+  'purge-css-blog-tags',
   'css-critical', 
   'jekyll-build' //Generate site with css critical path and purge from unused rules
 )
