@@ -182,11 +182,21 @@ gulp.task('purge-css-error', (done) => purgeCss(
   done
 ))
 
+gulp.task('purge-css-privacy-policy', (done) => purgeCss(
+  CSS_PRIVACY_POLICY, 
+  ['./_site/privacy-policy.html', './_site/assets/js/index.blog.min.js'], 
+  ['html'],
+  done
+))
+
+gulp.task('purge-css-cookie-policy', (done) => purgeCss(
+  CSS_COOKIE_POLICY, 
+  ['./_site/cookie-policy.html', './_site/assets/js/index.blog.min.js'], 
+  ['html'],
+  done
+))
+
 gulp.task('purge-css-blog-post', (done) => purgeCss(CSS_BLOG_POST, ['./_site/20**/**.html', './_site/assets/js/index.blog.min.js'], done))
-
-gulp.task('purge-css-privacy-policy', (done) => purgeCss(CSS_PRIVACY_POLICY, ['./_site/privacy-policy.html', './_site/assets/js/index.blog.min.js'], done))
-
-gulp.task('purge-css-cookie-policy', (done) => purgeCss(CSS_PRIVACY_POLICY, ['./_site/cookie-policy.html', './_site/assets/js/index.blog.min.js'], done))
 
 const revision = (section, done) => {
   gulp.src(`./dependencies-${section}.html`)
@@ -305,6 +315,8 @@ const build = gulp.series(
   'purge-css-blog-archive',
   'purge-css-blog-tags',
   'purge-css-error',
+  'purge-css-privacy-policy',
+  'purge-css-cookie-policy',
   'css-critical', 
   'jekyll-build' //Generate site with css critical path and purge from unused rules
 )
