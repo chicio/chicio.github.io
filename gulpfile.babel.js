@@ -196,7 +196,12 @@ gulp.task('purge-css-cookie-policy', (done) => purgeCss(
   done
 ))
 
-gulp.task('purge-css-blog-post', (done) => purgeCss(CSS_BLOG_POST, ['./_site/20**/**.html', './_site/assets/js/index.blog.min.js'], done))
+gulp.task('purge-css-blog-post', (done) => purgeCss(
+  CSS_BLOG_POST, 
+  ['./_site/20**/**/**.html', './_site/assets/js/index.blog.min.js'], 
+  ['html'],
+  done
+))
 
 const revision = (section, done) => {
   gulp.src(`./dependencies-${section}.html`)
@@ -317,6 +322,7 @@ const build = gulp.series(
   'purge-css-error',
   'purge-css-privacy-policy',
   'purge-css-cookie-policy',
+  'purge-css-blog-post',
   'css-critical', 
   'jekyll-build' //Generate site with css critical path and purge from unused rules
 )
