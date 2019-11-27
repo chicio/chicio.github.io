@@ -134,24 +134,34 @@ gulp.task('css-critical', (done) => Promise.all([
   ]).then(() => done())
 )
 
-const purgeCss = (cssName, content, done) => {
+const purgeCss = (cssName, content, whitelist, done) => {
   gulp
   .src(`_site/assets/styles/${cssName}.css`)
   .pipe(
     purgecss({
       content: content,
-      whitelist: ['img', 'blog-posts-post-img', 'blog-image', 'lazy', 'lazy-show', 'html']
+      whitelist: whitelist
     })
   )
   .pipe(gulp.dest('assets/styles/'))
   done()  
 }
 
-gulp.task('purge-css-home', (done) => purgeCss(CSS_HOME, ['./_site/index.html', './_site/assets/js/index.home.min.js'], done))
+gulp.task('purge-css-home', (done) => purgeCss(
+  CSS_HOME, 
+  ['./_site/index.html', './_site/assets/js/index.home.min.js'], 
+  ['img', 'blog-posts-post-img', 'blog-image', 'lazy', 'lazy-show', 'html'],
+  done
+))
 
 gulp.task('purge-css-blog-archive', (done) => purgeCss(CSS_BLOG_ARCHIVE, ['./_site/archive/index.html', './_site/assets/js/index.blog.min.js'], done))
 
-gulp.task('purge-css-blog-home', (done) => purgeCss(CSS_BLOG_HOME, ['./_site/blog/index.html', './_site/assets/js/index.blog.min.js'], done))
+gulp.task('purge-css-blog-home', (done) => purgeCss(
+  CSS_BLOG_HOME, 
+  ['./_site/blog/index.html', './_site/assets/js/index.blog.min.js'], 
+  ['img', 'blog-posts-post-img', 'blog-image', 'lazy', 'lazy-show', 'html'],
+  done
+))
 
 gulp.task('purge-css-blog-post', (done) => purgeCss(CSS_BLOG_POST, ['./_site/20**/**.html', './_site/assets/js/index.blog.min.js'], done))
 
@@ -275,6 +285,7 @@ const build = gulp.series(
   'service-worker-css-cookie-policy-urls',
   'service-worker-css-error-urls',
   'jekyll-build', //First build for critical css
+  'purge-css-home',
   'purge-css-blog-home',
   'css-critical', //Needs website already build in order to be executed
   'jekyll-build' //Generate site with css critical
