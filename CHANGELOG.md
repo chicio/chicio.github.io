@@ -1,6 +1,14 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [1.20.0](https://github.com/chicio/chicio.github.io/releases/tag/1.20.0)
+Release date: 2019-11-27
+
+#### Added
+
+- CSS critical path with extraction and finally with inline
+- purgecss to remove unused css rules
+
 ## [1.19.0](https://github.com/chicio/chicio.github.io/releases/tag/1.19.0)
 Release date: 2019-09-22
 
