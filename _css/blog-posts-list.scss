@@ -8,8 +8,10 @@
     padding: 20px;
     margin-top: 20px;
     transition: transform .2s;
-    &:hover, &:active {
-      transform: scale(1.025);
+    @include media-breakpoint-up(lg) {
+      &:hover {
+        transform: scale(1.025);
+      }
     }
 
     .blog-posts-post-link {
