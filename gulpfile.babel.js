@@ -291,7 +291,7 @@ const build = gulp.series(
   'lint',
   'bundle-home-scripts',
   'bundle-blog-scripts',
-  //'images',
+  'images',
   'fonts',
   'models',
   'rev-js-home',

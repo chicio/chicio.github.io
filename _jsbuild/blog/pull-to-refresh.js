@@ -24,7 +24,7 @@ const pullToRefresh = (trackingCategory) => {
   invariant(pullToRefreshLoaderElement instanceof HTMLElement)
   invariant(pullableContent instanceof HTMLElement)
 
-  const pullToRefreshElementHeight = pullToRefreshElement.offsetHeight
+  const pullToRefreshElementHeight = 100
   const pullToRefreshStatusRepository = createPullToRefreshStatusRepository()
   const decelerationFactor = 0.5
   let dragStartPoint = createTouchCoordinates(0, 0)
