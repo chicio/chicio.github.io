@@ -6,6 +6,7 @@ date: 2017-07-26
 image: /assets/images/posts/phong-example.jpg
 tags: [computer graphics]
 comments: true
+math: true
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni] 

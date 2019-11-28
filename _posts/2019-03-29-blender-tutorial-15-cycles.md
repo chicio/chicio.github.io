@@ -6,6 +6,7 @@ date: 2019-03-29
 image: /assets/images/posts/blender-cycles-start.jpg
 tags: [computer graphics, blender]
 comments: true
+math: false
 seo:
   - type: "BlogPosting"
 authors: [fabrizio_duroni] 

@@ -6,6 +6,7 @@ date: 2018-06-01
 image: /assets/images/posts/expectation-closure.jpg
 tags: [swift, ios, apple, mobile application development, test driven development]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni] 

@@ -6,6 +6,7 @@ date: 2018-02-17
 image: /assets/images/posts/blender-selecting-objects-2.jpg
 tags: [computer graphics, blender]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni] 

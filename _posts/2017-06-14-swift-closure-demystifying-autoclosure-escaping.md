@@ -6,6 +6,7 @@ date: 2017-06-14
 image: /assets/images/posts/closure-everywhere.jpg
 tags: [swift, ios, apple, mobile application development]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni] 

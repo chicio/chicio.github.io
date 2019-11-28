@@ -6,6 +6,7 @@ date: 2018-03-02
 image: /assets/images/posts/01-technology-version-update.jpg
 tags: [agile, clean code, test driven development]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [angelo_sciarra, fabrizio_duroni] 

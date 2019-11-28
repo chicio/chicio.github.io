@@ -6,6 +6,7 @@ date: 2018-01-16
 image: /assets/images/posts/androidstudio-xcode-appcode.jpg
 tags: [IDE, android, java, ios, swift, mobile application development]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni, tommaso_resti, francesco_bonfadelli] 

@@ -6,6 +6,7 @@ date: 2019-02-08
 image: /assets/images/posts/appium.jpg
 tags: [javascript, swift, objective-c, ios, apple, android, java, mobile application development, react native, test driven development]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni]

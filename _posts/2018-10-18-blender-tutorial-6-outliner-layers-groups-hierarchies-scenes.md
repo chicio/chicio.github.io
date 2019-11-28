@@ -6,6 +6,7 @@ date: 2018-10-18
 image: /assets/images/posts/blender-outliner.jpg
 tags: [test driven development, agile, clean code]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni] 

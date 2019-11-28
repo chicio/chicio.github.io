@@ -6,6 +6,7 @@ date: 2018-03-20
 image: /assets/images/posts/golden-master.jpg
 tags: [test driven development, agile, clean code]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni, emanuele_ianni] 

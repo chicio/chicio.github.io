@@ -6,6 +6,7 @@ date: 2019-03-24
 image: /assets/images/posts/blender-spot-light.jpg
 tags: [computer graphics, blender]
 comments: true
+math: false
 seo:
   - type: "BlogPosting"
 authors: [fabrizio_duroni] 

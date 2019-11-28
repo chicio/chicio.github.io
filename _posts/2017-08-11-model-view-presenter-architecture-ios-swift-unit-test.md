@@ -6,6 +6,7 @@ date: 2017-08-11
 image: /assets/images/posts/model-view-presenter-ios.jpg
 tags: [swift, ios, apple, mobile application development, test driven development, architectural pattern]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni] 

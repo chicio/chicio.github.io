@@ -7,6 +7,7 @@ date: 2018-05-07
 image: /assets/images/posts/mp3id3tagger-id3tageditor.jpg
 tags: [swift, ios, apple, mobile application development, macOS]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni] 

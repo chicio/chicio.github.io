@@ -6,6 +6,7 @@ date: 2017-05-13
 image: /assets/images/posts/threejs-scene.jpg
 tags: [computer graphics, threejs, web development, javascript]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni]

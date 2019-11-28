@@ -7,6 +7,7 @@ date: 2018-08-02
 image: /assets/images/posts/offsite-location.jpg
 tags: [design, ux]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni] 

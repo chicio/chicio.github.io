@@ -7,6 +7,7 @@ date: 2018-06-02
 image: /assets/images/posts/blender-subdivision.jpg
 tags: [computer graphics, blender]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni] 

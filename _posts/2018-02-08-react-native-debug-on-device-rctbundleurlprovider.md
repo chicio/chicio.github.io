@@ -6,6 +6,7 @@ date: 2018-02-08
 image: /assets/images/posts/react-native-bundle-url-provider-setup.jpg
 tags: [react native, swift, ios, apple, mobile application development, javascript]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni, mariano_patafio] 

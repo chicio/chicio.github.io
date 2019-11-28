@@ -6,6 +6,7 @@ date: 2017-08-25
 image: /assets/images/posts/reflection.png
 tags: [computer graphics]
 comments: true
+math: true
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni] 

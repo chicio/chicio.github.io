@@ -6,6 +6,7 @@ date: 2019-08-03
 image: /assets/images/posts/swift-js.jpg
 tags: [swift, objective-c, ios, apple, mobile application development, javascript, web development]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni]

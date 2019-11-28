@@ -6,6 +6,7 @@ date: 2017-09-11
 image: /assets/images/posts/meaningful-names.jpg
 tags: [clean code]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni] 

@@ -6,6 +6,7 @@ date: 2019-03-21
 image: /assets/images/posts/blender-create-material.jpg
 tags: [computer graphics, blender]
 comments: true
+math: false
 seo:
   - type: "BlogPosting"
 authors: [fabrizio_duroni]

@@ -7,6 +7,7 @@ date: 2018-01-31
 image: /assets/images/posts/blender-ui-1-editors.jpg
 tags: [computer graphics, blender]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni] 

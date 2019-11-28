@@ -6,6 +6,7 @@ date: 2019-09-06
 image: /assets/images/posts/android-js.jpg
 tags: [android, java, mobile application development, javascript, web development]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni]

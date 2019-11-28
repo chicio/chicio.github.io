@@ -6,6 +6,7 @@ date: 2019-03-27
 image: /assets/images/posts/blender-animation-timeline.jpg
 tags: [computer graphics, blender]
 comments: true
+math: false
 seo:
   - type: "BlogPosting"
 authors: [fabrizio_duroni] 

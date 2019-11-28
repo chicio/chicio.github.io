@@ -6,6 +6,7 @@ date: 2019-04-07
 image: /assets/images/posts/flow.jpg
 tags: [web development, javascript, typescript]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni]

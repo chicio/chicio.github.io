@@ -6,6 +6,7 @@ date: 2017-12-07
 image: /assets/images/posts/pbr-introduction-examples.jpg
 tags: [computer graphics, physically based rendering]
 comments: true
+math: true
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni] 

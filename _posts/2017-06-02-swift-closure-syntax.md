@@ -6,6 +6,7 @@ date: 2017-06-02
 image: /assets/images/posts/swift-closure.jpg
 tags: [swift, ios, apple, mobile application development]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni]

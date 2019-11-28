@@ -6,6 +6,7 @@ date: 2018-04-25
 image: /assets/images/posts/uncle-bob-defender-of-clean-code.jpg
 tags: [clean code]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni] 

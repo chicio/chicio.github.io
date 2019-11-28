@@ -6,6 +6,7 @@ date: 2019-01-03
 image: /assets/images/posts/spm-swift.jpg
 tags: [swift, objective-c, ios, apple, swift package manager]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni]

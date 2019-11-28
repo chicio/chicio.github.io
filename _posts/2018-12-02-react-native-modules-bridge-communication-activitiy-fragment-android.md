@@ -7,6 +7,7 @@ date: 2018-12-02
 image: /assets/images/posts/native-modules-communication-android.jpg
 tags: [react native, javascript, swift, objective-c, ios, apple, android, java, mobile application development]
 comments: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [felice_giovinazzo, fabrizio_duroni]
