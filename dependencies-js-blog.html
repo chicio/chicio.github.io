@@ -1,3 +1,4 @@
+{% if page.math %}
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         jax: ["input/TeX","output/SVG"],
@@ -14,7 +15,6 @@
         }
     });
 </script>
-{% if page.math %}
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG"></script>
 {% endif %}
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
