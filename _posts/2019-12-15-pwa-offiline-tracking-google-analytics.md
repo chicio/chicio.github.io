@@ -50,7 +50,7 @@ workbox.googleAnalytics.initialize();
 
 #### How it works
 
-How does workbox make your GA tracking working when your PWA is offline? The `workbox.googleAnalytics` plugin setup a new fetch handler that intercepts all the request made with Google Analytics. This request are basically calls done with the [Google Analytics Measurement protocol](https://developers.google.com/analytics/devguides/collection/protocol/v1 "google analytics measurement protocol"). When you're PWA goes offline this handler stores the failed call into an ad-hoc [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API "indexeddb api") schema called `workbox-background-sync`. When the network came back the the requests saved are flushed and pushed to the Google Analytics servers as measurement protocol requests. Below you can find a video that shows you the entire flow described above.
+How does workbox make your GA tracking working when your PWA is offline? The `workbox.googleAnalytics` plugin setup a new fetch handler that intercepts all the request made with Google Analytics. This request are basically calls done with the [Google Analytics Measurement protocol](https://developers.google.com/analytics/devguides/collection/protocol/v1 "google analytics measurement protocol"). When your PWA goes offline this handler stores the failed call into an ad-hoc [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API "indexeddb api") schema called `workbox-background-sync`. When the network came back the the requests saved are flushed and pushed to the Google Analytics servers as measurement protocol requests. Below you can find a video that shows you the entire flow described above.
 
 {% include youtube.html videoId="Xshb2rM4L3w" %}
 
