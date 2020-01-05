@@ -8,7 +8,9 @@
 	<link rel="author" href="/humans.txt"/>
 	<link rel="manifest" href="/manifest.json">
 	<link rel="preload" href="/assets/fonts/opensans/OpenSans-Regular.woff2" as="font" crossorigin="anonymous">
+	{% if include.prefetch-blog == true %}
 	<link rel="prefetch" href="/blog/">
+	{% endif %}
 	<link rel="preconnect" href="https://www.google-analytics.com">
 	{% include icons.html %}
 	{% include analytics.html %}

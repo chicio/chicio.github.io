@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-	{% include head.html critical-css="critical-blog-tags.css" content-type="website" %}
+	{% include head.html critical-css="critical-blog-tags.css" content-type="website" prefetch-blog=false %}
     <body class="blog-body">
         {% include blog-masthead.html track-category=site.data.tracking.category.blog_tags %}
 		{% include blog-pull-to-refresh.html %}
