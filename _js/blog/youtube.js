@@ -20,7 +20,14 @@ const onIntersection = (entries: IntersectionObserverEntry[], observer: Intersec
 
 const loadYoutube = (element: HTMLElement, observer: IntersectionObserver) => {
   observer.unobserve(element)
-  //TODO.. implement frame creation and append it.
+  var youtubeiFrame = document.createElement("iframe");
+  youtubeiFrame.setAttribute("src", "http://google.com/");
+  youtubeiFrame.setAttribute("height", "480");
+  youtubeiFrame.setAttribute("width", "700");
+  youtubeiFrame.setAttribute("frameborder", "0");
+  youtubeiFrame.setAttribute("allowfullscreen", "");
+  youtubeiFrame.setAttribute("src", `https://www.youtube.com/embed/${element.dataset.videoId}`);
+  element.appendChild(youtubeiFrame);
 }
 
 export { disqus }
