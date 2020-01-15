@@ -4,6 +4,7 @@ import { lazyLoadImages } from './common/lazy-load-images'
 import { disqus } from './blog/disqus'
 import { tryToActivatePullToRefresh } from './blog/pull-to-refresh'
 import { registerToServicerWorker } from './common/service-worker'
+import { youtube } from './blog/youtube'
 
 window.ChicioCodingBlog = {
   init: (trackingCategory, shouldActivatePullToRefresh) => {
@@ -14,6 +15,7 @@ window.ChicioCodingBlog = {
       registerToServicerWorker()
       cookieConsent()
       tryToActivatePullToRefresh(trackingCategory, shouldActivatePullToRefresh)
+      youtube()
       disqus()
     })
   }
