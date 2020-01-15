@@ -1,21 +1,18 @@
 /* @flow */
 const youtube = () => {
-  console.log('start youtube')
   const intersectionObserver: IntersectionObserver = new IntersectionObserver(
     onIntersection,
     { rootMargin: '50px 0px', threshold: 0.01 }
   )
-  const images: NodeList<HTMLElement> = document.querySelectorAll('youtube')
-  for (let i: number = 0; i < images.length; i++) {
-    console.log('find youtube item')
-    intersectionObserver.observe(images[i])
+  const videos: NodeList<HTMLElement> = document.querySelectorAll('.youtube')
+  for (let i: number = 0; i < videos.length; i++) {
+    intersectionObserver.observe(videos[i])
   }
 }
 
 const onIntersection = (entries: IntersectionObserverEntry[], observer: IntersectionObserver): void => {
   for (let i: number = 0; i < entries.length; i++) {
     if (entries[i].intersectionRatio > 0) {
-      console.log('intersect youtube item')
       loadYoutube(entries[i].target, observer)
     }
   }
@@ -31,7 +28,6 @@ const loadYoutube = (element: HTMLElement, observer: IntersectionObserver) => {
   youtubeiFrame.setAttribute('allowfullscreen', '')
   youtubeiFrame.setAttribute('allow', 'autoplay; encrypted-media')
   youtubeiFrame.setAttribute('src', `https://www.youtube.com/embed/${element.dataset.videoId}`)
-  console.log(youtubeiFrame)
   element.appendChild(youtubeiFrame)
 }
 

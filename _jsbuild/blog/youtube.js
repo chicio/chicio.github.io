@@ -5,10 +5,11 @@ const youtube = () => {
     onIntersection,
     { rootMargin: '50px 0px', threshold: 0.01 }
   )
-  const images = document.querySelectorAll('youtube')
-  for (let i = 0; i < images.length; i++) {
+  const videos = document.querySelectorAll('.youtube')
+  console.log(videos)
+  for (let i = 0; i < videos.length; i++) {
     console.log('find youtube item')
-    intersectionObserver.observe(images[i])
+    intersectionObserver.observe(videos[i])
   }
 }
 

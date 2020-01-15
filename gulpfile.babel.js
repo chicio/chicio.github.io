@@ -53,7 +53,6 @@ gulp.task('css-cookie-policy', (done) => css(CSS_COOKIE_POLICY, done))
 gulp.task('css-error', (done) => css(CSS_ERROR, done))
 
 gulp.task('flow', (done) => {
-  console.log(production())
   exec(`npm run flow`, (err, stdout, stderr) => {
     done()
   })
