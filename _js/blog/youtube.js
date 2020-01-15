@@ -30,4 +30,4 @@ const loadYoutube = (element: HTMLElement, observer: IntersectionObserver) => {
   element.appendChild(youtubeiFrame);
 }
 
-export { disqus }
+export { youtube }
