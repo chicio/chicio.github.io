@@ -5,6 +5,7 @@ import gulpRevAppend from 'gulp-rev-append'
 import gulpUglify from 'gulp-uglify'
 import gulpEslint from 'gulp-eslint'
 import gulpImagemin from 'gulp-imagemin'
+import gulpEnvironments from 'gulp-environments'
 import purgecss from 'gulp-purgecss'
 import critical from 'critical'
 import source from 'vinyl-source-stream'
@@ -13,6 +14,8 @@ import browserify from 'browserify'
 import babelify from 'babelify'
 import { exec } from 'child_process'
 import * as fs from 'fs'
+
+const production = gulpEnvironments.production
 
 const CSS_HOME = 'style.home'
 const CSS_BLOG = 'style.blog'
@@ -27,7 +30,7 @@ const CSS_BASE_PATH = 'assets/styles'
 
 const css = (cssName, done) => {
   gulp.src(`_css/${cssName}.scss`)
-    .pipe(gulpSass({ outputStyle: 'compressed' }))
+    .pipe(gulpSass(production() ? { outputStyle: 'compressed' } : {}))
     .pipe(gulpConcat(`${cssName}.css`))
     .pipe(gulp.dest(CSS_BASE_PATH))
   done()
@@ -50,6 +53,7 @@ gulp.task('css-cookie-policy', (done) => css(CSS_COOKIE_POLICY, done))
 gulp.task('css-error', (done) => css(CSS_ERROR, done))
 
 gulp.task('flow', (done) => {
+  console.log(production())
   exec(`npm run flow`, (err, stdout, stderr) => {
     done()
   })
@@ -68,7 +72,7 @@ const bundleJs = (section) => (
     .bundle()
     .pipe(source(`index.${section}.min.js`))
     .pipe(buffer())
-    .pipe(gulpUglify())
+    .pipe(production(gulpUglify()))
     .pipe(gulp.dest('assets/js'))
 )
 
@@ -89,7 +93,7 @@ gulp.task('models', () => copyFiles('models'))
 gulp.task('images', () =>
   gulp
     .src([`_images/**/*.*`])
-    .pipe(gulpImagemin())
+    .pipe(production(gulpImagemin()))
     .pipe(gulp.dest(`assets/images`))
 )
 

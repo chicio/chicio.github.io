@@ -30,6 +30,13 @@ npm run build
 npm run start
 ```
 
+If you want to build a development version of the site run the following commands from the root folder of this repo:
+
+```bash
+npm run build-dev
+npm run start
+```
+
 ### Overview
 
 My website is hosted using Github Pages. It contains a bunch of jekyll templates used for home, posts, archive and

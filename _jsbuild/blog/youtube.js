@@ -1,19 +1,19 @@
-/* @flow */
+/*  */
 const youtube = () => {
   console.log('start youtube')
-  const intersectionObserver: IntersectionObserver = new IntersectionObserver(
+  const intersectionObserver = new IntersectionObserver(
     onIntersection,
     { rootMargin: '50px 0px', threshold: 0.01 }
   )
-  const images: NodeList<HTMLElement> = document.querySelectorAll('youtube')
-  for (let i: number = 0; i < images.length; i++) {
+  const images = document.querySelectorAll('youtube')
+  for (let i = 0; i < images.length; i++) {
     console.log('find youtube item')
     intersectionObserver.observe(images[i])
   }
 }
 
-const onIntersection = (entries: IntersectionObserverEntry[], observer: IntersectionObserver): void => {
-  for (let i: number = 0; i < entries.length; i++) {
+const onIntersection = (entries, observer) => {
+  for (let i = 0; i < entries.length; i++) {
     if (entries[i].intersectionRatio > 0) {
       console.log('intersect youtube item')
       loadYoutube(entries[i].target, observer)
@@ -21,7 +21,7 @@ const onIntersection = (entries: IntersectionObserverEntry[], observer: Intersec
   }
 }
 
-const loadYoutube = (element: HTMLElement, observer: IntersectionObserver) => {
+const loadYoutube = (element, observer) => {
   observer.unobserve(element)
   var youtubeiFrame = document.createElement('iframe')
   youtubeiFrame.setAttribute('src', 'http://google.com/')
