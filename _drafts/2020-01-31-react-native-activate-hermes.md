@@ -15,3 +15,5 @@ authors: [fabrizio_duroni]
 *React native 0.60.4 has a new cool feature for Android: a new JavaScript engine called Hermes. Let's see how you can turn it on in your React Native application to get all its benefits.*
 
 ---
+
+https://facebook.github.io/react-native/docs/hermes
