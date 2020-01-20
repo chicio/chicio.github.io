@@ -9,15 +9,15 @@ comments: true
 math: false
 seo:
  - type: "BlogPosting"
-authors: [fabrizio_duroni]
+authors: [fabrizio_duroni, francesco_bonfadelli, marco_delucchi]
 ---
 
 *React native 0.60.4 has a new cool feature for Android: a new JavaScript engine called Hermes. Let's see how you can turn it on in your React Native application to get all its benefits.*
-
+As you already my know
 ---
 
-As you already my know, there has been some complains in the past related to the performance of React Native on the Android platform. One of the main reason was due to a big difference in the React Native architecture implementation between Android and iOS: the JavaScript engine used to execute your code. On iOS React Native uses the [JavaScript Core engine exposed in the iOS SDK](https://developer.apple.com/documentation/javascriptcore). On Android the SDK doesn't offer the same feature, so the React Native Android implementation embed a compiled version of the JavaScript Core engine. AS a consequence of this fact the engine used on Android didn't receive the regular updates that the iOS counterpart receive on each system major update, and was also not optimized for React Native and generally speaking for executing JavaScript code for mobiles apps. This is the reason way the Facebook React Native team decided to create [Hermes, an open source JavaScript engine optimized for mobile apps](https://engineering.fb.com/android/hermes/).  
-Which benefits brings to the table this new Engine? As reported in the blog presentation post, there were a few key metrics kept in consideration by the Facebook React Native team:
+As you already may know, there has been some complains in the past related to the performance of React Native on the Android platform. One of the main reason was due to a big difference in the React Native architecture implementation between Android and iOS: the JavaScript engine used to execute your code. On iOS React Native uses the [JavaScript Core engine exposed in the iOS SDK](https://developer.apple.com/documentation/javascriptcore). On Android the SDK doesn't offer the same feature, so the React Native Android implementation embeds a compiled version of the JavaScript Core engine. As a consequence of this fact the engine used on Android didn't receive the regular updates that the iOS counterpart received on each system major update, and was also not optimized for React Native and generally speaking for executing JavaScript code for mobiles apps. This is the reason why the Facebook React Native team decided to create [Hermes, an open source JavaScript engine optimized for mobile apps](https://engineering.fb.com/android/hermes/).  
+Which benefits does the new Engine bring to the table? As reported in the presentation blog post, there were a few key metrics kept in consideration by the Facebook React Native team:
 
 >For JavaScript-based mobile applications, user experience benefits from attention to a few primary metrics:
 >
@@ -61,8 +61,8 @@ In the [official documentation](https://facebook.github.io/react-native/docs/her
         at java.lang.Thread.run(Thread.java:761)
 ```
 
-As the error says, the compilation is failing because gradle is not able to find one the shared libraries used by Hermes. If think well we are also missing a part in our setup: we said that React Native contains a compiled version of Hermes, but we are not telling to gradle where it can pick the `aar` file that contains it. Let's fix this problem also with the help of the [React Native upgrade tool](https://react-native-community.github.io/upgrade-helper/).  
-First we need to had to the `repository` section in the main gradle file a new maven repository (that is contained in the node_modules of the app).
+As the error says, the compilation is failing because gradle is not able to find one the shared libraries used by Hermes. If you think well we are also missing a part in our setup: we said that React Native contains a compiled version of Hermes, but we are not telling to gradle where it can pick the `aar` file that contains it. Let's fix this problem also with the help of the [React Native upgrade tool](https://react-native-community.github.io/upgrade-helper/).  
+First we need to add to the `repository` section in the main gradle file a new maven repository (that is contained in the node_modules of the app).
 
 ```groovy
 //....
@@ -90,7 +90,7 @@ releaseImplementation files("../../node_modules/hermes-engine/android/hermes-rel
 //...
 ```
 
-As you can see from above we needed to link the `aar` version of Hermes specifically for each build variant we have. We also need to rename our `qa` flavor to `qaRelease` and link it to the `hermes-release.aar` file. Why? Because our QA build configuration inherits from the release one, and the **`react.gradle` contained in the React Native itself (`node_modules/react-native/react.gradle`)** does some checks based on the flavor name and if it contains `release` it does some additional operation for apps with Hermes enabled related to the generation of the sourcemap and the removal of the debugger libraries (not needed for a release build). Below you can find the parts that do checks on the variant name.
+As you can see from above we needed to link the `aar` version of Hermes specifically for each build variant we have. We also need to rename our `qa` flavor to `qaRelease` and link it to the `hermes-release.aar` file. Why? Because our QA build configuration inherits from the release one, and the **`react.gradle` contained in the React Native itself (`node_modules/react-native/react.gradle`)** does some checks based on the flavor name and, if it contains release, it performs some additional operations for apps with Hermes enabled related to the generation of the sourcemap and the removal of the debugger libraries (not needed for a release build). Below you can find the parts that do checks on the variant name.
 
 ```groovy
 //...
