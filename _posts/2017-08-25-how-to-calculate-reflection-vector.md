@@ -30,7 +30,7 @@ We will suppose as in the previous post about the phong model that all vectors a
 How is this formula obtained? Let's start from a picture that represents our reflection vector and the other vectors
 used in the calculation.
 
-![Model view presenter ios unit tests](/assets/images/posts/reflection.png "Model view presenter ios unit tests")
+{% include blog-lazy-image.html description="reflection vector" width="1500" height="589" src="/assets/images/posts/reflection.png" %}
 
 Before we start with the demonstration we also need to know what is the law of reflection: 
 
