@@ -28,7 +28,7 @@ Other two important quantities of radiometry are **irradiance** and **radiant ex
 arriving at a surface per unit area. The second one describe flux leaving a surface per unit area (Pharr et al., 2010 [1]). 
 Formally irradiance is described with the following equation:
 
-$$E = \frac{d\phi}{dA}$$
+£$E = \frac{d\phi}{dA}£$
 
 where the differential flux $d\phi$ is computed over the differential area $dA$. It is measured as units of watt
 per square meter.  
@@ -40,7 +40,7 @@ it with $\omega$, that is the set of all direction vectors anchored at $p$ that 
 sphere and the object (Pharr et al., 2010 [1]).
 Now it is possible to give the definition of **radiance**, that is flux density per unit solid angle per unit area:
 
-$$L=\frac{d\phi}{d\omega \ dA^{\perp}}$$
+£$L=\frac{d\phi}{d\omega \ dA^{\perp}}£$
 
 In this case $dA^{\perp}$ is the projected area $dA$ on a surface perpendicular to $\omega$. So radiance describe 
 the limit of measurement of incident light at the surface as a cone of incident directions of interest ${d\omega}$ becomes 
@@ -50,7 +50,7 @@ and radiance leaving a point called exitant radiance and indicated with $L_{o}(p
 in the equations described below. It is important also to note another useful property, that connect 
 the two types of radiance:
 
-$$L_{i}(p,\omega) \neq L_{o}(p,\omega)$$
+£$L_{i}(p,\omega) \neq L_{o}(p,\omega)£$
   
 #### **The rendering equation**
 
@@ -59,7 +59,7 @@ Equation. It is the equation that describes the equilibrium distribution of radi
 gives the total reflected radiance at a point as a sum of emitted and reflected light from a surface. This is the 
 formula of the rendering equation:
 
-$$L_{o}(p,\omega) = L_{e}(p,\omega) + \int_{\Omega}f_{r}(p,\omega_{i},\omega_{0})L_{i}(p,\omega)\cos\theta_{i}d\omega_{i}$$
+£$L_{o}(p,\omega) = L_{e}(p,\omega) + \int_{\Omega}f_{r}(p,\omega_{i},\omega_{0})L_{i}(p,\omega)\cos\theta_{i}d\omega_{i}£$
 
 In this formula the meaning of each symbols are:
 
@@ -83,11 +83,11 @@ between the differential exitant radiance and the differential irradiance at a p
 parameter of this function are: the incident light direction, the outgoing light direction and a point on the surface. 
 The formula for this function in terms of radiometric quantities is the following:
 
-$$f_{r}(p,\omega_{i},\omega_{o}) = \frac{dL_{o}(p,\omega_{o})}{dE(p,\omega_{I})}$$
+£$f_{r}(p,\omega_{i},\omega_{o}) = \frac{dL_{o}(p,\omega_{o})}{dE(p,\omega_{I})}£$
 
 The BRDF has two important properties:
 
-* it is a symmetric function, so for all pair of directions $$f_{r}(p,\omega_{i},\omega_{o}) = f_{r}(p,\omega_{o},\omega_{i})$$
+* it is a symmetric function, so for all pair of directions £$f_{r}(p,\omega_{i},\omega_{o}) = f_{r}(p,\omega_{o},\omega_{i})£$
 * it satisfies the **energy conservation principle**: *the light reflected is less than or equal to the incident light*.
 
 A lot of models has been developed to describe the BRDF of different surfaces. In particular, in the last years 

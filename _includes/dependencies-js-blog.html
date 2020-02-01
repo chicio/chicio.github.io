@@ -1,21 +1,30 @@
 {% if page.math %}
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        jax: ["input/TeX","output/SVG"],
-        messageStyle: "none",
-        tex2jax: {
-            inlineMath: [['$','$']],
-            processEscapes: true
-        },
-        "HTML-CSS": {
-            linebreaks: { automatic: true }
-        },
-        SVG: {
-            linebreaks: { automatic: true }
-        }
-    });
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$','$']],
+    displayMath: [['£$', '£$']],
+    processEscapes: true,
+    autoload: {
+      color: [],
+      colorV2: ['color']
+    },
+    packages: {'[+]': ['noerrors']}
+  },
+  svg: {
+    fontCache: 'global'
+  },
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  },
+  loader: {
+    load: ['[tex]/noerrors']
+  }
+};
 </script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script"></script>
 {% endif %}
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
 <script type="text/javascript" src="/assets/js/index.blog.min.js?rev=9a2b035a05763800c451c5b6834f504b"></script>

@@ -45,7 +45,7 @@ This is the light component emitted by the surface material. Is a purely additiv
 speaking you can use the scene light RGB color. The emissive constant $k_{\text{e}}$ is a surface property that express its emissive 
 reflectance.
 
-$$I_{\text{emissive}}=k_{\text{e}}I_{\text{LE}}$$
+£$I_{\text{emissive}}=k_{\text{e}}I_{\text{LE}}£$
   
 #### **Ambient component**
 
@@ -57,7 +57,7 @@ constant related exclusively to the surface material that express empirically it
 As for the emissive component, the ambient light intensity could be the intensity of the scene light (or an average if 
 you have multiple scene lights).
 
-$$I_{\text{ambient}}=k_{\text{a}}I_{\text{LA}}$$
+£$I_{\text{ambient}}=k_{\text{a}}I_{\text{LA}}£$
   
 #### **Diffusive component**  
 
@@ -69,19 +69,19 @@ and with the attenuation factor due to incident light given by the cosine of the
 normal $\cos\theta$.  This last value is the dot product between the surface normal ${\hat {N}}$ and the light direction ${\hat {L}}$. 
 So the final formula for the diffuse component is:
 
-$$I_{\text{diffuse}}=k_{\text{d}}I_{\text{LD}}({\hat {L}}\cdot{\hat {N}})$$
+£$I_{\text{diffuse}}=k_{\text{d}}I_{\text{LD}}({\hat {L}}\cdot{\hat {N}})£$
   
 #### **Specular component**
 
-This light component represents the amount of reflected light in a specific direction (mirror alike reflection). Light is reflected in a different way depending on the incident light direction. Shiny materials are the one with a high specular component. The perceived specular light depends on the position of the observer with respect to the surface. In particular, the specular illumination is influenced by $\cos\alpha$, that is the cosine of the angle between the direction from the surface point towards the view ${\hat {V}}$ and the direction that a perfectly reflected ray of light would take from this point on the surface ${\hat {R}}$. The size of the specular highlights is regulated by a shininess constant $$n$$, based on the surface material properties. Given all this information the specular component formula obtained by multiplying the specular surface constant $k_{\text{s}}$ with the light specular intensity $I_{\text{LS}}$ and with dot product of the reflection direction ${\hat {R}}$ and the the direction from the surface point towards the view ${\hat {V}}$ squared to the shininess constant $$n$$:
+This light component represents the amount of reflected light in a specific direction (mirror alike reflection). Light is reflected in a different way depending on the incident light direction. Shiny materials are the one with a high specular component. The perceived specular light depends on the position of the observer with respect to the surface. In particular, the specular illumination is influenced by $\cos\alpha$, that is the cosine of the angle between the direction from the surface point towards the view ${\hat {V}}$ and the direction that a perfectly reflected ray of light would take from this point on the surface ${\hat {R}}$. The size of the specular highlights is regulated by a shininess constant £$n£$, based on the surface material properties. Given all this information the specular component formula obtained by multiplying the specular surface constant $k_{\text{s}}$ with the light specular intensity $I_{\text{LS}}$ and with dot product of the reflection direction ${\hat {R}}$ and the the direction from the surface point towards the view ${\hat {V}}$ squared to the shininess constant £$n£$:
 
-$$I_{\text{specular}}=k_{\text{s}}I_{\text{LS}}({\hat {R}}\cdot {\hat {V}})^{n}$$
+£$I_{\text{specular}}=k_{\text{s}}I_{\text{LS}}({\hat {R}}\cdot {\hat {V}})^{n}£$
 
 The above observation are valid also in case we have multiple lights. The only difference is that the diffuse and specular 
 component are calculated for each light and their sum is the final diffuse and specular component.
 Now we are ready to write the complete Phong reflection lighting equation:
 
-$$I_{\text{tot}}=k_{\text{e}}I_{\text{LE}}+k_{\text{a}}I_{\text{LA}}+\sum _{p\;\in \;{\text{lights}}}(k_{\text{d}}I_{p,{\text{LD}}} ({\hat {L}}_{p}\cdot {\hat {N}})+k_{\text{s}}I_{p,{\text{LS}}}({\hat {R}}_{p}\cdot {\hat {V}})^{n})$$
+£$I_{\text{tot}}=k_{\text{e}}I_{\text{LE}}+k_{\text{a}}I_{\text{LA}}+\sum _{p\;\in \;{\text{lights}}}(k_{\text{d}}I_{p,{\text{LD}}} ({\hat {L}}_{p}\cdot {\hat {N}})+k_{\text{s}}I_{p,{\text{LS}}}({\hat {R}}_{p}\cdot {\hat {V}})^{n})£$
 
 Just a final note: we distinguished different type of light intensity based on the component. In fact most of the time this model is implemented using a single general light intensity triplet for all the component for each light.
 How can you implement it in a OpenGL ES shader? The following code sample is a simple implementation of this model using RGB colors.
