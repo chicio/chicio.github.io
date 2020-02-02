@@ -114,7 +114,6 @@ const criticalCss = (src, dest, css) => (
     extract: true,
     inline: true,
     ignore: {
-      atrule: ['@font-face'],
       rule: [/footer-icon/, /icon-/, /phone-number/, /html/]
     }
   }, (err, result) => {
