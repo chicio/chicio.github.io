@@ -13,6 +13,7 @@ authors: [fabrizio_duroni, francesco_bonfadelli, marco_delucchi]
 ---
 
 *React native 0.60.4 has a new cool feature for Android: a new JavaScript engine called Hermes. Let's see how you can turn it on in your React Native application to get all its benefits.*
+
 ---
 
 As you already may know, there has been some complains in the past related to the performance of React Native on the Android platform. One of the main reason was due to a big difference in the React Native architecture implementation between Android and iOS: the JavaScript engine used to execute your code. On iOS React Native uses the [JavaScript Core engine exposed in the iOS SDK](https://developer.apple.com/documentation/javascriptcore). On Android the SDK doesn't offer the same feature, so the React Native Android implementation embeds a compiled version of the JavaScript Core engine. As a consequence of this fact the engine used on Android didn't receive the regular updates that the iOS counterpart received on each system major update, and was also not optimized for React Native and generally speaking for executing JavaScript code for mobiles apps. This is the reason why the Facebook React Native team decided to create [Hermes, an open source JavaScript engine optimized for mobile apps](https://engineering.fb.com/android/hermes/).  
