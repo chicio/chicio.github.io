@@ -61,7 +61,7 @@ In the [official documentation](https://facebook.github.io/react-native/docs/her
         at java.lang.Thread.run(Thread.java:761)
 ```
 
-As the error says, the compilation is failing because gradle is not able to find one the shared libraries used by Hermes. If you think well we are also missing a part in our setup: we said that React Native contains a compiled version of Hermes, but we are not telling to gradle where it can pick the `aar` file that contains it. Let's fix this problem also with the help of the [React Native upgrade tool](https://react-native-community.github.io/upgrade-helper/).  
+As the error says, the compilation is failing because gradle is not able to find one the shared libraries used by Hermes. If you think well we are also missing a part in our setup: we said that React Native contains a compiled version of Hermes, but we are not telling to gradle where it can pick the `aar` file that contains it. Let's fix this problem with the help of the [React Native upgrade tool](https://react-native-community.github.io/upgrade-helper/).  
 First we need to add to the `repository` section in the main gradle file a new maven repository (that is contained in the node_modules of the app).
 
 ```groovy
