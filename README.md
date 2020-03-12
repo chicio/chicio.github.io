@@ -14,7 +14,7 @@ To run my website locally you need to install the following software:
 
 - Homebrew (see [brew.sh/](https://brew.sh/))
 - Node
-- rvm (see [rvm.io](https://rvm.io/))
+- Ruby
 - zsh (now default on macOS :heart_eyes:)
 
 After you finished the installation you can do the setup of the local environment by launching the following commands from the root folder of this repo:
