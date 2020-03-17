@@ -16,7 +16,7 @@ authors: [fabrizio_duroni]
 
 ---
 
-XXX
+The open source Swift world is full of useful framework. You can find almost everything you need (there are [rare cases where you need to write something that still doesn't exist](XXX id3 tag editor) out there). Anyway, a lot of the frameworks and libraries you will find out do more than you need. See for example the world of the dependecies injection framework. We have a lot of alternatives from which we can choose: [Swinject](https://github.com/Swinject/Swinject "dependecies injection swift Swinject"), [Weaver](https://github.com/scribd/Weaver "dependecies injection swift Weaver") etc. This frameworks come with a lot of features like: object graph construction, injection with property wrappers, instance persistence etc. This are all useful feature, but if your needs are very limited (just a dependecies container register/resolver using protocol and classes) the previous frameworks gives you just a big overhead and complexity on you code. This is why for my recent project I tried to write my own very simple dependencies injector container by leveraging the power of Swift Metatype and the Hashable protocol. Let's go and see the how I created it :smirk:.
 
 #### Implementation
 
