@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "How to: create your SUPER simple dependency injector framework in Swift"
-description: "There are a lot of dependency injection framework in the open source swift world with really cool features like object graph, persistence etc. But what if all you need is a lightweight dependencies container? In this post I will show you how to create it by leveraging the Metatype Type, the Hashable protocol and the Equatable protocol."
+title: "How to: create your SUPER simple dependency injector container in Swift"
+description: "There are a lot of dependency injection framework in the open source swift world with really cool features like object graph, persistence etc. But what if all you need is a lightweight dependencies container? In this post I will show you how to create it by leveraging the Metatype Type, Generics, the Hashable protocol and the Equatable protocol."
 date: 2020-03-19
-image: /assets/images/posts/XXXXXXXXXXXXX
+image: /assets/images/posts/dp-container.jpg
 tags: [swift, ios, apple, mobile application development]
 comments: true
 math: false
@@ -12,7 +12,7 @@ seo:
 authors: [fabrizio_duroni]
 ---
 
-*There are a lot of dependency injection framework in the open source swift world with really cool features like object graph, persistence etc. But what if all you need is a lightweight dependencies container? In this post I will show you how to create it by leveraging the Metatype Type and the Hashable protocol and the Equatable protocol.*
+*There are a lot of dependency injection framework in the open source swift world with really cool features like object graph, persistence etc. But what if all you need is a lightweight dependencies container? In this post I will show you how to create it by leveraging the Metatype Type, Generics, the Hashable protocol and the Equatable protocol.*
 
 ---
 
@@ -27,7 +27,7 @@ The main one stores in the field `dependecies` a dictionary of all the dependenc
 
 * `resolve<T>(type: T.Type, name: String? = nil) -> T?`, that lets you get an instance previously registered. This method accept the same first two parameter of the previous method. It will return null if none of the registered instance has a combination of `type` and `name` as the one received as parameters.
 
-This is the implementation of `DependeciesContainer`.
+As you can see both method extensively uses generics in order to be able to accept any possible class or protocol you may want to use. This is the implementation of `DependeciesContainer`.
 
 ```swift
 class DependeciesContainer {
@@ -89,7 +89,7 @@ class Cat: Animal {
     func isAlive() -> Bool {
         true
     }
-    
+
     func miaow() -> String {
         return "miaow"
     }
@@ -99,7 +99,7 @@ class Dog: Animal {
     func isAlive() -> Bool {
         true
     }
-    
+
     func bark() -> String {
         return "wooof"
     }
@@ -109,7 +109,7 @@ class Tiger: Animal {
     func isAlive() -> Bool {
         true
     }
-    
+
     func roar() -> String {
         return "roar"
     }
@@ -124,7 +124,7 @@ class SickPerson: Person {
     func breath() -> String {
         return "fiuu"
     }
-    
+
     func cough() -> String {
         return "cough"
     }
@@ -149,13 +149,13 @@ print((person as! SickPerson).cough()) // "cough\n"
 dc.register(type: Animal.self, name: "Cat", service: Cat())
 dc.register(type: Animal.self, name: "Tiger", service: Tiger())
 let cat = dc.resolve(type: Animal.self, name: "Cat")!
-print(String(describing: cat))
+print(String(describing: cat)) // "__lldb_expr_9.Cat\n"
 print(cat.isAlive())
-print((cat as! Cat).miaow())
+print((cat as! Cat).miaow()) //"miaow\n"
 let tiger = dc.resolve(type: Animal.self, name: "Tiger")!
-print(String(describing: tiger))
+print(String(describing: tiger)) // "__lldb_expr_9.Tiger\n"
 print(tiger.isAlive())
-print((tiger as! Tiger).roar())
+print((tiger as! Tiger).roar()) // "roar\n"
 ```
 
 #### Conclusion
