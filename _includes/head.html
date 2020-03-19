@@ -15,8 +15,11 @@
 	<link rel="preconnect" href="https://cdn.jsdelivr.net">
 	{% include icons.html %}
 	{% include analytics.html %}
-	<style>body{visibility: hidden;}</style>
-	<style type="text/css">{% include {{ include.critical-css }} %}</style>
+	<style type="text/css">
+	body{visibility: hidden;}
+	{% include opensans.css %}
+	{% include icomoon.css %}
+	{% include {{ include.critical-css }} %}</style>
 	<style type="text/css">{% include cookieconsent-style.css %}</style>
 	{% seo %}
 	{% if include.content-type %}
