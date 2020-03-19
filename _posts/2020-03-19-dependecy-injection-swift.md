@@ -23,7 +23,7 @@ The open source Swift world is full of useful framework. You can find almost eve
 The main class of dependencies injector container is composed by 2 classes: `DependeciesContainer` and `DependencyKey`.  
 The main one stores in the field `dependecies` a dictionary of all the dependencies registered using an instance of the second one. `DependeciesContainer` exposes two methods:
 
-* `register<T>(type: T.Type, name: String? = nil, service: Any)`, that lets you register a new dependency in the container. It accepts 3 parameter. The first one is the `Type` of the dependency. The second one is a string that let's you identify different named variations of the same dependencies (e.g. you register `Cat` and `Dog`, two different implementation of an hypothetical `Animal` protocol). The 3 one is the instance saved in the `dependecies` dictionary.
+* `register<T>(type: T.Type, name: String? = nil, service: Any)`, that lets you register a new dependency in the container. It accepts 3 parameter. The first one is the `Type` of the dependency. The second one is a string that let's you identify different named variations of the same dependencies (e.g. you register `Cat` and `Dog`, two different implementation of an hypothetical `Animal` protocol). The third one is the instance saved in the `dependecies` dictionary.
 
 * `resolve<T>(type: T.Type, name: String? = nil) -> T?`, that lets you get an instance previously registered. This method accept the same first two parameter of the previous method. It will return null if none of the registered instance has a combination of `type` and `name` as the one received as parameters.
 
