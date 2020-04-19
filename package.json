@@ -66,9 +66,9 @@
     "vinyl-source-stream": "2.0.0"
   },
   "dependencies": {
-    "bootstrap": "4.3.1",
+    "bootstrap": "4.4.1",
     "detector-webgl": "2.0.0",
-    "intersection-observer": "0.7.0",
-    "three": "0.110.0"
+    "intersection-observer": "0.9.0",
+    "three": "0.115.0"
   }
 }
