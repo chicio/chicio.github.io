@@ -1,1 +1,1 @@
-"/assets/styles/style.privacypolicy.css?rev=2640127924c62af91e56631aa6a91231",
+"/assets/styles/style.privacypolicy.css?rev=866daad73b4cce1373ff0bf0f51340db",

@@ -278,7 +278,7 @@ gulp.task('service-worker-css-error-urls', (done) => {
   serviceWorkerUrlFor('css-error', done)
 });
 
-gulp.task('jekyll-build', (done) => exec(`bundle exec jekyll build`, (err, stdout, stderr) => done()))
+gulp.task('jekyll-build', (done) => exec(`./_scripts/build.sh`, (err, stdout, stderr) => done()))
 
 const build = gulp.series(
   'css-home',

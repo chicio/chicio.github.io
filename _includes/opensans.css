@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   src: local("Open Sans Regular"),
        url("/assets/fonts/opensans/OpenSans-Regular.woff2") format("woff2"), 
        url("/assets/fonts/opensans/OpenSans-Regular.woff") format("woff"),
