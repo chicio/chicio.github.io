@@ -8,5 +8,5 @@
        url('/assets/fonts/opensans/OpenSans-Regular.svg#OpenSansRegular') format('svg');
   font-weight: normal;
   font-style: normal;
-  font-display: fallback;
+  font-display: block;
 }

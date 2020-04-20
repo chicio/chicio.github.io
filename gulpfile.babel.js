@@ -99,7 +99,7 @@ gulp.task('images', () =>
 const criticalCss = (src, dest, css) => (
   critical.generate({
     base: '_site/',
-    src: `${src}.html`,
+    src: `_site/${src}.html`,
     css: [`../assets/styles/${css}.css`],
     dimensions: [{
       width: 320,
@@ -114,7 +114,11 @@ const criticalCss = (src, dest, css) => (
     extract: true,
     inline: true,
     penthouse: {
-      renderWaitTime: 2000,
+      screenshots: {
+        basePath: `_critical-screenshots/${dest}`,
+        type: 'jpeg', 
+        quality: 20 
+      }
     },
     ignore: {
       rule: [/footer-icon/, /icon-/, /phone-number/, /html/]
@@ -122,7 +126,7 @@ const criticalCss = (src, dest, css) => (
   }, (err, result) => {
     if (err === null) {
       fs.writeFileSync(`assets/styles/${css}.css`, result.uncritical);
-      fs.writeFileSync(`../_includes/${dest}.css`, result.css)
+      fs.writeFileSync(`_includes/${dest}.css`, result.css)
     } 
   })
 )

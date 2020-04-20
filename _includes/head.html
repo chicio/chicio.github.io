@@ -18,8 +18,9 @@
 	<style type="text/css">
 	{% include opensans.css %}
 	{% include icomoon.css %}
-	{% include {{ include.critical-css }} %}</style>
-	<style type="text/css">{% include cookieconsent-style.css %}</style>
+	{% include {{ include.critical-css }} %}
+	{% include cookieconsent-style.css %}
+	</style>
 	{% seo %}
 	{% if include.content-type %}
 	<meta property="og:type" content="{{ include.content-type }}"/>
