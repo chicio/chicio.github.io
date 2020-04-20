@@ -11,3 +11,7 @@
 @import "./blog-post-tags.scss";
 @import "./disqus.scss";
 @import "./blog-pull-to-refresh.scss";
+
+body {
+    visibility: visible;
+  }

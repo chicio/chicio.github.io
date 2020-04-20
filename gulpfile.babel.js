@@ -122,7 +122,7 @@ const criticalCss = (src, dest, css) => (
       renderWaitTime: 30
     },
     ignore: {
-      rule: [/footer-icon/, /icon-/, /phone-number/, /html/]
+      rule: [/footer-icon/, /icon-/, /phone-number/, /html/, /body/]
     }
   }, (err, result) => {
     if (err === null) {
