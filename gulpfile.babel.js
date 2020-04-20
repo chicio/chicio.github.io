@@ -113,6 +113,9 @@ const criticalCss = (src, dest, css) => (
     }],
     extract: true,
     inline: true,
+    penthouse: {
+      renderWaitTime: 2000,
+    },
     ignore: {
       rule: [/footer-icon/, /icon-/, /phone-number/, /html/]
     }
@@ -317,6 +320,7 @@ const build = gulp.series(
   'service-worker-css-cookie-policy-urls',
   'service-worker-css-error-urls',
   'jekyll-build', //First build for critical/purge css
+  'css-critical', 
   'purge-css-home',
   'purge-css-blog-home',
   'purge-css-blog-archive',
@@ -325,7 +329,6 @@ const build = gulp.series(
   'purge-css-privacy-policy',
   'purge-css-cookie-policy',
   'purge-css-blog-post',
-  'css-critical', 
   'jekyll-build' //Generate site with css critical path and purge from unused rules
 )
 
