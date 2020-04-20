@@ -118,7 +118,8 @@ const criticalCss = (src, dest, css) => (
         basePath: `_critical-screenshots/${dest}`,
         type: 'jpeg', 
         quality: 20 
-      }
+      },
+      renderWaitTime: 30
     },
     ignore: {
       rule: [/footer-icon/, /icon-/, /phone-number/, /html/]
