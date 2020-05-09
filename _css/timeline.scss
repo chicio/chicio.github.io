@@ -120,7 +120,7 @@
 }
 
 .timeline-badge.work {
-  background-color: $primary-color-dark !important;
+  @include theme($themes, 'background-color', $primary-color-dark, false, ' !important');
 }
 
 .timeline-title {

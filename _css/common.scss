@@ -50,7 +50,7 @@ canvas {
 .btn-default {
   color: $primary-color-text;
   background-color: $accent-color;
-  font-size: $font-size-base;
+  font-size: 14px;
 }
 
 @include media-breakpoint-up(xs) {

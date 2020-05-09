@@ -32,8 +32,8 @@ html {
   }
 
   .pull-to-refresh-loader {
-    border: 3px solid $primary-color-dark;
-    border-top: 3px solid $primary-color-light;
+    @include theme($themes, 'border', $primary-color-dark, true, ' 3px solid');
+    @include theme($themes, 'border', $primary-color-light, true, ' 3px solid');
     border-radius: 50%;
     width: 30px;
     height: 30px;

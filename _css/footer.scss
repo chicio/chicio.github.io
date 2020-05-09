@@ -45,7 +45,7 @@
   }
 
   .copyright {
-    background-color: $primary-color-dark;
+    @include theme($themes, 'background-color', $primary-color-dark);
     padding-top: 5px;
     padding-bottom: 10px;
     h5 {
@@ -55,7 +55,7 @@
 
   .social-links {
     padding-top: 10px;
-    background-color: $primary-color-dark;
+    @include theme($themes, 'background-color', $primary-color-dark);
   }
 }
 

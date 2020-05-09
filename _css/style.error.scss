@@ -15,11 +15,11 @@ html {
 }
 
 body {
+  @include theme($themes, 'background-color', $primary-color-dark);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: $primary-color-dark;
   height: 100vh;
 }
 
