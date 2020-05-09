@@ -2,7 +2,7 @@
 layout: post
 title: "How to: create your SUPER simple dependency injector container in Swift"
 description: "There are a lot of dependency injection framework in the open source swift world with really cool features like object graph, persistence etc. But what if all you need is a lightweight dependencies container? In this post I will show you how to create it by leveraging the Metatype Type, Generics, the Hashable protocol and the Equatable protocol."
-date: 2020-03-19
+date: 2020-04-19
 image: /assets/images/posts/dp-container.jpg
 tags: [swift, ios, apple, mobile application development]
 comments: true
