@@ -9,12 +9,12 @@
   
   .footer-icon {
     @include theme($themes, 'color', $primary-color-text);
+    @include theme($themes, 'background', $accent-color);
     font-size: 1.2em;
     width: 1.5em;
     height: 1.5em;
     line-height: 1.5em !important;
     text-align: center;
-    background: $accent-color;
     border-radius: 0.5em;
     margin: 5px;
     display: inline-block;

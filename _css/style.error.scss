@@ -34,7 +34,7 @@ p {
 }
 
 a{
-  color: $accent-color;
+  @include theme($themes, 'color', $accent-color);
 }
 
 img {

@@ -20,7 +20,7 @@
     }
 
     h3 {
-      color: $accent-color;
+      @include theme($themes, 'color', $accent-color);
       font-weight: 500;
       @include media-breakpoint-down(sm) {
         padding-left: 0;
@@ -48,8 +48,8 @@
       }
 
       .card-button {
+        @include theme($themes, 'background-color', $accent-color);
         min-height: 20px;
-        background-color: $accent-color;
         color: #ffffff;
         border-radius: 4px;
         text-align: center;
@@ -80,8 +80,8 @@
       }
       
       h4 {
+        @include theme($themes, 'color', $accent-color);
         margin:20px;
-        color: $accent-color;
         font-weight: 500;
         line-height: 1.5;
       }    

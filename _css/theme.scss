@@ -1,13 +1,15 @@
-$primary-color-dark: "primary-color-dark"; /* ok */
-$primary-color: "primary-color"; /* ok */
-$primary-color-light: "primary-color-light";
-$primary-color-text: "primary-color-text"; /* ok */
-$accent-color: "accent-color";
-$primary-text-color: "primary-text-color"; /* ok */
-$secondary-text-color: "secondary-text-color"; /* ok */
+$primary-color-dark: "primary-color-dark"; 
+$primary-color: "primary-color"; 
+$primary-color-light: "primary-color-light"; 
+$primary-color-text: "primary-color-text"; 
+$accent-color: "accent-color"; 
+$primary-text-color: "primary-text-color"; 
+$secondary-text-color: "secondary-text-color";
 $divider-color: "divider-color";
-$general-background: "general-background";  /* ok */
-$general-background-light: "general-background-light";  /* ok */
+$general-background: "general-background";
+$general-background-light: "general-background-light";
+$box-shadow-light: "box-shadow-light";
+$box-shadow-medium: "box-shadow-medium";
 
 $themes: (
   light: (
@@ -21,6 +23,8 @@ $themes: (
     $divider-color: #BDBDBD,
     $general-background: #FAFAFA,
     $general-background-light: #FFFFFF,
+    $box-shadow-light: rgba(0, 0, 0, 0.2),
+    $box-shadow-medium: rgba(0, 0, 0, 0.375)
   ),
   dark: (
     $primary-color-dark: #303F9F,
@@ -33,6 +37,8 @@ $themes: (
     $divider-color: #575757,
     $general-background: #161716,
     $general-background-light: #363636,
+    $box-shadow-light: rgba(255, 255, 255, 0.2),
+    $box-shadow-medium: rgba(255, 255, 255, 0.375)
   ),
 );
 

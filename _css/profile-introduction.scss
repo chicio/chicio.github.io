@@ -62,22 +62,22 @@
     }
 
     .profile-icon {
+      @include theme($themes, 'background-color', $accent-color);
       display: inline-block;
       font-size: 1.5em;
       width: 1.5em;
       text-align: center;
       line-height: 1.5em;
-      background: $accent-color;
       color: #fff;
       border-radius: 0.5em;
       margin-top: 10px;
     }
 
     .profile-button {
+      @include theme($themes, 'background-color', $accent-color);
       font-size: 1.5em;
       text-align: center;
       line-height: 1.5em;
-      background: $accent-color;
       color: #fff;
       border-radius: 0.5em;
       margin-top: 10px;

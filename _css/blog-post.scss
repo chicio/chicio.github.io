@@ -8,25 +8,25 @@
   }
 
   .blog-post-title {
+    @include theme($themes, 'color', $accent-color);
     margin-bottom: 5px;
     font-size: 24px;
-    color: $accent-color;
     @include media-breakpoint-up(md) {
       font-size: 36px;
     }
   
     a {
-      color: $accent-color;
+      @include theme($themes, 'color', $accent-color);
     }
   
     a:hover {
+      @include theme($themes, 'color', $accent-color);
       text-decoration: none;
-      color: $accent-color;
     }
   }
 
   a {
-    color: $accent-color;
+    @include theme($themes, 'color', $accent-color);
   }
 
   img {
