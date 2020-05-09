@@ -158,13 +158,13 @@
   }
 
   .nav-tabs > li > .nav-link {
+    @include theme($themes, 'background-color', $general-background-light);
+    @include theme($themes, 'border-bottom', $divider-color, true, '1px solid ');
+    @include theme($themes, 'border-left', $divider-color, true, '1px solid ');
+    @include theme($themes, 'border-right', $divider-color, true, '1px solid ');
+    @include theme($themes, 'color', $accent-color);
     border-radius: 0;
-    border-bottom: 1px solid #dee2e6;
-    border-left: 1px solid #dee2e6;
-    border-right: 1px solid #dee2e6;
-    color: $accent-color;
     font-weight: bold;
-    background-color: #FFFFFF;
   }
 
   .nav-tabs > li > .nav-link:hover {
@@ -172,12 +172,12 @@
   }
 
   .nav-tabs > li.active > .nav-link {
-    border-radius: 0;
-    border-right: 1px solid #dee2e6;
-    border: 1px solid transparent;
-    color: $accent-color;
-    font-weight: bold;
     @include theme($themes, 'background-color', $general-background);
+    @include theme($themes, 'color', $accent-color);
+    @include theme($themes, 'border-right', $divider-color, true, '1px solid ');
+    border-radius: 0;
+    border: 1px solid transparent;
+    font-weight: bold;
   }
 
   a.accordion-toggle {

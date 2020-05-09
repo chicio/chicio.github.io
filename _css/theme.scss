@@ -7,7 +7,7 @@ $primary-text-color: "primary-text-color"; /* ok */
 $secondary-text-color: "secondary-text-color"; /* ok */
 $divider-color: "divider-color";
 $general-background: "general-background";  /* ok */
-
+$general-background-light: "general-background-light";  /* ok */
 
 $themes: (
   light: (
@@ -20,6 +20,7 @@ $themes: (
     $secondary-text-color: #575757,
     $divider-color: #BDBDBD,
     $general-background: #FAFAFA,
+    $general-background-light: #FFFFFF,
   ),
   dark: (
     $primary-color-dark: #303F9F,
@@ -31,6 +32,7 @@ $themes: (
     $secondary-text-color: #F1F1F1,
     $divider-color: #575757,
     $general-background: #161716,
+    $general-background-light: #363636,
   ),
 );
 
