@@ -1,6 +1,6 @@
 .profile-introduction {
-  color: #ffffff;
-  background-color: $primary-color;
+  @include theme($themes, 'background-color', $primary-color);
+  @include theme($themes, 'color', $primary-color-text);
   height: 100vh;
   min-width: 100%;
   display: table;
@@ -58,7 +58,7 @@
     }
 
     .profile-job {
-      color: $primary-color-text;
+      @include theme($themes, 'color', $primary-color-text);
     }
 
     .profile-icon {
@@ -120,12 +120,12 @@
   }
 
   .down-arrow {
+    @include theme($themes, 'color', $primary-color-text);
     position: absolute;
     bottom: 25px;
     left: 0;
     right: 0;
     text-align: center;
-    color: $primary-color-text;
     opacity: 0;
 
     &.show {

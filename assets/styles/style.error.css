@@ -251,6 +251,13 @@ code {
   body {
     min-width: 992px !important; } }
 
+/* ok */
+/* ok */
+/* ok */
+/* ok */
+/* ok */
+/* ok */
+
 html {
   max-width: 100%;
   overflow-x: hidden; }
@@ -279,9 +286,15 @@ p {
   display: inline; }
 
 .btn-default {
-  color: "primary-color-text";
-  background-color: "accent-color";
+  color: #FFFFFF;
+  background-color: #0F67FF;
   font-size: 14px; }
+  @media (prefers-color-scheme: dark) {
+    .btn-default {
+      color: #FFFFFF; } }
+  @media (prefers-color-scheme: dark) {
+    .btn-default {
+      background-color: #0F67FF; } }
 
 .break {
   display: none; }
@@ -291,12 +304,15 @@ p {
   margin: 0; }
 
 html {
-  color: "primary-color-text";
+  color: #FFFFFF;
   display: table;
   font-family: sans-serif;
   height: 100vh;
   text-align: center;
   width: 100%; }
+  @media (prefers-color-scheme: dark) {
+    html {
+      color: #FFFFFF; } }
 
 body {
   background-color: #303F9F;
@@ -310,7 +326,10 @@ body {
       background-color: #303F9F; } }
 
 p {
-  color: "primary-color-text"; }
+  color: #FFFFFF; }
+  @media (prefers-color-scheme: dark) {
+    p {
+      color: #FFFFFF; } }
 
 a {
   color: "accent-color"; }

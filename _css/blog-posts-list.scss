@@ -15,7 +15,7 @@
     }
 
     .blog-posts-post-link {
-      color: $primary-text-color;
+      @include theme($themes, 'color', $primary-text-color);
       text-decoration: none;
 
       .blog-posts-post-title {

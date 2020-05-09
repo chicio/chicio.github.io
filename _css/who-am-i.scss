@@ -19,7 +19,7 @@
       padding-right: 15px;
 
       p {
-        color: $primary-color-text;
+        @include theme($themes, 'color', $primary-color-text);
       }
     }
 

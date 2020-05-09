@@ -1,5 +1,5 @@
 .blog-post-meta {
+  @include theme($themes, 'color', $secondary-text-color);
   margin-bottom: 15px;
   margin-top: 5px;
-  color: $secondary-text-color;
 }

@@ -1,5 +1,5 @@
 .blog-masthead {
-  background-color: $primary-color;
+  @include theme($themes, 'background-color', $primary-color);
   -webkit-box-shadow: inset 0 -2px 5px rgba(0, 0, 0, .1);
   box-shadow: inset 0 -2px 5px rgba(0, 0, 0, .1);
   position: fixed;

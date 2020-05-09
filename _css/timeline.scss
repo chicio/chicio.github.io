@@ -83,7 +83,8 @@
 }
 
 .timeline > li > .timeline-badge {
-  color: #fff;
+  @include theme($themes, 'background-color', $primary-color);
+  @include theme($themes, 'color', $primary-color-text);
   width: 50px;
   height: 50px;
   line-height: 50px;
@@ -93,7 +94,6 @@
   top: 16px;
   left: 50%;
   margin-left: -25px;
-  background-color: $primary-color;
   z-index: 100;
   border-top-right-radius: 50%;
   border-top-left-radius: 50%;
@@ -124,8 +124,8 @@
 }
 
 .timeline-title {
+  @include theme($themes, 'color', $primary-text-color);
   margin-top: 0;
-  color: $primary-text-color;
   font-size: 30px;
   font-weight: bold;
   word-break: normal;
@@ -133,10 +133,10 @@
 }
 
 .timeline-subtitle {
+  @include theme($themes, 'color', $primary-text-color);
   font-size: 17px;
   word-break: keep-all;
   text-align: left;
-  color: $primary-text-color;
   width: 100%;
 }
 
@@ -191,9 +191,9 @@
 }
 
 .timeline-body > p, .timeline-body > ul {
+  @include theme($themes, 'color', $primary-text-color);
   margin-bottom: 0;
   font-size: 16px;
-  color: $primary-text-color;
 }
 
 .timeline-body > ul {

@@ -6,7 +6,7 @@
   }
 
   a {
-    color: $primary-text-color;
+    @include theme($themes, 'color', $primary-text-color);
     &:hover{
       text-decoration:none;
     }  

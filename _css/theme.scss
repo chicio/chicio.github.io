@@ -1,12 +1,12 @@
-$primary-color-dark: "primary-color-dark";
-$primary-color: "primary-color";
+$primary-color-dark: "primary-color-dark"; /* ok */
+$primary-color: "primary-color"; /* ok */
 $primary-color-light: "primary-color-light";
-$primary-color-text: "primary-color-text";
+$primary-color-text: "primary-color-text"; /* ok */
 $accent-color: "accent-color";
-$primary-text-color: "primary-text-color";
-$secondary-text-color: "secondary-text-color";
+$primary-text-color: "primary-text-color"; /* ok */
+$secondary-text-color: "secondary-text-color"; /* ok */
 $divider-color: "divider-color";
-$general-background: "general-background";
+$general-background: "general-background";  /* ok */
 
 
 $themes: (

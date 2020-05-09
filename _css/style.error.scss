@@ -6,7 +6,7 @@
 }
 
 html {
-  color: $primary-color-text;
+  @include theme($themes, 'color', $primary-color-text);
   display: table;
   font-family: sans-serif;
   height: 100vh;
@@ -24,13 +24,13 @@ body {
 }
 
 h1 {
-  color: $primary-color-text;
+  @include theme($themes, 'color', $primary-color-text);
   font-size: 10em;
   font-weight: 400;
 }
 
 p {
-  color: $primary-color-text;
+  @include theme($themes, 'color', $primary-color-text);
 }
 
 a{

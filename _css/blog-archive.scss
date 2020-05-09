@@ -16,7 +16,7 @@
       margin-top: 20px;
 
       .archive-list-post-date {
-        color: $secondary-text-color;
+        @include theme($themes, 'color', $secondary-text-color);
         padding: 0;
       }
 
