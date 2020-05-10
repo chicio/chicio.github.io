@@ -14,6 +14,14 @@ $syntax-inline: "syntax-inline";
 $syntax-inline-background: "syntax-inline-background";
 $syntax-highlight: "syntax-highlight";
 $syntax-highlight-comment: "syntax-hightlight-comment";
+$syntax-highlight-class-name: "syntax-hightlight-class-name";
+$syntax-highlight-variable-name: "syntax-hightlight-variable-name";
+$syntax-highlight-keyword-type: "$syntax-highlight-keyword-type";
+$syntax-highlight-deleted: "$synaxt-hightlight-deleted";
+$syntax-highlight-deleted-specific: "$synaxt-hightlight-deleted-specific";
+$syntax-highlight-inserted: "$synaxt-hightlight-inserted";
+$syntax-highlight-inserted-specific: "$synaxt-hightlight-inserted-specific";
+$syntax-highlight-literal-value: "$synaxt-hightlight-literal-value";
 
 $themes: (
   light: (
@@ -31,8 +39,16 @@ $themes: (
     $box-shadow-medium: rgba(0, 0, 0, 0.375),
     $syntax-inline: #9C1154,
     $syntax-inline-background: #f9f2f4,
-    $syntax-highlight: #fbfbfb,
-    $syntax-highlight-comment: #717171
+    $syntax-highlight: #FFFFFF,
+    $syntax-highlight-comment: #717171,
+    $syntax-highlight-class-name: #405182,
+    $syntax-highlight-variable-name: #008080,
+    $syntax-highlight-keyword-type: #425385,
+    $syntax-highlight-deleted: #ffdddd,
+    $syntax-highlight-deleted-specific: #ffaaaa,
+    $syntax-highlight-inserted: #ddffdd,
+    $syntax-highlight-inserted-specific: #aaffaa,
+    $syntax-highlight-literal-value: #A71133      
   ),
   dark: (
     $primary-color-dark: #303F9F,
@@ -49,8 +65,16 @@ $themes: (
     $box-shadow-medium: rgba(0, 0, 0, 0.375),
     $syntax-inline: #EC61A4,
     $syntax-inline-background: #363636,
-    $syntax-highlight: #404040,
-    $syntax-highlight-comment: #a1a1a1
+    $syntax-highlight: #303030,
+    $syntax-highlight-comment: #a1a1a1,
+    $syntax-highlight-class-name: #6081B2,
+    $syntax-highlight-variable-name: #00C0C0,
+    $syntax-highlight-keyword-type: #92A3C5,
+    $syntax-highlight-deleted: #ff6666,
+    $syntax-highlight-deleted-specific: #ff5555,
+    $syntax-highlight-inserted: #99CC99,
+    $syntax-highlight-inserted-specific: #77ff77,
+    $syntax-highlight-literal-value: #F6B6C3
   ),
 );
 
