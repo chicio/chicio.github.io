@@ -17,6 +17,7 @@ import * as fs from 'fs'
 
 const production = gulpEnvironments.production
 
+const CSS_FOLDER = '_css'
 const CSS_HOME = 'style.home'
 const CSS_BLOG = 'style.blog'
 const CSS_BLOG_ARCHIVE = `${CSS_BLOG}.archive`
@@ -29,7 +30,7 @@ const CSS_ERROR = `style.error`
 const CSS_BASE_PATH = 'assets/styles'
 
 const css = (cssName, done) => {
-  gulp.src(`_css/${cssName}.scss`)
+  gulp.src(`${CSS_FOLDER}/${cssName}.scss`)
     .pipe(gulpSass(production() ? { outputStyle: 'compressed' } : {}))
     .pipe(gulpConcat(`${cssName}.css`))
     .pipe(gulp.dest(CSS_BASE_PATH))
@@ -116,8 +117,8 @@ const criticalCss = (src, dest, css) => (
     penthouse: {
       screenshots: {
         basePath: `_critical-screenshots/${dest}`,
-        type: 'jpeg', 
-        quality: 20 
+        type: 'jpeg',
+        quality: 20
       },
       renderWaitTime: 30
     },
@@ -128,87 +129,87 @@ const criticalCss = (src, dest, css) => (
     if (err === null) {
       fs.writeFileSync(`assets/styles/${css}.css`, result.uncritical);
       fs.writeFileSync(`_includes/${dest}.css`, result.css)
-    } 
+    }
   })
 )
 
 gulp.task('css-critical', (done) => Promise.all([
-    criticalCss('index', 'critical', CSS_HOME),
-    criticalCss('blog/index', 'critical-blog', CSS_BLOG_HOME),
-    criticalCss('blog/archive/index', 'critical-blog-post-archive', CSS_BLOG_ARCHIVE),
-    criticalCss('blog/tags/index', 'critical-blog-tags', CSS_BLOG_TAGS),
-    criticalCss('2017/05/10/about-me', 'critical-blog-post', CSS_BLOG_POST),
-    criticalCss('privacy-policy', 'critical-privacy-policy', CSS_PRIVACY_POLICY),
-    criticalCss('cookie-policy', 'critical-cookie-policy', CSS_COOKIE_POLICY),
-    criticalCss('offline', 'critical-error', CSS_ERROR),        
-  ]).then(() => done())
+  criticalCss('index', 'critical', CSS_HOME),
+  criticalCss('blog/index', 'critical-blog', CSS_BLOG_HOME),
+  criticalCss('blog/archive/index', 'critical-blog-post-archive', CSS_BLOG_ARCHIVE),
+  criticalCss('blog/tags/index', 'critical-blog-tags', CSS_BLOG_TAGS),
+  criticalCss('2017/05/10/about-me', 'critical-blog-post', CSS_BLOG_POST),
+  criticalCss('privacy-policy', 'critical-privacy-policy', CSS_PRIVACY_POLICY),
+  criticalCss('cookie-policy', 'critical-cookie-policy', CSS_COOKIE_POLICY),
+  criticalCss('offline', 'critical-error', CSS_ERROR),
+]).then(() => done())
 )
 
 const purgeCss = (cssName, content, whitelist, done) => {
   gulp
-  .src(`_site/assets/styles/${cssName}.css`)
-  .pipe(
-    purgecss({
-      content: content,
-      whitelist: whitelist
-    })
-  )
-  .pipe(gulp.dest('assets/styles/'))
-  done()  
+    .src(`_site/assets/styles/${cssName}.css`)
+    .pipe(
+      purgecss({
+        content: content,
+        whitelist: whitelist
+      })
+    )
+    .pipe(gulp.dest('assets/styles/'))
+  done()
 }
 
 gulp.task('purge-css-home', (done) => purgeCss(
-  CSS_HOME, 
-  ['./_site/index.html', './_site/assets/js/index.home.min.js'], 
+  CSS_HOME,
+  ['./_site/index.html', './_site/assets/js/index.home.min.js'],
   ['html'],
   done
 ))
 
 gulp.task('purge-css-blog-archive', (done) => purgeCss(
-  CSS_BLOG_ARCHIVE, 
-  ['./_site/blog/archive/index.html', './_site/assets/js/index.blog.min.js'], 
+  CSS_BLOG_ARCHIVE,
+  ['./_site/blog/archive/index.html', './_site/assets/js/index.blog.min.js'],
   ['html'],
   done
 ))
 
 gulp.task('purge-css-blog-home', (done) => purgeCss(
-  CSS_BLOG_HOME, 
-  ['./_site/blog/index.html', './_site/assets/js/index.blog.min.js'], 
+  CSS_BLOG_HOME,
+  ['./_site/blog/index.html', './_site/assets/js/index.blog.min.js'],
   ['html'],
   done
 ))
 
 gulp.task('purge-css-blog-tags', (done) => purgeCss(
-  CSS_BLOG_TAGS, 
-  ['./_site/blog/tags/index.html', './_site/assets/js/index.blog.min.js'], 
+  CSS_BLOG_TAGS,
+  ['./_site/blog/tags/index.html', './_site/assets/js/index.blog.min.js'],
   ['html'],
   done
 ))
 
 gulp.task('purge-css-error', (done) => purgeCss(
   CSS_ERROR,
-  ['./_site/offline.html', './_site/assets/js/index.blog.min.js'], 
+  ['./_site/offline.html', './_site/assets/js/index.blog.min.js'],
   ['html'],
   done
 ))
 
 gulp.task('purge-css-privacy-policy', (done) => purgeCss(
-  CSS_PRIVACY_POLICY, 
-  ['./_site/privacy-policy.html', './_site/assets/js/index.blog.min.js'], 
+  CSS_PRIVACY_POLICY,
+  ['./_site/privacy-policy.html', './_site/assets/js/index.blog.min.js'],
   ['html'],
   done
 ))
 
 gulp.task('purge-css-cookie-policy', (done) => purgeCss(
-  CSS_COOKIE_POLICY, 
-  ['./_site/cookie-policy.html', './_site/assets/js/index.blog.min.js'], 
+  CSS_COOKIE_POLICY,
+  ['./_site/cookie-policy.html', './_site/assets/js/index.blog.min.js'],
   ['html'],
   done
 ))
 
 gulp.task('purge-css-blog-post', (done) => purgeCss(
-  CSS_BLOG_POST, 
-  ['./_site/20**/**/**.html', './_site/assets/js/index.blog.min.js'], 
+  CSS_BLOG_POST,
+  ['./_site/20**/**/**.html', './_site/assets/js/index.blog.min.js'],
   ['html'],
   done
 ))
@@ -288,7 +289,28 @@ gulp.task('service-worker-css-error-urls', (done) => {
 
 gulp.task('jekyll-build', (done) => exec(`./_scripts/build.sh`, (err, stdout, stderr) => done()))
 
-const build = gulp.series(
+export const watchCss = () => gulp.watch(`${CSS_FOLDER}/*.scss`, gulp.series(
+  'css-home',
+  'css-blog-archive',
+  'css-blog-home',
+  'css-blog-post',
+  'css-blog-tags',
+  'css-privacy-policy',
+  'css-cookie-policy',
+  'css-error',
+  'jekyll-build', //build for critical/purge css
+  'css-critical',
+  'purge-css-home',
+  'purge-css-blog-home',
+  'purge-css-blog-archive',
+  'purge-css-blog-tags',
+  'purge-css-error',
+  'purge-css-privacy-policy',
+  'purge-css-cookie-policy',
+  'purge-css-blog-post',
+))
+
+export const build = gulp.series(
   'css-home',
   'css-blog-archive',
   'css-blog-home',
@@ -325,7 +347,7 @@ const build = gulp.series(
   'service-worker-css-cookie-policy-urls',
   'service-worker-css-error-urls',
   'jekyll-build', //First build for critical/purge css
-  'css-critical', 
+  'css-critical',
   'purge-css-home',
   'purge-css-blog-home',
   'purge-css-blog-archive',
@@ -336,5 +358,3 @@ const build = gulp.series(
   'purge-css-blog-post',
   'jekyll-build' //Generate site with css critical path and purge from unused rules
 )
-
-export default build

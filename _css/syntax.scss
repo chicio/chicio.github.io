@@ -1,28 +1,28 @@
-.highlight  { background: #fbfbfb; }
-.highlight .c { color: #57574C; font-style: italic } /* Comment */
+.highlight { @include theme($themes, 'background', $syntax-highlight); }
+.highlight .c { @include theme($themes, 'color', $syntax-highlight-comment); font-style: italic } /* Comment */
 .highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
-.highlight .k { font-weight: bold } /* Keyword */
-.highlight .o { font-weight: bold } /* Operator */
-.highlight .cm { color: #57574C; font-style: italic } /* Comment.Multiline */
-.highlight .cp { color: #57574C; font-weight: bold } /* Comment.Preproc */
-.highlight .c1 { color: #57574C; font-style: italic } /* Comment.Single */
-.highlight .cs { color: #57574C; font-weight: bold; font-style: italic } /* Comment.Special */
+.highlight .k { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Keyword */
+.highlight .o { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Operator */
+.highlight .cm { @include theme($themes, 'color', $syntax-highlight-comment); font-style: italic } /* Comment.Multiline */
+.highlight .cp { @include theme($themes, 'color', $syntax-highlight-comment); font-weight: bold } /* Comment.Preproc */
+.highlight .c1 { @include theme($themes, 'color', $syntax-highlight-comment); font-style: italic } /* Comment.Single */
+.highlight .cs { @include theme($themes, 'color', $syntax-highlight-comment); font-weight: bold; font-style: italic } /* Comment.Special */
 .highlight .gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
 .highlight .gd .x { color: #000000; background-color: #ffaaaa } /* Generic.Deleted.Specific */
-.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .ge { @include theme($themes, 'color', $primary-text-color); font-style: italic } /* Generic.Emph */
 .highlight .gr { color: #aa0000 } /* Generic.Error */
 .highlight .gh { color: #545454 } /* Generic.Heading */
 .highlight .gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
 .highlight .gi .x { color: #000000; background-color: #aaffaa } /* Generic.Inserted.Specific */
 .highlight .go { color: #525252 } /* Generic.Output */
 .highlight .gp { color: #525252 } /* Generic.Prompt */
-.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gs { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Generic.Strong */
 .highlight .gu { color: #555555 } /* Generic.Subheading */
 .highlight .gt { color: #aa0000 } /* Generic.Traceback */
-.highlight .kc { font-weight: bold } /* Keyword.Constant */
-.highlight .kd { font-weight: bold } /* Keyword.Declaration */
-.highlight .kp { font-weight: bold } /* Keyword.Pseudo */
-.highlight .kr { font-weight: bold } /* Keyword.Reserved */
+.highlight .kc { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Keyword.Constant */
+.highlight .kd { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Keyword.Declaration */
+.highlight .kp { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Keyword.Pseudo */
+.highlight .kr { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Keyword.Reserved */
 .highlight .kt { color: #425385; font-weight: bold } /* Keyword.Type */
 .highlight .m { color: #006061 } /* Literal.Number */
 .highlight .s { color: #A71133 } /* Literal.String */
@@ -36,7 +36,7 @@
 .highlight .nn { color: #555555 } /* Name.Namespace */
 .highlight .nt { color: #000080 } /* Name.Tag */
 .highlight .nv { color: #008080 } /* Name.Variable */
-.highlight .ow { font-weight: bold } /* Operator.Word */
+.highlight .ow { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Operator.Word */
 .highlight .w { color: #bbbbbb } /* Text.Whitespace */
 .highlight .mf { color: #006061 } /* Literal.Number.Float */
 .highlight .mh { color: #006061 } /* Literal.Number.Hex */

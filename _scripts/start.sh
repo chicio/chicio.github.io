@@ -9,4 +9,4 @@ rm -Rf _site/
 # to be able to connect to the jekyll local instance from other device on the
 # same network (e.g. your smartphone) 
 # See https://stackoverflow.com/questions/16608466/connect-to-a-locally-built-jekyll-server-using-mobile-devices-in-the-lan
-bundle exec jekyll serve --host=localhost
+bundle exec jekyll serve --host=localhost --watch

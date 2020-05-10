@@ -6,8 +6,9 @@
   "scripts": {
     "flow": "_scripts/flow.sh",
     "setup": "_scripts/setup.sh",
-    "build": "gulp --env production",
-    "build-dev": "gulp --env development",
+    "build": "gulp build --env production",
+    "build-dev": "gulp build --env development",
+    "watch-css": "gulp watchCss --env production",
     "start": "_scripts/start.sh",
     "test": "_scripts/test.sh",
     "version": "_scripts/version.sh"
