@@ -10,6 +10,9 @@ $general-background: "general-background";
 $general-background-light: "general-background-light";
 $box-shadow-light: "box-shadow-light";
 $box-shadow-medium: "box-shadow-medium";
+$syntax-inline: "syntax-inline";
+$syntax-inline-background: "syntax-inline-background";
+$syntax-background: "syntax-background";
 
 $themes: (
   light: (
@@ -24,21 +27,27 @@ $themes: (
     $general-background: #FAFAFA,
     $general-background-light: #FFFFFF,
     $box-shadow-light: rgba(0, 0, 0, 0.2),
-    $box-shadow-medium: rgba(0, 0, 0, 0.375)
+    $box-shadow-medium: rgba(0, 0, 0, 0.375),
+    $syntax-inline: #9C1154,
+    $syntax-inline-background: #f9f2f4,
+    $syntax-background: #fbfbfb
   ),
   dark: (
     $primary-color-dark: #303F9F,
     $primary-color: #3F51B5,
     $primary-color-light: #C5CAE9,
     $primary-color-text: #FFFFFF,
-    $accent-color: #0F67FF,
-    $primary-text-color: #FFFFFF,
-    $secondary-text-color: #F1F1F1,
+    $accent-color: #4fA7ff,
+    $primary-text-color: #d7d7d8,
+    $secondary-text-color: #c1c1c1,
     $divider-color: #575757,
-    $general-background: #161716,
+    $general-background: #181918,
     $general-background-light: #363636,
-    $box-shadow-light: rgba(255, 255, 255, 0.2),
-    $box-shadow-medium: rgba(255, 255, 255, 0.375)
+    $box-shadow-light: rgba(0, 0, 0, 0.2),
+    $box-shadow-medium: rgba(0, 0, 0, 0.375),
+    $syntax-inline: #EC61A4,
+    $syntax-inline-background: #363636,
+    $syntax-background: #fbfbfb
   ),
 );
 

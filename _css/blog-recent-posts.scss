@@ -6,7 +6,7 @@
   }
 
   a {
-    @include theme($themes, 'color', $primary-text-color);
+    @include theme($themes, 'color', $primary-color-text);
     &:hover{
       text-decoration:none;
     }  
@@ -34,13 +34,13 @@
     }
 
     .card {
-      background-color: #FFFFFF;
+      @include theme($themes, 'background-color', $general-background-light);
+      @include theme($themes, 'box-shadow', $box-shadow-light, true, '0 3px 10px 0 ');
       padding: 0 0 80px 0;
       width: 100%;
       height: 100%;
       border-radius:4px;
       border: none;
-      box-shadow: 0 0px 0px 0 rgba(0,0,0,0.1), 0 3px 10px 0 rgba(0,0,0,0.15);
       position: relative;
       transition: all .2s;
       @include media-breakpoint-down(sm) {
@@ -49,8 +49,8 @@
 
       .card-button {
         @include theme($themes, 'background-color', $accent-color);
+        @include theme($themes, 'color', $primary-color-text);
         min-height: 20px;
-        color: #ffffff;
         border-radius: 4px;
         text-align: center;
         margin: auto 0 20px 0;
@@ -76,6 +76,8 @@
           border-top-left-radius: 4px;
           border-top-right-radius: 4px;
           width: 100%;
+          height: 100%;
+          object-fit: cover;
         }
       }
       
@@ -87,10 +89,9 @@
       }    
 
       p {
+        @include theme($themes, 'color', $primary-text-color);
         margin:20px;
-        opacity: 0.65;
         text-overflow: ellipsis;
-        color: black;
         font-style: normal !important;
         font-size: 14px;
         @include media-breakpoint-down(md)  {

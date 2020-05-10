@@ -41,9 +41,9 @@
   }
 
   blockquote {
-    color: #777;
+    @include theme($themes, 'color', $secondary-text-color);
+    @include theme($themes, 'border-left', $secondary-text-color, true, '5px solid ');
     margin: 0 0 20px;
-    border-left: 5px solid #eee;
     padding: 10px 20px;
 
     p {

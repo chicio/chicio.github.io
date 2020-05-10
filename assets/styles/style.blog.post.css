@@ -571,7 +571,7 @@ button.close {
         color: #FFFFFF; } }
     @media (prefers-color-scheme: dark) {
       .footer-container .footer-icon {
-        background: #0F67FF; } }
+        background: #4fA7ff; } }
   .footer-container .heart {
     display: inline-block; }
   .footer-container .nav-item-footer {
@@ -625,10 +625,10 @@ html {
     overflow-x: hidden; }
     @media (prefers-color-scheme: dark) {
       html body {
-        background-color: #161716; } }
+        background-color: #181918; } }
     @media (prefers-color-scheme: dark) {
       html body {
-        color: #FFFFFF; } }
+        color: #d7d7d8; } }
 
 p {
   font-size: 16px; }
@@ -908,10 +908,16 @@ canvas {
 
 /* Literal.Number.Integer.Long */
 code.highlighter-rouge {
-  background-color: #f9f2f4;
   color: #9C1154;
+  background-color: #f9f2f4;
   padding: 2px 4px;
   border-radius: 4px; }
+  @media (prefers-color-scheme: dark) {
+    code.highlighter-rouge {
+      color: #EC61A4; } }
+  @media (prefers-color-scheme: dark) {
+    code.highlighter-rouge {
+      background-color: #363636; } }
 
 .blog-post-authors {
   margin-top: 5px;
@@ -931,7 +937,7 @@ code.highlighter-rouge {
   margin-top: 5px; }
   @media (prefers-color-scheme: dark) {
     .blog-post-meta {
-      color: #F1F1F1; } }
+      color: #c1c1c1; } }
 
 .embed-container {
   background-color: #BDBDBD;
@@ -1000,7 +1006,7 @@ code.highlighter-rouge {
         border-left: 5px solid transparent; }
         @media (prefers-color-scheme: dark) {
           .blog-masthead .blog-nav .blog-nav-item.active:after {
-            border-bottom: 5px solid #161716; } }
+            border-bottom: 5px solid #181918; } }
       @media (max-width: 767.98px) {
         .blog-masthead .blog-nav .blog-nav-item {
           padding: 10px;
@@ -1026,7 +1032,7 @@ code.highlighter-rouge {
     margin-top: 2px; }
     @media (prefers-color-scheme: dark) {
       .blog-header .lead.blog-description {
-        color: #F1F1F1; } }
+        color: #c1c1c1; } }
     @media (min-width: 768px) {
       .blog-header .lead.blog-description {
         font-size: 22px; } }
@@ -1039,7 +1045,7 @@ code.highlighter-rouge {
     display: block; }
     @media (prefers-color-scheme: dark) {
       .blog-header .blog-title {
-        color: #FFFFFF; } }
+        color: #d7d7d8; } }
     @media (min-width: 768px) {
       .blog-header .blog-title {
         font-size: 40px; } }
@@ -1047,13 +1053,13 @@ code.highlighter-rouge {
       color: #151515; }
       @media (prefers-color-scheme: dark) {
         .blog-header .blog-title a {
-          color: #FFFFFF; } }
+          color: #d7d7d8; } }
     .blog-header .blog-title a:hover {
       text-decoration: none;
       color: #151515; }
       @media (prefers-color-scheme: dark) {
         .blog-header .blog-title a:hover {
-          color: #FFFFFF; } }
+          color: #d7d7d8; } }
 
 .blog-post {
   margin-bottom: 50px; }
@@ -1065,7 +1071,7 @@ code.highlighter-rouge {
     font-size: 24px; }
     @media (prefers-color-scheme: dark) {
       .blog-post .blog-post-title {
-        color: #0F67FF; } }
+        color: #4fA7ff; } }
     @media (min-width: 768px) {
       .blog-post .blog-post-title {
         font-size: 36px; } }
@@ -1073,18 +1079,18 @@ code.highlighter-rouge {
       color: #0F67FF; }
       @media (prefers-color-scheme: dark) {
         .blog-post .blog-post-title a {
-          color: #0F67FF; } }
+          color: #4fA7ff; } }
     .blog-post .blog-post-title a:hover {
       color: #0F67FF;
       text-decoration: none; }
       @media (prefers-color-scheme: dark) {
         .blog-post .blog-post-title a:hover {
-          color: #0F67FF; } }
+          color: #4fA7ff; } }
   .blog-post a {
     color: #0F67FF; }
     @media (prefers-color-scheme: dark) {
       .blog-post a {
-        color: #0F67FF; } }
+        color: #4fA7ff; } }
   .blog-post img {
     max-width: 100%;
     display: block;
@@ -1093,10 +1099,16 @@ code.highlighter-rouge {
     margin: auto;
     display: inline; }
   .blog-post blockquote {
-    color: #777;
+    color: #575757;
+    border-left: 5px solid #575757;
     margin: 0 0 20px;
-    border-left: 5px solid #eee;
     padding: 10px 20px; }
+    @media (prefers-color-scheme: dark) {
+      .blog-post blockquote {
+        color: #c1c1c1; } }
+    @media (prefers-color-scheme: dark) {
+      .blog-post blockquote {
+        border-left: 5px solid #c1c1c1; } }
     .blog-post blockquote p {
       margin: 0; }
   .blog-post #disqus_thread {
@@ -1128,7 +1140,7 @@ div.highlighter-rouge {
   .recent-posts .row {
     margin-top: 20px; }
   .recent-posts a {
-    color: #151515; }
+    color: #FFFFFF; }
     @media (prefers-color-scheme: dark) {
       .recent-posts a {
         color: #FFFFFF; } }
@@ -1145,7 +1157,7 @@ div.highlighter-rouge {
       font-weight: 500; }
       @media (prefers-color-scheme: dark) {
         .recent-posts .cards h3 {
-          color: #0F67FF; } }
+          color: #4fA7ff; } }
       @media (max-width: 767.98px) {
         .recent-posts .cards h3 {
           padding-left: 0; } }
@@ -1154,21 +1166,27 @@ div.highlighter-rouge {
         margin-top: 20px; } }
     .recent-posts .cards .card {
       background-color: #FFFFFF;
+      box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
       padding: 0 0 80px 0;
       width: 100%;
       height: 100%;
       border-radius: 4px;
       border: none;
-      box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.15);
       position: relative;
       transition: all .2s; }
+      @media (prefers-color-scheme: dark) {
+        .recent-posts .cards .card {
+          background-color: #363636; } }
+      @media (prefers-color-scheme: dark) {
+        .recent-posts .cards .card {
+          box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2); } }
       @media (max-width: 767.98px) {
         .recent-posts .cards .card {
           margin: 10px 0 0 0; } }
       .recent-posts .cards .card .card-button {
         background-color: #0F67FF;
+        color: #FFFFFF;
         min-height: 20px;
-        color: #ffffff;
         border-radius: 4px;
         text-align: center;
         margin: auto 0 20px 0;
@@ -1180,7 +1198,10 @@ div.highlighter-rouge {
         width: 90%; }
         @media (prefers-color-scheme: dark) {
           .recent-posts .cards .card .card-button {
-            background-color: #0F67FF; } }
+            background-color: #4fA7ff; } }
+        @media (prefers-color-scheme: dark) {
+          .recent-posts .cards .card .card-button {
+            color: #FFFFFF; } }
       @media (min-width: 992px) {
         .recent-posts .cards .card:hover {
           transform: scale(1.025); } }
@@ -1190,7 +1211,9 @@ div.highlighter-rouge {
         .recent-posts .cards .card .img-container .img {
           border-top-left-radius: 4px;
           border-top-right-radius: 4px;
-          width: 100%; }
+          width: 100%;
+          height: 100%;
+          object-fit: cover; }
       .recent-posts .cards .card h4 {
         color: #0F67FF;
         margin: 20px;
@@ -1198,14 +1221,16 @@ div.highlighter-rouge {
         line-height: 1.5; }
         @media (prefers-color-scheme: dark) {
           .recent-posts .cards .card h4 {
-            color: #0F67FF; } }
+            color: #4fA7ff; } }
       .recent-posts .cards .card p {
+        color: #151515;
         margin: 20px;
-        opacity: 0.65;
         text-overflow: ellipsis;
-        color: black;
         font-style: normal !important;
         font-size: 14px; }
+        @media (prefers-color-scheme: dark) {
+          .recent-posts .cards .card p {
+            color: #d7d7d8; } }
         @media (max-width: 991.98px) {
           .recent-posts .cards .card p {
             display: none; } }
@@ -1250,10 +1275,10 @@ html {
   padding: 10px; }
   @media (prefers-color-scheme: dark) {
     .pull-to-refresh {
-      background-color: #161716; } }
+      background-color: #181918; } }
   @media (prefers-color-scheme: dark) {
     .pull-to-refresh {
-      box-shadow: inset 0px -2px 6px 1px #161716; } }
+      box-shadow: inset 0px -2px 6px 1px #181918; } }
   .pull-to-refresh.visible-pull {
     visibility: visible; }
   .pull-to-refresh.hidden-pull {

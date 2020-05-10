@@ -263,10 +263,10 @@ html {
     overflow-x: hidden; }
     @media (prefers-color-scheme: dark) {
       html body {
-        background-color: #161716; } }
+        background-color: #181918; } }
     @media (prefers-color-scheme: dark) {
       html body {
-        color: #FFFFFF; } }
+        color: #d7d7d8; } }
 
 p {
   font-size: 16px; }
@@ -295,7 +295,7 @@ p {
       color: #FFFFFF; } }
   @media (prefers-color-scheme: dark) {
     .btn-default {
-      background-color: #0F67FF; } }
+      background-color: #4fA7ff; } }
 
 .break {
   display: none; }
@@ -336,7 +336,7 @@ a {
   color: #0F67FF; }
   @media (prefers-color-scheme: dark) {
     a {
-      color: #0F67FF; } }
+      color: #4fA7ff; } }
 
 img {
   width: 100px;

@@ -398,7 +398,7 @@ code {
         color: #FFFFFF; } }
     @media (prefers-color-scheme: dark) {
       .footer-container .footer-icon {
-        background: #0F67FF; } }
+        background: #4fA7ff; } }
   .footer-container .heart {
     display: inline-block; }
   .footer-container .nav-item-footer {
@@ -452,10 +452,10 @@ html {
     overflow-x: hidden; }
     @media (prefers-color-scheme: dark) {
       html body {
-        background-color: #161716; } }
+        background-color: #181918; } }
     @media (prefers-color-scheme: dark) {
       html body {
-        color: #FFFFFF; } }
+        color: #d7d7d8; } }
 
 p {
   font-size: 16px; }
@@ -559,7 +559,7 @@ p {
         border-left: 5px solid transparent; }
         @media (prefers-color-scheme: dark) {
           .blog-masthead .blog-nav .blog-nav-item.active:after {
-            border-bottom: 5px solid #161716; } }
+            border-bottom: 5px solid #181918; } }
       @media (max-width: 767.98px) {
         .blog-masthead .blog-nav .blog-nav-item {
           padding: 10px;
@@ -585,7 +585,7 @@ p {
     margin-top: 2px; }
     @media (prefers-color-scheme: dark) {
       .blog-header .lead.blog-description {
-        color: #F1F1F1; } }
+        color: #c1c1c1; } }
     @media (min-width: 768px) {
       .blog-header .lead.blog-description {
         font-size: 22px; } }
@@ -598,7 +598,7 @@ p {
     display: block; }
     @media (prefers-color-scheme: dark) {
       .blog-header .blog-title {
-        color: #FFFFFF; } }
+        color: #d7d7d8; } }
     @media (min-width: 768px) {
       .blog-header .blog-title {
         font-size: 40px; } }
@@ -606,13 +606,13 @@ p {
       color: #151515; }
       @media (prefers-color-scheme: dark) {
         .blog-header .blog-title a {
-          color: #FFFFFF; } }
+          color: #d7d7d8; } }
     .blog-header .blog-title a:hover {
       text-decoration: none;
       color: #151515; }
       @media (prefers-color-scheme: dark) {
         .blog-header .blog-title a:hover {
-          color: #FFFFFF; } }
+          color: #d7d7d8; } }
 
 .body-show {
   visibility: visible; }

@@ -1,6 +1,13 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [1.23.0](https://github.com/chicio/chicio.github.io/releases/tag/1.23.0)
+Release date: 2020-02-05
+
+#### Added
+
+- Dark mode
+
 ## [1.22.0](https://github.com/chicio/chicio.github.io/releases/tag/1.22.0)
 Release date: 2020-02-05
 

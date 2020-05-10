@@ -60,8 +60,8 @@
 .highlight .il { color: #005657 } /* Literal.Number.Integer.Long */
 
 code.highlighter-rouge {
-  background-color: #f9f2f4;
-  color: #9C1154;
+  @include theme($themes, 'color', $syntax-inline);
+  @include theme($themes, 'background-color', $syntax-inline-background);
   padding: 2px 4px;
   border-radius: 4px;
 }
