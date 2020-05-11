@@ -1,9 +1,7 @@
 name: fabrizioduroni.it
 
 on:
-  push:
-    branches:
-      - github-actions
+  push
   schedule:
       - cron: '0 18 * * *' 
 
