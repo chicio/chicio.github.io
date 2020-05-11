@@ -73,24 +73,21 @@ So the final formula for the diffuse component is:
   
 #### **Specular component**
 
-This light component represents the amount of reflected light in a specific direction (mirror alike reflection). Light is reflected in a different way depending on the incident light direction. Shiny materials are the one with a high specular component. The perceived specular light depends on the position of the observer with respect to the surface. In particular, the specular illumination is influenced by $\cos\alpha$, that is the cosine of the angle between the direction from the surface point towards the view ${\hat {V}}$ and the direction that a perfectly reflected ray of light would take from this point on the surface ${\hat {R}}$. The size of the specular highlights is regulated by a shininess constant £$n£$, based on the surface material properties. Given all this information the specular component formula obtained by multiplying the specular surface constant $k_{\text{s}}$ with the light specular intensity $I_{\text{LS}}$ and with dot product of the reflection direction ${\hat {R}}$ and the the direction from the surface point towards the view ${\hat {V}}$ squared to the shininess constant £$n£$:
+This light component represents the amount of reflected light in a specific direction (mirror alike reflection). Light is reflected in a different way depending on the incident light direction. Shiny materials are the one with a high specular component. The perceived specular light depends on the position of the observer with respect to the surface. In particular, the specular illumination is influenced by $\cos\alpha$, that is the cosine of the angle between the direction from the surface point towards the view ${\hat {V}}$ and the direction that a perfectly reflected ray of light would take from this point on the surface ${\hat {R}}$. The size of the specular highlights is regulated by a shininess constant $n$, based on the surface material properties. Given all this information the specular component formula obtained by multiplying the specular surface constant $k_{\text{s}}$ with the light specular intensity $I_{\text{LS}}$ and with dot product of the reflection direction ${\hat {R}}$ and the the direction from the surface point towards the view ${\hat {V}}$ squared to the shininess constant $n$:
 
 £$I_{\text{specular}}=k_{\text{s}}I_{\text{LS}}({\hat {R}}\cdot {\hat {V}})^{n}£$
 
-The above observation are valid also in case we have multiple lights. The only difference is that the diffuse and specular 
-component are calculated for each light and their sum is the final diffuse and specular component.
+The above observation are valid also in case we have multiple lights. The only difference is that the diffuse and specular component are calculated for each light and their sum is the final diffuse and specular component.
 Now we are ready to write the complete Phong reflection lighting equation:
 
-£$I_{\text{tot}}=k_{\text{e}}I_{\text{LE}}+k_{\text{a}}I_{\text{LA}}+\sum _{p\;\in \;{\text{lights}}}(k_{\text{d}}I_{p,{\text{LD}}} ({\hat {L}}_{p}\cdot {\hat {N}})+k_{\text{s}}I_{p,{\text{LS}}}({\hat {R}}_{p}\cdot {\hat {V}})^{n})£$
+£$I_{tot}=I_{emissive}+I_{ambient}+\sum_{p\;\in \;{lights}} (I_{diffuse, p} + I_{specular, p})£$
 
 Just a final note: we distinguished different type of light intensity based on the component. In fact most of the time this model is implemented using a single general light intensity triplet for all the component for each light.
 How can you implement it in a OpenGL ES shader? The following code sample is a simple implementation of this model using RGB colors.
-It is a fragment shader that could be used to implement per fragment lighting. This basically means that all lighting calculation is done in the fragment shader on each fragment (maybe this is material for a new post :stuck_out_tongue_closed_eyes:). It was written 
-using OpenGL ES 3.0 and GLSL 3.0. It uses a single light for all the component calculation.
+It is a fragment shader that could be used to implement per fragment lighting. This basically means that all lighting calculation is done in the fragment shader on each fragment (maybe this is material for a new post :stuck_out_tongue_closed_eyes:). It was written using OpenGL ES 3.0 and GLSL 3.0. It uses a single light for all the component calculation.
 
 <script src="https://gist.github.com/chicio/d983fff6ff304bd55bebd6ff05a2f9dd.js"></script>
 
-The following image is an example of the happy buddha Stanford mesh rendered using my [Spectral BRDF explorer](https://github.com/chicio/Spectral-BRDF-Explorer "Spectral BRDF explorer")iOS renderer. The lighting is (obviously) calculated using the Phong reflection model. The surface simulated is bronze (you can find some of the constant we discussed before [here](http://devernay.free.fr/cours/opengl/materials.html "phong lighting constants")).
-Nice :smirk:!!!!
+The following image is an example of the happy buddha Stanford mesh rendered using my [Spectral BRDF explorer](https://github.com/chicio/Spectral-BRDF-Explorer "Spectral BRDF explorer")iOS renderer. The lighting is (obviously) calculated using the Phong reflection model. The surface simulated is bronze (you can find some of the constant we discussed before [here](http://devernay.free.fr/cours/opengl/materials.html "phong lighting constants")). Nice :smirk:!!!!
 
 {% include blog-lazy-image.html description="phong example spectral brdf explorer"  width="500" height="889" src="/assets/images/posts/phong-example.jpg" %}

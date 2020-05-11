@@ -8,25 +8,25 @@
   }
 
   .blog-post-title {
+    @include theme($themes, 'color', $accent-color);
     margin-bottom: 5px;
     font-size: 24px;
-    color: $accent-color;
     @include media-breakpoint-up(md) {
       font-size: 36px;
     }
   
     a {
-      color: $accent-color;
+      @include theme($themes, 'color', $accent-color);
     }
   
     a:hover {
+      @include theme($themes, 'color', $accent-color);
       text-decoration: none;
-      color: $accent-color;
     }
   }
 
   a {
-    color: $accent-color;
+    @include theme($themes, 'color', $accent-color);
   }
 
   img {
@@ -41,9 +41,9 @@
   }
 
   blockquote {
-    color: #777;
+    @include theme($themes, 'color', $secondary-text-color);
+    @include theme($themes, 'border-left', $secondary-text-color, true, '5px solid');
     margin: 0 0 20px;
-    border-left: 5px solid #eee;
     padding: 10px 20px;
 
     p {
@@ -67,33 +67,6 @@
       max-height:600px;
       overflow:auto;
     }  
-  }
-}
-
-div.highlighter-rouge {
-  width: inherit;
-  margin-bottom: 20px;
-
-  div {
-    border: 1px solid rgba(0,0,0, 0.1);
-    border-radius: 2px;
-  }
-
-  .highlight {
-    pre {
-      white-space: pre;
-      overflow: auto;
-      padding: 10px;
-      margin-bottom: 0;
-    }
-
-    code {
-      font: 14px 'Open Sans', Helvetica, Arial, sans-serif;
-      display: block;
-      white-space: pre;
-      overflow-x: scroll;
-      word-wrap: normal;
-    }
   }
 }
 

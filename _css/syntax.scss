@@ -1,67 +1,97 @@
-.highlight  { background: #fbfbfb; }
-.highlight .c { color: #57574C; font-style: italic } /* Comment */
-.highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
-.highlight .k { font-weight: bold } /* Keyword */
-.highlight .o { font-weight: bold } /* Operator */
-.highlight .cm { color: #57574C; font-style: italic } /* Comment.Multiline */
-.highlight .cp { color: #57574C; font-weight: bold } /* Comment.Preproc */
-.highlight .c1 { color: #57574C; font-style: italic } /* Comment.Single */
-.highlight .cs { color: #57574C; font-weight: bold; font-style: italic } /* Comment.Special */
-.highlight .gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
-.highlight .gd .x { color: #000000; background-color: #ffaaaa } /* Generic.Deleted.Specific */
-.highlight .ge { font-style: italic } /* Generic.Emph */
-.highlight .gr { color: #aa0000 } /* Generic.Error */
-.highlight .gh { color: #545454 } /* Generic.Heading */
-.highlight .gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
-.highlight .gi .x { color: #000000; background-color: #aaffaa } /* Generic.Inserted.Specific */
-.highlight .go { color: #525252 } /* Generic.Output */
-.highlight .gp { color: #525252 } /* Generic.Prompt */
-.highlight .gs { font-weight: bold } /* Generic.Strong */
-.highlight .gu { color: #555555 } /* Generic.Subheading */
-.highlight .gt { color: #aa0000 } /* Generic.Traceback */
-.highlight .kc { font-weight: bold } /* Keyword.Constant */
-.highlight .kd { font-weight: bold } /* Keyword.Declaration */
-.highlight .kp { font-weight: bold } /* Keyword.Pseudo */
-.highlight .kr { font-weight: bold } /* Keyword.Reserved */
-.highlight .kt { color: #425385; font-weight: bold } /* Keyword.Type */
-.highlight .m { color: #006061 } /* Literal.Number */
-.highlight .s { color: #A71133 } /* Literal.String */
-.highlight .na { color: #006161 } /* Name.Attribute */
-.highlight .nb { color: #005A7A } /* Name.Builtin */
-.highlight .nc { color: #405182; font-weight: bold } /* Name.Class */
-.highlight .no { color: #005C5C } /* Name.Constant */
-.highlight .ni { color: #800080 } /* Name.Entity */
-.highlight .ne { color: #990000; font-weight: bold } /* Name.Exception */
-.highlight .nf { color: #990000; font-weight: bold } /* Name.Function */
-.highlight .nn { color: #555555 } /* Name.Namespace */
-.highlight .nt { color: #000080 } /* Name.Tag */
-.highlight .nv { color: #008080 } /* Name.Variable */
-.highlight .ow { font-weight: bold } /* Operator.Word */
+.highlight { @include theme($themes, 'background', $syntax-highlight); }
+.highlight .c { @include theme($themes, 'color', $syntax-highlight-comment); font-style: italic } /* Comment */
+.highlight .err { @include theme($themes, 'color', $syntax-highlight-error); @include theme($themes, 'background-color', $general-background-light); } /* Error */
+.highlight .k { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Keyword */
+.highlight .o { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Operator */
+.highlight .cm { @include theme($themes, 'color', $syntax-highlight-comment); font-style: italic } /* Comment.Multiline */
+.highlight .cp { @include theme($themes, 'color', $syntax-highlight-comment); font-weight: bold } /* Comment.Preproc */
+.highlight .c1 { @include theme($themes, 'color', $syntax-highlight-comment); font-style: italic } /* Comment.Single */
+.highlight .cs { @include theme($themes, 'color', $syntax-highlight-comment); font-weight: bold; font-style: italic } /* Comment.Special */
+.highlight .gd { @include theme($themes, 'background-color', $syntax-highlight-deleted); @include theme($themes, 'background-color', $general-background);  } /* Generic.Deleted */
+.highlight .gd .x { @include theme($themes, 'background-color', $syntax-highlight-deleted-specific); @include theme($themes, 'background-color', $general-background);  } /* Generic.Deleted.Specific */
+.highlight .ge { @include theme($themes, 'color', $primary-text-color); font-style: italic } /* Generic.Emph */
+.highlight .gr { @include theme($themes, 'color', $syntax-highlight-generic-error); } /* Generic.Error */
+.highlight .gh { @include theme($themes, 'color', $syntax-highlight-generic-text); } /* Generic.Heading */
+.highlight .gi { @include theme($themes, 'background-color', $syntax-highlight-inserted); @include theme($themes, 'background-color', $general-background); } /* Generic.Inserted */
+.highlight .gi .x { @include theme($themes, 'background-color', $syntax-highlight-inserted-specific); @include theme($themes, 'background-color', $general-background); } /* Generic.Inserted.Specific */
+.highlight .go { @include theme($themes, 'color', $syntax-highlight-generic-text); } /* Generic.Output */
+.highlight .gp { @include theme($themes, 'color', $syntax-highlight-generic-text); } /* Generic.Prompt */
+.highlight .gs { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Generic.Strong */
+.highlight .gu { @include theme($themes, 'color', $syntax-highlight-generic-namespace); } /* Generic.Subheading */
+.highlight .gt { @include theme($themes, 'color', $syntax-highlight-generic-error); } /* Generic.Traceback */
+.highlight .kc { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Keyword.Constant */
+.highlight .kd { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Keyword.Declaration */
+.highlight .kp { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Keyword.Pseudo */
+.highlight .kr { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { @include theme($themes, 'color', $syntax-highlight-keyword-type); font-weight: bold } /* Keyword.Type */
+.highlight .n { @include theme($themes, 'color', $syntax-highlight-variable-name); } /* Name.Variable */
+.highlight .m { @include theme($themes, 'color', $syntax-highlight-literal-numbers); } /* Literal.Number */
+.highlight .s { @include theme($themes, 'color', $syntax-highlight-literal-value); } /* Literal.String */
+.highlight .na { @include theme($themes, 'color', $syntax-highlight-attribute); } /* Name.Attribute */
+.highlight .nb { @include theme($themes, 'color', $syntax-highlight-builtin); } /* Name.Builtin */
+.highlight .nc { @include theme($themes, 'color', $syntax-highlight-class-name); font-weight: bold } /* Name.Class */
+.highlight .no { @include theme($themes, 'color', $syntax-highlight-constant); } /* Name.Constant */
+.highlight .ni { @include theme($themes, 'color', $syntax-highlight-entity); } /* Name.Entity */
+.highlight .ne { @include theme($themes, 'color', $syntax-highlight-name); font-weight: bold } /* Name.Exception */
+.highlight .nf { @include theme($themes, 'color', $syntax-highlight-name); font-weight: bold } /* Name.Function */
+.highlight .nn { @include theme($themes, 'color', $syntax-highlight-generic-namespace); } /* Name.Namespace */
+.highlight .nt { @include theme($themes, 'color', $syntax-highlight-tag); } /* Name.Tag */
+.highlight .nv { @include theme($themes, 'color', $syntax-highlight-variable-name); } /* Name.Variable */
+.highlight .ow { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Operator.Word */
 .highlight .w { color: #bbbbbb } /* Text.Whitespace */
-.highlight .mf { color: #006061 } /* Literal.Number.Float */
-.highlight .mh { color: #006061 } /* Literal.Number.Hex */
-.highlight .mi { color: #006061 } /* Literal.Number.Integer */
-.highlight .mo { color: #006061 } /* Literal.Number.Oct */
-.highlight .sb { color: #A71133 } /* Literal.String.Backtick */
-.highlight .sc { color: #A71133 } /* Literal.String.Char */
-.highlight .sd { color: #A71133 } /* Literal.String.Doc */
-.highlight .s2 { color: #A71133 } /* Literal.String.Double */
-.highlight .se { color: #A71133 } /* Literal.String.Escape */
-.highlight .sh { color: #A71133 } /* Literal.String.Heredoc */
-.highlight .si { color: #A71133 } /* Literal.String.Interpol */
-.highlight .sx { color: #A71133 } /* Literal.String.Other */
-.highlight .sr { color: #00611A } /* Literal.String.Regex */
-.highlight .s1 { color: #A71133 } /* Literal.String.Single */
-.highlight .ss { color: #990073 } /* Literal.String.Symbol */
-.highlight .bp { color: #999999 } /* Name.Builtin.Pseudo */
-.highlight .vc { color: #005C5C } /* Name.Variable.Class */
-.highlight .vg { color: #005C5C } /* Name.Variable.Global */
-.highlight .vi { color: #005C5C } /* Name.Variable.Instance */
-.highlight .il { color: #005657 } /* Literal.Number.Integer.Long */
+.highlight .mf { @include theme($themes, 'color', $syntax-highlight-literal-numbers); } /* Literal.Number.Float */
+.highlight .mh { @include theme($themes, 'color', $syntax-highlight-literal-numbers); } /* Literal.Number.Hex */
+.highlight .mi { @include theme($themes, 'color', $syntax-highlight-literal-numbers); } /* Literal.Number.Integer */
+.highlight .mo { @include theme($themes, 'color', $syntax-highlight-literal-numbers); } /* Literal.Number.Oct */
+.highlight .sb { @include theme($themes, 'color', $syntax-highlight-literal-value); } /* Literal.String.Backtick */
+.highlight .sc { @include theme($themes, 'color', $syntax-highlight-literal-value); } /* Literal.String.Char */
+.highlight .sd { @include theme($themes, 'color', $syntax-highlight-literal-value); } /* Literal.String.Doc */
+.highlight .s2 { @include theme($themes, 'color', $syntax-highlight-literal-value); } /* Literal.String.Double */
+.highlight .se { @include theme($themes, 'color', $syntax-highlight-literal-value); } /* Literal.String.Escape */
+.highlight .sh { @include theme($themes, 'color', $syntax-highlight-literal-value); } /* Literal.String.Heredoc */
+.highlight .si { @include theme($themes, 'color', $syntax-highlight-literal-value); } /* Literal.String.Interpol */
+.highlight .sx { @include theme($themes, 'color', $syntax-highlight-literal-value); } /* Literal.String.Other */
+.highlight .sr { @include theme($themes, 'color', $syntax-highlight-regex); } /* Literal.String.Regex */
+.highlight .s1 { @include theme($themes, 'color', $syntax-highlight-literal-value); } /* Literal.String.Single */
+.highlight .dl { @include theme($themes, 'color', $syntax-highlight-literal-value); } /* Literal.String.Single Quote */
+.highlight .ss { @include theme($themes, 'color', $syntax-highlight-symbol); } /* Literal.String.Symbol */
+.highlight .bp { @include theme($themes, 'color', $syntax-highlight-pseudo); } /* Name.Builtin.Pseudo */
+.highlight .vc { @include theme($themes, 'color', $syntax-highlight-generic-global); } /* Name.Variable.Class */
+.highlight .vg { @include theme($themes, 'color', $syntax-highlight-generic-global); } /* Name.Variable.Global */
+.highlight .vi { @include theme($themes, 'color', $syntax-highlight-generic-global); } /* Name.Variable.Instance */
+.highlight .il { @include theme($themes, 'color', $syntax-highlight-literal-integer); } /* Literal.Number.Integer.Long */
 
 code.highlighter-rouge {
-  background-color: #f9f2f4;
-  color: #9C1154;
+  @include theme($themes, 'color', $syntax-inline);
+  @include theme($themes, 'background-color', $syntax-inline-background);
   padding: 2px 4px;
   border-radius: 4px;
+}
+
+div.highlighter-rouge {
+  width: inherit;
+  margin-bottom: 21px;
+
+  div {
+    border: 1px solid rgba(0,0,0, 0.1);
+    border-radius: 2px;
+  }
+
+  .highlight {
+    pre {
+      white-space: pre;
+      overflow: auto;
+      padding: 10px;
+      margin-bottom: 0;
+    }
+
+    code {
+      @include theme($themes, 'color', $primary-text-color); 
+      font: 14px 'Open Sans', Helvetica, Arial, sans-serif;
+      display: block;
+      white-space: pre;
+      overflow-x: scroll;
+      word-wrap: normal;
+    }
+  }
 }

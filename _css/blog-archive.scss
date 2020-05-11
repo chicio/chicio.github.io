@@ -4,11 +4,11 @@
 
   .archive-list-post {
     a {
-      color: $accent-color;
+      @include theme($themes, 'color', $accent-color);
     }
   
     a:hover {
-      color: $accent-color;
+      @include theme($themes, 'color', $accent-color);
       text-decoration: none;
     }
 
@@ -16,7 +16,7 @@
       margin-top: 20px;
 
       .archive-list-post-date {
-        color: $secondary-text-color;
+        @include theme($themes, 'color', $secondary-text-color);
         padding: 0;
       }
 

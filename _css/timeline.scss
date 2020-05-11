@@ -13,12 +13,12 @@
 }
 
 .timeline:before {
+  @include theme($themes, 'background-color', $general-background-light);
   top: 0;
   bottom: 0;
   position: absolute;
   content: " ";
   width: 3px;
-  background-color: #eeeeee;
   left: 50%;
   margin-left: -1.5px;
 }
@@ -47,15 +47,14 @@
 }
 
 .timeline > li > .timeline-panel {
+  @include theme($themes, 'background-color', $general-background-light);
+  @include theme($themes, 'border', $divider-color, true, '1px solid');
+  @include theme($themes, 'box-shadow', $box-shadow-medium, true, '0 1px 6px');
   width: 46%;
   float: left;
-  border: 1px solid #d4d4d4;
   border-radius: 3px;
   padding: 20px;
   position: relative;
-  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
-  background-color: #fff;
 }
 
 .timeline > li > .timeline-panel:before {
@@ -64,8 +63,8 @@
   right: -15px;
   display: inline-block;
   border-top: 15px solid transparent;
-  border-left: 15px solid #ccc;
-  border-right: 0 solid #ccc;
+  @include theme($themes, 'border-left', $divider-color, true, '14px solid');
+  @include theme($themes, 'border-right', $divider-color, true, '0 solid');
   border-bottom: 15px solid transparent;
   content: " ";
 }
@@ -75,15 +74,16 @@
   top: 27px;
   right: -14px;
   display: inline-block;
+  @include theme($themes, 'border-left', $general-background-light, true, '14px solid');
+  @include theme($themes, 'border-right', $general-background-light, true, '0 solid');
   border-top: 14px solid transparent;
-  border-left: 14px solid #fff;
-  border-right: 0 solid #fff;
   border-bottom: 14px solid transparent;
   content: " ";
 }
 
 .timeline > li > .timeline-badge {
-  color: #fff;
+  @include theme($themes, 'background-color', $primary-color);
+  @include theme($themes, 'color', $primary-color-text);
   width: 50px;
   height: 50px;
   line-height: 50px;
@@ -93,7 +93,6 @@
   top: 16px;
   left: 50%;
   margin-left: -25px;
-  background-color: $primary-color;
   z-index: 100;
   border-top-right-radius: 50%;
   border-top-left-radius: 50%;
@@ -120,12 +119,12 @@
 }
 
 .timeline-badge.work {
-  background-color: $primary-color-dark !important;
+  @include theme($themes, 'background-color', $primary-color-dark, false, '!important');
 }
 
 .timeline-title {
+  @include theme($themes, 'color', $primary-text-color);
   margin-top: 0;
-  color: $primary-text-color;
   font-size: 30px;
   font-weight: bold;
   word-break: normal;
@@ -133,10 +132,10 @@
 }
 
 .timeline-subtitle {
+  @include theme($themes, 'color', $primary-text-color);
   font-size: 17px;
   word-break: keep-all;
   text-align: left;
-  color: $primary-text-color;
   width: 100%;
 }
 
@@ -146,17 +145,18 @@
   padding-bottom: 10px;
 
   img {
+    @include theme($themes, 'box-shadow', $box-shadow-light, true, '0 1px 2px');
     width: 80px;
     height: 80px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 15px;
     display: block;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.175);
   }
 }
 
 .timeline-date {
+  @include theme($themes, 'color', $primary-text-color);
   float: left;
   margin-top: 25px;
   margin-left: 80px;
@@ -167,6 +167,7 @@
 }
 
 .timeline-date-inverted {
+  @include theme($themes, 'color', $primary-text-color);
   float: right;
   margin-right: 80px;
   margin-top: 25px;
@@ -181,6 +182,7 @@
   .timeline-heading {
 
     img {
+      background-color: #FFFFFF;
       float: right;
     }
 
@@ -191,9 +193,9 @@
 }
 
 .timeline-body > p, .timeline-body > ul {
+  @include theme($themes, 'color', $primary-text-color);
   margin-bottom: 0;
   font-size: 16px;
-  color: $primary-text-color;
 }
 
 .timeline-body > ul {

@@ -1,7 +1,7 @@
 
 .blog-pages-button {
+  @include theme($themes, 'background-color', $accent-color);
   margin: 20px 5px;
   width: 100px;
-  background-color: $accent-color;
   border-radius: 10px;
 }

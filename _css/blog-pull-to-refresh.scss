@@ -7,11 +7,11 @@ html {
 }
 
 .pull-to-refresh {
+  @include theme($themes, 'background-color', $general-background-light);
+  @include theme($themes, 'box-shadow', $general-background, true, 'inset 0px -2px 6px 1px');
   height: 100px; 
-  background-color: $general-background; 
   margin-top: 55px;
   margin-bottom: 10px;
-  box-shadow: inset 0px -2px 6px 1px $divider-color;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -32,8 +32,8 @@ html {
   }
 
   .pull-to-refresh-loader {
-    border: 3px solid $primary-color-dark;
-    border-top: 3px solid $primary-color-light;
+    @include theme($themes, 'border', $primary-color-dark, true, '3px solid');
+    @include theme($themes, 'border-top', $primary-color-light, true, '3px solid');
     border-radius: 50%;
     width: 30px;
     height: 30px;

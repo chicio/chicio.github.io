@@ -6,7 +6,7 @@
 }
 
 html {
-  color: $primary-color-text;
+  @include theme($themes, 'color', $primary-color-text);
   display: table;
   font-family: sans-serif;
   height: 100vh;
@@ -15,26 +15,26 @@ html {
 }
 
 body {
+  @include theme($themes, 'background-color', $primary-color-dark);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: $primary-color-dark;
   height: 100vh;
 }
 
 h1 {
-  color: $primary-color-text;
+  @include theme($themes, 'color', $primary-color-text);
   font-size: 10em;
   font-weight: 400;
 }
 
 p {
-  color: $primary-color-text;
+  @include theme($themes, 'color', $primary-color-text);
 }
 
 a{
-  color: $accent-color;
+  @include theme($themes, 'color', $accent-color);
 }
 
 img {

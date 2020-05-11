@@ -37,7 +37,6 @@ include: [".well-known"]
 paginate: 10
 paginate_path: /blog/page:num/
 markdown: kramdown
-highlighter: rouge
 kramdown:
   input: GFM
   auto_ids: false

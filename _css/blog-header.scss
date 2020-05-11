@@ -15,8 +15,8 @@
   }
 
   .lead.blog-description {
+    @include theme($themes, 'color', $secondary-text-color);
     font-size: 12px;
-    color: $secondary-text-color;
     margin-top: 2px;
     @include media-breakpoint-up(md) {
       font-size: 22px;
@@ -24,23 +24,23 @@
   }
 
   & .blog-title {
+    @include theme($themes, 'color', $primary-text-color);
     margin-top: 0;
     margin-bottom: 0;
     font-size: 28px;
     font-weight: bold;
-    color: $primary-text-color;
     display: block;
     @include media-breakpoint-up(md) {
       font-size: 40px;
     }
 
     a {
-      color: $primary-text-color;
+      @include theme($themes, 'color', $primary-text-color);
     }
 
     a:hover {
       text-decoration: none;
-      color: $primary-text-color;
+      @include theme($themes, 'color', $primary-text-color);
     }
   }
 }
