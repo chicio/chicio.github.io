@@ -7,7 +7,7 @@ Release date: 2020-02-05
 #### Added
 
 - Dark mode
-- gulp Watch Css to avoid site rebuild
+- gulp Watch css to avoid site rebuild
 
 ## [1.22.0](https://github.com/chicio/chicio.github.io/releases/tag/1.22.0)
 Release date: 2020-02-05

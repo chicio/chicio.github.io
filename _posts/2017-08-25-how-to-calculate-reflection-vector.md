@@ -34,10 +34,7 @@ used in the calculation.
 
 Before we start with the demonstration we also need to know what is the law of reflection: 
 
->The incident light ray L, the reflected ray R, and the normal N to the surface of the mirror all lie in the same plane.
-The angle of reflection $\Theta_R\$ is equal to the angle of incidence of light $\Theta_L$. Both angles are measured
-with respect to the normal to the mirror. The reflected ray and the incident ray are on the opposite sides of the
-normal.
+>The incident light ray L, the reflected ray R, and the normal N to the surface of the mirror all lie in the same plane. The angle of reflection $\Theta_R\$ is equal to the angle of incidence of light $\Theta_L\$. Both angles are measured with respect to the normal to the mirror. The reflected ray and the incident ray are on the opposite sides of the normal.
 
 Now we are ready for our demonstration :sunglasses:.  
 From the law of refraction reported above we know that:

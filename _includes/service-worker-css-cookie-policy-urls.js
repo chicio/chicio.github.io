@@ -1,1 +1,1 @@
-"/assets/styles/style.cookiepolicy.css?rev=a3d6b0adc890f1c6480f382e3f3b600c",
+"/assets/styles/style.cookiepolicy.css?rev=0a2b064ac537510fb9197b6f758d38d3",
