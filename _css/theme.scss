@@ -25,6 +25,7 @@ $syntax-highlight-literal-value: "synaxt-hightlight-literal-value";
 $syntax-highlight-name: "synaxt-hightlight-name";
 $syntax-highlight-literal-numbers: "syntax-highlight-literal-numbers";
 $syntax-highlight-error: "syntax-highlight-error";
+$syntax-highlight-attribute: "syntax-highlight-attribute";
 
 $themes: (
   light: (
@@ -54,7 +55,8 @@ $themes: (
     $syntax-highlight-literal-value: #A71133,
     $syntax-highlight-name: #990000,
     $syntax-highlight-literal-numbers: #006061,
-    $syntax-highlight-error: #a61717      
+    $syntax-highlight-error: #a61717,
+    $syntax-highlight-attribute: #006161
   ),
   dark: (
     $primary-color-dark: #303F9F,
@@ -83,7 +85,8 @@ $themes: (
     $syntax-highlight-literal-value: #F6B6C3,
     $syntax-highlight-name: #FFB938,
     $syntax-highlight-literal-numbers: #EFDC1A,
-    $syntax-highlight-error: #FFB3B3      
+    $syntax-highlight-error: #FFB3B3,
+    $syntax-highlight-attribute: #C2FFFF      
   ),
 );
 

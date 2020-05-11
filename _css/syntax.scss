@@ -27,7 +27,7 @@
 .highlight .n { @include theme($themes, 'color', $syntax-highlight-variable-name); } /* Name.Variable */
 .highlight .m { @include theme($themes, 'color', $syntax-highlight-literal-numbers); } /* Literal.Number */
 .highlight .s { @include theme($themes, 'color', $syntax-highlight-literal-value); } /* Literal.String */
-.highlight .na { color: #006161 } /* Name.Attribute */
+.highlight .na { @include theme($themes, 'color', $syntax-highlight-attribute); } /* Name.Attribute */
 .highlight .nb { color: #005A7A } /* Name.Builtin */
 .highlight .nc { @include theme($themes, 'color', $syntax-highlight-class-name); font-weight: bold } /* Name.Class */
 .highlight .no { color: #005C5C } /* Name.Constant */
