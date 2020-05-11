@@ -1,0 +1,26 @@
+name: fabrizioduroni.it
+
+on:
+  push:
+    branches: 
+      - '*'
+  schedule:
+    - cron: '0 18 * * *' 
+
+jobs:
+  build-and-test:      
+    name: Build and Test
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node  
+        uses: actions/setup-node@v1
+        with:
+          node-version: '13'
+      - name: Build and Test    
+        run: |
+          npm run setup
+          npm run test
+      - name: Lighthouse CI
+        run: lhci autorun --upload.target=temporary-public-storage || echo "LHCI failed!"        
