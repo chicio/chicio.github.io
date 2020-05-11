@@ -1,19 +1,19 @@
 .highlight { @include theme($themes, 'background', $syntax-highlight); }
 .highlight .c { @include theme($themes, 'color', $syntax-highlight-comment); font-style: italic } /* Comment */
-.highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
+.highlight .err { @include theme($themes, 'color', $syntax-highlight-error); @include theme($themes, 'background-color', $general-background-light); } /* Error */
 .highlight .k { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Keyword */
 .highlight .o { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Operator */
 .highlight .cm { @include theme($themes, 'color', $syntax-highlight-comment); font-style: italic } /* Comment.Multiline */
 .highlight .cp { @include theme($themes, 'color', $syntax-highlight-comment); font-weight: bold } /* Comment.Preproc */
 .highlight .c1 { @include theme($themes, 'color', $syntax-highlight-comment); font-style: italic } /* Comment.Single */
 .highlight .cs { @include theme($themes, 'color', $syntax-highlight-comment); font-weight: bold; font-style: italic } /* Comment.Special */
-.highlight .gd { @include theme($themes, 'background-color', $syntax-highlight-deleted); color: #000000;  } /* Generic.Deleted */
-.highlight .gd .x { @include theme($themes, 'background-color', $syntax-highlight-deleted-specific); color: #000000;  } /* Generic.Deleted.Specific */
+.highlight .gd { @include theme($themes, 'background-color', $syntax-highlight-deleted); @include theme($themes, 'background-color', $general-background);  } /* Generic.Deleted */
+.highlight .gd .x { @include theme($themes, 'background-color', $syntax-highlight-deleted-specific); @include theme($themes, 'background-color', $general-background);  } /* Generic.Deleted.Specific */
 .highlight .ge { @include theme($themes, 'color', $primary-text-color); font-style: italic } /* Generic.Emph */
 .highlight .gr { color: #aa0000 } /* Generic.Error */
 .highlight .gh { color: #545454 } /* Generic.Heading */
-.highlight .gi { @include theme($themes, 'background-color', $syntax-highlight-inserted); color: #000000; } /* Generic.Inserted */
-.highlight .gi .x { @include theme($themes, 'background-color', $syntax-highlight-inserted-specific); color: #000000; } /* Generic.Inserted.Specific */
+.highlight .gi { @include theme($themes, 'background-color', $syntax-highlight-inserted); @include theme($themes, 'background-color', $general-background); } /* Generic.Inserted */
+.highlight .gi .x { @include theme($themes, 'background-color', $syntax-highlight-inserted-specific); @include theme($themes, 'background-color', $general-background); } /* Generic.Inserted.Specific */
 .highlight .go { color: #525252 } /* Generic.Output */
 .highlight .gp { color: #525252 } /* Generic.Prompt */
 .highlight .gs { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Generic.Strong */
@@ -24,24 +24,25 @@
 .highlight .kp { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Keyword.Pseudo */
 .highlight .kr { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Keyword.Reserved */
 .highlight .kt { @include theme($themes, 'color', $syntax-highlight-keyword-type); font-weight: bold } /* Keyword.Type */
-.highlight .m { color: #006061 } /* Literal.Number */
+.highlight .n { @include theme($themes, 'color', $syntax-highlight-variable-name); } /* Name.Variable */
+.highlight .m { @include theme($themes, 'color', $syntax-highlight-literal-numbers); } /* Literal.Number */
 .highlight .s { @include theme($themes, 'color', $syntax-highlight-literal-value); } /* Literal.String */
 .highlight .na { color: #006161 } /* Name.Attribute */
 .highlight .nb { color: #005A7A } /* Name.Builtin */
 .highlight .nc { @include theme($themes, 'color', $syntax-highlight-class-name); font-weight: bold } /* Name.Class */
 .highlight .no { color: #005C5C } /* Name.Constant */
 .highlight .ni { color: #800080 } /* Name.Entity */
-.highlight .ne { color: #990000; font-weight: bold } /* Name.Exception */
-.highlight .nf { color: #990000; font-weight: bold } /* Name.Function */
+.highlight .ne { @include theme($themes, 'color', $syntax-highlight-name); font-weight: bold } /* Name.Exception */
+.highlight .nf { @include theme($themes, 'color', $syntax-highlight-name); font-weight: bold } /* Name.Function */
 .highlight .nn { color: #555555 } /* Name.Namespace */
 .highlight .nt { color: #000080 } /* Name.Tag */
 .highlight .nv { @include theme($themes, 'color', $syntax-highlight-variable-name); } /* Name.Variable */
 .highlight .ow { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Operator.Word */
 .highlight .w { color: #bbbbbb } /* Text.Whitespace */
-.highlight .mf { color: #006061 } /* Literal.Number.Float */
-.highlight .mh { color: #006061 } /* Literal.Number.Hex */
-.highlight .mi { color: #006061 } /* Literal.Number.Integer */
-.highlight .mo { color: #006061 } /* Literal.Number.Oct */
+.highlight .mf { @include theme($themes, 'color', $syntax-highlight-literal-numbers); } /* Literal.Number.Float */
+.highlight .mh { @include theme($themes, 'color', $syntax-highlight-literal-numbers); } /* Literal.Number.Hex */
+.highlight .mi { @include theme($themes, 'color', $syntax-highlight-literal-numbers); } /* Literal.Number.Integer */
+.highlight .mo { @include theme($themes, 'color', $syntax-highlight-literal-numbers); } /* Literal.Number.Oct */
 .highlight .sb { @include theme($themes, 'color', $syntax-highlight-literal-value); } /* Literal.String.Backtick */
 .highlight .sc { @include theme($themes, 'color', $syntax-highlight-literal-value); } /* Literal.String.Char */
 .highlight .sd { @include theme($themes, 'color', $syntax-highlight-literal-value); } /* Literal.String.Doc */

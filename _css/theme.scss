@@ -16,12 +16,15 @@ $syntax-highlight: "syntax-highlight";
 $syntax-highlight-comment: "syntax-hightlight-comment";
 $syntax-highlight-class-name: "syntax-hightlight-class-name";
 $syntax-highlight-variable-name: "syntax-hightlight-variable-name";
-$syntax-highlight-keyword-type: "$syntax-highlight-keyword-type";
-$syntax-highlight-deleted: "$synaxt-hightlight-deleted";
-$syntax-highlight-deleted-specific: "$synaxt-hightlight-deleted-specific";
-$syntax-highlight-inserted: "$synaxt-hightlight-inserted";
-$syntax-highlight-inserted-specific: "$synaxt-hightlight-inserted-specific";
-$syntax-highlight-literal-value: "$synaxt-hightlight-literal-value";
+$syntax-highlight-keyword-type: "syntax-highlight-keyword-type";
+$syntax-highlight-deleted: "synaxt-hightlight-deleted";
+$syntax-highlight-deleted-specific: "synaxt-hightlight-deleted-specific";
+$syntax-highlight-inserted: "synaxt-hightlight-inserted";
+$syntax-highlight-inserted-specific: "synaxt-hightlight-inserted-specific";
+$syntax-highlight-literal-value: "synaxt-hightlight-literal-value";
+$syntax-highlight-name: "synaxt-hightlight-name";
+$syntax-highlight-literal-numbers: "syntax-highlight-literal-numbers";
+$syntax-highlight-error: "syntax-highlight-error";
 
 $themes: (
   light: (
@@ -48,7 +51,10 @@ $themes: (
     $syntax-highlight-deleted-specific: #ffaaaa,
     $syntax-highlight-inserted: #ddffdd,
     $syntax-highlight-inserted-specific: #aaffaa,
-    $syntax-highlight-literal-value: #A71133      
+    $syntax-highlight-literal-value: #A71133,
+    $syntax-highlight-name: #990000,
+    $syntax-highlight-literal-numbers: #006061,
+    $syntax-highlight-error: #a61717      
   ),
   dark: (
     $primary-color-dark: #303F9F,
@@ -74,7 +80,10 @@ $themes: (
     $syntax-highlight-deleted-specific: #ff5555,
     $syntax-highlight-inserted: #99CC99,
     $syntax-highlight-inserted-specific: #77ff77,
-    $syntax-highlight-literal-value: #F6B6C3
+    $syntax-highlight-literal-value: #F6B6C3,
+    $syntax-highlight-name: #FFB938,
+    $syntax-highlight-literal-numbers: #EFDC1A,
+    $syntax-highlight-error: #FFB3B3      
   ),
 );
 
