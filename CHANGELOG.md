@@ -9,6 +9,7 @@ Release date: 2020-02-05
 - dark mode
 - gulp Watch css to avoid site rebuild
 - migration to github workflow and github actions for CI
+- new post version script for push commit and tag
 
 ## [1.22.0](https://github.com/chicio/chicio.github.io/releases/tag/1.22.0)
 Release date: 2020-02-05
