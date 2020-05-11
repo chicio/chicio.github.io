@@ -26,6 +26,13 @@ $syntax-highlight-name: "synaxt-hightlight-name";
 $syntax-highlight-literal-numbers: "syntax-highlight-literal-numbers";
 $syntax-highlight-error: "syntax-highlight-error";
 $syntax-highlight-attribute: "syntax-highlight-attribute";
+$syntax-highlight-generic-error: "syntax-highlight-generic-error";
+$syntax-highlight-generic-text: "syntax-highlight-generic-text";
+$syntax-highlight-generic-namespace: "syntax-highlight-generic-namespace";
+$syntax-highlight-generic-global: "syntax-highlight-generic-global";
+$syntax-highlight-literal-integer: "syntax-highlight-literal-integer";
+$syntax-highlight-builtin: "syntax-highlight-builtin";
+$syntax-highlight-constant: "syntax-highlight-constant";
 
 $themes: (
   light: (
@@ -56,7 +63,14 @@ $themes: (
     $syntax-highlight-name: #990000,
     $syntax-highlight-literal-numbers: #006061,
     $syntax-highlight-error: #a61717,
-    $syntax-highlight-attribute: #006161
+    $syntax-highlight-attribute: #006161,
+    $syntax-highlight-generic-error: #aa0000,
+    $syntax-highlight-generic-text: #525252,
+    $syntax-highlight-generic-namespace: #555555,
+    $syntax-highlight-generic-global: #005C5C,
+    $syntax-highlight-literal-integer: #005657,
+    $syntax-highlight-builtin: #005A7A,
+    $syntax-highlight-constant: #005C5C
   ),
   dark: (
     $primary-color-dark: #303F9F,
@@ -86,7 +100,14 @@ $themes: (
     $syntax-highlight-name: #FFB938,
     $syntax-highlight-literal-numbers: #EFDC1A,
     $syntax-highlight-error: #FFB3B3,
-    $syntax-highlight-attribute: #C2FFFF      
+    $syntax-highlight-attribute: #C2FFFF,
+    $syntax-highlight-generic-error: #DD0000,
+    $syntax-highlight-generic-text: #A9A9A9,
+    $syntax-highlight-generic-namespace: #e9e9e9,
+    $syntax-highlight-generic-global: #00bAbA,
+    $syntax-highlight-literal-integer: #00A6A7,
+    $syntax-highlight-builtin: #00A9A9,
+    $syntax-highlight-constant: #BAFFAC
   ),
 );
 
