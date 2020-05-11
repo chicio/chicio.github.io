@@ -2,7 +2,7 @@ name: fabrizioduroni.it
 
 on:
   push:
-    - branches: *
+    - branches: '*'
   schedule:
     - cron: '0 18 * * *' 
 
