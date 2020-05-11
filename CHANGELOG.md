@@ -6,15 +6,16 @@ Release date: 2020-02-05
 
 #### Added
 
-- Dark mode
+- dark mode
 - gulp Watch css to avoid site rebuild
+- migration to github workflow and github actions for CI
 
 ## [1.22.0](https://github.com/chicio/chicio.github.io/releases/tag/1.22.0)
 Release date: 2020-02-05
 
 #### Added
 
-- No more MathJax, hello Katex
+- no more MathJax, hello Katex
 
 ## [1.21.0](https://github.com/chicio/chicio.github.io/releases/tag/1.21.0)
 Release date: 2020-01-15
@@ -45,7 +46,7 @@ Release date: 2019-09-22
 
 #### Added
 
-- Events tracking on all site (also service worker!!!!)
+- events tracking on all site (also service worker!!!!)
 - improved analytics configuration
 - clean liquid templating
 

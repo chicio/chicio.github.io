@@ -11,7 +11,8 @@
     "watch-css": "gulp watchCss --env production",
     "start": "_scripts/start.sh",
     "test": "_scripts/test.sh",
-    "version": "_scripts/version.sh"
+    "version": "_scripts/version.sh",
+    "postversion": "_scripts/postversion.sh"
   },
   "repository": {
     "type": "git",
