@@ -31,11 +31,11 @@
 .highlight .nb { @include theme($themes, 'color', $syntax-highlight-builtin); } /* Name.Builtin */
 .highlight .nc { @include theme($themes, 'color', $syntax-highlight-class-name); font-weight: bold } /* Name.Class */
 .highlight .no { @include theme($themes, 'color', $syntax-highlight-constant); } /* Name.Constant */
-.highlight .ni { color: #800080 } /* Name.Entity */
+.highlight .ni { @include theme($themes, 'color', $syntax-highlight-entity); } /* Name.Entity */
 .highlight .ne { @include theme($themes, 'color', $syntax-highlight-name); font-weight: bold } /* Name.Exception */
 .highlight .nf { @include theme($themes, 'color', $syntax-highlight-name); font-weight: bold } /* Name.Function */
 .highlight .nn { @include theme($themes, 'color', $syntax-highlight-generic-namespace); } /* Name.Namespace */
-.highlight .nt { color: #000080 } /* Name.Tag */
+.highlight .nt { @include theme($themes, 'color', $syntax-highlight-tag); } /* Name.Tag */
 .highlight .nv { @include theme($themes, 'color', $syntax-highlight-variable-name); } /* Name.Variable */
 .highlight .ow { @include theme($themes, 'color', $primary-text-color); font-weight: bold } /* Operator.Word */
 .highlight .w { color: #bbbbbb } /* Text.Whitespace */
@@ -51,11 +51,11 @@
 .highlight .sh { @include theme($themes, 'color', $syntax-highlight-literal-value); } /* Literal.String.Heredoc */
 .highlight .si { @include theme($themes, 'color', $syntax-highlight-literal-value); } /* Literal.String.Interpol */
 .highlight .sx { @include theme($themes, 'color', $syntax-highlight-literal-value); } /* Literal.String.Other */
-.highlight .sr { color: #00611A } /* Literal.String.Regex */
+.highlight .sr { @include theme($themes, 'color', $syntax-highlight-regex); } /* Literal.String.Regex */
 .highlight .s1 { @include theme($themes, 'color', $syntax-highlight-literal-value); } /* Literal.String.Single */
 .highlight .dl { @include theme($themes, 'color', $syntax-highlight-literal-value); } /* Literal.String.Single Quote */
-.highlight .ss { color: #990073 } /* Literal.String.Symbol */
-.highlight .bp { color: #999999 } /* Name.Builtin.Pseudo */
+.highlight .ss { @include theme($themes, 'color', $syntax-highlight-symbol); } /* Literal.String.Symbol */
+.highlight .bp { @include theme($themes, 'color', $syntax-highlight-pseudo); } /* Name.Builtin.Pseudo */
 .highlight .vc { @include theme($themes, 'color', $syntax-highlight-generic-global); } /* Name.Variable.Class */
 .highlight .vg { @include theme($themes, 'color', $syntax-highlight-generic-global); } /* Name.Variable.Global */
 .highlight .vi { @include theme($themes, 'color', $syntax-highlight-generic-global); } /* Name.Variable.Instance */
