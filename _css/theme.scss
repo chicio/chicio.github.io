@@ -131,16 +131,16 @@ $themes: (
   $dark: map-get($themes, 'dark');
   
   @if $additionalPropertiesPositionIsFront {
-    #{$property}: unquote($additionalProperties + map-get($light, $color));    
+    #{$property}: unquote($additionalProperties + ' ' +  + map-get($light, $color));    
   } @else { 
-    #{$property}: unquote(map-get($light, $color) + $additionalProperties);
+    #{$property}: unquote(map-get($light, $color) + ' ' + $additionalProperties);
   }
 
   @media (prefers-color-scheme: dark) {
     @if $additionalPropertiesPositionIsFront {
-      #{$property}: unquote($additionalProperties + map-get($dark, $color));    
+      #{$property}: unquote($additionalProperties + ' ' + map-get($dark, $color));    
     } @else { 
-      #{$property}: unquote(map-get($dark, $color) + $additionalProperties);
+      #{$property}: unquote(map-get($dark, $color) + ' ' + $additionalProperties);
     }
   }
 }

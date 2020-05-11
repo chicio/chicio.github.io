@@ -159,9 +159,9 @@
 
   .nav-tabs > li > .nav-link {
     @include theme($themes, 'background-color', $general-background-light);
-    @include theme($themes, 'border-bottom', $divider-color, true, '1px solid ');
-    @include theme($themes, 'border-left', $divider-color, true, '1px solid ');
-    @include theme($themes, 'border-right', $divider-color, true, '1px solid ');
+    @include theme($themes, 'border-bottom', $divider-color, true, '1px solid');
+    @include theme($themes, 'border-left', $divider-color, true, '1px solid');
+    @include theme($themes, 'border-right', $divider-color, true, '1px solid');
     @include theme($themes, 'color', $accent-color);
     border-radius: 0;
     font-weight: bold;
@@ -174,7 +174,7 @@
   .nav-tabs > li.active > .nav-link {
     @include theme($themes, 'background-color', $general-background);
     @include theme($themes, 'color', $accent-color);
-    @include theme($themes, 'border-right', $divider-color, true, '1px solid ');
+    @include theme($themes, 'border-right', $divider-color, true, '1px solid');
     border-radius: 0;
     border: 1px solid transparent;
     font-weight: bold;

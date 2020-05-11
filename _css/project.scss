@@ -9,8 +9,8 @@
   }
 
   .project-image {
-      @include theme($themes, 'border', $divider-color, true, '1px solid ');
-      @include theme($themes, 'box-shadow', $box-shadow-light, true, '1px 1px 6px ');
+      @include theme($themes, 'border', $divider-color, true, '1px solid');
+      @include theme($themes, 'box-shadow', $box-shadow-light, true, '1px 1px 6px');
 
       margin: auto;
       box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.375);

@@ -48,8 +48,8 @@
 
 .timeline > li > .timeline-panel {
   @include theme($themes, 'background-color', $general-background-light);
-  @include theme($themes, 'border', $divider-color, true, '1px solid ');
-  @include theme($themes, 'box-shadow', $box-shadow-medium, true, '0 1px 6px ');
+  @include theme($themes, 'border', $divider-color, true, '1px solid');
+  @include theme($themes, 'box-shadow', $box-shadow-medium, true, '0 1px 6px');
   width: 46%;
   float: left;
   border-radius: 3px;
@@ -63,8 +63,8 @@
   right: -15px;
   display: inline-block;
   border-top: 15px solid transparent;
-  @include theme($themes, 'border-left', $divider-color, true, '14px solid ');
-  @include theme($themes, 'border-right', $divider-color, true, '0 solid ');
+  @include theme($themes, 'border-left', $divider-color, true, '14px solid');
+  @include theme($themes, 'border-right', $divider-color, true, '0 solid');
   border-bottom: 15px solid transparent;
   content: " ";
 }
@@ -74,8 +74,8 @@
   top: 27px;
   right: -14px;
   display: inline-block;
-  @include theme($themes, 'border-left', $general-background-light, true, '14px solid ');
-  @include theme($themes, 'border-right', $general-background-light, true, '0 solid ');
+  @include theme($themes, 'border-left', $general-background-light, true, '14px solid');
+  @include theme($themes, 'border-right', $general-background-light, true, '0 solid');
   border-top: 14px solid transparent;
   border-bottom: 14px solid transparent;
   content: " ";
@@ -119,7 +119,7 @@
 }
 
 .timeline-badge.work {
-  @include theme($themes, 'background-color', $primary-color-dark, false, ' !important');
+  @include theme($themes, 'background-color', $primary-color-dark, false, '!important');
 }
 
 .timeline-title {
@@ -145,7 +145,7 @@
   padding-bottom: 10px;
 
   img {
-    @include theme($themes, 'box-shadow', $box-shadow-light, true, '0 1px 2px ');
+    @include theme($themes, 'box-shadow', $box-shadow-light, true, '0 1px 2px');
     width: 80px;
     height: 80px;
     margin-left: auto;

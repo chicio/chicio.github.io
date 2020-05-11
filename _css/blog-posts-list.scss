@@ -4,7 +4,7 @@
 
   .blog-posts-post {
     @include theme($themes, 'background-color', $general-background-light);
-    @include theme($themes, 'box-shadow', $box-shadow-light, true, '0 3px 10px 0 ');
+    @include theme($themes, 'box-shadow', $box-shadow-light, true, '0 3px 10px 0');
     border-radius: 4px;
     padding: 20px;
     margin-top: 20px;

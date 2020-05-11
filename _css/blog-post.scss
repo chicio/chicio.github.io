@@ -42,7 +42,7 @@
 
   blockquote {
     @include theme($themes, 'color', $secondary-text-color);
-    @include theme($themes, 'border-left', $secondary-text-color, true, '5px solid ');
+    @include theme($themes, 'border-left', $secondary-text-color, true, '5px solid');
     margin: 0 0 20px;
     padding: 10px 20px;
 
