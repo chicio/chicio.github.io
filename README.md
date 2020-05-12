@@ -13,7 +13,6 @@ My personal website, created using github pages.
 
 To run my website locally you need to install the following software:
 
-- Homebrew (see [brew.sh/](https://brew.sh/))
 - Node
 - Ruby
 - zsh
