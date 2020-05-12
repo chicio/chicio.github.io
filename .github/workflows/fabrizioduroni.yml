@@ -38,5 +38,7 @@ jobs:
         run: |
           npm run setup
           npm run test
-      - name: Lighthouse CI
-        run: lhci autorun --upload.target=temporary-public-storage || echo "LHCI failed!"        
+      - name: Lhci
+        uses: treosh/lighthouse-ci-action@v2
+        with:
+          configPath: './lighthouserc.json'     
