@@ -11,9 +11,6 @@
         "uses-responsive-images": "off",
         "unused-css-rules": "off",
         "uses-text-compression": "off",
-        "redirects-http": "off",
-        "uses-http2": "off",
-        "is-on-https": "off",
         "uses-rel-preconnect": "off"
       }
     },
