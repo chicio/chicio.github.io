@@ -1,4 +1,4 @@
-name: fabrizioduroni.it CI
+name: Lighthouse
 
 on:
   push:
