@@ -24,4 +24,9 @@ jobs:
           urls: |
             https://www.fabrizioduroni.it
             https://www.fabrizioduroni.it/blog
-          configPath: './.lighthouserc.json'     
+          configPath: './.lighthouserc.json'  
+      - name: Archive lighthouse reports
+        uses: actions/upload-artifact@v1
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci                   
