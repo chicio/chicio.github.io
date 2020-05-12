@@ -7,6 +7,10 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<link rel="author" href="/humans.txt"/>
 	<link rel="manifest" href="/manifest.json">
+	{% seo %}
+	{% if include.content-type %}
+	<meta property="og:type" content="{{ include.content-type }}"/>
+	{% endif %}
 	<link rel="preload" href="/assets/fonts/opensans/OpenSans-Regular.woff2" as="font" crossorigin="anonymous">
 	{% if include.prefetch-blog == true %}
 	<link rel="prefetch" href="/blog/">
@@ -22,8 +26,4 @@
 	{% include {{ include.critical-css }} %}
 	{% include cookieconsent-style.css %}
 	</style>
-	{% seo %}
-	{% if include.content-type %}
-	<meta property="og:type" content="{{ include.content-type }}"/>
-	{% endif %}
 </head>
