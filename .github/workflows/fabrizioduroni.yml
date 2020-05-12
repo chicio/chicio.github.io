@@ -18,7 +18,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '13'        
-      - name: Cache node_modules
+      - name: Cache bundler
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-          
+      - name: Cache npm
         uses: actions/cache@v1
         with:
           path: ~/.npm 
