@@ -42,8 +42,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: site
-          path: _site          
-      - name: Lhci
-        uses: treosh/lighthouse-ci-action@v2
-        with:
-          configPath: './.lighthouserc.json'     
+          path: _site            
