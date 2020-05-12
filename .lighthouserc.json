@@ -6,9 +6,7 @@
       "startServerCommand": "npm start",
       "url": [
         "http://localhost:4000/",
-        "http://localhost:4000/blog/",
-        "http://localhost:4000/blog/archive/",
-        "http://localhost:4000/blog/tags/"
+        "http://localhost:4000/blog/"
       ]
     },
     "assert": {
