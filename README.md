@@ -1,6 +1,7 @@
 # chicio.github.io - www.fabrizioduroni.it
 
-![fabrizioduroni.it](https://github.com/chicio/chicio.github.io/workflows/fabrizioduroni.it/badge.svg)
+![Build](https://github.com/chicio/chicio.github.io/workflows/Build/badge.svg)
+![Lighthouse](https://github.com/chicio/chicio.github.io/workflows/Lighthouse/badge.svg)
 ![dependecies](https://img.shields.io/librariesio/github/chicio/chicio.github.io)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/chicio/chicio.github.io/blob/master/LICENSE.md)
 
