@@ -38,6 +38,11 @@ jobs:
         run: |
           npm run setup
           npm run test
+      - name: Archive generated site source
+        uses: actions/upload-artifact@v1
+        with:
+          name: site
+          path: _site          
       - name: Lhci
         uses: treosh/lighthouse-ci-action@v2
         with:
