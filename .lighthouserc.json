@@ -13,7 +13,8 @@
         "uses-text-compression": "off",
         "redirects-http": "off",
         "uses-http2": "off",
-        "is-on-https": "off"
+        "is-on-https": "off",
+        "uses-rel-preconnect": "off"
       }
     },
     "upload": {

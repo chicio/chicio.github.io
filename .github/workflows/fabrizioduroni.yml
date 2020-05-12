@@ -6,7 +6,7 @@ on:
       - '*'
 
 jobs:
-  build-and-test:      
+  build:      
     name: Build
     runs-on: macos-latest
     steps:
