@@ -210,7 +210,7 @@ gulp.task('purge-css-cookie-policy', (done) => purgeCss(
 gulp.task('purge-css-blog-post', (done) => purgeCss(
   CSS_BLOG_POST,
   ['./_site/20**/**/**.html', './_site/assets/js/index.blog.min.js'],
-  ['html'],
+  ['html', 'katex-display'],
   done
 ))
 
