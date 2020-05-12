@@ -10,7 +10,6 @@
         "uses-webp-images": "off",
         "uses-responsive-images": "off",
         "unused-css-rules": "off",
-        "uses-text-compression": "off",
         "uses-rel-preconnect": "off"
       }
     },
