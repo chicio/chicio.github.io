@@ -160,4 +160,4 @@ print((tiger as! Tiger).roar()) // "roar\n"
 
 #### Conclusion
 
-You can find all the code shown in this post [in this Github repo](https://github.com/chicio/dependencies-injection-swift-example "custom tab bar swiftui"). Remember: sometimes with a couple of classes you can avoid to import big frameworks and library into your projects. You just need to study hard the languages and SDK fundamental :heartpulse:.
+You can find all the code shown in this post [in this Github repo](https://github.com/chicio/dependencies-injection-swift-example "custom tab bar swiftui"). Remember: sometimes with a couple of classes you can avoid to import big frameworks and library into your projects. You just need to study hard the languages and SDK fundamental. :heartpulse:

@@ -246,48 +246,18 @@ const serviceWorkerUrlFor = (section, done) => {
     done()
   })
 }
+const serviceWorkerJsHomeUrls = (done) => serviceWorkerUrlFor('js-home', done)
+const serviceWorkerJsBlogUrls = (done) => serviceWorkerUrlFor('js-blog', done)
+const serviceWorkerCssHomeUrls = (done) => serviceWorkerUrlFor('css-home', done)
+const serviceWorkerCssBlogArchiveUrls = (done) => serviceWorkerUrlFor('css-blog-archive', done)
+const serviceWorkerCssBlogHomeUrls = (done) => serviceWorkerUrlFor('css-blog-home', done)
+const serviceWorkerCssBlogPostUrls = (done) => serviceWorkerUrlFor('css-blog-post', done)
+const serviceWorkerCssBlogTagsUrls = (done) => serviceWorkerUrlFor('css-blog-tags', done)
+const serviceWorkerCssPrivacyPolicyUrls = (done) => serviceWorkerUrlFor('css-privacy-policy', done)
+const serviceWorkerCssCookiePolicyUrls = (done) => serviceWorkerUrlFor('css-cookie-policy', done)
+const serviceWorkerCssErrorUrls =  (done) => serviceWorkerUrlFor('css-error', done)
 
-gulp.task('service-worker-js-home-urls', (done) => {
-  serviceWorkerUrlFor('js-home', done)
-});
-
-gulp.task('service-worker-js-blog-urls', (done) => {
-  serviceWorkerUrlFor('js-blog', done)
-});
-
-gulp.task('service-worker-css-home-urls', (done) => {
-  serviceWorkerUrlFor('css-home', done)
-});
-
-gulp.task('service-worker-css-blog-archive-urls', (done) => {
-  serviceWorkerUrlFor('css-blog-archive', done)
-});
-
-gulp.task('service-worker-css-blog-home-urls', (done) => {
-  serviceWorkerUrlFor('css-blog-home', done)
-});
-
-gulp.task('service-worker-css-blog-post-urls', (done) => {
-  serviceWorkerUrlFor('css-blog-post', done)
-});
-
-gulp.task('service-worker-css-blog-tags-urls', (done) => {
-  serviceWorkerUrlFor('css-blog-tags', done)
-});
-
-gulp.task('service-worker-css-privacy-policy-urls', (done) => {
-  serviceWorkerUrlFor('css-privacy-policy', done)
-});
-
-gulp.task('service-worker-css-cookie-policy-urls', (done) => {
-  serviceWorkerUrlFor('css-cookie-policy', done)
-});
-
-gulp.task('service-worker-css-error-urls', (done) => {
-  serviceWorkerUrlFor('css-error', done)
-});
-
-gulp.task('jekyll-build', (done) => exec(`./_scripts/build.sh`, (err, stdout, stderr) => done()))
+const jekyllBuild = (done) => exec(`./_scripts/build.sh`, (err, stdout, stderr) => done())
 
 export const watchCss = () => gulp.watch(`${CSS_FOLDER}/*.scss`, gulp.series(
   'css-home',
@@ -298,7 +268,7 @@ export const watchCss = () => gulp.watch(`${CSS_FOLDER}/*.scss`, gulp.series(
   'css-privacy-policy',
   'css-cookie-policy',
   'css-error',
-  'jekyll-build', //build for critical/purge css
+  jekyllBuild, //build for critical/purge css
   'css-critical',
   'purge-css-home',
   'purge-css-blog-home',
@@ -336,17 +306,17 @@ export const build = gulp.series(
   'rev-css-privacy-policy',
   'rev-css-cookie-policy',
   'rev-css-error',
-  'service-worker-js-home-urls',
-  'service-worker-js-blog-urls',
-  'service-worker-css-home-urls',
-  'service-worker-css-blog-archive-urls',
-  'service-worker-css-blog-home-urls',
-  'service-worker-css-blog-post-urls',
-  'service-worker-css-blog-tags-urls',
-  'service-worker-css-privacy-policy-urls',
-  'service-worker-css-cookie-policy-urls',
-  'service-worker-css-error-urls',
-  'jekyll-build', //First build for critical/purge css
+  serviceWorkerJsHomeUrls,
+  serviceWorkerJsBlogUrls,
+  serviceWorkerCssHomeUrls,
+  serviceWorkerCssBlogArchiveUrls,
+  serviceWorkerCssBlogHomeUrls,
+  serviceWorkerCssBlogPostUrls,
+  serviceWorkerCssBlogTagsUrls,
+  serviceWorkerCssPrivacyPolicyUrls,
+  serviceWorkerCssCookiePolicyUrls,
+  serviceWorkerCssErrorUrls,
+  jekyllBuild, //First build for critical/purge css
   'css-critical',
   'purge-css-home',
   'purge-css-blog-home',
@@ -356,5 +326,5 @@ export const build = gulp.series(
   'purge-css-privacy-policy',
   'purge-css-cookie-policy',
   'purge-css-blog-post',
-  'jekyll-build' //Generate site with css critical path and purge from unused rules
+  jekyllBuild //Generate site with css critical path and purge from unused rules
 )
