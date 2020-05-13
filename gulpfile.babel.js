@@ -231,6 +231,12 @@ const serviceWorkerUrls = (done) => Promise.all([
 
 const jekyllBuild = (done) => exec(`./_scripts/build.sh`, (err, stdout, stderr) => done())
 
+export const copyResources = gulp.series (
+  images,
+  fonts,
+  models
+)    
+
 export const watchCss = () => gulp.watch(`${CSS_FOLDER}/*.scss`, gulp.series(
   bundleCss,
   jekyllBuild, //build for critical/purge css
@@ -250,9 +256,6 @@ export const build = gulp.series(
   flow,
   lint,
   bundleJs,
-  images,
-  fonts,
-  models,
   revAppend,
   serviceWorkerUrls,
   jekyllBuild, //First build for critical/purge css

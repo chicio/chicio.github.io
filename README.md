@@ -31,12 +31,14 @@ npm run build
 npm run start
 ```
 
-If you want to build a development version of the site run the following commands from the root folder of this repo:
+If you want to build a debug version of the site run the following commands from the root folder of this repo:
 
 ```bash
-npm run build-dev
+npm run debug
 npm run start
 ```
+
+
 
 ### Overview
 
