@@ -201,18 +201,18 @@ const revision = (section) =>
   gulp.src(`./dependencies-${section}.html`)
     .pipe(gulpRevAppend())
     .pipe(gulp.dest('_includes'))
-const revAppend = (done) => Promise.all([
-  revision('js-home', done),
-  revision('js-blog', done),
-  revision('css-home', done),
-  revision('css-blog-archive', done),
-  revision('css-blog-home', done),
-  revision('css-blog-post', done),
-  revision('css-blog-tags', done),
-  revision('css-privacy-policy', done),
-  revision('css-cookie-policy', done),
-  revision('css-error', done)
-]).then(() => done())
+const revAppend = () => Promise.all([
+  revision('js-home'),
+  revision('js-blog'),
+  revision('css-home'),
+  revision('css-blog-archive'),
+  revision('css-blog-home'),
+  revision('css-blog-post'),
+  revision('css-blog-tags'),
+  revision('css-privacy-policy'),
+  revision('css-cookie-policy'),
+  revision('css-error')
+])
 
 const serviceWorkerUrlFor = (section) => exec(`./_scripts/generate-service-worker-urls.sh ${section}`)
 const serviceWorkerUrls = (done) => Promise.all([
