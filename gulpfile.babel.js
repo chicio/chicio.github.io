@@ -29,11 +29,12 @@ const CSS_COOKIE_POLICY = `style.cookiepolicy`
 const CSS_ERROR = `style.error`
 const CSS_BASE_PATH = 'assets/styles'
  
-const bundleCSSUsing = (cssName) => 
+const bundleCSSUsing = (cssName) => (
   gulp.src(`${CSS_FOLDER}/${cssName}.scss`)
     .pipe(gulpSass(production() ? { outputStyle: 'compressed' } : {}))
     .pipe(gulpConcat(`${cssName}.css`))
     .pipe(gulp.dest(CSS_BASE_PATH))
+)    
 const bundleCss = () => Promise.all([
   bundleCSSUsing(CSS_HOME),
   bundleCSSUsing(CSS_BLOG_ARCHIVE),
@@ -75,11 +76,12 @@ const copyFiles = (folder) => (
 )
 const fonts = () => copyFiles('fonts')
 const models = () => copyFiles('models')
-const images = () =>
+const images = () => (
   gulp
     .src([`_images/**/*.*`])
     .pipe(production(gulpImagemin()))
     .pipe(gulp.dest(`assets/images`))
+)    
 
 const criticalCss = (src, dest, css) => (
   critical.generate({
@@ -120,58 +122,28 @@ const cssCritical = (done) => Promise.all([
   criticalCss('offline', 'critical-error', CSS_ERROR),
 ])
 
-const purgeCssUsing = (cssName, content, whitelist) =>
+const purgeCssUsing = (cssName, content, whitelist = []) => (
   gulp
     .src(`_site/assets/styles/${cssName}.css`)
     .pipe(purgecss({ content: content, whitelist: whitelist }))
     .pipe(gulp.dest('assets/styles/'))
+)    
 const purgeCss = () => Promise.all([
-  purgeCssUsing(
-    CSS_HOME,
-    ['./_site/index.html', './_site/assets/js/index.home.min.js'],
-    [],
-  ),
-  purgeCssUsing(
-    CSS_BLOG_ARCHIVE,
-    ['./_site/blog/archive/index.html', './_site/assets/js/index.blog.min.js'],
-    [],
-  ),
-  purgeCssUsing(
-    CSS_BLOG_HOME,
-    ['./_site/blog/index.html', './_site/assets/js/index.blog.min.js'],
-    [],
-  ),
-  purgeCssUsing(
-    CSS_BLOG_TAGS,
-    ['./_site/blog/tags/index.html', './_site/assets/js/index.blog.min.js'],
-    [],
-  ),
-  purgeCssUsing(
-    CSS_ERROR,
-    ['./_site/offline.html', './_site/assets/js/index.blog.min.js'],
-    [],
-  ),
-  purgeCssUsing(
-    CSS_PRIVACY_POLICY,
-    ['./_site/privacy-policy.html', './_site/assets/js/index.blog.min.js'],
-    [],
-  ),
-  purgeCssUsing(
-    CSS_COOKIE_POLICY,
-    ['./_site/cookie-policy.html', './_site/assets/js/index.blog.min.js'],
-    [],
-  ),
-  purgeCssUsing(
-    CSS_BLOG_POST,
-    ['./_site/20**/**/**.html', './_site/assets/js/index.blog.min.js'],
-    ['katex-display'],
-  )          
+  purgeCssUsing(CSS_HOME, ['./_site/index.html', './_site/assets/js/index.home.min.js']),
+  purgeCssUsing(CSS_BLOG_ARCHIVE, ['./_site/blog/archive/index.html', './_site/assets/js/index.blog.min.js']),
+  purgeCssUsing(CSS_BLOG_HOME, ['./_site/blog/index.html', './_site/assets/js/index.blog.min.js']),
+  purgeCssUsing(CSS_BLOG_TAGS, ['./_site/blog/tags/index.html', './_site/assets/js/index.blog.min.js']),
+  purgeCssUsing(CSS_ERROR, ['./_site/offline.html', './_site/assets/js/index.blog.min.js']),
+  purgeCssUsing(CSS_PRIVACY_POLICY, ['./_site/privacy-policy.html', './_site/assets/js/index.blog.min.js']),
+  purgeCssUsing(CSS_COOKIE_POLICY,['./_site/cookie-policy.html', './_site/assets/js/index.blog.min.js']),
+  purgeCssUsing(CSS_BLOG_POST, ['./_site/20**/**/**.html', './_site/assets/js/index.blog.min.js'], ['katex-display'])          
 ])
 
-const revision = (section) =>
+const revision = (section) => (
   gulp.src(`./dependencies-${section}.html`)
     .pipe(gulpRevAppend())
     .pipe(gulp.dest('_includes'))
+)    
 const revAppend = () => Promise.all([
   revision('js-home'),
   revision('js-blog'),
