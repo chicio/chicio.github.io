@@ -28,42 +28,30 @@ const CSS_PRIVACY_POLICY = `style.privacypolicy`
 const CSS_COOKIE_POLICY = `style.cookiepolicy`
 const CSS_ERROR = `style.error`
 const CSS_BASE_PATH = 'assets/styles'
-
-const css = (cssName, done) => {
+ 
+const bundleCSSUsing = (cssName) => 
   gulp.src(`${CSS_FOLDER}/${cssName}.scss`)
     .pipe(gulpSass(production() ? { outputStyle: 'compressed' } : {}))
     .pipe(gulpConcat(`${cssName}.css`))
     .pipe(gulp.dest(CSS_BASE_PATH))
-  done()
-}
+const bundleCss = () => Promise.all([
+  bundleCSSUsing(CSS_HOME),
+  bundleCSSUsing(CSS_BLOG_ARCHIVE),
+  bundleCSSUsing(CSS_BLOG_HOME),
+  bundleCSSUsing(CSS_BLOG_POST),
+  bundleCSSUsing(CSS_BLOG_TAGS),
+  bundleCSSUsing(CSS_PRIVACY_POLICY),
+  bundleCSSUsing(CSS_COOKIE_POLICY),
+  bundleCSSUsing(CSS_ERROR)
+])
 
-gulp.task('css-home', (done) => css(CSS_HOME, done))
+const flow = (done) => exec(`npm run flow`, (err, stdout, stderr) => done())
 
-gulp.task('css-blog-archive', (done) => css(CSS_BLOG_ARCHIVE, done))
-
-gulp.task('css-blog-home', (done) => css(CSS_BLOG_HOME, done))
-
-gulp.task('css-blog-post', (done) => css(CSS_BLOG_POST, done))
-
-gulp.task('css-blog-tags', (done) => css(CSS_BLOG_TAGS, done))
-
-gulp.task('css-privacy-policy', (done) => css(CSS_PRIVACY_POLICY, done))
-
-gulp.task('css-cookie-policy', (done) => css(CSS_COOKIE_POLICY, done))
-
-gulp.task('css-error', (done) => css(CSS_ERROR, done))
-
-gulp.task('flow', (done) => {
-  exec(`npm run flow`, (err, stdout, stderr) => {
-    done()
-  })
-})
-
-gulp.task('lint', () => (
+const lint = (done) => (
   gulp.src('_js/**')
     .pipe(gulpEslint())
     .pipe(gulpEslint.format())
-    .pipe(gulpEslint.failOnError()))
+    .pipe(gulpEslint.failOnError())
 )
 
 const bundleJs = (section) => (
@@ -248,14 +236,7 @@ const serviceWorkerUrls = (done) => Promise.all([
 const jekyllBuild = (done) => exec(`./_scripts/build.sh`, (err, stdout, stderr) => done())
 
 export const watchCss = () => gulp.watch(`${CSS_FOLDER}/*.scss`, gulp.series(
-  'css-home',
-  'css-blog-archive',
-  'css-blog-home',
-  'css-blog-post',
-  'css-blog-tags',
-  'css-privacy-policy',
-  'css-cookie-policy',
-  'css-error',
+  bundleCss,
   jekyllBuild, //build for critical/purge css
   'css-critical',
   'purge-css-home',
@@ -269,16 +250,9 @@ export const watchCss = () => gulp.watch(`${CSS_FOLDER}/*.scss`, gulp.series(
 ))
 
 export const build = gulp.series(
-  'css-home',
-  'css-blog-archive',
-  'css-blog-home',
-  'css-blog-post',
-  'css-blog-tags',
-  'css-privacy-policy',
-  'css-cookie-policy',
-  'css-error',
-  'flow',
-  'lint',
+  bundleCss,
+  flow,
+  lint,
   'bundle-home-scripts',
   'bundle-blog-scripts',
   'images',
