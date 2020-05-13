@@ -142,7 +142,7 @@ gulp.task('css-critical', (done) => Promise.all([
   criticalCss('privacy-policy', 'critical-privacy-policy', CSS_PRIVACY_POLICY),
   criticalCss('cookie-policy', 'critical-cookie-policy', CSS_COOKIE_POLICY),
   criticalCss('offline', 'critical-error', CSS_ERROR),
-]).then(() => done())
+  ]).then(() => done())
 )
 
 const purgeCss = (cssName, content, whitelist, done) => {
@@ -220,42 +220,30 @@ const revision = (section, done) => {
     .pipe(gulp.dest('_includes'))
   done()
 }
+const revJsHome = (done) => revision('js-home', done)
+const revJsBlog = (done) => revision('js-blog', done)
+const revCssHome = (done) => revision('css-home', done)
+const revCssBlogArchive = (done) => revision('css-blog-archive', done)
+const revCssBlogHome = (done) => revision('css-blog-home', done)
+const revCssBlogPost = (done) => revision('css-blog-post', done)
+const revCssBlogTags = (done) => revision('css-blog-tags', done)
+const revCssPrivacyPolicy = (done) => revision('css-privacy-policy', done)
+const revCssCookiePolicy = (done) => revision('css-cookie-policy', done)
+const revCssError = (done) => revision('css-error', done)
 
-gulp.task('rev-js-home', (done) => revision('js-home', done))
-
-gulp.task('rev-js-blog', (done) => revision('js-blog', done))
-
-gulp.task('rev-css-home', (done) => revision('css-home', done))
-
-gulp.task('rev-css-blog-archive', (done) => revision('css-blog-archive', done))
-
-gulp.task('rev-css-blog-home', (done) => revision('css-blog-home', done))
-
-gulp.task('rev-css-blog-post', (done) => revision('css-blog-post', done))
-
-gulp.task('rev-css-blog-tags', (done) => revision('css-blog-tags', done))
-
-gulp.task('rev-css-privacy-policy', (done) => revision('css-privacy-policy', done))
-
-gulp.task('rev-css-cookie-policy', (done) => revision('css-cookie-policy', done))
-
-gulp.task('rev-css-error', (done) => revision('css-error', done))
-
-const serviceWorkerUrlFor = (section, done) => {
-  exec(`./_scripts/generate-service-worker-urls.sh ${section}`, (err, stdout, stderr) => {
-    done()
-  })
-}
-const serviceWorkerJsHomeUrls = (done) => serviceWorkerUrlFor('js-home', done)
-const serviceWorkerJsBlogUrls = (done) => serviceWorkerUrlFor('js-blog', done)
-const serviceWorkerCssHomeUrls = (done) => serviceWorkerUrlFor('css-home', done)
-const serviceWorkerCssBlogArchiveUrls = (done) => serviceWorkerUrlFor('css-blog-archive', done)
-const serviceWorkerCssBlogHomeUrls = (done) => serviceWorkerUrlFor('css-blog-home', done)
-const serviceWorkerCssBlogPostUrls = (done) => serviceWorkerUrlFor('css-blog-post', done)
-const serviceWorkerCssBlogTagsUrls = (done) => serviceWorkerUrlFor('css-blog-tags', done)
-const serviceWorkerCssPrivacyPolicyUrls = (done) => serviceWorkerUrlFor('css-privacy-policy', done)
-const serviceWorkerCssCookiePolicyUrls = (done) => serviceWorkerUrlFor('css-cookie-policy', done)
-const serviceWorkerCssErrorUrls =  (done) => serviceWorkerUrlFor('css-error', done)
+const serviceWorkerUrlFor = (section) => exec(`./_scripts/generate-service-worker-urls.sh ${section}`)
+const serviceWorkerUrls = (done) => Promise.all([
+  serviceWorkerUrlFor('js-home'),
+  serviceWorkerUrlFor('js-blog'),
+  serviceWorkerUrlFor('css-home'),
+  serviceWorkerUrlFor('css-blog-archive'),
+  serviceWorkerUrlFor('css-blog-home'),
+  serviceWorkerUrlFor('css-blog-post'),
+  serviceWorkerUrlFor('css-blog-tags'),
+  serviceWorkerUrlFor('css-privacy-policy'),
+  serviceWorkerUrlFor('css-cookie-policy'),
+  serviceWorkerUrlFor('css-error')
+])
 
 const jekyllBuild = (done) => exec(`./_scripts/build.sh`, (err, stdout, stderr) => done())
 
@@ -296,26 +284,17 @@ export const build = gulp.series(
   'images',
   'fonts',
   'models',
-  'rev-js-home',
-  'rev-js-blog',
-  'rev-css-home',
-  'rev-css-blog-archive',
-  'rev-css-blog-home',
-  'rev-css-blog-post',
-  'rev-css-blog-tags',
-  'rev-css-privacy-policy',
-  'rev-css-cookie-policy',
-  'rev-css-error',
-  serviceWorkerJsHomeUrls,
-  serviceWorkerJsBlogUrls,
-  serviceWorkerCssHomeUrls,
-  serviceWorkerCssBlogArchiveUrls,
-  serviceWorkerCssBlogHomeUrls,
-  serviceWorkerCssBlogPostUrls,
-  serviceWorkerCssBlogTagsUrls,
-  serviceWorkerCssPrivacyPolicyUrls,
-  serviceWorkerCssCookiePolicyUrls,
-  serviceWorkerCssErrorUrls,
+  revJsHome,
+  revJsBlog,
+  revCssHome,
+  revCssBlogArchive,
+  revCssBlogHome,
+  revCssBlogPost,
+  revCssBlogTags,
+  revCssPrivacyPolicy,
+  revCssCookiePolicy,
+  revCssError,
+  serviceWorkerUrls,
   jekyllBuild, //First build for critical/purge css
   'css-critical',
   'purge-css-home',
