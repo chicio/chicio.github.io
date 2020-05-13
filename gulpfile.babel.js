@@ -47,14 +47,14 @@ const bundleCss = () => Promise.all([
 
 const flow = (done) => exec(`npm run flow`, (err, stdout, stderr) => done())
 
-const lint = (done) => (
+const lint = () => (
   gulp.src('_js/**')
     .pipe(gulpEslint())
     .pipe(gulpEslint.format())
     .pipe(gulpEslint.failOnError())
 )
 
-const bundleJs = (section) => (
+const bundleJsUsing = (section) => (
   browserify({ entries: `_jsbuild/index.${section}.js` })
     .transform(babelify, { global: true, presets: ['@babel/preset-env'] })
     .bundle()
@@ -63,27 +63,23 @@ const bundleJs = (section) => (
     .pipe(production(gulpUglify()))
     .pipe(gulp.dest('assets/js'))
 )
-
-gulp.task('bundle-home-scripts', () => bundleJs('home'))
-
-gulp.task('bundle-blog-scripts', () => bundleJs('blog'))
+const bundleJs = () => Promise.all([
+  bundleJsUsing('home'),
+  bundleJsUsing('blog')
+])
 
 const copyFiles = (folder) => (
   gulp
     .src([`_${folder}/**/*.*`])
     .pipe(gulp.dest(`assets/${folder}`))
 )
-
-gulp.task('fonts', () => copyFiles('fonts'))
-
-gulp.task('models', () => copyFiles('models'))
-
-gulp.task('images', () =>
+const fonts = () => copyFiles('fonts')
+const models = () => copyFiles('models')
+const images = () =>
   gulp
     .src([`_images/**/*.*`])
     .pipe(production(gulpImagemin()))
     .pipe(gulp.dest(`assets/images`))
-)
 
 const criticalCss = (src, dest, css) => (
   critical.generate({
@@ -253,11 +249,10 @@ export const build = gulp.series(
   bundleCss,
   flow,
   lint,
-  'bundle-home-scripts',
-  'bundle-blog-scripts',
-  'images',
-  'fonts',
-  'models',
+  bundleJs,
+  images,
+  fonts,
+  models,
   revAppend,
   serviceWorkerUrls,
   jekyllBuild, //First build for critical/purge css
