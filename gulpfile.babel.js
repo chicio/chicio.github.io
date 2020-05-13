@@ -86,16 +86,11 @@ const criticalCss = (src, dest, css) => (
     base: '_site/',
     src: `_site/${src}.html`,
     css: [`../assets/styles/${css}.css`],
-    dimensions: [{
-      width: 320,
-      height: 480
-    }, {
-      width: 768,
-      height: 1024
-    }, {
-      width: 1280,
-      height: 1024
-    }],
+    dimensions: [
+      { width: 320, height: 480 }, 
+      { width: 768, height: 1024 }, 
+      { width: 1280, height: 1024}
+    ],
     extract: true,
     inline: true,
     penthouse: {
@@ -106,9 +101,7 @@ const criticalCss = (src, dest, css) => (
       },
       renderWaitTime: 30
     },
-    ignore: {
-      rule: [/footer-icon/, /icon-/, /phone-number/, /html/, /body-show/]
-    }
+    ignore: { rule: [/footer-icon/, /icon-/, /phone-number/, /html/, /body-show/] }
   }, (err, result) => {
     if (err === null) {
       fs.writeFileSync(`assets/styles/${css}.css`, result.uncritical);
