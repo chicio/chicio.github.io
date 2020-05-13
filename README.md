@@ -28,15 +28,18 @@ Then you can build and launch my website locally with the following commands fro
 
 ```bash
 npm run build
+npm run copy-resources // do this only if you need to update fonts, images and 3D models.
 npm run start
 ```
 
-If you want to build a development version of the site run the following commands from the root folder of this repo:
+If you want to build a debug version of the site run the following commands from the root folder of this repo:
 
 ```bash
-npm run build-dev
+npm run debug
 npm run start
 ```
+
+
 
 ### Overview
 
