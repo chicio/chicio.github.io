@@ -214,22 +214,22 @@ gulp.task('purge-css-blog-post', (done) => purgeCss(
   done
 ))
 
-const revision = (section, done) => {
+const revision = (section) =>
   gulp.src(`./dependencies-${section}.html`)
     .pipe(gulpRevAppend())
     .pipe(gulp.dest('_includes'))
-  done()
-}
-const revJsHome = (done) => revision('js-home', done)
-const revJsBlog = (done) => revision('js-blog', done)
-const revCssHome = (done) => revision('css-home', done)
-const revCssBlogArchive = (done) => revision('css-blog-archive', done)
-const revCssBlogHome = (done) => revision('css-blog-home', done)
-const revCssBlogPost = (done) => revision('css-blog-post', done)
-const revCssBlogTags = (done) => revision('css-blog-tags', done)
-const revCssPrivacyPolicy = (done) => revision('css-privacy-policy', done)
-const revCssCookiePolicy = (done) => revision('css-cookie-policy', done)
-const revCssError = (done) => revision('css-error', done)
+const revAppend = (done) => Promise.all([
+  revision('js-home', done),
+  revision('js-blog', done),
+  revision('css-home', done),
+  revision('css-blog-archive', done),
+  revision('css-blog-home', done),
+  revision('css-blog-post', done),
+  revision('css-blog-tags', done),
+  revision('css-privacy-policy', done),
+  revision('css-cookie-policy', done),
+  revision('css-error', done)
+]).then(() => done())
 
 const serviceWorkerUrlFor = (section) => exec(`./_scripts/generate-service-worker-urls.sh ${section}`)
 const serviceWorkerUrls = (done) => Promise.all([
@@ -243,7 +243,7 @@ const serviceWorkerUrls = (done) => Promise.all([
   serviceWorkerUrlFor('css-privacy-policy'),
   serviceWorkerUrlFor('css-cookie-policy'),
   serviceWorkerUrlFor('css-error')
-])
+]).then(() => done())
 
 const jekyllBuild = (done) => exec(`./_scripts/build.sh`, (err, stdout, stderr) => done())
 
@@ -284,16 +284,7 @@ export const build = gulp.series(
   'images',
   'fonts',
   'models',
-  revJsHome,
-  revJsBlog,
-  revCssHome,
-  revCssBlogArchive,
-  revCssBlogHome,
-  revCssBlogPost,
-  revCssBlogTags,
-  revCssPrivacyPolicy,
-  revCssCookiePolicy,
-  revCssError,
+  revAppend,
   serviceWorkerUrls,
   jekyllBuild, //First build for critical/purge css
   'css-critical',
