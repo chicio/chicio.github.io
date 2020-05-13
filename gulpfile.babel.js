@@ -117,7 +117,7 @@ const criticalCss = (src, dest, css) => (
   })
 )
 
-gulp.task('css-critical', (done) => Promise.all([
+const cssCritical = (done) => Promise.all([
   criticalCss('index', 'critical', CSS_HOME),
   criticalCss('blog/index', 'critical-blog', CSS_BLOG_HOME),
   criticalCss('blog/archive/index', 'critical-blog-post-archive', CSS_BLOG_ARCHIVE),
@@ -126,8 +126,7 @@ gulp.task('css-critical', (done) => Promise.all([
   criticalCss('privacy-policy', 'critical-privacy-policy', CSS_PRIVACY_POLICY),
   criticalCss('cookie-policy', 'critical-cookie-policy', CSS_COOKIE_POLICY),
   criticalCss('offline', 'critical-error', CSS_ERROR),
-  ]).then(() => done())
-)
+  ])
 
 const purgeCss = (cssName, content, whitelist, done) => {
   gulp
@@ -240,7 +239,7 @@ export const copyResources = gulp.series (
 export const watchCss = () => gulp.watch(`${CSS_FOLDER}/*.scss`, gulp.series(
   bundleCss,
   jekyllBuild, //build for critical/purge css
-  'css-critical',
+  cssCritical,
   'purge-css-home',
   'purge-css-blog-home',
   'purge-css-blog-archive',
@@ -259,7 +258,7 @@ export const build = gulp.series(
   revAppend,
   serviceWorkerUrls,
   jekyllBuild, //First build for critical/purge css
-  'css-critical',
+  cssCritical,
   'purge-css-home',
   'purge-css-blog-home',
   'purge-css-blog-archive',
