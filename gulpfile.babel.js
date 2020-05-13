@@ -109,7 +109,6 @@ const criticalCss = (src, dest, css) => (
     }
   })
 )
-
 const cssCritical = (done) => Promise.all([
   criticalCss('index', 'critical', CSS_HOME),
   criticalCss('blog/index', 'critical-blog', CSS_BLOG_HOME),
@@ -119,7 +118,7 @@ const cssCritical = (done) => Promise.all([
   criticalCss('privacy-policy', 'critical-privacy-policy', CSS_PRIVACY_POLICY),
   criticalCss('cookie-policy', 'critical-cookie-policy', CSS_COOKIE_POLICY),
   criticalCss('offline', 'critical-error', CSS_ERROR),
-  ])
+])
 
 const purgeCssUsing = (cssName, content, whitelist) =>
   gulp
@@ -210,9 +209,10 @@ export const copyResources = gulp.series (
 
 export const watchCss = () => gulp.watch(`${CSS_FOLDER}/*.scss`, gulp.series(
   bundleCss,
-  jekyllBuild, //build for critical/purge css
-  cssCritical,
+  jekyllBuild, //First build for critical/purge css
   purgeCss,
+  jekyllBuild, //Generate site with css critical path and purge from unused rules
+  cssCritical
 ))
 
 export const build = gulp.series(
@@ -223,7 +223,7 @@ export const build = gulp.series(
   revAppend,
   serviceWorkerUrls,
   jekyllBuild, //First build for critical/purge css
-  cssCritical,
   purgeCss,
-  jekyllBuild //Generate site with css critical path and purge from unused rules
+  jekyllBuild, //Generate site with css critical path and purge from unused rules
+  cssCritical
 )

@@ -32,7 +32,7 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-          
-      - name: Build and Test    
+      - name: Build    
         run: |
           npm run setup
           npm run build
