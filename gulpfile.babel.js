@@ -101,7 +101,7 @@ const criticalCss = (src, dest, css) => (
       },
       renderWaitTime: 30
     },
-    ignore: { rule: [/footer-icon/, /icon-/, /phone-number/, /html/, /body-show/] }
+    ignore: { rule: [/footer-icon/, /icon-/, /phone-number/] }
   }, (err, result) => {
     if (err === null) {
       fs.writeFileSync(`assets/styles/${css}.css`, result.uncritical);
@@ -114,7 +114,7 @@ const cssCritical = (done) => Promise.all([
   criticalCss('blog/index', 'critical-blog', CSS_BLOG_HOME),
   criticalCss('blog/archive/index', 'critical-blog-post-archive', CSS_BLOG_ARCHIVE),
   criticalCss('blog/tags/index', 'critical-blog-tags', CSS_BLOG_TAGS),
-  criticalCss('2017/05/10/about-me', 'critical-blog-post', CSS_BLOG_POST),
+  criticalCss('2017/08/25/how-to-calculate-reflection-vector.', 'critical-blog-post', CSS_BLOG_POST),
   criticalCss('privacy-policy', 'critical-privacy-policy', CSS_PRIVACY_POLICY),
   criticalCss('cookie-policy', 'critical-cookie-policy', CSS_COOKIE_POLICY),
   criticalCss('offline', 'critical-error', CSS_ERROR),
@@ -129,42 +129,42 @@ const purgeCss = () => Promise.all([
   purgeCssUsing(
     CSS_HOME,
     ['./_site/index.html', './_site/assets/js/index.home.min.js'],
-    ['html'],
+    [],
   ),
   purgeCssUsing(
     CSS_BLOG_ARCHIVE,
     ['./_site/blog/archive/index.html', './_site/assets/js/index.blog.min.js'],
-    ['html'],
+    [],
   ),
   purgeCssUsing(
     CSS_BLOG_HOME,
     ['./_site/blog/index.html', './_site/assets/js/index.blog.min.js'],
-    ['html'],
+    [],
   ),
   purgeCssUsing(
     CSS_BLOG_TAGS,
     ['./_site/blog/tags/index.html', './_site/assets/js/index.blog.min.js'],
-    ['html'],
+    [],
   ),
   purgeCssUsing(
     CSS_ERROR,
     ['./_site/offline.html', './_site/assets/js/index.blog.min.js'],
-    ['html'],
+    [],
   ),
   purgeCssUsing(
     CSS_PRIVACY_POLICY,
     ['./_site/privacy-policy.html', './_site/assets/js/index.blog.min.js'],
-    ['html'],
+    [],
   ),
   purgeCssUsing(
     CSS_COOKIE_POLICY,
     ['./_site/cookie-policy.html', './_site/assets/js/index.blog.min.js'],
-    ['html'],
+    [],
   ),
   purgeCssUsing(
     CSS_BLOG_POST,
     ['./_site/20**/**/**.html', './_site/assets/js/index.blog.min.js'],
-    ['html', 'katex-display'],
+    ['katex-display'],
   )          
 ])
 
