@@ -1,6 +1,6 @@
 
 .blog-pages-button {
-  @include theme($themes, 'background-color', $accent-color);
+  @include theme($themes, 'background-color', $primary-color-dark);
   margin: 20px 5px;
   width: 100px;
   border-radius: 10px;
