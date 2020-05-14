@@ -54,8 +54,6 @@ exclude:
   - gulpfile.js
   - gulpfile.babel.js
   - material
-  - LICENSE.md
-  - README.md
   - dependencies-js-home.html
   - dependencies-js-blog.html
   - dependencies-css-home.html
@@ -72,6 +70,9 @@ exclude:
   - CONTRIBUTING.md
   - CHANGELOG.md
   - PULL_REQUEST_TEMPLATE.md
+  - LICENSE.md
+  - README.md
+  - SECURITY.md
   - vendor
 # limit_posts: 5
 
