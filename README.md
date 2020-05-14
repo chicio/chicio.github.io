@@ -3,6 +3,7 @@
 ![Build](https://github.com/chicio/chicio.github.io/workflows/Build/badge.svg)
 ![Tests](https://github.com/chicio/chicio.github.io/workflows/Tests/badge.svg)
 ![Lighthouse](https://github.com/chicio/chicio.github.io/workflows/Lighthouse/badge.svg)
+![Release](https://github.com/chicio/chicio.github.io/workflows/Release/badge.svg)
 ![dependecies](https://img.shields.io/librariesio/github/chicio/chicio.github.io)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/chicio/chicio.github.io/blob/master/LICENSE.md)
 
@@ -38,8 +39,6 @@ If you want to build a debug version of the site run the following commands from
 npm run debug
 npm run start
 ```
-
-
 
 ### Overview
 
