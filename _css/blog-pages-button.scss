@@ -1,8 +1,10 @@
 
-.blog-pages-button {
-  @include theme($themes, 'background-color', $primary-color-dark);
-  @include theme($themes, 'color', $primary-color-text);
-  margin: 20px 5px;
-  width: 100px;
-  border-radius: 10px;
+.btn {
+  &.blog-pages-button {
+    @include theme($themes, 'background-color', $primary-color-dark);
+    @include theme($themes, 'color', $primary-color-text);
+    margin: 20px 5px;
+    width: 100px;
+    border-radius: 10px;
+  }
 }
