@@ -26,12 +26,12 @@
                 </div>
                 <div class="d-flex flex-row justify-content-center">
                     {% if paginator.previous_page %}
-                    <a class="btn btn-primary blog-pages-button" 
+                    <a class="btn blog-pages-button" 
                        onclick="track('{{ site.data.tracking.action.open_blog_previous_page }}', '{{  site.data.tracking.category.blog_home }}', '{{ site.data.tracking.label.body }}')"
                        href="{{ paginator.previous_page_path }}">Previous</a>
                     {% endif %}
                     {% if paginator.next_page %}
-					<a class="btn btn-primary blog-pages-button" 
+					<a class="btn log-pages-button" 
                        onclick="track('{{ site.data.tracking.action.open_blog_next_page }}', '{{  site.data.tracking.category.blog_home }}', '{{ site.data.tracking.label.body }}')"
                        href="{{ paginator.next_page_path }}">Next</a>
                     {% endif %}
