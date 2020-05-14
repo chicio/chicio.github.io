@@ -31,7 +31,7 @@
                        href="{{ paginator.previous_page_path }}">Previous</a>
                     {% endif %}
                     {% if paginator.next_page %}
-					<a class="btn log-pages-button" 
+					<a class="btn blog-pages-button" 
                        onclick="track('{{ site.data.tracking.action.open_blog_next_page }}', '{{  site.data.tracking.category.blog_home }}', '{{ site.data.tracking.label.body }}')"
                        href="{{ paginator.next_page_path }}">Next</a>
                     {% endif %}
