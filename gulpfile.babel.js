@@ -199,3 +199,20 @@ export const build = gulp.series(
   jekyllBuild, //Generate site with css critical path and purge from unused rules
   cssCritical
 )
+
+export const release = gulp.series(
+  bundleCss,
+  flow,
+  lint,
+  bundleJs,
+  revAppend,
+  serviceWorkerUrls,
+  images,
+  fonts,
+  models,  
+  jekyllBuild, //First build for critical/purge css
+  purgeCss,
+  jekyllBuild, //Generate site with css critical path and purge from unused rules
+  cssCritical,
+  jekyllBuild
+)

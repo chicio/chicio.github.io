@@ -10,6 +10,7 @@
     "debug": "gulp build --env development",
     "watch-css": "gulp watchCss --env production",
     "copy-resources": "gulp copyResources --env production",
+    "release": "gulp release --env production",
     "start": "_scripts/start.sh",
     "test": "_scripts/test.sh",
     "version": "_scripts/version.sh",
