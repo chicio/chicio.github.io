@@ -9,6 +9,7 @@
     "build": "gulp build --env production",
     "debug": "gulp build --env development",
     "watch-css": "gulp watchCss --env production",
+    "images": "gulp images --env production",
     "start": "_scripts/start.sh",
     "test": "_scripts/test.sh",
     "version": "_scripts/version.sh",

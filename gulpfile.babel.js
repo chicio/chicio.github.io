@@ -79,14 +79,6 @@ const copyFiles = (folder) => {
 }
 const fonts = () => copyFiles('fonts')
 const models = () => copyFiles('models')
-export const images = () => {
-  const destination = 'assets/images'
-  return gulp
-    .src([`_images/**/*.*`])
-    .pipe(gulpChanged(destination))
-    .pipe(production(gulpImagemin()))
-    .pipe(gulp.dest(destination))
-}    
 
 const criticalCss = (src, dest, css) => (
   critical.generate({
@@ -174,6 +166,15 @@ const serviceWorkerUrls = (done) => Promise.all([
 ]).then(() => done())
 
 const jekyllBuild = (done) => exec(`./_scripts/build.sh`, (err, stdout, stderr) => done())
+
+export const images = () => {
+  const destination = 'assets/images'
+  return gulp
+    .src([`_images/**/*.*`])
+    .pipe(gulpChanged(destination))
+    .pipe(production(gulpImagemin()))
+    .pipe(gulp.dest(destination))
+}    
 
 export const watchCss = () => gulp.watch(`${CSS_FOLDER}/*.scss`, gulp.series(
   bundleCss,

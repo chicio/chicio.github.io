@@ -3,6 +3,9 @@
 # Clean previous build
 rm -Rf _site/
 
+# Copy images, to eventually add new ones for new posts
+npm run images
+
 # Run pages-gem with bundler.
 # Add the parameter
 # --host=0.0.0.0
