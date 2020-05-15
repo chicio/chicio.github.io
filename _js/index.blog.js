@@ -6,7 +6,7 @@ import { tryToActivatePullToRefresh } from './blog/pull-to-refresh'
 import { registerToServicerWorker } from './common/service-worker'
 import { youtube } from './blog/youtube'
 
-window.ChicioCodingBlog = {
+const ChicioCodingBlog = {
   init: (trackingCategory: string, shouldActivatePullToRefresh: boolean) => {
     document.addEventListener('DOMContentLoaded', () => {
       lazyLoadImages('.blog-image')
@@ -20,3 +20,5 @@ window.ChicioCodingBlog = {
     })
   }
 }
+
+window.ChicioCodingBlog = ChicioCodingBlog
