@@ -79,7 +79,7 @@ const copyFiles = (folder) => {
 }
 const fonts = () => copyFiles('fonts')
 const models = () => copyFiles('models')
-const images = () => {
+export const images = () => {
   const destination = 'assets/images'
   return gulp
     .src([`_images/**/*.*`])
@@ -100,14 +100,15 @@ const criticalCss = (src, dest, css) => (
     ],
     extract: true,
     inline: true,
-    penthouse: {
-      screenshots: {
-        basePath: `_critical-screenshots/${dest}`,
-        type: 'jpeg',
-        quality: 20
-      },
-      renderWaitTime: 30
-    },
+    // DEBUG: decomment to see critical screenshots
+    // penthouse: {
+    //   screenshots: {
+    //     basePath: `_critical-screenshots/${dest}`,
+    //     type: 'jpeg',
+    //     quality: 20
+    //   },
+    //   renderWaitTime: 30
+    // },
     ignore: { rule: [/footer-icon/, /icon-/, /phone-number/] }
   }, (err, result) => {
     if (err === null) {
