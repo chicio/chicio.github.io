@@ -2,17 +2,13 @@ import gulp from 'gulp'
 import gulpConcat from 'gulp-concat'
 import gulpSass from 'gulp-sass'
 import gulpRevAppend from 'gulp-rev-append'
-import gulpUglify from 'gulp-uglify'
 import gulpEslint from 'gulp-eslint'
 import gulpImagemin from 'gulp-imagemin'
 import gulpEnvironments from 'gulp-environments'
 import gulpChanged from 'gulp-changed'
 import purgecss from 'gulp-purgecss'
 import critical from 'critical'
-import source from 'vinyl-source-stream'
-import buffer from 'vinyl-buffer'
-import browserify from 'browserify'
-import babelify from 'babelify'
+import webpack from 'webpack-stream'
 import { exec } from 'child_process'
 import * as fs from 'fs'
 
@@ -25,17 +21,17 @@ const CSS_BLOG_ARCHIVE = `${CSS_BLOG}.archive`
 const CSS_BLOG_HOME = `${CSS_BLOG}.home`
 const CSS_BLOG_POST = `${CSS_BLOG}.post`
 const CSS_BLOG_TAGS = `${CSS_BLOG}.tags`
-const CSS_PRIVACY_POLICY = `style.privacypolicy`
-const CSS_COOKIE_POLICY = `style.cookiepolicy`
-const CSS_ERROR = `style.error`
+const CSS_PRIVACY_POLICY = 'style.privacypolicy'
+const CSS_COOKIE_POLICY = 'style.cookiepolicy'
+const CSS_ERROR = 'style.error'
 const CSS_BASE_PATH = 'assets/styles'
- 
+
 const bundleCSSUsing = (cssName) => (
   gulp.src(`${CSS_FOLDER}/${cssName}.scss`)
     .pipe(gulpSass(production() ? { outputStyle: 'compressed' } : {}))
     .pipe(gulpConcat(`${cssName}.css`))
     .pipe(gulp.dest(CSS_BASE_PATH))
-)    
+)
 const bundleCss = () => Promise.all([
   bundleCSSUsing(CSS_HOME),
   bundleCSSUsing(CSS_BLOG_ARCHIVE),
@@ -47,7 +43,7 @@ const bundleCss = () => Promise.all([
   bundleCSSUsing(CSS_ERROR)
 ])
 
-const flow = (done) => exec(`npm run flow`, (err, stdout, stderr) => done())
+const flow = (done) => exec('npm run flow', (err, stdout, stderr) => done(err))
 
 const lint = () => (
   gulp.src('_js/**')
@@ -56,19 +52,23 @@ const lint = () => (
     .pipe(gulpEslint.failOnError())
 )
 
-const bundleJsUsing = (section) => (
-  browserify({ entries: `_jsbuild/index.${section}.js` })
-    .transform(babelify, { global: true, presets: ['@babel/preset-env'] })
-    .bundle()
-    .pipe(source(`index.${section}.min.js`))
-    .pipe(buffer())
-    .pipe(production(gulpUglify()))
+export const bundleJs = () => {
+  const homeJs = './_jsbuild/index.home.js'
+  const blogJs = './_jsbuild/index.blog.js'
+  return gulp.src([homeJs, blogJs])
+    .pipe(webpack({
+      mode: production() ? 'production' : 'development',
+      performance: { hints: production() ? false : 'warning' },
+      entry: {
+        'index.home': homeJs,
+        'index.blog': blogJs
+      },
+      output: {
+        filename: '[name].min.js'
+      }
+    }))
     .pipe(gulp.dest('assets/js'))
-)
-const bundleJs = () => Promise.all([
-  bundleJsUsing('home'),
-  bundleJsUsing('blog')
-])
+}
 
 const copyFiles = (folder) => {
   const destination = `assets/${folder}`
@@ -121,7 +121,7 @@ const purgeCssUsing = (cssName, content, whitelist = []) => (
     .src(`_site/assets/styles/${cssName}.css`)
     .pipe(purgecss({ content: content, whitelist: whitelist }))
     .pipe(gulp.dest('assets/styles/'))
-)    
+)
 const purgeCss = () => Promise.all([
   purgeCssUsing(CSS_HOME, ['./_site/index.html', './_site/assets/js/index.home.min.js']),
   purgeCssUsing(CSS_BLOG_ARCHIVE, ['./_site/blog/archive/index.html', './_site/assets/js/index.blog.min.js']),
@@ -137,7 +137,7 @@ const revision = (section) => (
   gulp.src(`./dependencies-${section}.html`)
     .pipe(gulpRevAppend())
     .pipe(gulp.dest('_includes'))
-)    
+)
 const revAppend = () => Promise.all([
   revision('js-home'),
   revision('js-blog'),
@@ -165,22 +165,22 @@ const serviceWorkerUrls = (done) => Promise.all([
   serviceWorkerUrlFor('css-error')
 ]).then(() => done())
 
-const jekyllBuild = (done) => exec(`./_scripts/build.sh`, (err, stdout, stderr) => done())
+const jekyllBuild = (done) => exec('./_scripts/build.sh', (err, stdout, stderr) => done(err))
 
 export const images = () => {
   const destination = 'assets/images'
   return gulp
-    .src([`_images/**/*.*`])
+    .src(['_images/**/*.*'])
     .pipe(gulpChanged(destination))
     .pipe(production(gulpImagemin()))
     .pipe(gulp.dest(destination))
-}    
+}
 
 export const watchCss = () => gulp.watch(`${CSS_FOLDER}/*.scss`, gulp.series(
   bundleCss,
-  jekyllBuild, //First build for critical/purge css
+  jekyllBuild, // First build for critical/purge css
   purgeCss,
-  jekyllBuild, //Generate site with css critical path and purge from unused rules
+  jekyllBuild, // Generate site with css critical path and purge from unused rules
   cssCritical
 ))
 
@@ -193,10 +193,10 @@ export const build = gulp.series(
   serviceWorkerUrls,
   images,
   fonts,
-  models,  
-  jekyllBuild, //First build for critical/purge css
+  models,
+  jekyllBuild, // First build for critical/purge css
   purgeCss,
-  jekyllBuild, //Generate site with css critical path and purge from unused rules
+  jekyllBuild, // Generate site with css critical path and purge from unused rules
   cssCritical,
-  jekyllBuild
+  jekyllBuild // Site is ready
 )
