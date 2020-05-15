@@ -45,9 +45,15 @@ Now in my project I'm using [SASS](https://sass-lang.com/), a language that exte
 
 >Mixins allow you to define styles that can be re-used throughout your stylesheet. They are defined using the @mixin at-rule. A mixin’s name can be any Sass identifier, and it can contain any statement other than top-level statements. They can be used to encapsulate styles that can be dropped into a single style rule; they can contain style rules of their own that can be nested in other rules or included at the top level of the stylesheet; or they can just serve to modify variables...Mixins are included into the current context using the @include at-rule, which is written @include <name> or @include <name>(<arguments...>), with the name of the mixin being included.
 
-This is exactly what I need to create my "SASS theme manager". Let's see some code. First of all I defined a list of keys that identify the colors present in my theme.
+This is exactly what I need to create my "SASS theme manager". Let's see some code. First of all I defined a list of keys that identify:
+
+* the theme names
+* the colors present in each of my themes.
 
 ```scss
+$dark-theme: "dark-theme";
+$light-theme: "light-theme";
+
 $primary-color-dark: "primary-color-dark"; 
 $primary-color: "primary-color"; 
 $primary-color-light: "primary-color-light"; 
@@ -68,6 +74,9 @@ Then I created a map that contains the definition of all colors....
 Below you can find the entire implementation described above.
 
 ```scss
+$dark-theme: "dark-theme";
+$light-theme: "light-theme";
+
 $primary-color-dark: "primary-color-dark"; 
 $primary-color: "primary-color"; 
 $primary-color-light: "primary-color-light"; 
@@ -78,10 +87,39 @@ $secondary-text-color: "secondary-text-color";
 $divider-color: "divider-color";
 $general-background: "general-background";
 $general-background-light: "general-background-light";
-/* ...other color variable strings... */
+$box-shadow-light: "box-shadow-light";
+$box-shadow-medium: "box-shadow-medium";
+$syntax-inline: "syntax-inline";
+$syntax-inline-background: "syntax-inline-background";
+$syntax-highlight: "syntax-highlight";
+$syntax-highlight-comment: "syntax-hightlight-comment";
+$syntax-highlight-class-name: "syntax-hightlight-class-name";
+$syntax-highlight-variable-name: "syntax-hightlight-variable-name";
+$syntax-highlight-keyword-type: "syntax-highlight-keyword-type";
+$syntax-highlight-deleted: "synaxt-hightlight-deleted";
+$syntax-highlight-deleted-specific: "synaxt-hightlight-deleted-specific";
+$syntax-highlight-inserted: "synaxt-hightlight-inserted";
+$syntax-highlight-inserted-specific: "synaxt-hightlight-inserted-specific";
+$syntax-highlight-literal-value: "synaxt-hightlight-literal-value";
+$syntax-highlight-name: "synaxt-hightlight-name";
+$syntax-highlight-literal-numbers: "syntax-highlight-literal-numbers";
+$syntax-highlight-error: "syntax-highlight-error";
+$syntax-highlight-attribute: "syntax-highlight-attribute";
+$syntax-highlight-generic-error: "syntax-highlight-generic-error";
+$syntax-highlight-generic-text: "syntax-highlight-generic-text";
+$syntax-highlight-generic-namespace: "syntax-highlight-generic-namespace";
+$syntax-highlight-generic-global: "syntax-highlight-generic-global";
+$syntax-highlight-literal-integer: "syntax-highlight-literal-integer";
+$syntax-highlight-builtin: "syntax-highlight-builtin";
+$syntax-highlight-constant: "syntax-highlight-constant";
+$syntax-highlight-entity: "syntax-highlight-entity";
+$syntax-highlight-tag: "syntax-highlight-tag";
+$syntax-highlight-regex: "syntax-highlight-regex";
+$syntax-highlight-symbol: "syntax-highlight-symbol";
+$syntax-highlight-pseudo: "syntax-highlight-pseudo";
 
 $themes: (
-  light: (
+  $light-theme: (
     $primary-color-dark: #303F9F,
     $primary-color: #3F51B5,
     $primary-color-light: #DFDFF1,
@@ -92,9 +130,38 @@ $themes: (
     $divider-color: #BDBDBD,
     $general-background: #FAFAFA,
     $general-background-light: #FFFFFF,
-    /* ...other association <color variable strings: color>... */
+    $box-shadow-light: rgba(0, 0, 0, 0.2),
+    $box-shadow-medium: rgba(0, 0, 0, 0.375),
+    $syntax-inline: #9C1154,
+    $syntax-inline-background: #f9f2f4,
+    $syntax-highlight: #FFFFFF,
+    $syntax-highlight-comment: #717171,
+    $syntax-highlight-class-name: #405182,
+    $syntax-highlight-variable-name: #008080,
+    $syntax-highlight-keyword-type: #425385,
+    $syntax-highlight-deleted: #ffdddd,
+    $syntax-highlight-deleted-specific: #ffaaaa,
+    $syntax-highlight-inserted: #ddffdd,
+    $syntax-highlight-inserted-specific: #aaffaa,
+    $syntax-highlight-literal-value: #A71133,
+    $syntax-highlight-name: #990000,
+    $syntax-highlight-literal-numbers: #006061,
+    $syntax-highlight-error: #a61717,
+    $syntax-highlight-attribute: #006161,
+    $syntax-highlight-generic-error: #aa0000,
+    $syntax-highlight-generic-text: #525252,
+    $syntax-highlight-generic-namespace: #555555,
+    $syntax-highlight-generic-global: #005C5C,
+    $syntax-highlight-literal-integer: #005657,
+    $syntax-highlight-builtin: #005A7A,
+    $syntax-highlight-constant: #005C5C,
+    $syntax-highlight-entity: #800080,
+    $syntax-highlight-tag: #000080,
+    $syntax-highlight-regex: #00611A,
+    $syntax-highlight-symbol: #990073,
+    $syntax-highlight-pseudo: #999999
   ),
-  dark: (
+  $dark-theme: (
     $primary-color-dark: #303F9F,
     $primary-color: #3F51B5,
     $primary-color-light: #DFDFF1,
@@ -105,21 +172,50 @@ $themes: (
     $divider-color: #575757,
     $general-background: #181918,
     $general-background-light: #363636,
-    /* ...other association <color variable strings: color>... */
+    $box-shadow-light: rgba(0, 0, 0, 0.2),
+    $box-shadow-medium: rgba(0, 0, 0, 0.375),
+    $syntax-inline: #EC61A4,
+    $syntax-inline-background: #363636,
+    $syntax-highlight: #303030,
+    $syntax-highlight-comment: #a1a1a1,
+    $syntax-highlight-class-name: #6081B2,
+    $syntax-highlight-variable-name: #00C0C0,
+    $syntax-highlight-keyword-type: #92A3C5,
+    $syntax-highlight-deleted: #ff6666,
+    $syntax-highlight-deleted-specific: #ff5555,
+    $syntax-highlight-inserted: #99CC99,
+    $syntax-highlight-inserted-specific: #77ff77,
+    $syntax-highlight-literal-value: #F6B6C3,
+    $syntax-highlight-name: #FFB938,
+    $syntax-highlight-literal-numbers: #EFDC1A,
+    $syntax-highlight-error: #FFB3B3,
+    $syntax-highlight-attribute: #C2FFFF,
+    $syntax-highlight-generic-error: #DD0000,
+    $syntax-highlight-generic-text: #A9A9A9,
+    $syntax-highlight-generic-namespace: #e9e9e9,
+    $syntax-highlight-generic-global: #00bAbA,
+    $syntax-highlight-literal-integer: #00A6A7,
+    $syntax-highlight-builtin: #00A9A9,
+    $syntax-highlight-constant: #BAFFAC,
+    $syntax-highlight-entity: #F000F0,
+    $syntax-highlight-tag: #C2C2DB,
+    $syntax-highlight-regex: #00C257,
+    $syntax-highlight-symbol: #FF9EEC,
+    $syntax-highlight-pseudo: #eeeeee
   )
 );
 
 @mixin themeProperty($theme, $property, $color, $additionalPropertiesPositionIsFront, $additionalProperties) {
   @if $additionalPropertiesPositionIsFront {
-    #{$property}: unquote($additionalProperties + ' ' + map-get($theme, $color));
-  } @else { 
+    #{$property}: unquote($additionalProperties + ' ' + map-get($theme, $color));    
+  } @else {
     #{$property}: unquote(map-get($theme, $color) + ' ' + $additionalProperties);
   }
 }
 
 @mixin theme($themes, $property, $color, $additionalPropertiesPositionIsFront: false, $additionalProperties: '') {
-  $light: map-get($themes, 'light');
-  $dark: map-get($themes, 'dark');
+  $light: map-get($themes, $light-theme);
+  $dark: map-get($themes, $dark-theme);
   
   @include themeProperty($light, $property, $color, $additionalPropertiesPositionIsFront, $additionalProperties);
 
