@@ -1,3 +1,6 @@
+$dark-theme: "dark-theme";
+$light-theme: "light-theme";
+
 $primary-color-dark: "primary-color-dark"; 
 $primary-color: "primary-color"; 
 $primary-color-light: "primary-color-light"; 
@@ -40,7 +43,7 @@ $syntax-highlight-symbol: "syntax-highlight-symbol";
 $syntax-highlight-pseudo: "syntax-highlight-pseudo";
 
 $themes: (
-  light: (
+  $light-theme: (
     $primary-color-dark: #303F9F,
     $primary-color: #3F51B5,
     $primary-color-light: #DFDFF1,
@@ -82,7 +85,7 @@ $themes: (
     $syntax-highlight-symbol: #990073,
     $syntax-highlight-pseudo: #999999
   ),
-  dark: (
+  $dark-theme: (
     $primary-color-dark: #303F9F,
     $primary-color: #3F51B5,
     $primary-color-light: #DFDFF1,
@@ -135,8 +138,8 @@ $themes: (
 }
 
 @mixin theme($themes, $property, $color, $additionalPropertiesPositionIsFront: false, $additionalProperties: '') {
-  $light: map-get($themes, 'light');
-  $dark: map-get($themes, 'dark');
+  $light: map-get($themes, $light-theme);
+  $dark: map-get($themes, $dark-theme);
   
   @include themeProperty($light, $property, $color, $additionalPropertiesPositionIsFront, $additionalProperties);
 
