@@ -70,19 +70,23 @@ const bundleJs = () => Promise.all([
   bundleJsUsing('blog')
 ])
 
-const copyFiles = (folder) => (
-  gulp
+const copyFiles = (folder) => {
+  const destination = `assets/${folder}`
+  return gulp
     .src([`_${folder}/**/*.*`])
-    .pipe(gulp.dest(`assets/${folder}`))
-)
+    .pipe(gulpChanged(destination))
+    .pipe(gulp.dest(destination))
+}
 const fonts = () => copyFiles('fonts')
 const models = () => copyFiles('models')
-const images = () => (
-  gulp
+const images = () => {
+  const destination = 'assets/images'
+  return gulp
     .src([`_images/**/*.*`])
+    .pipe(gulpChanged(destination))
     .pipe(production(gulpImagemin()))
-    .pipe(gulp.dest(`assets/images`))
-)    
+    .pipe(gulp.dest(destination))
+}    
 
 const criticalCss = (src, dest, css) => (
   critical.generate({
