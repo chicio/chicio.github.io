@@ -29,7 +29,6 @@ Then you can build and launch my website locally with the following commands fro
 
 ```bash
 npm run build
-npm run copy-resources // do this only if you need to update fonts, images and 3D models.
 npm run start
 ```
 
