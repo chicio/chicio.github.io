@@ -36,7 +36,6 @@ jobs:
         run: |
           npm run setup
           npm run build
-          npm run copy-resources
       - name: Archive generated site source
         uses: actions/upload-artifact@v1
         with:

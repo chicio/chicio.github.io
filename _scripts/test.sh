@@ -2,7 +2,6 @@
 
 # Build site
 npm run build
-npm run copy-resources
 
 # Unit test website
 bundle exec htmlproofer --check-html \

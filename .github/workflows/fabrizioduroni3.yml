@@ -19,7 +19,7 @@ jobs:
       - name: Release   
         run: |
           npm run setup
-          npm run release
+          npm run build
           zip -r site.zip _site/    
       - name: Create Release
         id: create_release
