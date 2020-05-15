@@ -146,6 +146,7 @@
 
   img {
     @include theme($themes, 'box-shadow', $box-shadow-light, true, '0 1px 2px');
+    background-color: #FFFFFF;
     width: 80px;
     height: 80px;
     margin-left: auto;
@@ -180,7 +181,6 @@
 
 @include media-breakpoint-up(md) {
   .timeline-heading {
-
     img {
       background-color: #FFFFFF;
       float: right;
