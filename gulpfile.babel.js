@@ -100,15 +100,11 @@ const criticalCss = (src, dest, css) => (
     ],
     extract: true,
     inline: true,
-    // DEBUG: decomment to see critical screenshots
-    // penthouse: {
-    //   screenshots: {
-    //     basePath: `_critical-screenshots/${dest}`,
-    //     type: 'jpeg',
-    //     quality: 20
-    //   },
-    //   renderWaitTime: 30
-    // },
+    penthouse: {
+      // DEBUG: decomment to see critical screenshots
+      // screenshots: { basePath: `_critical-screenshots/${dest}`, type: 'jpeg', quality: 20 },
+      renderWaitTime: 30
+    },
     ignore: { rule: [/footer-icon/, /icon-/, /phone-number/] }
   }, (err, result) => {
     if (err === null) {
