@@ -86,9 +86,9 @@ const criticalCss = (src, dest, css) => (
     src: `_site/${src}.html`,
     css: [`../assets/styles/${css}.css`],
     dimensions: [
-      { width: 320, height: 480 }, 
-      { width: 768, height: 1024 }, 
-      { width: 1280, height: 1024}
+      { width: 320, height: 480 },
+      { width: 768, height: 1024 },
+      { width: 1280, height: 1024 }
     ],
     extract: true,
     inline: true,
@@ -100,7 +100,7 @@ const criticalCss = (src, dest, css) => (
     ignore: { rule: [/footer-icon/, /icon-/, /phone-number/] }
   }, (err, result) => {
     if (err === null) {
-      fs.writeFileSync(`assets/styles/${css}.css`, result.uncritical);
+      fs.writeFileSync(`assets/styles/${css}.css`, result.uncritical)
       fs.writeFileSync(`_includes/${dest}.css`, result.css)
     }
   })
@@ -113,7 +113,7 @@ const cssCritical = (done) => Promise.all([
   criticalCss('2017/08/25/how-to-calculate-reflection-vector.', 'critical-blog-post', CSS_BLOG_POST),
   criticalCss('privacy-policy', 'critical-privacy-policy', CSS_PRIVACY_POLICY),
   criticalCss('cookie-policy', 'critical-cookie-policy', CSS_COOKIE_POLICY),
-  criticalCss('offline', 'critical-error', CSS_ERROR),
+  criticalCss('offline', 'critical-error', CSS_ERROR)
 ])
 
 const purgeCssUsing = (cssName, content, whitelist = []) => (
@@ -129,8 +129,8 @@ const purgeCss = () => Promise.all([
   purgeCssUsing(CSS_BLOG_TAGS, ['./_site/blog/tags/index.html', './_site/assets/js/index.blog.min.js']),
   purgeCssUsing(CSS_ERROR, ['./_site/offline.html', './_site/assets/js/index.blog.min.js']),
   purgeCssUsing(CSS_PRIVACY_POLICY, ['./_site/privacy-policy.html', './_site/assets/js/index.blog.min.js']),
-  purgeCssUsing(CSS_COOKIE_POLICY,['./_site/cookie-policy.html', './_site/assets/js/index.blog.min.js']),
-  purgeCssUsing(CSS_BLOG_POST, ['./_site/20**/**/**.html', './_site/assets/js/index.blog.min.js'], ['katex-display'])          
+  purgeCssUsing(CSS_COOKIE_POLICY, ['./_site/cookie-policy.html', './_site/assets/js/index.blog.min.js']),
+  purgeCssUsing(CSS_BLOG_POST, ['./_site/20**/**/**.html', './_site/assets/js/index.blog.min.js'], ['katex-display'])
 ])
 
 const revision = (section) => (
