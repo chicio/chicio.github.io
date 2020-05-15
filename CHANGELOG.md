@@ -1,6 +1,13 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [2.1.0](https://github.com/chicio/chicio.github.io/releases/tag/2.1.0)
+Release date: 2020-05-15
+
+#### Added
+
+- gulp cached
+
 ## [2.0.0](https://github.com/chicio/chicio.github.io/releases/tag/2.0.0)
 Release date: 2020-05-14
 
