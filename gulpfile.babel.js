@@ -11,6 +11,7 @@ import webpack from 'webpack-stream'
 import { exec } from 'child_process'
 import * as fs from 'fs'
 import * as path from 'path'
+import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 
 const production = gulpEnvironments.production
 
@@ -62,9 +63,10 @@ export const bundleJs = () => {
         'index.blog': blogJs,
       },
       output: {
-        filename: '[name].hash.min.js',
+        filename: '[name].[hash].min.js',
         chunkFilename: '[name].[chunkhash].bundle.js',
-        publicPath: 'assets/js/'
+        publicPath: 'assets/js/',
+        path: path.resolve(__dirname, 'assets/js'),
       },
       module: {
         rules: [
@@ -85,7 +87,8 @@ export const bundleJs = () => {
         extensions: ['.ts', '.js']
       },
       plugins: [
-        new JekyllSaveHashPlugin()
+        new JekyllSaveHashPlugin(),
+        new CleanWebpackPlugin()
       ]
     }))
     .pipe(gulp.dest('assets/js'))
