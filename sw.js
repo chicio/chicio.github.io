@@ -17,8 +17,8 @@ const dependenciesUrls = [
   {% include service-worker-css-blog-tags-urls.js %}
   {% include service-worker-css-privacy-policy-urls.js %}
   {% include service-worker-css-cookie-policy-urls.js %}
-  {% include service-worker-js-home-urls.js %}
-  {% include service-worker-js-blog-urls.js %}
+  {% include index-js-home-url.js %},
+  {% include index-js-blog-url.js %}
 ]
 
 self.addEventListener('install', (event) => {

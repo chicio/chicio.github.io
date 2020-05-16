@@ -10,6 +10,7 @@ import critical from 'critical'
 import webpack from 'webpack-stream'
 import { exec } from 'child_process'
 import * as fs from 'fs'
+import * as path from 'path'
 
 const production = gulpEnvironments.production
 
@@ -42,6 +43,13 @@ const bundleCss = () => Promise.all([
   bundleCSSUsing(CSS_ERROR)
 ])
 
+class JekyllSaveHashPlugin {
+  apply(compiler) {
+    compiler.hooks.done.tap('Hello World Plugin', (stats) => {
+      fs.writeFileSync(path.join(__dirname, "_data", "webpack.yml"), `hash: ${stats.hash}`);
+    });
+  }
+}
 export const bundleJs = () => {
   const homeJs = './_ts/index.home.ts'
   const blogJs = './_ts/index.blog.ts'
@@ -54,7 +62,7 @@ export const bundleJs = () => {
         'index.blog': blogJs,
       },
       output: {
-        filename: '[name].min.js',
+        filename: '[name].hash.min.js',
         chunkFilename: '[name].[chunkhash].bundle.js',
         publicPath: 'assets/js/'
       },
@@ -75,7 +83,10 @@ export const bundleJs = () => {
       },
       resolve: {
         extensions: ['.ts', '.js']
-      }
+      },
+      plugins: [
+        new JekyllSaveHashPlugin()
+      ]
     }))
     .pipe(gulp.dest('assets/js'))
 }
@@ -149,8 +160,6 @@ const revision = (section) => (
     .pipe(gulp.dest('_includes'))
 )
 const revAppend = () => Promise.all([
-  revision('js-home'),
-  revision('js-blog'),
   revision('css-home'),
   revision('css-blog-archive'),
   revision('css-blog-home'),
@@ -163,8 +172,6 @@ const revAppend = () => Promise.all([
 
 const serviceWorkerUrlFor = (section) => exec(`./_scripts/generate-service-worker-urls.sh ${section}`)
 const serviceWorkerUrls = (done) => Promise.all([
-  serviceWorkerUrlFor('js-home'),
-  serviceWorkerUrlFor('js-blog'),
   serviceWorkerUrlFor('css-home'),
   serviceWorkerUrlFor('css-blog-archive'),
   serviceWorkerUrlFor('css-blog-home'),

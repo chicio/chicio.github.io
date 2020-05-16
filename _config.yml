@@ -54,8 +54,6 @@ exclude:
   - gulpfile.js
   - gulpfile.babel.js
   - material
-  - dependencies-js-home.html
-  - dependencies-js-blog.html
   - dependencies-css-home.html
   - dependencies-css-blog-archive.html
   - dependencies-css-blog-home.html
