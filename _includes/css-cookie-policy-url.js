@@ -1,0 +1,1 @@
+"/assets/dist/style.cookiepolicy.{{ site.data.webpack.hash }}.css"

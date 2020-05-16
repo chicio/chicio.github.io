@@ -1,0 +1,1 @@
+"/assets/dist/index.blog.{{ site.data.webpack.hash }}.min.js"

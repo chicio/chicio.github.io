@@ -1,3 +1,9 @@
-# ignore flow typed folder
+# gulpfile
+gulpfile.babel.js
 
-_js/flow-typed
+# Service worker
+sw.js
+sw-cache-polyfill.js
+
+# ThreeJS
+_ts/home/scene-threejs.js

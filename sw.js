@@ -2,7 +2,6 @@
 ---
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
 importScripts('/sw-cache-polyfill.js')
-importScripts('/sw-analytics.js')
 
 const siteCacheName = 'chicioCodingCache{% include version.txt %}'
 const offlinePageUrl = '/offline.html'
@@ -10,16 +9,16 @@ const dependenciesUrls = [
   "/favicon.ico",
   offlinePageUrl,
   '/assets/images/no-wifi.png',
-  {% include service-worker-css-error-urls.js %}
-  {% include service-worker-css-home-urls.js %}
-  {% include service-worker-css-blog-archive-urls.js %}
-  {% include service-worker-css-blog-home-urls.js %}
-  {% include service-worker-css-blog-post-urls.js %}
-  {% include service-worker-css-blog-tags-urls.js %}
-  {% include service-worker-css-privacy-policy-urls.js %}
-  {% include service-worker-css-cookie-policy-urls.js %}
-  {% include service-worker-js-home-urls.js %}
-  {% include service-worker-js-blog-urls.js %}
+  {% include css-error-url.js %},
+  {% include css-home-url.js %},
+  {% include css-blog-archive-url.js %},
+  {% include css-blog-home-url.js %},
+  {% include css-blog-post-url.js %},
+  {% include css-blog-tags-url.js %},
+  {% include css-privacy-policy-url.js %},
+  {% include css-cookie-policy-url.js %},
+  {% include index-js-home-url.js %},
+  {% include index-js-blog-url.js %}
 ]
 
 self.addEventListener('install', (event) => {
@@ -75,6 +74,7 @@ self.addEventListener('fetch', (event) => {
 })
 
 self.addEventListener('message', (event) => {
+  console.log(event)
   const isARefresh = (event) => event.data.message === 'refresh'
 
   const createDeleteOperationFor = (url, siteCache, requests) => siteCache
@@ -95,10 +95,9 @@ self.addEventListener('message', (event) => {
         Promise.all([
           deleteRequestToBeRefreshed, 
           ...deleteRequestsForImagesToBeRefreshed, 
-          sendAnalyticsEvent(event.data.clientId, '{{ site.data.tracking.action.pull_to_refresh }}', event.data.trackingCategory, '{{ site.data.tracking.label.body }}')
         ])
-          .then(() => sendRefreshCompletedMessageToClient(event))
-          .catch(() => sendRefreshCompletedMessageToClient(event))
+        .then(() => sendRefreshCompletedMessageToClient(event))
+        .catch(() => sendRefreshCompletedMessageToClient(event))
       })
     }) 
   }
