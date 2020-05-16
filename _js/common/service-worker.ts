@@ -1,3 +1,8 @@
+interface ServiceWorkerMessage {
+  message: string;
+  url: string;
+}
+
 const registerToServicerWorker = (): void => {
   if ('serviceWorker' in navigator && navigator.serviceWorker) {
     navigator.serviceWorker.register('/sw.js')
@@ -8,10 +13,10 @@ const registerToServicerWorker = (): void => {
   }
 }
 
-const sendMessageToServiceWorker = (message: any): Promise<any> => {
+const sendMessageToServiceWorker = (message: ServiceWorkerMessage): Promise<unknown> => {
   return new Promise((resolve, reject) => {
     const messageChannel: MessageChannel = new MessageChannel()
-    messageChannel.port1.onmessage = (event: MessageEvent) => {
+    messageChannel.port1.onmessage = (event: MessageEvent): void => {
       if (event.data) {
         if (event.data.error) {
           reject(event.data.error)

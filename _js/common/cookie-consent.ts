@@ -1,6 +1,7 @@
 declare global {
   interface Window {
-    cookieconsent: any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    cookieconsent: any;
   }
 }
 

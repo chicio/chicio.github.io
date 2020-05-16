@@ -1,23 +1,15 @@
 {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
     "extends": [
-        "standard",
-        "plugin:flowtype/recommended"
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
     ],
     "plugins": [
-        "flowtype"
+        "@typescript-eslint"
     ],
     "env": {
         "browser": true
-    },
-    "rules": {
-        "flowtype/no-types-missing-file-annotation": 0
-    },
-    "globals": {
-        "ga": "readonly"
-    },
-    "settings": {
-        "flowtype": {
-          "onlyFilesWithFlowAnnotation": true
-        }
     }
 }

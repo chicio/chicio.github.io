@@ -1,6 +1,51 @@
 import { sendMessageToServiceWorker } from '../common/service-worker'
 import { addCssClass, removeCssClass } from '../common/css-class'
 
+interface PullToRefreshRepository {
+  refreshStarted: boolean;
+  refreshCompleted: boolean;
+  startRefresh(): void;
+  completeRefresh(): void;
+}
+
+interface Point {
+  x: number;
+  y: number;
+}
+
+const areAllAvailable = (
+  pullToRefreshElement: HTMLElement | null, 
+  pullToRefreshStatusElement: HTMLElement | null, 
+  pullToRefreshLoaderElement: HTMLElement | null, 
+  pullableContent: HTMLElement | null
+): boolean => (
+  pullToRefreshElement != null || 
+  pullToRefreshStatusElement != null || 
+  pullToRefreshLoaderElement != null || 
+  pullableContent != null
+)
+
+const createPullToRefreshStatusRepository = (): PullToRefreshRepository => ({
+  refreshStarted: false,
+  refreshCompleted: false,
+  startRefresh(): void {
+    this.refreshStarted = true
+  },
+  completeRefresh(): void {
+    this.refreshCompleted = true
+  }
+})
+
+const createTouchCoordinates = (x: number, y: number): Point => ({ x, y })
+
+const getTouchesCoordinatesFrom = (event: TouchEvent): Point => {
+  return createTouchCoordinates(
+    event.targetTouches[0].screenX,
+    event.targetTouches[0].screenY
+  )
+}
+
+
 const pullToRefresh = (): void => {
   if (!('serviceWorker' in navigator)) {
     return
@@ -15,7 +60,7 @@ const pullToRefresh = (): void => {
     return
   }
 
-  const pullToRefreshElementHeight: number = 100
+  const pullToRefreshElementHeight = 100
   const pullToRefreshStatusRepository = createPullToRefreshStatusRepository()
   const decelerationFactor = 0.5
   let dragStartPoint = createTouchCoordinates(0, 0)
@@ -26,7 +71,7 @@ const pullToRefresh = (): void => {
     pullToRefreshLoaderElement.style.opacity = `${pullToRefreshLoaderOpacity}`
   }
 
-  const isDraggingForPullToRefresh = (yMovement) => window.scrollY <= 0 && yMovement <= 0
+  const isDraggingForPullToRefresh = (yMovement): boolean => window.scrollY <= 0 && yMovement <= 0
 
   const closePullToRefresh = (): void => {
     addCssClass(pullToRefreshElement, 'end-pull')
@@ -111,33 +156,6 @@ const pullToRefresh = (): void => {
       resetPullToRefreshStatus()
     }
   })
-}
-
-const createTouchCoordinates = (x: number, y: number): {x: number, y: number} => ({ x, y })
-
-const createPullToRefreshStatusRepository = () => ({
-  refreshStarted: false,
-  refreshCompleted: false,
-  startRefresh () {
-    this.refreshStarted = true
-  },
-  completeRefresh () {
-    this.refreshCompleted = true
-  }
-})
-
-const areAllAvailable = (
-  pullToRefreshElement: HTMLElement | null, 
-  pullToRefreshStatusElement: HTMLElement | null, 
-  pullToRefreshLoaderElement: HTMLElement | null, 
-  pullableContent: HTMLElement | null
-) => pullToRefreshElement || pullToRefreshStatusElement || pullToRefreshLoaderElement || pullableContent
-
-const getTouchesCoordinatesFrom = (event: TouchEvent): {x: number, y: number} => {
-  return createTouchCoordinates(
-    event.targetTouches[0].screenX,
-    event.targetTouches[0].screenY
-  )
 }
 
 export { pullToRefresh }
