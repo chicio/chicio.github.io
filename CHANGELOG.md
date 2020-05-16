@@ -7,7 +7,8 @@ Release date: 2020-05-16
 #### Added
 
 - TypeScript instead of flow
-- Removed programmmatic tracking for offline pages
+- Removed programmatic tracking for offline pages
+- Lighthouse audit with lhci is now only in the github actions
 
 ## [2.2.0](https://github.com/chicio/chicio.github.io/releases/tag/2.2.0)
 Release date: 2020-05-16
