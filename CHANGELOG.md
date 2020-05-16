@@ -9,6 +9,7 @@ Release date: 2020-05-16
 - TypeScript instead of flow
 - Removed programmatic tracking for offline pages
 - Lighthouse audit with lhci is now only in the github actions
+- Webpack Chucks and Dynamic imports: threejs now is included only if it is needed
 
 ## [2.2.0](https://github.com/chicio/chicio.github.io/releases/tag/2.2.0)
 Release date: 2020-05-16

@@ -51,10 +51,12 @@ export const bundleJs = () => {
       performance: { hints: production() ? false : 'warning' },
       entry: {
         'index.home': homeJs,
-        'index.blog': blogJs
+        'index.blog': blogJs,
       },
       output: {
-        filename: '[name].min.js'
+        filename: '[name].min.js',
+        chunkFilename: '[name].[chunkhash].bundle.js',
+        publicPath: 'assets/js/'
       },
       module: {
         rules: [

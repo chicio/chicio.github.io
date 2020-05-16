@@ -6,4 +6,4 @@ sw.js
 sw-cache-polyfill.js
 
 # ThreeJS
-_ts/home/scene-3D.js
+_ts/home/scene-threejs.js

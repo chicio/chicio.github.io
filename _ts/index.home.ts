@@ -1,4 +1,3 @@
-/* @flow */
 import { cookieConsent } from './common/cookie-consent'
 import { lazyLoadImages } from './common/lazy-load-images'
 import { tabs } from './home/tabs'

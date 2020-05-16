@@ -61,7 +61,6 @@
   },
   "dependencies": {
     "bootstrap": "^4.5.0",
-    "detector-webgl": "^2.0.0",
     "intersection-observer": "^0.10.0",
     "three": "^0.116.1"
   }

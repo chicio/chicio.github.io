@@ -20,15 +20,7 @@ import {
 } from 'three/build/three.module.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
-import isWebGLEnabled from 'detector-webgl'
-import { isAMobileDevice } from '../common/mobile-device-detector'
 import { animation } from '../common/animation'
-
-const scene3D = () => {
-  if (isWebGLEnabled && isAMobileDevice() === false) {
-    setTimeout(sceneThreeJS, 3000)
-  }
-}
 
 const sceneThreeJS = () => {
   const plyLoader = new PLYLoader()
@@ -226,4 +218,4 @@ const setWindowResizeListener = (camera, renderer) => {
   }, false)
 }
 
-export { scene3D }
+export { sceneThreeJS }
