@@ -74,6 +74,7 @@ self.addEventListener('fetch', (event) => {
 })
 
 self.addEventListener('message', (event) => {
+  console.log(event)
   const isARefresh = (event) => event.data.message === 'refresh'
 
   const createDeleteOperationFor = (url, siteCache, requests) => siteCache

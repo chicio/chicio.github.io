@@ -15,6 +15,10 @@ const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 
 const production = gulpEnvironments.production
 
+const SITE_FOLDER = '_site'
+const ASSESTS_DIST_FOLDER = 'assets/dist'
+const JS_HOME = 'index.home'
+const JS_BLOG = 'index.blog'
 const CSS_FOLDER = '_css'
 const CSS_HOME = 'style.home'
 const CSS_BLOG = 'style.blog'
@@ -40,16 +44,16 @@ class JekyllPlugin {
 }
 
 export const bundle = () => {
-  const homeJs = './_ts/index.home.ts'
-  const blogJs = './_ts/index.blog.ts'
-  const styleHome = './_css/style.home.scss'
-  const styleBlogArchive = './_css/style.blog.archive.scss'
-  const styleBlogHome = './_css/style.blog.home.scss'
-  const styleBlogPost = './_css/style.blog.post.scss'
-  const styleBlogTags = './_css/style.blog.tags.scss'
-  const stylePrivacyPolicy = './_css/style.privacypolicy.scss'
-  const styleCookiePolicy = './_css/style.cookiepolicy.scss'
-  const styleError = './_css/style.error.scss'
+  const homeJs = `./_ts/${JS_HOME}.ts`
+  const blogJs = `./_ts/${JS_BLOG}.ts`
+  const styleHome = `./_css/${CSS_HOME}.scss`
+  const styleBlogArchive = `./_css/${CSS_BLOG_ARCHIVE}.scss`
+  const styleBlogHome = `./_css/${CSS_BLOG_HOME}.scss`
+  const styleBlogPost = `./_css/${CSS_BLOG_POST}.scss`
+  const styleBlogTags = `./_css/${CSS_BLOG_TAGS}.scss`
+  const stylePrivacyPolicy = `./_css/${CSS_PRIVACY_POLICY}.scss`
+  const styleCookiePolicy = `./_css/${CSS_COOKIE_POLICY}.scss`
+  const styleError = `./_css/${CSS_ERROR}.scss`
   return gulp.src([
     homeJs, 
     blogJs, 
@@ -79,8 +83,8 @@ export const bundle = () => {
       output: {
         filename: '[name].[hash].min.js',
         chunkFilename: '[name].[chunkhash].bundle.js',
-        publicPath: 'assets/dist/',
-        path: path.resolve(__dirname, 'assets/dist'),
+        publicPath: `${ASSESTS_DIST_FOLDER}/`,
+        path: path.resolve(__dirname, ASSESTS_DIST_FOLDER),
       },
       module: {
         rules: [
@@ -117,7 +121,7 @@ export const bundle = () => {
         new FixStyleOnlyEntriesPlugin()
       ]
     }))
-    .pipe(gulp.dest('assets/dist'))
+    .pipe(gulp.dest(ASSESTS_DIST_FOLDER))
 }
 
 const copyFiles = (folder) => {
@@ -132,9 +136,9 @@ const models = () => copyFiles('models')
 
 const criticalCss = (src, dest, css) => (
   critical.generate({
-    base: '_site/',
-    src: `_site/${src}.html`,
-    css: [`../assets/dist/${css}.${hash()}.css`],
+    base: `${SITE_FOLDER}/`,
+    src: `${SITE_FOLDER}/${src}.html`,
+    css: [`../${ASSESTS_DIST_FOLDER}/${css}.${hash()}.css`],
     dimensions: [
       { width: 320, height: 480 },
       { width: 768, height: 1024 },
@@ -150,7 +154,7 @@ const criticalCss = (src, dest, css) => (
     ignore: { rule: [/footer-icon/, /icon-/, /phone-number/] }
   }, (err, result) => {
     if (err === null) {
-      fs.writeFileSync(`assets/dist/${css}.${hash()}.css`, result.uncritical)
+      fs.writeFileSync(`${ASSESTS_DIST_FOLDER}/${css}.${hash()}.css`, result.uncritical)
       fs.writeFileSync(`_includes/${dest}.css`, result.css)
     }
   })
@@ -168,19 +172,19 @@ const cssCritical = (done) => Promise.all([
 
 const purgeCssUsing = (cssName, content, whitelist = []) => (
   gulp
-    .src(`_site/assets/dist/${cssName}.${hash()}.css`)
+    .src(`${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${cssName}.${hash()}.css`)
     .pipe(purgecss({ content: content, whitelist: whitelist }))
-    .pipe(gulp.dest('assets/dist/'))
+    .pipe(gulp.dest(`${ASSESTS_DIST_FOLDER}/`))
 )
 const purgeCss = () => Promise.all([
-  purgeCssUsing(CSS_HOME, ['./_site/index.html', './_site/assets/js/index.home.min.js']),
-  purgeCssUsing(CSS_BLOG_ARCHIVE, ['./_site/blog/archive/index.html', './_site/assets/js/index.blog.min.js']),
-  purgeCssUsing(CSS_BLOG_HOME, ['./_site/blog/index.html', './_site/assets/js/index.blog.min.js']),
-  purgeCssUsing(CSS_BLOG_TAGS, ['./_site/blog/tags/index.html', './_site/assets/js/index.blog.min.js']),
-  purgeCssUsing(CSS_ERROR, ['./_site/offline.html', './_site/assets/js/index.blog.min.js']),
-  purgeCssUsing(CSS_PRIVACY_POLICY, ['./_site/privacy-policy.html', './_site/assets/js/index.blog.min.js']),
-  purgeCssUsing(CSS_COOKIE_POLICY, ['./_site/cookie-policy.html', './_site/assets/js/index.blog.min.js']),
-  purgeCssUsing(CSS_BLOG_POST, ['./_site/20**/**/**.html', './_site/assets/js/index.blog.min.js'], ['katex-display', 'iframe'])
+  purgeCssUsing(CSS_HOME, [`./${SITE_FOLDER}/index.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_HOME}.${hash()}.min.js`]),
+  purgeCssUsing(CSS_BLOG_ARCHIVE, [`./${SITE_FOLDER}/blog/archive/index.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_BLOG}.${hash()}.min.js`]),
+  purgeCssUsing(CSS_BLOG_HOME, [`./${SITE_FOLDER}/blog/index.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_BLOG}.${hash()}.min.js`]),
+  purgeCssUsing(CSS_BLOG_TAGS, [`./${SITE_FOLDER}/blog/tags/index.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_BLOG}.${hash()}.min.js`]),
+  purgeCssUsing(CSS_ERROR, [`./${SITE_FOLDER}/offline.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_BLOG}.${hash()}.min.js`]),
+  purgeCssUsing(CSS_PRIVACY_POLICY, [`./${SITE_FOLDER}/privacy-policy.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_BLOG}.${hash()}.min.js`]),
+  purgeCssUsing(CSS_COOKIE_POLICY, [`./${SITE_FOLDER}/cookie-policy.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_BLOG}.${hash()}.min.js`]),
+  purgeCssUsing(CSS_BLOG_POST, [`./${SITE_FOLDER}/20**/**/**.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_BLOG}.${hash()}.min.js`], ['katex-display'])
 ])
 
 const jekyllBuild = (done) => exec('./_scripts/build.sh', (err, stdout, stderr) => done(err))
