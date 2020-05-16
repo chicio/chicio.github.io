@@ -1,6 +1,4 @@
-/*  */
-
-const registerToServicerWorker = () => {
+const registerToServicerWorker = (): void => {
   if ('serviceWorker' in navigator && navigator.serviceWorker) {
     navigator.serviceWorker.register('/sw.js')
       .then(() => { console.log('Service Worker registration completed') })
@@ -10,10 +8,10 @@ const registerToServicerWorker = () => {
   }
 }
 
-const sendMessageToServiceWorker = (message) => {
+const sendMessageToServiceWorker = (message: any): Promise<any> => {
   return new Promise((resolve, reject) => {
-    const messageChannel = new MessageChannel()
-    messageChannel.port1.onmessage = (event) => {
+    const messageChannel: MessageChannel = new MessageChannel()
+    messageChannel.port1.onmessage = (event: MessageEvent) => {
       if (event.data) {
         if (event.data.error) {
           reject(event.data.error)
@@ -23,7 +21,7 @@ const sendMessageToServiceWorker = (message) => {
       }
     }
     if (navigator.serviceWorker && navigator.serviceWorker.controller) {
-      navigator.serviceWorker.controller.postMessage(message, ([messageChannel.port2]))
+      navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2])
     }
   })
 }

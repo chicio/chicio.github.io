@@ -1,4 +1,3 @@
-/* @flow */
 const addCssClass = (element: HTMLElement, className: string): void => {
   if (element.classList) {
     element.classList.add(className)

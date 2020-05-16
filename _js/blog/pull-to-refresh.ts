@@ -1,35 +1,26 @@
-/*  */
 import { sendMessageToServiceWorker } from '../common/service-worker'
 import { addCssClass, removeCssClass } from '../common/css-class'
-import { getTrackingClientId } from '../common/tracking'
 
-const tryToActivatePullToRefresh = (trackingCategory, shouldActivatePullToRefresh) => {
-  if (shouldActivatePullToRefresh === true) {
-    pullToRefresh(trackingCategory)
-  }
-}
-
-const pullToRefresh = (trackingCategory) => {
+const pullToRefresh = (): void => {
   if (!('serviceWorker' in navigator)) {
     return
   }
 
-  const pullToRefreshElement = document.querySelector('#pull-to-refresh')
-  const pullToRefreshStatusElement = document.querySelector('#pull-to-refresh-status')
-  const pullToRefreshLoaderElement = document.querySelector('#pull-to-refresh-loader')
-  const pullableContent = document.querySelector('.pullable-content')
+  const pullToRefreshElement: HTMLElement | null = document.querySelector('#pull-to-refresh')
+  const pullToRefreshStatusElement: HTMLElement | null = document.querySelector('#pull-to-refresh-status')
+  const pullToRefreshLoaderElement: HTMLElement | null = document.querySelector('#pull-to-refresh-loader')
+  const pullableContent: HTMLElement | null = document.querySelector('.pullable-content')
 
-  invariant(pullToRefreshElement instanceof HTMLElement)
-  invariant(pullToRefreshStatusElement instanceof HTMLElement)
-  invariant(pullToRefreshLoaderElement instanceof HTMLElement)
-  invariant(pullableContent instanceof HTMLElement)
+  if(!areAllAvailable(pullToRefreshElement, pullToRefreshStatusElement, pullToRefreshLoaderElement, pullableContent)) {
+    return
+  }
 
-  const pullToRefreshElementHeight = 100
+  const pullToRefreshElementHeight: number = 100
   const pullToRefreshStatusRepository = createPullToRefreshStatusRepository()
   const decelerationFactor = 0.5
   let dragStartPoint = createTouchCoordinates(0, 0)
 
-  const dragUpdate = (dragMovement, pullToRefreshLoaderOpacity) => {
+  const dragUpdate = (dragMovement: number, pullToRefreshLoaderOpacity: number): void => {
     pullToRefreshElement.style.transform = `translateY(${dragMovement}px)`
     pullableContent.style.transform = `translateY(${dragMovement}px)`
     pullToRefreshLoaderElement.style.opacity = `${pullToRefreshLoaderOpacity}`
@@ -37,7 +28,7 @@ const pullToRefresh = (trackingCategory) => {
 
   const isDraggingForPullToRefresh = (yMovement) => window.scrollY <= 0 && yMovement <= 0
 
-  const closePullToRefresh = () => {
+  const closePullToRefresh = (): void => {
     addCssClass(pullToRefreshElement, 'end-pull')
     addCssClass(pullableContent, 'end-pull')
     pullToRefreshElement.style.transform = ''
@@ -45,45 +36,45 @@ const pullToRefresh = (trackingCategory) => {
     pullToRefreshLoaderElement.style.opacity = '0'
   }
 
-  const preparePullToRefreshToStart = () => {
+  const preparePullToRefreshToStart = (): void => {
     addCssClass(pullToRefreshElement, 'start-pull')
     removeCssClass(pullToRefreshElement, 'end-pull')
     addCssClass(pullableContent, 'start-pull')
     removeCssClass(pullableContent, 'end-pull')
   }
 
-  const showPullToRefresh = () => {
+  const showPullToRefresh = (): void => {
     addCssClass(pullToRefreshElement, 'visible-pull')
     removeCssClass(pullToRefreshElement, 'hidden-pull')
   }
 
-  const setRefreshingStatus = () => {
+  const setRefreshingStatus = (): void => {
     pullToRefreshStatusElement.innerHTML = 'Refreshing'
     addCssClass(pullToRefreshLoaderElement, 'animate')
   }
 
-  const isPullToRefreshDragCompleted = (yAbsoluteMovement) => yAbsoluteMovement >= pullToRefreshElementHeight
+  const isPullToRefreshDragCompleted = (yAbsoluteMovement: number): boolean => yAbsoluteMovement >= pullToRefreshElementHeight
 
-  const setRefreshStatusCompleted = () => {
+  const setRefreshStatusCompleted = (): void => {
     pullToRefreshStatusElement.innerHTML = 'Refresh completed'
     addCssClass(pullToRefreshElement, 'hidden-pull')
     removeCssClass(pullToRefreshElement, 'visible-pull')
   }
 
-  const resetPullToRefreshStatus = () => {
+  const resetPullToRefreshStatus = (): void => {
     pullToRefreshStatusElement.innerHTML = 'Pull down to refresh'
     removeCssClass(pullToRefreshLoaderElement, 'animate')
   }
 
-  document.addEventListener('touchstart', (event) => {
+  document.addEventListener('touchstart', (event: TouchEvent) => {
     dragStartPoint = getTouchesCoordinatesFrom(event)
     preparePullToRefreshToStart()
   }, { passive: false })
 
-  document.addEventListener('touchmove', (event) => {
+  document.addEventListener('touchmove', (event: TouchEvent) => {
     const dragCurrentPoint = getTouchesCoordinatesFrom(event)
-    const yMovement = (dragStartPoint.y - dragCurrentPoint.y) * decelerationFactor
-    const yAbsoluteMovement = Math.abs(yMovement)
+    const yMovement: number = (dragStartPoint.y - dragCurrentPoint.y) * decelerationFactor
+    const yAbsoluteMovement: number = Math.abs(yMovement)
 
     if (isDraggingForPullToRefresh(yMovement) && !pullToRefreshStatusRepository.refreshStarted) {
       event.preventDefault()
@@ -94,7 +85,7 @@ const pullToRefresh = (trackingCategory) => {
         pullToRefreshStatusRepository.startRefresh()
         dragUpdate(0, 1)
         setRefreshingStatus()
-        sendMessageToServiceWorker({ message: 'refresh', url: window.location.href, clientId: getTrackingClientId(), trackingCategory }).then(() => {
+        sendMessageToServiceWorker({ message: 'refresh', url: window.location.href }).then(() => {
           pullToRefreshStatusRepository.completeRefresh()
           setTimeout(() => {
             setRefreshStatusCompleted()
@@ -122,7 +113,7 @@ const pullToRefresh = (trackingCategory) => {
   })
 }
 
-const createTouchCoordinates = (x, y) => ({ x, y })
+const createTouchCoordinates = (x: number, y: number): {x: number, y: number} => ({ x, y })
 
 const createPullToRefreshStatusRepository = () => ({
   refreshStarted: false,
@@ -135,17 +126,18 @@ const createPullToRefreshStatusRepository = () => ({
   }
 })
 
-const invariant = (statement) => {
-  if (!statement) {
-    throw new Error('Pull to refresh invariant failed')
-  }
-}
+const areAllAvailable = (
+  pullToRefreshElement: HTMLElement | null, 
+  pullToRefreshStatusElement: HTMLElement | null, 
+  pullToRefreshLoaderElement: HTMLElement | null, 
+  pullableContent: HTMLElement | null
+) => pullToRefreshElement || pullToRefreshStatusElement || pullToRefreshLoaderElement || pullableContent
 
-const getTouchesCoordinatesFrom = (event) => {
+const getTouchesCoordinatesFrom = (event: TouchEvent): {x: number, y: number} => {
   return createTouchCoordinates(
     event.targetTouches[0].screenX,
     event.targetTouches[0].screenY
   )
 }
 
-export { tryToActivatePullToRefresh }
+export { pullToRefresh }

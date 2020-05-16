@@ -1,20 +1,19 @@
-/* @flow */
 import { addCssClass, removeCssClass } from '../common/css-class'
 
 const tabs = (): void => {
-  const tabs: NodeList<HTMLElement> = document.querySelectorAll('ul.nav-tabs > li')
+  const tabs: NodeList = document.querySelectorAll('ul.nav-tabs > li')
   forEach(tabs, (tab: HTMLElement) => {
     tab.addEventListener('click', (event: Event) => tabClick(tabs, event))
   })
 }
 
-const forEach = (list: NodeList<HTMLElement>, operation: (HTMLElement) => void): void => {
+const forEach = (list: NodeList, operation: (HTMLElement) => void): void => {
   for (let i: number = 0; i < list.length; i++) {
     operation(list.item(i))
   }
 }
 
-const tabClick = (tabs: NodeList<HTMLElement>, event: Event): void => {
+const tabClick = (tabs: NodeList, event: Event): void => {
   event.preventDefault()
   deactivateAll(tabs)
   activateTabFor(event)
@@ -23,11 +22,11 @@ const tabClick = (tabs: NodeList<HTMLElement>, event: Event): void => {
 }
 
 const activateTabFor = (event: Event): void => {
-  const element: HTMLElement = (event.currentTarget: any)
+  const element: HTMLElement = (<HTMLElement>event.currentTarget)
   addCssClass(element, 'active')
 }
 
-const deactivateAll = (tabs: NodeList<HTMLElement>): void => forEach(tabs, (tab: HTMLElement) => removeCssClass(tab, 'active'))
+const deactivateAll = (tabs: NodeList): void => forEach(tabs, (tab: HTMLElement) => removeCssClass(tab, 'active'))
 
 const deactivateAllTabPanes = (): void => forEach(
   document.querySelectorAll('.tab-pane'),
@@ -35,10 +34,10 @@ const deactivateAllTabPanes = (): void => forEach(
 )
 
 const activateTabPaneFor = (event: Event): void => {
-  const element: HTMLElement = (event.target: any)
-  const activePaneId: ?string = element.getAttribute('href')
+  const element: HTMLElement = (<HTMLElement>event.target)
+  const activePaneId: string | null = element.getAttribute('href')
   if (activePaneId) {
-    const activePane: ?HTMLElement = document.querySelector(activePaneId)
+    const activePane: HTMLElement | null = document.querySelector(activePaneId)
     if (activePane) {
       addCssClass(activePane, 'active')
     }

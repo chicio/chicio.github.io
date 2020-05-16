@@ -1,19 +1,18 @@
-/* @flow */
 const youtube = () => {
   const intersectionObserver: IntersectionObserver = new IntersectionObserver(
     onIntersection,
     { rootMargin: '50px 0px', threshold: 0.01 }
   )
-  const videos: NodeList<HTMLElement> = document.querySelectorAll('.youtube')
+  const videos: NodeList = document.querySelectorAll('.youtube')
   for (let i: number = 0; i < videos.length; i++) {
-    intersectionObserver.observe(videos[i])
+    intersectionObserver.observe((<Element>videos[i]))
   }
 }
 
 const onIntersection = (entries: IntersectionObserverEntry[], observer: IntersectionObserver): void => {
   for (let i: number = 0; i < entries.length; i++) {
     if (entries[i].intersectionRatio > 0) {
-      loadYoutube(entries[i].target, observer)
+      loadYoutube((<HTMLElement>entries[i].target), observer)
     }
   }
 }

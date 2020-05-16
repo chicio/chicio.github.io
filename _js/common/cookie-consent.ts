@@ -1,4 +1,9 @@
-/* @flow */
+declare global {
+  interface Window {
+    cookieconsent: any
+  }
+}
+
 const cookieConsent = (): void => {
   window.cookieconsent.initialise({
     palette: {

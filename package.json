@@ -4,7 +4,6 @@
   "description": "Fabrizio Duroni aka 'chicio' website",
   "main": "index.js",
   "scripts": {
-    "flow": "_scripts/flow.sh",
     "setup": "_scripts/setup.sh",
     "build": "gulp build --env production",
     "debug": "gulp build --env development",
@@ -30,7 +29,8 @@
     "android",
     "mobile-apps",
     "native-apps",
-    "native"
+    "native",
+    "typescript"
   ],
   "author": "Fabrizion Duroni",
   "license": "MIT",
@@ -52,17 +52,16 @@
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-promise": "4.2.1",
     "eslint-plugin-standard": "4.0.1",
-    "flow-bin": "0.124.0",
-    "flow-remove-types": "2.124.0",
     "gulp": "4.0.2",
     "gulp-changed": "4.0.2",
     "gulp-concat": "2.6.1",
     "gulp-environments": "1.0.0",
-    "gulp-eslint": "6.0.0",
     "gulp-imagemin": "7.1.0",
     "gulp-purgecss": "2.2.0",
     "gulp-rev-append": "0.1.8",
     "gulp-sass": "4.1.0",
+    "ts-loader": "7.0.4",
+    "typescript": "3.9.2",
     "webpack-stream": "5.2.1"
   },
   "dependencies": {

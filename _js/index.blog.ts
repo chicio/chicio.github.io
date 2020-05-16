@@ -1,19 +1,18 @@
-/*  */
 import { cookieConsent } from './common/cookie-consent'
 import { lazyLoadImages } from './common/lazy-load-images'
-import { tabs } from './home/tabs'
-import { homeHeaderAnimation } from './home/home-header-animation'
+import { disqus } from './blog/disqus'
+import { pullToRefresh } from './blog/pull-to-refresh'
 import { registerToServicerWorker } from './common/service-worker'
-import { scene3D } from './home/scene-3D'
+import { youtube } from './blog/youtube'
 
 document.addEventListener('DOMContentLoaded', () => {
-  tabs()
-  lazyLoadImages('.profile-image, .who-am-i-icon, .project-image, .timeline-image')
+  lazyLoadImages('.blog-image')
 })
 
 window.addEventListener('load', () => {
   registerToServicerWorker()
-  homeHeaderAnimation()
-  scene3D()
   cookieConsent()
+  pullToRefresh()
+  youtube()
+  disqus()
 })

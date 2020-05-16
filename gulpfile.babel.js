@@ -2,7 +2,6 @@ import gulp from 'gulp'
 import gulpConcat from 'gulp-concat'
 import gulpSass from 'gulp-sass'
 import gulpRevAppend from 'gulp-rev-append'
-import gulpEslint from 'gulp-eslint'
 import gulpImagemin from 'gulp-imagemin'
 import gulpEnvironments from 'gulp-environments'
 import gulpChanged from 'gulp-changed'
@@ -43,18 +42,9 @@ const bundleCss = () => Promise.all([
   bundleCSSUsing(CSS_ERROR)
 ])
 
-const flow = (done) => exec('npm run flow', (err, stdout, stderr) => done(err))
-
-const lint = () => (
-  gulp.src('_js/**')
-    .pipe(gulpEslint())
-    .pipe(gulpEslint.format())
-    .pipe(gulpEslint.failOnError())
-)
-
 export const bundleJs = () => {
-  const homeJs = './_jsbuild/index.home.js'
-  const blogJs = './_jsbuild/index.blog.js'
+  const homeJs = './_js/index.home.ts'
+  const blogJs = './_js/index.blog.ts'
   return gulp.src([homeJs, blogJs])
     .pipe(webpack({
       mode: production() ? 'production' : 'development',
@@ -65,6 +55,18 @@ export const bundleJs = () => {
       },
       output: {
         filename: '[name].min.js'
+      },
+      module: {
+        rules: [
+          {
+            test: /\.ts?$/,
+            use: 'ts-loader',
+            exclude: /node_modules/
+          }
+        ]
+      },
+      resolve: {
+        extensions: ['.ts', '.js']
       }
     }))
     .pipe(gulp.dest('assets/js'))
@@ -186,8 +188,6 @@ export const watchCss = () => gulp.watch(`${CSS_FOLDER}/*.scss`, gulp.series(
 
 export const build = gulp.series(
   bundleCss,
-  flow,
-  lint,
   bundleJs,
   revAppend,
   serviceWorkerUrls,

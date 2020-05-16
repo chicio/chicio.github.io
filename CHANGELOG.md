@@ -1,6 +1,14 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [2.2.0](https://github.com/chicio/chicio.github.io/releases/tag/2.3.0)
+Release date: 2020-05-16
+
+#### Added
+
+- TypeScript instead of flow
+- Removed programmmatic tracking for offline pages
+
 ## [2.2.0](https://github.com/chicio/chicio.github.io/releases/tag/2.2.0)
 Release date: 2020-05-16
 

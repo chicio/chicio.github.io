@@ -2,7 +2,6 @@
 ---
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
 importScripts('/sw-cache-polyfill.js')
-importScripts('/sw-analytics.js')
 
 const siteCacheName = 'chicioCodingCache{% include version.txt %}'
 const offlinePageUrl = '/offline.html'
@@ -95,10 +94,9 @@ self.addEventListener('message', (event) => {
         Promise.all([
           deleteRequestToBeRefreshed, 
           ...deleteRequestsForImagesToBeRefreshed, 
-          sendAnalyticsEvent(event.data.clientId, '{{ site.data.tracking.action.pull_to_refresh }}', event.data.trackingCategory, '{{ site.data.tracking.label.body }}')
         ])
-          .then(() => sendRefreshCompletedMessageToClient(event))
-          .catch(() => sendRefreshCompletedMessageToClient(event))
+        .then(() => sendRefreshCompletedMessageToClient(event))
+        .catch(() => sendRefreshCompletedMessageToClient(event))
       })
     }) 
   }

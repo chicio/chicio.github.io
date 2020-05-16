@@ -1,4 +1,3 @@
-/* @flow */
 import { addCssClass } from '../common/css-class'
 
 const animation = (elementId: string, animation: string): void => {

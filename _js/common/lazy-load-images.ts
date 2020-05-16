@@ -1,4 +1,3 @@
-/* @flow */
 import 'intersection-observer'
 import { addCssClass, removeCssClass } from './css-class'
 
@@ -7,16 +6,16 @@ const lazyLoadImages = (selector: string): void => {
     onIntersection,
     { rootMargin: '50px 0px', threshold: 0.01 }
   )
-  const images: NodeList<HTMLElement> = document.querySelectorAll(selector)
+  const images: NodeList = document.querySelectorAll(selector)
   for (let i: number = 0; i < images.length; i++) {
-    intersectionObserver.observe(images[i])
+    intersectionObserver.observe((<Element>images[i]))
   }
 }
 
 const onIntersection = (entries: IntersectionObserverEntry[], observer: IntersectionObserver): void => {
   for (let i: number = 0; i < entries.length; i++) {
     if (entries[i].intersectionRatio > 0) {
-      eventuallyLoadImage(entries[i].target, observer)
+      eventuallyLoadImage((<HTMLElement>entries[i].target), observer)
     }
   }
 }
