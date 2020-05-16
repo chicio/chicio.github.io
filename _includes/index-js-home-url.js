@@ -1,1 +1,1 @@
-"/assets/js/index.home.{{ site.data.webpack.hash }}.min.js"
+"/assets/dist/index.home.{{ site.data.webpack.hash }}.min.js"

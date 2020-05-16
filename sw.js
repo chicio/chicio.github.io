@@ -9,14 +9,14 @@ const dependenciesUrls = [
   "/favicon.ico",
   offlinePageUrl,
   '/assets/images/no-wifi.png',
-  {% include service-worker-css-error-urls.js %}
-  {% include service-worker-css-home-urls.js %}
-  {% include service-worker-css-blog-archive-urls.js %}
-  {% include service-worker-css-blog-home-urls.js %}
-  {% include service-worker-css-blog-post-urls.js %}
-  {% include service-worker-css-blog-tags-urls.js %}
-  {% include service-worker-css-privacy-policy-urls.js %}
-  {% include service-worker-css-cookie-policy-urls.js %}
+  {% include css-error-url.js %},
+  {% include css-home-url.js %},
+  {% include css-blog-archive-url.js %},
+  {% include css-blog-home-url.js %},
+  {% include css-blog-post-url.js %},
+  {% include css-blog-tags-url.js %},
+  {% include css-privacy-policy-url.js %},
+  {% include css-cookie-policy-url.js %},
   {% include index-js-home-url.js %},
   {% include index-js-blog-url.js %}
 ]

@@ -1,0 +1,1 @@
+"/assets/dist/style.blog.post.{{ site.data.webpack.hash }}.css"

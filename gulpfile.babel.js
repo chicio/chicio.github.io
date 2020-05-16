@@ -1,7 +1,4 @@
 import gulp from 'gulp'
-import gulpConcat from 'gulp-concat'
-import gulpSass from 'gulp-sass'
-import gulpRevAppend from 'gulp-rev-append'
 import gulpImagemin from 'gulp-imagemin'
 import gulpEnvironments from 'gulp-environments'
 import gulpChanged from 'gulp-changed'
@@ -12,6 +9,9 @@ import { exec } from 'child_process'
 import * as fs from 'fs'
 import * as path from 'path'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+
+const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 
 const production = gulpEnvironments.production
 
@@ -25,48 +25,62 @@ const CSS_BLOG_TAGS = `${CSS_BLOG}.tags`
 const CSS_PRIVACY_POLICY = 'style.privacypolicy'
 const CSS_COOKIE_POLICY = 'style.cookiepolicy'
 const CSS_ERROR = 'style.error'
-const CSS_BASE_PATH = 'assets/styles'
 
-const bundleCSSUsing = (cssName) => (
-  gulp.src(`${CSS_FOLDER}/${cssName}.scss`)
-    .pipe(gulpSass(production() ? { outputStyle: 'compressed' } : {}))
-    .pipe(gulpConcat(`${cssName}.css`))
-    .pipe(gulp.dest(CSS_BASE_PATH))
-)
-const bundleCss = () => Promise.all([
-  bundleCSSUsing(CSS_HOME),
-  bundleCSSUsing(CSS_BLOG_ARCHIVE),
-  bundleCSSUsing(CSS_BLOG_HOME),
-  bundleCSSUsing(CSS_BLOG_POST),
-  bundleCSSUsing(CSS_BLOG_TAGS),
-  bundleCSSUsing(CSS_PRIVACY_POLICY),
-  bundleCSSUsing(CSS_COOKIE_POLICY),
-  bundleCSSUsing(CSS_ERROR)
-])
+const hash = () => {
+  const webpack = fs.readFileSync(path.join(__dirname, "_data", "webpack.yml"), 'utf8')
+  return webpack.split(" ")[1]
+}
 
-class JekyllSaveHashPlugin {
+class JekyllPlugin {
   apply(compiler) {
-    compiler.hooks.done.tap('Hello World Plugin', (stats) => {
+    compiler.hooks.done.tap('JekyllPlugin - save hash', (stats) => {
       fs.writeFileSync(path.join(__dirname, "_data", "webpack.yml"), `hash: ${stats.hash}`);
     });
   }
 }
-export const bundleJs = () => {
+
+export const bundle = () => {
   const homeJs = './_ts/index.home.ts'
   const blogJs = './_ts/index.blog.ts'
-  return gulp.src([homeJs, blogJs])
-    .pipe(webpack({
+  const styleHome = './_css/style.home.scss'
+  const styleBlogArchive = './_css/style.blog.archive.scss'
+  const styleBlogHome = './_css/style.blog.home.scss'
+  const styleBlogPost = './_css/style.blog.post.scss'
+  const styleBlogTags = './_css/style.blog.tags.scss'
+  const stylePrivacyPolicy = './_css/style.privacypolicy.scss'
+  const styleCookiePolicy = './_css/style.cookiepolicy.scss'
+  const styleError = './_css/style.error.scss'
+  return gulp.src([
+    homeJs, 
+    blogJs, 
+    styleHome, 
+    styleBlogArchive, 
+    styleBlogHome, 
+    styleBlogPost, 
+    styleBlogTags, 
+    stylePrivacyPolicy,
+    styleCookiePolicy,
+    styleError
+  ]).pipe(webpack({
       mode: production() ? 'production' : 'development',
       performance: { hints: production() ? false : 'warning' },
       entry: {
         'index.home': homeJs,
         'index.blog': blogJs,
+        'style.home': styleHome,
+        'style.blog.archive': styleBlogArchive,
+        'style.blog.home': styleBlogHome,
+        'style.blog.post': styleBlogPost,
+        'style.blog.tags': styleBlogTags,
+        'style.privacypolicy': stylePrivacyPolicy,
+        'style.cookiepolicy': styleCookiePolicy,
+        'style.error': styleError
       },
       output: {
         filename: '[name].[hash].min.js',
         chunkFilename: '[name].[chunkhash].bundle.js',
-        publicPath: 'assets/js/',
-        path: path.resolve(__dirname, 'assets/js'),
+        publicPath: 'assets/dist/',
+        path: path.resolve(__dirname, 'assets/dist'),
       },
       module: {
         rules: [
@@ -80,18 +94,30 @@ export const bundleJs = () => {
             test: /\.ts?$/,
             use: ['ts-loader'],
             exclude: /node_modules/
-          }
+          },
+          {
+            test: /\.s[ac]ss$/i,
+            use: [
+              MiniCssExtractPlugin.loader,
+              'css-loader',
+              'sass-loader',
+            ],
+          },
         ]
       },
       resolve: {
         extensions: ['.ts', '.js']
       },
       plugins: [
-        new JekyllSaveHashPlugin(),
-        new CleanWebpackPlugin()
+        new JekyllPlugin(),
+        new CleanWebpackPlugin(),
+        new MiniCssExtractPlugin({
+          filename: '[name].[hash].css'
+        }),
+        new FixStyleOnlyEntriesPlugin()
       ]
     }))
-    .pipe(gulp.dest('assets/js'))
+    .pipe(gulp.dest('assets/dist'))
 }
 
 const copyFiles = (folder) => {
@@ -108,7 +134,7 @@ const criticalCss = (src, dest, css) => (
   critical.generate({
     base: '_site/',
     src: `_site/${src}.html`,
-    css: [`../assets/styles/${css}.css`],
+    css: [`../assets/dist/${css}.${hash()}.css`],
     dimensions: [
       { width: 320, height: 480 },
       { width: 768, height: 1024 },
@@ -124,7 +150,7 @@ const criticalCss = (src, dest, css) => (
     ignore: { rule: [/footer-icon/, /icon-/, /phone-number/] }
   }, (err, result) => {
     if (err === null) {
-      fs.writeFileSync(`assets/styles/${css}.css`, result.uncritical)
+      fs.writeFileSync(`assets/dist/${css}.${hash()}.css`, result.uncritical)
       fs.writeFileSync(`_includes/${dest}.css`, result.css)
     }
   })
@@ -142,9 +168,9 @@ const cssCritical = (done) => Promise.all([
 
 const purgeCssUsing = (cssName, content, whitelist = []) => (
   gulp
-    .src(`_site/assets/styles/${cssName}.css`)
+    .src(`_site/assets/dist/${cssName}.${hash()}.css`)
     .pipe(purgecss({ content: content, whitelist: whitelist }))
-    .pipe(gulp.dest('assets/styles/'))
+    .pipe(gulp.dest('assets/dist/'))
 )
 const purgeCss = () => Promise.all([
   purgeCssUsing(CSS_HOME, ['./_site/index.html', './_site/assets/js/index.home.min.js']),
@@ -154,36 +180,8 @@ const purgeCss = () => Promise.all([
   purgeCssUsing(CSS_ERROR, ['./_site/offline.html', './_site/assets/js/index.blog.min.js']),
   purgeCssUsing(CSS_PRIVACY_POLICY, ['./_site/privacy-policy.html', './_site/assets/js/index.blog.min.js']),
   purgeCssUsing(CSS_COOKIE_POLICY, ['./_site/cookie-policy.html', './_site/assets/js/index.blog.min.js']),
-  purgeCssUsing(CSS_BLOG_POST, ['./_site/20**/**/**.html', './_site/assets/js/index.blog.min.js'], ['katex-display'])
+  purgeCssUsing(CSS_BLOG_POST, ['./_site/20**/**/**.html', './_site/assets/js/index.blog.min.js'], ['katex-display', 'iframe'])
 ])
-
-const revision = (section) => (
-  gulp.src(`./dependencies-${section}.html`)
-    .pipe(gulpRevAppend())
-    .pipe(gulp.dest('_includes'))
-)
-const revAppend = () => Promise.all([
-  revision('css-home'),
-  revision('css-blog-archive'),
-  revision('css-blog-home'),
-  revision('css-blog-post'),
-  revision('css-blog-tags'),
-  revision('css-privacy-policy'),
-  revision('css-cookie-policy'),
-  revision('css-error')
-])
-
-const serviceWorkerUrlFor = (section) => exec(`./_scripts/generate-service-worker-urls.sh ${section}`)
-const serviceWorkerUrls = (done) => Promise.all([
-  serviceWorkerUrlFor('css-home'),
-  serviceWorkerUrlFor('css-blog-archive'),
-  serviceWorkerUrlFor('css-blog-home'),
-  serviceWorkerUrlFor('css-blog-post'),
-  serviceWorkerUrlFor('css-blog-tags'),
-  serviceWorkerUrlFor('css-privacy-policy'),
-  serviceWorkerUrlFor('css-cookie-policy'),
-  serviceWorkerUrlFor('css-error')
-]).then(() => done())
 
 const jekyllBuild = (done) => exec('./_scripts/build.sh', (err, stdout, stderr) => done(err))
 
@@ -196,8 +194,8 @@ export const images = () => {
     .pipe(gulp.dest(destination))
 }
 
-export const watchCss = () => gulp.watch(`${CSS_FOLDER}/*.scss`, gulp.series(
-  bundleCss,
+export const watchBundle = () => gulp.watch(`${CSS_FOLDER}/*.scss`, gulp.series(
+  bundle,
   jekyllBuild, // First build for critical/purge css
   purgeCss,
   jekyllBuild, // Generate site with css critical path and purge from unused rules
@@ -205,10 +203,7 @@ export const watchCss = () => gulp.watch(`${CSS_FOLDER}/*.scss`, gulp.series(
 ))
 
 export const build = gulp.series(
-  bundleCss,
-  bundleJs,
-  revAppend,
-  serviceWorkerUrls,
+  bundle,
   images,
   fonts,
   models,
