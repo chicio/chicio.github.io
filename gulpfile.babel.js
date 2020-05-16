@@ -4,7 +4,8 @@ import gulpEnvironments from 'gulp-environments'
 import gulpChanged from 'gulp-changed'
 import purgecss from 'gulp-purgecss'
 import critical from 'critical'
-import webpack from 'webpack-stream'
+import webpackStream from 'webpack-stream'
+import webpack from 'webpack'
 import { exec } from 'child_process'
 import * as fs from 'fs'
 import * as path from 'path'
@@ -16,7 +17,9 @@ const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 const production = gulpEnvironments.production
 
 const SITE_FOLDER = '_site'
-const ASSESTS_DIST_FOLDER = 'assets/dist'
+const ASSETS_FOLDER = 'assets'
+const ASSESTS_DIST_FOLDER = `${ASSETS_FOLDER}/dist`
+const JS_FOLDER = '_ts'
 const JS_HOME = 'index.home'
 const JS_BLOG = 'index.blog'
 const CSS_FOLDER = '_css'
@@ -43,17 +46,17 @@ class JekyllPlugin {
   }
 }
 
-export const bundle = () => {
-  const homeJs = `./_ts/${JS_HOME}.ts`
-  const blogJs = `./_ts/${JS_BLOG}.ts`
-  const styleHome = `./_css/${CSS_HOME}.scss`
-  const styleBlogArchive = `./_css/${CSS_BLOG_ARCHIVE}.scss`
-  const styleBlogHome = `./_css/${CSS_BLOG_HOME}.scss`
-  const styleBlogPost = `./_css/${CSS_BLOG_POST}.scss`
-  const styleBlogTags = `./_css/${CSS_BLOG_TAGS}.scss`
-  const stylePrivacyPolicy = `./_css/${CSS_PRIVACY_POLICY}.scss`
-  const styleCookiePolicy = `./_css/${CSS_COOKIE_POLICY}.scss`
-  const styleError = `./_css/${CSS_ERROR}.scss`
+const bundle = () => {
+  const homeJs = `./${JS_FOLDER}/${JS_HOME}.ts`
+  const blogJs = `./${JS_FOLDER}/${JS_BLOG}.ts`
+  const styleHome = `./${CSS_FOLDER}/${CSS_HOME}.scss`
+  const styleBlogArchive = `./${CSS_FOLDER}/${CSS_BLOG_ARCHIVE}.scss`
+  const styleBlogHome = `./${CSS_FOLDER}/${CSS_BLOG_HOME}.scss`
+  const styleBlogPost = `./${CSS_FOLDER}/${CSS_BLOG_POST}.scss`
+  const styleBlogTags = `./${CSS_FOLDER}/${CSS_BLOG_TAGS}.scss`
+  const stylePrivacyPolicy = `./${CSS_FOLDER}/${CSS_PRIVACY_POLICY}.scss`
+  const styleCookiePolicy = `./${CSS_FOLDER}/${CSS_COOKIE_POLICY}.scss`
+  const styleError = `./${CSS_FOLDER}/${CSS_ERROR}.scss`
   return gulp.src([
     homeJs, 
     blogJs, 
@@ -65,7 +68,7 @@ export const bundle = () => {
     stylePrivacyPolicy,
     styleCookiePolicy,
     styleError
-  ]).pipe(webpack({
+  ]).pipe(webpackStream({
       mode: production() ? 'production' : 'development',
       performance: { hints: production() ? false : 'warning' },
       entry: {
@@ -120,12 +123,12 @@ export const bundle = () => {
         }),
         new FixStyleOnlyEntriesPlugin()
       ]
-    }))
+    }, webpack))
     .pipe(gulp.dest(ASSESTS_DIST_FOLDER))
 }
 
 const copyFiles = (folder) => {
-  const destination = `assets/${folder}`
+  const destination = `${ASSETS_FOLDER}/${folder}`
   return gulp
     .src([`_${folder}/**/*.*`])
     .pipe(gulpChanged(destination))
@@ -190,21 +193,13 @@ const purgeCss = () => Promise.all([
 const jekyllBuild = (done) => exec('./_scripts/build.sh', (err, stdout, stderr) => done(err))
 
 export const images = () => {
-  const destination = 'assets/images'
+  const destination = `${ASSETS_FOLDER}/images`
   return gulp
     .src(['_images/**/*.*'])
     .pipe(gulpChanged(destination))
     .pipe(production(gulpImagemin()))
     .pipe(gulp.dest(destination))
 }
-
-export const watchBundle = () => gulp.watch(`${CSS_FOLDER}/*.scss`, gulp.series(
-  bundle,
-  jekyllBuild, // First build for critical/purge css
-  purgeCss,
-  jekyllBuild, // Generate site with css critical path and purge from unused rules
-  cssCritical
-))
 
 export const build = gulp.series(
   bundle,
