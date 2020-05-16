@@ -43,8 +43,8 @@ const bundleCss = () => Promise.all([
 ])
 
 export const bundleJs = () => {
-  const homeJs = './_js/index.home.ts'
-  const blogJs = './_js/index.blog.ts'
+  const homeJs = './_ts/index.home.ts'
+  const blogJs = './_ts/index.blog.ts'
   return gulp.src([homeJs, blogJs])
     .pipe(webpack({
       mode: production() ? 'production' : 'development',
