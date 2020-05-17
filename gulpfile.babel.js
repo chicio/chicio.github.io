@@ -124,7 +124,7 @@ const bundle = () => {
         }),
         new FixStyleOnlyEntriesPlugin(),
         new InjectManifest({
-          swSrc: `./${JS_FOLDER}/sw.js`,
+          swSrc: `./${JS_FOLDER}/sw.ts`,
           swDest: '../../sw.js',
           additionalManifestEntries: [
             {url: "/offline.html", revision: null },
