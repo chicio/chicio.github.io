@@ -10,6 +10,7 @@ import { exec } from 'child_process'
 import * as fs from 'fs'
 import * as path from 'path'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
+import { InjectManifest } from 'workbox-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
@@ -121,7 +122,12 @@ const bundle = () => {
         new MiniCssExtractPlugin({
           filename: '[name].[hash].css'
         }),
-        new FixStyleOnlyEntriesPlugin()
+        new FixStyleOnlyEntriesPlugin(),
+        new InjectManifest({
+          swSrc: `./${JS_FOLDER}/sw.ts`,
+          swDest: '../../sw.js',
+          additionalManifestEntries: [ {url: "/favicon.ico", revision: null } ]
+        })
       ]
     }, webpack))
     .pipe(gulp.dest(ASSESTS_DIST_FOLDER))

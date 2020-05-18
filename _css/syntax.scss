@@ -7,13 +7,13 @@
 .highlight .cp { @include theme('color', $syntax-highlight-comment); font-weight: bold } /* Comment.Preproc */
 .highlight .c1 { @include theme('color', $syntax-highlight-comment); font-style: italic } /* Comment.Single */
 .highlight .cs { @include theme('color', $syntax-highlight-comment); font-weight: bold; font-style: italic } /* Comment.Special */
-.highlight .gd { @include theme('background-color', $syntax-highlight-deleted); @include theme('background-color', $general-background);  } /* Generic.Deleted */
-.highlight .gd .x { @include theme('background-color', $syntax-highlight-deleted-specific); @include theme('background-color', $general-background);  } /* Generic.Deleted.Specific */
+.highlight .gd { @include theme('color', $syntax-highlight-deleted); @include theme('background-color', $general-background);  } /* Generic.Deleted */
+.highlight .gd .x { @include theme('color', $syntax-highlight-deleted-specific); @include theme('background-color', $general-background);  } /* Generic.Deleted.Specific */
 .highlight .ge { @include theme('color', $primary-text-color); font-style: italic } /* Generic.Emph */
 .highlight .gr { @include theme('color', $syntax-highlight-generic-error); } /* Generic.Error */
 .highlight .gh { @include theme('color', $syntax-highlight-generic-text); } /* Generic.Heading */
-.highlight .gi { @include theme('background-color', $syntax-highlight-inserted); @include theme('background-color', $general-background); } /* Generic.Inserted */
-.highlight .gi .x { @include theme('background-color', $syntax-highlight-inserted-specific); @include theme('background-color', $general-background); } /* Generic.Inserted.Specific */
+.highlight .gi { @include theme('color', $syntax-highlight-inserted); @include theme('background-color', $general-background); } /* Generic.Inserted */
+.highlight .gi .x { @include theme('color', $syntax-highlight-inserted-specific); @include theme('background-color', $general-background); } /* Generic.Inserted.Specific */
 .highlight .go { @include theme('color', $syntax-highlight-generic-text); } /* Generic.Output */
 .highlight .gp { @include theme('color', $syntax-highlight-generic-text); } /* Generic.Prompt */
 .highlight .gs { @include theme('color', $primary-text-color); font-weight: bold } /* Generic.Strong */
