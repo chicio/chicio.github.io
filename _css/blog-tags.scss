@@ -10,7 +10,7 @@
 
   .blog-tag-post {
     a {
-      @include theme($themes, 'color', $accent-color);
+      @include theme('color', $accent-color);
       display: block;
       min-height: 46px;
     }

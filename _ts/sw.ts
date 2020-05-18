@@ -15,10 +15,10 @@ const CACHE_IMAGES_NAME = `${CACHE_PREFIX}-images`
 const OFFLINE_PAGE_URL = '/offline.html'
 const OFFLINE_PAGE_NO_NETWORK_IMAGE_URL = '/assets/images/no-wifi.png'
 
-const stylesScriptsExpirationPlugin = new ExpirationPlugin({ maxEntries: 10, maxAgeSeconds: 15 * 24 * 60 * 60 })
+const stylesScriptsExpirationPlugin = new ExpirationPlugin({ maxEntries: 10, maxAgeSeconds: 15 * 24 * 60 * 60, purgeOnQuotaError: true })
 const fontsExpirationPlugin = new ExpirationPlugin({ maxEntries: 5, maxAgeSeconds: 180 * 24 * 60 * 60 })
 const imagesExpirationPlugin = new ExpirationPlugin({ maxEntries: 100, maxAgeSeconds: 60 * 24 * 60 * 60 })
-const documentExpirationPlugin = new ExpirationPlugin({ maxEntries: 50, maxAgeSeconds: 60 * 24 * 60 * 60 })
+const documentExpirationPlugin = new ExpirationPlugin({ maxEntries: 50, maxAgeSeconds: 60 * 24 * 60 * 60, purgeOnQuotaError: true })
 
 skipWaiting();
 clientsClaim();

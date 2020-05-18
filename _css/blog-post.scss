@@ -8,7 +8,7 @@
   }
 
   .blog-post-title {
-    @include theme($themes, 'color', $accent-color);
+    @include theme('color', $accent-color);
     margin-bottom: 5px;
     font-size: 24px;
     @include media-breakpoint-up(md) {
@@ -16,17 +16,17 @@
     }
   
     a {
-      @include theme($themes, 'color', $accent-color);
+      @include theme('color', $accent-color);
     }
   
     a:hover {
-      @include theme($themes, 'color', $accent-color);
+      @include theme('color', $accent-color);
       text-decoration: none;
     }
   }
 
   a {
-    @include theme($themes, 'color', $accent-color);
+    @include theme('color', $accent-color);
   }
 
   img {
@@ -41,8 +41,8 @@
   }
 
   blockquote {
-    @include theme($themes, 'color', $secondary-text-color);
-    @include theme($themes, 'border-left', $secondary-text-color, true, '5px solid');
+    @include theme('color', $secondary-text-color);
+    @include theme('border-left', $secondary-text-color, true, '5px solid');
     margin: 0 0 20px;
     padding: 10px 20px;
 

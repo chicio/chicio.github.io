@@ -1,5 +1,5 @@
 .embed-container {
-  @include theme($themes, 'background-color', $divider-color);
+  @include theme('background-color', $divider-color);
   position: relative;
   padding-bottom: 56.25%;
   height: 100%;

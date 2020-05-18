@@ -1,6 +1,6 @@
 .footer-container {
-  @include theme($themes, 'background-color', $primary-color);
-  @include theme($themes, 'color', $primary-color-text);
+  @include theme('background-color', $primary-color);
+  @include theme('color', $primary-color-text);
   padding: 10px 0 0px 0;
   margin-bottom: 0;
   width: 100%;
@@ -8,8 +8,8 @@
   font-size: 14px;
   
   .footer-icon {
-    @include theme($themes, 'color', $primary-color-text);
-    @include theme($themes, 'background', $accent-color);
+    @include theme('color', $primary-color-text);
+    @include theme('background', $accent-color);
     font-size: 1.2em;
     width: 1.5em;
     height: 1.5em;
@@ -25,7 +25,7 @@
   }
 
   .nav-item-footer {
-    @include theme($themes, 'color', $primary-color-text);
+    @include theme('color', $primary-color-text);
     font-weight: 500;
     padding: 5px 5px 5px 5px;
     font-size: 15px;
@@ -39,13 +39,13 @@
 
     &:hover,
     &:focus {
-      @include theme($themes, 'color', $primary-color-text);
+      @include theme('color', $primary-color-text);
       text-decoration: none;
     }
   }
 
   .copyright {
-    @include theme($themes, 'background-color', $primary-color-dark);
+    @include theme('background-color', $primary-color-dark);
     padding-top: 5px;
     padding-bottom: 10px;
     h5 {
@@ -55,7 +55,7 @@
 
   .social-links {
     padding-top: 10px;
-    @include theme($themes, 'background-color', $primary-color-dark);
+    @include theme('background-color', $primary-color-dark);
   }
 }
 

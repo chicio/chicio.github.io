@@ -9,8 +9,8 @@
   }
 
   .project-image {
-      @include theme($themes, 'border', $divider-color, true, '1px solid');
-      @include theme($themes, 'box-shadow', $box-shadow-light, true, '1px 1px 6px');
+      @include theme('border', $divider-color, true, '1px solid');
+      @include theme('box-shadow', $box-shadow-light, true, '1px 1px 6px');
 
       margin: auto;
       box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.375);
@@ -19,7 +19,7 @@
   }
 
   .project-info {
-    @include theme($themes, 'color', $primary-text-color);
+    @include theme('color', $primary-text-color);
     padding-left: 15px;
     padding-right: 15px;
     text-align: justify;
@@ -35,7 +35,7 @@
     }
 
     .project-info-link {
-      @include theme($themes, 'color', $accent-color);
+      @include theme('color', $accent-color);
     }
   }
 }

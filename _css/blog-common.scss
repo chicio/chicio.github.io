@@ -19,7 +19,7 @@
     font-size: 20px;
   }
   hr {
-    @include theme($themes, 'background-color', $divider-color);
+    @include theme('background-color', $divider-color);
     width: 100%;
     margin-top: 20px;
     margin-bottom: 20px;

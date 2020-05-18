@@ -3,8 +3,8 @@
   margin-bottom: 40px;
 
   .blog-posts-post {
-    @include theme($themes, 'background-color', $general-background-light);
-    @include theme($themes, 'box-shadow', $box-shadow-light, true, '0 3px 10px 0');
+    @include theme('background-color', $general-background-light);
+    @include theme('box-shadow', $box-shadow-light, true, '0 3px 10px 0');
     border-radius: 4px;
     padding: 20px;
     margin-top: 20px;
@@ -16,11 +16,11 @@
     }
 
     .blog-posts-post-link {
-      @include theme($themes, 'color', $primary-text-color);
+      @include theme('color', $primary-text-color);
       text-decoration: none;
 
       .blog-posts-post-title {
-        @include theme($themes, 'color', $accent-color);
+        @include theme('color', $accent-color);
         font-size: 26px;
         @include media-breakpoint-down(sm) {
           font-size: 22px;

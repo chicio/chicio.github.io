@@ -1,5 +1,5 @@
 .who-am-i-container {
-  @include theme($themes, 'background-color', $primary-color-dark);
+  @include theme('background-color', $primary-color-dark);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 
   .who-am-i {
@@ -18,7 +18,7 @@
       padding-right: 15px;
 
       p {
-        @include theme($themes, 'color', $primary-color-text);
+        @include theme('color', $primary-color-text);
       }
     }
 
