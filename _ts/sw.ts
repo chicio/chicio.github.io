@@ -35,8 +35,16 @@ self.addEventListener('install', (event: ExtendableEvent) => {
     OFFLINE_PAGE_URL,
     OFFLINE_PAGE_NO_NETWORK_IMAGE_URL
   ];
-
-  event.waitUntil(caches.open(CACHE_OFFLINE_NAME).then((cache) => cache.addAll(urls)));
+  event.waitUntil(
+    Promise.all([
+      caches.delete(CACHE_DOCUMENTS_NAME),
+      caches.delete(CACHE_SCRIPT_NAME),
+      caches.delete(CACHE_STYLES_NAME),
+      caches.delete(CACHE_FONTS_NAME),
+      caches.delete(CACHE_IMAGES_NAME),
+      caches.open(CACHE_OFFLINE_NAME).then((cache) => cache.addAll(urls))
+    ])
+  );
 });
 
 const registerCacheFirstRouteUsing = (
