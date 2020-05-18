@@ -17,12 +17,31 @@ import {
   RepeatWrapping,
   MeshStandardMaterial,
   PlaneGeometry
-} from 'three/build/three.module.js'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
+} from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader'
 import { animation } from '../common/animation'
 
-const sceneThreeJS = () => {
+const camera3D = (): PerspectiveCamera => {
+  const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+  camera.position.z = 8
+  camera.position.y = 0
+  camera.position.x = 0
+  return camera
+}
+
+const renderer3D = (): WebGLRenderer => {
+  const renderer = new WebGLRenderer({ alpha: true })
+  renderer.physicallyCorrectLights = true
+  // renderer.gammaInput = true
+  // renderer.gammaOutput = true
+  renderer.shadowMap.enabled = true
+  renderer.shadowMap.type = PCFSoftShadowMap
+  renderer.setSize(window.innerWidth, window.innerHeight)
+  return renderer
+}
+
+const sceneThreeJS = (): void => {
   const plyLoader = new PLYLoader()
   const scene = new Scene()
   const textureLoader = new TextureLoader()
@@ -119,40 +138,23 @@ const renderLoop = (renderer, scene, camera, orbit) => {
   renderFrame()
 }
 
-const lights = (scene) => {
-  scene.add(pointLight())
-  scene.add(new HemisphereLight(0x303F9F, 0x000000, 1))
-}
-
-const camera3D = () => {
-  const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-  camera.position.z = 8
-  camera.position.y = 0
-  camera.position.x = 0
-  return camera
-}
-
-const pointLight = () => {
+const pointLight = (): PointLight => {
   const light = new PointLight(0xffffff, 1, 20, 2)
   light.power = 1700
   light.castShadow = true
   light.shadow.mapSize.width = 512
-  light.shadow.mapSize.heigth = 512
+  light.shadow.mapSize.height = 512
   light.shadow.radius = 1.5
   light.position.set(0, 5, 3)
   return light
 }
 
-const renderer3D = () => {
-  const renderer = new WebGLRenderer({ alpha: true })
-  renderer.physicallyCorrectLights = true
-  renderer.gammaInput = true
-  renderer.gammaOutput = true
-  renderer.shadowMap.enabled = true
-  renderer.shadowMap.type = PCFSoftShadowMap
-  renderer.setSize(window.innerWidth, window.innerHeight)
-  return renderer
+const lights = (scene: Scene): void => {
+  scene.add(pointLight())
+  scene.add(new HemisphereLight(0x303F9F, 0x000000, 1))
 }
+
+
 
 const stars = (textureLoader, completeLoad) => {
   textureLoader.load('assets/models/textures/circle.png', function (texture) {
@@ -208,7 +210,7 @@ const floor = (textureLoader, completionFunction) => {
   })
 }
 
-const showRenderingSurfaceAnimation = () => animation('rendering-surface', 'show')
+const showRenderingSurfaceAnimation = (): void => animation('rendering-surface', 'show')
 
 const setWindowResizeListener = (camera, renderer) => {
   window.addEventListener('resize', () => {
