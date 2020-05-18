@@ -5,12 +5,12 @@ import { ExpirationPlugin } from 'workbox-expiration';
 import { CacheFirst } from 'workbox-strategies';
 import * as googleAnalytics from 'workbox-google-analytics';
 
-const CACHE_PREFIX = 'chicio-coding'
+const CACHE_PREFIX = 'workbox-chicio-coding'
 const CACHE_OFFLINE_NAME = `${CACHE_PREFIX}-offline`
 const CACHE_STYLES_SCRIPT_NAME = `${CACHE_PREFIX}-styles-scripts`
 const CACHE_DOCUMENTS_NAME = `${CACHE_PREFIX}-documents`
 const CACHE_FONTS_NAME = `${CACHE_PREFIX}-fonts`
-const CACHE_IMAGES_NAME = `${CACHE_PREFIX}-fonts`
+const CACHE_IMAGES_NAME = `${CACHE_PREFIX}-images`
 
 const OFFLINE_PAGE_URL = '/offline.html'
 const OFFLINE_PAGE_NO_NETWORK_IMAGE_URL = '/assets/images/no-wifi.png'
@@ -90,9 +90,9 @@ self.addEventListener('message', (event: MessageEvent) => {
     Promise.all([
       imagesExpirationPlugin.deleteCacheAndMetadata(),
       documentExpirationPlugin.deleteCacheAndMetadata()
-    ]).then(() => console.log("clean completed"))
-    // .then(() => sendRefreshCompletedMessageToClient(event))
-    // .catch(() => sendRefreshCompletedMessageToClient(event))
+    ])
+    .then(() => sendRefreshCompletedMessageToClient(event))
+    .catch(() => sendRefreshCompletedMessageToClient(event))
   }
 })
 
