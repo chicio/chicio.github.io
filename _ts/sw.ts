@@ -1,13 +1,15 @@
 import { skipWaiting, clientsClaim, cacheNames, RouteHandlerCallbackOptions } from "workbox-core"
 import { precacheAndRoute } from 'workbox-precaching';
-import { registerRoute, setCatchHandler } from 'workbox-routing';
+import { registerRoute, setCatchHandler, Route } from 'workbox-routing';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { CacheFirst } from 'workbox-strategies';
 import * as googleAnalytics from 'workbox-google-analytics';
+import * as navigationPreload from 'workbox-navigation-preload';
 
 const CACHE_PREFIX = 'workbox-chicio-coding'
 const CACHE_OFFLINE_NAME = `${CACHE_PREFIX}-offline`
-const CACHE_STYLES_SCRIPT_NAME = `${CACHE_PREFIX}-styles-scripts`
+const CACHE_SCRIPT_NAME = `${CACHE_PREFIX}-scripts`
+const CACHE_STYLES_NAME = `${CACHE_PREFIX}-styles`
 const CACHE_DOCUMENTS_NAME = `${CACHE_PREFIX}-documents`
 const CACHE_FONTS_NAME = `${CACHE_PREFIX}-fonts`
 const CACHE_IMAGES_NAME = `${CACHE_PREFIX}-images`
@@ -25,6 +27,7 @@ clientsClaim();
 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
 // @ts-ignore: __WB_MANIFEST is a placeholder filled by workbox-webpack-plugin with the list of dependecies to be cached
 precacheAndRoute(self.__WB_MANIFEST);
+navigationPreload.enable();
 googleAnalytics.initialize();
 
 self.addEventListener('install', (event: ExtendableEvent) => {
@@ -32,49 +35,41 @@ self.addEventListener('install', (event: ExtendableEvent) => {
     OFFLINE_PAGE_URL,
     OFFLINE_PAGE_NO_NETWORK_IMAGE_URL
   ];
+
   event.waitUntil(caches.open(CACHE_OFFLINE_NAME).then((cache) => cache.addAll(urls)));
 });
 
-registerRoute(
-  ({request}) => request.destination === 'style' || request.destination === 'script',
+const registerCacheFirstRouteUsing = (
+  destination: RequestDestination,
+  cacheName: string,
+  expirationPlugin: ExpirationPlugin
+): Route => registerRoute(
+  ({ request }) => request.destination === destination,
   new CacheFirst({
-    cacheName: CACHE_STYLES_SCRIPT_NAME,
-    plugins: [ stylesScriptsExpirationPlugin ],
+    cacheName: cacheName,
+    plugins: [expirationPlugin],
   })
 );
 
-registerRoute(
-  ({request}) => request.destination === 'document',
-  new CacheFirst({
-    cacheName: CACHE_DOCUMENTS_NAME,
-    plugins: [ documentExpirationPlugin ],
-  })
-);
-
-registerRoute(
-  ({request}) => request.destination === 'font',
-  new CacheFirst({
-    cacheName: CACHE_FONTS_NAME,
-    plugins: [ fontsExpirationPlugin ],
-  })
-);
-
-registerRoute(
-  ({request}) => request.destination === 'image',
-  new CacheFirst({
-    cacheName: CACHE_IMAGES_NAME,
-    plugins: [ imagesExpirationPlugin ],
-  })
-);
+registerCacheFirstRouteUsing('style', CACHE_STYLES_NAME, stylesScriptsExpirationPlugin)
+registerCacheFirstRouteUsing('script', CACHE_SCRIPT_NAME, stylesScriptsExpirationPlugin)
+registerCacheFirstRouteUsing('document', CACHE_DOCUMENTS_NAME, documentExpirationPlugin)
+registerCacheFirstRouteUsing('font', CACHE_FONTS_NAME, fontsExpirationPlugin)
+registerCacheFirstRouteUsing('image', CACHE_IMAGES_NAME, imagesExpirationPlugin)
 
 setCatchHandler((options: RouteHandlerCallbackOptions): Promise<Response> => {
-  if(!(typeof options.request === 'string') && options.request.destination == 'document') {
+  const isADocumentRequest = (options: RouteHandlerCallbackOptions): boolean =>
+    !(typeof options.request === 'string') && options.request.destination == 'document';
+  const isAOfflinePageImageRequest = (options: RouteHandlerCallbackOptions): boolean =>
+    !(typeof options.request === 'string') &&
+    options.request.destination == 'image' &&
+    options.url.pathname == OFFLINE_PAGE_NO_NETWORK_IMAGE_URL
+
+  if (isADocumentRequest(options)) {
     return caches.match(OFFLINE_PAGE_URL);
   }
 
-  if(!(typeof options.request === 'string') && 
-  options.request.destination == 'image' && 
-  options.url.pathname == OFFLINE_PAGE_NO_NETWORK_IMAGE_URL) {
+  if (isAOfflinePageImageRequest(options)) {
     return caches.match(OFFLINE_PAGE_NO_NETWORK_IMAGE_URL);
   }
 
@@ -83,7 +78,7 @@ setCatchHandler((options: RouteHandlerCallbackOptions): Promise<Response> => {
 
 self.addEventListener('message', (event: MessageEvent) => {
   const isARefresh = (event: MessageEvent): boolean => event.data.message === 'refresh'
-  const sendRefreshCompletedMessageToClient = (event: MessageEvent): void => event.ports[0].postMessage({refreshCompleted: true})
+  const sendRefreshCompletedMessageToClient = (event: MessageEvent): void => event.ports[0].postMessage({ refreshCompleted: true })
 
   if (isARefresh(event)) {
     console.log(cacheNames)
@@ -91,8 +86,7 @@ self.addEventListener('message', (event: MessageEvent) => {
       imagesExpirationPlugin.deleteCacheAndMetadata(),
       documentExpirationPlugin.deleteCacheAndMetadata()
     ])
-    .then(() => sendRefreshCompletedMessageToClient(event))
-    .catch(() => sendRefreshCompletedMessageToClient(event))
+      .then(() => sendRefreshCompletedMessageToClient(event))
+      .catch(() => sendRefreshCompletedMessageToClient(event))
   }
 })
-
