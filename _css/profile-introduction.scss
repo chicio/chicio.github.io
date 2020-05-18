@@ -1,6 +1,6 @@
 .profile-introduction {
-  @include theme($themes, 'background-color', $primary-color);
-  @include theme($themes, 'color', $primary-color-text);
+  @include theme('background-color', $primary-color);
+  @include theme('color', $primary-color-text);
   height: 100vh;
   min-width: 100%;
   display: table;
@@ -58,11 +58,11 @@
     }
 
     .profile-job {
-      @include theme($themes, 'color', $primary-color-text);
+      @include theme('color', $primary-color-text);
     }
 
     .profile-icon {
-      @include theme($themes, 'background-color', $accent-color);
+      @include theme('background-color', $accent-color);
       display: inline-block;
       font-size: 1.5em;
       width: 1.5em;
@@ -74,7 +74,7 @@
     }
 
     .profile-button {
-      @include theme($themes, 'background-color', $accent-color);
+      @include theme('background-color', $accent-color);
       font-size: 1.5em;
       text-align: center;
       line-height: 1.5em;
@@ -120,7 +120,7 @@
   }
 
   .down-arrow {
-    @include theme($themes, 'color', $primary-color-text);
+    @include theme('color', $primary-color-text);
     position: absolute;
     bottom: 25px;
     left: 0;
@@ -141,7 +141,7 @@
 }
 
 .profile-container {
-  @include theme($themes, 'background-color', $general-background);
+  @include theme('background-color', $general-background);
   
   &.container-fluid {
     padding-left: 0;
@@ -158,11 +158,11 @@
   }
 
   .nav-tabs > li > .nav-link {
-    @include theme($themes, 'background-color', $general-background-light);
-    @include theme($themes, 'border-bottom', $divider-color, true, '1px solid');
-    @include theme($themes, 'border-left', $divider-color, true, '1px solid');
-    @include theme($themes, 'border-right', $divider-color, true, '1px solid');
-    @include theme($themes, 'color', $accent-color);
+    @include theme('background-color', $general-background-light);
+    @include theme('border-bottom', $divider-color, true, '1px solid');
+    @include theme('border-left', $divider-color, true, '1px solid');
+    @include theme('border-right', $divider-color, true, '1px solid');
+    @include theme('color', $accent-color);
     border-radius: 0;
     font-weight: bold;
   }
@@ -172,9 +172,9 @@
   }
 
   .nav-tabs > li.active > .nav-link {
-    @include theme($themes, 'background-color', $general-background);
-    @include theme($themes, 'color', $accent-color);
-    @include theme($themes, 'border-right', $divider-color, true, '1px solid');
+    @include theme('background-color', $general-background);
+    @include theme('color', $accent-color);
+    @include theme('border-right', $divider-color, true, '1px solid');
     border-radius: 0;
     border: 1px solid transparent;
     font-weight: bold;

@@ -137,7 +137,7 @@ $themes: (
   }
 }
 
-@mixin theme($themes, $property, $color, $additionalPropertiesPositionIsFront: false, $additionalProperties: '') {
+@mixin theme($property, $color, $additionalPropertiesPositionIsFront: false, $additionalProperties: '') {
   $light: map-get($themes, $light-theme);
   $dark: map-get($themes, $dark-theme);
   

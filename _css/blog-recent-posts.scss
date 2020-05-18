@@ -6,7 +6,7 @@
   }
 
   a {
-    @include theme($themes, 'color', $primary-color-text);
+    @include theme('color', $primary-color-text);
     &:hover{
       text-decoration:none;
     }  
@@ -20,7 +20,7 @@
     }
 
     h3 {
-      @include theme($themes, 'color', $accent-color);
+      @include theme('color', $accent-color);
       font-weight: 500;
       @include media-breakpoint-down(sm) {
         padding-left: 0;
@@ -34,8 +34,8 @@
     }
 
     .card {
-      @include theme($themes, 'background-color', $general-background-light);
-      @include theme($themes, 'box-shadow', $box-shadow-light, true, '0 3px 10px 0');
+      @include theme('background-color', $general-background-light);
+      @include theme('box-shadow', $box-shadow-light, true, '0 3px 10px 0');
       padding: 0 0 80px 0;
       width: 100%;
       height: 100%;
@@ -48,8 +48,8 @@
       }
 
       .card-button {
-        @include theme($themes, 'background-color', $accent-color);
-        @include theme($themes, 'color', $primary-color-text);
+        @include theme('background-color', $accent-color);
+        @include theme('color', $primary-color-text);
         min-height: 20px;
         border-radius: 4px;
         text-align: center;
@@ -82,14 +82,14 @@
       }
       
       h4 {
-        @include theme($themes, 'color', $accent-color);
+        @include theme('color', $accent-color);
         margin:20px;
         font-weight: 500;
         line-height: 1.5;
       }    
 
       p {
-        @include theme($themes, 'color', $primary-text-color);
+        @include theme('color', $primary-text-color);
         margin:20px;
         text-overflow: ellipsis;
         font-style: normal !important;

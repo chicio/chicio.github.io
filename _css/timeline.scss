@@ -13,7 +13,7 @@
 }
 
 .timeline:before {
-  @include theme($themes, 'background-color', $general-background-light);
+  @include theme('background-color', $general-background-light);
   top: 0;
   bottom: 0;
   position: absolute;
@@ -47,9 +47,9 @@
 }
 
 .timeline > li > .timeline-panel {
-  @include theme($themes, 'background-color', $general-background-light);
-  @include theme($themes, 'border', $divider-color, true, '1px solid');
-  @include theme($themes, 'box-shadow', $box-shadow-medium, true, '0 1px 6px');
+  @include theme('background-color', $general-background-light);
+  @include theme('border', $divider-color, true, '1px solid');
+  @include theme('box-shadow', $box-shadow-medium, true, '0 1px 6px');
   width: 46%;
   float: left;
   border-radius: 3px;
@@ -63,8 +63,8 @@
   right: -15px;
   display: inline-block;
   border-top: 15px solid transparent;
-  @include theme($themes, 'border-left', $divider-color, true, '14px solid');
-  @include theme($themes, 'border-right', $divider-color, true, '0 solid');
+  @include theme('border-left', $divider-color, true, '14px solid');
+  @include theme('border-right', $divider-color, true, '0 solid');
   border-bottom: 15px solid transparent;
   content: " ";
 }
@@ -74,16 +74,16 @@
   top: 27px;
   right: -14px;
   display: inline-block;
-  @include theme($themes, 'border-left', $general-background-light, true, '14px solid');
-  @include theme($themes, 'border-right', $general-background-light, true, '0 solid');
+  @include theme('border-left', $general-background-light, true, '14px solid');
+  @include theme('border-right', $general-background-light, true, '0 solid');
   border-top: 14px solid transparent;
   border-bottom: 14px solid transparent;
   content: " ";
 }
 
 .timeline > li > .timeline-badge {
-  @include theme($themes, 'background-color', $primary-color);
-  @include theme($themes, 'color', $primary-color-text);
+  @include theme('background-color', $primary-color);
+  @include theme('color', $primary-color-text);
   width: 50px;
   height: 50px;
   line-height: 50px;
@@ -119,11 +119,11 @@
 }
 
 .timeline-badge.work {
-  @include theme($themes, 'background-color', $primary-color-dark, false, '!important');
+  @include theme('background-color', $primary-color-dark, false, '!important');
 }
 
 .timeline-title {
-  @include theme($themes, 'color', $primary-text-color);
+  @include theme('color', $primary-text-color);
   margin-top: 0;
   font-size: 30px;
   font-weight: bold;
@@ -132,7 +132,7 @@
 }
 
 .timeline-subtitle {
-  @include theme($themes, 'color', $primary-text-color);
+  @include theme('color', $primary-text-color);
   font-size: 17px;
   word-break: keep-all;
   text-align: left;
@@ -145,7 +145,7 @@
   padding-bottom: 10px;
 
   img {
-    @include theme($themes, 'box-shadow', $box-shadow-light, true, '0 1px 2px');
+    @include theme('box-shadow', $box-shadow-light, true, '0 1px 2px');
     background-color: #FFFFFF;
     width: 80px;
     height: 80px;
@@ -157,7 +157,7 @@
 }
 
 .timeline-date {
-  @include theme($themes, 'color', $primary-text-color);
+  @include theme('color', $primary-text-color);
   float: left;
   margin-top: 25px;
   margin-left: 80px;
@@ -168,7 +168,7 @@
 }
 
 .timeline-date-inverted {
-  @include theme($themes, 'color', $primary-text-color);
+  @include theme('color', $primary-text-color);
   float: right;
   margin-right: 80px;
   margin-top: 25px;
@@ -193,7 +193,7 @@
 }
 
 .timeline-body > p, .timeline-body > ul {
-  @include theme($themes, 'color', $primary-text-color);
+  @include theme('color', $primary-text-color);
   margin-bottom: 0;
   font-size: 16px;
 }
