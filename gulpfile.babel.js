@@ -126,11 +126,7 @@ const bundle = () => {
         new InjectManifest({
           swSrc: `./${JS_FOLDER}/sw.ts`,
           swDest: '../../sw.js',
-          additionalManifestEntries: [
-            {url: "/offline.html", revision: null },
-            {url: "/favicon.ico", revision: null },
-            {url: `/${ASSETS_FOLDER}/images/no-wifi.png`, revision: null },
-          ]
+          additionalManifestEntries: [ {url: "/favicon.ico", revision: null } ]
         })
       ]
     }, webpack))
