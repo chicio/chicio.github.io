@@ -6,6 +6,14 @@ Release date: 2020-05-18
 
 #### Added
 
+- HtmlWebpackPlugin to generate styles and scripts urls dynamically
+- hot reload dev mode
+
+## [3.1.0](https://github.com/chicio/chicio.github.io/releases/tag/3.1.0)
+Release date: 2020-05-18
+
+#### Added
+
 - Service worker with workbox + webpack + TS
 
 #### Added

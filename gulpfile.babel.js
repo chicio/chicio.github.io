@@ -236,3 +236,5 @@ export const build = gulp.series(
   cssCritical,
   jekyllBuild // Site is ready
 )
+
+export const watch = () => gulp.watch(['_ts/**/*.ts', '_css/**/*.sass'], build)

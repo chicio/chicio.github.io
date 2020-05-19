@@ -38,6 +38,13 @@ npm run debug
 npm run start
 ```
 
+If you want to start the site in hot reload mode run the following commands from the root of this repo in two different shell instances:
+
+```bash
+npm run watch
+npm run start
+```
+
 ### Overview
 
 My website is hosted using Github Pages. It contains a bunch of jekyll templates used for home, posts, archive and
