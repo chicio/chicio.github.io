@@ -16,11 +16,61 @@ import {
   Mesh,
   RepeatWrapping,
   MeshStandardMaterial,
+  MeshPhysicalMaterialParameters,
   PlaneGeometry
 } from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader'
 import { animation } from '../common/animation'
+
+interface Object3D {
+  path: string;
+  properties: MeshPhysicalMaterialParameters;
+  position: Vector3;
+  rotation: Vector3;
+}
+
+const lucy = (): Object3D => ({
+  path: 'assets/models/lucy.ply',
+  properties: {
+    color: 0x3F51B5,
+    roughness: 0.5,
+    metalness: 0.7,
+    clearcoat: 0.5,
+    clearcoatRoughness: 0.5,
+    reflectivity: 0.7
+  },
+  position: new Vector3(3, -3, 0),
+  rotation: new Vector3(0, -Math.PI / 3.0, 0)
+})
+
+const dragon = (): Object3D => ({
+  path: 'assets/models/dragon.ply',
+  properties: {
+    color: 0x448AFF,
+    roughness: 0.1,
+    metalness: 0.9,
+    clearcoat: 0.0,
+    clearcoatRoughness: 0.2,
+    reflectivity: 1
+  },
+  position: new Vector3(-3, -3, 0),
+  rotation: new Vector3(0, -Math.PI, 0)
+})
+
+const bunny = (): Object3D => ({
+  path: 'assets/models/bunny.ply',
+  properties: {
+    color: 0xCCFFFF,
+    roughness: 0.9,
+    metalness: 0.1,
+    clearcoat: 0.0,
+    clearcoatRoughness: 0.5,
+    reflectivity: 0.1
+  },
+  position: new Vector3(0, -3, 1.5),
+  rotation: new Vector3(0, -Math.PI, 0)
+})
 
 const camera3D = (): PerspectiveCamera => {
   const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
@@ -41,75 +91,7 @@ const renderer3D = (): WebGLRenderer => {
   return renderer
 }
 
-const sceneThreeJS = (): void => {
-  const plyLoader = new PLYLoader()
-  const scene = new Scene()
-  const textureLoader = new TextureLoader()
-  const camera = camera3D()
-  const renderer = renderer3D()
-  const orbit = orbitsControls(camera, renderer)
-  setup(renderer, camera, scene)
-  lights(scene)
-  stars(textureLoader, stars => scene.add(stars))
-  meshWithPBRMaterial(plyLoader, lucy(), mesh => scene.add(mesh))
-  meshWithPBRMaterial(plyLoader, dragon(), mesh => scene.add(mesh))
-  meshWithPBRMaterial(plyLoader, bunny(), mesh => scene.add(mesh))
-  floor(textureLoader, mesh => scene.add(mesh))
-  DefaultLoadingManager.onLoad = () => renderLoop(renderer, scene, camera, orbit)
-}
-
-class Object3D {
-  constructor (path, properties, position, rotation) {
-    this.path = path
-    this.properties = properties
-    this.position = position
-    this.rotation = rotation
-  }
-}
-
-const lucy = () => new Object3D(
-  'assets/models/lucy.ply',
-  {
-    color: 0x3F51B5,
-    roughness: 0.5,
-    metalness: 0.7,
-    clearcoat: 0.5,
-    clearcoatRoughness: 0.5,
-    reflectivity: 0.7
-  },
-  new Vector3(3, -3, 0),
-  new Vector3(0, -Math.PI / 3.0, 0)
-)
-
-const dragon = () => new Object3D(
-  'assets/models/dragon.ply',
-  {
-    color: 0x448AFF,
-    roughness: 0.1,
-    metalness: 0.9,
-    clearcoat: 0.0,
-    clearcoatRoughness: 0.2,
-    reflectivity: 1
-  },
-  new Vector3(-3, -3, 0),
-  new Vector3(0, -Math.PI, 0)
-)
-
-const bunny = () => new Object3D(
-  'assets/models/bunny.ply',
-  {
-    color: 0xCCFFFF,
-    roughness: 0.9,
-    metalness: 0.1,
-    clearcoat: 0.0,
-    clearcoatRoughness: 0.5,
-    reflectivity: 0.1
-  },
-  new Vector3(0, -3, 1.5),
-  new Vector3(0, -Math.PI, 0)
-)
-
-const orbitsControls = (camera, renderer) => {
+const orbitsControls = (camera: PerspectiveCamera, renderer: WebGLRenderer): OrbitControls => {
   const controls = new OrbitControls(camera, renderer.domElement)
   controls.enableZoom = false
   controls.autoRotate = true
@@ -117,25 +99,22 @@ const orbitsControls = (camera, renderer) => {
   controls.keyPanSpeed = 7.0
   controls.enableKeys = false
   controls.target = new Vector3(0, 0, 0)
-  controls.mouseButtons = {}
   controls.dispose()
   return controls
 }
 
-const setup = (renderer, camera, scene) => {
+const setWindowResizeListener = (camera: PerspectiveCamera, renderer: WebGLRenderer): void => {
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight
+    camera.updateProjectionMatrix()
+    renderer.setSize(window.innerWidth, window.innerHeight)
+  }, false)
+}
+
+const setup = (renderer: WebGLRenderer, camera: PerspectiveCamera, scene: Scene): void => {
   document.getElementById('rendering-surface').appendChild(renderer.domElement)
   scene.background = new Color(0x303F9F)
   setWindowResizeListener(camera, renderer)
-}
-
-const renderLoop = (renderer, scene, camera, orbit) => {
-  const renderFrame = () => {
-    requestAnimationFrame(renderFrame)
-    orbit.update()
-    renderer.render(scene, camera)
-  }
-  showRenderingSurfaceAnimation()
-  renderFrame()
 }
 
 const pointLight = (): PointLight => {
@@ -154,9 +133,7 @@ const lights = (scene: Scene): void => {
   scene.add(new HemisphereLight(0x303F9F, 0x000000, 1))
 }
 
-
-
-const stars = (textureLoader, completeLoad) => {
+const stars = (textureLoader: TextureLoader, completeLoad: (starts: Points) => void): void => {
   textureLoader.load('assets/models/textures/circle.png', function (texture) {
     const starsGeometry = new Geometry()
     for (let i = 0; i < 10000; i++) {
@@ -176,7 +153,7 @@ const stars = (textureLoader, completeLoad) => {
   })
 }
 
-const meshWithPBRMaterial = (plyLoader, object, completeLoad) => {
+const meshWithPBRMaterial = (plyLoader: PLYLoader, object: Object3D, completeLoad: (mesh: Mesh) => void): void => {
   plyLoader.load(object.path, (geometry) => {
     geometry.computeVertexNormals()
     const material = new MeshPhysicalMaterial(object.properties)
@@ -189,7 +166,7 @@ const meshWithPBRMaterial = (plyLoader, object, completeLoad) => {
   })
 }
 
-const floor = (textureLoader, completionFunction) => {
+const floor = (textureLoader: TextureLoader, completionFunction: (mesh: Mesh) => void): void => {
   textureLoader.load('assets/models/textures/marble.jpg', function (texture) {
     texture.wrapS = RepeatWrapping
     texture.wrapT = RepeatWrapping
@@ -212,12 +189,31 @@ const floor = (textureLoader, completionFunction) => {
 
 const showRenderingSurfaceAnimation = (): void => animation('rendering-surface', 'show')
 
-const setWindowResizeListener = (camera, renderer) => {
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight
-    camera.updateProjectionMatrix()
-    renderer.setSize(window.innerWidth, window.innerHeight)
-  }, false)
+const renderLoop = (renderer: WebGLRenderer, scene: Scene, camera: PerspectiveCamera, orbit: OrbitControls): void => {
+  const renderFrame = (): void => {
+    requestAnimationFrame(renderFrame)
+    orbit.update()
+    renderer.render(scene, camera)
+  }
+  showRenderingSurfaceAnimation()
+  renderFrame()
+}
+
+const sceneThreeJS = (): void => {
+  const plyLoader = new PLYLoader()
+  const scene = new Scene()
+  const textureLoader = new TextureLoader()
+  const camera = camera3D()
+  const renderer = renderer3D()
+  const orbit = orbitsControls(camera, renderer)
+  setup(renderer, camera, scene)
+  lights(scene)
+  stars(textureLoader, stars => scene.add(stars))
+  meshWithPBRMaterial(plyLoader, lucy(), mesh => scene.add(mesh))
+  meshWithPBRMaterial(plyLoader, dragon(), mesh => scene.add(mesh))
+  meshWithPBRMaterial(plyLoader, bunny(), mesh => scene.add(mesh))
+  floor(textureLoader, mesh => scene.add(mesh))
+  DefaultLoadingManager.onLoad = (): void => renderLoop(renderer, scene, camera, orbit)
 }
 
 export { sceneThreeJS }
