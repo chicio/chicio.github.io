@@ -93,4 +93,4 @@ feed_update_frequency: 2
 tracking_id: UA-97399890-1
 
 # Theme config
-theme: null
+theme: null # Set to null to avoid generating useless 
