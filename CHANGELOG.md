@@ -1,7 +1,7 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
-## [3.1.0](https://github.com/chicio/chicio.github.io/releases/tag/3.1.0)
+## [3.2.0](https://github.com/chicio/chicio.github.io/releases/tag/3.2.0)
 Release date: 2020-05-18
 
 #### Added
