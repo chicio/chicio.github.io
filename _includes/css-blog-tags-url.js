@@ -1,1 +1,0 @@
-"/assets/dist/style.blog.tags.{{ site.data.webpack.hash }}.css"

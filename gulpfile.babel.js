@@ -12,6 +12,7 @@ import * as path from 'path'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import { InjectManifest } from 'workbox-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 
@@ -38,6 +39,13 @@ const hash = () => {
   const webpack = fs.readFileSync(path.join(__dirname, "_data", "webpack.yml"), 'utf8')
   return webpack.split(" ")[1]
 }
+
+const HtmlPluginFactory = (chunkName, fileName, templateContent) => new HtmlWebpackPlugin({
+  inject: false,
+  chunks: [chunkName],
+  filename: `../../_includes/${fileName}.html`,
+  templateContent: templateContent
+})
 
 class JekyllPlugin {
   apply(compiler) {
@@ -87,7 +95,7 @@ const bundle = () => {
       output: {
         filename: '[name].[hash].min.js',
         chunkFilename: '[name].[chunkhash].bundle.js',
-        publicPath: `${ASSESTS_DIST_FOLDER}/`,
+        publicPath: `/${ASSESTS_DIST_FOLDER}/`,
         path: path.resolve(__dirname, ASSESTS_DIST_FOLDER),
       },
       module: {
@@ -127,7 +135,17 @@ const bundle = () => {
           swSrc: `./${JS_FOLDER}/sw.ts`,
           swDest: '../../sw.js',
           additionalManifestEntries: [ {url: "/favicon.ico", revision: null } ]
-        })
+        }),
+        HtmlPluginFactory('index.home', 'index-js-home-url', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.bodyTags}`),
+        HtmlPluginFactory('index.blog', 'index-js-blog-url', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.bodyTags}`),
+        HtmlPluginFactory('style.home', 'dependencies-css-home', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.headTags}`),      
+        HtmlPluginFactory('style.blog.archive', 'dependencies-css-blog-archive', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.headTags}`),      
+        HtmlPluginFactory('style.blog.home', 'dependencies-css-blog-home', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.headTags}`),      
+        HtmlPluginFactory('style.blog.post', 'dependencies-css-blog-post', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.headTags}`),      
+        HtmlPluginFactory('style.blog.tags', 'dependencies-css-blog-tags', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.headTags}`),      
+        HtmlPluginFactory('style.cookiepolicy', 'dependencies-css-cookie-policy', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.headTags}`),      
+        HtmlPluginFactory('style.error', 'dependencies-css-error', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.headTags}`),      
+        HtmlPluginFactory('style.privacypolicy', 'dependencies-css-privacy-policy', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.headTags}`),      
       ]
     }, webpack))
     .pipe(gulp.dest(ASSESTS_DIST_FOLDER))

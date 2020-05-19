@@ -1,1 +1,0 @@
-"/assets/dist/style.privacypolicy.{{ site.data.webpack.hash }}.css"

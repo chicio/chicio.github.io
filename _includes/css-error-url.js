@@ -1,1 +1,0 @@
-"/assets/dist/style.error.{{ site.data.webpack.hash }}.css"
