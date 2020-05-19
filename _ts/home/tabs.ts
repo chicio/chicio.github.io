@@ -1,6 +1,6 @@
 import { addCssClass, removeCssClass } from '../common/css-class'
 
-const forEach = (list: NodeList, operation: (HTMLElement) => void): void => {
+const forEach = (list: NodeList, operation: (item: Node) => void): void => {
   for (let i = 0; i < list.length; i++) {
     operation(list.item(i))
   }
