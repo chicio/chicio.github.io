@@ -17,7 +17,8 @@ import {
   RepeatWrapping,
   MeshStandardMaterial,
   MeshPhysicalMaterialParameters,
-  PlaneGeometry
+  PlaneGeometry,
+  GammaEncoding
 } from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader'
@@ -83,8 +84,7 @@ const camera3D = (): PerspectiveCamera => {
 const renderer3D = (): WebGLRenderer => {
   const renderer = new WebGLRenderer({ alpha: true })
   renderer.physicallyCorrectLights = true
-  // renderer.gammaInput = true
-  // renderer.gammaOutput = true
+  renderer.outputEncoding = GammaEncoding
   renderer.shadowMap.enabled = true
   renderer.shadowMap.type = PCFSoftShadowMap
   renderer.setSize(window.innerWidth, window.innerHeight)
