@@ -4,7 +4,6 @@ import { registerRoute, setCatchHandler, Route } from 'workbox-routing';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { CacheFirst } from 'workbox-strategies';
 import * as googleAnalytics from 'workbox-google-analytics';
-import * as navigationPreload from 'workbox-navigation-preload';
 
 const CACHE_PREFIX = 'workbox-chicio-coding'
 const CACHE_OFFLINE_NAME = `${CACHE_PREFIX}-offline`
@@ -27,7 +26,6 @@ clientsClaim();
 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
 // @ts-ignore: __WB_MANIFEST is a placeholder filled by workbox-webpack-plugin with the list of dependecies to be cached
 precacheAndRoute(self.__WB_MANIFEST);
-navigationPreload.enable();
 googleAnalytics.initialize();
 
 self.addEventListener('install', (event: ExtendableEvent) => {
