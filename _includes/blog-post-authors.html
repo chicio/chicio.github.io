@@ -2,7 +2,11 @@
 	{% for author in include.authors %}
 	{% assign currentAuthor = site.data.authors[author] %}
 	<div class="blog-post-author d-inline-flex flex-row align-items-center">
-		<img alt="{{ currentAuthor.name }}" class="rounded-circle" width="30" height="30"¯ src="{{ currentAuthor.image }}">
+		{% if include.lazy-loading %}
+			{% include blog-lazy-image.html class="rounded-circle" width="30" height="30" src=currentAuthor.image %}
+		{% else %}
+			<img alt="{{ currentAuthor.name }}" class="rounded-circle" width="30" height="30"¯ src="{{ currentAuthor.image }}">
+		{% endif %}
 		<span>
 				{% if include.enableUrl and include.enableUrl == true %}<a onclick="track('{{ site.data.tracking.action.open_blog_author }}', '{{  include.track-category }}', '{{ include.track-label }}')" href="{{currentAuthor.url}}">{% endif %}{{currentAuthor.name}}{% if include.enableUrl and include.enableUrl == true %}</a>{% endif %}
 		</span>

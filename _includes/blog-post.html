@@ -2,7 +2,7 @@
 	<h2 class="blog-post-title">
 		{{ include.post.title }}
 	</h2>
-	{% include blog-post-authors.html authors=include.post.authors enableUrl=true track-category=site.data.tracking.category.blog_post track-label=site.data.tracking.label.body %}
+	{% include blog-post-authors.html authors=include.post.authors enableUrl=true track-category=site.data.tracking.category.blog_post track-label=site.data.tracking.label.body lazy-loading=false %}
 	{% include blog-post-meta.html post=include.post %}
 	{{ include.post.content | markdownify }}
 	{% include blog-post-tags.html tags=include.post.tags %}

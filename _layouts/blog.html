@@ -21,7 +21,11 @@
                                     {% include blog-lazy-image.html class="img blog-posts-post-img" src=post.image description=post.title %}
                                 {% endif %}
                             </div>
-                            {% include blog-post-authors.html authors=post.authors enableUrl=false track-category=site.data.tracking.category.blog_home track-label=site.data.tracking.label.body %}
+                            {% if forloop.first == true %}
+                                {% include blog-post-authors.html authors=post.authors enableUrl=false track-category=site.data.tracking.category.blog_home track-label=site.data.tracking.label.body lazy-loading=false %}
+                            {% else %}
+                                {% include blog-post-authors.html authors=post.authors enableUrl=false track-category=site.data.tracking.category.blog_home track-label=site.data.tracking.label.body lazy-loading=true %}
+                            {% endif %}    
                             {% include blog-post-meta.html post=post %}
                             <span class="blog-posts-post-description">{{post.description}}</span>
                         </a>
