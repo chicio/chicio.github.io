@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Dark mode support on your website with SASS"
-description: "Dark mode support has been around for quite some time. Let's see how you can create a light theme and a dark theme for your website that will be used based on the Operating System preference."
-date: 2020-05-26
-image: /assets/images/posts/XXX
+title: "Add dark mode support on your website with SASS and prefers-color-scheme media query"
+description: "Dark mode support has been around for quite some time. Let's see how you can create a light theme and a dark theme for your website that will be selected automatically based on the user system preference."
+date: 2020-05-20
+image: /assets/images/posts/dark-side-dark-mode.jpg
 tags: [computer graphics]
 comments: true
 math: true
@@ -12,7 +12,7 @@ seo:
 authors: [fabrizio_duroni] 
 ---
 
-*Dark mode support has been around for quite some time. Let's see how you can create a light theme and a dark theme for your website that will be used based on the Operating System preference.*
+*Dark mode support has been around for quite some time. Let's see how you can create a light theme and a dark theme for your website that will be selected automatically based on the user system preference.*
 
 ---
 
@@ -27,7 +27,7 @@ First of all I needed to understand how it was possible to detect system appeara
 * light, the user has expressed the preference for a page that has a light theme (dark text on light background).
 * dark Indicates that user has expressed the preference for a page that has a dark theme (light text on dark background).
 
-So I needed to define a strategy to write the CSS in a way that he will see the dark theme only if the system appearance is set to dark mode and fallback to the light theme for all the other cases. This is why I chose to define a media query only for the `dark` value of the `prefers-color-scheme` and keep the light theme values defined in the base CSS rules. So all the theme related rules will look like the following CSS code block.
+So I needed to define a strategy to write the CSS in a way that the user will see the dark theme only if the system appearance is set to dark mode and fallback to the light theme for all the other cases. This is why I chose to define a media query only for the `dark` value of the `prefers-color-scheme` and keep the light theme values defined in the base CSS rules. So all the theme related rules will look like the following CSS code block.
 
 ```css
 .a-rule {
@@ -41,11 +41,11 @@ So I needed to define a strategy to write the CSS in a way that he will see the 
 }
 ```
 
-Now in my project I'm using [SASS](https://sass-lang.com/), a language that extends CSS enables you to use things like variables, nested rules, inline imports and more. So I wanted to find a way to write something in which I centralized this logic. In this way I will have a theme section of my sass source code that has the only responsibility to manage the theme for the entire website. This is possible in SASS by using `@mixin` and `@include`!! :heart_eyes: Let's see the definition from the official documentation.
+In my project I'm using [SASS](https://sass-lang.com/), a language that extends CSS enables you to use things like variables, nested rules, inline imports and more. So I wanted to find a way to write something in which I centralized this logic. In this way I will have a theme section in my sass source code that has the only responsibility to manage the theme for the entire website. This is possible in SASS by using `@mixin` and `@include`!! :heart_eyes: Let's see the definition from the official documentation.
 
 >Mixins allow you to define styles that can be re-used throughout your stylesheet. They are defined using the @mixin at-rule. A mixin’s name can be any Sass identifier, and it can contain any statement other than top-level statements. They can be used to encapsulate styles that can be dropped into a single style rule; they can contain style rules of their own that can be nested in other rules or included at the top level of the stylesheet; or they can just serve to modify variables...Mixins are included into the current context using the @include at-rule, which is written @include <name> or @include <name>(<arguments...>), with the name of the mixin being included.
 
-This is exactly what I need to create my "SASS theme manager". Let's see some code. First of all I defined a list of keys that identify:
+This is exactly what I needed to create my "SASS theme manager". Let's see some code. First of all I defined a list of keys that identify:
 
 * the theme names
 * the colors contained in each of my themes.
@@ -54,12 +54,12 @@ This is exactly what I need to create my "SASS theme manager". Let's see some co
 $dark-theme: "dark-theme";
 $light-theme: "light-theme";
 
-$primary-color-dark: "primary-color-dark"; 
-$primary-color: "primary-color"; 
-$primary-color-light: "primary-color-light"; 
-$primary-color-text: "primary-color-text"; 
-$accent-color: "accent-color"; 
-$primary-text-color: "primary-text-color"; 
+$primary-color-dark: "primary-color-dark";
+$primary-color: "primary-color";
+$primary-color-light: "primary-color-light";
+$primary-color-text: "primary-color-text";
+$accent-color: "accent-color";
+$primary-text-color: "primary-text-color";
 $secondary-text-color: "secondary-text-color";
 $divider-color: "divider-color";
 $general-background: "general-background";
@@ -137,12 +137,12 @@ This is all I needed two generate the CSS rules with the theme selection based o
 $dark-theme: "dark-theme";
 $light-theme: "light-theme";
 
-$primary-color-dark: "primary-color-dark"; 
-$primary-color: "primary-color"; 
-$primary-color-light: "primary-color-light"; 
-$primary-color-text: "primary-color-text"; 
-$accent-color: "accent-color"; 
-$primary-text-color: "primary-text-color"; 
+$primary-color-dark: "primary-color-dark";
+$primary-color: "primary-color";
+$primary-color-light: "primary-color-light";
+$primary-color-text: "primary-color-text";
+$accent-color: "accent-color";
+$primary-text-color: "primary-text-color";
 $secondary-text-color: "secondary-text-color";
 $divider-color: "divider-color";
 $general-background: "general-background";
@@ -198,6 +198,15 @@ $themes: (
 }
 ```
 
+With all the stuff above I was ready to "themify" my web site. All I needed to do (and if you read the article until here you're ready too :smile:) was to call the `theme` mixin in my styles definition in order to apply the theme color where I needed them. Below you can find an example where I'm setting the text color in a css class.
+
+```scss
+.blog-post-meta {
+  @include theme('color', $secondary-text-color);
+  /*... other rules ...*/
+}
+```
+
 #### Conclusion
 
-Nowadays it is important to give to the user the best experience. Dark mode is another step in this direction. By leveraging the power of tools like SASS you can implement a theme component in less then a hour. Sooo now go and join the dark side (of themes). :hearts:
+Nowadays it is important to give to the user the best experience when they use your software. Dark mode is another step in this direction. By leveraging the power of tools like SASS you can implement a theme component in less then a hour. Sooo now go and join the dark side (of themes). :hearts:
