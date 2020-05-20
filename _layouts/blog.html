@@ -15,7 +15,11 @@
                            class="blog-posts-post-link">
                             <span class="blog-posts-post-title">{{post.title}}</span>
                             <div class="blog-posts-post-img-container">
-                                {% include blog-lazy-image.html class="img blog-posts-post-img" src=post.image description=post.title %}
+                                {% if forloop.first == true %}
+                                    <img src="{{post.image}}" alt="{{post.title}}" class="img blog-posts-post-img">
+                                {% else %}
+                                    {% include blog-lazy-image.html class="img blog-posts-post-img" src=post.image description=post.title %}
+                                {% endif %}
                             </div>
                             {% include blog-post-authors.html authors=post.authors enableUrl=false track-category=site.data.tracking.category.blog_home track-label=site.data.tracking.label.body %}
                             {% include blog-post-meta.html post=post %}
