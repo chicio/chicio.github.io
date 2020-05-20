@@ -25,6 +25,8 @@ jobs:
             https://www.fabrizioduroni.it
             https://www.fabrizioduroni.it/blog
           configPath: './.lighthouserc.json'  
+          uploadArtifacts: true
+          temporaryPublicStorage: true 
       - name: Archive lighthouse reports
         uses: actions/upload-artifact@v1
         with:
