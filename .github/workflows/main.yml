@@ -26,9 +26,4 @@ jobs:
             https://www.fabrizioduroni.it/blog
           configPath: './.lighthouserc.json'  
           uploadArtifacts: true
-          temporaryPublicStorage: true 
-      - name: Archive lighthouse reports
-        uses: actions/upload-artifact@v1
-        with:
-          name: lighthouse-reports
-          path: .lighthouseci                   
+          temporaryPublicStorage: true                

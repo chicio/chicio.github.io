@@ -6,6 +6,7 @@
     "assert": {
       "preset": "lighthouse:recommended",
       "assertions": {
+        "offscreen-images": "off",
         "uses-optimized-images": "off",
         "uses-webp-images": "off",
         "uses-responsive-images": "off",
