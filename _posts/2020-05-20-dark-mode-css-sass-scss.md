@@ -6,7 +6,7 @@ date: 2020-05-20
 image: /assets/images/posts/dark-side-dark-mode.jpg
 tags: [computer graphics]
 comments: true
-math: true
+math: false
 seo:
  - type: "BlogPosting"
 authors: [fabrizio_duroni] 
