@@ -1,6 +1,9 @@
 name: Tests
 
 on:
+  push:
+    branches: 
+      - '*'
   schedule:
     - cron: '0 */6 * * *' 
 
