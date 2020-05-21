@@ -21,15 +21,15 @@ const fontsExpirationPlugin = new ExpirationPlugin({ maxEntries: 5, maxAgeSecond
 const imagesExpirationPlugin = new ExpirationPlugin({ maxEntries: 100, maxAgeSeconds: 60 * 24 * 60 * 60 })
 const documentExpirationPlugin = new ExpirationPlugin({ maxEntries: 50, maxAgeSeconds: 60 * 24 * 60 * 60, purgeOnQuotaError: true })
 
-skipWaiting();
-clientsClaim();
+skipWaiting()
+clientsClaim()
 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
 // @ts-ignore: __WB_MANIFEST is a placeholder filled by workbox-webpack-plugin with the list of dependecies to be cached
-precacheAndRoute(self.__WB_MANIFEST);
-googleAnalytics.initialize();
+precacheAndRoute(self.__WB_MANIFEST)
+googleAnalytics.initialize()
 
 self.addEventListener('install', (event: ExtendableEvent) => {
-  const urls = [
+  const offlineUrls = [
     OFFLINE_PAGE_URL,
     OFFLINE_PAGE_NO_NETWORK_IMAGE_URL
   ];
@@ -40,10 +40,10 @@ self.addEventListener('install', (event: ExtendableEvent) => {
       caches.delete(CACHE_STYLES_NAME),
       caches.delete(CACHE_FONTS_NAME),
       caches.delete(CACHE_IMAGES_NAME),
-      caches.open(CACHE_OFFLINE_NAME).then((cache) => cache.addAll(urls))
+      caches.open(CACHE_OFFLINE_NAME).then((cache) => cache.addAll(offlineUrls))
     ])
   );
-});
+})
 
 const registerCacheFirstRouteUsing = (
   destination: RequestDestination,
@@ -55,7 +55,7 @@ const registerCacheFirstRouteUsing = (
     cacheName: cacheName,
     plugins: [expirationPlugin],
   })
-);
+)
 
 registerCacheFirstRouteUsing('style', CACHE_STYLES_NAME, stylesScriptsExpirationPlugin)
 registerCacheFirstRouteUsing('script', CACHE_SCRIPT_NAME, stylesScriptsExpirationPlugin)
