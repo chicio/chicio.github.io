@@ -20,11 +20,11 @@ authors: [fabrizio_duroni]
 ```swift
 struct DocumentPickerViewController: UIViewControllerRepresentable {
     var callback: (URL) -> ()
-    
+
     func makeCoordinator() -> Coordinator {
         return Coordinator(documentController: self)
     }
-    
+
     func updateUIViewController(_ uiViewController: UIDocumentPickerViewController,
                                 context: UIViewControllerRepresentableContext<DocumentPickerViewController>) {
     }
