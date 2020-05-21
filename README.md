@@ -11,7 +11,7 @@ My personal website, created using github pages.
 
 ***
 
-### Installation
+## Installation
 
 To run my website locally you need to install the following software:
 
@@ -45,10 +45,16 @@ npm run watch
 npm run start
 ```
 
-### Overview
+## Overview
 
-My website is hosted using Github Pages. It contains a bunch of jekyll templates used for home, posts, archive and
-tags pages. All blog posts are created using markdown files (thanks Jekyll :grin:). For JS, CSS and assets build I
-used Gulp + Webpack build automation tools. On the homepage you can find also a three.js integration with a physically based scene, to highlight my computer graphics passion.
-Soooo what are you waiting for???!! Go and checkout my [homepage](https://www.fabrizioduroni.it "homepage") and my
-[blog](https://www.fabrizioduroni.it/blog/ "blog") :stuck_out_tongue_winking_eye:!!.
+My website has been created for Github Pages using:
+
+- [Jekyll](https://jekyllrb.com), is a simple, blog-aware, static site generator for personal, project, or organization sites written in ruby
+- [Gulp](https://gulpjs.com), a task runner built on Node.js and npm
+- [Webpack](https://webpack.js.org), a JavaScript module bundler.
+- [SASS](https://sass-lang.com), a powerful professional grade CSS extension language
+- [TypeScript](https://www.typescriptlang.org), a typed superset of JavaScript that compiles to plain JavaScript.
+- [Workbox](https://developers.google.com/web/tools/workbox), a set of libraries and Node modules that make it easy to cache assets and take full advantage of features used to build Progressive Web Apps
+- [ThreeJS](https://threejs.org), a JavaScript library used to create and display animated 3D computer graphics in a web browser
+
+Go and checkout my [homepage](https://www.fabrizioduroni.it "homepage") and my[blog](https://www.fabrizioduroni.it/blog/ "blog").
