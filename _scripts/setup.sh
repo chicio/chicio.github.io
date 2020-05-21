@@ -6,7 +6,8 @@ npm install --global gulp-cli@2.2.0
 
 # Install gem dependecies
 gem install bundler
-bundle install --path vendor/bundle
+bundle config set path 'vendor/bundle'
+bundle install
 
 # Install npm dependecies
 npm install
