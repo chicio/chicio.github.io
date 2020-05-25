@@ -45,21 +45,7 @@ const getTouchesCoordinatesFrom = (event: TouchEvent): Point => {
   )
 }
 
-
-const pullToRefresh = (): void => {
-  if (!('serviceWorker' in navigator)) {
-    return
-  }
-
-  const pullToRefreshElement: HTMLElement | null = document.querySelector('#pull-to-refresh')
-  const pullToRefreshStatusElement: HTMLElement | null = document.querySelector('#pull-to-refresh-status')
-  const pullToRefreshLoaderElement: HTMLElement | null = document.querySelector('#pull-to-refresh-loader')
-  const pullableContent: HTMLElement | null = document.querySelector('.pullable-content')
-
-  if(!areAllAvailable(pullToRefreshElement, pullToRefreshStatusElement, pullToRefreshLoaderElement, pullableContent)) {
-    return
-  }
-
+const startPullToRefresh = (pullToRefreshElement: HTMLElement, pullToRefreshStatusElement: HTMLElement, pullToRefreshLoaderElement: HTMLElement, pullableContent: HTMLElement): void => {
   const pullToRefreshElementHeight = 100
   const pullToRefreshStatusRepository = createPullToRefreshStatusRepository()
   const decelerationFactor = 0.5
@@ -71,7 +57,7 @@ const pullToRefresh = (): void => {
     pullToRefreshLoaderElement.style.opacity = `${pullToRefreshLoaderOpacity}`
   }
 
-  const isDraggingForPullToRefresh = (yMovement): boolean => window.scrollY <= 0 && yMovement <= 0
+  const isDraggingForPullToRefresh = (yMovement: number): boolean => window.scrollY <= 0 && yMovement <= 0
 
   const closePullToRefresh = (): void => {
     addCssClass(pullToRefreshElement, 'end-pull')
@@ -156,6 +142,26 @@ const pullToRefresh = (): void => {
       resetPullToRefreshStatus()
     }
   })
+}
+
+const pullToRefresh = (): void => {
+  if (!('serviceWorker' in navigator)) {
+    return
+  }
+
+  const pullToRefreshElement: HTMLElement | null = document.querySelector<HTMLElement>('#pull-to-refresh')
+  const pullToRefreshStatusElement: HTMLElement | null = document.querySelector<HTMLElement>('#pull-to-refresh-status')
+  const pullToRefreshLoaderElement: HTMLElement | null = document.querySelector<HTMLElement>('#pull-to-refresh-loader')
+  const pullableContent: HTMLElement | null = document.querySelector<HTMLElement>('.pullable-content')
+
+  if(areAllAvailable(pullToRefreshElement, pullToRefreshStatusElement, pullToRefreshLoaderElement, pullableContent)) {
+    startPullToRefresh(
+      pullToRefreshElement as HTMLElement,
+      pullToRefreshStatusElement as HTMLElement, 
+      pullToRefreshLoaderElement as HTMLElement, 
+      pullableContent as HTMLElement
+    )
+  }
 }
 
 export { pullToRefresh }

@@ -1,12 +1,12 @@
 import { addCssClass, removeCssClass } from '../common/css-class'
 
-const forEach = (list: NodeList, operation: (item: Node) => void): void => {
+const forEach = (list: NodeListOf<HTMLElement>, operation: (item: HTMLElement) => void): void => {
   for (let i = 0; i < list.length; i++) {
     operation(list.item(i))
   }
 }
 
-const deactivateAll = (tabs: NodeList): void => forEach(tabs, (tab: HTMLElement) => removeCssClass(tab, 'active'))
+const deactivateAll = (tabs: NodeListOf<HTMLElement>): void => forEach(tabs, (tab: HTMLElement) => removeCssClass(tab, 'active'))
 
 const activateTabFor = (event: Event): void => {
   const element: HTMLElement = (event.currentTarget as HTMLElement)
@@ -14,7 +14,7 @@ const activateTabFor = (event: Event): void => {
 }
 
 const deactivateAllTabPanes = (): void => forEach(
-  document.querySelectorAll('.tab-pane'),
+  document.querySelectorAll<HTMLElement>('.tab-pane'),
   (tabPane: HTMLElement) => removeCssClass(tabPane, 'active')
 )
 
@@ -22,14 +22,14 @@ const activateTabPaneFor = (event: Event): void => {
   const element: HTMLElement = (event.target as HTMLElement)
   const activePaneId: string | null = element.getAttribute('href')
   if (activePaneId) {
-    const activePane: HTMLElement | null = document.querySelector(activePaneId)
+    const activePane: HTMLElement | null = document.querySelector<HTMLElement>(activePaneId)
     if (activePane) {
       addCssClass(activePane, 'active')
     }
   }
 }
 
-const tabClick = (tabs: NodeList, event: Event): void => {
+const tabClick = (tabs: NodeListOf<HTMLElement>, event: Event): void => {
   event.preventDefault()
   deactivateAll(tabs)
   activateTabFor(event)
@@ -38,7 +38,7 @@ const tabClick = (tabs: NodeList, event: Event): void => {
 }
 
 const tabs = (): void => {
-  const tabs: NodeList = document.querySelectorAll('ul.nav-tabs > li')
+  const tabs: NodeListOf<HTMLElement> = document.querySelectorAll('ul.nav-tabs > li')
   forEach(tabs, (tab: HTMLElement) => {
     tab.addEventListener('click', (event: Event) => tabClick(tabs, event))
   })

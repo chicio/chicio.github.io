@@ -5,7 +5,7 @@ const isWebGLEnabled = (): boolean => {
   try {
     return !!window.WebGLRenderingContext && (!!c.getContext('experimental-webgl') || !!c.getContext('webgl'));
   } catch (e) {
-    return null;
+    return false;
   }
 }
 

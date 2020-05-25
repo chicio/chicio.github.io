@@ -69,14 +69,14 @@ setCatchHandler((options: RouteHandlerCallbackOptions): Promise<Response> => {
   const isAOfflinePageImageRequest = (options: RouteHandlerCallbackOptions): boolean =>
     !(typeof options.request === 'string') &&
     options.request.destination == 'image' &&
-    options.url.pathname == OFFLINE_PAGE_NO_NETWORK_IMAGE_URL
+    options.url?.pathname == OFFLINE_PAGE_NO_NETWORK_IMAGE_URL
 
   if (isADocumentRequest(options)) {
-    return caches.match(OFFLINE_PAGE_URL);
+    return caches.match(OFFLINE_PAGE_URL) as Promise<Response>;
   }
 
   if (isAOfflinePageImageRequest(options)) {
-    return caches.match(OFFLINE_PAGE_NO_NETWORK_IMAGE_URL);
+    return caches.match(OFFLINE_PAGE_NO_NETWORK_IMAGE_URL) as Promise<Response>;
   }
 
   return Promise.resolve(Response.error());
