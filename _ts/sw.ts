@@ -28,6 +28,8 @@ clientsClaim()
 precacheAndRoute(self.__WB_MANIFEST)
 googleAnalytics.initialize()
 
+//https://stackoverflow.com/questions/56356655/structuring-a-typescript-project-with-workers
+
 self.addEventListener('install', (event: ExtendableEvent) => {
   const offlineUrls = [
     OFFLINE_PAGE_URL,
