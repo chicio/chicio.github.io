@@ -18,11 +18,11 @@ authors: [fabrizio_duroni]
 
 SwiftUI has been around for almost year now. With its reactive paradigm approach it is a big step forward when compared to the UIKit imperative approach. But as a consequence of the fact that UIKit has been with us [for almost twelve years](https://en.wikipedia.org/wiki/IOS_SDK) and there are millions of apps already publish on the app store, a lot of developers have tons of UKit based library and custom components. Another interesting point is the fact that at the moment of this writing a lot of UIKit components from the iOS SDK  are [missing a counterpart in SwiftUI](https://www.hackingwithswift.com/quick-start/swiftui/answering-the-big-question-should-you-learn-swiftui-uikit-or-both "uikit missing swiftui").  
 Anyway, you are just starting to develop a new app and you want to create it in SwiftUI (targeting only for iOS 13 because, you know, SwiftUI is compatible only with it :laughing:) without losing the ability to speed up you development by reusing your UIKit based libraries and components. Is there a solution to this problem? Yes!! :relaxed:
-In this post I will show you how you can leverage the power of `UIViewRepresentable` and `UIViewControllerRepresentable` protocols to expose your UIKit views and controller as standard SwiftUI components. Before going deeper with an example let's see the definition of this two protocol from the official Apple documentation. Let's start from `UIViewRepresentable`:
+In this post I will show you how you can leverage the power of `UIViewRepresentable` and `UIViewControllerRepresentable` protocols to expose your UIKit views and controller as standard SwiftUI components. Before going deeper with an example let's see the definition of this two protocol from the official Apple documentation. Let's start from [UIViewRepresentable](https://developer.apple.com/documentation/swiftui/uiviewrepresentable "uiviewrepresentable documentation"):
 
 >UIViewRepresentable. A wrapper for a UIKit view that you use to integrate that view into your SwiftUI view hierarchy...Adopt this protocol in one of your app's custom instances, and use its methods to create, update, and tear down your view. The creation and update processes parallel the behavior of SwiftUI views, and you use them to configure your view with your app's current state information...  
   
-And here we have the other one for `UIViewControllerRepresentable`:
+And here we have the other one for [UIViewControllerRepresentable](https://developer.apple.com/documentation/swiftui/uiviewcontrollerrepresentable "uiviewcontrollerrepresentable"):
 
 >UIViewControllerRepresentable. A view that represents a UIKit view controller...Adopt this protocol in one of your app's custom instances, and use its methods to create, update, and tear down your view controller. The creation and update processes parallel the behavior of SwiftUI views, and you use them to configure your view controller with your app's current state information...The system doesn't automatically communicate changes occurring within your view controller to other parts of your SwiftUI interface. When you want your view controller to coordinate with other SwiftUI views, you must provide a Coordinator instance to facilitate those interactions. For example, you use a coordinator to forward target-action and delegate messages from your view controller to any SwiftUI views.
 
@@ -30,8 +30,13 @@ There are a lot of concepts here: view lifecycle, notification, delegation and c
 
 #### Implementation
 
-In this example we will create a simple app that will let the user select a document using and instance of the UIKit based controller `UIDocumentPickerViewController` and we will print the name of file selected using a UIKit `UILabel`. ...
+In this example we will create a simple app that will let the user select a document using and instance of the UIKit based controller `UIDocumentPickerViewController` and we will print the name of the file selected using a customized UIKit `UILabel`. Let's start from the custom UIKit `UILabel` view. To use our custom `UILabel` in SwiftUI we need to wrap it in a struct that implements the first protocol we saw above: `UIViewRepresentable`. This protocol contains two methods:
 
+- `makeUIView(context: Self.Context) -> Self.UIViewType`, a method where you create the UIKit to be used in SwiftUI
+- `updateUIView(_ uiView: Self.UIViewType, context: Self.Context)` a method called when the view must be redrawn due to external changes (e.g. a State update)
+
+The `Self.UIViewType` type is an [associated type](https://www.hackingwithswift.com/articles/74/understanding-protocol-associated-types-and-their-constraints "swift protocol associated type") of the protocol and he must match the type of the UIKit view wrapped.
+So for our example we can implement a `DocumentNameLabel` struct that implements the `UIViewRepresentable` protocol. In the `makeUIView` method we create an instance of the customized UILabel that we want to expose. In the `updateUIView` we will update the text shown by the label with the value contained in a `@Binding` var updated from the container view (do you remember [what is a @Binding var](https://www.hackingwithswift.com/quick-start/swiftui/what-is-the-binding-property-wrapper "binding swiftui"), right?). 
 
 ```swift
 struct DocumentNameLabel: UIViewRepresentable {
@@ -50,6 +55,8 @@ struct DocumentNameLabel: UIViewRepresentable {
     }
 }
 ```
+
+After the view, we need to take care of the UIKit controller used to select the document, `UIDocumentPickerViewController`. We will wrap it in a struct that implements the `UIViewControllerRepresentable`. ...
 
 ```swift
 struct DocumentPickerViewController: UIViewControllerRepresentable {
