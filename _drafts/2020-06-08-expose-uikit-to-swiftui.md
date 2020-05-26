@@ -35,7 +35,7 @@ In this example we will create a simple app that will let the user select a docu
 - `makeUIView(context: Self.Context) -> Self.UIViewType`, a method where you create the UIKit to be used in SwiftUI
 - `updateUIView(_ uiView: Self.UIViewType, context: Self.Context)` a method called when the view must be redrawn due to external changes (e.g. a State update)
 
-The `Self.UIViewType` type is an [associated type](https://www.hackingwithswift.com/articles/74/understanding-protocol-associated-types-and-their-constraints "swift protocol associated type") of the protocol and he must match the type of the UIKit view wrapped.
+The `Self.UIViewType` type is an [associated type](https://www.hackingwithswift.com/articles/74/understanding-protocol-associated-types-and-their-constraints "swift protocol associated type") of the protocol and he must match the type of the UIKit view wrapped.  
 So for our example we can implement a `DocumentNameLabel` struct that implements the `UIViewRepresentable` protocol. In the `makeUIView` method we create an instance of the customized UILabel that we want to expose. In the `updateUIView` we will update the text shown by the label with the value contained in a `@Binding` var updated from the container view (do you remember [what is a @Binding var](https://www.hackingwithswift.com/quick-start/swiftui/what-is-the-binding-property-wrapper "binding swiftui"), right?). 
 
 ```swift
@@ -56,7 +56,15 @@ struct DocumentNameLabel: UIViewRepresentable {
 }
 ```
 
-After the view, we need to take care of the UIKit controller used to select the document, `UIDocumentPickerViewController`. We will wrap it in a struct that implements the `UIViewControllerRepresentable`. ...
+After the view, we need to take care of the UIKit controller used to select the document, `UIDocumentPickerViewController`. We will wrap it in a struct that implements the `UIViewControllerRepresentable`. This protocol contains four methods:
+
+- `makeUIViewController(context: Self.Context) -> Self.UIViewControllerType`, a method used to create the instance of the view controller to be used in your SwiftUI screen
+- `updateUIViewController(Self.UIViewControllerType, context: Self.Context)`, a method called when the view controller must be redrawn/updated due to external changes (e.g. a State update)
+- `makeCoordinator() -> Self.Coordinator`, a method used to create the custom instance that you use to communicate changes from your view controller to other parts of your SwiftUI interface
+- `static func dismantleUIViewController(Self.UIViewControllerType, coordinator: Self.Coordinator)`, a method called to clean up additional resources used by the view controller when it is dismissed
+
+As for the previous protocol, The `Self.UIViewControllerType` type is an [associated type](https://www.hackingwithswift.com/articles/74/understanding-protocol-associated-types-and-their-constraints "swift protocol associated type") of the protocol and he must match the type of the UIViewController wrapped.  
+Le't start from the first method reported above, where we will create the instance of the `UIDocumentPickerViewController` that we want to expose to SwiftUI. The delegate of this controller will be the `Coordinator` instance created in the `makeCoodinator` protocol method. So the Coordinator will be responder for all the `UIDocumentPickerDelegate` methods. Remember that the `makeCoordinator` method is called before everything else when we will create our `DocumentPickerViewController` instance in SwiftUI. The `Coordinator` receive a reference to the wrapping struct. This reference is used to trigger a custom callback contained in the `var callback: (URL) -> ()` property that is received at `DocumentPickerViewController` construction time when the `documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL])` method of the `UIDocumentPickerDelegate` protocol is invoked. In this way we are able to send back to SwiftUI the result of the interaction with the `UIDocumentPickerViewController`. Last but not least there's also the `updateUIViewController` method, but in this case with an empty implementation because we don't need to update the status of the view controller using some SwiftUI state change.
 
 ```swift
 struct DocumentPickerViewController: UIViewControllerRepresentable {
@@ -92,11 +100,13 @@ struct DocumentPickerViewController: UIViewControllerRepresentable {
 }
 ```
 
+Now we are ready to use our controller...
+
 ```swift
 struct ContentView: View {
     @State var isDocumentPickerPresented: Bool = false
     @State var documentUrl: String = ""
-    
+
     var body: some View {
         VStack{
             Spacer()
