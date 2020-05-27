@@ -32,7 +32,7 @@ canvas {
 }
 
 .lazy {
-  background-color: $divider-color;
+  @include theme('color', $divider-color)
 }
 
 .lazy-show {
