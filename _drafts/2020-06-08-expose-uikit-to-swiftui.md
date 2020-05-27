@@ -100,7 +100,7 @@ struct DocumentPickerViewController: UIViewControllerRepresentable {
 }
 ```
 
-Now we are ready to use our controller...
+Now we are ready to use our UIKit controller and our custom UIView in a SwiftUI view. We can just add them to the `body` field of our view and use them as a standard SwiftUI component. One thing to be noted is the set of the `frame` on the `DocumentNameLabel` component. This is a consequence of the fact that sometimes the UIKit views wrapped with the `UIViewRepresentable` protocol take as much space as they can in a `VStack` component. This means that if we don't set the frame in our example the label would take the majority of the screen space (leaving only the space for button to be shown).
 
 ```swift
 struct ContentView: View {
@@ -130,3 +130,4 @@ struct ContentView: View {
 
 #### Conclusion
 
+`UIViewRepresentable` and `UIViewControllerRepresentable` are the tools provided by Apple to let you mix the power and versatility of UIKit with the declarative reactive approach of SwiftUI. I hope that in next future releases of the iOS SDK there will be no need to write this custom wrapper components at least for all the standard UIKit components.
