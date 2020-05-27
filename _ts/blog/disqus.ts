@@ -22,12 +22,21 @@ const onIntersection = (entries: IntersectionObserverEntry[], observer: Intersec
   }
 }
 
+interface DisqusConfig {
+  page: {
+    url: string;
+    identifier: string;
+  };
+}
+
 const disqus = (): void => {
   // eslint-disable-next-line @typescript-eslint/camelcase
-  window.disqus_config = (): void => {
-    this.page.url = window.location.href
-    this.page.identifier = window.location.href
-  }
+  window.disqus_config = (): DisqusConfig => ({
+    page: {
+      url: window.location.href,
+      identifier: window.location.href
+    }
+  })
   const intersectionObserver: IntersectionObserver = new IntersectionObserver(
     onIntersection,
     { rootMargin: '100px 0px', threshold: 0.01 }

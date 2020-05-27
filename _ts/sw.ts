@@ -5,6 +5,10 @@ import { ExpirationPlugin } from 'workbox-expiration';
 import { CacheFirst } from 'workbox-strategies';
 import * as googleAnalytics from 'workbox-google-analytics';
 
+// Fix self: https://stackoverflow.com/questions/56356655/structuring-a-typescript-project-with-workers
+declare const self: ServiceWorkerGlobalScope;
+export {};
+
 const CACHE_PREFIX = 'workbox-chicio-coding'
 const CACHE_OFFLINE_NAME = `${CACHE_PREFIX}-offline`
 const CACHE_SCRIPT_NAME = `${CACHE_PREFIX}-scripts`
@@ -69,22 +73,22 @@ setCatchHandler((options: RouteHandlerCallbackOptions): Promise<Response> => {
   const isAOfflinePageImageRequest = (options: RouteHandlerCallbackOptions): boolean =>
     !(typeof options.request === 'string') &&
     options.request.destination == 'image' &&
-    options.url.pathname == OFFLINE_PAGE_NO_NETWORK_IMAGE_URL
+    options.url?.pathname == OFFLINE_PAGE_NO_NETWORK_IMAGE_URL
 
   if (isADocumentRequest(options)) {
-    return caches.match(OFFLINE_PAGE_URL);
+    return caches.match(OFFLINE_PAGE_URL) as Promise<Response>;
   }
 
   if (isAOfflinePageImageRequest(options)) {
-    return caches.match(OFFLINE_PAGE_NO_NETWORK_IMAGE_URL);
+    return caches.match(OFFLINE_PAGE_NO_NETWORK_IMAGE_URL) as Promise<Response>;
   }
 
   return Promise.resolve(Response.error());
 })
 
-self.addEventListener('message', (event: MessageEvent) => {
-  const isARefresh = (event: MessageEvent): boolean => event.data.message === 'refresh'
-  const sendRefreshCompletedMessageToClient = (event: MessageEvent): void => event.ports[0].postMessage({ refreshCompleted: true })
+self.addEventListener('message', (event: ExtendableMessageEvent) => {
+  const isARefresh = (event: ExtendableMessageEvent): boolean => event.data.message === 'refresh'
+  const sendRefreshCompletedMessageToClient = (event: ExtendableMessageEvent): void => event.ports[0].postMessage({ refreshCompleted: true })
 
   if (isARefresh(event)) {
     console.log(cacheNames)

@@ -3,7 +3,7 @@ import { addCssClass, removeCssClass } from './css-class'
 
 const loadImage = (image: HTMLImageElement, observer: IntersectionObserver): void => {
   const placeholderUrl: string = image.src
-  image.src = image.dataset.src
+  image.src = image.dataset.src as string
   image.onload = (): void => {
     if (image.src !== placeholderUrl) {
       observer.unobserve(image)

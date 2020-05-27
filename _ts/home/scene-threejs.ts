@@ -112,7 +112,7 @@ const setWindowResizeListener = (camera: PerspectiveCamera, renderer: WebGLRende
 }
 
 const setup = (renderer: WebGLRenderer, camera: PerspectiveCamera, scene: Scene): void => {
-  document.getElementById('rendering-surface').appendChild(renderer.domElement)
+  document.getElementById('rendering-surface')?.appendChild(renderer.domElement)
   scene.background = new Color(0x303F9F)
   setWindowResizeListener(camera, renderer)
 }
