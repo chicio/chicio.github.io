@@ -10,7 +10,7 @@ const isWebGLEnabled = (): boolean => {
 }
 
 const scene3D = (): void => {
-  if (isWebGLEnabled && isAMobileDevice() === false) {
+  if (isWebGLEnabled() && !isAMobileDevice()) {
     setTimeout(() => { 
       import(/* webpackChunkName: "scene-threejs" */ './scene-threejs').then(module => module.sceneThreeJS())
     }, 3000);

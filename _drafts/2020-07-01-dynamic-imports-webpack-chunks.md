@@ -22,6 +22,42 @@ So let's start and see how I used it on my website so that you can start to opti
 
 #### Implementation
 
+```json
+{
+  mode: 'production',
+  entry: {
+    'index.home': 'ts/index.home.ts',
+    'index.blog': 'ts/index.blog.ts',
+  },
+  output: {
+    filename: '[name].[hash].min.js',
+    chunkFilename: '[name].[chunkhash].bundle.js',
+    publicPath: `dist/`,
+    path: path.resolve(__dirname, dist),
+  },
+  module: {
+    /*...modules configurations...*/
+  },
+  /*...other configurations...*/
+}
+```
 
+```typescript
+/* ...other code... */
+
+const isWebGLEnabled = (): boolean => {
+  /*...implementation...*/
+}
+
+const scene3D = (): void => {
+  if (isWebGLEnabled() && !isAMobileDevice()) {
+    import(/* webpackChunkName: "scene-threejs" */ './scene-threejs').then(module => module.sceneThreeJS())
+  }
+}
+
+export { scene3D }
+```
 
 #### Conclusion
+
+...
