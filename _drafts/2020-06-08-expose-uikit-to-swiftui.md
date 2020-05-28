@@ -130,4 +130,4 @@ struct ContentView: View {
 
 #### Conclusion
 
-`UIViewRepresentable` and `UIViewControllerRepresentable` are the tools provided by Apple to let you mix the power and versatility of UIKit with the declarative reactive approach of SwiftUI. I hope that in next future releases of the iOS SDK there will be no need to write this custom wrapper components at least for all the standard UIKit components.
+You can find all the code above in this [example repository on Github](https://github.com/chicio/Use-UIKit-In-SwiftUI "github swiftui uikit"). Don't hesitate to clone it and start to play with the example. `UIViewRepresentable` and `UIViewControllerRepresentable` are the tools provided by Apple to let you mix the power and versatility of UIKit with the declarative reactive approach of SwiftUI. I hope that in next future releases of the iOS SDK there will be no need to write this custom wrapper components at least for all the standard UIKit components.
