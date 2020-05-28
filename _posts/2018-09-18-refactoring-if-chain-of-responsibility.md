@@ -63,6 +63,7 @@ between one commit and the other and it won't be the exact diff you can get with
 Here you can find the code we were not very proud of. 
 In particular, I report the nested if structure, which is the part we are going to refactor.
 ([Source code](https://github.com/bonfa/IfRemovingARealUseCase/blob/a6681dd088d06244878e0527e87b4c6b5bbfd50d/src/main/java/it/fbonfadelli/hand_baggage/HandBaggageInformationFactory.java))
+
 ```java
 public class HandBaggageInformationFactory {
 
@@ -107,6 +108,7 @@ such part into an `if` clause whose condition is the negation of the original on
 In the following piece of code, you can notice how the outer if-else has become a couple of `if` clauses, 
 one for the original condition `flight.isOneWay()` and the other one with the opposite condition `!flight.isOneWay()`
 ([Source code](https://github.com/bonfa/IfRemovingARealUseCase/blob/a49340d05153074158cc59c130de6875276a92ab/src/main/java/it/fbonfadelli/hand_baggage/HandBaggageInformationFactory.java))
+
 ```diff
 public class HandBaggageInformationFactory {
 
@@ -148,7 +150,7 @@ public class HandBaggageInformationFactory {
 Once done this, we are going to proceed with the inner `if-else` conditions, which is `isMyCompany(flight)`.
 ([Source code](https://github.com/bonfa/IfRemovingARealUseCase/blob/193aab6e25e83ba9c453b87961fb1582b0a63828/src/main/java/it/fbonfadelli/hand_baggage/HandBaggageInformationFactory.java)) 
 
-```diff 
+```diff
 public class HandBaggageInformationFactory {
     public HandBaggageInformation from(Order order, TranslationRepository translationRepository, String renderLanguage, Integer flightId) {
         Flight flight = order.findFlight(flightId);
@@ -261,7 +263,7 @@ public class HandBaggageInformationFactory {
 -                   return oldMyCompanyHandBaggageInformationInfo(translationRepository, renderLanguage);
 -               }
             }
-            
+
 +           if (isMyCompany(flight)) {
 +               if (!flightOutboundDate.isAfter(LocalDateTime.of(2018, 11, 1, 0, 0, 0))) {
 +                   return oldMyCompanyHandBaggageInformationInfo(translationRepository, renderLanguage);
@@ -281,14 +283,14 @@ public class HandBaggageInformationFactory {
                         || returnDepartureDate.isAfter(LocalDate.of(2018, 10, 31))) {
                     return newMyCompanyHandBaggageInformation(translationRepository, renderLanguage);
                 }
-                
+
 -               if (!(outboundDepartureDate.isAfter(LocalDateTime.of(2018, 11, 1, 0, 0, 0))
 -                       || returnDepartureDate.isAfter(LocalDate.of(2018, 10, 31)))) {
 -                   return oldMyCompanyHandBaggageInformationInfo(translationRepository, renderLanguage);
 -               }
 
             }
-            
+
 +           if (isMyCompany(flight)) {
 +               if (!(outboundDepartureDate.isAfter(LocalDateTime.of(2018, 11, 1, 0, 0, 0))
 +                       || returnDepartureDate.isAfter(LocalDate.of(2018, 10, 31)))) {
@@ -308,6 +310,7 @@ public class HandBaggageInformationFactory {
 
 After having done this process for all the conditions,
  we will finally get the flat if structure. ([Source code](https://github.com/bonfa/IfRemovingARealUseCase/blob/82d8c21bf684feeaf6d342a7b6f36409bd30acb6/src/main/java/it/fbonfadelli/hand_baggage/HandBaggageInformationFactory.java))
+
 ```java
 public class HandBaggageInformationFactory {
     private static final LocalDateTime FIRST_OF_NOVEMBER = LocalDateTime.of(2018, 11, 1, 0, 0, 0);
@@ -353,7 +356,8 @@ public class HandBaggageInformationFactory {
 ```
 
 ##### Intermediate step: extracting factories
-Before keeping on with the extraction of the chain of responsibility from the if structure, we are going to make some intermediate steps. 
+
+Before keeping on with the extraction of the chain of responsibility from the if structure, we are going to make some intermediate steps.
 In order to reduce the responsibilities of the `HandBaggageInformationFactory`, here, 
 we are going to extract three factories, each one responsible for creating a specific `HandBaggageInformation`.
 Without diving into the code used to create the object, we just extract the `NewMyCompanyHandBaggageInformationFactory`
