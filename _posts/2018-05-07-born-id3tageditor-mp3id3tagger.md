@@ -20,7 +20,7 @@ this post I will talk about why I started to develop them.*
 
 Recently I bought a new car. After a lot of searches I finally decided to buy the Renault Clio 2017 1.5 dci. I love this
 car. It has been a big step forward on my previous car. One of its most interesting feature is its media
-entertainment system: the [Media Nav Evolution system](https://easyconnect.renault.co.uk/systems/medianav-evolution#fonctionnalites "Media Nav Evolution"). This system has a 7'' touchscreen 
+entertainment system: the [Media Nav Evolution system](https://www.renault.co.uk/renault-easy-connect/media-nav-evolution.html#fonctionnalites "Media Nav Evolution"). This system has a 7'' touchscreen 
 with map integration and a basic smartphone integration with Siri voice recognition and phone call support.
 
 {% include blog-lazy-image.html description="media nav clio" width="1500" height="843" src="/assets/images/posts/media-nav-clio.jpg" %}
