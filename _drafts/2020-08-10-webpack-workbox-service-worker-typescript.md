@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Create a service worker with Workbox, Webpack and TypeScript"
-description: "Recently I migrated my website to Webpack and TypeScript. I decided also to give a try to Workbox, a set of google library to improve the creation of a Progressive Web App. Let's see how easy it is to create a PWA with this tools."
+description: "Recently I migrated my website to Webpack and TypeScript. I decided also to give a try to Workbox, a set of Google libraries to improve the creation of a Progressive Web App. Let's see how easy it is to create a PWA with this tools."
 date: 2020-08-10
 image: /assets/images/posts/xxx
 tags: [web development, javascript, pwa]
@@ -12,7 +12,7 @@ seo:
 authors: [fabrizio_duroni] 
 ---
 
-*Recently I migrated my website to Webpack and TypeScript. I decided also to give a try to Workbox, a set of google library to improve the creation of a Progressive Web App. Let's see how easy it is to create a PWA with this tools.*
+*Recently I migrated my website to Webpack and TypeScript. I decided also to give a try to Workbox, a set of Google libraries to improve the creation of a Progressive Web App. Let's see how easy it is to create a PWA with this tools.*
 
 ---
 
