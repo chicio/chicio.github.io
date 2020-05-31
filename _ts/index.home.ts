@@ -7,7 +7,7 @@ import { scene3D } from './home/scene-3D'
 
 document.addEventListener('DOMContentLoaded', () => {
   tabs()
-  lazyLoadImages('.profile-image, .who-am-i-icon, .project-image, .timeline-image')
+  lazyLoadImages('.who-am-i-icon, .project-image, .timeline-image')
 })
 
 window.addEventListener('load', () => {
