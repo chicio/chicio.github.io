@@ -1,3 +1,6 @@
 {% capture description %}{{ include.description | replace: ' ', '-' | downcase }}{% endcapture %}
-{% capture customClassAndBlogClass %}{{ include.class | default: '' | append: ' blog-image' }}{% endcapture %}
-{% include lazy-image.html id=description alt=include.description fill="BDBDBD" src=include.src width=include.width height=include.height class=customClassAndBlogClass %}
+{% capture customClassAndBlogClass %}{{ include.class | default: '' | append: ' figure-img img-fluid rounded blog-image' }}{% endcapture %}
+<figure class="figure">
+  {% include lazy-image.html id=description alt=include.description fill="BDBDBD" src=include.src width=include.width height=include.height class=customClassAndBlogClass %}
+  <figcaption class="figure-caption text-center font-italic font-weight-light">{{ include.description }}</figcaption>
+</figure>

@@ -7,6 +7,13 @@
     }
   }
 
+  figure {
+    figcaption {
+      @include theme('color', $secondary-text-color);
+      font-size: 14px;
+    }
+  }
+
   .blog-post-title {
     @include theme('color', $accent-color);
     margin-bottom: 5px;
@@ -27,12 +34,6 @@
 
   a {
     @include theme('color', $accent-color);
-  }
-
-  img {
-    max-width: 100%;
-    display: block;
-    margin: 20px auto;
   }
 
   .emoji {
