@@ -41,33 +41,19 @@ The light that you see on a surface could be decomposed into four main component
 
 #### **Emissive component**
 
-This is the light component emitted by the surface material. Is a purely additive component. As you can image, few surface material in nature are emissive (e.g.: light  :laughing:). So the emissive illumination $I_{\text{emissive}}$ of a surface point is obtained by multiplying the emissive constant of a surface $k_{\text{e}}$ by the light emissive intensity $I_{\text{LE}}$ (expressed as we said before as a RGB triplet, and this will be valid for all light intensity define in the following formulas of this post). The emissive light intensity could be the intensity of the scene light (or an average if you have multiple scene lights): practically 
-speaking you can use the scene light RGB color. The emissive constant $k_{\text{e}}$ is a surface property that express its emissive 
-reflectance.
+This is the light component emitted by the surface material. Is a purely additive component. As you can image, few surface material in nature are emissive (e.g.: light  :laughing:). So the emissive illumination $I_{\text{emissive}}$ of a surface point is obtained by multiplying the emissive constant of a surface $k_{\text{e}}$ by the light emissive intensity $I_{\text{LE}}$ (expressed as we said before as a RGB triplet, and this will be valid for all light intensity define in the following formulas of this post). The emissive light intensity could be the intensity of the scene light (or an average if you have multiple scene lights): practically speaking you can use the scene light RGB color. The emissive constant $k_{\text{e}}$ is a surface property that express its emissive reflectance.
 
 £$I_{\text{emissive}}=k_{\text{e}}I_{\text{LE}}£$
   
 #### **Ambient component**
 
-This is light component used to model empirically the contribution of indirect illumination of bouncing lights in the 
-scene on a surface. It depends entirely on the surface material (no geometry influences). So the ambient 
-illumination $I_{\text{ambient}}$ of a surface point is obtained by multiplying the ambient constant of a 
-surface $k_{\text{a}}$ with the light ambient intensity $I_{\text{LA}}$. The ambient constant $k_{\text{a}}$ is a 
-constant related exclusively to the surface material that express empirically its response to indirect illumination. 
-As for the emissive component, the ambient light intensity could be the intensity of the scene light (or an average if 
-you have multiple scene lights).
+This is light component used to model empirically the contribution of indirect illumination of bouncing lights in the scene on a surface. It depends entirely on the surface material (no geometry influences). So the ambient illumination $I_{\text{ambient}}$ of a surface point is obtained by multiplying the ambient constant of a surface $k_{\text{a}}$ with the light ambient intensity $I_{\text{LA}}$. The ambient constant $k_{\text{a}}$ is a constant related exclusively to the surface material that express empirically its response to indirect illumination. As for the emissive component, the ambient light intensity could be the intensity of the scene light (or an average if you have multiple scene lights).
 
 £$I_{\text{ambient}}=k_{\text{a}}I_{\text{LA}}£$
   
 #### **Diffusive component**  
 
-This light component represents  the amount of reflected light given an incident light. Lambertian surfaces are considered: 
-The incident light is equally reflected (with a given amount) in all directions. The amount of reflected light depends on 
-the incident angle of the light with respect to the surface’s normal. The diffuse illumination $I_{\text{diffuse}}$ of a 
-surface point is obtained by multiplying the diffuse surface constant $k_{\text{d}}$ with the light diffuse intensity $I_{\text{LD}}$ 
-and with the attenuation factor due to incident light given by the cosine of the angle between the light direction and the surface 
-normal $\cos\theta$.  This last value is the dot product between the surface normal ${\hat {N}}$ and the light direction ${\hat {L}}$. 
-So the final formula for the diffuse component is:
+This light component represents the amount of reflected light given an incident light. Lambertian surfaces are considered: the incident light is equally reflected (with a given amount) in all directions. The amount of reflected light depends on the incident angle of the light with respect to the surface’s normal. The diffuse illumination $I_{\text{diffuse}}$ of a surface point is obtained by multiplying the diffuse surface constant $k_{\text{d}}$ with the light diffuse intensity $I_{\text{LD}}$ and with the attenuation factor due to incident light given by the cosine of the angle between the light direction and the surface normal $\cos\theta$.  This last value is the dot product between the surface normal ${\hat {N}}$ and the light direction ${\hat {L}}$. So the final formula for the diffuse component is:
 
 £$I_{\text{diffuse}}=k_{\text{d}}I_{\text{LD}}({\hat {L}}\cdot{\hat {N}})£$
   
@@ -90,4 +76,4 @@ It is a fragment shader that could be used to implement per fragment lighting. T
 
 The following image is an example of the happy buddha Stanford mesh rendered using my [Spectral BRDF explorer](https://github.com/chicio/Spectral-BRDF-Explorer "Spectral BRDF explorer")iOS renderer. The lighting is (obviously) calculated using the Phong reflection model. The surface simulated is bronze (you can find some of the constant we discussed before [here](http://devernay.free.fr/cours/opengl/materials.html "phong lighting constants")). Nice :smirk:!!!!
 
-{% include blog-lazy-image.html description="phong example spectral brdf explorer"  width="500" height="889" src="/assets/images/posts/phong-example.jpg" %}
+{% include blog-lazy-image.html description="An example model rendered using Phong model in Spectral BRDF explorer"  width="500" height="889" src="/assets/images/posts/phong-example.jpg" %}

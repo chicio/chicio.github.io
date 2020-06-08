@@ -56,7 +56,7 @@ public class SettingsCommand implements Command {
 }
 ```
 
-As you can see the two implementations look very similar. So it's time to see how contract test can help us :metal:!!!!  
+As you can see the two implementations look very similar. So it's time to see how contract test can help us :metal:!!
 We can write a `CommandContract` base test class that contains the logic of the test we want to write. In our specific case we want to assure that when a command is executed, by calling the `execute()` method, the `menuActionsListener` is called with the correct method on each concrete implementation of `Command`. So our `CommandContract` implementation is:
 
 ```java
