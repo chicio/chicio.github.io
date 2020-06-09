@@ -40,33 +40,32 @@ class ReactNativeBridgeDelegate: NSObject, RCTBridgeDelegate {
 }
 ```
 
-{% include blog-lazy-image.html description="react native bridge delegate localhost" width="1500" height="891" src="/assets/images/posts/react-native-bridge-delegate-localhost.jpg" %}
+{% include blog-lazy-image.html description="The react native bridge delegate still uses the localhost url to load the bundled JS" width="1500" height="891" src="/assets/images/posts/react-native-bridge-delegate-localhost.jpg" %}
 
 If we try to build this app on an iPhone, and we open one of the React Native screen we will receive the following error (obviously based on the fact that we are trying to access localhost from the iPhone, and our React Native node server is running on the MacBook Pro where we are building the app).  
 
-{% include blog-lazy-image.html description="react native error on device failed bundle" width="350" height="641" src="/assets/images/posts/react-native-error-on-device-failed-bundle.jpg" %}
+{% include blog-lazy-image.html description="If you run the app with the localhost url above, you will receive an error" width="350" height="641" src="/assets/images/posts/react-native-error-on-device-failed-bundle.jpg" %}
 
-How can we build on a real device? First of all we need to add a new build phase to our project that let us run the `React Native Xcode Bundler` before the real build. The `React Native Xcode Bundler` is a shell script with name `react-native-xcode.sh` that you can find inside your react native npm package under `<you app root folder.>/node_modules/react-native/scripts/`. This script must take as input our React Native index.js. 
+How can we build on a real device? First of all we need to add a new build phase to our project that let us run the `React Native Xcode Bundler` before the real build. The `React Native Xcode Bundler` is a shell script with name `react-native-xcode.sh` that you can find inside your react native npm package under `<you app root folder.>/node_modules/react-native/scripts/`. This script must take as input our React Native index.js.
 
-{% include blog-lazy-image.html description="react native setup bundler" width="1500" height="891" src="/assets/images/posts/react-native-setup-bundler.jpg" %}
+{% include blog-lazy-image.html description="Add the release bundler script as an Xcode phase" width="1500" height="891" src="/assets/images/posts/react-native-setup-bundler.jpg" %}
   
 Now we can change our `ReactNativeBridgeDelegate` implementation. Instead of returning an hard coded url, we use the `RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackResource: nil)` method. We need to pass `"index"` as bundle root parameter (the name of the main js file).
 
-{% include blog-lazy-image.html description="React Native bundle url provider setup" width="1500" height="891" src="/assets/images/posts/react-native-bundle-url-provider-setup.jpg" %}
+{% include blog-lazy-image.html description="The ReactNativeBridgeDelegate gets the JS url from RCTBundleURLProvider" width="1500" height="891" src="/assets/images/posts/react-native-bundle-url-provider-setup.jpg" %}
   
 Now we can try to build an run again the app on a real device. As you can see now everything works as expected.
 
-{% include blog-lazy-image.html description="react native app working on device" width="350" height="641" src="/assets/images/posts/react-native-app-working-on-device.jpg" %}
+{% include blog-lazy-image.html description="Now the app works correctly on a real device" width="350" height="641" src="/assets/images/posts/react-native-app-working-on-device.jpg" %}
 
-What's happening under the hood? Which kind of "magic" are we using here :smirk:? If we start to debug from the call
- to `RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackResource: nil)` and we go inside the React Native source code at some point we will see a call to a method named `guessPackagerHost`. In this method there's a piece of code that tries to open and read the content of a file named `ip.txt` (this file is supposed to be in the main bundle of the app). The string returned by this method is used as hostname in the url used by React Native to call the packager we are running on our mac.  
+What's happening under the hood? Which kind of "magic" are we using here :smirk:? If we start to debug from the call to `RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackResource: nil)` and we go inside the React Native source code at some point we will see a call to a method named `guessPackagerHost`. In this method there's a piece of code that tries to open and read the content of a file named `ip.txt` (this file is supposed to be in the main bundle of the app). The string returned by this method is used as hostname in the url used by React Native to call the packager we are running on our mac.  
 Who did create this `ip.txt` file? Previously we added the execution of the `React Native Bundler` script as build phase. If we look at the source code of this script you will find the following piece of code:
 
-{% include blog-lazy-image.html description="react native ip txt generation" width="1500" height="1454" src="/assets/images/posts/react-native-ip-txt-generation.jpg" %}
+{% include blog-lazy-image.html description="The react-native-xcode.sh script source code" width="1500" height="1454" src="/assets/images/posts/react-native-ip-txt-generation.jpg" %}
 
 What?!?!?!?!?!? :satisfied: This piece of code basically creates a file named `ip.txt` that contains the IP address of your computer, extracted using an `ifconfig` command, concatenated with the domain `xip.io`. So the file will contain a string like the following one: `<your computer IP address>.xip.io`. This is the string returned by the `guessPackagerHost` method. In the screenshot below you can find the source code of this method and the string that it returns.
 
-{% include blog-lazy-image.html description="react native my local ip" width="1500" height="891" src="/assets/images/posts/react-native-my-local-ip.jpg" %}
+{% include blog-lazy-image.html description="The react native source that reads the ip from the ip.txt file" width="1500" height="891" src="/assets/images/posts/react-native-my-local-ip.jpg" %}
 
 What is the `xip.io` string added after the IP address? [xip.io](http://xip.io/ "xip.io") is a public free DNS server created at [basecamp](https://basecamp.com "basecamp"). Below you can find a quote from the homepage of the service:
 
@@ -75,10 +74,10 @@ What is the `xip.io` string added after the IP address? [xip.io](http://xip.io/ 
 > for any IP address. Say your LAN IP address is 10.0.0.1.
 > Using xip.io,
 >
->           10.0.0.1.xip.io   resolves to   10.0.0.1
->       www.10.0.0.1.xip.io   resolves to   10.0.0.1
->   mysite.10.0.0.1.xip.io   resolves to   10.0.0.1
->   foo.bar.10.0.0.1.xip.io   resolves to   10.0.0.1
+>10.0.0.1.xip.io   resolves to   10.0.0.1
+>www.10.0.0.1.xip.io   resolves to   10.0.0.1
+>mysite.10.0.0.1.xip.io   resolves to   10.0.0.1
+>foo.bar.10.0.0.1.xip.io   resolves to   10.0.0.1
 >
 >...and so on. You can use these domains to access virtual
 >hosts on your development web server from devices on your
@@ -87,8 +86,7 @@ What is the `xip.io` string added after the IP address? [xip.io](http://xip.io/ 
 >  
 >How does it work? xip.io runs a custom DNS server on the public Internet. When your computer looks up a xip.io domain, the xip.io DNS server extracts the IP address from the domain and sends it back in the response.
 
-{% include blog-lazy-image.html description="react native xip.io" width="1500" height="1181" src="/assets/images/posts/react-native-xipio.jpg" %}
+{% include blog-lazy-image.html description="xip.io service" width="1500" height="1181" src="/assets/images/posts/react-native-xipio.jpg" %}
 
-This basically means that xip.io is a domain name we can use to access our local packager environment on our mac from 
-our iPhone and iPad, based on the fact that the devices are all on the same network.   
+This basically means that xip.io is a domain name we can use to access our local packager environment on our mac from our iPhone and iPad, based on the fact that the devices are all on the same network.
 That's all, and as you can see everything works "like magic" :relaxed:.  
