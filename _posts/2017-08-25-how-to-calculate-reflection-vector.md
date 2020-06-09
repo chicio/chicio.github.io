@@ -30,9 +30,9 @@ We will suppose as in the previous post about the phong model that all vectors a
 How is this formula obtained? Let's start from a picture that represents our reflection vector and the other vectors
 used in the calculation.
 
-{% include blog-lazy-image.html description="reflection vector" width="1500" height="589" src="/assets/images/posts/reflection.png" %}
+{% include blog-lazy-image.html description="A representation of the reflection phenomenon with all the vectors involved" width="1500" height="589" src="/assets/images/posts/reflection.png" %}
 
-Before we start with the demonstration we also need to know what is the law of reflection: 
+Before we start with the demonstration we also need to know what is the law of reflection:
 
 >The incident light ray L, the reflected ray R, and the normal N to the surface of the mirror all lie in the same plane. The angle of reflection $\Theta_R\$ is equal to the angle of incidence of light $\Theta_L\$. Both angles are measured with respect to the normal to the mirror. The reflected ray and the incident ray are on the opposite sides of the normal.
 
