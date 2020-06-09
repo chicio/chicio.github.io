@@ -28,11 +28,11 @@ The default layout is composed of individual panels, and inside each one of them
 * **timeline and animation editor**, used to create and modify animation
 * **viewport**, that contains the 3D window in which our scene is shown and where we can add, remove or modify objects.
 
-{% include blog-lazy-image.html description="blender ui editors" width="1500" height="956" src="/assets/images/posts/blender-ui-1-editors.jpg" %}
+{% include blog-lazy-image.html description="Blender editors" width="1500" height="956" src="/assets/images/posts/blender-ui-1-editors.jpg" %}
 
 We can switch a panel from one editor to another by clicking on the icon that shows the current editor selected: a list with all the available editors will be shown and we can choose one of them.
 
-{% include blog-lazy-image.html description="blender ui switch editor" width="268" height="500" src="/assets/images/posts/blender-ui-2-switch-editor.jpg" %}
+{% include blog-lazy-image.html description="The switch editor" width="268" height="500" src="/assets/images/posts/blender-ui-2-switch-editor.jpg" %}
 
 On the left side of the viewport we can find a series of tabs that contain some operations, tools and actions we can
  apply to the 3D window content. This tabs will change based on the fact that we selected or not an object and also based on which type of object we selected. We can also show the object properties sub-panel by clicking the plus (+) button on the right. That sub-panel gives us some information about the object we selected in the 3D window.  
@@ -54,7 +54,7 @@ Finally we have the editing interaction mode selector, that allow us to switch b
 
 The menus on the left of the editing mode selector will change accordingly to the mode selected.
 
-{% include blog-lazy-image.html description="blender ui 3D window" width="1500" height="956" src="/assets/images/posts/blender-ui-3-3Dwindow.jpg" %}
+{% include blog-lazy-image.html description="The 3D window editor" width="1500" height="956" src="/assets/images/posts/blender-ui-3-3Dwindow.jpg" %}
 
 To navigate in the 3D space, usually Blender require a 3 button mouse (we will see below how to emulate a 3 buttons mouse). Anyway, as we're on a MacBook pro we can do the following basic operation with the "alternative" default mapping:
 
@@ -72,12 +72,11 @@ There are also some other basic useful 3D navigation commands:
 
 * **Interface**, so what Blender should show in the interface
 * **Editing**, so how we edit objects
-* **Input**, how mouse and keyboard are configured 
+* **Input**, how mouse and keyboard are configured
 * **Add-ons**, where you can manage plugins
 * **Themes**, to change the color of the interface
 * **File**, to configure standard paths
 * **System**, for system specific settings
 
- To be noted is the option "Emulate 3 Button mouse" in the input settings. This option let Blender emulates a 3 
- button mouse using the Alt button. Int this way you can use this setting to use Blender with standard keys for mouse.  
+ To be noted is the option "Emulate 3 Button mouse" in the input settings. This option let Blender emulates a 3 button mouse using the Alt button. Int this way you can use this setting to use Blender with standard keys for mouse.  
  That's enough first post. See you in the second tutorial about selecting and translating objects.
