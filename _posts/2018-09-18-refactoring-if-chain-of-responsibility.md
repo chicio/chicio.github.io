@@ -12,57 +12,35 @@ seo:
 authors: [francesco_bonfadelli] 
 ---
 
-*In this post my colleague [Francesco Bonfadelli](https://www.linkedin.com/in/fbonfadelli/ "Francesco Bonfadelli") 
-will show you how to transform a nested if structure into a chain of responsibility.*
+*In this post my colleague [Francesco Bonfadelli](https://www.linkedin.com/in/fbonfadelli/ "Francesco Bonfadelli") will show you how to transform a nested if structure into a chain of responsibility.*
 
 ---
   
-In this post I am going to describe a step by step process used to transform a nested if structure into a chain of responsibility. 
-The purpose of this operation is to make the code easier to read, thus to change without introducing errors. 
-We will also get for free a structure that will be able to apply a more generic set of rules than the one defined at the beginning.  
-The code of this post is based on a piece of code used to satisfy a real business need, 
-we just removed the business related details.
+In this post I am going to describe a step by step process used to transform a nested if structure into a chain of responsibility. The purpose of this operation is to make the code easier to read, thus to change without introducing errors. We will also get for free a structure that will be able to apply a more generic set of rules than the one defined at the beginning.  
+The code of this post is based on a piece of code used to satisfy a real business need, we just removed the business related details.
 The language used is java.
 
-#### The process in short  
+#### The process in short
+
 * Flatten the if structure into a flat sequence of `if` clauses
 * Extract each condition and the related action into a single class
 * Create a common interface for all the extracted conditions
 * Put all the conditions into a list
-* Loop over the list and return the first action for which the condition is satisfied 
+* Loop over the list and return the first action for which the condition is satisfied
 
 #### The need  
-It seemed a normal day of work when one of our managers called a meeting 
-to inform us of a very urgent feature that should be put in production 
-within 2 days.
-So, as it usually happens in this case, between the deriving chaos and the tons of alignment 
-meetings that continuously interrupted us, 
-we produced a code that basically "worked", but it was a bit chaotic. 
-Luckily we were able at least to write the tests.
-So, once we put in production the feature, we decided to immediately refactor the piece of code. 
 
-#### The process  
-We are going to see a step by step refactor of a specific class 
-that transforms the if-nested structure into a chain of responsibility.
+It seemed a normal day of work when one of our managers called a meeting to inform us of a very urgent feature that should be put in production within 2 days. So, as it usually happens in this case, between the deriving chaos and the tons of alignment meetings that continuously interrupted us, we produced a code that basically "worked", but it was a bit chaotic. 
+Luckily we were able at least to write the tests. So, once we put in production the feature, we decided to immediately refactor the piece of code.
 
-We are not going to change the tests because they work as an acceptance test for our use case. In an ideal world, 
-with a lot of time available, 
-we would also write the tests of all the classes we are going to extract and simplify the current test. 
-But, you know, we are not in an ideal world 😅.  
-The idea behind this refactor is to proceed with small steps, 
-possibly using the IDE functionality (I used IDEA which is very good at it), 
-and run the tests after every operation.
-Also, after each step there is a commit, not only to allow everyone to follow the evolution of the code through the commits, 
-but also to allow us to simply use ```git checkout .``` in case of errors, in order to come back to the previous working version. 
-All of this, allows us to keep the code strictly under control and avoid to introduce bugs during the refactoring.
-I will use the diff syntax to show the differences between some pieces of code. 
-Please keep in mind that I will use it in order to highlight *only the main differences* 
-between one commit and the other and it won't be the exact diff you can get with git.
+#### The process
+
+We are going to see a step by step refactor of a specific class that transforms the if-nested structure into a chain of responsibility. We are not going to change the tests because they work as an acceptance test for our use case. In an ideal world, with a lot of time available, we would also write the tests of all the classes we are going to extract and simplify the current test. But, you know, we are not in an ideal world 😅.  
+The idea behind this refactor is to proceed with small steps, possibly using the IDE functionality (I used IDEA which is very good at it), and run the tests after every operation. Also, after each step there is a commit, not only to allow everyone to follow the evolution of the code through the commits, but also to allow us to simply use ```git checkout .``` in case of errors, in order to come back to the previous working version. All of this, allows us to keep the code strictly under control and avoid to introduce bugs during the refactoring. I will use the diff syntax to show the differences between some pieces of code. Please keep in mind that I will use it in order to highlight *only the main differences* between one commit and the other and it won't be the exact diff you can get with git.
 
 #### The initial code
-Here you can find the code we were not very proud of. 
-In particular, I report the nested if structure, which is the part we are going to refactor.
-([Source code](https://github.com/bonfa/IfRemovingARealUseCase/blob/a6681dd088d06244878e0527e87b4c6b5bbfd50d/src/main/java/it/fbonfadelli/hand_baggage/HandBaggageInformationFactory.java))
+
+Here you can find the code we were not very proud of. In particular, I report the nested if structure, which is the part we are going to refactor. ([Source code](https://github.com/bonfa/IfRemovingARealUseCase/blob/a6681dd088d06244878e0527e87b4c6b5bbfd50d/src/main/java/it/fbonfadelli/hand_baggage/HandBaggageInformationFactory.java))
 
 ```java
 public class HandBaggageInformationFactory {
@@ -99,14 +77,13 @@ public class HandBaggageInformationFactory {
 ```
 
 #### The execution
+
 ##### 1. Flatten the if structure
 
 The idea here is to transform the nested if structure into a flat sequence of `if` clauses in order to isolate
 and explicit each single condition.  
-To do so with very small steps, we are going to remove the `else` part of each `if` clause, by transforming 
-such part into an `if` clause whose condition is the negation of the original one.
-In the following piece of code, you can notice how the outer if-else has become a couple of `if` clauses, 
-one for the original condition `flight.isOneWay()` and the other one with the opposite condition `!flight.isOneWay()`
+To do so with very small steps, we are going to remove the `else` part of each `if` clause, by transforming such part into an `if` clause whose condition is the negation of the original one.
+In the following piece of code, you can notice how the outer if-else has become a couple of `if` clauses, one for the original condition `flight.isOneWay()` and the other one with the opposite condition `!flight.isOneWay()`
 ([Source code](https://github.com/bonfa/IfRemovingARealUseCase/blob/a49340d05153074158cc59c130de6875276a92ab/src/main/java/it/fbonfadelli/hand_baggage/HandBaggageInformationFactory.java))
 
 ```diff
