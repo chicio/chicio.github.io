@@ -16,24 +16,24 @@ authors: [fabrizio_duroni]
 
 ---
 
-During my daily job I'm used to write unit test for my code. In fact, I usually develop using [Test Driven Development](https://en.wikipedia.org/wiki/Test-driven_development "TDD") technique. Anyway at the end of the development of a new feature you want to be sure that the entire system works as expected. In particular for a mobile developer, you want to test the entire new feature flow inside your app. This is usually what is called [end to end test](https://www.techopedia.com/definition/7035/end-to-end-test "end to end tests").
-In the last few months the mobile team "Team Cook" at [lastminute.com group](https://lmgroup.lastminute.com/ "lastminute.com group"), of which I'm a member, decided to try an end to end testing infrastructure for the mobile apps of our main brand [lastminute.com](https://www.lastminute.com/), [volagratis](https://www.volagratis.com/) and [rumbo](https://www.rumbo.es/). In this post I will described this testing infrastructure and how it works.  
+During my daily job I'm used to write unit test for my code. In fact, I usually develop using [Test Driven Development](https://en.wikipedia.org/wiki/Test-driven_development "TDD") technique. Anyway at the end of the development of a new feature you want to be sure that the entire system works as expected. In particular for a mobile developer, you want to test the entire new feature flow inside your app. This is usually what is called [end to end test](https://www.techopedia.com/definition/7035/end-to-end-test "end to end tests"). In the last few months the mobile team "Team Cook" at [lastminute.com group](https://lmgroup.lastminute.com/ "lastminute.com group"), of which I'm a member, decided to try an end to end testing infrastructure for the mobile apps of our main brand [lastminute.com](https://www.lastminute.com/), [volagratis](https://www.volagratis.com/) and [rumbo](https://www.rumbo.es/). In this post I will described this testing infrastructure and how it works.  
 
 #### **Software**
 
 To put in place the e2e infrastructure we chose:
 
-- Jenkins as our CI platform. We were already using it for our build jobs and for the submissions on the stores or to [our internal beta programs](/2018/07/05/distribution-enterprise-app-ios-beta.html).
-- [Appium](https://appium.io/ "appium website") as end to end testing platform. We chose it because it let us test our apps for both iOS and Android with a single tests codebase. At the moment of this writing we used the Appium version 1.9.0. In particular we chose to use the Appium implementation based on:
-  - JavaScript, to be able to write our tests with a language with similar features to [TypeScript, the language we are using with React Native for our apps](/2018/07/04/react-native-typescript-existing-app.html "TypeScript React Native")
-  - [WebdriverIO](https://webdriver.io/ "webdriverio"), JavaScript implementation of the Selenium 2.0 WebDriver API
-  - [mocha](https://github.com/mochajs/mocha "mocha test framework"), a JavaScript testing framework
-  - [babel](https://github.com/babel/babel "babel es6"), a compiler for writing next generation JavaScript
-  - [Appium XCUITest Driver](https://appium.io/docs/en/drivers/ios-xcuitest/index.html "appium ios driver") for iOS
-  - [Appium UiAutomator Driver](https://appium.io/docs/en/drivers/android-uiautomator2/index.html "appium android driver") for Android  
-  - [Appium desktop App](https://github.com/appium/appium-desktop)
+* Jenkins as our CI platform. We were already using it for our build jobs and for the submissions on the stores or to [our internal beta programs](/2018/07/05/distribution-enterprise-app-ios-beta.html).
+* [Appium](https://appium.io/ "appium website") as end to end testing platform. We chose it because it let us test our apps for both iOS and Android with a single tests codebase. At the moment of this writing we used the Appium version 1.9.0. In particular we chose to use the Appium implementation based on:
+  * JavaScript, to be able to write our tests with a language with similar features to [TypeScript, the language we are using with React Native for our apps](/2018/07/04/react-native-typescript-existing-app.html "TypeScript React Native")
+  * [WebdriverIO](https://webdriver.io/ "webdriverio"), JavaScript implementation of the Selenium 2.0 WebDriver API
+  * [mocha](https://github.com/mochajs/mocha "mocha test framework"), a JavaScript testing framework
+  * [babel](https://github.com/babel/babel "babel es6"), a compiler for writing next generation JavaScript
+  * [Appium XCUITest Driver](https://appium.io/docs/en/drivers/ios-xcuitest/index.html "appium ios driver") for iOS
+  * [Appium UiAutomator Driver](https://appium.io/docs/en/drivers/android-uiautomator2/index.html "appium android driver") for Android  
+  * [Appium desktop App](https://github.com/appium/appium-desktop)
 
 #### **Development**
+
 The first thing we did was installing all the software stack previously described on our CI machine. As a consequence of the fact that we want to run tests for both iOS and Android a macOS based CI machine is needed (because you need to install Xcode). Fortunately, our CI machine was already an Apple Computer so we didn't need to change anything.  
 After that we created a new javascript project, that follows the structure of the [WebdriverIO sample code contained in the Appium github repository](https://github.com/appium/appium/tree/master/sample-code/javascript-webdriverio "appium webdriverio sample"). This sample project is written using ES5 syntax, so we decided to upgrade it to use ES6 syntax and compile it using Babel. This is possible by launching mocha and specifying babel as the compiler. This is the final command to launch our tests:
 
