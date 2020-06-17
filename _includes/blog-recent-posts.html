@@ -9,8 +9,8 @@
 					   aria-label="{{ post.title }}">
 						<div class="col-lg-4">
 							<div class="card">
-								<div class="img-container"> 
-										{% include blog-lazy-image.html class="img" src=post.image description=post.title %}
+								<div class="img-container">
+										{% include lazy-image.html alt=post.title fill="BDBDBD" src=post.image class="img blog-image" %} 
 								</div>
 								<h4>{{ post.title }}</h4>
 								{{ post.excerpt | remove: '<em>' | remove: '</em>' }}

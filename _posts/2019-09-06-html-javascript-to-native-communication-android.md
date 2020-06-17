@@ -20,8 +20,7 @@ In a [previous post]( "javascript swift") I described how you can call native Sw
 
 #### Implementation
 
-I will use the same simple I used in the previous post for iOS. The html page contains a form with 2 input fields and a button. We want to be able to read the form data inserted when the user clicks on the button and do some action on the Java code side. In this sample case we will show a simple `AlertDialog` that contains the form data. 
-Let's start by setting up the `Activity` that will display the form, `MainActivity`. The first thing to do is to setup the `WebView` by declaring it in the activity layout. After that we can already setup the code that will load the web page in the `onCreate` method of the `MainActivity`.
+I will use the same simple I used in the previous post for iOS. The html page contains a form with 2 input fields and a button. We want to be able to read the form data inserted when the user clicks on the button and do some action on the Java code side. In this sample case we will show a simple `AlertDialog` that contains the form data. Let's start by setting up the `Activity` that will display the form, `MainActivity`. The first thing to do is to setup the `WebView` by declaring it in the activity layout. After that we can already setup the code that will load the web page in the `onCreate` method of the `MainActivity`.
 
 ```java
 public class MainActivity extends AppCompatActivity {
@@ -41,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 The important thing to note in the code above is the call `formWebView.addJavascriptInterface(new FormJavascriptInterface(this), "Android");`. By calling this method we are creating on the `window` global javascript variable a new object called `Android`. I will be able to use it by  calling `window.Android.<some method>`. Where are this method declared? As you can see the first parameter of the method `addJavascriptInterface` is an object called `FormJavascriptInterface`. This class contains a method named `showUser` annotated with `@JavascriptInterface`. This annotation enable the Android SDK to expose this method to the `window.Android` object exposed on the web side.
-
 
 ```java
 public class FormJavascriptInterface {

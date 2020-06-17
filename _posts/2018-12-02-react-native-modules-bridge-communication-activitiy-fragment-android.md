@@ -13,30 +13,17 @@ seo:
 authors: [felice_giovinazzo, fabrizio_duroni]
 ---
 
-*In this post I will talk about a simple architecture for communication between React Native Native 
- modules (aka bridges) and your native code on Android.*
+*In this post I will talk about a simple architecture for communication between React Native Native modules (aka bridges) and your native code on Android.*
 
 ---
 
-Sometimes a React Native app needs to access to the native API or needs/want to call some existing native code you already have in place. This is why Native Modules have been created for both [iOS](https://facebook.github.io/react-native/docs/native-modules-ios) and [Android](https://facebook.github.io/react-native/docs/native-modules-android). Sometimes when you integrated React Native in an existing app, you will want to be able let your Native 
-Modules bridges communicate with your activities and fragment, especially the ones that contain the React Native View
-. In this post I will show you an architecture to put in place this communication on Android, that will be compatible 
-with all the features of React Native (for example it will work also with the live reload functionality).
-This is an architecture I put in place with my colleague [Felice Giovinazzo](https://www.linkedin.com/in/felice-giovinazzo-17277b55/) 
-in our apps at [lastminute.com group](https://lmgroup.lastminute.com/ "lastminute.com").
- Felice is a senior fullstack developer with many years of experiences (he is the "lastminute" veteran of our team) 
- and a computer graphics enthusiast like me :revolving_hearts::sparkling_heart:.  
-To show you this architecture I will create a simple app that show a React Native screen as a modal. I will then 
-implement the close button functionality by calling a native module from the `onPress` on a React Native button.
+Sometimes a React Native app needs to access to the native API or needs/want to call some existing native code you already have in place. This is why Native Modules have been created for both [iOS](https://facebook.github.io/react-native/docs/native-modules-ios) and [Android](https://facebook.github.io/react-native/docs/native-modules-android). Sometimes when you integrated React Native in an existing app, you will want to be able let your Native Modules bridges communicate with your activities and fragment, especially the ones that contain the React Native View. In this post I will show you an architecture to put in place this communication on Android, that will be compatible with all the features of React Native (for example it will work also with the live reload functionality). This is an architecture I put in place with my colleague [Felice Giovinazzo](https://www.linkedin.com/in/felice-giovinazzo-17277b55/) in our apps at [lastminute.com group](https://lmgroup.lastminute.com/ "lastminute.com"). Felice is a senior fullstack developer with many years of experiences (he is the "lastminute" veteran of our team) and a computer graphics enthusiast like me :revolving_hearts::sparkling_heart:.  
+To show you this architecture I will create a simple app that show a React Native screen as a modal. I will then implement the close button functionality by calling a native module from the `onPress` on a React Native button.
 Below you can see the final result.
 
 {% include youtube.html videoId="MdNqDQHNjRc" %}
 
-The architecture we put in place is based on a **Event Bus** in which the Native Modules bridges notify the subscribed 
-Activities/Fragments of the actions to be executed. So each one of them is subscribed to specific events to which they
- are able to respond. 
- We choose [Otto](https://square.github.io/otto/) as event bus library (we don't want to reinvent the wheel :bomb:). 
-Let's start from the `MainActivity`. In it there's only a button with an action to start the React Native modal activity
+The architecture we put in place is based on a **Event Bus** in which the Native Modules bridges notify the subscribed Activities/Fragments of the actions to be executed. So each one of them is subscribed to specific events to which they are able to respond. We choose [Otto](https://square.github.io/otto/) as event bus library (we don't want to reinvent the wheel :bomb:). Let's start from the `MainActivity`. In it there's only a button with an action to start the React Native modal activity.
 
 ```java
 public class MainActivity extends AppCompatActivity {
@@ -53,10 +40,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-The `ReactNativeModalActivity` is an `Activity` with the setup needed to launch a React Native context. This activity 
-is registered to the event bus to be able to listen to events from the Native Modules bridges. In this case 
-the activity is subscribed to just one event with the method `@Subscribe public void close(ReactNativeModalBridge
-.CloseModalEvent event)`.
+The `ReactNativeModalActivity` is an `Activity` with the setup needed to launch a React Native context. This activity is registered to the event bus to be able to listen to events from the Native Modules bridges. In this case the activity is subscribed to just one event with the method `@Subscribe public void close(ReactNativeModalBridge.CloseModalEvent event)`.
 
 ```java
 public class ReactNativeModalActivity extends AppCompatActivity implements DefaultHardwareBackBtnHandler {
@@ -124,13 +108,7 @@ public class ReactNativeModalActivity extends AppCompatActivity implements Defau
 
 ```
 
-Now let's have a look at Native Module created for the app, the `ReactNativeModalBridge`. In this bridge there just 
-one react method, `closeModal`. This is the one called from the React Native JS side. In this method we are sending 
-an event of type `CloseModalEvent`. The `ReactNativeModalActivity` is subscribed to this type of event (as we saw 
-above). This basically means that when the `closeModal` bridge method will be called from the React Native Javascript 
-code a new event `CloseModalEvent` is generated and the `ReactNativeModalActivity` will execute the subscribed method defined in 
-it. We have all setup to have our Native Modules communication with our activities (and eventually fragment with the 
-same approach if we need them :neckbeard:).
+Now let's have a look at Native Module created for the app, the `ReactNativeModalBridge`. In this bridge there just one react method, `closeModal`. This is the one called from the React Native JS side. In this method we are sending an event of type `CloseModalEvent`. The `ReactNativeModalActivity` is subscribed to this type of event (as we saw above). This basically means that when the `closeModal` bridge method will be called from the React Native Javascript code a new event `CloseModalEvent` is generated and the `ReactNativeModalActivity` will execute the subscribed method defined in it. We have all setup to have our Native Modules communication with our activities (and eventually fragment with the same approach if we need them :neckbeard:).
 
 ```java
 public class ReactNativeModalBridge extends ReactContextBaseJavaModule {
@@ -159,11 +137,9 @@ public class ReactNativeModalBridge extends ReactContextBaseJavaModule {
 
     public class CloseModalEvent { }
 }
-``` 
+```
 
-Now it's time to see the javascript code. Below you can see the `ReactNativeModal` component. Inside this component there is a call 
-to the native module `NativeModules.ReactNativeModalBridge.closeModal()` described above. In this way the modal will 
-be closed directly from the native side.
+Now it's time to see the javascript code. Below you can see the `ReactNativeModal` component. Inside this component there is a call to the native module `NativeModules.ReactNativeModalBridge.closeModal()` described above. In this way the modal will be closed directly from the native side.
 
 ```jsx
 class ReactNativeModal extends React.Component {
@@ -182,6 +158,6 @@ class ReactNativeModal extends React.Component {
         );
     }
 }
-``` 
- 
+```
+
 That's all for our native modules communication architecture on Android. You can find the complete example in [this github repository](https://github.com/chicio/React-Native-Native-Modules-Communication). If you want to know how we managed the same problem on the iOS platform :apple::iphone::heartbeat: you can read [my other post about the same topic](/2018/12/03/react-native-modules-bridge-communication-uiviewcontroller-ios.html).

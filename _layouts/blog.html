@@ -18,7 +18,7 @@
                                 {% if forloop.first == true %}
                                     <img src="{{post.image}}" alt="{{post.title}}" class="img blog-posts-post-img">
                                 {% else %}
-                                    {% include blog-lazy-image.html class="img blog-posts-post-img" src=post.image description=post.title %}
+                                    {% include lazy-image.html alt=post.title fill="BDBDBD" src=post.image class="img blog-posts-post-img blog-image" %} 
                                 {% endif %}
                             </div>
                             {% if forloop.first == true %}

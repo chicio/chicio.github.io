@@ -16,13 +16,8 @@ authors: [fabrizio_duroni]
 
 ---
 
-If we want to start to use React Native in an existing app, it's really easy. We can have our first React 
-Native component live inside our app by just following the [getting started tutorial for existing app](https://facebook.github.io/react-native/docs/integration-with-existing-apps.html "getting started tutorial for existing app"). But what 
-happen if we need to use multiple react native component in different parts of our existing apps :fearful:? In this 
-tutorial I will show you how we can use multiple instances of `RCTRootView` to show different React Native components
- in different parts of your app. 
- Consider, for example, a simple iOS existing app with React Native. It has two very simple React Native components: 
- 
+If we want to start to use React Native in an existing app, it's really easy. We can have our first React Native component live inside our app by just following the [getting started tutorial for existing app](https://facebook.github.io/react-native/docs/integration-with-existing-apps.html "getting started tutorial for existing app"). But what happen if we need to use multiple react native component in different parts of our existing apps :fearful:? In this tutorial I will show you how we can use multiple instances of `RCTRootView` to show different React Native components in different parts of your app. Consider, for example, a simple iOS existing app with React Native. It has two very simple React Native components:
+
 * `BlueScreen`, that shows a blue view
 * `RedScreen`, that shows a red view
 
@@ -60,7 +55,7 @@ AppRegistry.registerComponent('BlueScreen', () => BlueScreen);
 AppRegistry.registerComponent('RedScreen', () => RedScreen);
 ```
 
-On the native side there's a controller, `ReactViewController`, that shows a React Native component given its name. 
+On the native side there's a controller, `ReactViewController`, that shows a React Native component given its name.
 
 ```swift
 class ReactViewController: UIViewController {
@@ -71,21 +66,15 @@ class ReactViewController: UIViewController {
                            initialProperties: nil,
                            launchOptions: nil)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 ```
-There's also another controller, `MainViewController`, that shows the React Native components described above using 
-multiple instances of the `ReactViewController`. The UI of the app is very simple: there are two buttons on the view 
-of the `MainViewController`. A tap on the first one shows the `ReactViewController` with a `RCTRootView` that contains the 
-`RedComponent`. A tap on the second one shows the `ReactViewController` with a `RCTRootView` that contains the 
-`BlueComponent`.  
-This basically means that in this app there are multiple `RCTRootView`, one for each controller created. This 
-instances are kept alive at the same time (because the `MainViewController` keeps a reference to the two `ReactViewController`). The code to 
-start the React Native components is the same contained in the 
-[getting started tutorial for existing app](https://facebook.github.io/react-native/docs/integration-with-existing-apps.html "getting started tutorial for existing app").
+
+There's also another controller, `MainViewController`, that shows the React Native components described above using multiple instances of the `ReactViewController`. The UI of the app is very simple: there are two buttons on the view of the `MainViewController`. A tap on the first one shows the `ReactViewController` with a `RCTRootView` that contains the `RedComponent`. A tap on the second one shows the `ReactViewController` with a `RCTRootView` that contains the `BlueComponent`.  
+This basically means that in this app there are multiple `RCTRootView`, one for each controller created. This instances are kept alive at the same time (because the `MainViewController` keeps a reference to the two `ReactViewController`). The code to start the React Native components is the same contained in the [getting started tutorial for existing app](https://facebook.github.io/react-native/docs/integration-with-existing-apps.html "getting started tutorial for existing app").
 
 ```swift
 class MainViewController: UIViewController {
@@ -97,11 +86,11 @@ class MainViewController: UIViewController {
         redViewController = ReactViewController(moduleName: "RedScreen")
         super.init(coder: aDecoder)
     }
-    
+
     @IBAction func showRedScreen(_ sender: Any) {
         navigationController?.pushViewController(redViewController, animated: true)
     }
-    
+
     @IBAction func showBlueScreen(_ sender: Any) {
         navigationController?.pushViewController(blueViewController, animated: true)
     }
@@ -113,11 +102,11 @@ If we try to run the app something very strange will happen:
 * if we do a live reload, we will see our **React components refreshed multiple times**
 * if we press cmd + ctrl + z (shake gesture simulation) in the simulator **2 dev menu will be shown**
 
-{% include blog-lazy-image.html description="react native multiple dev menus"  width="844" height="720" src="/assets/images/posts/react-native-multiple-debugger.gif" %}
+{% include blog-lazy-image.html description="The react native dev menu is shown two times"  width="844" height="720" src="/assets/images/posts/react-native-multiple-debugger.gif" %}
 
 * if we do a **live reload while we're in debug mode the app could crash**
 
-{% include blog-lazy-image.html description="react native crash multiple view" width="1500" height="944" src="/assets/images/posts/react-native-crash-reload-with-debugger.jpg" %}
+{% include blog-lazy-image.html description="The react native app crashes if we try to do a live reload" width="1500" height="944" src="/assets/images/posts/react-native-crash-reload-with-debugger.jpg" %}
 
 What's happening here? Well, there's something wrong in our code. If we take a look at the comments in the code of React Native for the `RCTRootView` initializer, we will notice something very strange:
 
@@ -140,10 +129,10 @@ What's happening here? Well, there's something wrong in our code. If we take a l
                        moduleName:(NSString *)moduleName
                 initialProperties:(NSDictionary *)initialProperties
                     launchOptions:(NSDictionary *)launchOptions;
-```   
+```
 
 What :laughing:?????!?!?!??? This basically means that the documentation in the getting started is considering only the case where we will have a single `RCTRootView` instance. So we need to do something to our `ReactViewController` so that we can keep multiple `RCTRootView` alive at the same time.
- The solution to our problem is contained in the comments of the initializer above: we need to use the designated `RCTRootView` initializer to start to use multiple instances of them at the same time in the app. So the new `ReactViewController` with the new `RCTRootView` initialization is the following one:
+The solution to our problem is contained in the comments of the initializer above: we need to use the designated `RCTRootView` initializer to start to use multiple instances of them at the same time in the app. So the new `ReactViewController` with the new `RCTRootView` initialization is the following one:
 
 ```swift
 class ReactViewController: UIViewController {
@@ -161,8 +150,7 @@ class ReactViewController: UIViewController {
 }
 ```
 
-Where do we get an instance of `RCTBridge` for the new init of the `ReactViewController` and `RCTRootView`? A new
- object, `ReactNativeBridge`, creates a new `RCTBridge` instance and store it as a property.  
+Where do we get an instance of `RCTBridge` for the new init of the `ReactViewController` and `RCTRootView`? A new object, `ReactNativeBridge`, creates a new `RCTBridge` instance and store it as a property.  
 The `RCTBridge` instance needs a `RCTBridgeDelegate`. Another new object, `ReactNativeBridgeDelegate`, will be the delegate of the `RCTBridge`.
 
 ```swift
@@ -215,7 +203,7 @@ Now if we try to run the app again everything will work as expected:
 * if we press cmd + ctrl + z in the simulator **1 dev menu will be shown**
 * **no more crashes with live reload in debug mode**
 
-![React Native single dev menus](/assets/images/posts/react-native-single-debugger.gif "React Native single dev menus")
+{% include blog-lazy-image.html description="The react native dev menu is shown one time as expected"  width="844" height="720" src="/assets/images/posts/react-native-single-debugger.gif" %}
 
 The entire source code of the app used as example for this post is contained in [this github repo](https://github.com/chicio/React-Native-Multiple-RCTRootView "React native multiple RCTRootView").
 Now we're ready to use multiple React Native components at the same time in our app :relieved:.

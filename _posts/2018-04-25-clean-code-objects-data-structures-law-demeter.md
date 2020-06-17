@@ -34,10 +34,8 @@ This give us the following definitions, stated by [Uncle Bob](https://en.wikiped
 "Robert Cecil Martin") in its *Clean Code* book:
 
 >Procedural code (code using data structures) makes it easy to add new functions without changing the existing data
-structures. Object oriented code, on the other hand, makes it easy to add new classes without changing existing functions.
-
->Procedural code makes it hard to add new data structures because all the functions must change. Object oriented code
- makes it hard to add new functions because all the classes must change.
+structures. Object oriented code, on the other hand, makes it easy to add new classes without changing existing functions.  
+Procedural code makes it hard to add new data structures because all the functions must change. Object oriented code makes it hard to add new functions because all the classes must change.
 
 This set of rules must guide us when we have to choose between objects vs procedural implementation:
 
@@ -66,4 +64,4 @@ the law of demeter**
 
 The next time you will write a piece of code try to consider these concepts and how they can improve your code.
 
-{% include blog-lazy-image.html description="Clean code uncle bob superman" width="427" height="477" src="/assets/images/posts/uncle-bob-defender-of-clean-code.jpg" %}
+{% include blog-lazy-image.html description="Uncle bob, the superman of clean code" width="427" height="477" src="/assets/images/posts/uncle-bob-defender-of-clean-code.jpg" %}

@@ -16,34 +16,25 @@ authors: [fabrizio_duroni]
 
 ---
 
-A few times ago I published [ID3TagEditor](https://github.com/chicio/ID3TagEditor), a Swift library to read and modify
- the ID3 tag of mp3 files (I described it in [this previous post](https://www.fabrizioduroni.it/2018/05/08/id3tageditor-swift-read-write-id3-tag-mp3.html "id3 tag editor")). This library was compatible with iOS, Apple TV, watchOS and macOS. Then one day a user of my library **opened a new issue on the library github repo** with title "Build Error" and a description of a **build error on Linux**.
+A few times ago I published [ID3TagEditor](https://github.com/chicio/ID3TagEditor), a Swift library to read and modify the ID3 tag of mp3 files (I described it in [this previous post](https://www.fabrizioduroni.it/2018/05/08/id3tageditor-swift-read-write-id3-tag-mp3.html "id3 tag editor")). This library was compatible with iOS, Apple TV, watchOS and macOS. Then one day a user of my library **opened a new issue on the library github repo** with title "Build Error" and a description of a **build error on Linux**.
 
-{% include blog-lazy-image.html description="id3tageditor linux build issue" width="1500" height="888" src="/assets/images/posts/spm-id3tageditor-linux-error.jpg" %}
+{% include blog-lazy-image.html description="An error on the linux build of ID3TagEditor reported by a user" width="1500" height="888" src="/assets/images/posts/spm-id3tageditor-linux-error.jpg" %}
 
-The library had a simple `Package.swift`, but honestly I never tested it with the Swift Package Manager (SPM)
- on Linux nor on macOS :sweat_smile: (this was the only feature that I didn't test :sweat_smile:).
-So I though: "It's time to add full support for the Swift Package Manager to ID3TagEditor and port it also on Linux!!!!" :sparkling_heart:
-In this post I will describe how you can create a Swift library package for the Swift Package Manager compatible with
- macOS and Linux for an existing project. Obviously, I will show you the entire process using my [ID3TagEditor](https://github.com/chicio/ID3TagEditor) as example.  
- First of all, if you are starting with a new library project, you will use the following SPM `init` command:
+The library had a simple `Package.swift`, but honestly I never tested it with the Swift Package Manager (SPM) on Linux nor on macOS :sweat_smile: (this was the only feature that I didn't test :sweat_smile:). So I though: "It's time to add full support for the Swift Package Manager to ID3TagEditor and port it also on Linux!!!!" :sparkling_heart: In this post I will describe how you can create a Swift library package for the Swift Package Manager compatible with macOS and Linux for an existing project. Obviously, I will show you the entire process using my [ID3TagEditor](https://github.com/chicio/ID3TagEditor) as example.  
+First of all, if you are starting with a new library project, you will use the following SPM `init` command:
 
 ```shell
 swift package init --type library
 ```
 
- This command will create all the files and folders you need to develop your library. But in my case, I was working 
- on an existing project. This is why I created all the needed files manually and I will describe them in details 
- so you can understand better the meaning of each one of them.  
- The first file needed is the `Package.swift`. This file must be created in the root folder of your project. This 
- file contains some Swift code that defines the properties of the project using the `PackageDescription` module API. At 
- the moment of this writing there are 3 API versions of the PackageDescription API:
+This command will create all the files and folders you need to develop your library. But in my case, I was working on an existing project. This is why I created all the needed files manually and I will describe them in details so you can understand better the meaning of each one of them.  
+The first file needed is the `Package.swift`. This file must be created in the root folder of your project. This file contains some Swift code that defines the properties of the project using the `PackageDescription` module API. At the moment of this writing there are 3 API versions of the PackageDescription API:
 
 * [Version 3](https://github.com/apple/swift-package-manager/blob/b73299ef84e1e55c789052d0d1eafec30a95a805/Documentation/PackageDescriptionV3.md)
 * [Version 4](https://github.com/apple/swift-package-manager/blob/b73299ef84e1e55c789052d0d1eafec30a95a805/Documentation/PackageDescriptionV4.md)
 * [Version 4.2](https://github.com/apple/swift-package-manager/blob/b73299ef84e1e55c789052d0d1eafec30a95a805/Documentation/PackageDescriptionV4_2.md)
 
- For my [ID3TagEditor](https://github.com/chicio/ID3TagEditor) I used the [Version 4.2](https://github.com/apple/swift-package-manager/blob/b73299ef84e1e55c789052d0d1eafec30a95a805/Documentation/PackageDescriptionV4_2.md).
+For my [ID3TagEditor](https://github.com/chicio/ID3TagEditor) I used the [Version 4.2](https://github.com/apple/swift-package-manager/blob/b73299ef84e1e55c789052d0d1eafec30a95a805/Documentation/PackageDescriptionV4_2.md).
 
  ```swift
  // swift-tools-version:4.2
@@ -87,18 +78,13 @@ swift package init --type library
 Let's see in details the meaning of each option:
   
 * `name`, the name of the package
-* `products`, the list of all products in the package. You can have `executable` or `library` products. In my case 
-I have `library` product and for that I have to specify:
+* `products`, the list of all products in the package. You can have `executable` or `library` products. In my case I have `library` product and for that I have to specify:
   * `name`, the name of the product
-  * `targets`, the targets which are supposed to be used by other packages, i.e. the public API of a library package 
-* `dependencies`, a list of `package` dependencies for our package. At the moment ID3TagEditor doesn't have any 
-dependencies so I declared an empty array.  
+  * `targets`, the targets which are supposed to be used by other packages, i.e. the public API of a library package
+* `dependencies`, a list of `package` dependencies for our package. At the moment ID3TagEditor doesn't have any dependencies so I declared an empty array.  
 * `targets`, the list of targets in the package. In my case I have two target:
-  * `ID3TagEditor`, that is the main target of the library and is a classic `.target`. For this target you specify its 
-  name, its dependencies and the path to the source files. In my case I have everything inside the `Source` folder. 
-  * `ID3TagEditorTests`, that is the `.testTarget` of the library. For this target I had to specify an additional 
-  `exclude` option. The tests excluded contains some references to bundle resources, **and at the moment of this 
-  writing the SPM doesn't support resource bundles**.
+  * `ID3TagEditor`, that is the main target of the library and is a classic `.target`. For this target you specify its name, its dependencies and the path to the source files. In my case I have everything inside the `Source` folder.
+  * `ID3TagEditorTests`, that is the `.testTarget` of the library. For this target I had to specify an additional `exclude` option. The tests excluded contains some references to bundle resources, **and at the moment of this writing the SPM doesn't support resource bundles**.
 * `swiftLanguageVersions`, that contains the set of supported Swift language versions.
 
 Next I had to create a `XCTestManifests.swift` file inside the `Tests` folder. This file contains an extension for each `XCTestCase` subclass I included in my test target. This extension contains an array `__allTest` that exposes a list of all my test methods inside my `XCTestCase` subclasses. At the end of this file you can find a `__allTests()` function that pass all the test methods to the `testCase()` utility function.  `__allTests()` and `testCase` are available only on Linux platform (and in fact the `__allTests()` function is wrapped in a conditional check `#if !os(macOS)`). Below you can see a part of the `XCTestManifests.swift` file for the `ID3TagEditor` library.
@@ -180,7 +166,7 @@ swift run
 
 Below you can see some screenshot taken from both Linux and macOS that shows the final output of the demo `Demo Ubuntu` after you execute the `swift run` command.
 
-{% include blog-lazy-image.html description="id3tageditor SPM demo ubuntu" width="1500" height="870" src="/assets/images/posts/spm-id3tageditor-demo-linux.jpg" %}
-{% include blog-lazy-image.html description="id3tageditor SPM demo macOS" width="1500" height="938" src="/assets/images/posts/spm-id3tageditor-demo-macos.jpg" %}
+{% include blog-lazy-image.html description="ID3TagEditor now works as expected on Ubuntu" width="1500" height="870" src="/assets/images/posts/spm-id3tageditor-demo-linux.jpg" %}
+{% include blog-lazy-image.html description="ID3TagEditor works as expected also on macOS" width="1500" height="938" src="/assets/images/posts/spm-id3tageditor-demo-macos.jpg" %}
 
 Cool! Now the ID3TagEditor is fully compatible with the SPM and could be used in Swift applications for both macOS and Linux. You can see the entire codebase of the `ID3TagEditor` in [this github repository](https://github.com/chicio/ID3TagEditor). Now you can start to port your libraries and applications on Linux with the Swift Package Manager :sparkles:.

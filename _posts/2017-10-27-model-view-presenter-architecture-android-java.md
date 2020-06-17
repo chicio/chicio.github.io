@@ -20,7 +20,7 @@ In a [previous post](/2017/08/11/model-view-presenter-architecture-ios-swift-uni
 In this post we will try to develop the same application we developed on iOS in the [previous post](/2017/08/11/model-view-presenter-architecture-ios-swift-unit-test.html "model view presenter ios post"): a simple product catalog that shows a list of products. When you tap on one of them, its details is shown.
 Below you can find the same mockup we used for the iOS version.
 
-![Model view presenter mockup](/assets/images/posts/mockup-model-view-presenter.png "Model view presenter mockup")
+{% include blog-lazy-image.html description="A mockup of the final app we will obtain at the end of this post"  width="1200" height="1527" src="/assets/images/posts/mockup-model-view-presenter.jpg" %}
 
 Let's start by creating a `Product` class. We need also to create a `ProductsRepository` class: in our case it will be a fake one that return to listener a list of products after 3 seconds. We do this to simulate a web service call. This is our implementation for the `Product` class:
 
@@ -76,7 +76,7 @@ public class ProductsRepository implements Repository {
 }
 ```
 
-As we said before, and as you can see above the repository return to a `ProductsRepositoryListener` the list of products. So the interface definition for that listener is: 
+As we said before, and as you can see above the repository return to a `ProductsRepositoryListener` the list of products. So the interface definition for that listener is:
 
 ```java
 public interface ProductsRepositoryListener {
@@ -84,7 +84,7 @@ public interface ProductsRepositoryListener {
 }
 ```
 
-Now we can start to create our presenter. First of all we will define a `ProductsView` that will be responsible to implement the real platform dependent UI code. Our presenter will be responsible for: 
+Now we can start to create our presenter. First of all we will define a `ProductsView` that will be responsible to implement the real platform dependent UI code. Our presenter will be responsible for:
 
 * **the start of the view in the**  `onStart()` method. In this method it will update the view title, show a loading status and more important it will start the retrieve of the product list and become its listener.
 * **listening to the repository callback when the products are retrieve**. So our presenter will implement the `ProductsRepositoryListener` interface and pass to the view the updated product list.
@@ -154,7 +154,7 @@ public class ProductsPresenter implements ProductsRepositoryListener {
 }
 ```
 
-And this are our presenter tests: 
+And this are our presenter tests:
 
 ```java
 public class ProductsPresenterTest {
@@ -397,7 +397,7 @@ public class ProductsFragment extends Fragment implements ProductsView {
 }
 ```
 
-As you can see it implements all the UI operation we defined in our view as the `UIViewController` do on iOS. But if you look well we have a little difference between the two platform. In the Android platform the tap on a product is managed in the adapter, so the presenter is passed to this component to manage the product selection. Let's see the implementation of our `ProductsPresenter`: 
+As you can see it implements all the UI operation we defined in our view as the `UIViewController` do on iOS. But if you look well we have a little difference between the two platform. In the Android platform the tap on a product is managed in the adapter, so the presenter is passed to this component to manage the product selection. Let's see the implementation of our `ProductsPresenter`:
 
 ```java
 class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHolder> {
@@ -447,7 +447,7 @@ class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHolder> {
 ```
 
 There's also another little difference between the Android and the iOS version. If you look carefully in the `showDetailFor(Product product)` method, that is called after the product selected is checked in the presenter, there is another component responsible to manage the navigation between the screen of our app. In particular, the screen of our app will  be `Fragment` objects and there will be an `Activity`, the `ProductsActivity`, that will implement the `ProductsNavigator` interface and will be responsible to manage the correct navigation between fragments in the app.
-Let's see in order the `ProductsNavigator` interface: 
+Let's see in order the `ProductsNavigator` interface:
 
 ```java
 public interface ProductsNavigator {
@@ -518,7 +518,7 @@ public interface ProductDetailView {
 }
 ```
 
-And then our presenter: 
+And then our presenter:
 
 ```java
 public class ProductDetailPresenter {
@@ -607,7 +607,7 @@ public class ProductDetailPresenterTest {
 }
 ```
 
-And finally our `ProductDetailFragment`: 
+And finally our `ProductDetailFragment`:
 
 ```java
 public class ProductDetailFragment extends Fragment implements ProductDetailView {
@@ -686,4 +686,4 @@ public class ProductDetailFragment extends Fragment implements ProductDetailView
 
 That's it!!!!! You've made it!!! Now you master the Model View Presenter architectural pattern on Android and you're ready to rock with unit test on all the main mobile platform on the market (somebody said Windows Phone!?!?!?!?!? :stuck_out_tongue_closed_eyes:).
 
-{% include blog-lazy-image.html description="model view presenter platforms" width="379" height="247" src="/assets/images/posts/model-view-presenter-platforms.jpg" %}
+{% include blog-lazy-image.html description="Chuck Norris approves the Model View Presenter architectural pattern" width="379" height="247" src="/assets/images/posts/model-view-presenter-platforms.jpg" %}

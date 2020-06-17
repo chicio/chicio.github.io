@@ -109,7 +109,7 @@ One important thing to note is that not all the platforms adhere to the web app 
 <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/apple-touch-icon-152x152.png">
 <link rel="apple-touch-icon" sizes="167x167" href="/assets/images/apple-touch-icon-167x167.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon-180x180.png">
-<meta name="msapplication-config" content="browserconfig.xml" /> 
+<meta name="msapplication-config" content="browserconfig.xml" />
 <meta name="msapplication-TileColor" content="#303f9f">
 <meta name="msapplication-TileImage" content="/assets/images/mstile-144x144.png">
 <meta name="theme-color" content="#303F9F">
@@ -232,5 +232,6 @@ self.addEventListener('fetch', (event) => {
 ```
 
 #### Conclusion
+
 By adding all the above implementation my blog is now a Progressive Web App (that's right, the article you're reading part of a PWA :smirk:). If you want to see the entire source code of my website/blog discussed here you can have a look at [this repository](https://github.com/chicio/chicio.github.io "chicio coding repository").  
 So now it's time to start to develop you first PWA or transform you website/ web application in PWA. If you want, you could share your experience with me in the comments below :two_hearts:.

@@ -77,11 +77,11 @@ export { scene3D }
 
 This is all I need to code split my codebase and lazy load modules only when they are needed. Let's see the code above in action. If I try to access the homepage of this website from a desktop/laptop computer I will see the threejs scene and in the network inspector the `scene-threejs` chunk is loaded. On important thing to note is that Webpack has created two chunk. One is our module (the one with the name `scene-threejs`). The second one that starts with the `vendor` keyword contains all the third party dependencies. Yes, you understood right: Webpack extract automatically the third party dependencies from you chunk module in separated files.
 
-{% include blog-lazy-image.html description="webpack chunk desktop" width="1200" height="710" src="/assets/images/posts/webpack-chunk-desktop.jpg" %}
+{% include blog-lazy-image.html description="Network inspector for the desktop version of the home of my website" width="1200" height="710" src="/assets/images/posts/webpack-chunk-desktop.jpg" %}
 
 If I access the same page from a mobile device the 3D scene is not loaded and consequently the chunk is not loaded. :tada:
 
-{% include blog-lazy-image.html description="webpack chunk mobile" width="1200" height="710" src="/assets/images/posts/webpack-chunk-mobile.jpg" %}
+{% include blog-lazy-image.html description="Network inspector for the mobile version of the home of my website" width="1200" height="710" src="/assets/images/posts/webpack-chunk-mobile.jpg" %}
 
 #### Conclusion
 

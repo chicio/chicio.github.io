@@ -66,6 +66,7 @@ npm install --global flow-typed
 ```
 
 #### Adding types
+
 Let's start to add some types. To show you how to add types with Flow I will start with the piece of code you can find below. This piece of code contains the animation used to show an image after it had been downloaded from the network.
 
 ```javascript
@@ -110,14 +111,14 @@ export { lazyLoadImageAnimation }
 
 If I try to run `npm run flow` I expect that everything goes well, but instead...I received the following error: "**Cannot resolve module gsap.**". Below in the screenshot you can see the error reported.
 
-{% include blog-lazy-image.html description="flow module error" width="1500" height="255" src="/assets/images/posts/flow-error-module.jpg" %}
+{% include blog-lazy-image.html description="An example of the error emitted by flow when the types check is executed" width="1500" height="255" src="/assets/images/posts/flow-error-module.jpg" %}
 
 What's happening here? The `TweenLite` class is imported from the third party library [`gsap`](https://greensock.com/gsap) and Flow doesn't know the types definition for it. I have to provide this definition in order to enable Flow to do the type checking also on the parts of code that refer to a third library. This can be done in two ways:
 
 * check to see if the [flow-typed](https://github.com/flow-typed/flow-typed "flow typed") repo contains the types definition for the library I'm using and eventually install it
 * write your own Flow type definition for the library you are using if it is not present in the flow-typed directory
 
-Unfortunately, in this case the flow-typed repository doesn't contain a type definition for the `gsap` library. So I will need to write my own gsap library types definition. How can I do that? First of all let's create a folder inside the project called `flow-typed` (what a coincidence!!!! :smirk:). This is the standard folder where Flow searches for third party library types definition. If you want you can customize the search path with a custom folder in the `.flowconfig` file. Then I create a new file `gsap.js` inside it. In this file I declare a new module definition with the syntax `declare module "<module name>"`. In this case it will be `declare module "gsap" `. Then I can declare a new class to be exported, `TweenLite`, that is the one I'm using in the piece of code above. To this class I will add the definition for all the method I'm using and for which I need the Flow type definition. From the piece of code above it's easy to see that the only method I'm using is `from(...)`, so I can add the types definition only for it. To do this I just have to declare the signature of the method with the types I expect for each parameter. One thing to be noted is that the first and the third parameter could accept different types as specified in the gsap documentation. This is why I put `any` as type. Basically I'm saying that for the first and third parameter I don't want to do any type check :laughing:. Below you can find the complete declaration implementation.
+Unfortunately, in this case the flow-typed repository doesn't contain a type definition for the `gsap` library. So I will need to write my own gsap library types definition. How can I do that? First of all let's create a folder inside the project called `flow-typed` (what a coincidence!!!! :smirk:). This is the standard folder where Flow searches for third party library types definition. If you want you can customize the search path with a custom folder in the `.flowconfig` file. Then I create a new file `gsap.js` inside it. In this file I declare a new module definition with the syntax `declare module "<module name>"`. In this case it will be `declare module "gsap"`. Then I can declare a new class to be exported, `TweenLite`, that is the one I'm using in the piece of code above. To this class I will add the definition for all the method I'm using and for which I need the Flow type definition. From the piece of code above it's easy to see that the only method I'm using is `from(...)`, so I can add the types definition only for it. To do this I just have to declare the signature of the method with the types I expect for each parameter. One thing to be noted is that the first and the third parameter could accept different types as specified in the gsap documentation. This is why I put `any` as type. Basically I'm saying that for the first and third parameter I don't want to do any type check :laughing:. Below you can find the complete declaration implementation.
 
 ```javascript
 declare module "gsap" {

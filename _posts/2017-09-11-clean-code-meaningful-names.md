@@ -16,28 +16,21 @@ authors: [fabrizio_duroni]
 
 ---
 
-I always cared about the software I developed. I also always though that what makes a real professional software 
-developer is how much he/she care about the software he/she is creating: the approach to the problem, the attention to
- details in code, the passion put into creating every single line of code, the focus on the mission to solve his/her 
- customer problems with your software.  
-When I started to work at [lastminute.com group](https://lmgroup.lastminute.com/ "lastminute.com group") I discovered 
-that I'm not the only one to think about software development in this way.  
-In fact an entire new approach to software development has been create by [Robert Cecil Martin](https://en.wikipedia.org/wiki/Robert_Cecil_Martin "Robert Cecil Martin"),
- known as "Uncle Bob" (what??!?!!? :stuck_out_tongue:) and famous also to be the guy that invented the [SOLID principles](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design) "Solid principles"). The name of this new approach to software development is **clean code**.  
+I always cared about the software I developed. I also always though that what makes a real professional software developer is how much he/she care about the software he/she is creating: the approach to the problem, the attention to details in code, the passion put into creating every single line of code, the focus on the mission to solve his/her customer problems with your software.  
+When I started to work at [lastminute.com group](https://lmgroup.lastminute.com/ "lastminute.com group") I discovered that I'm not the only one to think about software development in this way.  
+In fact an entire new approach to software development has been create by [Robert Cecil Martin](https://en.wikipedia.org/wiki/Robert_Cecil_Martin "Robert Cecil Martin"), known as "Uncle Bob" (what??!?!!? :stuck_out_tongue:) and famous also to be the guy that invented the [SOLID principles](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design) "Solid principles"). The name of this new approach to software development is **clean code**.  
 So as I promised in [my first post](/2017/05/10/about-me.html "about me") on this blog I
-will publish a series of articles in which I will talk about the foundation of clean code and my personal experiences
- with it. So let's start the discussion with one of the principles of clean code that impressed me the most:
- meaningful naming.  
+will publish a series of articles in which I will talk about the foundation of clean code and my personal experiences with it. So let's start the discussion with one of the principles of clean code that impressed me the most: meaningful naming.  
 
-{% include blog-lazy-image.html description="uncle bob meaningful names" width="300" height="300" src="/assets/images/posts/meaningful-names.jpg" %}
+{% include blog-lazy-image.html description="Remember: you NEED to choose your names carefully!" width="300" height="300" src="/assets/images/posts/meaningful-names.jpg" %}
 
 As stated by Uncle Bob in the beautiful meme above, this principle is simple: choose your name carefully.
-But what does it really mean to "choose carefully"? :confused:. Choosing the right names means the following thing: 
+But what does it really mean to "choose carefully"? :confused:. Choosing the right names means the following thing:
 
 * **Names should reveal intent.** Names should answer why a variable, a class or a method exists, what it does and how it must be used.
 * **Avoid disinformation.** Names should not contains false clues about the scope of a variable, method or class. Taking an example from Uncle Bob's clean code: "Do not refer to a grouping of accounts as an accountList, unless it is actually a list...So accountGroups or just plain accounts would be better".
 * **Don't use noise words.** Adding in the name something like "Info" , "Data" doesn't give you any value.
-* **Use pronounceable names.** This is simple: use names that humans can pronounce without feeling stupid. 
+* **Use pronounceable names.** This is simple: use names that humans can pronounce without feeling stupid.
 * **Use searchable names.** Avoid single-letter names and numeric constants that make your components harder to find.
 * **Avoid encodings.** Avoid unnecessary encoding notation, like for example [Hungarian Notation](https://en.wikipedia.org/wiki/Hungarian_notation "Hungarian Notation") in which the name of a variable or function indicates its type.
 * **Avoid member prefix.** Don't add unnecessary name prefix.
@@ -49,7 +42,7 @@ But what does it really mean to "choose carefully"? :confused:. Choosing the rig
 * **Use problem domain names.** If no "programmer oriented name" exists, go with names taken from the problem domain.
 
 Let's see an example to understand the real value of naming classes, methods, functions and variable in the right way.
-For example, take a look at the following C++ code: 
+For example, take a look at the following C++ code:
 
 ```c++
 struct pt {
@@ -72,11 +65,11 @@ public:
 
 class GameManager {
 public:
-    
+
     GameManager(std::vector<Obj> anObjList){
         objList = anObjList;
     }
-    
+
     std::vector<Obj> get() {
         std::vector<Obj> newObjList;
         for (auto currObj : newObjList) {
@@ -86,9 +79,9 @@ public:
         }
         return newObjList;
     }
-    
+
 private:
-    
+
     std::vector<Obj> objList;
 };
 ```
@@ -117,11 +110,11 @@ public:
 
 class Scene {
 public:
-    
+
     Scene(std::vector<GameObject> newGameObjects){
         gameObjects = newGameObjects;
     }
-    
+
     std::vector<GameObject> getValidGameObjects() {
         std::vector<GameObject> activeGameObjects;
         for (auto gameObject : gameObjects) {
@@ -131,15 +124,15 @@ public:
         }
         return activeGameObjects;
     }
-    
+
 private:
-    
+
     std::vector<GameObject> gameObjects;
-    
+
     bool isValid(GameObject gameObject) {
         return gameObject.isActive && isValid(gameObject.mesh);
     }
-    
+
     bool isValid(std::vector<Point> mesh) {
         return mesh.size() > 0;
     }
