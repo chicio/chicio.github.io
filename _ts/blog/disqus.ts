@@ -30,7 +30,6 @@ interface DisqusConfig {
 }
 
 const disqus = (): void => {
-  // eslint-disable-next-line @typescript-eslint/camelcase
   window.disqus_config = (): DisqusConfig => ({
     page: {
       url: window.location.href,
