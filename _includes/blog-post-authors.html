@@ -3,7 +3,7 @@
 	{% assign currentAuthor = site.data.authors[author] %}
 	<div class="blog-post-author d-inline-flex flex-row align-items-center">
 		{% if include.lazy-loading %}
-			{% include blog-lazy-image.html class="rounded-circle" width="30" height="30" src=currentAuthor.image %}
+			{% include lazy-image.html alt=currentAuthor.name fill="BDBDBD" src=currentAuthor.image class="img rounded-circle blog-image" %} 
 		{% else %}
 			<img alt="{{ currentAuthor.name }}" class="rounded-circle" width="30" height="30" src="{{ currentAuthor.image }}">
 		{% endif %}
