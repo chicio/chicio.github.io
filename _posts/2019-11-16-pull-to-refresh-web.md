@@ -16,7 +16,7 @@ authors: [fabrizio_duroni]
 
 ---
 
-Some months ago I [transformed my website into a Progressive Web App](https://www.fabrizioduroni.it/2019/03/03/github-pages-progressive-web-app.html "pwa") (yes, the one you're reading now). By leveraging the power of service workers (and other some cool tricks that I will discuss in other posts :stuck_out_tongue_winking_eye:) my website page load time is below 50 milliseconds :open_mouth:. But with "the great power of service workers comes also great responsibility" (you remember [uncle Ben quote](https://www.google.com/search?q=from+great+power+comes+great+responsibility), right?), and one of this responsibility is let the user be able to refresh all the content whenever it wants (to check new/update stuff). Which is a mechanism/UX pattern that every user in the world already know for this kind of functionality? The [pull to refresh](https://en.wikipedia.org/wiki/Pull-to-refresh). The choice of this pattern is also a natural consequence of the fact that, as [I already told you previously in another post](), Progressive Web App are the technology that fill the gap between web and mobile native app. Unfortunately in the web development world there's not yet a standard component for pull to refresh. This is way in this post I will show you how to implement it from scratch without any JavaScript library/framework. I will only use vanilla JavaScript, HTML, CSS and the service worker *message* capabilities in combination with the `MessageChannel` class. The pull to refresh described in this article is available on this site in all the blog pages (including this one, try it now!!! :smirk:).
+Some months ago I [transformed my website into a Progressive Web App](https://www.fabrizioduroni.it/2019/03/03/github-pages-progressive-web-app.html "pwa") (yes, the one you're reading now). By leveraging the power of service workers (and other some cool tricks that I will discuss in other posts :stuck_out_tongue_winking_eye:) my website page load time is below 50 milliseconds :open_mouth:. But with "the great power of service workers comes also great responsibility" (you remember [uncle Ben quote](https://www.google.com/search?q=from+great+power+comes+great+responsibility), right?), and one of this responsibility is let the user be able to refresh all the content whenever it wants (to check new/update stuff). Which is a mechanism/UX pattern that every user in the world already know for this kind of functionality? The [pull to refresh](https://en.wikipedia.org/wiki/Pull-to-refresh). The choice of this pattern is also a natural consequence of the fact that, as [I already told you previously in another post](/2019/03/03/github-pages-progressive-web-app.html "pwa"), Progressive Web App are the technology that fill the gap between web and mobile native app. Unfortunately in the web development world there's not yet a standard component for pull to refresh. This is way in this post I will show you how to implement it from scratch without any JavaScript library/framework. I will only use vanilla JavaScript, HTML, CSS and the service worker *message* capabilities in combination with the `MessageChannel` class. The pull to refresh described in this article is available on this site in all the blog pages (including this one, try it now!!! :smirk:).
 Let's start from the implementation of the UI (HTML and CSS)
 
 #### UI: HTML and CSS
@@ -52,8 +52,8 @@ html {
 }
 
 .pull-to-refresh {
-  height: 100px; 
-  background-color: $general-background; 
+  height: 100px;
+  background-color: $general-background;
   margin-top: 55px;
   margin-bottom: 10px;
   box-shadow: inset 0px -2px 6px 1px $divider-color;
@@ -97,7 +97,7 @@ html {
 }
 
 .start-pull {
-  transform: translateY(-100px); 
+  transform: translateY(-100px);
 }
 
 .end-pull {
@@ -117,7 +117,7 @@ const yMovement = (dragStartPoint.y - dragCurrentPoint.y) * decelerationFactor
 ```
 
 When I detect a drag gesture (so as we said above `isDraggingForPullToRefresh() == true`) I start to check if the pull to refresh is completed with the function `isPullToRefreshDragCompleted()`, that does a check to understand if the total drag gesture movement is equal to pull to refresh contained DOM element. If this function return false, then the pull to refresh DOM is updated by the function `dragUpdate()`, that applies some CSS transform that translate the pull to refresh into the viewport to make it more and more visible (and increase the visibility of the loader that it is still stop).  
-When `isPullToRefreshDragCompleted()` is `true`, the user reached the end of the pull to refresh drag gesture and the refresh of the content is started. How do I refresh the content? I send a message to the service worker using the function `sendMessageToServiceWorker` to refresh the content. When the service worker answers that the refresh of the content is completed we update the pull to refresh status with the message 'Refresh completed' and we close it using the functions `setRefreshStatusCompleted()` and `closePullToRefresh()`. In particular the `closePullToRefresh()` function launches a CSS transform transition animation to close the pull to refresh. To reload the content of the page when the animation is completed I defined a `transitionend` listener attached to the `pullToRefreshElement` container element (the one that is animated) that launches a `window.location.reload()` to reload the page and show the new fresh content. In all this steps I keep track that the refresh phases completed correctly by setting some status flag in a status repository that I create with the function `createPullToRefreshStatusRepository()`. 
+When `isPullToRefreshDragCompleted()` is `true`, the user reached the end of the pull to refresh drag gesture and the refresh of the content is started. How do I refresh the content? I send a message to the service worker using the function `sendMessageToServiceWorker` to refresh the content. When the service worker answers that the refresh of the content is completed we update the pull to refresh status with the message 'Refresh completed' and we close it using the functions `setRefreshStatusCompleted()` and `closePullToRefresh()`. In particular the `closePullToRefresh()` function launches a CSS transform transition animation to close the pull to refresh. To reload the content of the page when the animation is completed I defined a `transitionend` listener attached to the `pullToRefreshElement` container element (the one that is animated) that launches a `window.location.reload()` to reload the page and show the new fresh content. In all this steps I keep track that the refresh phases completed correctly by setting some status flag in a status repository that I create with the function `createPullToRefreshStatusRepository()`.
 
 ```javascript
 //...other code...
@@ -346,14 +346,14 @@ self.addEventListener('message', (event) => {
         const deleteRequestToBeRefreshed = createDeleteOperationFor(event.data.url, siteCache, requests)
         const deleteRequestsForImagesToBeRefreshed = createDeleteOperationsForImages(siteCache, requests)
         Promise.all([
-          deleteRequestToBeRefreshed, 
-          ...deleteRequestsForImagesToBeRefreshed, 
+          deleteRequestToBeRefreshed,
+          ...deleteRequestsForImagesToBeRefreshed,
           sendAnalyticsEvent(event.data.clientId, '{{ site.data.tracking.action.pull_to_refresh }}', event.data.trackingCategory, '{{ site.data.tracking.label.body }}')
         ])
           .then(() => sendRefreshCompletedMessageToClient(event))
           .catch(() => sendRefreshCompletedMessageToClient(event))
       })
-    }) 
+    })
   }
 })
 
