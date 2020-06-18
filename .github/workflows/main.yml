@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: '13'                 
       - name: Lhci
-        uses: treosh/lighthouse-ci-action@v2
+        uses: treosh/lighthouse-ci-action@v3
         with:
           urls: |
             https://www.fabrizioduroni.it
