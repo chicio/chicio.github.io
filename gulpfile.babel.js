@@ -15,6 +15,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const production = gulpEnvironments.production
 
@@ -151,6 +152,8 @@ const bundle = () => {
         HtmlPluginFactory('style.cookiepolicy', 'dependencies-css-cookie-policy', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.headTags}`),      
         HtmlPluginFactory('style.error', 'dependencies-css-error', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.headTags}`),      
         HtmlPluginFactory('style.privacypolicy', 'dependencies-css-privacy-policy', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.headTags}`),      
+        // Uncomment to analyze bundle.
+        // new BundleAnalyzerPlugin({ reportFilename: './bundle-report.html'})
       ]
     }, webpack))
     .pipe(gulp.dest(ASSESTS_DIST_FOLDER))

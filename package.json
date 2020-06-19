@@ -68,6 +68,7 @@
     "typescript": "^3.9.5",
     "utf-8-validate": "^5.0.2",
     "webpack": "^4.43.0",
+    "webpack-bundle-analyzer": "^3.8.0",
     "webpack-fix-style-only-entries": "^0.4.0",
     "webpack-stream": "^5.2.1",
     "workbox-webpack-plugin": "^5.1.3"

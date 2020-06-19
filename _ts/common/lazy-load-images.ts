@@ -1,4 +1,4 @@
-import 'intersection-observer'
+import 'intersection-observer/intersection-observer'
 import { addCssClass, removeCssClass } from './css-class'
 
 const loadImage = (image: HTMLImageElement, observer: IntersectionObserver): void => {
