@@ -12,7 +12,8 @@
     "start": "_scripts/start.sh",
     "test": "_scripts/test.sh",
     "version": "_scripts/version.sh",
-    "postversion": "_scripts/postversion.sh"
+    "postversion": "_scripts/postversion.sh",
+    "lhci": "_scripts/lhci.sh"
   },
   "repository": {
     "type": "git",
