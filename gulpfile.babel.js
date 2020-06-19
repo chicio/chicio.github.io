@@ -24,6 +24,7 @@ const ASSESTS_DIST_FOLDER = `${ASSETS_FOLDER}/dist`
 const JS_FOLDER = '_ts'
 const JS_HOME = 'index.home'
 const JS_BLOG = 'index.blog'
+const JS_BLOG_HOME = 'index.blog.home'
 const CSS_FOLDER = '_css'
 const CSS_HOME = 'style.home'
 const CSS_BLOG = 'style.blog'
@@ -58,6 +59,7 @@ class JekyllPlugin {
 const bundle = () => {
   const homeJs = `./${JS_FOLDER}/${JS_HOME}.ts`
   const blogJs = `./${JS_FOLDER}/${JS_BLOG}.ts`
+  const blogHomeJs = `./${JS_FOLDER}/${JS_BLOG_HOME}.ts`
   const styleHome = `./${CSS_FOLDER}/${CSS_HOME}.scss`
   const styleBlogArchive = `./${CSS_FOLDER}/${CSS_BLOG_ARCHIVE}.scss`
   const styleBlogHome = `./${CSS_FOLDER}/${CSS_BLOG_HOME}.scss`
@@ -68,7 +70,8 @@ const bundle = () => {
   const styleError = `./${CSS_FOLDER}/${CSS_ERROR}.scss`
   return gulp.src([
     homeJs, 
-    blogJs, 
+    blogJs,
+    blogHomeJs, 
     styleHome, 
     styleBlogArchive, 
     styleBlogHome, 
@@ -83,6 +86,7 @@ const bundle = () => {
       entry: {
         'index.home': homeJs,
         'index.blog': blogJs,
+        'index.blog.home': blogHomeJs,
         'style.home': styleHome,
         'style.blog.archive': styleBlogArchive,
         'style.blog.home': styleBlogHome,
@@ -138,6 +142,7 @@ const bundle = () => {
         }),
         HtmlPluginFactory('index.home', 'index-js-home-url', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.bodyTags}`),
         HtmlPluginFactory('index.blog', 'index-js-blog-url', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.bodyTags}`),
+        HtmlPluginFactory('index.blog.home', 'index-js-blog-home-url', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.bodyTags}`),
         HtmlPluginFactory('style.home', 'dependencies-css-home', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.headTags}`),      
         HtmlPluginFactory('style.blog.archive', 'dependencies-css-blog-archive', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.headTags}`),      
         HtmlPluginFactory('style.blog.home', 'dependencies-css-blog-home', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.headTags}`),      

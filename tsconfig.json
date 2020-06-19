@@ -13,6 +13,7 @@
   "files": [
     "_ts/index.home.ts",
     "_ts/index.blog.ts",
+    "_ts/index.blog.home.ts",
     "_ts/sw.ts"
   ]
 }
