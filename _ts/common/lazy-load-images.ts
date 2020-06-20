@@ -1,4 +1,3 @@
-import 'intersection-observer/intersection-observer'
 import { addCssClass, removeCssClass } from './css-class'
 
 const loadImage = (image: HTMLImageElement, observer: IntersectionObserver): void => {
@@ -30,7 +29,7 @@ const onIntersection = (entries: IntersectionObserverEntry[], observer: Intersec
   }
 }
 
-const lazyLoadImages = (selector: string): void => {
+const startLazyLoad = (selector: string): void => {
   const intersectionObserver: IntersectionObserver = new IntersectionObserver(
     onIntersection,
     { rootMargin: '50px 0px', threshold: 0.01 }
@@ -38,6 +37,19 @@ const lazyLoadImages = (selector: string): void => {
   const images: NodeList = document.querySelectorAll(selector)
   for (let i = 0; i < images.length; i++) {
     intersectionObserver.observe((images[i] as Element))
+  }
+}
+
+const lazyLoadImages = (selector: string): void => {
+
+  if (!('IntersectionObserver' in window) &&
+    !('IntersectionObserverEntry' in window) &&
+    !('intersectionRatio' in window.IntersectionObserverEntry.prototype)) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore: intersection observer polifyll doesn't have types available
+    import(/* webpackChunkName: "intersection-observer" */ 'intersection-observer').then(() => startLazyLoad())
+  } else {
+    startLazyLoad(selector)
   }
 }
 
