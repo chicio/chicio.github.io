@@ -51,14 +51,11 @@
       font-size: 32px;
     }
 
-    h3 {
-      margin-top: 10px;
-      margin-bottom: 20px;
-      font-size: 18px;
-    }
-
     .profile-job {
       @include theme('color', $primary-color-text);
+      margin-top: 10px;
+      margin-bottom: 20px;
+      font-size: 1.75rem;
     }
 
     .profile-icon {
