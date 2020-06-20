@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2              
       - name: Lhci
-        uses: treosh/lighthouse-ci-action@v2
+        uses: treosh/lighthouse-ci-action@v3
         with:
           urls: |
             https://www.fabrizioduroni.it
