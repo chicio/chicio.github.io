@@ -9,6 +9,7 @@ Release date: 2020-05-XX
 - Updated dependecies
 - Added BundleAnalyzerPlugin
 - Split JS bundle per page
+- intersection observer polyfill lazy load
 
 ## [3.2.0](https://github.com/chicio/chicio.github.io/releases/tag/3.2.0)
 Release date: 2020-05-18

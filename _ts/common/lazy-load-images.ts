@@ -49,7 +49,7 @@ const lazyLoadImages = (selector: string): void => {
   } else {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore: intersection observer polifyll doesn't have types available
-    import(/* webpackChunkName: "intersection-observer" */ 'intersection-observer').then(() => startLazyLoad())
+    import(/* webpackChunkName: "intersection-observer" */ 'intersection-observer').then(() => startLazyLoad(selector))
   }
 }
 
