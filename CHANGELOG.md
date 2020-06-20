@@ -10,6 +10,7 @@ Release date: 2020-06-20
 - Added BundleAnalyzerPlugin
 - Split JS bundle per page
 - intersection observer polyfill lazy load
+- upgraded lighthouse github action
 
 ## [3.2.0](https://github.com/chicio/chicio.github.io/releases/tag/3.2.0)
 Release date: 2020-05-18
