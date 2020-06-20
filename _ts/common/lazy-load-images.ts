@@ -41,15 +41,15 @@ const startLazyLoad = (selector: string): void => {
 }
 
 const lazyLoadImages = (selector: string): void => {
-
-  if (!('IntersectionObserver' in window) &&
-    !('IntersectionObserverEntry' in window) &&
-    !('intersectionRatio' in window.IntersectionObserverEntry.prototype)) {
+  if ('IntersectionObserver' in window &&
+  'IntersectionObserverEntry' in window &&
+  'intersectionRatio' in window.IntersectionObserverEntry.prototype &&
+  'isIntersecting' in window.IntersectionObserverEntry.prototype) {
+    startLazyLoad(selector)
+  } else {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore: intersection observer polifyll doesn't have types available
     import(/* webpackChunkName: "intersection-observer" */ 'intersection-observer').then(() => startLazyLoad())
-  } else {
-    startLazyLoad(selector)
   }
 }
 
