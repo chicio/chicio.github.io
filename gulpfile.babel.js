@@ -25,7 +25,12 @@ const ASSESTS_DIST_FOLDER = `${ASSETS_FOLDER}/dist`
 const JS_FOLDER = '_ts'
 const JS_HOME = 'index.home'
 const JS_BLOG = 'index.blog'
-const JS_BLOG_HOME = 'index.blog.home'
+const JS_BLOG_POST = `${JS_BLOG}.post`
+const JS_BLOG_HOME = `${JS_BLOG}.home`
+const JS_BLOG_ARCHIVE = `${JS_BLOG}.archive`
+const JS_BLOG_TAGS = `${JS_BLOG}.tags`
+const JS_COOKIE_POLICY = 'index.cookiepolicy'
+const JS_PRIVACY_POLICY = 'index.privacypolicy'
 const CSS_FOLDER = '_css'
 const CSS_HOME = 'style.home'
 const CSS_BLOG = 'style.blog'
@@ -59,8 +64,12 @@ class JekyllPlugin {
 
 const bundle = () => {
   const homeJs = `./${JS_FOLDER}/${JS_HOME}.ts`
-  const blogJs = `./${JS_FOLDER}/${JS_BLOG}.ts`
+  const blogPostJs = `./${JS_FOLDER}/${JS_BLOG_POST}.ts`
   const blogHomeJs = `./${JS_FOLDER}/${JS_BLOG_HOME}.ts`
+  const blogArchiveJs = `./${JS_FOLDER}/${JS_BLOG_ARCHIVE}.ts`
+  const blogTagsJs = `./${JS_FOLDER}/${JS_BLOG_TAGS}.ts`
+  const cookiePolicyJs = `./${JS_FOLDER}/${JS_COOKIE_POLICY}.ts`
+  const privacyPolicyJs = `./${JS_FOLDER}/${JS_PRIVACY_POLICY}.ts`
   const styleHome = `./${CSS_FOLDER}/${CSS_HOME}.scss`
   const styleBlogArchive = `./${CSS_FOLDER}/${CSS_BLOG_ARCHIVE}.scss`
   const styleBlogHome = `./${CSS_FOLDER}/${CSS_BLOG_HOME}.scss`
@@ -71,8 +80,12 @@ const bundle = () => {
   const styleError = `./${CSS_FOLDER}/${CSS_ERROR}.scss`
   return gulp.src([
     homeJs, 
-    blogJs,
+    blogPostJs,
     blogHomeJs, 
+    blogArchiveJs,
+    blogTagsJs,
+    cookiePolicyJs,
+    privacyPolicyJs,
     styleHome, 
     styleBlogArchive, 
     styleBlogHome, 
@@ -86,8 +99,12 @@ const bundle = () => {
       performance: { hints: production() ? false : 'warning' },
       entry: {
         'index.home': homeJs,
-        'index.blog': blogJs,
+        'index.blog.post': blogPostJs,
         'index.blog.home': blogHomeJs,
+        'index.blog.archive': blogArchiveJs,
+        'index.blog.tags': blogTagsJs,
+        'index.cookiepolicy': cookiePolicyJs,
+        'index.privacypolicy': privacyPolicyJs,
         'style.home': styleHome,
         'style.blog.archive': styleBlogArchive,
         'style.blog.home': styleBlogHome,
@@ -142,8 +159,12 @@ const bundle = () => {
           additionalManifestEntries: [ {url: "/favicon.ico", revision: null } ]
         }),
         HtmlPluginFactory('index.home', 'index-js-home-url', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.bodyTags}`),
-        HtmlPluginFactory('index.blog', 'index-js-blog-url', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.bodyTags}`),
+        HtmlPluginFactory('index.blog.post', 'index-js-blog-post-url', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.bodyTags}`),
         HtmlPluginFactory('index.blog.home', 'index-js-blog-home-url', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.bodyTags}`),
+        HtmlPluginFactory('index.blog.archive', 'index-js-blog-archive-url', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.bodyTags}`),
+        HtmlPluginFactory('index.blog.tags', 'index-js-blog-tags-url', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.bodyTags}`),
+        HtmlPluginFactory('index.cookiepolicy', 'index-js-cookiepolicy-url', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.bodyTags}`),
+        HtmlPluginFactory('index.privacypolicy', 'index-js-privacypolicy-url', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.bodyTags}`),
         HtmlPluginFactory('style.home', 'dependencies-css-home', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.headTags}`),      
         HtmlPluginFactory('style.blog.archive', 'dependencies-css-blog-archive', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.headTags}`),      
         HtmlPluginFactory('style.blog.home', 'dependencies-css-blog-home', ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.tags.headTags}`),      
@@ -213,13 +234,13 @@ const purgeCssUsing = (cssName, content, whitelist = []) => (
 )
 const purgeCss = () => Promise.all([
   purgeCssUsing(CSS_HOME, [`./${SITE_FOLDER}/index.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_HOME}.${hash()}.min.js`]),
-  purgeCssUsing(CSS_BLOG_ARCHIVE, [`./${SITE_FOLDER}/blog/archive/index.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_BLOG}.${hash()}.min.js`]),
-  purgeCssUsing(CSS_BLOG_HOME, [`./${SITE_FOLDER}/blog/index.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_BLOG}.${hash()}.min.js`]),
-  purgeCssUsing(CSS_BLOG_TAGS, [`./${SITE_FOLDER}/blog/tags/index.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_BLOG}.${hash()}.min.js`]),
-  purgeCssUsing(CSS_ERROR, [`./${SITE_FOLDER}/offline.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_BLOG}.${hash()}.min.js`]),
-  purgeCssUsing(CSS_PRIVACY_POLICY, [`./${SITE_FOLDER}/privacy-policy.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_BLOG}.${hash()}.min.js`]),
-  purgeCssUsing(CSS_COOKIE_POLICY, [`./${SITE_FOLDER}/cookie-policy.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_BLOG}.${hash()}.min.js`]),
-  purgeCssUsing(CSS_BLOG_POST, [`./${SITE_FOLDER}/20**/**/**.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_BLOG}.${hash()}.min.js`], ['katex-display'])
+  purgeCssUsing(CSS_BLOG_ARCHIVE, [`./${SITE_FOLDER}/blog/archive/index.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_BLOG_POST}.${hash()}.min.js`]),
+  purgeCssUsing(CSS_BLOG_HOME, [`./${SITE_FOLDER}/blog/index.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_BLOG_POST}.${hash()}.min.js`]),
+  purgeCssUsing(CSS_BLOG_TAGS, [`./${SITE_FOLDER}/blog/tags/index.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_BLOG_POST}.${hash()}.min.js`]),
+  purgeCssUsing(CSS_ERROR, [`./${SITE_FOLDER}/offline.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_BLOG_POST}.${hash()}.min.js`]),
+  purgeCssUsing(CSS_PRIVACY_POLICY, [`./${SITE_FOLDER}/privacy-policy.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_BLOG_POST}.${hash()}.min.js`]),
+  purgeCssUsing(CSS_COOKIE_POLICY, [`./${SITE_FOLDER}/cookie-policy.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_BLOG_POST}.${hash()}.min.js`]),
+  purgeCssUsing(CSS_BLOG_POST, [`./${SITE_FOLDER}/20**/**/**.html`, `./${SITE_FOLDER}/${ASSESTS_DIST_FOLDER}/${JS_BLOG_POST}.${hash()}.min.js`], ['katex-display'])
 ])
 
 const jekyllBuild = (done) => exec('./_scripts/build.sh', (err, stdout, stderr) => done(err))

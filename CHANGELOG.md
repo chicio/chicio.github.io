@@ -1,13 +1,22 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [3.3.0](https://github.com/chicio/chicio.github.io/releases/tag/3.3.0)
+Release date: 2020-05-XX
+
+#### Added
+
+- Updated dependecies
+- Added BundleAnalyzerPlugin
+- Split JS bundle per page
+
 ## [3.2.0](https://github.com/chicio/chicio.github.io/releases/tag/3.2.0)
 Release date: 2020-05-18
 
 #### Added
 
 - HtmlWebpackPlugin to generate styles and scripts urls dynamically
-- hot reload dev mode
+- Hot reload dev mode
 
 ## [3.1.0](https://github.com/chicio/chicio.github.io/releases/tag/3.1.0)
 Release date: 2020-05-18
