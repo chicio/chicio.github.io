@@ -40,11 +40,14 @@ const startLazyLoad = (selector: string): void => {
   }
 }
 
-const lazyLoadImages = (selector: string): void => {
-  if ('IntersectionObserver' in window &&
+const isIntersectionObserverSupported = (): boolean => 
+  'IntersectionObserver' in window &&
   'IntersectionObserverEntry' in window &&
   'intersectionRatio' in window.IntersectionObserverEntry.prototype &&
-  'isIntersecting' in window.IntersectionObserverEntry.prototype) {
+  'isIntersecting' in window.IntersectionObserverEntry.prototype 
+
+const lazyLoadImages = (selector: string): void => {
+  if (isIntersectionObserverSupported()) {
     startLazyLoad(selector)
   } else {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment

@@ -2,11 +2,11 @@
 All changes to Chicio coding will be documented in this file.
 
 ## [3.3.0](https://github.com/chicio/chicio.github.io/releases/tag/3.3.0)
-Release date: 2020-05-XX
+Release date: 2020-06-20
 
 #### Added
 
-- Updated dependecies
+- Updated dependencies
 - Added BundleAnalyzerPlugin
 - Split JS bundle per page
 - intersection observer polyfill lazy load
