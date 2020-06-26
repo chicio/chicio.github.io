@@ -39,4 +39,14 @@ So let's see how I used it and how I took advantage of some of its major feature
 
 #### Implementation
 
-As I already said, Workbox is written in TypeScript. So let's start by creating a new file called `sw.ts`. The first thing we need to do is call some service worker lifecycle method, `skipWaiting` and `clientsClaim`.
+As I already said, Workbox is written in TypeScript. So let's start by creating a new file called `sw.ts`. The first thing we need to do is call some service worker lifecycle method, `skipWaiting` and `clientsClaim`. When you install an update of a service worker, the new one will not be used until you close all the tabs already controlled by the service worker and relaunch the web app. If you don't need that feature, you can make your new service worker activate sooner by calling the `skipWaiting` function. In case you want to force all the tabs open to be immediately controller by a new updated version of your service worker you can call `clientsClaim`. Both this lifecycle functions are contained in the `workbox-core` module, so we can just import and call them.
+
+```typescript
+import { skipWaiting, clientsClaim } from "workbox-core"
+
+//...
+
+skipWaiting()
+clientsClaim()
+
+```
