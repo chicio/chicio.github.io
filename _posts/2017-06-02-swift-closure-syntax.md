@@ -16,7 +16,7 @@ authors: [fabrizio_duroni]
 
 ---
 
-As reported on the [official Apple swift documentation](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html#//apple_ref/doc/uid/TP40014097-CH10-ID158 "official Apple swift documentation") closures are:
+As reported on the [official Apple swift documentation](https://docs.swift.org/swift-book/LanguageGuide/Closures.html "official Apple swift documentation") closures are:
 
 > Closures are self-contained blocks of functionality that can be passed around and used in your code. They can capture and store references to any constants and variables from the context in which they are defined.
 
