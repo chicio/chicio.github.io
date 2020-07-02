@@ -50,3 +50,5 @@ skipWaiting()
 clientsClaim()
 
 ```
+
+Now we are ready to precache some resources and files. This is usually done manually by the developer in the `install` event. 
