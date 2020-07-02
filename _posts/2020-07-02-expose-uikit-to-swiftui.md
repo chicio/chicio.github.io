@@ -36,7 +36,7 @@ In this example we will create a simple app that will let the user select a docu
 - `makeUIView(context: Self.Context) -> Self.UIViewType`, a method where you create the UIKit to be used in SwiftUI
 - `updateUIView(_ uiView: Self.UIViewType, context: Self.Context)` a method called when the view must be redrawn due to external changes (e.g. a State update)
 
-The `Self.UIViewType` type is an [associated type](https://www.hackingwithswift.com/articles/74/understanding-protocol-associated-types-and-their-constraints "swift protocol associated type") of the protocol and he must match the type of the UIKit view wrapped.  
+The `Self.UIViewType` type is an [associated type](https://www.hackingwithswift.com/articles/74/understanding-protocol-associated-types-and-their-constraints "swift protocol associated type") of the protocol and it must match the type of the UIKit view wrapped.  
 So for our example we can implement a `DocumentNameLabel` struct that implements the `UIViewRepresentable` protocol. In the `makeUIView` method we create an instance of the customized UILabel that we want to expose. In the `updateUIView` we will update the text shown by the label with the value contained in a `@Binding` var updated from the container view (do you remember [what is a @Binding var](https://www.hackingwithswift.com/quick-start/swiftui/what-is-the-binding-property-wrapper "binding swiftui"), right?).
 
 ```swift
