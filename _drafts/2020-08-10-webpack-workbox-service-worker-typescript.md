@@ -49,6 +49,32 @@ import { skipWaiting, clientsClaim } from "workbox-core"
 skipWaiting()
 clientsClaim()
 
+//...
 ```
 
-Now we are ready to precache some resources and files. This is usually done manually by the developer in the `install` event. 
+Now we are ready to setup it's time to understand and setup caches with Workbox. All the caches inside the framework are based on the concept of **routes** and **strategies**. Service worker can intercept network requests for a page and can respond to the browser with cached content, content from the network or content generated in the service worker. To define which request must be intercepted and served by the service worker, you must define its **routes**. The way the service worker handle the **routes** (for example cache only, network first etc.) are the **strategies**. Usually when you write your own service worker you define some files to precache during the service worker installation process and then for the routes you want to serve from it their related strategies.  
+Let's start with the precache of some files. This is usually done manually by the developer in the `install` event, and usually the resource that are cached are the ones needed in order to have the PWA work offline. In my cases, and generally speaking for a blog/news website, this basically means save in the cache JavaScript and CSS files. Workbox give us the `precacheAndRoute` function to do this. It is possible to pass to this function a list of files to be cached and it will take care of creating an ad-hoc cache and same the files during the installation process. ....webpack inject + offline stuff...
+
+```typescript
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore: __WB_MANIFEST is a placeholder filled by workbox-webpack-plugin with the list of dependecies to be cached
+precacheAndRoute(self.__WB_MANIFEST)
+googleAnalytics.initialize()
+
+self.addEventListener('install', (event: ExtendableEvent) => {
+  const offlineUrls = [
+    OFFLINE_PAGE_URL,
+    OFFLINE_PAGE_NO_NETWORK_IMAGE_URL
+  ];
+  event.waitUntil(
+    Promise.all([
+      caches.delete(CACHE_DOCUMENTS_NAME),
+      caches.delete(CACHE_SCRIPT_NAME),
+      caches.delete(CACHE_STYLES_NAME),
+      caches.delete(CACHE_FONTS_NAME),
+      caches.delete(CACHE_IMAGES_NAME),
+      caches.open(CACHE_OFFLINE_NAME).then((cache) => cache.addAll(offlineUrls))
+    ])
+  );
+})
+```
