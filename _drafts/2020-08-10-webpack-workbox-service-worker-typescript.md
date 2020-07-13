@@ -44,20 +44,35 @@ As I already said, Workbox is written in TypeScript. So let's start by creating 
 ```typescript
 import { skipWaiting, clientsClaim } from "workbox-core"
 
-//...
+//...other code...
 
 skipWaiting()
 clientsClaim()
 
-//...
+//...other code...
 ```
 
 Now we are ready to setup it's time to understand and setup caches with Workbox. All the caches inside the framework are based on the concept of **routes** and **strategies**. Service worker can intercept network requests for a page and can respond to the browser with cached content, content from the network or content generated in the service worker. To define which request must be intercepted and served by the service worker, you must define its **routes**. The way the service worker handle the **routes** (for example cache only, network first etc.) are the **strategies**. Usually when you write your own service worker you define some files to precache during the service worker installation process and then for the routes you want to serve from it their related strategies.  
-Let's start with the precache of some files. This is usually done manually by the developer in the `install` event, and usually the resource that are cached are the ones needed in order to have the PWA work offline. In my cases, and generally speaking for a blog/news website, this basically means save in the cache JavaScript and CSS files. Workbox give us the `precacheAndRoute` function to do this. It is possible to pass to this function a list of files to be cached and it will take care of creating an ad-hoc cache and same the files during the installation process. To build this website I'm using Webpack as JavaScript bundler. Workbox has a great support for it. In particular for the precache phase, there is the npm package `workbox-webpack-plugin` that contains a plugin called `InjectManifest`. This plugin  is able to inject in the Service Worker code a variable named `__WB_MANIFEST` that contains a list of the entry points/generated files of the Webpack bundling process. So in my service worker I can precache the files I need by just writing `precacheAndRoute(self.__WB_MANIFEST)`. Anyway there's a problem: I want to cache some additional files during the installation process to manage errors related to content not available in the caches that it is not possible to load due to network errors. In this case it is possible to add the additional files with the standard way in the `install` event.
-
- ....webpack inject + offline stuff...
+Let's start with the precache of some files. This is usually done manually by the developer in the `install` event, and usually the resource that are cached are the ones needed in order to have the PWA work offline. In my cases, and generally speaking for a blog/news website, this basically means save in the cache JavaScript and CSS files. Workbox give us the `precacheAndRoute` function to do this. It is possible to pass to this function a list of files to be cached and it will take care of creating an ad-hoc cache and same the files during the installation process. To build this website I'm using Webpack as JavaScript bundler. Workbox has a great support for it. In particular for the precache phase, there is the npm package `workbox-webpack-plugin` that contains a plugin called `InjectManifest`. This plugin  is able to inject in the Service Worker code a variable named `__WB_MANIFEST` that contains a list of the entry points/generated files of the Webpack bundling process. So in my service worker I can precache the files I need by just writing `precacheAndRoute(self.__WB_MANIFEST)`. Anyway there's a problem: I want to cache some additional files during the installation process to be used to manage errors related to content not available in the caches and that it is not possible to load due to network errors. It is possible to add these additional files with the standard way in the `install` event. In my case I decided to create an ad-hoc cache to save these files. Last but not least in the install event I decided also to clear all the caches. In this way on every install of a new service worker version I will initialize all the caches. All the caches that I'm using are identified by the constants `CACHE_<purpose>` (and we will see in a few moments how I'm using them :smirk:). Below you can find the code for the precache and install event.
 
 ```typescript
+import { precacheAndRoute } from 'workbox-precaching';
+
+//...other code...
+
+const CACHE_PREFIX = 'workbox-chicio-coding'
+const CACHE_OFFLINE_NAME = `${CACHE_PREFIX}-offline`
+const CACHE_SCRIPT_NAME = `${CACHE_PREFIX}-scripts`
+const CACHE_STYLES_NAME = `${CACHE_PREFIX}-styles`
+const CACHE_DOCUMENTS_NAME = `${CACHE_PREFIX}-documents`
+const CACHE_FONTS_NAME = `${CACHE_PREFIX}-fonts`
+const CACHE_IMAGES_NAME = `${CACHE_PREFIX}-images`
+
+const OFFLINE_PAGE_URL = '/offline.html'
+const OFFLINE_PAGE_NO_NETWORK_IMAGE_URL = '/assets/images/no-wifi.png'
+
+//...other code...
+
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore: __WB_MANIFEST is a placeholder filled by workbox-webpack-plugin with the list of dependecies to be cached
 precacheAndRoute(self.__WB_MANIFEST)
@@ -79,4 +94,120 @@ self.addEventListener('install', (event: ExtendableEvent) => {
     ])
   );
 })
+
+//...other code...
 ```
+
+...routes and strategies...
+
+```typescript
+import { registerRoute, setCatchHandler, Route } from 'workbox-routing';
+import { ExpirationPlugin } from 'workbox-expiration';
+import { CacheFirst } from 'workbox-strategies';
+
+//...other code...
+
+const stylesScriptsExpirationPlugin = new ExpirationPlugin({ maxEntries: 10, maxAgeSeconds: 15 * 24 * 60 * 60, purgeOnQuotaError: true })
+const fontsExpirationPlugin = new ExpirationPlugin({ maxEntries: 5, maxAgeSeconds: 180 * 24 * 60 * 60 })
+const imagesExpirationPlugin = new ExpirationPlugin({ maxEntries: 100, maxAgeSeconds: 60 * 24 * 60 * 60 })
+const documentExpirationPlugin = new ExpirationPlugin({ maxEntries: 50, maxAgeSeconds: 60 * 24 * 60 * 60, purgeOnQuotaError: true })
+
+//...other code...
+
+const registerCacheFirstRouteUsing = (
+  destination: RequestDestination,
+  cacheName: string,
+  expirationPlugin: ExpirationPlugin
+): Route => registerRoute(
+  ({ request }) => request.destination === destination,
+  new CacheFirst({
+    cacheName: cacheName,
+    plugins: [expirationPlugin],
+  })
+)
+
+registerCacheFirstRouteUsing('style', CACHE_STYLES_NAME, stylesScriptsExpirationPlugin)
+registerCacheFirstRouteUsing('script', CACHE_SCRIPT_NAME, stylesScriptsExpirationPlugin)
+registerCacheFirstRouteUsing('document', CACHE_DOCUMENTS_NAME, documentExpirationPlugin)
+registerCacheFirstRouteUsing('font', CACHE_FONTS_NAME, fontsExpirationPlugin)
+registerCacheFirstRouteUsing('image', CACHE_IMAGES_NAME, imagesExpirationPlugin)
+
+//...other code...
+```
+
+...set catch handler...
+
+```typescript
+import { registerRoute, setCatchHandler, Route } from 'workbox-routing';
+
+//...other code...
+
+setCatchHandler((options: RouteHandlerCallbackOptions): Promise<Response> => {
+  const isADocumentRequest = (options: RouteHandlerCallbackOptions): boolean =>
+    !(typeof options.request === 'string') && options.request.destination == 'document';
+  const isAOfflinePageImageRequest = (options: RouteHandlerCallbackOptions): boolean =>
+    !(typeof options.request === 'string') &&
+    options.request.destination == 'image' &&
+    options.url?.pathname == OFFLINE_PAGE_NO_NETWORK_IMAGE_URL
+
+  if (isADocumentRequest(options)) {
+    return caches.match(OFFLINE_PAGE_URL) as Promise<Response>;
+  }
+
+  if (isAOfflinePageImageRequest(options)) {
+    return caches.match(OFFLINE_PAGE_NO_NETWORK_IMAGE_URL) as Promise<Response>;
+  }
+
+  return Promise.resolve(Response.error());
+})
+
+//...other code...
+```
+
+...message event to manage my personal pull to refresh implementation...
+
+```typescript
+self.addEventListener('message', (event: ExtendableMessageEvent) => {
+  const isARefresh = (event: ExtendableMessageEvent): boolean => event.data.message === 'refresh'
+  const sendRefreshCompletedMessageToClient = (event: ExtendableMessageEvent): void => event.ports[0].postMessage({ refreshCompleted: true })
+
+  if (isARefresh(event)) {
+    console.log(cacheNames)
+    Promise.all([
+      imagesExpirationPlugin.deleteCacheAndMetadata(),
+      documentExpirationPlugin.deleteCacheAndMetadata()
+    ])
+      .then(() => sendRefreshCompletedMessageToClient(event))
+      .catch(() => sendRefreshCompletedMessageToClient(event))
+  }
+})
+```
+
+...strict types + tslint + google analytics...
+
+```typescript
+import * as googleAnalytics from 'workbox-google-analytics';
+
+//...other code...
+
+// Fix self: https://stackoverflow.com/questions/56356655/structuring-a-typescript-project-with-workers
+declare const self: ServiceWorkerGlobalScope;
+export {};
+
+//...other code...
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore: __WB_MANIFEST is a placeholder filled by workbox-webpack-plugin with the list of dependecies to be cached
+precacheAndRoute(self.__WB_MANIFEST)
+
+//...other code...
+
+googleAnalytics.initialize()
+
+//...other code...
+
+```
+
+#### Conclusion
+
+...conclusion
