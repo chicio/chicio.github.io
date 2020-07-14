@@ -98,10 +98,25 @@ self.addEventListener('install', (event: ExtendableEvent) => {
 //...other code...
 ```
 
-...routes and strategies...
+After the precache we define the routes and strategies for the network call after the install events. In my implementation I decided to setup a cache for each one of the following assets:
+
+* styles (CSS files)
+* scripts (JavaScript files)
+* documents (HTML files)
+* fonts
+* images
+
+Each route is registered in the service worker with the `registerRoute` function. It expects 3 parameters: a regex that defines the URLs intercepted by the route, a strategy handler and eventually the HTTP method expected on the route (the last two parameters are optional and could be substituted by a `Route` object that contains this 3 params). In our case, as a consequence of the fact that I decided that all the routes must be served with a `CacheFirst` strategy, we can define a `registerRoute` function that defines a route with a cache first strategy given the regex of the route, the cache name and the `ExpirationPlugin`. What is an `ExpirationPlugin`? It is a class that define the retention policy of the cache to which it is assigned. In our case I defined different `ExpirationPlugin` instances based on the policy I chosen for each media type supported by the routes we defined above:
+
+* 15 days for the styles
+* 180 days for the fonts
+* 60 days for the images
+* 60 days for the documents
+
+Above you can see the implementation for the routes and strategies.
 
 ```typescript
-import { registerRoute, setCatchHandler, Route } from 'workbox-routing';
+import { registerRoute, Route } from 'workbox-routing';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { CacheFirst } from 'workbox-strategies';
 
@@ -138,7 +153,7 @@ registerCacheFirstRouteUsing('image', CACHE_IMAGES_NAME, imagesExpirationPlugin)
 ...set catch handler...
 
 ```typescript
-import { registerRoute, setCatchHandler, Route } from 'workbox-routing';
+import { setCatchHandler } from 'workbox-routing';
 
 //...other code...
 
@@ -183,11 +198,21 @@ self.addEventListener('message', (event: ExtendableMessageEvent) => {
 })
 ```
 
-...strict types + tslint + google analytics...
+...google analytics offline...
 
 ```typescript
 import * as googleAnalytics from 'workbox-google-analytics';
 
+//...other code...
+
+googleAnalytics.initialize()
+
+//...other code...
+```
+
+...strict types + tslint + google analytics...
+
+```typescript
 //...other code...
 
 // Fix self: https://stackoverflow.com/questions/56356655/structuring-a-typescript-project-with-workers
@@ -201,11 +226,6 @@ export {};
 precacheAndRoute(self.__WB_MANIFEST)
 
 //...other code...
-
-googleAnalytics.initialize()
-
-//...other code...
-
 ```
 
 #### Conclusion
