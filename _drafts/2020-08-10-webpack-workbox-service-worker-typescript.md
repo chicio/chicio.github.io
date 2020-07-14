@@ -150,7 +150,7 @@ registerCacheFirstRouteUsing('image', CACHE_IMAGES_NAME, imagesExpirationPlugin)
 //...other code...
 ```
 
-...set catch handler...
+Now there's a question we didn't answer: how do we manage the requests that will fail? There are multiple possibilities to manage these cases. In our case I decided to go for a global catch handler. By calling `setCatchHandler` it is possible to catch all the network/cache error for all the routes defined. We can give a callback to this function where we can define an error recovery strategy for each type of error. In our case we respond with the offline page (see the offline cache defined in the precache/install event) if the error happens on a resource of type `document` (so an html page that can be loaded completely), and we return a generic error for all the other fail (images loading fail, scripts fail etc.). Below you can find the implementation of the cache handler.
 
 ```typescript
 import { setCatchHandler } from 'workbox-routing';
