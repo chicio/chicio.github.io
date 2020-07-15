@@ -91,7 +91,6 @@ self.addEventListener('message', (event: ExtendableMessageEvent) => {
   const sendRefreshCompletedMessageToClient = (event: ExtendableMessageEvent): void => event.ports[0].postMessage({ refreshCompleted: true })
 
   if (isARefresh(event)) {
-    console.log(cacheNames)
     Promise.all([
       imagesExpirationPlugin.deleteCacheAndMetadata(),
       documentExpirationPlugin.deleteCacheAndMetadata()

@@ -179,15 +179,16 @@ setCatchHandler((options: RouteHandlerCallbackOptions): Promise<Response> => {
 //...other code...
 ```
 
-...message event to manage my personal pull to refresh implementation...
+As a consequence of the fact that I'm migrating my previous version of the service worker for my website, I needed also to migrate the part that is responsible for getting messages from the page related to the pull to refresh. In this case the previous version of the code was responsible for the clear of some caches. We can write this feature using the `deleteCacheAndMetadata` method of the `ExpirationPlugin` class. Below you can find the related code.
 
 ```typescript
+//...other code...
+
 self.addEventListener('message', (event: ExtendableMessageEvent) => {
   const isARefresh = (event: ExtendableMessageEvent): boolean => event.data.message === 'refresh'
   const sendRefreshCompletedMessageToClient = (event: ExtendableMessageEvent): void => event.ports[0].postMessage({ refreshCompleted: true })
 
   if (isARefresh(event)) {
-    console.log(cacheNames)
     Promise.all([
       imagesExpirationPlugin.deleteCacheAndMetadata(),
       documentExpirationPlugin.deleteCacheAndMetadata()
@@ -196,9 +197,14 @@ self.addEventListener('message', (event: ExtendableMessageEvent) => {
       .catch(() => sendRefreshCompletedMessageToClient(event))
   }
 })
+
+//...other code...
 ```
 
-...google analytics offline...
+In a [previous post](/2019/12/15/pwa-offiline-tracking-google-analytics.html) I already talked about the fact that workbox could help us to manage the Google Analytics tracking when the PWA is offline. So for this part, we just need (as in the previous version of my service worker) to call the `googleAnalytics.initialize()` function and workbox will take care of:
+
+* store the analytics tracking occured while the app is offline
+* sync this tracking events to the server when a network connection is available again
 
 ```typescript
 import * as googleAnalytics from 'workbox-google-analytics';
