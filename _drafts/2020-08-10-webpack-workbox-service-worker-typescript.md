@@ -216,7 +216,10 @@ googleAnalytics.initialize()
 //...other code...
 ```
 
-...strict types + tslint + google analytics...
+One important thing to be noted here is that in my project I'm using TypeScript with the strict types activated and ESLint. As a consequence of this fact I have to add two things to the code we saw above:
+
+* add a declaration in order to let TypeScript know that `self` is a `ServiceWorkerGlobalScope`
+* a `@ts-ignore` annotation to let typescript know that the `__WB_MANIFEST` will be available at compile time (Webpack bundling), and an additional `eslint-disable-next-line @typescript-eslint/ban-ts-comment` comment to avoid ESLint complaining about the `@tsignore` comment. :laughing:
 
 ```typescript
 //...other code...
@@ -236,4 +239,4 @@ precacheAndRoute(self.__WB_MANIFEST)
 
 #### Conclusion
 
-...conclusion
+As you can see, writing a service worker with Typescript is really easy. During the last time during my daily job I'm basically doing more and more web development instead of mobile apps. I feel like I'm almost reaching the mythological status of the "fullstack developer". :laughing: I hope that one day I will be able to share all my knowledge on web development and mobile development in all the company (and also be able to confront with other developers on these topics), including PWAs. Let's see what the future holds for me.
