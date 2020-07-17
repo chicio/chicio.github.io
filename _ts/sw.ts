@@ -1,4 +1,4 @@
-import { skipWaiting, clientsClaim, cacheNames, RouteHandlerCallbackOptions } from "workbox-core"
+import { skipWaiting, clientsClaim, RouteHandlerCallbackOptions } from "workbox-core"
 import { precacheAndRoute } from 'workbox-precaching';
 import { registerRoute, setCatchHandler, Route } from 'workbox-routing';
 import { ExpirationPlugin } from 'workbox-expiration';
