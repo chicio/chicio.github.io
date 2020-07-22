@@ -1,22 +1,24 @@
+import { Workbox } from "workbox-window";
+
 interface ServiceWorkerMessage {
   message: string;
-  url: string;
 }
 
+const wb = new Workbox('/sw.js')
+
+const isServiceWorkerSupported: () => boolean = () => ('serviceWorker' in navigator)
+
 const registerToServicerWorker = (): void => {
-  if ('serviceWorker' in navigator && navigator.serviceWorker) {
-    navigator.serviceWorker.register('/sw.js')
-      .then(() => { console.log('Service Worker registration completed') })
+  if (isServiceWorkerSupported()) {
+    wb.register()
+      .then(() => { console.log('Service Worker registration completed') })  
       .catch((err) => { console.error('Service Worker registration failed:', err) })
-  } else {
-    console.log('Service worker not supported')
   }
 }
 
 const sendMessageToServiceWorker = (message: ServiceWorkerMessage): Promise<unknown> => {
   return new Promise((resolve, reject) => {
-    const messageChannel: MessageChannel = new MessageChannel()
-    messageChannel.port1.onmessage = (event: MessageEvent): void => {
+    wb.messageSW(message).then((event: MessageEvent): void => {
       if (event.data) {
         if (event.data.error) {
           reject(event.data.error)
@@ -24,11 +26,8 @@ const sendMessageToServiceWorker = (message: ServiceWorkerMessage): Promise<unkn
           resolve(event.data)
         }
       }
-    }
-    if (navigator.serviceWorker && navigator.serviceWorker.controller) {
-      navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2])
-    }
+    })
   })
 }
 
-export { sendMessageToServiceWorker, registerToServicerWorker }
+export { sendMessageToServiceWorker, registerToServicerWorker, isServiceWorkerSupported }

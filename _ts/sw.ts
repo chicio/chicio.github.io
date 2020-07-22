@@ -88,8 +88,7 @@ setCatchHandler((options: RouteHandlerCallbackOptions): Promise<Response> => {
 
 self.addEventListener('message', (event: ExtendableMessageEvent) => {
   const isARefresh = (event: ExtendableMessageEvent): boolean => event.data.message === 'refresh'
-  const sendRefreshCompletedMessageToClient = (event: ExtendableMessageEvent): void => event.ports[0].postMessage({ refreshCompleted: true })
-
+  const sendRefreshCompletedMessageToClient = (event: ExtendableMessageEvent): void => event.ports[0].postMessage({ data: { refreshCompleted: true }})
   if (isARefresh(event)) {
     Promise.all([
       imagesExpirationPlugin.deleteCacheAndMetadata(),

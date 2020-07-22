@@ -1,5 +1,6 @@
 import { sendMessageToServiceWorker } from '../common/service-worker'
 import { addCssClass, removeCssClass } from '../common/css-class'
+import { isServiceWorkerSupported } from '../common/service-worker'
 
 interface PullToRefreshRepository {
   refreshStarted: boolean;
@@ -116,7 +117,7 @@ const startPullToRefresh = (pullToRefreshElement: HTMLElement, pullToRefreshStat
         pullToRefreshStatusRepository.startRefresh()
         dragUpdate(0, 1)
         setRefreshingStatus()
-        sendMessageToServiceWorker({ message: 'refresh', url: window.location.href }).then(() => {
+        sendMessageToServiceWorker({ message: 'refresh' }).then(() => {
           pullToRefreshStatusRepository.completeRefresh()
           setTimeout(() => {
             setRefreshStatusCompleted()
@@ -145,7 +146,7 @@ const startPullToRefresh = (pullToRefreshElement: HTMLElement, pullToRefreshStat
 }
 
 const pullToRefresh = (): void => {
-  if (!('serviceWorker' in navigator)) {
+  if (!isServiceWorkerSupported()) {
     return
   }
 
