@@ -237,8 +237,48 @@ precacheAndRoute(self.__WB_MANIFEST)
 //...other code...
 ```
 
+Now that the service worker code has been migrated to Workbox you may ask if we can do something also for the service worker registration, and generaly speaking for all the service worker code inside the window context. The answer to this question is an additional workbox module called `workbox-window`. This module let the developers register their service worker and eventually use all its feature. In my case in the window context I'm doing 2 operation:
 
-.....workbox window....
+* the service worker registration
+* I send a message to the service worker to clear some of the caches whenever a user starts a pull to refresh
+
+We can wrote these feature by using an instance of `Workbox` and its two methods `register` and `messageSW`. Below you can find the two function `registerToServicerWorker` and `sendMessageToServiceWorker` that I rewrote with `workbox-window`.
+
+```typescript
+import { Workbox } from "workbox-window";
+
+interface ServiceWorkerMessage {
+  message: string;
+}
+
+const wb = new Workbox('/sw.js')
+
+const isServiceWorkerSupported: () => boolean = () => ('serviceWorker' in navigator)
+
+const registerToServicerWorker = (): void => {
+  if (isServiceWorkerSupported()) {
+    wb.register()
+      .then(() => { console.log('Service Worker registration completed') })  
+      .catch((err) => { console.error('Service Worker registration failed:', err) })
+  }
+}
+
+const sendMessageToServiceWorker = (message: ServiceWorkerMessage): Promise<unknown> => {
+  return new Promise((resolve, reject) => {
+    wb.messageSW(message).then((event: MessageEvent): void => {
+      if (event.data) {
+        if (event.data.error) {
+          reject(event.data.error)
+        } else {
+          resolve(event.data)
+        }
+      }
+    })
+  })
+}
+
+export { sendMessageToServiceWorker, registerToServicerWorker, isServiceWorkerSupported }
+```
 
 #### Conclusion
 
