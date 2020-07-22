@@ -6,7 +6,7 @@ Release date: 2020-07-22
 
 #### Added
 
-- Service worker in page migration to worox-window
+- Service worker in page migration to workbox-window
 
 ## [3.3.0](https://github.com/chicio/chicio.github.io/releases/tag/3.3.0)
 Release date: 2020-06-20
