@@ -282,4 +282,4 @@ export { sendMessageToServiceWorker, registerToServicerWorker, isServiceWorkerSu
 
 #### Conclusion
 
-As you can see, writing a service worker with Typescript is really easy. During the last time during my daily job I'm basically doing more and more web development instead of mobile apps. I feel like I'm almost reaching the mythological status of the "fullstack developer". :laughing: Let's see what the future holds for me.
+As you can see, writing a service worker with Typescript and Workbox is really easy. During the last time during my daily job I'm basically doing more and more web development instead of mobile apps. I feel like I'm almost reaching the mythological status of the "fullstack developer". :laughing: Let's see what the future holds for me.
