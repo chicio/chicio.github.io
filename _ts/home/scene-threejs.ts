@@ -37,9 +37,9 @@ const lucy = (): Object3D => ({
     color: 0x3F51B5,
     roughness: 0.5,
     metalness: 0.7,
-    clearcoat: 0.5,
-    clearcoatRoughness: 0.5,
-    reflectivity: 0.7
+    reflectivity: 0.7,
+    clearcoatMap: null,
+    clearcoatRoughnessMap: null
   },
   position: new Vector3(3, -3, 0),
   rotation: new Vector3(0, -Math.PI / 3.0, 0)
@@ -50,10 +50,10 @@ const dragon = (): Object3D => ({
   properties: {
     color: 0x448AFF,
     roughness: 0.1,
-    metalness: 0.9,
-    clearcoat: 0.0,
-    clearcoatRoughness: 0.2,
-    reflectivity: 1
+    metalness: 0.9,   
+    reflectivity: 1,
+    clearcoatMap: null,
+    clearcoatRoughnessMap: null
   },
   position: new Vector3(-3, -3, 0),
   rotation: new Vector3(0, -Math.PI, 0)
@@ -65,9 +65,9 @@ const bunny = (): Object3D => ({
     color: 0xCCFFFF,
     roughness: 0.9,
     metalness: 0.1,
-    clearcoat: 0.0,
-    clearcoatRoughness: 0.5,
-    reflectivity: 0.1
+    reflectivity: 0.1,
+    clearcoatMap: null,
+    clearcoatRoughnessMap: null
   },
   position: new Vector3(0, -3, 1.5),
   rotation: new Vector3(0, -Math.PI, 0)
