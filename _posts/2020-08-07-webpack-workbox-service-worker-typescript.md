@@ -219,7 +219,7 @@ googleAnalytics.initialize()
 One important thing to be noted here is that in my project I'm using TypeScript with the strict types activated and ESLint. As a consequence of this fact I have to add two things to the code we saw above:
 
 * add a declaration in order to let TypeScript know that `self` is a `ServiceWorkerGlobalScope`
-* a `@ts-ignore` annotation to let typescript know that the `__WB_MANIFEST` will be available at compile time (Webpack bundling), and an additional `eslint-disable-next-line @typescript-eslint/ban-ts-comment` comment to avoid ESLint complaining about the `@tsignore` comment. :laughing:
+* a `@ts-ignore` annotation to let TypeScript know that the `__WB_MANIFEST` will be available at compile time (Webpack bundling), and an additional `eslint-disable-next-line @typescript-eslint/ban-ts-comment` comment to avoid ESLint complaining about the `@tsignore` comment. :laughing:
 
 ```typescript
 //...other code...
