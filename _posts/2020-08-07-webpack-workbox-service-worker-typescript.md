@@ -2,7 +2,11 @@
 layout: post
 title: "Create a service worker with Workbox, Webpack and TypeScript"
 description: "Recently I migrated my website to Webpack and TypeScript. I decided also to give a try to Workbox, a set of Google libraries to improve the creation of a Progressive Web App. Let's see how easy it is to create a PWA with this tools."
+<<<<<<< HEAD:_drafts/2020-08-10-webpack-workbox-service-worker-typescript.md
 date: 2020-08-10
+=======
+date: 2020-08-07
+>>>>>>> 8cdc1590b634c87542b01cbbb26365cb731a9a55:_posts/2020-08-07-webpack-workbox-service-worker-typescript.md
 image: /assets/images/posts/workbox.jpg
 tags: [web development, javascript, pwa]
 comments: true
@@ -219,7 +223,7 @@ googleAnalytics.initialize()
 One important thing to be noted here is that in my project I'm using TypeScript with the strict types activated and ESLint. As a consequence of this fact I have to add two things to the code we saw above:
 
 * add a declaration in order to let TypeScript know that `self` is a `ServiceWorkerGlobalScope`
-* a `@ts-ignore` annotation to let typescript know that the `__WB_MANIFEST` will be available at compile time (Webpack bundling), and an additional `eslint-disable-next-line @typescript-eslint/ban-ts-comment` comment to avoid ESLint complaining about the `@tsignore` comment. :laughing:
+* a `@ts-ignore` annotation to let TypeScript know that the `__WB_MANIFEST` will be available at compile time (Webpack bundling), and an additional `eslint-disable-next-line @typescript-eslint/ban-ts-comment` comment to avoid ESLint complaining about the `@tsignore` comment. :laughing:
 
 ```typescript
 //...other code...
@@ -282,4 +286,4 @@ export { sendMessageToServiceWorker, registerToServicerWorker, isServiceWorkerSu
 
 #### Conclusion
 
-As you can see, writing a service worker with Typescript is really easy. During the last time during my daily job I'm basically doing more and more web development instead of mobile apps. I feel like I'm almost reaching the mythological status of the "fullstack developer". :laughing: Let's see what the future holds for me.
+As you can see, writing a service worker with Typescript and Workbox is really easy. During the last time during my daily job I'm basically doing more and more web development instead of mobile apps. I feel like I'm almost reaching the mythological status of the "fullstack developer". :laughing: Let's see what the future holds for me.
