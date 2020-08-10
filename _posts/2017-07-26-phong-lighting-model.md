@@ -74,6 +74,6 @@ It is a fragment shader that could be used to implement per fragment lighting. T
 
 <script src="https://gist.github.com/chicio/d983fff6ff304bd55bebd6ff05a2f9dd.js"></script>
 
-The following image is an example of the happy buddha Stanford mesh rendered using my [Spectral BRDF explorer](https://github.com/chicio/Spectral-BRDF-Explorer "Spectral BRDF explorer")iOS renderer. The lighting is (obviously) calculated using the Phong reflection model. The surface simulated is bronze (you can find some of the constant we discussed before [here](http://devernay.free.fr/cours/opengl/materials.html "phong lighting constants")). Nice :smirk:!!!!
+The following image is an example of the happy buddha Stanford mesh rendered using my [Spectral BRDF explorer](https://github.com/chicio/Spectral-BRDF-Explorer "Spectral BRDF explorer") iOS renderer. The lighting is (obviously) calculated using the Phong reflection model. The surface simulated is bronze (you can find some of the constant we discussed before [here](http://devernay.free.fr/cours/opengl/materials.html "phong lighting constants")). Nice :smirk:!!!!
 
 {% include blog-lazy-image.html description="An example model rendered using Phong model in Spectral BRDF explorer"  width="500" height="889" src="/assets/images/posts/phong-example.jpg" %}
