@@ -10,7 +10,8 @@
         "uses-webp-images": "off",
         "uses-responsive-images": "off",
         "uses-rel-preconnect": "off",
-        "unused-javascript": "off"
+        "unused-javascript": "off",
+        "unsized-images": "off"
       }
     },
     "upload": {
