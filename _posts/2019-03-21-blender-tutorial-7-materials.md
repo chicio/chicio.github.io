@@ -28,7 +28,7 @@ After creating we material a new list of option to customize it appears. We have
 * *Volume*, render object as a volume
 * *Halo*, render object as halo particles
 
-Most of the time (9/10 times) we will use the surface types. The other are for special effects we will see in the future. Then we have other options to customize the main components of the material. The definitions given below of these components are from an artist point of view. If you're interested in some deeper details on the computer graphics side, you can have a look at [this documentation](https://www.mat.uniroma2.it/~speleers/teaching/nmcgj/slides_graphics_4.pdf "Lighting computer graphics")
+Most of the time (9/10 times) we will use the surface types. The other are for special effects we will see in the future. Then we have other options to customize the main components of the material. The definitions given below of these components are from an artist point of view. If you're interested to know the details on the computer graphics side, you can have a look at [this documentation](http://web.engr.oregonstate.edu/~mjb/cs550/Handouts/Lighting.1pp.pdf "Lighting computer graphics")
 (on the web you can find plenty of resources about this topic). So the main material components are:
 
 * *diffuse*, the main color of the objects
