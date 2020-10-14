@@ -325,7 +325,7 @@ function loadFloor(textureLoader, completionFunction) {
 }
 ```
 
-We are ready to render our scene. We just need to create the [rendering loop](https://users.iit.uni-miskolc.hu/~mileff/graphics/GraphicsChapter5.pdf "rendering loop") with the following code:
+We are ready to render our scene. We just need to create the [rendering loop](https://gameprogrammingpatterns.com/game-loop.html "rendering loop") with the following code:
 
 ```javascript
 var render = function () {
