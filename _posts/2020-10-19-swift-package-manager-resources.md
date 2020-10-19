@@ -127,9 +127,9 @@ class PathLoader {
 }
 ```
 
-Below you can find a screenshot that shows the successfull execution of the tests after opening the ID3TagEditor as a SwiftpPackage from Xcode.
+Below you can find a screenshot that shows the successfull execution of the tests after opening the ID3TagEditor as a Swift Package from Xcode.
 
-{% include blog-lazy-image.html description="Now I can run my ID3TagEditor acceptance test when I open it as a Swift package in Xcode" width="1500" height="889" src="/assets/images/posts/open-as-package-xcode-id3tageditor.jpg" %}
+{% include blog-lazy-image.html description="Now I can run my ID3TagEditor acceptance tests when I open it as a Swift package in Xcode" width="1500" height="889" src="/assets/images/posts/open-as-package-xcode-id3tageditor.jpg" %}
 
 There's still one problem with this setup. ID3TagEditor is configured also as a Xcode workspace, because there are some related demo app that are contained in the repository and I need a way to manage them while developing the library. If I try to build the ID3TagEditor from the workspace view it will not compile. Why? Because `resource_bundle_accessor` file (the one I shown you above) is not automatically generated if you build the swift package as project of a workspace and the `PathLoader` class I shown you above contains the error `Type 'Bundle' has no member 'module'`. What can I do? I simply created a new version of the `PathLoader` class that gets the bundle correctly using the `Bundle(for: type(of: self))` constructor where `self` is the test class that is calling the `PathLoader`. The I removed the froom the tests target the file that contains the `PathLoader` implementation for the SwiftPM build tools and I added to them only the new implementation, that I putted in a separated file called `PathLoaderXcodeProj.swift`. In this way I'm able to run all my tests without any error. Below you can find some screenshot with the setup I have just described to you.
 
@@ -139,4 +139,4 @@ There's still one problem with this setup. ID3TagEditor is configured also as a 
 
 #### Conclusion
 
-You can find more details about SwiftPM and bundling resources with it in the [official Apple documentation](https://developer.apple.com/documentation/swift_packages/bundling_resources_with_a_swift_package "resources swift swiftpm"). As you can see Apple is investing a lot of resources in improving its build tools ecosystem and make the life of developers easier. Even if I still [hope that Apple will finally fully embrace PWA](/2019/03/03/github-pages-progressive-web-app.html "progressive web apps") (so that a lot of useless shitty apps that can be web apps can disappear :smirk:), it good to see that developers of true useful native apps will enjoy in using these new tools to build their apps :heart_eyes:.
+You can find more details about SwiftPM and bundling resources with it in the [official Apple documentation](https://developer.apple.com/documentation/swift_packages/bundling_resources_with_a_swift_package "resources swift swiftpm"). As you can see Apple is investing a lot of resources in improving its build tools ecosystem and make the life of developers easier. Even if I still [hope that Apple will finally fully embrace PWA](/2019/03/03/github-pages-progressive-web-app.html "progressive web apps") (so that a lot of useless shitty apps that can be web apps can disappear :smirk:), it's good to see that developers (of true useful native apps :grin:) will enjoy in using these new tools to build their apps :heart_eyes:.
