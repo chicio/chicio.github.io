@@ -16,8 +16,8 @@ authors: [fabrizio_duroni]
 
 ---
 
-In the last weeks I started to work again on my [ID3TagEditor](/2018/05/07/born-id3tageditor-mp3id3tagger.html "id3tag id3 id3tageditor") swift package. Before starting to add new interesting feature (do you wanna see the roadmap? check the [kanban board](https://github.com/chicio/ID3TagEditor/projects/1 "ID3TagEditor projects") or the [milestones](https://github.com/chicio/ID3TagEditor/milestones)) I did the usual upgraded of build tools released in the new Xcode 12. One of the interesting new feature released in the latest version of the Swift tools (version 5.3) is the ability to bundle resources with a Swift package. Before this release to bundle resources in our Swift package you had to use weird tricks and hackings. So let's see how you can add the suppport for bundling resource by taking my ID3TagEditor library as example.  
-Specifically, I will show you how I can execute all my test suite, including some acceptance tests that uses mp3 resources to check the correctness of the ID3 tag added by ID3TagEditor.
+In the last weeks I started to work again on my [ID3TagEditor](/2018/05/07/born-id3tageditor-mp3id3tagger.html "id3tag id3 id3tageditor") library. Before starting to add new interesting feature (do you wanna see the roadmap? check the [kanban board](https://github.com/chicio/ID3TagEditor/projects/1 "ID3TagEditor projects") or the [milestones](https://github.com/chicio/ID3TagEditor/milestones)) I did the usual upgrade to the latest build tools released in the new Xcode 12. One new interesting feature included in this release ( Swift tools version 5.3) is the ability to bundle resources with a Swift package. Before this release to bundle resources in a Swift package you had to use weird tricks and hackings. So let's see how you can add the suppport for bundling resources by using my ID3TagEditor library as example.  
+Specifically, I will show you how I can execute all my test suite, including some acceptance tests that uses mp3 and images resources to check the correctness of the ID3 tag added by ID3TagEditor.
 
 #### Implementation
 
@@ -29,19 +29,19 @@ To support the bundling of resources, the first thing to do is to upgraded the s
 //...other code
 ```
 
-In my ID3TagEditor I have some acceptance tests that uses some mp3 files and some images that I use to tests that ID3TagEditor works as expected. Before the Swift tools 5.3 I was disabling these tests on the Linux platform (that supports only the SwiftPM way to bundle libraries). But now there's a new Swift package `targets(...)` and `testTargets(...)` function parameter called `resources` that you can add to your `target` or `testTarget` to load resources.  
-The `resources` parameter takes as value a list of resource process rule as input. You can choose between two type of rules:
+In my ID3TagEditor I have some acceptance tests that uses some mp3 files and some images that I use to check that ID3TagEditor works as expected. Before the Swift tools 5.3 I was disabling these tests on the Linux platform (that supports only the SwiftPM way to bundle libraries). Now there's a new Swift package `targets(...)` and `testTargets(...)` function parameter called `resources` that you can use to load resources.  
+The `resources` parameter takes as value a list of resource process rules as input. You can choose between two type of rules:
 
-* process rule. You can create this rule by using the `static func process(_ path: String, localization: Resource.Localization? = nil) -> Resource` (you can find the offical documentation [here](https://developer.apple.com/documentation/swift_packages/resource/3554515-process)). This rule let you process the resource according to the platform you’re building the package for. This basically means that the build tools will optimize some files based on the type and the platform (e.g. images will be optimized if the target platform is iOS). You can also support different rule based on different locale/languages.
+* **process rule**. You can create this rule by using the `static func process(_ path: String, localization: Resource.Localization? = nil) -> Resource` function (you can find the offical documentation [here](https://developer.apple.com/documentation/swift_packages/resource/3554515-process)). This rule let you process the resource according to the platform you’re building the package for. This basically means that the build tools will optimize some files based on the type and the platform (e.g. images will be optimized if the target platform is iOS). You can also support different rules based on different locale/languages.
 
-* copy rules. You can create this rule by using the `static func copy(_ path: String) -> Resource` (you can find the offical documentation [here](https://developer.apple.com/documentation/swift_packages/resource/3516880-copy)). This rule let you bundle your resources as they are without any optimization.
+* **copy rules**. You can create this rule by using the `static func copy(_ path: String) -> Resource` function (you can find the offical documentation [here](https://developer.apple.com/documentation/swift_packages/resource/3516880-copy)). This rule let you bundle your resources as they are without any optimization.
 
-Both the rule above accept a `_ path: String` parameter. This could be:
+Both rule functions above accept a `_ path: String` parameter. This could be:
 
 * a path to a specific file
 * a path to a specific folder
 
-Given all this information I was ready to add the resources to my test target and enable the acceptance tests for the SwiftPM build (so now they were available on linux too :relaxed:). So I added the `resources` parameter to the `testTarget` call of my ID3TagEditor. The input value is a an array with just 1 rule: a `process` rule that takes as parameter the `Examples` folder, that is the place where I have all the resources (mp3 and images) used by the ID3TagEditor acceptance tests. Below you can find the complete `Packages.swift` file.
+Given all this information I was ready to add the resources to my test target and enable the acceptance tests for the SwiftPM build (so now they were available on Linux too :relaxed:). So I added the `resources` parameter to the `testTarget` call of my ID3TagEditor. The input value is a an array with just 1 rule: a `process` rule that takes as parameter the `Examples` folder, that is the place where I have all the resources (mp3 and images) used by the ID3TagEditor acceptance tests. Below you can find the complete `Packages.swift` file.
 
 
 ``` swift
@@ -77,7 +77,7 @@ let package = Package(
 )
 ```
 
-Now the question is: how do you use/load the resources bundled with your target. When you build a Swift Package the build tools will automatically generate a `resource_bundle_accessor` file. This file exposes a new `Bundle.module` property that contains the bundle available for the package based on the environment you're building the source code:
+Now the question is: how do you use/load the resources bundled with your target? When you build a Swift Package the build tools will automatically generate a `resource_bundle_accessor` file. This file exposes a new `Bundle.module` property that contains the bundle available for the package based on the environment you're building the source code:
 
 * if you build the package when is linked to the app, `Bundle.module` will contain the `Bundle.main.resourceURL`
 * if you build the package when is linked to a framework, `Bundle.module` will contain the `Bundle(for: BundleFinder.self).resourceURL`
@@ -115,7 +115,7 @@ extension Foundation.Bundle {
 }
 ```
 
-So in the case of ID3TagEditor, when I **open and build it as a Swift Package from Xcode** or **build it from the command line** the `Bundle.module` will contain the correct bundle. As a consequence I can call  `Bundle.module.path(forResource: <resource name>, ofType: <file type>)` to get the path to the resources bundle with the ID3TagEditor test target and load/use them in my tests. In fact I created a `PathLoader` class that I use in my acceptance tests to load my test resources.
+So in the case of ID3TagEditor, when I **open and build it as a Swift Package from Xcode** or **build it from the command line** the `Bundle.module` will contain the correct bundle. As a consequence I can call `Bundle.module.path(forResource: <resource name>, ofType: <file type>)` to get the path to the resources bundled with the ID3TagEditor test target and load/use them in my tests. In fact I created a `PathLoader` class that I use in my acceptance tests to load my test resources.
 
 ```swift
 import Foundation
@@ -130,7 +130,6 @@ class PathLoader {
 Below you can find a screenshot that shows the successfull execution of the tests after opening the ID3TagEditor as a SwiftpPackage from Xcode.
 
 {% include blog-lazy-image.html description="Now I can run my ID3TagEditor acceptance test when I open it as a Swift package in Xcode" width="1500" height="889" src="/assets/images/posts/open-as-package-xcode-id3tageditor.jpg" %}
-
 
 There's still one problem with this setup. ID3TagEditor is configured also as a Xcode workspace, because there are some related demo app that are contained in the repository and I need a way to manage them while developing the library. If I try to build the ID3TagEditor from the workspace view it will not compile. Why? Because `resource_bundle_accessor` file (the one I shown you above) is not automatically generated if you build the swift package as project of a workspace and the `PathLoader` class I shown you above contains the error `Type 'Bundle' has no member 'module'`. What can I do? I simply created a new version of the `PathLoader` class that gets the bundle correctly using the `Bundle(for: type(of: self))` constructor where `self` is the test class that is calling the `PathLoader`. The I removed the froom the tests target the file that contains the `PathLoader` implementation for the SwiftPM build tools and I added to them only the new implementation, that I putted in a separated file called `PathLoaderXcodeProj.swift`. In this way I'm able to run all my tests without any error. Below you can find some screenshot with the setup I have just described to you.
 
