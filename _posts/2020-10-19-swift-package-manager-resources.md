@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Swift Package Manager: bundling Resources with a Swift Package"
+title: "Swift Package Manager: bundling resources with a Swift Package"
 description: "Recently I upgraded my ID3TagEditor swift package to the latest Swift tools version (5.3). During the upgraded I discovered that now you can bundle reources with your Swift package. In this post I will show you how you can do this, and also a interesting trick in order to be able to build a project as a Swift Package and as a standard project from Xcode."
 date: 2020-10-19
 image: /assets/images/posts/swiftpm-resources.jpg
