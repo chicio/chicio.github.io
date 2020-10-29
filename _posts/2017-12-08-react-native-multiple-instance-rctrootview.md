@@ -16,7 +16,7 @@ authors: [fabrizio_duroni]
 
 ---
 
-If we want to start to use React Native in an existing app, it's really easy. We can have our first React Native component live inside our app by just following the [getting started tutorial for existing app](https://facebook.github.io/react-native/docs/integration-with-existing-apps.html "getting started tutorial for existing app"). But what happen if we need to use multiple react native component in different parts of our existing apps :fearful:? In this tutorial I will show you how we can use multiple instances of `RCTRootView` to show different React Native components in different parts of your app. Consider, for example, a simple iOS existing app with React Native. It has two very simple React Native components:
+If we want to start to use React Native in an existing app, it's really easy. We can have our first React Native component live inside our app by just following the [getting started tutorial for existing app](https://reactnative.dev/docs/integration-with-existing-apps/ "getting started tutorial for existing app"). But what happen if we need to use multiple react native component in different parts of our existing apps :fearful:? In this tutorial I will show you how we can use multiple instances of `RCTRootView` to show different React Native components in different parts of your app. Consider, for example, a simple iOS existing app with React Native. It has two very simple React Native components:
 
 * `BlueScreen`, that shows a blue view
 * `RedScreen`, that shows a red view
@@ -74,7 +74,7 @@ class ReactViewController: UIViewController {
 ```
 
 There's also another controller, `MainViewController`, that shows the React Native components described above using multiple instances of the `ReactViewController`. The UI of the app is very simple: there are two buttons on the view of the `MainViewController`. A tap on the first one shows the `ReactViewController` with a `RCTRootView` that contains the `RedComponent`. A tap on the second one shows the `ReactViewController` with a `RCTRootView` that contains the `BlueComponent`.  
-This basically means that in this app there are multiple `RCTRootView`, one for each controller created. This instances are kept alive at the same time (because the `MainViewController` keeps a reference to the two `ReactViewController`). The code to start the React Native components is the same contained in the [getting started tutorial for existing app](https://facebook.github.io/react-native/docs/integration-with-existing-apps.html "getting started tutorial for existing app").
+This basically means that in this app there are multiple `RCTRootView`, one for each controller created. This instances are kept alive at the same time (because the `MainViewController` keeps a reference to the two `ReactViewController`). The code to start the React Native components is the same contained in the [getting started tutorial for existing app](https://reactnative.dev/docs/integration-with-existing-apps/ "getting started tutorial for existing app").
 
 ```swift
 class MainViewController: UIViewController {

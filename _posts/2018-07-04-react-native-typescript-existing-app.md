@@ -23,7 +23,7 @@ In the last few months at [lastminute.com group](https://lmgroup.lastminute.com/
 
 For this "app relaunch" project we decided to use React Native (I already talked about this framework in some previous posts that you can find in the [archive section](/blog/archive "archive")). We didn't rewrite the apps from scratch. We decided to integrated React Native in the existing code base and:
 
-* use [Native Modules](https://facebook.github.io/react-native/docs/native-modules-ios.html "Native Modules") to reuse some native code we already had in place for some features (for example the login).
+* use [Native Modules](https://reactnative.dev/docs/native-modules-ios/ "Native Modules") to reuse some native code we already had in place for some features (for example the login).
 * write the new stuff completely in React Native whenever possible.
 
 We also took another important decision when we started the project: we choose TypeScript instead of Javascript as main language to write our React Native stuff. What is TypeScript? It is an open-source programming language developed and maintained by Microsoft. They describe it on its official website with the following definition:
@@ -35,7 +35,7 @@ React Native officially supports Javascript. How can we setup React Native + Typ
 
 {% include blog-lazy-image.html description="The example react native app we are going to create" width="1500" height="2786" src="/assets/images/posts/react-native-typescript-app-screens.jpg" %}
 
-Let's start to setup our project for React Native and TypesScript. First, React Native integration. For this task we can just follow the [React Native documentation regarding the integration with existing app](https://facebook.github.io/react-native/docs/integration-with-existing-apps.html). Then we can start to integrate TypeScript. We will use [yarn](https://yarnpkg.com/lang/en/ "yarn") as dependencies manager instead of npm (you can use it also to install the dependencies needed to setup React Native in an existing app). Yarn is a fast, reliable and secure dependencies manager released by Facebook in October 2016. Our project directories structure will be the one contained in the screenshots below. The existing native codebase is contained inside the `ios` and `android` folders.
+Let's start to setup our project for React Native and TypesScript. First, React Native integration. For this task we can just follow the [React Native documentation regarding the integration with existing app](https://reactnative.dev/docs/integration-with-existing-apps/). Then we can start to integrate TypeScript. We will use [yarn](https://yarnpkg.com/lang/en/ "yarn") as dependencies manager instead of npm (you can use it also to install the dependencies needed to setup React Native in an existing app). Yarn is a fast, reliable and secure dependencies manager released by Facebook in October 2016. Our project directories structure will be the one contained in the screenshots below. The existing native codebase is contained inside the `ios` and `android` folders.
 
 {% include blog-lazy-image.html description="The folder structure of the project" width="273" height="363" src="/assets/images/posts/react-native-typescript-directories.jpg" %}
 
