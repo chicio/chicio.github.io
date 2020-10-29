@@ -42,7 +42,7 @@ The `body` of the view is composed by a `NavigationView` that contains a `VStack
 * `CurrentScreen`, that contains and show the current screen selected
 * `TabBar`, that contains custom tab bar with all its logic
 
-There are also some style customization like forcing the `navigationViewStyle` to `StackNavigationViewStyle`, in order to avoid to see a blank screen on iPad (because the `NavigationView` on iPad is a split view by default :laughing:). Last but not least, there is a `sheet` defined to show a `ScreenModal` view as a modal whenever the state variable `showModal` changes.
+There are also some style customization like forcing the `navigationViewStyle` to `StackNavigationViewStyle`, in order to avoid to see a blank screen on iPad (because the `NavigationView` on iPad is a split view by default :laughing:). Last but not least, there is a `sheet` defined to show a `ScreenModal` view as a modal whenever the state variable `showModal` changes and the property `.edgesIgnoringSafeArea(.all)` on the `VStack` to avoid movement of the tabbar when the current screen needs to show the keyboard.
 
 ```swift
 struct MainView: View {
