@@ -47,7 +47,7 @@ But here something strange happens: as you can see from the screenshot below the
 
 {% include blog-lazy-image.html description="The react-native link command fails to install the realm library" width="1538" height="160" src="/assets/images/posts/react-native-realm-2-link-fails.jpg" %}
 
-Usually, if the previous command fails, you have to do the [manual linking](https://facebook.github.io/react-native/docs/linking-libraries-ios.html "manual linking").
+Usually, if the previous command fails, you have to do the [manual linking](https://reactnative.dev/docs/linking-libraries-ios/ "manual linking").
 To do it we navigate inside the `node_modules` folder, contained in the React Native folder of our project, to found the realm folder.
 Inside it you will find an Xcode project named `RealmReact`, that you have to drag into our project. After that we have to add a reference to the static library `libRealmReact` and compile the project.
 
