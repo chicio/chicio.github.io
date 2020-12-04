@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/chicio/chicio.github.io#readme",
   "devDependencies": {
-    "@babel/core": "^7.11.4",
+    "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.12.7",
     "@babel/register": "^7.12.1",
     "@typescript-eslint/eslint-plugin": "^4.9.0",
