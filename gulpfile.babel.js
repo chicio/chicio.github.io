@@ -15,7 +15,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const production = gulpEnvironments.production
 
@@ -115,7 +115,7 @@ const bundle = () => {
         'style.error': styleError
       },
       output: {
-        filename: '[name].[hash].min.js',
+        filename: '[name].[fullhash].min.js',
         chunkFilename: '[name].[chunkhash].bundle.js',
         publicPath: `/${ASSESTS_DIST_FOLDER}/`,
         path: path.resolve(__dirname, ASSESTS_DIST_FOLDER),
@@ -150,7 +150,7 @@ const bundle = () => {
         new JekyllPlugin(),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
-          filename: '[name].[hash].css'
+          filename: '[name].[fullhash].css'
         }),
         new FixStyleOnlyEntriesPlugin(),
         new InjectManifest({
