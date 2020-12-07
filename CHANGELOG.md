@@ -1,6 +1,13 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [3.5.0](https://github.com/chicio/chicio.github.io/releases/tag/3.5.0)
+Release date: 2020-12-07
+
+#### Added
+
+- Updated to Webpack 5, TypeScript 4 and workbox 6
+
 ## [3.4.0](https://github.com/chicio/chicio.github.io/releases/tag/3.4.0)
 Release date: 2020-07-22
 
