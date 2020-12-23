@@ -3,6 +3,9 @@
   "version": "3.5.0",
   "description": "Fabrizio Duroni aka 'chicio' website",
   "main": "index.html",
+  "engines" : { 
+    "node" : ">=14.15.3" 
+  },
   "scripts": {
     "setup": "_scripts/setup.sh",
     "build": "gulp build --env production",
