@@ -21,12 +21,12 @@ In the last few months I started to work as a backend developer during my daily 
 
 >Spring Boot is Spring's convention-over-configuration solution for creating stand-alone, production-grade Spring-based Applications that you can "just run".[22] It is preconfigured with the Spring team's "opinionated view" of the best configuration and use of the Spring platform and third-party libraries so you can get started with minimum fuss. Most Spring Boot applications need very little Spring configuration.
 
-So as you can understand from the definition above these frameworks speed up the development by giving some production ready tools/configurations/setup out of the box. As you read from the descriptions above these are frameworks from the Java. In fact all the code I wrote is in one of these two languages: Java and Kotlin. In particular, all the new stuff I developed in the last month has been written in Kotlin. For those who don't know, Kotlin is
+So as you can understand from the definition above these frameworks speed up the development by giving some production ready tools/configurations/setup out of the box. As you read from the descriptions above these are frameworks from the Java world. In fact all the code I wrote is in one of these two languages: Java and Kotlin. In particular, all the new stuff I developed in the last month has been written in Kotlin. For those who don't know, Kotlin is
 
 >...is a cross-platform, statically typed, general-purpose programming language with type inference made by JetBrains. Kotlin is designed to interoperate fully with Java, and the JVM version of Kotlin's standard library depends on the Java Class Library,[3] but type inference allows its syntax to be more concise...
 
 If you ever developed something in Swift, with Kotlin you will feel at home :heart_eyes: (we will talk about this topic in another post :smirk:).  
-As a consequence of the fact that we live in the ["Microservices era"](https://microservices.io "microservices"), one of the most common operation that I do in my code is consume a REST api of one microservice from another one. How can you do that in a Spring Boot application? There are to main component that we can use: RestTemplate and WebClient. Let's see how they works by developing a small Spring Boot application that call an external service and will return the result of this call through an endpoint.
+As a consequence of the fact that we live in the ["Microservices era"](https://microservices.io "microservices"), one of the most common operation that I do in my code is consume a REST api of one microservice from another one. How can you do that in a Spring Boot application? There are two main component that we can use: RestTemplate and WebClient. Let's see how they works by developing a small Spring Boot application that call an external service and will return the result of this call through an endpoint.
 
 #### The application
 
@@ -77,7 +77,7 @@ tasks.withType<Test> {
 }
 ```
 
-Now let's see the `SpringBootRestClientsCheatsheetsApi` controller. It is a standard `RestController`. As you can see the two services classes are passed as depdendecies at construction time using Spring Dependency Injection. The methods parse the request command received and based on its value they call one of the external fake endpoints using one of the service classes.
+Now let's see the `SpringBootRestClientsCheatsheetsApi` controller. It is a standard `RestController`. As you can see the two services classes are passed as dependecies at construction time using Spring Dependency Injection. The methods parse the request command received and based on its value they call one of the external fake endpoints using one of the service classes.
 
 ```kotlin
 @RestController
