@@ -5,8 +5,12 @@
 ![Lighthouse](https://github.com/chicio/chicio.github.io/workflows/Lighthouse/badge.svg)
 ![Release](https://github.com/chicio/chicio.github.io/workflows/Release/badge.svg)
 ![CodeQL](https://github.com/chicio/chicio.github.io/workflows/CodeQL/badge.svg)
-![dependecies](https://img.shields.io/librariesio/github/chicio/chicio.github.io)
-[![status](https://img.shields.io/badge/Status-Upptime-success)](https://status.fabrizioduroni.it)
+![Dependecies](https://img.shields.io/librariesio/github/chicio/chicio.github.io)
+[![Status](https://img.shields.io/badge/Status-Upptime-success)](https://status.fabrizioduroni.it)
+![Homepage Uptime](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fchicio%2Fchicio.status.github.io%2Fmaster%2Fapi%2Ffabrizio-duroni%2Fuptime.json)
+![Homepage Response Time](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fchicio%2Fchicio.status.github.io%2Fmaster%2Fapi%2Ffabrizio-duroni%response-time.json)
+![Chicio Coding Uptime](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fchicio%2Fchicio.status.github.io%2Fmaster%2Fapi%chicio-coding-blog%2Fuptime.json)
+![Chicio Coding Response Time](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fchicio%2Fchicio.status.github.io%2Fmaster%2Fapi%chicio-coding-blog%response-time.json)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/chicio/chicio.github.io/blob/master/LICENSE.md)
 
 My personal website, created using github pages.
