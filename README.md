@@ -6,6 +6,7 @@
 ![Release](https://github.com/chicio/chicio.github.io/workflows/Release/badge.svg)
 ![CodeQL](https://github.com/chicio/chicio.github.io/workflows/CodeQL/badge.svg)
 ![dependecies](https://img.shields.io/librariesio/github/chicio/chicio.github.io)
+[![status](https://img.shields.io/badge/Status-Upptime-success)](https://status.fabrizioduroni.it)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/chicio/chicio.github.io/blob/master/LICENSE.md)
 
 My personal website, created using github pages.
