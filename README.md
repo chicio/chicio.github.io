@@ -57,5 +57,10 @@ My website has been created for Github Pages using:
 - [TypeScript](https://www.typescriptlang.org), a typed superset of JavaScript that compiles to plain JavaScript.
 - [Workbox](https://developers.google.com/web/tools/workbox), a set of libraries and Node modules that make it easy to cache assets and take full advantage of features used to build Progressive Web Apps
 - [ThreeJS](https://threejs.org), a JavaScript library used to create and display animated 3D computer graphics in a web browser
+- [Upptime](https://upptime.js.org), GitHub-powered open-source uptime monitor and status page by [koj](https://koj.co/en-ch/?utm_campaign=docs&utm_medium=footer&utm_source=upptime)
 
 Go and checkout my [homepage](https://www.fabrizioduroni.it "homepage") and my[blog](https://www.fabrizioduroni.it/blog/ "blog").
+
+## Status monitoring 
+
+You can find status monitoring information at [status.fabrizioduroni.it](https://status.fabrizioduroni.it).
