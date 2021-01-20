@@ -4,7 +4,7 @@ title: "Spring Boot + Kotlin Rest client cheatsheet: RestTemplate and Webclient"
 description: "During the last months I worked a lot with Spring Boot backend applications. In this post I explain how you can consume a REST api from a Spring Boot application using RestTemplate and (the new) WebClient."
 date: 2020-12-23
 image: /assets/images/posts/spring-boot-rest.jpg
-tags: [java, spring, spring boot, backend, web development]
+tags: [java, kotlin, spring, spring boot, backend, web development]
 comments: true
 math: false
 seo:
@@ -15,6 +15,7 @@ authors: [fabrizio_duroni]
 *During the last months I worked a lot with Spring Boot backend applications. In this post I explain how you can consume a REST api from a Spring Boot application using RestTemplate and (the new) WebClient.*
 
 ---
+
 In the last few months I started to work as a backend developer during my daily job (and (for now) I do [mobile/web frontend development only in my spare time](https://github.com/chicio/ID3TagEditor "ID3TagEditor")). The backend applications I'm working on use Spring Boot as application framework. Let's start from a definition of what are Spring and Spring Boot:
 
 >The Spring Framework is an application framework and inversion of control container for the Java platform. The framework's core features can be used by any Java application, but there are extensions for building web applications on top of the Java EE (Enterprise Edition) platform. Although the framework does not impose any specific programming model, it has become popular in the Java community as an addition to the Enterprise JavaBeans (EJB) model. The Spring Framework is open source.
