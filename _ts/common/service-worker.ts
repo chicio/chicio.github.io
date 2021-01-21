@@ -4,9 +4,13 @@ interface ServiceWorkerMessage {
   message: string;
 }
 
-const wb = new Workbox('/sw.js')
+let wb: Workbox;
 
 const isServiceWorkerSupported: () => boolean = () => ('serviceWorker' in navigator)
+
+if (isServiceWorkerSupported()) {
+  wb = new Workbox('/sw.js');
+}
 
 const registerToServicerWorker = (): void => {
   if (isServiceWorkerSupported()) {
