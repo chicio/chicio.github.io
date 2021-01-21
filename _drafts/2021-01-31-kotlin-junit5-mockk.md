@@ -16,10 +16,21 @@ authors: [fabrizio_duroni]
 
 ---
 
-As I told you in my [last post](/2020/12/23/rest-template-webclient-spring-boot.html), in the last months during my daily job I wrote a lot of Kotlin backend code during my daily job. Usually I develop new stuff using Test Driven Development (TDD) technique. Specifically, most of the time I use the [mockist approach](https://martinfowler.com/articles/mocksArentStubs.html#ClassicalAndMockistTesting). This basically means that I need a mock library. For Java there are JMock and Mockito, and in fact I usually use Mockito. It is possible to use this library with Kotlin but [it has some limitations](https://antonioleiva.com/mockito-2-kotlin/). So I started to wonder if there was an alternative, and I found that in [lastminute.com group](https://lmgroup.lastminute.com/ "lastminute.com group") we were already using MockK, a mocking library "written in Kotlin for Kotlin" :smirk:. In this post I will show you how to use MockK and JUnit 5 to improve you unit tests. To do this, I will migrate to Kotlin + MockK + JUnit  an old kata I did some time ago in Java + Mockito: the Minesweeper. So let's start!!
+As I told you in my [last post](/2020/12/23/rest-template-webclient-spring-boot.html), in the last months during my daily job I wrote a lot of Kotlin backend code during my daily job. Usually I develop new stuff using Test Driven Development (TDD) technique. Specifically, most of the time I use the [mockist approach](https://martinfowler.com/articles/mocksArentStubs.html#ClassicalAndMockistTesting). This basically means that I need a mock library. For Java there are JMock and Mockito, and in fact I usually use Mockito. It is possible to use this library with Kotlin but [it has some limitations](https://antonioleiva.com/mockito-2-kotlin/). So I started to wonder if there was an alternative, and I found that in [lastminute.com group](https://lmgroup.lastminute.com/ "lastminute.com group") we were already using MockK, a mocking library "written in Kotlin for Kotlin" :smirk:. In this post I will show you how to use MockK and JUnit 5 to improve you unit tests. To do this, I will migrate to Kotlin + MockK + JUnit 5 an old kata I did some time ago in Java + Mockito: the Minesweeper. So let's start!!
 
 #### Implementation
 
+Let's start from the installation. For this kata I use [maven](https://maven.apache.org "maven") to manage my dependecies. To install JUnit 5 I use the JUnit 5 Bill of materials, usually abbreviated to BOM. 
+
+> BOM is a special kind of POM that is used to control the versions of a project’s dependencies and provide a central place to define and update those versions. BOM provides the flexibility to add a dependency to our module without worrying about the version that we should depend on. 
+
+- installazione con maven
+
+- Field test per junit
+-- displayname
+-- nested
+
+...
 
 #### Conclusion
 

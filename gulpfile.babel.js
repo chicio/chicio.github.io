@@ -96,6 +96,7 @@ const bundle = () => {
     styleError
   ]).pipe(webpackStream({
       mode: production() ? 'production' : 'development',
+      target: ['web', 'es5'],
       performance: { hints: production() ? false : 'warning' },
       entry: {
         'index.home': homeJs,
