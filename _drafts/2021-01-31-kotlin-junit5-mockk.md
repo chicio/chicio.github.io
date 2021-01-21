@@ -2,7 +2,7 @@
 layout: post
 title: "Unit testing in Kotlin with JUnit 5 and MockK"
 description: "I recently discovered MockK, a mocking library created for Kotlin. Let's see how it is possible to write modern unit tests with MockK + JUnit 5."
-date: 2020-12-23
+date: 2021-01-31
 image: /assets/images/posts/XXXX.jpg
 tags: [java, kotlin, test driven development]
 comments: true
