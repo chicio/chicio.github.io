@@ -126,13 +126,85 @@ The installation of MockK is easier. The only thing I need to do is just to add 
 ```
 
 The migration to Kotlin of the project was easy with IntelliJ IDEA: I just launched the automatic conversion that you can find in the menu `Code -> Convert Java File to Kotlin File` and that fixed the code obtained. In particular, given the fact that there weren't [nullability annotations](https://www.jetbrains.com/help/idea/nullable-and-notnull-annotations.html "java nullability annotations"), all the fields of all the classes were created as Optional.  
-After the converions I started to rewrite all the tests. Let's start to see the `FieldTest`, an test without mocking where I just needed to migrate from JUnit 5.
+After the converions I started to rewrite all the tests. Let's start to see the `FieldTest`, a test without mocking where I just needed to migrate from JUnit 5. In this test suite you can find some tests for the `neighboursOf` method of the `Field` class. This method returns a list containing the cell statuses for the neighbours of a cell received as parameter (identified by its row and column position). The Java version of this test was just a list of method with the `@Test` annotation. Anyway in [JUnit 5](https://junit.org/junit5/docs/current/user-guide/) there are some annotations that can help to give better names and to group better the tests:
 
-- Field test per junit
--- displayname
--- nested
+* `@DisplayName("< New Name>")`, an annotation used to declare a custom display name for the annotated test class or test method. These names are typically used for test reporting in IDEs and build tools and may contain spaces, special characters, and even emoji.
+* `@Nested`, an annotation used to signal that a class is a nested, non-static test class (i.e., an inner class) that can share setup and state with an instance of its enclosing class.
 
-...
+In addition to these annotations, it is possible to use some Kotlin features:
+
+* backticks to define test method (again, you can use this feature only for tests, not in your production code).
+* expression expression, a feature that let you avoid writing curly brackets if you method body contains just one line of code.
+
+Last but not least, I also switched fromt he `assertThat` method and its matchers to `assertEquals` method, that is more developer friendly in terms of error messages when your test fails. Below you can find the final result.
+
+```kotlin
+package it.chicio.minesweeper
+
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Nested
+import org.junit.jupiter.api.Test
+
+@DisplayName("Field")
+class FieldTest {
+    @Nested
+    @DisplayName("neighbours for")
+    inner class NeighboursTest {
+        @Test
+        fun `1x1 field`() =
+                assertEquals(FieldFactory().make(arrayOf(arrayOf("*"))).neighboursOf(0, 0), emptyList<String>())
+
+        @Test
+        fun `1x2 on left`() =
+                assertEquals(FieldFactory().make(arrayOf(arrayOf("*", "."))).neighboursOf(0, 1), listOf("*"))
+
+        @Test
+        fun `2x1 on right`() =
+                assertEquals(FieldFactory().make(arrayOf(arrayOf(".", "*"))).neighboursOf(0, 0),listOf("*"))
+
+        @Test
+        fun `2x2 on right`() =
+                assertEquals(
+                        FieldFactory()
+                                .make(arrayOf(arrayOf(".", "*"), arrayOf("*", "*")))
+                                .neighboursOf(0, 0),
+                        listOf("*", "*", "*")
+                )
+
+        @Test
+        fun `2x3 on right and left`() =
+                assertEquals(
+                        FieldFactory()
+                                .make(arrayOf(arrayOf("*", ".", "*"), arrayOf("*", "*", "*")))
+                                .neighboursOf(0, 1),
+                        listOf("*", "*", "*", "*", "*")
+                )
+
+        @Test
+        fun `3x3 with 3 bombs`() = assertEquals(
+                FieldFactory()
+                        .make(arrayOf(arrayOf("*", "*", "*"), arrayOf("*", ".", "*"), arrayOf("*", "*", "*")))
+                        .neighboursOf(1, 1), listOf("*", "*", "*", "*", "*", "*", "*", "*")
+        )
+    }
+}
+```
+
+Cool, isn't it :sunglasses:? If I run this test in IntelliJ IDEA I can see a much more clear feedback about my test results (It seems almost a list of [BDD behavioural tests](https://en.wikipedia.org/wiki/Behavior-driven_development)). If you ever tried to develop something with Jest on the frontend side of the web development world, you will feel at home.
+
+{% include blog-lazy-image.html description="The implementation of the PathLoader class for SwiftPM" width="1500" height="889" src="/assets/images/posts/junit5-mockk-intellij-test-list.jpg" %}
+
+- FieldsResolverByIteratingThroughThemTest
+  - @ExtendWith(MockKExtension::class)
+  - @BeforeEach junit 5
+  - setup semplice con singola verify 
+  - setup con verify di sequence (elenca anche le altre)
+  - plus companion object per le static variable
+
+- FieldValidRowParserTest
+  - verify(exactly = 1) 
+  - any()
 
 #### Conclusion
 
