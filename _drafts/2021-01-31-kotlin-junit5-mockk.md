@@ -195,12 +195,104 @@ Cool, isn't it :sunglasses:? If I run this test in IntelliJ IDEA I can see a muc
 
 {% include blog-lazy-image.html description="The implementation of the PathLoader class for SwiftPM" width="1500" height="889" src="/assets/images/posts/junit5-mockk-intellij-test-list.jpg" %}
 
-- FieldsResolverByIteratingThroughThemTest
-  - @ExtendWith(MockKExtension::class)
-  - @BeforeEach junit 5
-  - setup semplice con singola verify 
-  - setup con verify di sequence (elenca anche le altre)
-  - plus companion object per le static variable
+Let's move to a new test to see MockK in action. `FieldsResolverByIteratingThroughThemTest` seems a good example of a test where I can show the basic building blocks MockK.  
+The first thing I have to do is to create the mocks needed by the class under test. In contrast to the Runner, TestRule, and MethodRule extension hooks in JUnit 4, the JUnit 5 extension model consists of a single concept: the Extension API. Extensions are related to an event in the execution of a test that are called extension point. JUnit 5 engine will trigger the registered extensions for each specific extension point. There are a lot of extension points available. You can find the complete list in the [Junit 5 doc](https://junit.org/junit5/docs/current/user-guide/#extensions "junit 5 extensions"). As you can image MockK lets you initialize your mock with an Extension called `MockKExtension` (if you find more details, this is a [TestInstancePostProcessor](https://junit.org/junit5/docs/current/user-guide/#extensions-test-instance-post-processing "TestInstancePostProcessor") and [ParameterResolver](https://junit.org/junit5/docs/current/user-guide/#extensions-parameter-resolution) extension). So the first thing I need to do is to add the `@ExtendWith(MockKExtension::class)` annotation on the `FieldsResolverByIteratingThroughThemTest` class. Then I can declare my mock with the annotation `@MockK`. Then I changed also the setup method annotation with the new `@BeforeEach` annotation: in this way my class under test will be initialized before each test.  
+At this point I have everything setup in order to write the unit test with mock. There are two main MockK construct:
+
+* the `every` behavioural construct, a function where you define what a mock should return for a specific method invocation. There are various operator available to customize the argument matching and the return types.
+* the `verify` verification construct and all its declination, where you verify/check which invocation should happen on your mocks.
+
+In my case I rewrote the two unit test of the class using the constructs above. In the first one I used the basic `verify` construct to verify the behaviour of my mocks. In the second one I used the `verifySequence` construct declination, a contruct that checks the order and that all the matched calls are the only calls happened to declared mocks in the verify scope.  
+Last but not least, I used again the `@Nested` and `@DisplayName` annotation to declare better names for my tests. I also moved some test static data to the companion object of the test suite class. Below you can find the final code.
+
+```kotlin
+package it.chicio.minesweeper.field.resolver
+
+import io.mockk.*
+import io.mockk.impl.annotations.MockK
+import io.mockk.junit5.MockKExtension
+import it.chicio.minesweeper.FieldFactory
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Nested
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
+
+@DisplayName("FieldsResolverByIteratingThroughThem")
+@ExtendWith(MockKExtension::class)
+class FieldsResolverByIteratingThroughThemTest {
+    @MockK
+    private lateinit var fieldResolver: FieldResolver
+
+    private lateinit var fieldsResolverByIteratingThroughThem: FieldsResolverByIteratingThroughThem
+
+    @BeforeEach
+    internal fun setUp() {
+        fieldsResolverByIteratingThroughThem = FieldsResolverByIteratingThroughThem(fieldResolver)
+    }
+
+    @Nested
+    @DisplayName("resolve")
+    inner class Resolve {
+        @Test
+        fun `single field list`() {
+            every { fieldResolver.resolve(field) } just Runs
+
+            val fields = fieldsResolverByIteratingThroughThem.resolve(listOf(field))
+
+            assertEquals(fields, listOf(resolvedField))
+            verify { fieldResolver.resolve(field) }
+        }
+
+        @Test
+        fun `fields list`() {
+            every { fieldResolver.resolve(field) } returns resolvedField
+            every { fieldResolver.resolve(anotherField) } returns anotherResolvedField
+
+            val fields = fieldsResolverByIteratingThroughThem.resolve(listOf(field, anotherField))
+
+            assertEquals(fields, listOf(resolvedField, anotherResolvedField))
+            verifySequence {
+                fieldResolver.resolve(field)
+                fieldResolver.resolve(anotherField)
+            }
+        }
+    }
+
+    companion object {
+        private val field = FieldFactory().make(
+                arrayOf(
+                        arrayOf("*", "*", ".", ".", "."),
+                        arrayOf(".", ".", ".", ".", "."),
+                        arrayOf(".", "*", ".", ".", ".")
+                )
+        )
+        private val resolvedField = FieldFactory().make(
+                arrayOf(
+                        arrayOf("*", "*", "1", "0", "0"),
+                        arrayOf("3", "3", "2", "0", "0"),
+                        arrayOf("1", "*", "1", "0", "0")
+                )
+        )
+        private val anotherField = FieldFactory().make(
+                arrayOf(
+                        arrayOf("*", ".", ".", "."),
+                        arrayOf(".", ".", ".", "."),
+                        arrayOf(".", "*", ".", "."),
+                        arrayOf(".", ".", ".", ".")
+                )
+        )
+        private val anotherResolvedField = FieldFactory().make(
+                arrayOf(
+                        arrayOf("*", "*", "1", "0", "0"),
+                        arrayOf("3", "3", "2", "0", "0"),
+                        arrayOf("1", "*", "1", "0", "0")
+                )
+        )
+    }
+}
+```
 
 - FieldValidRowParserTest
   - verify(exactly = 1) 
