@@ -13,7 +13,6 @@
 ![Chicio Coding Response Time](https://img.shields.io/endpoint?label=Chicio%20Coding%20Response%20Time&url=https%3A%2F%2Fraw.githubusercontent.com%2Fchicio%2Fchicio.status.github.io%2Fmaster%2Fapi%2Fchicio-coding-blog%2Fresponse-time.json)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/chicio/chicio.github.io/blob/master/LICENSE.md)
 
-https://img.shields.io/endpoint?label=Chicio%20Coding&url=https%3A%2F%2Fraw.githubusercontent.com%2Fchicio%2Fchicio.status.github.io%2Fmaster%2Fapi%2Fchicio-coding-blog%2Fresponse-time.json
 My personal website, created using github pages.
 
 ***
