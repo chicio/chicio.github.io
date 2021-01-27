@@ -24,7 +24,7 @@ Let's start from the installation. For this kata I used [maven](https://maven.ap
 
 > BOM is a special kind of POM that is used to control the versions of a project’s dependencies and provide a central place to define and update those versions. BOM provides the flexibility to add a dependency to our module without worrying about the version that we should depend on. 
 
-The installation of MockK is easier. The only thing I needed to do is just to add the dependecy to the pom file. Below you can find the entire pom file.
+The installation of MockK was easy. The only thing I needed to do is just to add the dependecy to the pom file. Below you can find the entire pom file.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
