@@ -131,12 +131,12 @@ After the conversion I started to rewrite all the tests. Let's start to see how 
 * `@DisplayName("< New Name>")`, an annotation used to declare a custom display name for the annotated test class or test method. These names are typically used for test reporting in IDEs and build tools and may contain spaces, special characters, and even emoji.
 * `@Nested`, an annotation used to signal that a class is a nested, non-static test class (i.e., an inner class) that can share setup and state with an instance of its enclosing class.
 
-In addition to these annotations, it is possible to use some Kotlin features:
+In addition to these annotations, I used some Kotlin features:
 
 * backticks to define test method (again, you can use this feature only for tests, not in your production code).
 * expression expression, a feature that let you avoid writing curly brackets if you method body contains just one line of code.
 
-Last but not least, I also switched fromt the `assertThat` method and its matchers to `assertEquals` method, that is more developer friendly in terms of error messages when your tests fail. Below you can find the final result.
+Last but not least, I also switched from the `assertThat` method and its matchers to `assertEquals` method, that is more developer friendly in terms of error messages when your tests fail. Below you can find the final result.
 
 ```kotlin
 package it.chicio.minesweeper
