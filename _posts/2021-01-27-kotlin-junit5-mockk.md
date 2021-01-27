@@ -2,8 +2,8 @@
 layout: post
 title: "Unit testing in Kotlin with JUnit 5 and MockK"
 description: "I recently discovered MockK, a mocking library created for Kotlin. Let's see how it is possible to write modern unit tests with MockK + JUnit 5."
-date: 2021-01-31
-image: /assets/images/posts/XXXX.jpg
+date: 2021-01-27
+image: /assets/images/posts/mockk-junit5-kotlin.jpg
 tags: [java, kotlin, test driven development]
 comments: true
 math: false
@@ -20,11 +20,11 @@ As I told you in my [last post](/2020/12/23/rest-template-webclient-spring-boot.
 
 #### Implementation
 
-Let's start from the installation. For this kata I use [maven](https://maven.apache.org "maven") to manage my dependecies. To install JUnit 5 I use the JUnit 5 [Bill of materials](https://www.baeldung.com/spring-maven-bom "maven bom"), usually abbreviated to BOM. If you don't know what a BOM is, you can find the definition below (keep in my that also that BOM is a general concept and you can find it also in other build system like for example Gradle).
+Let's start from the installation. For this kata I used [maven](https://maven.apache.org "maven") to manage my dependecies. To install JUnit 5 I used the JUnit 5 [Bill of materials](https://www.baeldung.com/spring-maven-bom "maven bom"), usually abbreviated to BOM. If you don't know what a BOM is, you can find the definition below (keep in mind that BOM is a general concept that you can find also in other build systems e.g. Gradle).
 
 > BOM is a special kind of POM that is used to control the versions of a project’s dependencies and provide a central place to define and update those versions. BOM provides the flexibility to add a dependency to our module without worrying about the version that we should depend on. 
 
-The installation of MockK is easier. The only thing I need to do is just to add the dependecy to the pom file. Last but not list. Below you can find the entire pom file.
+The installation of MockK is easier. The only thing I needed to do is just to add the dependecy to the pom file. Below you can find the entire pom file.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -125,8 +125,8 @@ The installation of MockK is easier. The only thing I need to do is just to add 
 </project>
 ```
 
-The migration to Kotlin of the project was easy with IntelliJ IDEA: I just launched the automatic conversion that you can find in the menu `Code -> Convert Java File to Kotlin File` and that fixed the code obtained. In particular, given the fact that there weren't [nullability annotations](https://www.jetbrains.com/help/idea/nullable-and-notnull-annotations.html "java nullability annotations"), all the fields of all the classes were created as Optional.  
-After the converions I started to rewrite all the tests. Let's start to see the `FieldTest`, a test without mocking where I just needed to migrate from JUnit 5. In this test suite you can find some tests for the `neighboursOf` method of the `Field` class. This method returns a list containing the cell statuses for the neighbours of a cell received as parameter (identified by its row and column position). The Java version of this test was just a list of method with the `@Test` annotation. Anyway in [JUnit 5](https://junit.org/junit5/docs/current/user-guide/) there are some annotations that can help you to improve test naming and to organize them:
+The migration to Kotlin of the project was easy with IntelliJ IDEA: I just launched the automatic conversion tool that you can find in the menu `Code -> Convert Java File to Kotlin File` and than fix some problem on the code obtained. In particular, given the fact that there weren't [nullability annotations](https://www.jetbrains.com/help/idea/nullable-and-notnull-annotations.html "java nullability annotations"), all the fields of all the classes were created as optional.  
+After the converions I started to rewrite all the tests. Let's start to see how I rewrote the `FieldTest`, a test without mocks where I just needed to migrate from JUnit 5. In this test suite you can find some tests for the `neighboursOf` method of the `Field` class. This method returns a list containing the cell statuses for the neighbours of a cell received as parameter (identified by its row and column position). The Java version of this test was just a list of methods with the `@Test` annotation. Anyway, in [JUnit 5](https://junit.org/junit5/docs/current/user-guide/) there are some annotations that can help you to improve test naming and to organize them:
 
 * `@DisplayName("< New Name>")`, an annotation used to declare a custom display name for the annotated test class or test method. These names are typically used for test reporting in IDEs and build tools and may contain spaces, special characters, and even emoji.
 * `@Nested`, an annotation used to signal that a class is a nested, non-static test class (i.e., an inner class) that can share setup and state with an instance of its enclosing class.
@@ -136,7 +136,7 @@ In addition to these annotations, it is possible to use some Kotlin features:
 * backticks to define test method (again, you can use this feature only for tests, not in your production code).
 * expression expression, a feature that let you avoid writing curly brackets if you method body contains just one line of code.
 
-Last but not least, I also switched fromt he `assertThat` method and its matchers to `assertEquals` method, that is more developer friendly in terms of error messages when your test fails. Below you can find the final result.
+Last but not least, I also switched fromt the `assertThat` method and its matchers to `assertEquals` method, that is more developer friendly in terms of error messages when your tests fail. Below you can find the final result.
 
 ```kotlin
 package it.chicio.minesweeper
@@ -191,18 +191,18 @@ class FieldTest {
 }
 ```
 
-Cool, isn't it :sunglasses:? If I run this test in IntelliJ IDEA I can see a much more clear feedback about my test results (It seems almost a list of [BDD behavioural tests](https://en.wikipedia.org/wiki/Behavior-driven_development)). If you ever tried to develop something with Jest on the frontend side of the web development world, you will feel at home.
+Cool, isn't it :sunglasses:? If I run this test in IntelliJ IDEA I can see the feedback about my test results (It seems almost a list of [BDD behavioural tests](https://en.wikipedia.org/wiki/Behavior-driven_development)). If you ever tried to develop something with Jest on the frontend side of the web development world, you will feel at home.
 
-{% include blog-lazy-image.html description="The implementation of the PathLoader class for SwiftPM" width="1500" height="889" src="/assets/images/posts/junit5-mockk-intellij-test-list.jpg" %}
+{% include blog-lazy-image.html description="An example of how your IDE will display tests feedback after renaming them with the @DisplayName and @Nested annotations" width="1500" height="889" src="/assets/images/posts/junit5-mockk-intellij-test-list.jpg" %}
 
-Let's move to a new test to see MockK in action. `FieldsResolverByIteratingThroughThemTest` seems a good example of a test where I can show the basic building blocks MockK.  
-The first thing I have to do is to create the mocks needed by the class under test. In contrast to the Runner, TestRule, and MethodRule extension hooks in JUnit 4, the JUnit 5 extension model consists of a single concept: the Extension API. Extensions are related to an event in the execution of a test that are called extension point. JUnit 5 engine will trigger the registered extensions for each specific extension point. There are a lot of extension points available. You can find the complete list in the [Junit 5 doc](https://junit.org/junit5/docs/current/user-guide/#extensions "junit 5 extensions"). As you can image MockK lets you initialize your mock with an Extension called `MockKExtension` (if you find more details, this is a [TestInstancePostProcessor](https://junit.org/junit5/docs/current/user-guide/#extensions-test-instance-post-processing "TestInstancePostProcessor") and [ParameterResolver](https://junit.org/junit5/docs/current/user-guide/#extensions-parameter-resolution) extension). So the first thing I need to do is to add the `@ExtendWith(MockKExtension::class)` annotation on the `FieldsResolverByIteratingThroughThemTest` class. Then I can declare my mock with the annotation `@MockK`. Then I changed also the setup method annotation with the new `@BeforeEach` annotation: in this way my class under test will be initialized before each test.  
-At this point I have everything setup in order to write the unit test with mock. There are two main MockK construct:
+Let's move to a new test to see MockK in action. `FieldsResolverByIteratingThroughThemTest` seems a good example where I can show the basic building blocks MockK.  
+The first thing I did was to create the mocks needed by the class under test. In contrast to the `Runner`, `TestRule`, and `MethodRule` hooks in JUnit 4, the JUnit 5 extension model consists of a single concept: the `Extension` API. Extensions are related to an event in the execution of a test, and they are called extension point. JUnit 5 engine will trigger the registered extensions for each specific extension point. There are a lot of extension points available. You can find the complete list in the [Junit 5 doc](https://junit.org/junit5/docs/current/user-guide/#extensions "junit 5 extensions"). As you can image MockK lets you initialize your mock with an Extension called `MockKExtension` (if you find more details, this is a [TestInstancePostProcessor](https://junit.org/junit5/docs/current/user-guide/#extensions-test-instance-post-processing "TestInstancePostProcessor") and [ParameterResolver](https://junit.org/junit5/docs/current/user-guide/#extensions-parameter-resolution) extension). So the first thing I needed to do was to add the `@ExtendWith(MockKExtension::class)` annotation on the `FieldsResolverByIteratingThroughThemTest` class. Then I can declared my mock with the annotation `@MockK`. Then I changed also the setup method annotation with the new `@BeforeEach` annotation: in this way my class under test will be initialized before each test.  
+At this point I had everything setup in order to write the unit test with MockK. There are two main MockK construct:
 
 * the `every` behavioural construct, a function where you define what a mock should return for a specific method invocation. There are various operator available to customize the argument matching and the return types.
 * the `verify` verification construct and all its declination, where you verify/check which invocation should happen on your mocks.
 
-In my case I rewrote the two unit test of the class using the constructs above. In the first one I used the basic `verify` construct to verify the behaviour of my mocks. In the second one I used the `verifySequence` construct declination, a contruct that checks the order and that all the matched calls are the only calls happened to declared mocks in the verify scope.  
+In my case I rewrote the two unit test of the class using the constructs above. In the first one I used the basic `verify` construct to verify the behaviour of my mocks. In the second one I used the `verifySequence` construct declination, a construct that checks the order and that all the matched calls are the only calls happened to declared mocks in the verify scope.  
 Last but not least, I used again the `@Nested` and `@DisplayName` annotation to declare better names for my tests. I also moved some test static data to the companion object of the test suite class. Below you can find the final code.
 
 ```kotlin
@@ -294,8 +294,8 @@ class FieldsResolverByIteratingThroughThemTest {
 }
 ```
 
-Let's move to another test: `FieldValidRowParserTest`. In this test I have a different need for the setup of my mocks: I want to setup my mocks return values based on the value of their parameters. So I'm talking about argument matchers. MockK has a lot of argument matchers. You can find the complete list [at this link](https://mockk.io/#matchers "mockk matchers"). One interesting note: contrary to what happens in other frameworks (e.g. Mockito), it is not required to specify all argument matchers for all arguments. Some arguments acan have a fixed  (they will be automatically wrapped in eq matcher). In my case, the only thing I want to do for my `FieldValidRowParserTest` is to setup the mock so that they return the same value for any possible parameter value. This is why I decided to use the `any()` matcher.  
-The second interesting thigng is related to the `verify` construct. In this test I needed to verify that the interaction occurs exactly 1 time. In MockK it is possible to customize the `verify` behaviour with some optional parameter. You can find the complete list [at this link](https://mockk.io/#verification-atleast-atmost-or-exactly-times "mockk verify configuration"). In my case I just specified the value `1` for the `exactly` parameter.  
+Let's move to another test: `FieldValidRowParserTest`. In this test I had a different problem to solve for the setup of my mocks: I wanted to set my mocks return values based on the value of their parameters. So what I'm talking about is argument matchers. MockK has a lot of argument matchers. You can find the complete list [at this link](https://mockk.io/#matchers "mockk matchers"). One interesting note: contrary to what happens in other frameworks (e.g. Mockito), it is not required to specify an argument matcher for each argument. Some arguments can have a fixed value (they will be automatically wrapped in a `eq` matcher). In my case, the only thing I wanted to do for my `FieldValidRowParserTest` was to setup the mocks so that they returned the same value for any possible parameter value. This is why I decided to use the `any()` matcher.  
+The second interesting thigng is related to the `verify` construct. In this test I needed to verify that the interaction with the mock occured exactly 1 time. In MockK it is possible to customize the `verify` behaviour with some optional parameter. You can find the complete list [at this link](https://mockk.io/#verification-atleast-atmost-or-exactly-times "mockk verify configuration"). In my case I specified the value `1` for the `exactly` parameter.  
 Below you can find final code for this second unit test.
 
 ```kotlin
