@@ -294,12 +294,83 @@ class FieldsResolverByIteratingThroughThemTest {
 }
 ```
 
-- FieldValidRowParserTest
-  - verify(exactly = 1) 
-  - any()
+Let's move to another test: `FieldValidRowParserTest`. In this test I have a different need for the setup of my mocks: I want to setup my mocks return values based on the value of their parameters. So I'm talking about argument matchers. MockK has a lot of argument matchers. You can find the complete list [at this link](https://mockk.io/#matchers "mockk matchers"). One interesting note: contrary to what happens in other frameworks (e.g. Mockito), it is not required to specify all argument matchers for all arguments. Some arguments acan have a fixed  (they will be automatically wrapped in eq matcher). In my case, the only thing I want to do for my `FieldValidRowParserTest` is to setup the mock so that they return the same value for any possible parameter value. This is why I decided to use the `any()` matcher.  
+The second interesting thigng is related to the `verify` construct. In this test I needed to verify that the interaction occurs exactly 1 time. In MockK it is possible to customize the `verify` behaviour with some optional parameter. You can find the complete list [at this link](https://mockk.io/#verification-atleast-atmost-or-exactly-times "mockk verify configuration"). In my case I just specified the value `1` for the `exactly` parameter.  
+Below you can find final code for this second unit test.
+
+```kotlin
+package it.chicio.minesweeper.field.parser
+
+import io.mockk.every
+import io.mockk.impl.annotations.MockK
+import io.mockk.junit5.MockKExtension
+import io.mockk.verify
+import it.chicio.minesweeper.FieldFactory
+import it.chicio.minesweeper.FieldsParsingStatusBuilder
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Nested
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
+
+@DisplayName("FieldValidRowParser")
+@ExtendWith(MockKExtension::class)
+class FieldValidRowParserTest {
+    @MockK
+    private lateinit var fieldRowContentParser: FieldRowContentParser
+
+    private lateinit var fieldValidRowParser: FieldValidRowParser
+
+    @BeforeEach
+    fun setUp() {
+        fieldValidRowParser = FieldValidRowParser(fieldRowContentParser)
+    }
+
+    @Nested
+    @DisplayName("parse")
+    inner class Parse {
+        @Test
+        fun `a valid row`() {
+            every { fieldRowContentParser.tryToParseRowAndUpdate(any()) } returns fieldsParsingStatus
+
+            val newFieldsParsingStatus = fieldValidRowParser.parse(". *", FieldsParsingStatusBuilder().build())
+
+            assertEquals(newFieldsParsingStatus.currentRowContent, ". *")
+            assertEquals(newFieldsParsingStatus.currentField, FieldFactory().make(
+                    arrayOf(
+                            arrayOf("*", "."),
+                            arrayOf(".", "*")
+                    )
+            ))
+            verify(exactly = 1) { fieldRowContentParser.tryToParseRowAndUpdate(any()) }
+        }
+
+        @Test
+        fun `an invalid row`() =
+                assertEquals(
+                        fieldValidRowParser.parse("", FieldsParsingStatusBuilder(currentRowContent = "* *").build()).currentRowContent,
+                        "* *"
+                )
+    }
+
+    companion object {
+        private val fieldsParsingStatus = FieldsParsingStatusBuilder(
+                currentRowContent = ". *",
+                currentField = FieldFactory().make(
+                        arrayOf(
+                                arrayOf("*", "."),
+                                arrayOf(".", "*")
+                        )
+                )
+        ).build()
+    }
+}
+```
 
 #### Conclusion
 
+You can find the entire source code of the Kata migrated to Kotlin + Junit 5 + MockK in [this github repository](https://github.com/chicio/Katas/tree/master/minesweeper/kotlin-mockk-minesweeper "kotlin mockk junit5 minesweeper").
 
 
 FONTI
