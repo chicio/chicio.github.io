@@ -20,11 +20,11 @@ As I told you in my [last post](/2020/12/23/rest-template-webclient-spring-boot.
 
 #### Implementation
 
-Let's start from the installation. For this kata I use [maven](https://maven.apache.org "maven") to manage my dependecies. To install JUnit 5 I use the JUnit 5 [Bill of materials](https://www.baeldung.com/spring-maven-bom "bom"), usually abbreviated to BOM. If you don't know what a BOM is, you can find the definition below (keep in my that also that BOM is a general concept and you can find it also in other build system like for example Gradle).
+Let's start from the installation. For this kata I use [maven](https://maven.apache.org "maven") to manage my dependecies. To install JUnit 5 I use the JUnit 5 [Bill of materials](https://www.baeldung.com/spring-maven-bom "maven bom"), usually abbreviated to BOM. If you don't know what a BOM is, you can find the definition below (keep in my that also that BOM is a general concept and you can find it also in other build system like for example Gradle).
 
 > BOM is a special kind of POM that is used to control the versions of a project’s dependencies and provide a central place to define and update those versions. BOM provides the flexibility to add a dependency to our module without worrying about the version that we should depend on. 
 
-The installation of MockK is easier. The only thing I need to do is just to add the dependecy to the pom file. Last but not list  Below you can find the entire pom file.
+The installation of MockK is easier. The only thing I need to do is just to add the dependecy to the pom file. Last but not list. Below you can find the entire pom file.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -126,7 +126,7 @@ The installation of MockK is easier. The only thing I need to do is just to add 
 ```
 
 The migration to Kotlin of the project was easy with IntelliJ IDEA: I just launched the automatic conversion that you can find in the menu `Code -> Convert Java File to Kotlin File` and that fixed the code obtained. In particular, given the fact that there weren't [nullability annotations](https://www.jetbrains.com/help/idea/nullable-and-notnull-annotations.html "java nullability annotations"), all the fields of all the classes were created as Optional.  
-After the converions I started to rewrite all the tests. Let's start to see the `FieldTest`, a test without mocking where I just needed to migrate from JUnit 5. In this test suite you can find some tests for the `neighboursOf` method of the `Field` class. This method returns a list containing the cell statuses for the neighbours of a cell received as parameter (identified by its row and column position). The Java version of this test was just a list of method with the `@Test` annotation. Anyway in [JUnit 5](https://junit.org/junit5/docs/current/user-guide/) there are some annotations that can help to give better names and to group better the tests:
+After the converions I started to rewrite all the tests. Let's start to see the `FieldTest`, a test without mocking where I just needed to migrate from JUnit 5. In this test suite you can find some tests for the `neighboursOf` method of the `Field` class. This method returns a list containing the cell statuses for the neighbours of a cell received as parameter (identified by its row and column position). The Java version of this test was just a list of method with the `@Test` annotation. Anyway in [JUnit 5](https://junit.org/junit5/docs/current/user-guide/) there are some annotations that can help you to improve test naming and to organize them:
 
 * `@DisplayName("< New Name>")`, an annotation used to declare a custom display name for the annotated test class or test method. These names are typically used for test reporting in IDEs and build tools and may contain spaces, special characters, and even emoji.
 * `@Nested`, an annotation used to signal that a class is a nested, non-static test class (i.e., an inner class) that can share setup and state with an instance of its enclosing class.
@@ -370,14 +370,4 @@ class FieldValidRowParserTest {
 
 #### Conclusion
 
-You can find the entire source code of the Kata migrated to Kotlin + Junit 5 + MockK in [this github repository](https://github.com/chicio/Katas/tree/master/minesweeper/kotlin-mockk-minesweeper "kotlin mockk junit5 minesweeper").
-
-
-FONTI
-- https://junit.org/junit5/docs/current/user-guide/#dependency-metadata
-- https://www.baeldung.com/junit-5
-- https://stackoverflow.com/questions/27256429/is-org-junit-assert-assertthat-better-than-org-hamcrest-matcherassert-assertthat
-- https://www.polidea.com/blog/junit-5-in-kotlin-testing/
-- https://www.baeldung.com/kotlin/junit-5-kotlin
-- https://junit.org/junit5/docs/current/user-guide/#extensions
-- https://www.baeldung.com/junit-5-extensions
+You can find the entire source code of the Kata migrated to Kotlin + Junit 5 + MockK in [this github repository](https://github.com/chicio/Katas/tree/master/minesweeper/kotlin-mockk-minesweeper "kotlin mockk junit5 minesweeper").  As you can see from this post, my journey into the [lastminute.com group](/2020/12/23/rest-template-webclient-spring-boot.html) backend is going on. Let's see if I can bring you some other backend gems on this blog :heartpulse: (and I'm sure I will :sunglasses:). 
