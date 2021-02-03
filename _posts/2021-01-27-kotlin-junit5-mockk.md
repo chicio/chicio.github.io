@@ -20,7 +20,7 @@ As I told you in my [last post](/2020/12/23/rest-template-webclient-spring-boot.
 
 #### Implementation
 
-Let's start from the installation. For this kata I used [maven](https://maven.apache.org "maven") to manage my dependecies. To install JUnit 5 I used the JUnit 5 [Bill of materials](https://www.baeldung.com/spring-maven-bom "maven bom"), usually abbreviated to BOM. If you don't know what a BOM is, you can find the definition below (keep in mind that BOM is a general concept that you can find also in other build systems e.g. Gradle).
+Let's start from the installation. For this kata I used [maven](https://maven.apache.org "maven") to manage my dependencies. To install JUnit 5 I used the JUnit 5 [Bill of materials](https://www.baeldung.com/spring-maven-bom "maven bom"), usually abbreviated to BOM. If you don't know what a BOM is, you can find the definition below (keep in mind that BOM is a general concept that you can find also in other build systems e.g. Gradle).
 
 > BOM is a special kind of POM that is used to control the versions of a project’s dependencies and provide a central place to define and update those versions. BOM provides the flexibility to add a dependency to our module without worrying about the version that we should depend on. 
 
