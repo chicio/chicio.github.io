@@ -22,7 +22,7 @@ In the last month I did a big refactoring on its code base so that I can add fea
 - the tests suite was slow. Just with the first few UI tests the execution of the entire tests suite was a pain in the ass :weary:. Given the fact that I wanted a quick feedback after each small steps of refactoring, this was not an ideal setup.
 - one as I told you, one of the latest feature I added was the support for RTL languages. To test this feature I just wanted to run the UI test I already wrote but with a different device configuration: I wanted to run them on devices configured with a RTL languages.
  
-So I started to wonder if there was a solution to these problems, and then I remebered a video I saw on my Apple TV in the Apple Developer app the last year: Test Plans.
+So I started to wonder if there was a solution to these problems, and then I remembered a video I saw on my Apple TV in the Apple Developer app the last year: Test Plans.
 
 * cosa sono test plans....
 
