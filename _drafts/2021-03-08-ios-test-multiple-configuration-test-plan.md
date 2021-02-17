@@ -16,7 +16,7 @@ authors: [fabrizio_duroni]
 
 ---
 
-If you look at my [Github profile](), you can see that one of my most starred open source project is [RangeUISlider](https://github.com/chicio/ID3TagEditor "rangeslider ios"): iOS range selection slider compatible with UIKit and SwiftUI. I developed it using autolayout and it is highly customizable (thanks to IBDesignabled and IBInspectable or programmatic property access.  
+If you look at my [Github profile](), you can see that one of my most starred open source project is [RangeUISlider](https://github.com/chicio/RangeUISlider "rangeslider ios"): iOS range selection slider compatible with UIKit and SwiftUI. I developed it using autolayout and it is highly customizable (thanks to IBDesignabled and IBInspectable or programmatic property access.  
 In the last month I did a big refactoring on its code base so that I can add features quickly and improved the code quality. I also received some new feature request on github. In particular one user [was asking for Right To Left Languages (RTL) support](XXX). There was one problem with these activities: there were basically no Unit or UI tests. This means that each one of these activities was scaring and I had to manually test all the RAngeUISlider features. So I decided to add the tests needed but two problems arise:
 
 - the tests suite was slow. Just with the first few UI tests the execution of the entire tests suite was a pain in the ass :weary:. Given the fact that I wanted a quick feedback after each small steps of refactoring, this was not an ideal setup.
