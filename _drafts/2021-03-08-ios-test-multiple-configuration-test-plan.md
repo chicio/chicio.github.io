@@ -23,8 +23,8 @@ In the last month I did a big refactoring on its code base so that I can add fea
 - one as I told you, one of the latest feature I added was the support for RTL languages. To test this feature I just wanted to run the UI test I already wrote but with a different device configuration: I wanted to run them on devices configured with a RTL languages.
  
 So I started to wonder if there was a solution to these problems, and then I remembered a video I saw on my Apple TV in the Apple Developer app the last year: Test Plans.
-
-* cosa sono test plans....
+What are they? Test plans are a new feature of Xcode that let you run a subset of you tests (Unit or UI tests) against multiple configuration. They are defined using the `.xctestplan` file format and they are already supported by `xcodebuild` command line execution and Xcode server/CI.  
+As you can see from the definition this is exaclty what I needed for RangeUISlider. So in this post I will show you how I setup the test plans for RangeUISlider and I had been able to refactor its entire code base in a safe way by running the subset of tests needed to check my changes for the specific part of code I was working on and test it against multiple configurations. Let's start!! :rocket:
 
 #### Implementation
 
