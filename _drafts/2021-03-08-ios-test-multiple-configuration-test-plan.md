@@ -28,7 +28,21 @@ As you can see from the definition this is exaclty what I needed for RangeUISlid
 
 #### Implementation
 
-XXX
+The first thing to do in order to be able to use Test Plans is enable for your scheme. Obviously, in my case I enabled them for the `RangeUISlider` framework scheme. To do that you have to:
+
+* go in the scheme selection panel and click on `Edit schemes` while your target is selected 
+* go to the test phase and click on the button in the bottom right corner `Convert to use Test Plans`
+  
+[Image] test-plans-button
+
+After that you will see a new window where you can choose how to create your first test plan. In my case I chose to create an empty test plan and I clicked on continue.
+
+[Image] test-plans-choose
+
+
+- descrivi le varie suite di test
+- descrivi qualii hanno bisogno di conf diverse
+- fai vedere la creazione dei vari test plans
 
 #### Conclusion
 
