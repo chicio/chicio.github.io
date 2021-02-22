@@ -45,13 +45,16 @@ When I converted the `RangeUISlider` tests to use test plan I had the following 
 * some UI test suites to test all the behavioural features (e.g. custom scale, step increment, SwiftUI integration etc.) You can find this test in the `MixedFeatureTest`, `InsideTableViewTests` and `SwiftUITests` test classes (see the repository link at the beginning of this post).
 * some UI test suites to test the programmatic setup features (e.g. programmatic scale change, knob starting and current position). You can find this tests inside the `ProgrammaticDefaultKnobValueChangeTests`, `ProgrammaticKnobChangeTests` and `ProgrammaticScaleChangeTests` test classes.
 
-As you can understand from the list above, these are three group of separated tests types that I want to execute indipendently based on the code piece I'm working on.  So I decided to create 3 test plans. The first one is `UnitTestPlan.xctestplan`. In this test plan I added all the unit tests I had at the time in order to be able to execute them when I modify a piece of code that is related to all the collaborators that contains the logic related to the range selected or the step increment calculations. This test are executed with a single configuration. They can be executed in parallel so I checked also the option `Execute in parallel (if possible)`. I also wanted that new tests added to this suite should be added automatically to this test plan, so I checked the option `Automatically include new tests`.
+As you can understand from the list above, these are three group of separated tests types that I want to execute indipendently based on the code piece I'm working on.  So I decided to create 3 test plans. The first one is `UnitTestPlan.xctestplan`. In this test plan I added all the unit tests I had at the time in order to be able to execute them when I modify a piece of code that is related to all the collaborators that contains the logic related to the range selected or the step increment calculations. This test are executed with a single configuration. They can be executed in parallel so I checked also the option `Execute in parallel (if possible)`. I also wanted that new tests added to this suite should be added automatically to this test plan, so I checked the `Automatically include new tests` option.
 
-{% include blog-lazy-image.html description="The unit test plan" width="1500" height="927" src="/assets/images/posts/test-plan-unit.jpg" %}
+{% include blog-lazy-image.html description="The UnitTestPlan" width="1500" height="889" src="/assets/images/posts/test-plan-unit.jpg" %}
+
+The second test plan I created is `ProgrammaticChangesTestPlan.xctestplan`. As you can imagine in this test plan I added all the test related to the RangeUISlider programmatic setup features. In particular at the moment of the creation of the test plan I had 3 test suite that should be contained in this test plan: `ProgrammaticDefaultKnobValueChangeTests`, `ProgrammaticKnobChangeTests` and `ProgrammaticScaleChangeTests`. For this plan I *unchecked* the `Automatically include new tests` option, because I would add new test suite to this test plan only if they can be classified as related to programmatic features.
+
+{% include blog-lazy-image.html description="The ProgrammaticChangesTestPlan" width="1500" height="889" src="/assets/images/posts/test-plan-programmatic.jpg" %}
 
 
-- descrivi ProgrammaticChangesTestPlan.xctestplan
-- descrivi BehaviourTestPlan.xctestplan
+- descrivi BehaviourTestPlan.xctestplan (conf diverse)
 - descrivi AllTestPlan.xctestplan
 - descrivi come settare default test plan
 
