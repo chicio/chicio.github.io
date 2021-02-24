@@ -59,12 +59,11 @@ The third test plan I created is `BehaviourTestPlan.xctestplan`. In this test pl
 
 {% include blog-lazy-image.html description="The BehaviourTestPlan configurations" width="1500" height="889" src="/assets/images/posts/test-plan-behaviour-configuration.jpg" %}
 
-Last but not least I created a last test plan called `AllTestPlan.xctestplan` where I added all tests from all the test targets and I can use it to have a feedback when my change is spread across the logic, behaviour and UI.
-
+Last but not least I created a last test plan called `AllTestPlan.xctestplan` where I added all tests from all the test targets and I can use it to have a feedback when my change is spread across the logic, behaviour and UI.  
 So how can I set which test plan I want to run? In the `Test` section of the `Edit Scheme` screen you can choose the default test plan to be run with the `cmd + U` option. In this way you can change based on the piece of code you're working on.
 
 {% include blog-lazy-image.html description="The default test plan is launched with the classic cmd + U shortcut" width="1500" height="889" src="/assets/images/posts/test-plan-set-default.jpg" %}
 
 #### Conclusion
 
-XXX
+Test plan are the perfect tool that let you organize your tests in a better way. They will enable you to test only the application/framework part you're working on in order to have a faster tests feedback loop. So in case you need a range sllider component, go on `RangeUISlider` github repository and check it out!! :sunglasses:. You won't regret. 
