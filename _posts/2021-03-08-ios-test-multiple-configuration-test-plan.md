@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Better organize tests and run them against multiple configuration with Xcode Test Plan"
-description: "Recently I added a lot of Unit and UI tests to RangeUISlider, one of my open source project. Let's see how I grouped them and run them against multiple configurations with Xcode Test Plan."
+description: "Recently I added a lot of Unit and UI tests to RangeUISlider, one of my open source projects. Let's see how I grouped them and run them against multiple configurations with Xcode Test Plan."
 date: 2021-03-08
 image: /assets/images/posts/test-plans-succeeded.jpg
 tags: [swift, ios, apple, mobile application development, macos, tvos, watchos]
@@ -12,7 +12,7 @@ seo:
 authors: [fabrizio_duroni] 
 ---
 
-*Recently I added a lot of Unit and UI tests to RangeUISlider, one of my open source project. Let's see how I grouped them and run them against multiple configurations with Xcode Test Plan.*
+*Recently I added a lot of Unit and UI tests to RangeUISlider, one of my open source projects. Let's see how I grouped them and run them against multiple configurations with Xcode Test Plan.*
 
 ---
 
