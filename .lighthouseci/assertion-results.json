@@ -1,0 +1,32 @@
+[
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "non-composited-animations",
+    "level": "error",
+    "url": "https://www.fabrizioduroni.it/blog/",
+    "auditTitle": "Avoid non-composited animations",
+    "auditDocumentationLink": "https://developers.google.com/web/fundamentals/performance/rendering/stick-to-compositor-only-properties-and-manage-layer-count"
+  },
+  {
+    "name": "maxLength",
+    "expected": 0,
+    "actual": 9,
+    "values": [
+      9
+    ],
+    "operator": "<=",
+    "passed": false,
+    "auditId": "uses-long-cache-ttl",
+    "level": "warn",
+    "url": "https://www.fabrizioduroni.it/blog/",
+    "auditTitle": "Uses efficient cache policy on static assets",
+    "auditDocumentationLink": "https://web.dev/uses-long-cache-ttl/"
+  }
+]
