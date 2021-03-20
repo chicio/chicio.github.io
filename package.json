@@ -80,7 +80,7 @@
   "dependencies": {
     "bootstrap": "^4.5.3",
     "intersection-observer": "^0.11.0",
-    "three": "^0.123.0",
+    "three": "^0.125.0",
     "workbox-sw": "^6.0.2"
   }
 }
