@@ -16,6 +16,8 @@ authors: [fabrizio_duroni]
 
 ---
 
+#### ***NB.: Considering the success of this blog post, I decided to create a new custom TabBar SwiftUI library called [TabBarUIAction](https://github.com/chicio/TabBarUIAction "TabBArUIAction custom tab bar swiftui"). Go and check it out!!!***
+<br/>  
 In the last week I started to develop a new personal project: a new iOS mobile app (that I will show you in the following months). As a consequence of the fact that this was a greenfield project I decided to use SwiftUI to develop all the User Interface and Combine for data binging. These frameworks are the Apple implementation of reactive programming (combine) and declarative user interface programming (SwiftUI). In this post we will focus on SwiftUI (we will see combine in another post later :wink:). Even if it is still not ready for a complete production product because [a lot of UIKit part are missing and you have to expose them manually](https://goshdarnswiftui.com/#framework-integration-uikit-in-swiftui) and because some stuff doesn't work as expected, SwiftUI is a big step forward with respect to the old imperative UIKit approach (sometimes I still have headache about Autolayout issues and constraint definition :astonished::smile:).  
 In this post I will show you how I created a custom tab bar with the ability to open a modal from a tab bar item (like some major apps, e.g. Instagram) and a customized navigation where the TabBar is shown only on the first level of navigation. Below you can find a video that shows the final result.
 
