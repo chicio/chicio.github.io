@@ -6,6 +6,7 @@ node_modules
 .idea
 *.code-workspace
 vendor/
+vendor.nosync/
 .bundle/
 .lighthouseci# ignore node_modules symlink
 node_modules
