@@ -11,7 +11,7 @@
 
 <p align="center">
   <a href="https://www.fabrizioduroni.it">
-    <img alt="Fabrizio Duroni" src="https://github.com/chicio/chicio.github.io/blob/main/src/images/icon.png?raw=true" width="80" />
+    <img alt="Fabrizio Duroni" src="https://github.com/chicio/chicio.github.io/blob/source/src/images/icon.png?raw=true" width="80" />
   </a>
 </p>
 <h1 align="center">
