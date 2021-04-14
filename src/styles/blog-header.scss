@@ -1,0 +1,46 @@
+.blog-header {
+  margin-top: 50px;
+  margin-bottom: 20px;
+
+  .blog-logo {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.575);
+    @include media-breakpoint-up(md) {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  .lead.blog-description {
+    @include theme('color', $secondary-text-color);
+    font-size: 12px;
+    margin-top: 2px;
+    @include media-breakpoint-up(md) {
+      font-size: 22px;
+    }
+  }
+
+  & .blog-title {
+    @include theme('color', $primary-text-color);
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 28px;
+    font-weight: bold;
+    display: block;
+    @include media-breakpoint-up(md) {
+      font-size: 40px;
+    }
+
+    a {
+      @include theme('color', $primary-text-color);
+    }
+
+    a:hover {
+      text-decoration: none;
+      @include theme('color', $primary-text-color);
+    }
+  }
+}

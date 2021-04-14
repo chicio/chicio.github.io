@@ -1,0 +1,12 @@
+.down-arrow {
+    @include theme('color', $primary-color-text);
+    text-align: center;
+    opacity: 0;
+    animation: show-down-arrow 0.5s;
+    animation-fill-mode: forwards;
+
+    @keyframes show-down-arrow {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+}

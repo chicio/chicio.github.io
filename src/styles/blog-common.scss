@@ -1,0 +1,60 @@
+@media (min-width: 1200px) {
+  .container {
+    width: 970px;
+  }
+}
+
+.blog-main {
+  font-size: 18px;
+  line-height: 1.5;
+  h3 {
+    width: 100%;
+    font-size: 22px;
+  }
+  h4 {
+    font-size: 20px;
+  }
+  hr {
+    @include theme('background-color', $divider-color);
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  ul {
+    font-size: 16px;
+  }
+}
+
+.blog-posts {
+  margin-top: 100px;
+  flex: 1 0 auto;
+}
+
+/* bootstrap safari fix grid */
+.row:before, .row:after {
+  display: none !important;
+}
+
+/* Sticky footer https://css-tricks.com/couple-takes-sticky-footer/ */
+html, body {
+  height: 100%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#___gatsby{
+  height: 100%;
+}
+
+#gatsby-focus-wrapper{
+  height: 100%;
+}
+
+footer {
+  flex-shrink: 0;
+}

@@ -1,0 +1,66 @@
+.footer-container {
+  @include theme('background-color', $primary-color);
+  @include theme('color', $primary-color-text);
+  padding: 10px 0 0px 0;
+  margin-bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  font-size: 14px;
+  
+  .footer-icon {
+    @include theme('color', $primary-color-text);
+    @include theme('background', $accent-color);
+    font-size: 1.2em;
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5em !important;
+    text-align: center;
+    border-radius: 0.5em;
+    margin: 5px;
+    display: inline-block;
+  }
+
+  .heart {
+    display: inline-block;
+  }
+
+  .nav-item-footer {
+    @include theme('color', $primary-color-text);
+    font-weight: 500;
+    padding: 5px 5px 5px 5px;
+    font-size: 15px;
+    text-align: center;
+    display: block;
+    width: 100%;
+    
+    &.last {
+      padding-bottom: 10px;
+    }
+
+    &:hover,
+    &:focus {
+      @include theme('color', $primary-color-text);
+      text-decoration: none;
+    }
+  }
+
+  .copyright {
+    @include theme('background-color', $primary-color-dark);
+    padding-top: 5px;
+    padding-bottom: 10px;
+    div {
+      font-size: 14px;
+    }
+  }
+
+  .social-links {
+    padding-top: 10px;
+    @include theme('background-color', $primary-color-dark);
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  footer {
+    font-size: 16px;
+  }
+}
