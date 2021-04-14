@@ -1,4 +1,4 @@
-![Build](https://github.com/chicio/chicio.github.io/workflows/Build/badge.svg)
+[![Build](https://github.com/chicio/chicio.github.io/actions/workflows/build.yml/badge.svg)](https://github.com/chicio/chicio.github.io/actions/workflows/build.yml)
 ![Lighthouse](https://github.com/chicio/chicio.github.io/workflows/Lighthouse/badge.svg)
 ![Release](https://github.com/chicio/chicio.github.io/workflows/Release/badge.svg)
 ![CodeQL](https://github.com/chicio/chicio.github.io/workflows/CodeQL/badge.svg)
@@ -11,7 +11,7 @@
 
 <p align="center">
   <a href="https://www.fabrizioduroni.it">
-    <img alt="Fabrizio Duroni" src="https://github.com/chicio/new.chicio.github.io/blob/main/src/images/icon.png?raw=true" width="60" />
+    <img alt="Fabrizio Duroni" src="https://github.com/chicio/chicio.github.io/blob/main/src/images/icon.png?raw=true" width="80" />
   </a>
 </p>
 <h1 align="center">
