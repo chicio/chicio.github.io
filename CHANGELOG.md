@@ -1,12 +1,6 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
-## [3.5.1](https://github.com/chicio/chicio.github.io/releases/tag/3.5.1)
-Release date: 2021-04-14
-
-#### Added
-- various posts an fixes. Last verions with Jekyll
-
 ## [3.5.0](https://github.com/chicio/chicio.github.io/releases/tag/3.5.0)
 Release date: 2020-12-07
 
