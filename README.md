@@ -17,7 +17,7 @@ raw=true" width="120" />
   chicio.github.io - www.fabrizioduroni.it
 </h1>
 
-My personal website, created using github pages.
+My personal website, created using github pages and GatsbyJS.
 
 ***
 
