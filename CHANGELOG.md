@@ -8,12 +8,12 @@ Release date: 2021-04-15
 
 - Goodbye Jekyll. Hello GatsbyJS!! 🚀
 
-## [3.5.0](https://github.com/chicio/chicio.github.io/releases/tag/vv3.5.0)
-Release date: 2020-12-07
+## [3.5.1](https://github.com/chicio/chicio.github.io/releases/tag/vv3.5.0)
+Release date: 2021-04-14
 
 #### Added
 
-- Updated to Webpack 5, TypeScript 4 and workbox 6
+- various posts and fixes. Last version with Jekyll
 
 ## [3.5.0](https://github.com/chicio/chicio.github.io/releases/tag/v3.5.0)
 Release date: 2020-12-07
