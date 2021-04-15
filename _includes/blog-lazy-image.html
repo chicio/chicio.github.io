@@ -1,6 +1,0 @@
-{% capture description %}{{ include.description | replace: ' ', '-' | downcase }}{% endcapture %}
-{% capture customClassAndBlogClass %}{{ include.class | default: '' | append: ' figure-img img-fluid d-block mx-auto rounded blog-image' }}{% endcapture %}
-<figure class="d-block mx-auto">
-  {% include lazy-image.html alt=include.description fill="BDBDBD" src=include.src width=include.width height=include.height class=customClassAndBlogClass %}
-  <figcaption class="figure-caption text-center font-italic font-weight-light">{{ include.description }}</figcaption>
-</figure>

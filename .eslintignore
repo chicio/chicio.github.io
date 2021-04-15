@@ -1,9 +1,0 @@
-# gulpfile
-gulpfile.babel.js
-
-# Service worker
-sw.js
-sw-cache-polyfill.js
-
-# ThreeJS
-_ts/home/scene-threejs.js

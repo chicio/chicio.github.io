@@ -1,6 +1,0 @@
-{%- assign words = {{include.content}} | number_of_words -%}
-{%- if words < 360 -%}
-	 1 min read
-{%- else -%}
-	 {{ words | divided_by:275 }} min read
-{%- endif -%}
