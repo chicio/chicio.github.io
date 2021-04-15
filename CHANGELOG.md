@@ -1,21 +1,35 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
-## [3.5.0](https://github.com/chicio/chicio.github.io/releases/tag/3.5.0)
+## [4.0.0](https://github.com/chicio/chicio.github.io/releases/tag/v4.0.0)
+Release date: 2021-04-15
+
+#### Added
+
+- Goodbye Jekyll. Hello GatsbyJS!! 🚀
+
+## [3.5.0](https://github.com/chicio/chicio.github.io/releases/tag/vv3.5.0)
 Release date: 2020-12-07
 
 #### Added
 
 - Updated to Webpack 5, TypeScript 4 and workbox 6
 
-## [3.4.0](https://github.com/chicio/chicio.github.io/releases/tag/3.4.0)
+## [3.5.0](https://github.com/chicio/chicio.github.io/releases/tag/v3.5.0)
+Release date: 2020-12-07
+
+#### Added
+
+- Updated to Webpack 5, TypeScript 4 and workbox 6
+
+## [3.4.0](https://github.com/chicio/chicio.github.io/releases/tag/v3.4.0)
 Release date: 2020-07-22
 
 #### Added
 
 - Service worker in page migration to workbox-window
 
-## [3.3.0](https://github.com/chicio/chicio.github.io/releases/tag/3.3.0)
+## [3.3.0](https://github.com/chicio/chicio.github.io/releases/tag/v3.3.0)
 Release date: 2020-06-20
 
 #### Added
@@ -26,7 +40,7 @@ Release date: 2020-06-20
 - intersection observer polyfill lazy load
 - upgraded lighthouse github action
 
-## [3.2.0](https://github.com/chicio/chicio.github.io/releases/tag/3.2.0)
+## [3.2.0](https://github.com/chicio/chicio.github.io/releases/tag/v3.2.0)
 Release date: 2020-05-18
 
 #### Added
@@ -34,7 +48,7 @@ Release date: 2020-05-18
 - HtmlWebpackPlugin to generate styles and scripts urls dynamically
 - Hot reload dev mode
 
-## [3.1.0](https://github.com/chicio/chicio.github.io/releases/tag/3.1.0)
+## [3.1.0](https://github.com/chicio/chicio.github.io/releases/tag/v3.1.0)
 Release date: 2020-05-18
 
 #### Added
@@ -43,7 +57,7 @@ Release date: 2020-05-18
 
 #### Added
 
-## [3.0.0](https://github.com/chicio/chicio.github.io/releases/tag/3.0.0)
+## [3.0.0](https://github.com/chicio/chicio.github.io/releases/tag/v3.0.0)
 Release date: 2020-05-16
 
 #### Added
@@ -56,7 +70,7 @@ Release date: 2020-05-16
 - Js and css versioning using Webpack.
 - Removed service worker ad hoc url generation
 
-## [2.2.0](https://github.com/chicio/chicio.github.io/releases/tag/2.2.0)
+## [2.2.0](https://github.com/chicio/chicio.github.io/releases/tag/v2.2.0)
 Release date: 2020-05-16
 
 #### Added
@@ -64,14 +78,14 @@ Release date: 2020-05-16
 - Webpack for JS bundling
 - removed useless dependecies
 
-## [2.1.0](https://github.com/chicio/chicio.github.io/releases/tag/2.1.0)
+## [2.1.0](https://github.com/chicio/chicio.github.io/releases/tag/v2.1.0)
 Release date: 2020-05-15
 
 #### Added
 
 - gulp cached
 
-## [2.0.0](https://github.com/chicio/chicio.github.io/releases/tag/2.0.0)
+## [2.0.0](https://github.com/chicio/chicio.github.io/releases/tag/v2.0.0)
 Release date: 2020-05-14
 
 #### Added
@@ -80,7 +94,7 @@ Release date: 2020-05-14
 - fix css
 - major speed and no more FOUT
 
-## [1.23.0](https://github.com/chicio/chicio.github.io/releases/tag/1.23.0)
+## [1.23.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.23.0)
 Release date: 2020-05-12
 
 #### Added
@@ -90,14 +104,14 @@ Release date: 2020-05-12
 - migration to github workflow and github actions for CI
 - new post version script for push commit and tag
 
-## [1.22.0](https://github.com/chicio/chicio.github.io/releases/tag/1.22.0)
+## [1.22.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.22.0)
 Release date: 2020-02-05
 
 #### Added
 
 - no more MathJax, hello Katex
 
-## [1.21.0](https://github.com/chicio/chicio.github.io/releases/tag/1.21.0)
+## [1.21.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.21.0)
 Release date: 2020-01-15
 
 #### Added
@@ -105,7 +119,7 @@ Release date: 2020-01-15
 - gulp-mode to manage different environment
 - youtube async load
 
-## [1.20.0](https://github.com/chicio/chicio.github.io/releases/tag/1.20.0)
+## [1.20.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.20.0)
 Release date: 2019-11-27
 
 #### Added
@@ -113,7 +127,7 @@ Release date: 2019-11-27
 - CSS critical path with extraction and finally with inline
 - purgecss to remove unused css rules
 
-## [1.19.0](https://github.com/chicio/chicio.github.io/releases/tag/1.19.0)
+## [1.19.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.19.0)
 Release date: 2019-09-22
 
 #### Added
@@ -121,7 +135,7 @@ Release date: 2019-09-22
 - Updated cookieconsent
 - Update MathJax
 
-## [1.18.0](https://github.com/chicio/chicio.github.io/releases/tag/1.18.0)
+## [1.18.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.18.0)
 Release date: 2019-09-22
 
 #### Added
@@ -134,7 +148,7 @@ Release date: 2019-09-22
 
 - material properties on threejs scene
 
-## [1.17.0](https://github.com/chicio/chicio.github.io/releases/tag/1.17.0)
+## [1.17.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.17.0)
 Release date: 2019-09-21.
 
 #### Added
@@ -143,7 +157,7 @@ Release date: 2019-09-21.
 - Improved service worker registration
 - Migration to global site tag (gtag) for google analytcis
 
-## [1.16.0](https://github.com/chicio/chicio.github.io/releases/tag/1.16.0)
+## [1.16.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.16.0)
 Release date: 2019-09-19.
 
 #### Fixed
@@ -151,7 +165,7 @@ Release date: 2019-09-19.
 - fixed offline fallback for safari (iOS 13)
 - fixed hover for recent post (now only for screens > lg)
 
-## [1.15.0](https://github.com/chicio/chicio.github.io/releases/tag/1.15.0)
+## [1.15.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.15.0)
 Release date: 2019-09-19.
 
 #### Added
@@ -159,7 +173,7 @@ Release date: 2019-09-19.
 - offline network management
 - lazy load images reload on network error
 
-## [1.14.0](https://github.com/chicio/chicio.github.io/releases/tag/1.14.0)
+## [1.14.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.14.0)
 Release date: 2019-09-15.
 
 #### Added
@@ -172,14 +186,14 @@ Release date: 2019-09-15.
 - flow build removes old js build
 - improved code quality with eslint
 
-## [1.13.1](https://github.com/chicio/chicio.github.io/releases/tag/1.13.1)
+## [1.13.1](https://github.com/chicio/chicio.github.io/releases/tag/v1.13.1)
 Release date: 2019-07-28.
 
 #### Fixed
 
 - home loader z-index now is animated to put it behind the socials button (now everything is clickable)
 
-## [1.13.0](https://github.com/chicio/chicio.github.io/releases/tag/1.13.0)
+## [1.13.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.13.0)
 Release date: 2019-07-20.
 
 #### Added
@@ -188,7 +202,7 @@ Release date: 2019-07-20.
 - fixing article using the vscode 'Spell Right' plugin
 - added dev.to badge in homepage
 
-## [1.12.0](https://github.com/chicio/chicio.github.io/releases/tag/1.12.0)
+## [1.12.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.12.0)
 Release date: 2019-05-18.
 
 #### Added
@@ -202,7 +216,7 @@ Release date: 2019-05-18.
 
 - foreach on lazy loading for images
 
-## [1.11.0](https://github.com/chicio/chicio.github.io/releases/tag/1.11.0)
+## [1.11.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.11.0)
 Release date: 2019-05-12.
 
 #### Added
@@ -210,7 +224,7 @@ Release date: 2019-05-12.
 - moved scene3d home animation and cookie consent to the window.load event
 - added missing icons in icomoon font
 
-## [1.10.0](https://github.com/chicio/chicio.github.io/releases/tag/1.10.0)
+## [1.10.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.10.0)
 Release date: 2019-05-11.
 
 #### Added
@@ -220,21 +234,21 @@ Release date: 2019-05-11.
 - font-face with local open sans font and font-display
 - updated intersection observer polifyll and threejs
 
-## [1.9.0](https://github.com/chicio/chicio.github.io/releases/tag/1.9.0)
+## [1.9.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.9.0)
 Release date: 2019-05-10.
 
 #### Added
 
 - bye bye gsap, I want speed with css animation!!! 
 
-## [1.8.0](https://github.com/chicio/chicio.github.io/releases/tag/1.8.0)
+## [1.8.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.8.0)
 Release date: 2019-05-09.
 
 #### Added
 
 - fuck loader, I want speed!!! 
 
-## [1.7.0](https://github.com/chicio/chicio.github.io/releases/tag/1.7.0)
+## [1.7.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.7.0)
 Release date: 2019-05-08.
 
 #### Added
@@ -242,14 +256,14 @@ Release date: 2019-05-08.
 - new blog home
 - css optimized for each page
 
-## [1.6.1](https://github.com/chicio/chicio.github.io/releases/tag/1.6.1)
+## [1.6.1](https://github.com/chicio/chicio.github.io/releases/tag/v1.6.1)
 Release date: 2019-05-04.
 
 #### Fixed
 
 - Footer now is more mobile friendly
 
-## [1.6.0](https://github.com/chicio/chicio.github.io/releases/tag/1.6.0)
+## [1.6.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.6.0)
 Release date: 2019-05-02.
 
 #### Added
@@ -257,35 +271,35 @@ Release date: 2019-05-02.
 - Added svg placeholder to prevent content reflow for lazy loaded images
 - Updated gems
 
-## [1.5.0](https://github.com/chicio/chicio.github.io/releases/tag/1.5.0)
+## [1.5.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.5.0)
 Release date: 2019-04-05.
 
 #### Added
 
 - Added privacy policy for chicio coding mobile app
 
-## [1.4.0](https://github.com/chicio/chicio.github.io/releases/tag/1.4.0)
+## [1.4.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.4.0)
 Release date: 2019-04-04.
 
 #### Added
 
 - Added digital assets link
 
-## [1.3.1](https://github.com/chicio/chicio.github.io/releases/tag/1.3.1)
+## [1.3.1](https://github.com/chicio/chicio.github.io/releases/tag/v1.3.1)
 Release date: 2019-03-20.
 
 #### Fixed
 
 - fixed IntersectionObserver import: now is inside lazy-load-images.js
 
-## [1.3.0](https://github.com/chicio/chicio.github.io/releases/tag/1.3.0)
+## [1.3.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.3.0)
 Release date: 2019-03-20.
 
 #### Added
 
 - Added image lazy
 
-## [1.2.2](https://github.com/chicio/chicio.github.io/releases/tag/1.2.2)
+## [1.2.2](https://github.com/chicio/chicio.github.io/releases/tag/v1.2.2)
 Release date: 2019-03-10.
 
 #### Fixed
@@ -296,7 +310,7 @@ Release date: 2019-03-10.
 - fixed links that do not have a discernible name
 - fixed accessbility colors
 
-## [1.2.1](https://github.com/chicio/chicio.github.io/releases/tag/1.2.1)
+## [1.2.1](https://github.com/chicio/chicio.github.io/releases/tag/v1.2.1)
 
 Release date: 2019-03-10.
 
@@ -304,7 +318,7 @@ Release date: 2019-03-10.
 
 - removed install rvm from install scripts.
 
-## [1.2.0](https://github.com/chicio/chicio.github.io/releases/tag/1.2.0)
+## [1.2.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.2.0)
 
 Release date: 2019-03-10.
 
@@ -319,7 +333,7 @@ Release date: 2019-03-10.
 
 - install process now uses pages gem with bundler installation for gulp build
 
-## [1.1.6](https://github.com/chicio/chicio.github.io/releases/tag/1.1.6)
+## [1.1.6](https://github.com/chicio/chicio.github.io/releases/tag/v1.1.6)
 
 Release date: 2019-03-03.
 
@@ -327,7 +341,7 @@ Release date: 2019-03-03.
 
 - new pages-gem release
 
-## [1.1.5](https://github.com/chicio/chicio.github.io/releases/tag/1.1.5)
+## [1.1.5](https://github.com/chicio/chicio.github.io/releases/tag/v1.1.5)
 
 Release date: 2019-02-23.
 
@@ -335,7 +349,7 @@ Release date: 2019-02-23.
 
 - new Google Analytics campaign for pwa
 
-## [1.1.4](https://github.com/chicio/chicio.github.io/releases/tag/1.1.4)
+## [1.1.4](https://github.com/chicio/chicio.github.io/releases/tag/v1.1.4)
 
 Release date: 2019-02-15.
 
@@ -344,7 +358,7 @@ Release date: 2019-02-15.
 - new pages-gem release
 - update cache to support new seo stuff
 
-## [1.1.2](https://github.com/chicio/chicio.github.io/releases/tag/1.1.2)
+## [1.1.2](https://github.com/chicio/chicio.github.io/releases/tag/v1.1.2)
 
 Release date: 2019-01-09.
 
@@ -352,7 +366,7 @@ Release date: 2019-01-09.
 
 - Service worker now delete all old caches.
 
-## [1.1.1](https://github.com/chicio/chicio.github.io/releases/tag/1.1.1)
+## [1.1.1](https://github.com/chicio/chicio.github.io/releases/tag/v1.1.1)
 
 Release date: 2019-01-03.
 
@@ -360,7 +374,7 @@ Release date: 2019-01-03.
 
 - Download of cv now works on every browser
 
-## [1.1.0](https://github.com/chicio/chicio.github.io/releases/tag/1.1.0)
+## [1.1.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.1.0)
 
 Release date: 2019-01-02.
 
@@ -372,7 +386,7 @@ Release date: 2019-01-02.
 - Bumb dependencies versions
 
 
-## [1.0.0](https://github.com/chicio/chicio.github.io/releases/tag/1.0.0)
+## [1.0.0](https://github.com/chicio/chicio.github.io/releases/tag/v1.0.0)
 
 Release date: 2018-12-31.
 
