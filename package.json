@@ -41,6 +41,8 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "@types/styled-components": "^5.1.9",
+    "babel-plugin-styled-components": "^1.12.0",
     "disqus-react": "^1.0.11",
     "gatsby": "^3.2.1",
     "gatsby-plugin-catch-links": "^3.3.0",
@@ -54,6 +56,7 @@
     "gatsby-plugin-sass": "^4.2.0",
     "gatsby-plugin-sharp": "^3.2.0",
     "gatsby-plugin-sitemap": "^3.2.0",
+    "gatsby-plugin-styled-components": "^4.3.0",
     "gatsby-remark-embed-video": "^3.1.1",
     "gatsby-remark-emojis": "^0.4.3",
     "gatsby-remark-images": "^4.2.0",
@@ -68,7 +71,8 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
-    "sass": "^1.32.8"
+    "sass": "^1.32.8",
+    "styled-components": "^5.2.3"
   },
   "devDependencies": {
     "@types/node": "^14.14.37",
