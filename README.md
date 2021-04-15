@@ -45,11 +45,33 @@ npm run build
 npm run serve
 ```
 
+To deploy a new version in production:
+
+* create and push a new tag (v*.*.*)
+* run the deploy script with the following command
+
+```shell
+npm run deploy
+```
+
 ## Overview
 
 My website has been created for Github Pages using [GatsbyJS](https://www.gatsbyjs.com/) with the following plugins:
 
-- ZZZZ
+- [gatsby-plugin-sass](https://www.gatsbyjs.com/plugins/gatsby-plugin-sass/)
+- [gatsby-plugin-image](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-plugin-image/)
+- [gatsby-plugin-google-tag](https://www.gatsbyjs.com/plugins/gatsby-plugin-google-gtag/)
+- [gatsby-plugin-react-helmet](https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/)
+- [gatsby-plugin-sitemap](https://www.gatsbyjs.com/plugins/gatsby-plugin-sitemap/)
+- [gatsby-plugin-manifest](https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/)
+- [gatsby-plugin-offline](https://www.gatsbyjs.com/plugins/gatsby-plugin-offline/)
+- [gatsby-plugin-sharp](https://www.gatsbyjs.com/plugins/gatsby-plugin-sharp/)
+- [gatsby-transformer-sharp](https://www.gatsbyjs.com/plugins/gatsby-transformer-sharp/)
+- [gatsby-source-filesystem](https://www.gatsbyjs.com/plugins/gatsby-source-filesystem/)
+- [gatsby-transformer-remark](https://www.gatsbyjs.com/plugins/gatsby-transformer-remark/)
+- [gatsby-plugin-graphql-codegen](https://www.gatsbyjs.com/plugins/gatsby-plugin-graphql-codegen/)
+- [gatsby-plugin-feed](https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/)
+- [gatsby-plugin-catch-links](https://www.gatsbyjs.com/plugins/gatsby-plugin-catch-links/)
 
 Go and checkout my [homepage](https://www.fabrizioduroni.it "homepage") and my [blog](https://www.fabrizioduroni.it/blog/ "blog").
 

@@ -58,7 +58,6 @@ module.exports = {
         precachePages: [`/`, `/blog/`],
       },
     },
-    "gatsby-transformer-remark",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     {
