@@ -3,12 +3,13 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import "../styles/style.cookiepolicy.scss";
 import "@fontsource/open-sans";
 import { Head } from "../components/Head";
-import { Masthead } from "../components/Masthead";
+import { Menu } from "../components/design-system/organism/menu";
 import { tracking } from "../utils/tracking";
 import { BlogHeader } from "../components/BlogHeader";
 import { graphql, PageProps, useStaticQuery } from "gatsby";
 import { Footer } from "../components/Footer";
 import { CookiePolicyQuery } from "../../graphql-types";
+import { Page } from "../components/page";
 
 const CookiePolicy: React.FC<PageProps> = ({ location }) => {
   const data = useStaticQuery<CookiePolicyQuery>(
@@ -29,13 +30,13 @@ const CookiePolicy: React.FC<PageProps> = ({ location }) => {
   const featuredImage = siteMetadata.featuredImage!;
 
   return (
-    <main>
+    <Page>
       <Head
         url={location.href}
         pageType={"website"}
         imageUrl={`${location.protocol}//${location.host}/${featuredImage}`}
       />
-      <Masthead
+      <Menu
         trackingCategory={tracking.category.cookie_policy}
         pathname={location.pathname}
       />
@@ -136,7 +137,7 @@ const CookiePolicy: React.FC<PageProps> = ({ location }) => {
         trackingCategory={tracking.category.cookie_policy}
         trackingLabel={tracking.label.footer}
       />
-    </main>
+    </Page>
   );
 };
 

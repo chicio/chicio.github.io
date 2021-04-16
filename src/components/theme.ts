@@ -4,6 +4,7 @@ export const theme: DefaultTheme = {
   dark: {
     primaryColor: "#3F51B5",
     primaryColorDark: "#303F9F",
+    primaryColorLight: "#DFDFF1",
     generalBackground: "#181918",
     primaryColorText: "#FFFFFF",
     accentColor: "#4fA7ff",
@@ -11,8 +12,9 @@ export const theme: DefaultTheme = {
   light: {
     primaryColor: "#3F51B5",
     primaryColorDark: "#303F9F",
-    generalBackground: "#FAFAFA",
+    primaryColorLight: "#DFDFF1",
     primaryColorText: "#FFFFFF",
+    generalBackground: "#FAFAFA",
     accentColor: "#0F67FF",
   },
   fontSizes: [

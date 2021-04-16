@@ -2,7 +2,7 @@ import * as React from "react";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "../styles/style.blog.home.scss";
 import { graphql, Link, PageProps } from "gatsby";
-import { Masthead } from "../components/Masthead";
+import { Menu } from "../components/design-system/organism/menu";
 import { track, tracking } from "../utils/tracking";
 import { BlogHeader } from "../components/BlogHeader";
 import { Footer } from "../components/Footer";
@@ -11,6 +11,7 @@ import { BlogListQuery } from "../../graphql-types";
 import { PostAuthors } from "../components/PostAuthors";
 import { PostMeta } from "../components/PostMeta";
 import { Head } from "../components/Head";
+import { Page } from "../components/page";
 
 interface BlogPageContext {
   limit: number;
@@ -37,13 +38,13 @@ const Blog: React.FC<PageProps<BlogListQuery, BlogPageContext>> = ({
   const featuredImage = siteMetadata.featuredImage!;
 
   return (
-    <main>
+    <Page>
       <Head
         url={location.href}
         pageType={"website"}
         imageUrl={`${location.protocol}//${location.host}/${featuredImage}`}
       />
-      <Masthead
+      <Menu
         trackingCategory={tracking.category.blog_home}
         pathname={location.pathname}
       />
@@ -135,7 +136,7 @@ const Blog: React.FC<PageProps<BlogListQuery, BlogPageContext>> = ({
         trackingCategory={tracking.category.blog_home}
         trackingLabel={tracking.label.footer}
       />
-    </main>
+    </Page>
   );
 };
 

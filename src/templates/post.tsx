@@ -2,7 +2,7 @@ import React from "react";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "../styles/style.blog.post.scss";
 import { graphql, Link, PageProps } from "gatsby";
-import { Masthead } from "../components/Masthead";
+import { Menu } from "../components/design-system/organism/menu";
 import { tracking } from "../utils/tracking";
 import { PullToRefresh } from "../components/PullToRefresh";
 import { BlogHeader } from "../components/BlogHeader";
@@ -14,6 +14,7 @@ import { PostAuthors } from "../components/PostAuthors";
 import { RecentPosts } from "../components/RecentPosts";
 import { Head } from "../components/Head";
 import { getSrc } from "gatsby-plugin-image";
+import { Page } from "../components/page";
 
 const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
   const post = data.markdownRemark!;
@@ -23,7 +24,7 @@ const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
   }
 
   return (
-    <main>
+    <Page>
       <Head
         url={location.href}
         pageType={"article"}
@@ -34,7 +35,7 @@ const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
         date={post.frontmatter!.date}
         description={post.frontmatter!.description!}
       />
-      <Masthead
+      <Menu
         trackingCategory={tracking.category.blog_home}
         pathname={location.pathname}
       />
@@ -74,7 +75,7 @@ const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
         trackingCategory={tracking.category.blog_post}
         trackingLabel={tracking.label.footer}
       />
-    </main>
+    </Page>
   );
 };
 

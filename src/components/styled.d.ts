@@ -3,6 +3,7 @@ import "styled-components";
 interface Colors {
   primaryColor: string;
   primaryColorDark: string;
+  primaryColorLight: string;
   generalBackground: string;
   primaryColorText: string;
   accentColor: string;

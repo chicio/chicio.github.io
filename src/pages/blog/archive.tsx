@@ -5,10 +5,11 @@ import "@fontsource/open-sans";
 import { graphql, Link, PageProps } from "gatsby";
 import { Head } from "../../components/Head";
 import { ArchiveQuery } from "../../../graphql-types";
-import { Masthead } from "../../components/Masthead";
+import { Menu } from "../../components/design-system/organism/menu";
 import { track, tracking } from "../../utils/tracking";
 import { BlogHeader } from "../../components/BlogHeader";
 import { Footer } from "../../components/Footer";
+import { Page } from "../../components/page";
 
 const Archive: React.FC<PageProps<ArchiveQuery>> = ({ data, location }) => {
   const siteMetadata = data.site!.siteMetadata!;
@@ -16,13 +17,13 @@ const Archive: React.FC<PageProps<ArchiveQuery>> = ({ data, location }) => {
   const featuredImage = siteMetadata.featuredImage!;
 
   return (
-    <main>
+    <Page>
       <Head
         url={location.href}
         pageType={"website"}
         imageUrl={`${location.protocol}//${location.host}/${featuredImage}`}
       />
-      <Masthead
+      <Menu
         trackingCategory={tracking.category.blog_archive}
         pathname={location.pathname}
       />
@@ -62,7 +63,7 @@ const Archive: React.FC<PageProps<ArchiveQuery>> = ({ data, location }) => {
         trackingCategory={tracking.category.blog_archive}
         trackingLabel={tracking.label.footer}
       />
-    </main>
+    </Page>
   );
 };
 
