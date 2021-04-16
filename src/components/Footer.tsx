@@ -6,20 +6,19 @@ import { Link } from "gatsby";
 interface FooterProps {
   author: string;
   trackingCategory: string;
-  trackingLabel: string;
 }
 
-export const Footer: React.FC<FooterProps> = ({
-  author,
-  trackingCategory,
-  trackingLabel,
-}) => (
+export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
   <footer className="container-fluid footer-container">
     <div className="d-flex justify-content-center flex-wrap">
       <Link
         to="/"
         onClick={() => {
-          track(tracking.action.open_home, trackingCategory, trackingLabel);
+          track(
+            tracking.action.open_home,
+            trackingCategory,
+            tracking.label.footer
+          );
         }}
         className="nav-item-footer"
       >
@@ -28,7 +27,11 @@ export const Footer: React.FC<FooterProps> = ({
       <Link
         to="/blog/"
         onClick={() => {
-          track(tracking.action.open_blog, trackingCategory, trackingLabel);
+          track(
+            tracking.action.open_blog,
+            trackingCategory,
+            tracking.label.footer
+          );
         }}
         className="nav-item-footer"
       >
@@ -37,7 +40,11 @@ export const Footer: React.FC<FooterProps> = ({
       <Link
         to="/2017/05/10/about-me/"
         onClick={() => {
-          track(tracking.action.open_about_me, trackingCategory, trackingLabel);
+          track(
+            tracking.action.open_about_me,
+            trackingCategory,
+            tracking.label.footer
+          );
         }}
         className="nav-item-footer"
       >
@@ -49,7 +56,7 @@ export const Footer: React.FC<FooterProps> = ({
           track(
             tracking.action.open_blog_archive,
             trackingCategory,
-            trackingLabel
+            tracking.label.footer
           );
         }}
         className="nav-item-footer"
@@ -62,7 +69,7 @@ export const Footer: React.FC<FooterProps> = ({
           track(
             tracking.action.open_blog_tags,
             trackingCategory,
-            trackingLabel
+            tracking.label.footer
           );
         }}
         className="nav-item-footer last"
@@ -73,7 +80,7 @@ export const Footer: React.FC<FooterProps> = ({
     <div className="d-flex justify-content-center social-links">
       <SocialContacts
         trackingCategory={trackingCategory}
-        trackingLabel={trackingLabel}
+        trackingLabel={tracking.label.footer}
         iconClass={"footer-icon"}
       />
     </div>

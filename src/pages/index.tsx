@@ -48,11 +48,7 @@ const HomePage: React.FC<PageProps> = ({ location }) => {
       </div>
       <Technologies author={author} />
       <ProjectsAndCarrier />
-      <Footer
-        author={author}
-        trackingCategory={tracking.category.home}
-        trackingLabel={tracking.label.footer}
-      />
+      <Footer author={author} trackingCategory={tracking.category.home} />
     </main>
   );
 };

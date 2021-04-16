@@ -1,6 +1,5 @@
 import { Head } from "../../head";
 import { Menu } from "../organism/menu";
-import { tracking } from "../../../utils/tracking";
 import { BlogHeader } from "../../BlogHeader";
 import { Page } from "./page";
 import * as React from "react";
@@ -37,10 +36,6 @@ export const BlogPage: React.FC<BlogPageProps> = ({
       <BlogHeader trackingCategory={trackingCategory} />
       {children}
     </BlogContainer>
-    <Footer
-      author={author}
-      trackingCategory={trackingCategory}
-      trackingLabel={tracking.label.footer}
-    />
+    <Footer author={author} trackingCategory={trackingCategory} />
   </Page>
 );
