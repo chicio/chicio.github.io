@@ -9,7 +9,7 @@ import { tracking } from "../../utils/tracking";
 import { PostsGroupByTagsQuery } from "../../../graphql-types";
 import { Footer } from "../../components/Footer";
 import { BlogHeader } from "../../components/BlogHeader";
-import { Page } from "../../components/page";
+import { Page } from "../../components/design-system/templates/page";
 
 const TagsPage: React.FC<PageProps<PostsGroupByTagsQuery>> = ({
   data,

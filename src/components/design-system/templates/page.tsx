@@ -1,5 +1,5 @@
-import { theme } from "./theme";
-import { GlobalStyle } from "./global-style";
+import { theme } from "../../theme";
+import { GlobalStyle } from "../../global-style";
 import { ThemeProvider } from "styled-components";
 import React from "react";
 

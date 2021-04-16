@@ -14,7 +14,7 @@ import { PostAuthors } from "../components/PostAuthors";
 import { RecentPosts } from "../components/RecentPosts";
 import { Head } from "../components/Head";
 import { getSrc } from "gatsby-plugin-image";
-import { Page } from "../components/page";
+import { Page } from "../components/design-system/templates/page";
 
 const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
   const post = data.markdownRemark!;

@@ -4,6 +4,20 @@ import { MenuItem } from "../molecules/menu-item";
 import { Container } from "../atoms/container";
 import styled from "styled-components";
 
+const MenuContainer = styled.div`
+  background-color: ${(props) => props.theme.light.primaryColor};
+  box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 55px;
+  z-index: 300;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: ${(props) => props.theme.dark.primaryColor};
+  }
+`;
+
 const NavBar = styled(Container)`
   display: flex;
   align-items: center;
@@ -19,10 +33,10 @@ export const Menu: React.FC<MastheadProps> = ({
   trackingCategory,
   pathname,
 }) => (
-  <div className="blog-masthead">
+  <MenuContainer>
     <NavBar>
       <MenuItem
-        active={pathname === "/"}
+        selected={pathname === "/"}
         to={"/"}
         onClick={() => {
           track(
@@ -35,7 +49,7 @@ export const Menu: React.FC<MastheadProps> = ({
         {"Home"}
       </MenuItem>
       <MenuItem
-        active={pathname !== "/2017/05/10/about-me/"}
+        selected={pathname !== "/2017/05/10/about-me/"}
         to={"/blog/"}
         onClick={() => {
           track(
@@ -48,7 +62,7 @@ export const Menu: React.FC<MastheadProps> = ({
         {"Blog"}
       </MenuItem>
       <MenuItem
-        active={pathname === "/2017/05/10/about-me/"}
+        selected={pathname === "/2017/05/10/about-me/"}
         to={"/2017/05/10/about-me/"}
         onClick={() => {
           track(
@@ -61,5 +75,5 @@ export const Menu: React.FC<MastheadProps> = ({
         {"About me"}
       </MenuItem>
     </NavBar>
-  </div>
+  </MenuContainer>
 );

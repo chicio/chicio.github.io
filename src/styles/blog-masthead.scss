@@ -1,9 +1,0 @@
-.blog-masthead {
-  @include theme('background-color', $primary-color);
-  box-shadow: inset 0 -2px 5px rgba(0, 0, 0, .1);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 55px;
-  z-index: 300;
-}

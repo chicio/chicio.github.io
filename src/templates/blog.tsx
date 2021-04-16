@@ -11,7 +11,7 @@ import { BlogListQuery } from "../../graphql-types";
 import { PostAuthors } from "../components/PostAuthors";
 import { PostMeta } from "../components/PostMeta";
 import { Head } from "../components/Head";
-import { Page } from "../components/page";
+import { Page } from "../components/design-system/templates/page";
 
 interface BlogPageContext {
   limit: number;

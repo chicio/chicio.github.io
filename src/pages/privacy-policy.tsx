@@ -9,7 +9,7 @@ import { BlogHeader } from "../components/BlogHeader";
 import { graphql, PageProps, useStaticQuery } from "gatsby";
 import { Footer } from "../components/Footer";
 import { PrivacyPolicyQuery } from "../../graphql-types";
-import { Page } from "../components/page";
+import { Page } from "../components/design-system/templates/page";
 
 const PrivacyPolicy: React.FC<PageProps> = ({ location }) => {
   const data = useStaticQuery<PrivacyPolicyQuery>(

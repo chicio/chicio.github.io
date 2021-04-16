@@ -9,7 +9,7 @@ import { Menu } from "../../components/design-system/organism/menu";
 import { track, tracking } from "../../utils/tracking";
 import { BlogHeader } from "../../components/BlogHeader";
 import { Footer } from "../../components/Footer";
-import { Page } from "../../components/page";
+import { Page } from "../../components/design-system/templates/page";
 
 const Archive: React.FC<PageProps<ArchiveQuery>> = ({ data, location }) => {
   const siteMetadata = data.site!.siteMetadata!;

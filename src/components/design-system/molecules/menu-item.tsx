@@ -2,12 +2,12 @@ import styled, { css } from "styled-components";
 import { Link } from "gatsby";
 
 interface MenuItemProps {
-  active: boolean;
+  selected: boolean;
 }
 
 export const MenuItem = styled(Link)<MenuItemProps>`
   color: ${(props) =>
-    props.active
+    props.selected
       ? props.theme.light.primaryColorText
       : props.theme.light.primaryColorLight};
   position: relative;
@@ -23,8 +23,8 @@ export const MenuItem = styled(Link)<MenuItemProps>`
     text-decoration: none;
   }
 
-  ${({ active }) =>
-    active &&
+  ${(props) =>
+    props.selected &&
     css`
       &:after {
         position: absolute;
@@ -47,7 +47,7 @@ export const MenuItem = styled(Link)<MenuItemProps>`
 
   @media (prefers-color-scheme: dark) {
     color: ${(props) =>
-      props.active
+      props.selected
         ? props.theme.dark.primaryColorText
         : props.theme.dark.primaryColorLight};
   }

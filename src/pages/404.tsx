@@ -5,7 +5,7 @@ import { Paragraph } from "../components/design-system/atoms/paragraph";
 import styled from "styled-components";
 import { ContainerFullscreen } from "../components/design-system/atoms/container-fullscreen";
 import { InternalCallToAction } from "../components/design-system/atoms/internal-call-to-action";
-import { Page } from "../components/page";
+import { Page } from "../components/design-system/templates/page";
 
 const CallToAction = styled(InternalCallToAction)`
   font-size: ${(props) => props.theme.fontSizes[2]};

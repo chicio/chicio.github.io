@@ -9,7 +9,7 @@ import { track, tracking } from "../utils/tracking";
 import { BlogHeader } from "../components/BlogHeader";
 import { Footer } from "../components/Footer";
 import { TagPostsQuery } from "../../graphql-types";
-import { Page } from "../components/page";
+import { Page } from "../components/design-system/templates/page";
 
 interface TagPageContext {
   tag: string;
