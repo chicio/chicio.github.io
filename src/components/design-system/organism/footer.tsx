@@ -1,7 +1,31 @@
 import React from "react";
-import { track, tracking } from "../utils/tracking";
-import { SocialContacts } from "./SocialContacts";
-import { Link } from "gatsby";
+import { track, tracking } from "../../../utils/tracking";
+import { SocialContacts } from "../../SocialContacts";
+import styled from "styled-components";
+import { MenuItem } from "../molecules/menu-item";
+
+const FooterContainer = styled.footer`
+  width: 100%;
+  background-color: ${(props) => props.theme.light.primaryColor};
+
+  @media (prefers-color-scheme: dark) {
+    background-color: ${(props) => props.theme.dark.primaryColor};
+  }
+`;
+
+const FooterMenu = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: ${(props) => props.theme.spacing[2]};
+`;
+
+const FooterMenuItem = styled(MenuItem)`
+  margin: ${(props) => props.theme.spacing[0]};
+  font-size: ${(props) => props.theme.fontSizes[2]};
+`;
 
 interface FooterProps {
   author: string;
@@ -9,9 +33,9 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
-  <footer className="container-fluid footer-container">
-    <div className="d-flex justify-content-center flex-wrap">
-      <Link
+  <FooterContainer>
+    <FooterMenu>
+      <FooterMenuItem
         to="/"
         onClick={() => {
           track(
@@ -20,11 +44,10 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
             tracking.label.footer
           );
         }}
-        className="nav-item-footer"
       >
         Home
-      </Link>
-      <Link
+      </FooterMenuItem>
+      <FooterMenuItem
         to="/blog/"
         onClick={() => {
           track(
@@ -36,8 +59,8 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
         className="nav-item-footer"
       >
         Blog
-      </Link>
-      <Link
+      </FooterMenuItem>
+      <FooterMenuItem
         to="/2017/05/10/about-me/"
         onClick={() => {
           track(
@@ -49,8 +72,8 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
         className="nav-item-footer"
       >
         About Me
-      </Link>
-      <Link
+      </FooterMenuItem>
+      <FooterMenuItem
         to="/blog/archive/"
         onClick={() => {
           track(
@@ -62,8 +85,8 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
         className="nav-item-footer"
       >
         Archive
-      </Link>
-      <Link
+      </FooterMenuItem>
+      <FooterMenuItem
         to="/blog/tags/"
         onClick={() => {
           track(
@@ -75,8 +98,8 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
         className="nav-item-footer last"
       >
         Tags
-      </Link>
-    </div>
+      </FooterMenuItem>
+    </FooterMenu>
     <div className="d-flex justify-content-center social-links">
       <SocialContacts
         trackingCategory={trackingCategory}
@@ -93,5 +116,5 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
         {`by ${author} 'Chicio'`}
       </div>
     </div>
-  </footer>
+  </FooterContainer>
 );

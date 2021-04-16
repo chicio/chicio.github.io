@@ -5,7 +5,7 @@ import { Page } from "./page";
 import * as React from "react";
 import styled from "styled-components";
 import { Container } from "../atoms/container";
-import { Footer } from "../../Footer";
+import { Footer } from "../organism/footer";
 import { WindowLocation } from "@reach/router";
 
 const BlogContainer = styled(Container)`

@@ -1,12 +1,7 @@
 import styled from "styled-components";
+import { ContainerFluid } from "./container-fluid";
 
-export const Container = styled.div`
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-
+export const Container = styled(ContainerFluid)`
   @media (min-width: 576px) {
     max-width: 540px;
   }

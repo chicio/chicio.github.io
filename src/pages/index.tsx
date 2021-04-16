@@ -7,8 +7,6 @@ import { DownArrow } from "../components/DownArrow";
 import { ProfilePresentation } from "../components/ProfilePresentation";
 import { Technologies } from "../components/Technologies";
 import { ProjectsAndCarrier } from "../components/ProjectsAndCarrier";
-import { Footer } from "../components/Footer";
-import { tracking } from "../utils/tracking";
 import { Head } from "../components/head";
 import { HomePageQuery } from "../../graphql-types";
 
@@ -48,7 +46,7 @@ const HomePage: React.FC<PageProps> = ({ location }) => {
       </div>
       <Technologies author={author} />
       <ProjectsAndCarrier />
-      <Footer author={author} trackingCategory={tracking.category.home} />
+      {/*<Footer author={author} trackingCategory={tracking.category.home} />*/}
     </main>
   );
 };

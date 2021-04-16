@@ -6,7 +6,7 @@
   width: 100%;
   overflow: hidden;
   font-size: 14px;
-  
+
   .footer-icon {
     @include theme('color', $primary-color-text);
     @include theme('background', $accent-color);
@@ -32,7 +32,7 @@
     text-align: center;
     display: block;
     width: 100%;
-    
+
     &.last {
       padding-bottom: 10px;
     }
@@ -59,8 +59,3 @@
   }
 }
 
-@include media-breakpoint-up(sm) {
-  footer {
-    font-size: 16px;
-  }
-}

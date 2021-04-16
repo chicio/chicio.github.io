@@ -6,6 +6,7 @@ export const ContainerFullscreen = styled.div`
   align-items: center;
   flex-direction: column;
   height: 100vh;
+  width: 100%;
   background-color: ${(props) => props.theme.light.primaryColor};
 
   @media (prefers-color-scheme: dark) {
