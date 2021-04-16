@@ -41,7 +41,7 @@ const Blog: React.FC<PageProps<BlogListQuery, BlogPageContext>> = ({
       <Head
         url={location.href}
         pageType={"website"}
-        imageUrl={`${location.protocol}//${location.host}/${featuredImage}`}
+        imageUrl={`/${featuredImage}`}
       />
       <Masthead
         trackingCategory={tracking.category.blog_home}
