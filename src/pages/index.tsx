@@ -37,7 +37,7 @@ const HomePage: React.FC<PageProps> = ({ location }) => {
       <Head
         url={location.href}
         pageType={"profile"}
-        imageUrl={`${location.protocol}//${location.host}/${featuredImage}`}
+        imageUrl={`/${featuredImage}`}
       />
       <div
         id="profile-introduction"

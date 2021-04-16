@@ -34,7 +34,7 @@ const PrivacyPolicy: React.FC<PageProps> = ({ location }) => {
       <Head
         url={location.href}
         pageType={"website"}
-        imageUrl={`${location.protocol}//${location.host}/${featuredImage}`}
+        imageUrl={`/${featuredImage}`}
       />
       <Menu
         trackingCategory={tracking.category.cookie_policy}

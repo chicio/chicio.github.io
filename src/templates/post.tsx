@@ -28,7 +28,7 @@ const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
       <Head
         url={location.href}
         pageType={"article"}
-        imageUrl={`${location.protocol}//${location.host}${getSrc(
+        imageUrl={`${getSrc(
           post.frontmatter!.image!.childImageSharp?.gatsbyImageData
         )!}`}
         customTitle={post.frontmatter!.title!}
