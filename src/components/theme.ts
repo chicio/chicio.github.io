@@ -7,6 +7,8 @@ export const theme: DefaultTheme = {
     primaryColorLight: "#DFDFF1",
     generalBackground: "#181918",
     primaryColorText: "#FFFFFF",
+    primaryTextColor: "#d7d7d8",
+    secondaryTextColor: "#A6A6A6",
     accentColor: "#4fA7ff",
   },
   light: {
@@ -14,6 +16,8 @@ export const theme: DefaultTheme = {
     primaryColorDark: "#303F9F",
     primaryColorLight: "#DFDFF1",
     primaryColorText: "#FFFFFF",
+    primaryTextColor: "#151515",
+    secondaryTextColor: "#575757",
     generalBackground: "#FAFAFA",
     accentColor: "#0F67FF",
   },

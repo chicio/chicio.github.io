@@ -6,6 +6,8 @@ interface Colors {
   primaryColorLight: string;
   generalBackground: string;
   primaryColorText: string;
+  primaryTextColor: string;
+  secondaryTextColor: string;
   accentColor: string;
 }
 

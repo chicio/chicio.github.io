@@ -1,6 +1,6 @@
 import { Head } from "../../head";
 import { Menu } from "../organism/menu";
-import { BlogHeader } from "../../BlogHeader";
+import { BlogHeader } from "../organism/blog-header";
 import { Page } from "./page";
 import * as React from "react";
 import styled from "styled-components";
@@ -33,7 +33,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
     <Head url={location.href} pageType={ogPageType} imageUrl={ogImage} />
     <Menu trackingCategory={trackingCategory} pathname={location.pathname} />
     <BlogContainer>
-      <BlogHeader trackingCategory={trackingCategory} />
+      <BlogHeader />
       {children}
     </BlogContainer>
     <Footer author={author} trackingCategory={trackingCategory} />
