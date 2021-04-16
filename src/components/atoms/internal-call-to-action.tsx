@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import styled from "styled-components";
 
-export const CallToActionInternal = styled(Link)`
+export const InternalCallToAction = styled(Link)`
   background-color: ${(props) => props.theme.light.accentColor};
   color: ${(props) => props.theme.light.primaryColorText};
   padding: ${(props) => props.theme.spacing[3]};

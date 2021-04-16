@@ -1,21 +1,24 @@
 import React from "react";
 import { track, tracking } from "../utils/tracking";
-import { GlobalStyle } from "../components/global-style";
 import { Heading1 } from "../components/atoms/heading1";
 import { Paragraph } from "../components/atoms/paragraph";
-import { ThemeProvider } from "styled-components";
-import { theme } from "../components/theme";
+import styled from "styled-components";
 import { ContainerCenterContent } from "../components/organism/container-center-content";
-import { CallToActionHome } from "../components/molecules/call-to-action-home";
+import { InternalCallToAction } from "../components/atoms/internal-call-to-action";
+import { Page } from "../components/page";
+
+const CallToAction = styled(InternalCallToAction)`
+  font-size: ${(props) => props.theme.fontSizes[2]};
+`;
 
 const NotFoundPage: React.FC = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
+    <Page>
       <ContainerCenterContent>
         <Heading1>404!</Heading1>
         <Paragraph>Opss!?! Keep calm and go to</Paragraph>
-        <CallToActionHome
+        <CallToAction
+          to={"/"}
           onClick={() => {
             track(
               tracking.action.open_home,
@@ -23,9 +26,11 @@ const NotFoundPage: React.FC = () => {
               tracking.label.body
             );
           }}
-        />
+        >
+          Homepage
+        </CallToAction>
       </ContainerCenterContent>
-    </ThemeProvider>
+    </Page>
   );
 };
 
