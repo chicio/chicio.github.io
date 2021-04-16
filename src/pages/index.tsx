@@ -9,7 +9,7 @@ import { Technologies } from "../components/Technologies";
 import { ProjectsAndCarrier } from "../components/ProjectsAndCarrier";
 import { Footer } from "../components/Footer";
 import { tracking } from "../utils/tracking";
-import { Head } from "../components/Head";
+import { Head } from "../components/head";
 import { HomePageQuery } from "../../graphql-types";
 
 config.autoAddCss = false; //https://github.com/FortAwesome/react-fontawesome/issues/134

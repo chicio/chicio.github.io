@@ -1,15 +1,10 @@
 import React from "react";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "../../styles/style.blog.tags.scss";
-import "@fontsource/open-sans";
-import { Link, graphql, PageProps } from "gatsby";
-import { Head } from "../../components/Head";
-import { Menu } from "../../components/design-system/organism/menu";
+import { graphql, Link, PageProps } from "gatsby";
 import { tracking } from "../../utils/tracking";
 import { PostsGroupByTagsQuery } from "../../../graphql-types";
-import { Footer } from "../../components/Footer";
-import { BlogHeader } from "../../components/BlogHeader";
-import { Page } from "../../components/design-system/templates/page";
+import { BlogPage } from "../../components/design-system/templates/blog-page";
 
 const TagsPage: React.FC<PageProps<PostsGroupByTagsQuery>> = ({
   data,
@@ -20,41 +15,30 @@ const TagsPage: React.FC<PageProps<PostsGroupByTagsQuery>> = ({
   const featuredImage = siteMetadata.featuredImage!;
 
   return (
-    <Page>
-      <Head
-        url={location.href}
-        pageType={"website"}
-        imageUrl={`/${featuredImage}`}
-      />
-      <Menu
-        trackingCategory={tracking.category.blog_archive}
-        pathname={location.pathname}
-      />
-      <div className="container blog-posts">
-        <BlogHeader trackingCategory={tracking.category.blog_tags} />
-        <div className="blog-tags-list">
-          <div className="blog-main">
-            <div className="blog-tags">
-              {data.allMarkdownRemark.group.map((tag) => (
-                <Link
-                  to={`/blog/tags/${tag.fieldValue!.split(" ").join("-")}/`}
-                  key={tag.fieldValue}
-                >
-                  <span className={"big"}>
-                    {tag.fieldValue} ({tag.totalCount})
-                  </span>
-                </Link>
-              ))}
-            </div>
+    <BlogPage
+      location={location}
+      author={author}
+      ogPageType={"website"}
+      ogImage={`/${featuredImage}`}
+      trackingCategory={tracking.category.blog_tags}
+    >
+      <div className="blog-tags-list">
+        <div className="blog-main">
+          <div className="blog-tags">
+            {data.allMarkdownRemark.group.map((tag) => (
+              <Link
+                to={`/blog/tags/${tag.fieldValue!.split(" ").join("-")}/`}
+                key={tag.fieldValue}
+              >
+                <span className={"big"}>
+                  {tag.fieldValue} ({tag.totalCount})
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       </div>
-      <Footer
-        author={author}
-        trackingCategory={tracking.category.blog_tags}
-        trackingLabel={tracking.label.footer}
-      />
-    </Page>
+    </BlogPage>
   );
 };
 
