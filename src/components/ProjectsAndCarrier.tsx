@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { track, tracking } from "../utils/tracking";
 import { StaticImage } from "gatsby-plugin-image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBriefcase,
-  faGraduationCap,
-} from "@fortawesome/free-solid-svg-icons";
+// import {
+//   faBriefcase,
+//   faGraduationCap,
+// } from "@fortawesome/free-solid-svg-icons";
 
 enum Tab {
   projects = "projects",
@@ -464,7 +463,7 @@ export const ProjectsAndCarrier: React.FC = () => {
                   className="timeline-element"
                 >
                   <div className="timeline-badge work">
-                    <FontAwesomeIcon icon={faBriefcase} />
+                    {/*<FontAwesomeIcon icon={faBriefcase} />*/}
                   </div>
                   <div className="timeline-panel">
                     <div className="row timeline-heading">
@@ -502,7 +501,7 @@ export const ProjectsAndCarrier: React.FC = () => {
                   className="timeline-element timeline-inverted"
                 >
                   <div className="timeline-badge">
-                    <FontAwesomeIcon icon={faGraduationCap} />
+                    {/*<FontAwesomeIcon icon={faGraduationCap} />*/}
                   </div>
                   <div className="timeline-panel">
                     <div className="row timeline-heading">
@@ -547,7 +546,7 @@ export const ProjectsAndCarrier: React.FC = () => {
                 </li>
                 <li id="timeline-element-condenast">
                   <div className="timeline-badge work">
-                    <FontAwesomeIcon icon={faBriefcase} />
+                    {/*<FontAwesomeIcon icon={faBriefcase} />*/}
                   </div>
                   <div className="timeline-panel">
                     <div className="row timeline-heading">
@@ -588,7 +587,7 @@ export const ProjectsAndCarrier: React.FC = () => {
                 </li>
                 <li id="timeline-element-shi">
                   <div className="timeline-badge work">
-                    <FontAwesomeIcon icon={faBriefcase} />
+                    {/*<FontAwesomeIcon icon={faBriefcase} />*/}
                   </div>
                   <div className="timeline-panel">
                     <div className="row timeline-heading">
@@ -627,7 +626,7 @@ export const ProjectsAndCarrier: React.FC = () => {
                 </li>
                 <li id="timeline-element-bottinelli-informatica">
                   <div className="timeline-badge work">
-                    <FontAwesomeIcon icon={faBriefcase} />
+                    {/*<FontAwesomeIcon icon={faBriefcase} />*/}
                   </div>
                   <div className="timeline-panel">
                     <div className="row timeline-heading">
@@ -657,7 +656,7 @@ export const ProjectsAndCarrier: React.FC = () => {
                 </li>
                 <li id="timeline-element-avanade">
                   <div className="timeline-badge work">
-                    <FontAwesomeIcon icon={faBriefcase} />
+                    {/*<FontAwesomeIcon icon={faBriefcase} />*/}
                   </div>
                   <div className="timeline-panel">
                     <div className="row timeline-heading">
@@ -714,7 +713,7 @@ export const ProjectsAndCarrier: React.FC = () => {
                   className="timeline-inverted"
                 >
                   <div className="timeline-badge">
-                    <FontAwesomeIcon icon={faGraduationCap} />
+                    {/*<FontAwesomeIcon icon={faGraduationCap} />*/}
                   </div>
                   <div className="timeline-panel">
                     <div className="row timeline-heading">
@@ -764,7 +763,7 @@ export const ProjectsAndCarrier: React.FC = () => {
                   className="timeline-inverted"
                 >
                   <div className="timeline-badge">
-                    <FontAwesomeIcon icon={faGraduationCap} />
+                    {/*<FontAwesomeIcon icon={faGraduationCap} />*/}
                   </div>
                   <div className="timeline-panel">
                     <div className="row timeline-heading">

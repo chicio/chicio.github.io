@@ -1,5 +1,4 @@
 import React from "react";
-import "@fortawesome/fontawesome-svg-core/styles.css";
 import "../styles/style.blog.post.scss";
 import { graphql, Link, PageProps } from "gatsby";
 import { tracking } from "../utils/tracking";

@@ -1,16 +1,12 @@
 import * as React from "react";
-import "@fortawesome/fontawesome-svg-core/styles.css";
 import "../styles/style.home.scss";
 import { graphql, PageProps, useStaticQuery } from "gatsby";
-import { config } from "@fortawesome/fontawesome-svg-core";
 import { DownArrow } from "../components/DownArrow";
 import { ProfilePresentation } from "../components/ProfilePresentation";
 import { Technologies } from "../components/Technologies";
 import { ProjectsAndCarrier } from "../components/ProjectsAndCarrier";
 import { Head } from "../components/head";
 import { HomePageQuery } from "../../graphql-types";
-
-config.autoAddCss = false; //https://github.com/FortAwesome/react-fontawesome/issues/134
 
 const HomePage: React.FC<PageProps> = ({ location }) => {
   const data = useStaticQuery<HomePageQuery>(
