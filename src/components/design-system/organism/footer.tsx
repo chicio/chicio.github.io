@@ -3,6 +3,7 @@ import { track, tracking } from "../../../utils/tracking";
 import { SocialContacts } from "../../SocialContacts";
 import styled from "styled-components";
 import { MenuItem } from "../molecules/menu-item";
+import { Paragraph } from "../atoms/paragraph";
 
 const FooterContainer = styled.footer`
   width: 100%;
@@ -25,6 +26,17 @@ const FooterMenu = styled.div`
 const FooterMenuItem = styled(MenuItem)`
   margin: ${(props) => props.theme.spacing[0]};
   font-size: ${(props) => props.theme.fontSizes[2]};
+`;
+
+const FooterContentContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  background-color: ${(props) => props.theme.light.primaryColorDark};
+  padding: ${(props) => props.theme.spacing[0]};
+
+  @media (prefers-color-scheme: dark) {
+    color: ${(props) => props.theme.dark.primaryColorDark};
+  }
 `;
 
 interface FooterProps {
@@ -100,21 +112,15 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
         Tags
       </FooterMenuItem>
     </FooterMenu>
-    <div className="d-flex justify-content-center social-links">
+    <FooterContentContainer>
       <SocialContacts
         trackingCategory={trackingCategory}
         trackingLabel={tracking.label.footer}
         iconClass={"footer-icon"}
       />
-    </div>
-    <div className="d-flex justify-content-center copyright">
-      <div>
-        Made with{" "}
-        <span id="heart" className="heart">
-          💝
-        </span>
-        {`by ${author} 'Chicio'`}
-      </div>
-    </div>
+    </FooterContentContainer>
+    <FooterContentContainer>
+      <Paragraph>{`Made with 💝 by ${author} 'Chicio'`}</Paragraph>
+    </FooterContentContainer>
   </FooterContainer>
 );

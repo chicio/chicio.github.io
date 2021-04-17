@@ -3,7 +3,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import "../styles/style.blog.post.scss";
 import { graphql, Link, PageProps } from "gatsby";
 import { tracking } from "../utils/tracking";
-import { Comments } from "../components/comments";
+import { Comments } from "../components/design-system/molecules/comments";
 import { PostMeta } from "../components/PostMeta";
 import { PostQuery } from "../../graphql-types";
 import { PostAuthors } from "../components/PostAuthors";
