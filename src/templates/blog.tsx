@@ -8,6 +8,7 @@ import { BlogListQuery } from "../../graphql-types";
 import { PostAuthors } from "../components/PostAuthors";
 import { PostMeta } from "../components/PostMeta";
 import { BlogPage } from "../components/design-system/templates/blog-page";
+import { PaginationNavigation } from "../components/design-system/molecules/pagination-navigation";
 
 interface BlogPageContext {
   limit: number;
@@ -88,38 +89,15 @@ const Blog: React.FC<PageProps<BlogListQuery, BlogPageContext>> = ({
             );
           })}
         </div>
-        <div className="d-flex flex-row justify-content-center">
-          {!isFirst && (
-            <Link
-              className="btn blog-pages-button"
-              onClick={() => {
-                track(
-                  tracking.action.open_blog_previous_page,
-                  tracking.category.blog_home,
-                  tracking.label.body
-                );
-              }}
-              to={prevPage}
-            >
-              Previous
-            </Link>
-          )}
-          {!isLast && (
-            <Link
-              className="btn blog-pages-button"
-              onClick={() => {
-                track(
-                  tracking.action.open_blog_next_page,
-                  tracking.category.blog_home,
-                  tracking.label.body
-                );
-              }}
-              to={nextPage}
-            >
-              Next
-            </Link>
-          )}
-        </div>
+        <PaginationNavigation
+          trackingCategory={tracking.category.blog_home}
+          previousPageUrl={prevPage}
+          previousPageTrackingAction={tracking.action.open_blog_previous_page}
+          nextPageUrl={nextPage}
+          nextPageTrackingAction={tracking.action.open_blog_next_page}
+          isFirst={isFirst}
+          isLast={isLast}
+        />
       </div>
     </BlogPage>
   );
