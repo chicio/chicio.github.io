@@ -35,6 +35,7 @@ const NavBarMenuItem = styled(MenuItem)`
   margin-right: 15px;
   height: 55px;
   line-height: 70px;
+  font-size: ${(props) => props.theme.fontSizes[5]};
 
   ${(props) =>
     props.selected &&
