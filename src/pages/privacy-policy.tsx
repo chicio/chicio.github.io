@@ -8,7 +8,7 @@ import { Heading4 } from "../components/design-system/atoms/heading4";
 import { List } from "../components/design-system/atoms/list";
 import { Section } from "../components/design-system/atoms/section";
 import { Paragraph } from "../components/design-system/atoms/paragraph";
-import { StandardLink } from "../components/design-system/atoms/standard-link";
+import { StandardExternalLink } from "../components/design-system/atoms/standard-external-link";
 
 const PrivacyPolicy: React.FC<PageProps> = ({ location }) => {
   const data = useStaticQuery<PrivacyPolicyQuery>(
@@ -76,13 +76,13 @@ const PrivacyPolicy: React.FC<PageProps> = ({ location }) => {
         </Paragraph>
         <List>
           <li>
-            <StandardLink
+            <StandardExternalLink
               href="https://www.google.com/policies/privacy/"
               target="_blank"
               rel="noreferrer"
             >
               Google Play Services
-            </StandardLink>
+            </StandardExternalLink>
           </li>
         </List>
       </Section>

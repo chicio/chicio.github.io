@@ -8,7 +8,7 @@ import { Paragraph } from "../components/design-system/atoms/paragraph";
 import { Heading4 } from "../components/design-system/atoms/heading4";
 import { List } from "../components/design-system/atoms/list";
 import { Section } from "../components/design-system/atoms/section";
-import { StandardLink } from "../components/design-system/atoms/standard-link";
+import { StandardExternalLink } from "../components/design-system/atoms/standard-external-link";
 
 const CookiePolicy: React.FC<PageProps> = ({ location }) => {
   const data = useStaticQuery<CookiePolicyQuery>(
@@ -106,15 +106,15 @@ const CookiePolicy: React.FC<PageProps> = ({ location }) => {
         <List>
           <li>
             Cookies:
-            <StandardLink href="https://en.wikipedia.org/wiki/HTTP_cookie">
+            <StandardExternalLink href="https://en.wikipedia.org/wiki/HTTP_cookie">
               https://en.wikipedia.org/wiki/HTTP_cookie
-            </StandardLink>
+            </StandardExternalLink>
           </li>
           <li>
             Network Advertising Initiative:{" "}
-            <StandardLink href="https://www.networkadvertising.org/">
+            <StandardExternalLink href="https://www.networkadvertising.org/">
               https://www.networkadvertising.org/
-            </StandardLink>
+            </StandardExternalLink>
           </li>
         </List>
       </Section>

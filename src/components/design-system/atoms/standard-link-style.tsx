@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import { css } from "styled-components";
 
-export const StandardLink = styled.a`
+export const standardLinkStyle = css`
   color: ${(props) => props.theme.light.accentColor};
 
   @media (prefers-color-scheme: dark) {
