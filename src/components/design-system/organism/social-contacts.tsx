@@ -1,32 +1,31 @@
 import * as React from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import { tracking } from "../utils/tracking";
+import { tracking } from "../../../utils/tracking";
+import { SocialContact } from "../molecules/social-contact";
 import {
-  faDev,
-  faFacebook,
-  faGithub,
-  faInstagram,
-  faLinkedin,
-  faMedium,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
-import { SocialContact } from "./SocialContact";
-import { faEnvelope, faMobile } from "@fortawesome/free-solid-svg-icons";
+  Dev,
+  Facebook,
+  Github,
+  Instagram,
+  Linkedin,
+  Medium,
+  Twitter,
+} from "@styled-icons/fa-brands";
+import { Envelope, Mobile } from "@styled-icons/fa-solid";
+import { SocialContactsQuery } from "../../../../graphql-types";
 
 interface SocialContactsProps {
   trackingCategory: string;
   trackingLabel: string;
-  iconClass: string;
 }
 
 export const SocialContacts: React.FC<SocialContactsProps> = ({
   trackingCategory,
   trackingLabel,
-  iconClass,
 }) => {
-  const data = useStaticQuery(
+  const data = useStaticQuery<SocialContactsQuery>(
     graphql`
-      query {
+      query SocialContacts {
         site {
           siteMetadata {
             contacts {
@@ -48,79 +47,72 @@ export const SocialContacts: React.FC<SocialContactsProps> = ({
     `
   );
 
+  const links = data.site!.siteMetadata!.contacts!.links!;
+
   return (
     <>
       <SocialContact
-        link={data.site.siteMetadata.contacts.links.github}
+        link={links.github!}
         trackingAction={tracking.action.open_github}
         trackingCategory={trackingCategory}
         trackingLabel={trackingLabel}
-        icon={faGithub}
-        iconClass={iconClass}
+        icon={<Github size={30} title={"Github"} />}
       />
       <SocialContact
-        link={data.site.siteMetadata.contacts.links.linkedin}
+        link={links.linkedin!}
         trackingAction={tracking.action.open_linkedin}
         trackingCategory={trackingCategory}
         trackingLabel={trackingLabel}
-        icon={faLinkedin}
-        iconClass={iconClass}
+        icon={<Linkedin size={30} title={"Linkedin"} />}
       />
       <SocialContact
-        link={data.site.siteMetadata.contacts.links.email}
+        link={data.site!.siteMetadata!.contacts!.email!}
         trackingAction={tracking.action.send_mail}
         trackingCategory={trackingCategory}
         trackingLabel={trackingLabel}
-        icon={faEnvelope}
-        iconClass={iconClass}
+        icon={<Envelope size={30} title={"mail"} />}
       />
       <SocialContact
-        link={data.site.siteMetadata.contacts.links.medium}
+        link={links.medium!}
         trackingAction={tracking.action.open_medium}
         trackingCategory={trackingCategory}
         trackingLabel={trackingLabel}
-        icon={faMedium}
-        iconClass={iconClass}
+        icon={<Medium size={30} title={"Medium"} />}
       />
       <SocialContact
-        link={data.site.siteMetadata.contacts.links.devto}
+        link={links.devto!}
         trackingAction={tracking.action.open_devto}
         trackingCategory={trackingCategory}
         trackingLabel={trackingLabel}
-        icon={faDev}
-        iconClass={iconClass}
+        icon={<Dev size={30} title={"Devto"} />}
       />
       <SocialContact
-        link={data.site.siteMetadata.contacts.links.twitter}
+        link={links.twitter!}
         trackingAction={tracking.action.open_twitter}
         trackingCategory={trackingCategory}
         trackingLabel={trackingLabel}
-        icon={faTwitter}
-        iconClass={iconClass}
+        icon={<Twitter size={30} title={"Twitter"} />}
       />
       <SocialContact
-        link={data.site.siteMetadata.contacts.links.facebook}
+        link={links.facebook!}
         trackingAction={tracking.action.open_facebook}
         trackingCategory={trackingCategory}
         trackingLabel={trackingLabel}
-        icon={faFacebook}
-        iconClass={iconClass}
+        icon={<Facebook size={30} title={"Facebook"} />}
       />
       <SocialContact
-        link={data.site.siteMetadata.contacts.links.instagram}
+        link={links.instagram!}
         trackingAction={tracking.action.open_instagram}
         trackingCategory={trackingCategory}
         trackingLabel={trackingLabel}
-        icon={faInstagram}
-        iconClass={iconClass}
+        icon={<Instagram size={30} title={"Instagram"} />}
       />
       <SocialContact
-        link={`tel: ${data.site.siteMetadata.contacts.phone}`}
+        link={`tel: ${data.site!.siteMetadata!.contacts!.phone!}`}
         trackingAction={tracking.action.call_phone}
         trackingCategory={trackingCategory}
         trackingLabel={trackingLabel}
-        icon={faMobile}
-        iconClass={`${iconClass} icon-mobile-phone phone-number`}
+        icon={<Mobile size={30} title={"phone"} />}
       />
     </>
   );

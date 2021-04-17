@@ -3639,10 +3639,10 @@ export type RecentPostsQuery = { allMarkdownRemark: { edges: Array<{ node: { fro
           & { image?: Maybe<{ childImageSharp?: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }> }
         )>, fields?: Maybe<Pick<MarkdownRemarkFields, 'slug'>> } }> } };
 
-export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
+export type SocialContactsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_1_Query = { site?: Maybe<{ siteMetadata?: Maybe<{ contacts?: Maybe<(
+export type SocialContactsQuery = { site?: Maybe<{ siteMetadata?: Maybe<{ contacts?: Maybe<(
         Pick<SiteSiteMetadataContacts, 'email' | 'phone'>
         & { links?: Maybe<Pick<SiteSiteMetadataContactsLinks, 'twitter' | 'facebook' | 'linkedin' | 'github' | 'medium' | 'devto' | 'instagram'>> }
       )> }> }> };

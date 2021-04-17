@@ -1,6 +1,6 @@
 import React from "react";
 import { track, tracking } from "../../../utils/tracking";
-import { SocialContacts } from "../../SocialContacts";
+import { SocialContacts } from "./social-contacts";
 import styled from "styled-components";
 import { MenuItem } from "../molecules/menu-item";
 import { Paragraph } from "../atoms/paragraph";
@@ -31,8 +31,12 @@ const FooterMenuItem = styled(MenuItem)`
 const FooterContentContainer = styled.div`
   display: flex;
   justify-content: center;
-  background-color: ${(props) => props.theme.light.primaryColorDark};
   padding: ${(props) => props.theme.spacing[0]};
+`;
+
+const FooterAuthorDescription = styled.div`
+  padding: ${(props) => props.theme.spacing[2]};
+  background-color: ${(props) => props.theme.light.primaryColorDark};
 
   @media (prefers-color-scheme: dark) {
     color: ${(props) => props.theme.dark.primaryColorDark};
@@ -112,15 +116,16 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
         Tags
       </FooterMenuItem>
     </FooterMenu>
-    <FooterContentContainer>
-      <SocialContacts
-        trackingCategory={trackingCategory}
-        trackingLabel={tracking.label.footer}
-        iconClass={"footer-icon"}
-      />
-    </FooterContentContainer>
-    <FooterContentContainer>
-      <Paragraph>{`Made with 💝 by ${author} 'Chicio'`}</Paragraph>
-    </FooterContentContainer>
+    <FooterAuthorDescription>
+      <FooterContentContainer>
+        <SocialContacts
+          trackingCategory={trackingCategory}
+          trackingLabel={tracking.label.footer}
+        />
+      </FooterContentContainer>
+      <FooterContentContainer>
+        <Paragraph>{`Made with 💝 by ${author} 'Chicio'`}</Paragraph>
+      </FooterContentContainer>
+    </FooterAuthorDescription>
   </FooterContainer>
 );

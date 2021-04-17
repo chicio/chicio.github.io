@@ -1,15 +1,14 @@
-import { IconDefinition } from "@fortawesome/fontawesome-common-types";
 import * as React from "react";
-import { track } from "../utils/tracking";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { track } from "../../../utils/tracking";
+import { ExternalCallToAction } from "../atoms/external-call-to-action";
+import { Icon } from "../atoms/icon";
 
 interface SocialContactProps {
   link: string;
   trackingAction: string;
   trackingCategory: string;
   trackingLabel: string;
-  icon: IconDefinition;
-  iconClass: string;
+  icon: React.ReactElement;
 }
 
 export const SocialContact: React.FC<SocialContactProps> = ({
@@ -18,9 +17,8 @@ export const SocialContact: React.FC<SocialContactProps> = ({
   trackingCategory,
   trackingLabel,
   icon,
-  iconClass,
 }) => (
-  <a
+  <ExternalCallToAction
     href={link}
     onClick={() => {
       track(trackingAction, trackingCategory, trackingLabel);
@@ -28,8 +26,6 @@ export const SocialContact: React.FC<SocialContactProps> = ({
     target="_blank"
     rel="noopener noreferrer"
   >
-    <span className={`${iconClass}`}>
-      <FontAwesomeIcon icon={icon} />
-    </span>
-  </a>
+    <Icon>{icon}</Icon>
+  </ExternalCallToAction>
 );
