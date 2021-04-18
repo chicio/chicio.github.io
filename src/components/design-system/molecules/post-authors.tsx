@@ -1,9 +1,27 @@
 import React from "react";
-import { track, tracking } from "../utils/tracking";
-import { BlogAuthor, blogAuthors } from "../utils/blog-authors";
-import { AuthorsImagesQuery, Maybe } from "../../graphql-types";
+import { track, tracking } from "../../../utils/tracking";
+import { BlogAuthor, blogAuthors } from "../../../utils/blog-authors";
+import { AuthorsImagesQuery, Maybe } from "../../../../graphql-types";
 import { graphql, useStaticQuery } from "gatsby";
+import styled from "styled-components";
+import { ContainerFluid } from "../atoms/container-fluid";
 import { GatsbyImage } from "gatsby-plugin-image";
+import { Paragraph } from "../atoms/paragraph";
+import { StandardInternalLink } from "../atoms/standard-internal-link";
+
+const PostAuthorsContainer = styled(ContainerFluid)`
+  padding: 0;
+  margin: ${(props) => props.theme.spacing[2]} 0;
+  display: flex;
+  flex-direction: column;
+`;
+
+const PostAuthorContainer = styled(ContainerFluid)`
+  padding: 0;
+  margin-top: ${(props) => props.theme.spacing[0]};
+  display: flex;
+  align-items: center;
+`;
 
 interface PostAuthorsProps {
   authors: Maybe<string>[];
@@ -39,7 +57,7 @@ export const PostAuthors: React.FC<PostAuthorsProps> = ({
   `);
 
   return (
-    <div className="blog-post-authors d-inline-flex flex-column">
+    <PostAuthorsContainer>
       {authors.map((author) => {
         const blogAuthor: BlogAuthor = blogAuthors[author!];
         const blogAuthorImage = blogAuthorsImages.allFile.edges.find(
@@ -48,19 +66,23 @@ export const PostAuthors: React.FC<PostAuthorsProps> = ({
         )!.node!.childImageSharp!.gatsbyImageData!;
 
         return (
-          <div
-            className="blog-post-author d-inline-flex flex-row align-items-center"
+          <PostAuthorContainer
             key={`${author}${Math.floor(Math.random() * 100)}`}
           >
             <GatsbyImage
               alt={blogAuthor.name}
               image={blogAuthorImage}
-              style={{ width: 30, height: 30, marginRight: "5px" }}
-              imgClassName={"rounded-circle"}
+              style={{
+                width: 30,
+                height: 30,
+                marginRight: "5px",
+                borderRadius: "50%",
+              }}
+              imgStyle={{ borderRadius: "50%" }}
             />
-            <span>
+            <Paragraph>
               {enableUrl && (
-                <a
+                <StandardInternalLink
                   onClick={() =>
                     track(
                       tracking.action.open_blog_author,
@@ -68,16 +90,16 @@ export const PostAuthors: React.FC<PostAuthorsProps> = ({
                       trackingLabel
                     )
                   }
-                  href={blogAuthor.url}
+                  to={blogAuthor.url}
                 >
                   {blogAuthor.name}
-                </a>
+                </StandardInternalLink>
               )}
               {!enableUrl && blogAuthor.name}
-            </span>
-          </div>
+            </Paragraph>
+          </PostAuthorContainer>
         );
       })}
-    </div>
+    </PostAuthorsContainer>
   );
 };

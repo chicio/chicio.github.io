@@ -4,10 +4,12 @@ import { graphql, Link, PageProps } from "gatsby";
 import { track, tracking } from "../utils/tracking";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { BlogListQuery } from "../../graphql-types";
-import { PostAuthors } from "../components/PostAuthors";
-import { PostMeta } from "../components/PostMeta";
+import { PostAuthors } from "../components/design-system/molecules/post-authors";
+import { PostMeta } from "../components/design-system/molecules/post-meta";
 import { BlogPage } from "../components/design-system/templates/blog-page";
+import { Paragraph } from "../components/design-system/atoms/paragraph";
 import { PaginationNavigation } from "../components/design-system/molecules/pagination-navigation";
+import styled from "styled-components";
 
 interface BlogPageContext {
   limit: number;
@@ -15,6 +17,11 @@ interface BlogPageContext {
   numberOfPages: number;
   currentPage: number;
 }
+
+const PostDescription = styled(Paragraph)`
+  margin-right: 0;
+  margin-left: 0;
+`;
 
 const Blog: React.FC<PageProps<BlogListQuery, BlogPageContext>> = ({
   data,
@@ -80,9 +87,7 @@ const Blog: React.FC<PageProps<BlogListQuery, BlogPageContext>> = ({
                     date={frontMatter.date!}
                     readingTime={post.node.fields!.readingTime!.text!}
                   />
-                  <span className="blog-posts-post-description">
-                    {frontMatter.description!}
-                  </span>
+                  <PostDescription>{frontMatter.description!}</PostDescription>
                 </Link>
               </div>
             );
