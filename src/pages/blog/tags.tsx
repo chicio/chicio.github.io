@@ -7,6 +7,7 @@ import { Tag } from "../../components/design-system/molecules/tag";
 import { ContainerFluid } from "../../components/design-system/atoms/container-fluid";
 import styled from "styled-components";
 import { PageTitle } from "../../components/design-system/molecules/page-title";
+import { generateTagLink } from "../../components/design-system/templates/tag";
 
 const TagsContainer = styled(ContainerFluid)`
   padding: 0;
@@ -34,7 +35,7 @@ const TagsPage: React.FC<PageProps<PostsGroupByTagsQuery>> = ({
         {data.allMarkdownRemark.group.map((tag) => (
           <Tag
             big={true}
-            link={`/blog/tags/${tag.fieldValue!.split(" ").join("-")}/`}
+            link={generateTagLink(tag.fieldValue!)}
             tag={`${tag.fieldValue} (${tag.totalCount})`}
             key={tag.fieldValue}
           />

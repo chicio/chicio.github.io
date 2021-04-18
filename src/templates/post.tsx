@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/style.blog.post.scss";
 import "../styles/syntax.css";
 import "../styles/youtube.css";
-import { graphql, Link, PageProps } from "gatsby";
+import { graphql, PageProps } from "gatsby";
 import { tracking } from "../utils/tracking";
 import { Comments } from "../components/design-system/molecules/comments";
 import { PostMeta } from "../components/design-system/molecules/post-meta";
@@ -11,6 +11,7 @@ import { PostAuthors } from "../components/design-system/molecules/post-authors"
 import { RecentPosts } from "../components/RecentPosts";
 import { getSrc } from "gatsby-plugin-image";
 import { BlogPage } from "../components/design-system/templates/blog-page";
+import { PostTags } from "../components/design-system/molecules/post-tags";
 
 const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
   const post = data.markdownRemark!;
@@ -43,13 +44,7 @@ const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
             readingTime={post.fields!.readingTime!.text!}
           />
           <div dangerouslySetInnerHTML={{ __html: post.html! }} />
-          <div className="blog-tags">
-            {post.frontmatter!.tags!.map((tag) => (
-              <Link to={`/blog/tags/${tag!.split(" ").join("-")}/`} key={tag}>
-                <span>{tag}</span>
-              </Link>
-            ))}
-          </div>
+          <PostTags tags={post.frontmatter!.tags!} />
         </div>
       </div>
       <RecentPosts currentSlug={location.pathname} />
