@@ -8,12 +8,18 @@ import styled from "styled-components";
 import { ContainerFluid } from "../../components/design-system/atoms/container-fluid";
 import { Time } from "../../components/design-system/atoms/time";
 
-const Row = styled(ContainerFluid)`
+const PostContainer = styled(ContainerFluid)`
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   margin-bottom: ${(props) => props.theme.spacing[3]};
-  flex-wrap: wrap;
+  padding-left: 0;
+  padding-right: 0;
+
+  @media (min-width: 992px) {
+    flex-direction: row;
+    align-items: center;
+  }
 `;
 
 interface ColumnProps {
@@ -21,7 +27,9 @@ interface ColumnProps {
 }
 
 const Column = styled.div<ColumnProps>`
-  flex: ${(props) => props.size};
+  @media (min-width: 992px) {
+    flex: ${(props) => props.size};
+  }
 `;
 
 const PostTime = styled(Time)`
@@ -42,7 +50,7 @@ const Archive: React.FC<PageProps<ArchiveQuery>> = ({ data, location }) => {
       trackingCategory={tracking.category.blog_archive}
     >
       {data.allMarkdownRemark.edges.map((post) => (
-        <Row key={post.node.fields!.slug!}>
+        <PostContainer key={post.node.fields!.slug!}>
           <Column size={"15%"}>
             <PostTime>{post.node.frontmatter?.date}</PostTime>
           </Column>
@@ -60,7 +68,7 @@ const Archive: React.FC<PageProps<ArchiveQuery>> = ({ data, location }) => {
               {post.node.frontmatter?.title}
             </StandardInternalLink>
           </Column>
-        </Row>
+        </PostContainer>
       ))}
     </BlogPage>
   );
