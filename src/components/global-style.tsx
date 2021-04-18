@@ -30,7 +30,6 @@ export const GlobalStyle: GlobalStyleComponent<
     background-color: ${(props) => props.theme.light.generalBackground};
     font: ${(props) => props.theme.fontSizes[0]} 'Open Sans', Arial, sans-serif;
     max-width: 100%;
-    overflow-x: hidden;
     margin: 0;
 
     @media (prefers-color-scheme: dark) {
