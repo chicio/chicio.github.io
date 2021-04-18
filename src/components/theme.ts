@@ -10,6 +10,8 @@ export const theme: DefaultTheme = {
     primaryTextColor: "#d7d7d8",
     secondaryTextColor: "#A6A6A6",
     accentColor: "#4fA7ff",
+    generalBackgroundLight: "#363636",
+    boxShadowLight: "rgba(0, 0, 0, 0.2)",
   },
   light: {
     primaryColor: "#3F51B5",
@@ -20,6 +22,8 @@ export const theme: DefaultTheme = {
     secondaryTextColor: "#575757",
     generalBackground: "#FAFAFA",
     accentColor: "#0F67FF",
+    generalBackgroundLight: "#FFFFFF",
+    boxShadowLight: "rgba(0, 0, 0, 0.2)",
   },
   fontSizes: [
     "12px",
@@ -36,5 +40,19 @@ export const theme: DefaultTheme = {
     "48px",
     "56px",
   ],
-  spacing: ["4px", "8px", "12px", "16px", "20px"],
+  spacing: [
+    "4px",
+    "8px",
+    "12px",
+    "16px",
+    "20px",
+    "24px",
+    "28px",
+    "32px",
+    "36px",
+    "40px",
+    "44px",
+    "48px",
+    "52px",
+  ],
 };

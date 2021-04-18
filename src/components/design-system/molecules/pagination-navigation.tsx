@@ -7,7 +7,7 @@ import { track, tracking } from "../../../utils/tracking";
 const CenterHorizontallyContainer = styled(Container)`
   display: flex;
   justify-content: center;
-  padding: ${(props) => props.theme.spacing[2]};
+  padding: ${(props) => props.theme.spacing[4]};
 `;
 
 const PageNavigationCallToAction = styled(InternalCallToAction)`

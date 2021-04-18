@@ -9,7 +9,7 @@ import { Footer } from "../organism/footer";
 import { WindowLocation } from "@reach/router";
 
 const BlogContainer = styled(Container)`
-  margin-top: 100px;
+  margin-top: ${(props) => props.theme.spacing[12]};
   flex: 1 0 auto;
 `;
 

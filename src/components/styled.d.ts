@@ -9,6 +9,8 @@ interface Colors {
   primaryTextColor: string;
   secondaryTextColor: string;
   accentColor: string;
+  generalBackgroundLight: string;
+  boxShadowLight: string;
 }
 
 declare module "styled-components" {

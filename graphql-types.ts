@@ -258,8 +258,6 @@ export type DirectoryCtimeArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
-  port?: Maybe<Scalars['Int']>;
-  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -1011,8 +1009,6 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2187,8 +2183,6 @@ export type SiteFieldsEnum =
   | 'siteMetadata___contacts___links___medium'
   | 'siteMetadata___contacts___links___devto'
   | 'siteMetadata___contacts___links___instagram'
-  | 'port'
-  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -2290,8 +2284,6 @@ export type SiteGroupConnection = {
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -3623,14 +3615,6 @@ export type SitePluginSortInput = {
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
-export type AuthorsImagesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type AuthorsImagesQuery = { allFile: { edges: Array<{ node: (
-        Pick<File, 'name'>
-        & { childImageSharp?: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
-      ) }> } };
-
 export type RecentPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3638,6 +3622,14 @@ export type RecentPostsQuery = { allMarkdownRemark: { edges: Array<{ node: { fro
           Pick<MarkdownRemarkFrontmatter, 'title' | 'description'>
           & { image?: Maybe<{ childImageSharp?: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }> }
         )>, fields?: Maybe<Pick<MarkdownRemarkFields, 'slug'>> } }> } };
+
+export type AuthorsImagesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AuthorsImagesQuery = { allFile: { edges: Array<{ node: (
+        Pick<File, 'name'>
+        & { childImageSharp?: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
+      ) }> } };
 
 export type SocialContactsQueryVariables = Exact<{ [key: string]: never; }>;
 

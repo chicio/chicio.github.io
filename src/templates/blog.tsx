@@ -1,15 +1,10 @@
 import * as React from "react";
-import "../styles/style.blog.home.scss";
-import { graphql, Link, PageProps } from "gatsby";
-import { track, tracking } from "../utils/tracking";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { graphql, PageProps } from "gatsby";
+import { tracking } from "../utils/tracking";
 import { BlogListQuery } from "../../graphql-types";
-import { PostAuthors } from "../components/design-system/molecules/post-authors";
-import { PostMeta } from "../components/design-system/molecules/post-meta";
 import { BlogPage } from "../components/design-system/templates/blog-page";
-import { Paragraph } from "../components/design-system/atoms/paragraph";
 import { PaginationNavigation } from "../components/design-system/molecules/pagination-navigation";
-import styled from "styled-components";
+import { PostCard } from "../components/design-system/molecules/post-card";
 
 interface BlogPageContext {
   limit: number;
@@ -17,11 +12,6 @@ interface BlogPageContext {
   numberOfPages: number;
   currentPage: number;
 }
-
-const PostDescription = styled(Paragraph)`
-  margin-right: 0;
-  margin-left: 0;
-`;
 
 const Blog: React.FC<PageProps<BlogListQuery, BlogPageContext>> = ({
   data,
@@ -48,61 +38,28 @@ const Blog: React.FC<PageProps<BlogListQuery, BlogPageContext>> = ({
       ogPageType={"website"}
       trackingCategory={tracking.category.blog_home}
     >
-      <div className="blog-main">
-        <div className="blog-posts-list">
-          {posts.map((post) => {
-            const frontMatter = post.node.frontmatter!;
-            return (
-              <div className="blog-posts-post" key={post.node.fields!.slug}>
-                <Link
-                  to={post.node.fields!.slug!}
-                  onClick={() => {
-                    track(
-                      tracking.action.open_blog_post,
-                      tracking.category.blog_home,
-                      tracking.label.body
-                    );
-                  }}
-                  className="blog-posts-post-link"
-                >
-                  <span className="blog-posts-post-title">
-                    {frontMatter.title}
-                  </span>
-                  <div className="blog-posts-post-img-container">
-                    <GatsbyImage
-                      className={"img blog-posts-post-img"}
-                      alt={frontMatter.title!}
-                      image={
-                        frontMatter.image!.childImageSharp!.gatsbyImageData
-                      }
-                    />
-                  </div>
-                  <PostAuthors
-                    authors={frontMatter.authors!}
-                    trackingCategory={tracking.category.blog_home}
-                    trackingLabel={tracking.label.body}
-                    enableUrl={false}
-                  />
-                  <PostMeta
-                    date={frontMatter.date!}
-                    readingTime={post.node.fields!.readingTime!.text!}
-                  />
-                  <PostDescription>{frontMatter.description!}</PostDescription>
-                </Link>
-              </div>
-            );
-          })}
-        </div>
-        <PaginationNavigation
+      {posts.map((post) => (
+        <PostCard
+          key={post.node.fields!.slug!}
+          slug={post.node.fields!.slug!}
+          title={post.node.frontmatter!.title!}
+          image={post.node.frontmatter!.image!.childImageSharp!.gatsbyImageData}
+          authors={post.node.frontmatter!.authors!}
+          date={post.node.frontmatter!.date!}
+          readingTime={post.node.fields!.readingTime!.text!}
+          description={post.node.frontmatter!.description!}
           trackingCategory={tracking.category.blog_home}
-          previousPageUrl={prevPage}
-          previousPageTrackingAction={tracking.action.open_blog_previous_page}
-          nextPageUrl={nextPage}
-          nextPageTrackingAction={tracking.action.open_blog_next_page}
-          isFirst={isFirst}
-          isLast={isLast}
         />
-      </div>
+      ))}
+      <PaginationNavigation
+        trackingCategory={tracking.category.blog_home}
+        previousPageUrl={prevPage}
+        previousPageTrackingAction={tracking.action.open_blog_previous_page}
+        nextPageUrl={nextPage}
+        nextPageTrackingAction={tracking.action.open_blog_next_page}
+        isFirst={isFirst}
+        isLast={isLast}
+      />
     </BlogPage>
   );
 };
