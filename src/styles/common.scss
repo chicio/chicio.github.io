@@ -18,25 +18,6 @@ p {
   font-size: 16px;
 }
 
-canvas {
-  @include theme('background-color', $primary-color);
-  width: 100%;
-  height: 100%;
-}
-
-@keyframes show-lazy-element-animation {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
-.lazy {
-  @include theme('background-color', $divider-color)
-}
-
-.lazy-show {
-  animation: show-lazy-element-animation 0.8s;
-}
-
 .break {
   display: inline
 }
@@ -56,11 +37,5 @@ canvas {
 @include media-breakpoint-up(xs) {
   .break {
     display: none;
-  }
-}
-
-@include media-breakpoint-up(lg) {
-  .phone-number {
-    display: none !important;
   }
 }

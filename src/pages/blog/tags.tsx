@@ -1,9 +1,17 @@
 import React from "react";
-import "../../styles/style.blog.tags.scss";
-import { graphql, Link, PageProps } from "gatsby";
+import { graphql, PageProps } from "gatsby";
 import { tracking } from "../../utils/tracking";
 import { PostsGroupByTagsQuery } from "../../../graphql-types";
 import { BlogPage } from "../../components/design-system/templates/blog-page";
+import { Tag } from "../../components/design-system/molecules/tag";
+import { ContainerFluid } from "../../components/design-system/atoms/container-fluid";
+import styled from "styled-components";
+import { PageTitle } from "../../components/design-system/molecules/page-title";
+
+const TagsContainer = styled(ContainerFluid)`
+  padding: 0;
+  margin-bottom: ${(props) => props.theme.spacing[4]};
+`;
 
 const TagsPage: React.FC<PageProps<PostsGroupByTagsQuery>> = ({
   data,
@@ -21,22 +29,17 @@ const TagsPage: React.FC<PageProps<PostsGroupByTagsQuery>> = ({
       ogImage={`/${featuredImage}`}
       trackingCategory={tracking.category.blog_tags}
     >
-      <div className="blog-tags-list">
-        <div className="blog-main">
-          <div className="blog-tags">
-            {data.allMarkdownRemark.group.map((tag) => (
-              <Link
-                to={`/blog/tags/${tag.fieldValue!.split(" ").join("-")}/`}
-                key={tag.fieldValue}
-              >
-                <span className={"big"}>
-                  {tag.fieldValue} ({tag.totalCount})
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
+      <TagsContainer>
+        <PageTitle>Tags</PageTitle>
+        {data.allMarkdownRemark.group.map((tag) => (
+          <Tag
+            big={true}
+            link={`/blog/tags/${tag.fieldValue!.split(" ").join("-")}/`}
+            tag={`${tag.fieldValue} (${tag.totalCount})`}
+            key={tag.fieldValue}
+          />
+        ))}
+      </TagsContainer>
     </BlogPage>
   );
 };

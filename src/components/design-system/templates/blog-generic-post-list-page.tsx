@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { ContainerFluid } from "../atoms/container-fluid";
 import { Time } from "../atoms/time";
-import { Heading1 } from "../atoms/heading1";
 import {
   MarkdownRemarkFields,
   MarkdownRemarkFrontmatter,
@@ -12,6 +11,7 @@ import React from "react";
 import { BlogPage } from "./blog-page";
 import { StandardInternalLink } from "../atoms/standard-internal-link";
 import { track, tracking } from "../../../utils/tracking";
+import { PageTitle } from "../molecules/page-title";
 
 const PostContainer = styled(ContainerFluid)`
   display: flex;
@@ -41,8 +41,8 @@ const PostTime = styled(Time)`
   font-size: ${(props) => props.theme.fontSizes[4]};
 `;
 
-const PostListTitle = styled(Heading1)`
-  margin-bottom: ${(props) => props.theme.spacing[4]};
+const PostLink = styled(StandardInternalLink)`
+  font-size: ${(props) => props.theme.fontSizes[4]};
 `;
 
 interface BlogGenericPostListPageProps {
@@ -76,14 +76,14 @@ export const BlogGenericPostListPage: React.FC<BlogGenericPostListPageProps> = (
     ogImage={ogImage}
     trackingCategory={trackingCategory}
   >
-    <PostListTitle>{title}</PostListTitle>
+    <PageTitle>{title}</PageTitle>
     {posts.map((post) => (
       <PostContainer key={post.node.fields!.slug!}>
         <Column size={"15%"}>
           <PostTime>{post.node.frontmatter?.date}</PostTime>
         </Column>
         <Column size={"85%"}>
-          <StandardInternalLink
+          <PostLink
             to={post.node.fields!.slug!}
             onClick={() =>
               track(
@@ -94,7 +94,7 @@ export const BlogGenericPostListPage: React.FC<BlogGenericPostListPageProps> = (
             }
           >
             {post.node.frontmatter?.title}
-          </StandardInternalLink>
+          </PostLink>
         </Column>
       </PostContainer>
     ))}

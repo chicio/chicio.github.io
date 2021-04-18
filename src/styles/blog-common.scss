@@ -31,25 +31,3 @@
   display: none !important;
 }
 
-/* Sticky footer https://css-tricks.com/couple-takes-sticky-footer/ */
-html, body {
-  height: 100%;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-#___gatsby{
-  height: 100%;
-}
-
-#gatsby-focus-wrapper{
-  height: 100%;
-}
-
-footer {
-  flex-shrink: 0;
-}

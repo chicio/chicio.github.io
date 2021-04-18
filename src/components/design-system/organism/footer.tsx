@@ -6,6 +6,7 @@ import { MenuItem } from "../molecules/menu-item";
 import { Paragraph } from "../atoms/paragraph";
 
 const FooterContainer = styled.footer`
+  flex-shrink: 0;
   width: 100%;
   background-color: ${(props) => props.theme.light.primaryColor};
 
