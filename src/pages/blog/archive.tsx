@@ -7,6 +7,7 @@ import { StandardInternalLink } from "../../components/design-system/atoms/stand
 import styled from "styled-components";
 import { ContainerFluid } from "../../components/design-system/atoms/container-fluid";
 import { Time } from "../../components/design-system/atoms/time";
+import { Heading1 } from "../../components/design-system/atoms/heading1";
 
 const PostContainer = styled(ContainerFluid)`
   display: flex;
@@ -36,6 +37,10 @@ const PostTime = styled(Time)`
   font-size: ${(props) => props.theme.fontSizes[4]};
 `;
 
+const PostListTitle = styled(Heading1)`
+  margin-bottom: ${(props) => props.theme.spacing[4]};
+`;
+
 const Archive: React.FC<PageProps<ArchiveQuery>> = ({ data, location }) => {
   const siteMetadata = data.site!.siteMetadata!;
   const author = siteMetadata.author!;
@@ -49,6 +54,7 @@ const Archive: React.FC<PageProps<ArchiveQuery>> = ({ data, location }) => {
       ogImage={`/${featuredImage}`}
       trackingCategory={tracking.category.blog_archive}
     >
+      <PostListTitle>Archive</PostListTitle>
       {data.allMarkdownRemark.edges.map((post) => (
         <PostContainer key={post.node.fields!.slug!}>
           <Column size={"15%"}>
