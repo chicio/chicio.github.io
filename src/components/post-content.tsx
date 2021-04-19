@@ -79,10 +79,6 @@ export const PostContentContainer = styled.div`
     height: 100%;
   }
 
-  #disqus_thread {
-    margin-bottom: 30px;
-  }
-
   .gist {
     max-width:100%;
     overflow:auto;
