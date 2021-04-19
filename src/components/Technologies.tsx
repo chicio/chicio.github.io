@@ -15,7 +15,7 @@ export const Technologies: React.FC<TechnologiesProps> = ({ author }) => (
         <p>
           {`I'm ${author}, a software developer with many years of experience.
                         I have a strong knowledge of the following languages: C++, Objective-C, Swift, C, Java, PHP,
-                        JavaScript, TypeScript.
+                        JavaScript, TypeScript, Kotlin.
                         I develop mobile app since 2010 and web application since 2005. I'm also passionate about computer
                         graphics.
                     `}

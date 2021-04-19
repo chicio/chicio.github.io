@@ -1,6 +1,7 @@
 import { css } from "styled-components";
 
 export const callToActionStyle = css`
+  font-size: ${(props) => props.theme.fontSizes[2]};
   background-color: ${(props) => props.theme.light.accentColor};
   color: ${(props) => props.theme.light.primaryColorText};
   padding: ${(props) => props.theme.spacing[2]};

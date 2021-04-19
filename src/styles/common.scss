@@ -1,37 +1,7 @@
 @import "./theme.scss";
 
-html {
-  max-width: 100%;
-  overflow-x: hidden;
-
-  body {
-    @include theme('background-color', $general-background);
-    @include theme('color', $primary-text-color);
-    font: 20px 'Open Sans', Helvetica, Arial, sans-serif;
-    line-height: 1.8;
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-}
-
-p {
-  font-size: 16px;
-}
-
-.vertical-center-row {
-  display: table-cell;
-  vertical-align: middle;
-  width: 100%;
-}
-
 .btn-default {
   @include theme('color', $primary-color-text);
   @include theme('background-color', $accent-color);
   font-size: 14px;
-}
-
-@include media-breakpoint-up(xs) {
-  .break {
-    display: none;
-  }
 }
