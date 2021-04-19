@@ -3623,14 +3623,6 @@ export type SitePluginSortInput = {
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
-export type RecentPostsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type RecentPostsQuery = { allMarkdownRemark: { edges: Array<{ node: { frontmatter?: Maybe<(
-          Pick<MarkdownRemarkFrontmatter, 'title' | 'description'>
-          & { image?: Maybe<{ childImageSharp?: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }> }
-        )>, fields?: Maybe<Pick<MarkdownRemarkFields, 'slug'>> } }> } };
-
 export type AuthorsImagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3638,6 +3630,14 @@ export type AuthorsImagesQuery = { allFile: { edges: Array<{ node: (
         Pick<File, 'name'>
         & { childImageSharp?: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
       ) }> } };
+
+export type RecentPostsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type RecentPostsQuery = { allMarkdownRemark: { edges: Array<{ node: { frontmatter?: Maybe<(
+          Pick<MarkdownRemarkFrontmatter, 'title' | 'description'>
+          & { image?: Maybe<{ childImageSharp?: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }> }
+        )>, fields?: Maybe<Pick<MarkdownRemarkFields, 'slug'>> } }> } };
 
 export type SocialContactsQueryVariables = Exact<{ [key: string]: never; }>;
 

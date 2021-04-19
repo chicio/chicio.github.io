@@ -11,6 +11,7 @@ export const MenuItem = styled(Link)<MenuItemProps>`
       ? props.theme.light.primaryColorText
       : props.theme.light.primaryColorLight};
   font-weight: 500;
+  text-decoration: none;
 
   &:hover,
   &:focus {

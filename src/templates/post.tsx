@@ -6,7 +6,7 @@ import { Comments } from "../components/design-system/molecules/comments";
 import { PostMeta } from "../components/design-system/molecules/post-meta";
 import { PostQuery } from "../../graphql-types";
 import { PostAuthors } from "../components/design-system/molecules/post-authors";
-import { RecentPosts } from "../components/RecentPosts";
+import { RecentPosts } from "../components/design-system/organism/recent-posts";
 import { getSrc } from "gatsby-plugin-image";
 import { BlogPage } from "../components/design-system/templates/blog-page";
 import { PostTags } from "../components/design-system/molecules/post-tags";
