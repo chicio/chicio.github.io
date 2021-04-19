@@ -30,24 +30,22 @@ const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
       )!}`}
       trackingCategory={tracking.category.blog_post}
     >
-      <div className="blog-main">
-        <div className="blog-post" id="blog-post-math-content">
-          <Heading2 className="blog-post-title">
-            {post.frontmatter!.title}
-          </Heading2>
-          <PostAuthors
-            authors={post.frontmatter!.authors!}
-            trackingCategory={tracking.category.blog_post}
-            trackingLabel={tracking.label.body}
-            enableUrl={true}
-          />
-          <PostMeta
-            date={post.frontmatter!.date!}
-            readingTime={post.fields!.readingTime!.text!}
-          />
-          <PostContent html={post.html!} />
-          <PostTags tags={post.frontmatter!.tags!} />
-        </div>
+      <div>
+        <Heading2 className="blog-post-title">
+          {post.frontmatter!.title}
+        </Heading2>
+        <PostAuthors
+          authors={post.frontmatter!.authors!}
+          trackingCategory={tracking.category.blog_post}
+          trackingLabel={tracking.label.body}
+          enableUrl={true}
+        />
+        <PostMeta
+          date={post.frontmatter!.date!}
+          readingTime={post.fields!.readingTime!.text!}
+        />
+        <PostContent html={post.html!} />
+        <PostTags tags={post.frontmatter!.tags!} />
       </div>
       <RecentPosts currentSlug={location.pathname} />
       {post.frontmatter?.comments && (

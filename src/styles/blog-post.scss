@@ -1,17 +1,4 @@
 .blog-post {
-  ul {
-    li{
-      font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-    }
-  }
-
-  figure {
-    figcaption {
-      font-size: 14px;
-      text-align: center;
-    }
-  }
-
   a {
     @include theme('color', $accent-color);
   }

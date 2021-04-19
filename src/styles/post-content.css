@@ -1,3 +1,7 @@
+/**** Post content markdown ***/
+
+/**** Generic components from plugins ***/
+
 .embedVideo-container {
     position: relative;
     padding-bottom: 56.25%;
@@ -44,3 +48,5 @@
     margin: auto;
     display: inline;
 }
+
+

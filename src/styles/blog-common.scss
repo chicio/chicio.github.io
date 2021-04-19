@@ -1,33 +1,11 @@
-@media (min-width: 1200px) {
-  .container {
-    width: 970px;
-  }
-}
-
 .blog-main {
   font-size: 18px;
   line-height: 1.5;
-  h3 {
-    width: 100%;
-    font-size: 22px;
-  }
-  h4 {
-    font-size: 20px;
-  }
   hr {
     @include theme('background-color', $divider-color);
     width: 100%;
     margin-top: 20px;
     margin-bottom: 20px;
   }
-
-  ul {
-    font-size: 16px;
-  }
-}
-
-/* bootstrap safari fix grid */
-.row:before, .row:after {
-  display: none !important;
 }
 
