@@ -1,5 +1,4 @@
 import React from "react";
-import "../styles/post-content.css";
 import "../styles/syntax.css";
 import styled from "styled-components";
 import { heading3Style } from "./design-system/atoms/heading3";
