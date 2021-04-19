@@ -1,9 +1,9 @@
 import React from "react";
-import "../styles/syntax.css";
 import styled from "styled-components";
 import { heading3Style } from "./design-system/atoms/heading3";
 import { heading4Style } from "./design-system/atoms/heading4";
 import { standardLinkStyle } from "./design-system/atoms/standard-link-style";
+import { syntax } from "./design-system/atoms/syntax";
 
 export const PostContentContainer = styled.div`
   line-height: 1.5;
@@ -61,17 +61,16 @@ export const PostContentContainer = styled.div`
     }
   }
 
-  .embedVideo-container {
+  & .embedVideo-container {
     position: relative;
     padding-bottom: 56.25%;
     height: 100%;
     width: 100%;
     overflow: hidden;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: ${(props) => props.theme.spacing[2]} 0;
   }
 
-  .embedVideo-container iframe, .embedVideo-container object, .embedVideo-container embed {
+  & .embedVideo-container iframe, .embedVideo-container object, .embedVideo-container embed {
     position: absolute;
     top: 0;
     left: 0;
@@ -79,23 +78,15 @@ export const PostContentContainer = styled.div`
     height: 100%;
   }
 
-  .gist {
-    max-width:100%;
-    overflow:auto;
-  }
-
-  .gist .blob-wrapper.data {
-    max-height:600px;
-    overflow:auto;
-  }
-
-  .katex-display > .katex {
+  & .katex-display > .katex {
     display: inline-block;
     white-space: nowrap;
     max-width: 100%;
     overflow-x: scroll;
     text-align: initial;
   }
+
+  ${syntax}
 `;
 
 interface PostContentProps {
