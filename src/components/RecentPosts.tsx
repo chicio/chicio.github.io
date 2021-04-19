@@ -14,35 +14,39 @@ interface RecentPostsProps {
 }
 
 const CardButton = styled(InternalCallToAction)`
-  margin: ${(props) => props.theme.spacing[3]} 0;
+  margin-top: auto;
   display: block;
-  position: absolute;
-  bottom: 0;
-  right: 5%;
-  width: 90%;
 `;
 
 const CardDescriptionContainer = styled.div`
   margin: ${(props) => props.theme.spacing[3]};
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 `;
 
 const CardHeading = styled(Heading6)`
   margin-bottom: ${(props) => props.theme.spacing[3]};
+  margin-right: 0;
+  margin-left: 0;
 `;
 
-const CardContainer = styled.div`
+interface CardContainerProps {
+  margin: boolean;
+}
+
+const CardContainer = styled.div<CardContainerProps>`
   background-color: ${(props) => props.theme.light.generalBackgroundLight};
   box-shadow: ${(props) => props.theme.light.boxShadowLight} 0 3px 10px 0;
   width: 100%;
   border-radius: 4px;
   border: none;
-  position: relative;
   margin: ${(props) => props.theme.spacing[2]} 0 0 0;
+  display: flex;
+  flex-direction: column;
 
   @media (min-width: 992px) {
-    -ms-flex: 1;
-    flex: 1;
-    margin: 0;
+    margin: 0 ${(props) => (props.margin ? props.theme.spacing[2] : "")};
     transition: all 0.2s;
     &:hover {
       transform: scale(1.025);
@@ -53,6 +57,10 @@ const CardContainer = styled.div`
     background-color: ${(props) => props.theme.dark.generalBackgroundLight};
     box-shadow: ${(props) => props.theme.dark.boxShadowLight} 0 3px 10px 0;
   }
+`;
+
+const RecentTitle = styled(Heading4)`
+  margin: ${(props) => props.theme.spacing[2]} 0;
 `;
 
 export const RecentPosts: React.FC<RecentPostsProps> = ({ currentSlug }) => {
@@ -86,13 +94,16 @@ export const RecentPosts: React.FC<RecentPostsProps> = ({ currentSlug }) => {
 
   return (
     <div className="recent-posts">
-      <Heading4>Recent posts</Heading4>
+      <RecentTitle>Recent posts</RecentTitle>
       <div className="cards">
         {data.allMarkdownRemark.edges
           .filter((post) => post.node!.fields!.slug !== currentSlug)
           .slice(0, 3)
-          .map((post) => (
-            <CardContainer key={post.node.fields!.slug!}>
+          .map((post, index) => (
+            <CardContainer
+              key={post.node.fields!.slug!}
+              margin={index == 1 ? true : false}
+            >
               <GatsbyImage
                 className={"img-container"}
                 style={{ overflow: "hidden", height: "200px" }}
