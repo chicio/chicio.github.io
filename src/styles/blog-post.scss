@@ -15,32 +15,10 @@
     }
   }
 
-  .blog-post-title {
-    @include theme('color', $accent-color);
-    margin-bottom: 5px;
-    font-size: 24px;
-    @include media-breakpoint-up(md) {
-      font-size: 36px;
-    }
-
-    a {
-      @include theme('color', $accent-color);
-    }
-
-    a:hover {
-      @include theme('color', $accent-color);
-      text-decoration: none;
-    }
-  }
-
   a {
     @include theme('color', $accent-color);
   }
 
-  .emoji {
-    margin: auto;
-    display: inline;
-  }
 
   blockquote {
     @include theme('color', $secondary-text-color);
@@ -52,31 +30,6 @@
       margin: 0;
     }
   }
-
-  #disqus_thread {
-    margin-bottom: 30px;
-  }
-
-  .gist {
-    max-width:100%;
-    overflow:auto;
-  }
-
-  .gist .blob-wrapper.data {
-    max-height:500px;
-    overflow:auto;
-    @include media-breakpoint-up(md) {
-      max-height:600px;
-      overflow:auto;
-    }
-  }
 }
 
-.katex-display > .katex {
-  display: inline-block;
-  white-space: nowrap;
-  max-width: 100%;
-  overflow-x: scroll;
-  text-align: initial;
-}
 

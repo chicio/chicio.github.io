@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/style.blog.post.scss";
+import "../styles/post-content.css";
 import "../styles/syntax.css";
-import "../styles/youtube.css";
 import { graphql, PageProps } from "gatsby";
 import { tracking } from "../utils/tracking";
 import { Comments } from "../components/design-system/molecules/comments";
@@ -12,6 +12,7 @@ import { RecentPosts } from "../components/RecentPosts";
 import { getSrc } from "gatsby-plugin-image";
 import { BlogPage } from "../components/design-system/templates/blog-page";
 import { PostTags } from "../components/design-system/molecules/post-tags";
+import { Heading2 } from "../components/design-system/atoms/heading2";
 
 const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
   const post = data.markdownRemark!;
@@ -32,7 +33,9 @@ const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
     >
       <div className="blog-main">
         <div className="blog-post" id="blog-post-math-content">
-          <h2 className="blog-post-title">{post.frontmatter!.title}</h2>
+          <Heading2 className="blog-post-title">
+            {post.frontmatter!.title}
+          </Heading2>
           <PostAuthors
             authors={post.frontmatter!.authors!}
             trackingCategory={tracking.category.blog_post}
