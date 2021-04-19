@@ -1,12 +1,13 @@
 import * as React from "react";
 import "../styles/style.home.scss";
 import { graphql, PageProps, useStaticQuery } from "gatsby";
-import { DownArrow } from "../components/DownArrow";
+import { DownArrow } from "../components/design-system/molecules/down-arrow";
 import { ProfilePresentation } from "../components/ProfilePresentation";
 import { Technologies } from "../components/Technologies";
 import { ProjectsAndCarrier } from "../components/ProjectsAndCarrier";
 import { Head } from "../components/head";
 import { HomePageQuery } from "../../graphql-types";
+import { Page } from "../components/design-system/templates/page";
 
 const HomePage: React.FC<PageProps> = ({ location }) => {
   const data = useStaticQuery<HomePageQuery>(
@@ -27,7 +28,7 @@ const HomePage: React.FC<PageProps> = ({ location }) => {
   const featuredImage = siteMetadata.featuredImage!;
 
   return (
-    <main>
+    <Page>
       <Head
         url={location.href}
         pageType={"profile"}
@@ -43,7 +44,7 @@ const HomePage: React.FC<PageProps> = ({ location }) => {
       <Technologies author={author} />
       <ProjectsAndCarrier />
       {/*<Footer author={author} trackingCategory={tracking.category.home} />*/}
-    </main>
+    </Page>
   );
 };
 
