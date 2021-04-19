@@ -11,6 +11,7 @@ interface Colors {
   accentColor: string;
   generalBackgroundLight: string;
   boxShadowLight: string;
+  dividerColor: string;
 }
 
 declare module "styled-components" {

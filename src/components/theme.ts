@@ -12,6 +12,7 @@ export const theme: DefaultTheme = {
     accentColor: "#4fA7ff",
     generalBackgroundLight: "#363636",
     boxShadowLight: "rgba(0, 0, 0, 0.2)",
+    dividerColor: "#575757",
   },
   light: {
     primaryColor: "#3F51B5",
@@ -24,6 +25,7 @@ export const theme: DefaultTheme = {
     accentColor: "#0F67FF",
     generalBackgroundLight: "#FFFFFF",
     boxShadowLight: "rgba(0, 0, 0, 0.2)",
+    dividerColor: "#BDBDBD",
   },
   fontSizes: [
     "12px",

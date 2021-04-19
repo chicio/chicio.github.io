@@ -1,5 +1,4 @@
 import React from "react";
-import "../styles/style.blog.post.scss";
 import { graphql, PageProps } from "gatsby";
 import { tracking } from "../utils/tracking";
 import { Comments } from "../components/design-system/molecules/comments";
