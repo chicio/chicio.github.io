@@ -2,12 +2,15 @@ import * as React from "react";
 import "../styles/style.home.scss";
 import { graphql, PageProps, useStaticQuery } from "gatsby";
 import { DownArrow } from "../components/design-system/molecules/down-arrow";
-import { ProfilePresentation } from "../components/ProfilePresentation";
+import { ProfilePresentation } from "../components/design-system/organism/profile-presentation";
 import { Technologies } from "../components/Technologies";
 import { ProjectsAndCarrier } from "../components/ProjectsAndCarrier";
 import { Head } from "../components/head";
 import { HomePageQuery } from "../../graphql-types";
 import { Page } from "../components/design-system/templates/page";
+import { ContainerFullscreen } from "../components/design-system/atoms/container-fullscreen";
+import { Footer } from "../components/design-system/organism/footer";
+import { tracking } from "../utils/tracking";
 
 const HomePage: React.FC<PageProps> = ({ location }) => {
   const data = useStaticQuery<HomePageQuery>(
@@ -34,16 +37,13 @@ const HomePage: React.FC<PageProps> = ({ location }) => {
         pageType={"profile"}
         imageUrl={`/${featuredImage}`}
       />
-      <div
-        id="profile-introduction"
-        className="container-fluid profile-introduction"
-      >
+      <ContainerFullscreen>
         <ProfilePresentation author={author} />
         <DownArrow />
-      </div>
+      </ContainerFullscreen>
       <Technologies author={author} />
       <ProjectsAndCarrier />
-      {/*<Footer author={author} trackingCategory={tracking.category.home} />*/}
+      <Footer author={author} trackingCategory={tracking.category.home} />
     </Page>
   );
 };

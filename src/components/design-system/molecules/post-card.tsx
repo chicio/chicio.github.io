@@ -7,6 +7,7 @@ import { PostAuthors } from "./post-authors";
 import { PostMeta } from "./post-meta";
 import * as React from "react";
 import { Maybe } from "../../../../graphql-types";
+import { Heading5 } from "../atoms/heading5";
 
 const PostDescription = styled(Paragraph)`
   margin-right: 0;
@@ -42,10 +43,6 @@ const PostCardImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const PostCardTitle = styled(Paragraph)`
-  font-size: ${(props) => props.theme.fontSizes[6]};
 `;
 
 const PostCardLink = styled(StandardInternalLink)`
@@ -88,7 +85,7 @@ export const PostCard: React.FC<PostCardProps> = ({
         );
       }}
     >
-      <PostCardTitle>{title}</PostCardTitle>
+      <Heading5>{title}</Heading5>
       <PostCardImageContainer>
         <GatsbyImage
           alt={title}

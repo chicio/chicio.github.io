@@ -33,6 +33,8 @@ const FooterContentContainer = styled.div`
   display: flex;
   justify-content: center;
   padding: ${(props) => props.theme.spacing[0]};
+  text-align: center;
+  flex-wrap: wrap;
 `;
 
 const FooterAuthorDescription = styled.div`

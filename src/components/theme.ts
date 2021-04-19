@@ -7,7 +7,7 @@ export const theme: DefaultTheme = {
     primaryColorLight: "#DFDFF1",
     generalBackground: "#181918",
     primaryColorText: "#FFFFFF",
-    primaryTextColor: "#d7d7d8",
+    primaryTextColor: "#FAFAFA",
     secondaryTextColor: "#A6A6A6",
     accentColor: "#4fA7ff",
     generalBackgroundLight: "#363636",
