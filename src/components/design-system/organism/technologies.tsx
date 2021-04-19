@@ -72,7 +72,7 @@ export const Technologies: React.FC<TechnologiesProps> = ({ author }) => (
       </TechnologyImageContainer>
       <TechnologyImageContainer>
         <StaticImage
-          className="who-am-i-icons"
+          objectFit={"contain"}
           src={"../images/technologies/cpp.png"}
           alt={"c++"}
         />
