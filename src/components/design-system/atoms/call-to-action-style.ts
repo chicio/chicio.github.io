@@ -8,6 +8,7 @@ export const callToActionStyle = css`
   border-radius: 4px;
   margin: ${(props) => props.theme.spacing[0]};
   line-height: 1;
+  text-align: center;
 
   @media (prefers-color-scheme: dark) {
     background-color: ${(props) => props.theme.dark.accentColor};

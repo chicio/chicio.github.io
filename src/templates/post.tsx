@@ -1,7 +1,5 @@
 import React from "react";
 import "../styles/style.blog.post.scss";
-import "../styles/post-content.css";
-import "../styles/syntax.css";
 import { graphql, PageProps } from "gatsby";
 import { tracking } from "../utils/tracking";
 import { Comments } from "../components/design-system/molecules/comments";
@@ -13,6 +11,7 @@ import { getSrc } from "gatsby-plugin-image";
 import { BlogPage } from "../components/design-system/templates/blog-page";
 import { PostTags } from "../components/design-system/molecules/post-tags";
 import { Heading2 } from "../components/design-system/atoms/heading2";
+import { PostContent } from "../components/post-content";
 
 const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
   const post = data.markdownRemark!;
@@ -46,7 +45,7 @@ const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
             date={post.frontmatter!.date!}
             readingTime={post.fields!.readingTime!.text!}
           />
-          <div dangerouslySetInnerHTML={{ __html: post.html! }} />
+          <PostContent html={post.html!} />
           <PostTags tags={post.frontmatter!.tags!} />
         </div>
       </div>
