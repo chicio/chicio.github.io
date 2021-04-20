@@ -56,7 +56,7 @@ export const ProfilePresentation: React.FC<ProfilePresentationProps> = ({
         borderRadius: "50%",
         margin: "auto",
       }}
-      src={"../images/authors/fabrizio-duroni.jpg"}
+      src={"../../images/authors/fabrizio-duroni.jpg"}
       alt={author}
     />
     <Heading2>{author}</Heading2>

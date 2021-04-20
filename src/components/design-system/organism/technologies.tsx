@@ -57,59 +57,59 @@ export const Technologies: React.FC<TechnologiesProps> = ({ author }) => (
       <TechnologyImageContainer>
         <StaticImage
           objectFit={"contain"}
-          src={"../images/technologies/xcode.png"}
+          src={"../../../images/technologies/xcode.png"}
           alt={"xcode"}
         />
       </TechnologyImageContainer>
       <TechnologyImageContainer>
-        <StaticImage src={"../images/technologies/swift.png"} alt={"swift"} />
+        <StaticImage src={"../../../images/technologies/swift.png"} alt={"swift"} />
       </TechnologyImageContainer>
       <TechnologyImageContainer>
         <StaticImage
           objectFit={"contain"}
-          src={"../images/technologies/android.png"}
+          src={"../../../images/technologies/android.png"}
           alt={"android"}
         />
       </TechnologyImageContainer>
       <TechnologyImageContainer>
         <StaticImage
           objectFit={"contain"}
-          src={"../images/technologies/cpp.png"}
+          src={"../../../images/technologies/cpp.png"}
           alt={"c++"}
         />
       </TechnologyImageContainer>
       <TechnologyImageContainer>
         <StaticImage
           objectFit={"contain"}
-          src={"../images/technologies/opengl-es.png"}
+          src={"../../../images/technologies/opengl-es.png"}
           alt={"opengl"}
         />
       </TechnologyImageContainer>
       <TechnologyImageContainer>
         <StaticImage
           objectFit={"contain"}
-          src={"../images/technologies/react.png"}
+          src={"../../../images/technologies/react.png"}
           alt={"react"}
         />
       </TechnologyImageContainer>
       <TechnologyImageContainer>
         <StaticImage
           objectFit={"contain"}
-          src={"../images/technologies/php.png"}
+          src={"../../../images/technologies/php.png"}
           alt={"php"}
         />
       </TechnologyImageContainer>
       <TechnologyImageContainer>
         <StaticImage
           objectFit={"contain"}
-          src={"../images/technologies/html-css-js.png"}
+          src={"../../../images/technologies/html-css-js.png"}
           alt={"js"}
         />
       </TechnologyImageContainer>
       <TechnologyImageContainer>
         <StaticImage
           objectFit={"contain"}
-          src={"../images/technologies/typescript.png"}
+          src={"../../../images/technologies/typescript.png"}
           alt={"typescript"}
         />
       </TechnologyImageContainer>

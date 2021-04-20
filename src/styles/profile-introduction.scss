@@ -1,33 +1,4 @@
 .profile-container {
-  @include theme('background-color', $general-background);
-
-  &.container-fluid {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .nav-tabs {
-    border:1px solid transparent;
-    margin-bottom: 35px;
-  }
-
-  .nav-tabs > li {
-    width: 50%;
-  }
-
-  .nav-tabs > li > .nav-link {
-    @include theme('background-color', $general-background-light);
-    @include theme('border-bottom', $divider-color, true, '1px solid');
-    @include theme('border-left', $divider-color, true, '1px solid');
-    @include theme('border-right', $divider-color, true, '1px solid');
-    @include theme('color', $accent-color);
-    border-radius: 0;
-    font-weight: bold;
-  }
-
-  .nav-tabs > li > .nav-link:hover {
-    border-top: 1px solid transparent;
-  }
 
   .nav-tabs > li.active > .nav-link {
     @include theme('background-color', $general-background);

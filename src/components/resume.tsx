@@ -1,28 +1,95 @@
 import React, { useState } from "react";
 import { track, tracking } from "../utils/tracking";
 import { StaticImage } from "gatsby-plugin-image";
+import { ContainerFluid } from "./design-system/atoms/container-fluid";
+import styled, { css } from "styled-components";
+import { StandardExternalLink } from "./design-system/atoms/standard-external-link";
 // import {
 //   faBriefcase,
 //   faGraduationCap,
 // } from "@fortawesome/free-solid-svg-icons";
 
-enum Tab {
+const ResumeContainer = styled(ContainerFluid)`
+  padding-left: 0;
+  padding-right: 0;
+  background-color: ${(props) => props.theme.light.generalBackground};
+
+  @media (prefers-color-scheme: dark) {
+    background-color: ${(props) => props.theme.dark.generalBackground};
+  }
+`;
+
+const Tabs = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  border: 1px solid transparent;
+`;
+
+interface TabProps {
+  active: boolean;
+}
+
+const Tab = styled.li<TabProps>`
+  width: 50%;
+`;
+
+const TabLink = styled(StandardExternalLink)<TabProps>`
+  display: block;
+  background-color: ${(props) => props.theme.light.generalBackgroundLight};
+  padding: ${(props) => props.theme.spacing[5]};
+  border-radius: 0;
+  border-top: ${(props) => props.theme.light.generalBackgroundLight} 1px solid;
+  border-bottom: ${(props) => props.theme.light.dividerColor} 1px solid;
+  border-left: ${(props) => props.theme.light.dividerColor} 1px solid;
+  border-right: ${(props) => props.theme.light.dividerColor} 1px solid;
+  text-align: center;
+
+  @media (prefers-color-scheme: dark) {
+    border-top: ${(props) => props.theme.dark.generalBackgroundLight} 1px solid;
+    background-color: ${(props) => props.theme.dark.generalBackgroundLight};
+    border-bottom: ${(props) => props.theme.dark.dividerColor} 1px solid;
+    border-left: ${(props) => props.theme.dark.dividerColor} 1px solid;
+    border-right: ${(props) => props.theme.dark.dividerColor} 1px solid;
+  }
+
+  ${(props) =>
+    props.active &&
+    css`
+      background-color: ${(props) => props.theme.light.generalBackground};
+      border-right: ${(props) => props.theme.light.generalBackground} 1px solid;
+      border-left: ${(props) => props.theme.light.generalBackground} 1px solid;
+      border-bottom: ${(props) => props.theme.light.generalBackground} 1px solid;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: ${(props) => props.theme.dark.generalBackground};
+        border-right: ${(props) => props.theme.dark.generalBackground} 1px solid;
+        border-left: ${(props) => props.theme.dark.generalBackground} 1px solid;
+        border-bottom: ${(props) => props.theme.dark.generalBackground} 1px
+          solid;
+      }
+    `}
+`;
+
+enum TabContent {
   projects = "projects",
   carrier = "carrier",
 }
 
-export const ProjectsAndCarrier: React.FC = () => {
-  const [currentTab, setTab] = useState<Tab>(Tab.projects);
+export const Resume: React.FC = () => {
+  const [currentTab, setTab] = useState<TabContent>(TabContent.projects);
 
   return (
-    <div className="profile-container container-fluid">
-      <ul className="nav nav-tabs" role="tablist" id="profile-tabs">
-        <li
-          id="projects"
-          role="presentation"
-          className={`${currentTab === Tab.projects ? "active" : ""}`}
+    <ResumeContainer>
+      <Tabs>
+        <Tab
+          active={currentTab === TabContent.projects}
+          className={`${currentTab === TabContent.projects ? "active" : ""}`}
         >
-          <a
+          <TabLink
+            active={currentTab === TabContent.projects}
             href="#personal-projects"
             onClick={(event) => {
               event.preventDefault();
@@ -31,22 +98,18 @@ export const ProjectsAndCarrier: React.FC = () => {
                 tracking.category.home,
                 tracking.label.body
               );
-              setTab(Tab.projects);
+              setTab(TabContent.projects);
             }}
-            className="nav-link text-center"
-            aria-controls="personal-projects"
-            role="tab"
-            data-toggle="tab"
           >
             Projects
-          </a>
-        </li>
-        <li
-          id="education-and-experience"
-          role="presentation"
-          className={`${currentTab === Tab.carrier ? "active" : ""}`}
+          </TabLink>
+        </Tab>
+        <Tab
+          active={currentTab === TabContent.carrier}
+          className={`${currentTab === TabContent.carrier ? "active" : ""}`}
         >
-          <a
+          <TabLink
+            active={currentTab === TabContent.carrier}
             href="#experience"
             onClick={(event) => {
               event.preventDefault();
@@ -55,19 +118,15 @@ export const ProjectsAndCarrier: React.FC = () => {
                 tracking.category.home,
                 tracking.label.body
               );
-              setTab(Tab.carrier);
+              setTab(TabContent.carrier);
             }}
-            className="nav-link text-center"
-            aria-controls="experience"
-            role="tab"
-            data-toggle="tab"
           >
             Experience
-          </a>
-        </li>
-      </ul>
+          </TabLink>
+        </Tab>
+      </Tabs>
       <div className="tab-content responsive">
-        {currentTab === Tab.projects && (
+        {currentTab === TabContent.projects && (
           <div
             role="tabpanel"
             className="tab-pane active projects"
@@ -450,7 +509,7 @@ export const ProjectsAndCarrier: React.FC = () => {
             </div>
           </div>
         )}
-        {currentTab === Tab.carrier && (
+        {currentTab === TabContent.carrier && (
           <div
             role="tabpanel"
             className="tab-pane active experience"
@@ -790,6 +849,6 @@ export const ProjectsAndCarrier: React.FC = () => {
           </div>
         )}
       </div>
-    </div>
+    </ResumeContainer>
   );
 };
