@@ -1,7 +1,0 @@
-@import "./theme.scss";
-
-.btn-default {
-  @include theme('color', $primary-color-text);
-  @include theme('background-color', $accent-color);
-  font-size: 14px;
-}
