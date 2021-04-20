@@ -86,7 +86,7 @@ const TabsContainer = styled.ul`
   list-style: none;
   display: flex;
   padding-left: 0;
-  margin-bottom: 0;
+  margin: 0;
   border: 1px solid transparent;
 `;
 

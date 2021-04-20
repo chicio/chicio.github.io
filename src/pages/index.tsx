@@ -1,10 +1,9 @@
 import * as React from "react";
-import "../styles/style.home.scss";
 import { graphql, PageProps, useStaticQuery } from "gatsby";
 import { DownArrow } from "../components/design-system/molecules/down-arrow";
 import { ProfilePresentation } from "../components/design-system/organism/profile-presentation";
 import { Technologies } from "../components/design-system/organism/technologies";
-import { Resume } from "../components/resume";
+import { Resume } from "../components/design-system/organism/resume";
 import { Head } from "../components/head";
 import { HomePageQuery } from "../../graphql-types";
 import { Page } from "../components/design-system/templates/page";

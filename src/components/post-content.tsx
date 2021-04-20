@@ -6,6 +6,7 @@ import { standardLinkStyle } from "./design-system/atoms/standard-link-style";
 import { syntax } from "./design-system/atoms/syntax";
 
 export const PostContentContainer = styled.div`
+  color: ${(props) => props.theme.light.primaryTextColor};
   line-height: 1.5;
   
   & ul li {
@@ -51,6 +52,8 @@ export const PostContentContainer = styled.div`
   }
 
   @media (prefers-color-scheme: dark) {
+    color: ${(props) => props.theme.dark.primaryTextColor};
+
     & blockquote {
       color: ${(props) => props.theme.dark.secondaryTextColor};
       border-left: 5px solid ${(props) => props.theme.dark.secondaryTextColor};
