@@ -1,10 +1,10 @@
 import { StaticImage } from "gatsby-plugin-image";
 import * as React from "react";
 import { Paragraph } from "../atoms/paragraph";
-import { ContainerFluid } from "../atoms/container-fluid";
 import styled from "styled-components";
 
-const TechnologiesContainer = styled(ContainerFluid)`
+const TechnologiesContainer = styled.div`
+  margin: 0;
   display: flex;
   flex-direction: column;
   padding: ${(props) => props.theme.spacing[12]};

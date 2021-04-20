@@ -77,7 +77,6 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
   width: 46%;
   float: left;
   border-radius: 3px;
-  padding: 20px;
   position: relative;
 
   &:before {
@@ -87,7 +86,7 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
     display: inline-block;
     border-top: 15px solid transparent;
     border-left: ${(props) => props.theme.light.dividerColor} 14px solid;
-    border-left: ${(props) => props.theme.light.dividerColor} 0px solid;
+    border-right: ${(props) => props.theme.light.dividerColor} 0px solid;
     border-bottom: 15px solid transparent;
     content: " ";
   }
@@ -99,7 +98,7 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
     display: inline-block;
     border-left: ${(props) => props.theme.light.generalBackgroundLight} 14px
       solid;
-    border-left: ${(props) => props.theme.light.generalBackgroundLight} 0px
+    border-right: ${(props) => props.theme.light.generalBackgroundLight} 0px
       solid;
     border-top: 14px solid transparent;
     border-bottom: 14px solid transparent;
@@ -112,15 +111,15 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
       float: right;
 
       &:before {
-        border-left-width: 0;
         border-right-width: 15px;
+        border-left-width: 0;
         left: -15px;
         right: auto;
       }
 
       &:after {
-        border-left-width: 0;
-        border-right-width: 14px;
+        border-right-width: 0;
+        border-left-width: 14px;
         left: -14px;
         right: auto;
       }
@@ -154,15 +153,35 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
 
     &:before {
       border-left: ${(props) => props.theme.dark.dividerColor} 14px solid;
-      border-left: ${(props) => props.theme.dark.dividerColor} 0px solid;
+      border-right: ${(props) => props.theme.dark.dividerColor} 0px solid;
     }
 
     &:after {
       border-left: ${(props) => props.theme.dark.generalBackgroundLight} 14px
         solid;
-      border-left: ${(props) => props.theme.dark.generalBackgroundLight} 0px
+      border-right: ${(props) => props.theme.dark.generalBackgroundLight} 0px
         solid;
     }
+
+    ${(props) =>
+      props.inverted &&
+      css`
+        float: right;
+
+        &:before {
+          border-left-width: 0;
+          border-right-width: 14px;
+          left: -14px;
+          right: auto;
+        }
+
+        &:after {
+          border-left-width: 0;
+          border-right-width: 14px;
+          left: -14px;
+          right: auto;
+        }
+      `};
   }
 `;
 

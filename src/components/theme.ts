@@ -57,4 +57,5 @@ export const theme: DefaultTheme = {
     "48px",
     "52px",
   ],
+  lineHeight: 1.5,
 };

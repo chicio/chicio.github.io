@@ -20,5 +20,6 @@ declare module "styled-components" {
     light: Colors;
     fontSizes: string[];
     spacing: string[];
+    lineHeight: number;
   }
 }
