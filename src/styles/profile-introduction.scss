@@ -1,21 +1,4 @@
 .profile-container {
-
-  .nav-tabs > li.active > .nav-link {
-    @include theme('background-color', $general-background);
-    @include theme('color', $accent-color);
-    @include theme('border-right', $divider-color, true, '1px solid');
-    border-radius: 0;
-    border: 1px solid transparent;
-    font-weight: bold;
-  }
-
-  a.accordion-toggle {
-    display: block;
-    padding: 10px 15px;
-    text-decoration: none;
-    width: 100%;
-  }
-
   div.panel-heading {
     padding: 0;
   }
