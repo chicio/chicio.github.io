@@ -182,6 +182,27 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
           right: auto;
         }
       `};
+
+    @media (max-width: 992px) {
+      width: calc(100% - 90px);
+      width: -moz-calc(100% - 90px);
+      width: -webkit-calc(100% - 90px);
+      float: right;
+
+      &:before {
+        border-left-width: 0;
+        border-right-width: 15px;
+        left: -15px;
+        right: auto;
+      }
+
+      &:after {
+        border-left-width: 0;
+        border-right-width: 14px;
+        left: -14px;
+        right: auto;
+      }
+    }
   }
 `;
 
