@@ -1,6 +1,5 @@
 import { Briefcase, GraduationCap } from "@styled-icons/fa-solid";
 import { StaticImage } from "gatsby-plugin-image";
-import { Heading4 } from "../atoms/heading4";
 import { Heading5 } from "../atoms/heading5";
 import { Paragraph } from "../atoms/paragraph";
 import { List } from "../atoms/list";
@@ -8,7 +7,6 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { Container } from "../atoms/container";
 import { Heading6 } from "../atoms/heading6";
-import { Heading7 } from "../atoms/heading7";
 
 const TimelineContentContainer = styled(Container)`
   padding: 0;
@@ -236,6 +234,18 @@ const TimelineBadge = styled.div`
   }
 `;
 
+const TimelineTitle: React.FC = ({ children }) => (
+  <Heading5>{children}</Heading5>
+);
+
+const TimelineSubtitle: React.FC = ({ children }) => (
+  <Heading6>{children}</Heading6>
+);
+
+const TimelinePanelContentContainer = styled.div`
+  padding: ${(props) => props.theme.spacing[2]};
+`;
+
 type TimelineElementProps = TimelinePanelProps & {
   icon: React.ReactElement;
 };
@@ -248,173 +258,133 @@ const TimelineElement: React.FC<TimelineElementProps> = ({
   <TimelineElementContainer>
     <TimelineBadge className="timeline-badge work">{icon}</TimelineBadge>
     <TimelinePanel inverted={inverted}>
-      <div style={{ padding: "12px" }}>{children}</div>
+      <TimelinePanelContentContainer>{children}</TimelinePanelContentContainer>
     </TimelinePanel>
   </TimelineElementContainer>
 );
 
-export const Timeline: React.FC = () => (
-  <TimelineContentContainer>
-    <TimelineContainer>
-      <TimelineElement inverted={false} icon={<Briefcase size={20} />}>
-        <StaticImage
-          className="timeline-image"
-          width={80}
-          height={80}
-          src={"../../../images/carrier/lastminute-group.png"}
-          alt={"lastminute"}
-          imgStyle={{
-            marginLeft: "auto",
-            marginRight: "auto",
-            marginBottom: "15px",
-            display: "block",
-          }}
-        />
-        <Heading5>Lastminute.com group</Heading5>
-        <Heading6 className="timeline-subtitle">
-          Mobile application developer
-        </Heading6>
-        <Paragraph>February 2017</Paragraph>
-        <Paragraph>
-          Designing and implementing iOS and Android apps for the main brands of
-          the company: Lastminute.com, Volagratis, Bravofly, Rumbo.
-        </Paragraph>
-      </TimelineElement>
-      <TimelineElement inverted={true} icon={<GraduationCap size={20} />}>
-        <StaticImage
-          className="timeline-image"
-          width={80}
-          height={80}
-          src={"../../../images/carrier/unimib.jpg"}
-          alt={"unimib"}
-          imgStyle={{
-            marginLeft: "auto",
-            marginRight: "auto",
-            marginBottom: "15px",
-            display: "block",
-          }}
-        />
-        <Heading6 className="timeline-title">
-          Milano-Bicocca University
-        </Heading6>
-        <Heading7 className="timeline-subtitle">
-          {"Master's degree in Computer Science"}
-        </Heading7>
-        <Paragraph>July 2016</Paragraph>
-        <Paragraph>
-          Thesis: “Spectral Clara Lux Tracer: physically based ray tracer with
-          multiple shading models support”. You can find more info about it in
-          the project section.
-        </Paragraph>
-        <List>
-          <li>Computer graphics</li>
-          <li>Software engineering</li>
-          <li>Algorithm and Theoretical CS</li>
-          <li>IT security</li>
-          <li>IT management</li>
-          <li>Design and user experience</li>
-        </List>
-      </TimelineElement>
-      <TimelineElement inverted={false} icon={<GraduationCap size={20} />}>
-        <StaticImage
-          width={80}
-          height={80}
-          src={"../../../images/carrier/condenast.png"}
-          alt={"condenast"}
-          imgStyle={{
-            marginLeft: "auto",
-            marginRight: "auto",
-            marginBottom: "15px",
-            display: "block",
-          }}
-        />
-        <Heading4>Condé Nast Italia</Heading4>
-        <Heading5>Mobile/Web application developer</Heading5>
-        <Paragraph>June 2013</Paragraph>
-        <Paragraph>
-          Designing and implementing iOS and Android apps for the main brands of
-          the company: Vanity Fair, Glamour, Wired, Vogue. I also worked with
-          the web team to develop the new version of the official web sites for
-          GQ Italia, Glamour, CNLive! and Vogue Italia.
-        </Paragraph>
-      </TimelineElement>
-      <TimelineElement inverted={false} icon={<Briefcase size={20} />}>
-        <StaticImage
-          className="timeline-image"
-          width={80}
-          height={80}
-          src={"../../../images/carrier/shi.png"}
-          alt={"shi"}
-          imgStyle={{
-            marginLeft: "auto",
-            marginRight: "auto",
-            marginBottom: "15px",
-            display: "block",
-          }}
-        />
-        <Heading4>SHI</Heading4>
-        <Heading5>iOS/Web Developer</Heading5>
-        <Paragraph>October 2010</Paragraph>
-        <Paragraph>
-          Design and development of mobile application on iOS, Android and
-          Windows phone platform, for enterprise distribution (ad-hoc
-          distribution) or within the various app store. Design and
-          development of Web application used as backend for mobile app.
-          Design and development of Enterprise Web application.
-        </Paragraph>
-      </TimelineElement>
-      <TimelineElementContainer>
-        <TimelineBadge>
-          <Briefcase />
-        </TimelineBadge>
-        <TimelinePanel inverted={false}>
+export const Timeline: React.FC = () => {
+  const iconsSize = 20;
+  const briefcase = <Briefcase size={iconsSize} />;
+  const graduationCap = <GraduationCap size={iconsSize} />;
+  const imgSize = 80;
+  const imgStyle = {
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginBottom: "15px",
+    display: "block",
+    backgroundColor: "#fff",
+  };
+
+  return (
+    <TimelineContentContainer>
+      <TimelineContainer>
+        <TimelineElement inverted={false} icon={briefcase}>
           <StaticImage
-            backgroundColor={"#fff"}
-            className="timeline-image"
-            width={80}
-            height={80}
+            width={imgSize}
+            height={imgSize}
+            src={"../../../images/carrier/lastminute-group.png"}
+            alt={"lastminute"}
+            imgStyle={imgStyle}
+          />
+          <TimelineTitle>Lastminute.com group</TimelineTitle>
+          <TimelineSubtitle>Mobile application developer</TimelineSubtitle>
+          <Paragraph>February 2017</Paragraph>
+          <Paragraph>
+            Designing and implementing iOS and Android apps for the main brands
+            of the company: Lastminute.com, Volagratis, Bravofly, Rumbo.
+          </Paragraph>
+        </TimelineElement>
+        <TimelineElement inverted={true} icon={graduationCap}>
+          <StaticImage
+            width={imgSize}
+            height={imgSize}
+            src={"../../../images/carrier/unimib.jpg"}
+            alt={"unimib"}
+            imgStyle={imgStyle}
+          />
+          <TimelineTitle>Milano-Bicocca University</TimelineTitle>
+          <TimelineSubtitle>
+            {"Master's degree in Computer Science"}
+          </TimelineSubtitle>
+          <Paragraph>July 2016</Paragraph>
+          <Paragraph>
+            Thesis: “Spectral Clara Lux Tracer: physically based ray tracer with
+            multiple shading models support”. You can find more info about it in
+            the project section.
+          </Paragraph>
+          <List>
+            <li>Computer graphics</li>
+            <li>Software engineering</li>
+            <li>Algorithm and Theoretical CS</li>
+            <li>IT security</li>
+            <li>IT management</li>
+            <li>Design and user experience</li>
+          </List>
+        </TimelineElement>
+        <TimelineElement inverted={false} icon={graduationCap}>
+          <StaticImage
+            width={imgSize}
+            height={imgSize}
+            src={"../../../images/carrier/condenast.png"}
+            alt={"condenast"}
+            imgStyle={imgStyle}
+          />
+          <TimelineTitle>Condé Nast Italia</TimelineTitle>
+          <TimelineSubtitle>Mobile/Web application developer</TimelineSubtitle>
+          <Paragraph>June 2013</Paragraph>
+          <Paragraph>
+            Designing and implementing iOS and Android apps for the main brands
+            of the company: Vanity Fair, Glamour, Wired, Vogue. I also worked
+            with the web team to develop the new version of the official web
+            sites for GQ Italia, Glamour, CNLive! and Vogue Italia.
+          </Paragraph>
+        </TimelineElement>
+        <TimelineElement inverted={false} icon={briefcase}>
+          <StaticImage
+            width={imgSize}
+            height={imgSize}
+            src={"../../../images/carrier/shi.png"}
+            alt={"shi"}
+            imgStyle={imgStyle}
+          />
+          <TimelineTitle>SHI</TimelineTitle>
+          <TimelineSubtitle>iOS/Web Developer</TimelineSubtitle>
+          <Paragraph>October 2010</Paragraph>
+          <Paragraph>
+            Design and development of mobile application on iOS, Android and
+            Windows phone platform, for enterprise distribution (ad-hoc
+            distribution) or within the various app store. Design and
+            development of Web application used as backend for mobile app.
+            Design and development of Enterprise Web application.
+          </Paragraph>
+        </TimelineElement>
+        <TimelineElement inverted={false} icon={briefcase}>
+          <StaticImage
+            width={imgSize}
+            height={imgSize}
             src={"../../../images/carrier/bottinelli-informatica.png"}
             alt={"bottinelli informatica"}
-            imgStyle={{
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginBottom: "15px",
-              display: "block",
-            }}
+            imgStyle={imgStyle}
           />
-          <h4 className="timeline-title">Bottinelli informatica</h4>
-          <h4 className="timeline-subtitle">Developer</h4>
-          <p>
-            <small className="text-muted d-md-block d-lg-none">
-              September 2009
-            </small>
-          </p>
-          <p>Software development for textile industry.</p>
-        </TimelinePanel>
-      </TimelineElementContainer>
-      <TimelineElementContainer>
-        <TimelineBadge>
-          <Briefcase />
-        </TimelineBadge>
-        <TimelinePanel inverted={false}>
+          <TimelineTitle>Bottinelli informatica</TimelineTitle>
+          <TimelineSubtitle>Developer</TimelineSubtitle>
+          <Paragraph>September 2009</Paragraph>
+          <Paragraph>Software development for textile industry.</Paragraph>
+        </TimelineElement>
+        <TimelineElement inverted={false} icon={briefcase}>
           <StaticImage
-            backgroundColor={"#fff"}
-            className="timeline-image"
-            width={80}
-            height={80}
+            width={imgSize}
+            height={imgSize}
             src={"../../../images/carrier/avanade.png"}
             alt={"avanade"}
-            imgStyle={{
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginBottom: "15px",
-              display: "block",
-            }}
+            imgStyle={imgStyle}
           />
-          <Heading4 className="timeline-title">Avanade</Heading4>
-          <Heading5 className="timeline-subtitle">PMO Consultant</Heading5>
+          <TimelineTitle>Avanade</TimelineTitle>
+          <TimelineSubtitle>PMO Consultant</TimelineSubtitle>
           <Paragraph>October 2008</Paragraph>
           <Paragraph>
+            {" "}
             Assigned on Eurosig integration BA-HVB/Unicredit project, I worked
             with the Accenture Consultant team as a PMO.
           </Paragraph>
@@ -436,25 +406,19 @@ export const Timeline: React.FC = () => (
               Accenture team.
             </li>
           </List>
-        </TimelinePanel>
-      </TimelineElementContainer>
-      <TimelineElementContainer>
-        <TimelineBadge>
-          <GraduationCap />
-        </TimelineBadge>
-        <TimelinePanel inverted={true}>
+        </TimelineElement>
+        <TimelineElement inverted={true} icon={graduationCap}>
           <StaticImage
-            backgroundColor={"#fff"}
-            className="timeline-image"
-            width={80}
-            height={80}
+            width={imgSize}
+            height={imgSize}
             src={"../../../images/carrier/insubria.png"}
             alt={"insubria"}
+            imgStyle={imgStyle}
           />
-          <Heading4 className="timeline-title">Insubria University</Heading4>
-          <Heading5 className="timeline-subtitle">
+          <TimelineTitle>Insubria University</TimelineTitle>
+          <TimelineSubtitle>
             {"Bachelor's degree in Computer Science"}
-          </Heading5>
+          </TimelineSubtitle>
           <Paragraph>October 2008</Paragraph>
           <Paragraph>
             Thesis: “Grandi Giardini: implementazione di un portale web con
@@ -471,20 +435,13 @@ export const Timeline: React.FC = () => (
             <li>Networking</li>
             <li>Programming</li>
           </List>
-        </TimelinePanel>
-      </TimelineElementContainer>
-      <TimelineElementContainer>
-        <TimelineBadge>
-          <GraduationCap />
-        </TimelineBadge>
-        <TimelinePanel inverted={true}>
-          <Heading4 className="timeline-title">ITCG Romagnosi</Heading4>
-          <Heading5 className="timeline-subtitle">
-            High school in Accountant
-          </Heading5>
+        </TimelineElement>
+        <TimelineElement inverted={true} icon={graduationCap}>
+          <TimelineTitle>ITCG Romagnosi</TimelineTitle>
+          <TimelineSubtitle>High school in Accountant</TimelineSubtitle>
           <Paragraph>July 2005</Paragraph>
-        </TimelinePanel>
-      </TimelineElementContainer>
-    </TimelineContainer>
-  </TimelineContentContainer>
-);
+        </TimelineElement>
+      </TimelineContainer>
+    </TimelineContentContainer>
+  );
+};
