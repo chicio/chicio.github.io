@@ -7,7 +7,7 @@ const TechnologiesContainer = styled.div`
   margin: 0;
   display: flex;
   flex-direction: column;
-  padding: ${(props) => props.theme.spacing[12]};
+  padding: ${(props) => props.theme.spacing[11]};
   background-color: ${(props) => props.theme.light.primaryColorDark};
 
   @media (prefers-color-scheme: dark) {
@@ -27,6 +27,7 @@ const TechnologyParagraph = styled(Paragraph)`
 const TechnologiesIconsContainer = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 `;
@@ -34,8 +35,7 @@ const TechnologiesIconsContainer = styled.div`
 const TechnologyImageContainer = styled.div`
   width: 80px;
   height: 80px;
-  margin-right: 10px;
-  margin-left: 10px;
+  margin: ${(props) => props.theme.spacing[2]};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,7 +62,10 @@ export const Technologies: React.FC<TechnologiesProps> = ({ author }) => (
         />
       </TechnologyImageContainer>
       <TechnologyImageContainer>
-        <StaticImage src={"../../../images/technologies/swift.png"} alt={"swift"} />
+        <StaticImage
+          src={"../../../images/technologies/swift.png"}
+          alt={"swift"}
+        />
       </TechnologyImageContainer>
       <TechnologyImageContainer>
         <StaticImage
