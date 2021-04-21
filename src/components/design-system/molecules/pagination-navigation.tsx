@@ -1,10 +1,9 @@
 import styled from "styled-components";
-import { Container } from "../atoms/container";
 import React from "react";
 import { InternalCallToAction } from "../atoms/internal-call-to-action";
 import { track, tracking } from "../../../utils/tracking";
 
-const CenterHorizontallyContainer = styled(Container)`
+const CenterHorizontallyContainer = styled.div`
   display: flex;
   justify-content: center;
   padding: ${(props) => props.theme.spacing[4]};
