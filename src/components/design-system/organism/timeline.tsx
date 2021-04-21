@@ -7,8 +7,11 @@ import { List } from "../atoms/list";
 import React from "react";
 import styled, { css } from "styled-components";
 import { Container } from "../atoms/container";
+import { Heading6 } from "../atoms/heading6";
+import { Heading7 } from "../atoms/heading7";
 
 const TimelineContentContainer = styled(Container)`
+  padding: 0;
   margin-top: ${(props) => props.theme.spacing[4]};
   margin-bottom: ${(props) => props.theme.spacing[4]};
 `;
@@ -209,15 +212,15 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
 const TimelineBadge = styled.div`
   background-color: ${(props) => props.theme.light.primaryColor};
   color: ${(props) => props.theme.light.primaryColorText};
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
   font-size: 1.4em;
   text-align: center;
   position: absolute;
-  top: 16px;
+  top: 20px;
   left: 50%;
-  margin-left: -25px;
+  margin-left: -20px;
   z-index: 100;
   border-radius: 50%;
 
@@ -227,146 +230,139 @@ const TimelineBadge = styled.div`
   }
 
   @media (max-width: 992px) {
-    left: 15px;
+    left: 20px;
     margin-left: 0;
-    top: 16px;
+    top: 20px;
   }
 `;
+
+type TimelineElementProps = TimelinePanelProps & {
+  icon: React.ReactElement;
+};
+
+const TimelineElement: React.FC<TimelineElementProps> = ({
+  children,
+  inverted,
+  icon,
+}) => (
+  <TimelineElementContainer>
+    <TimelineBadge className="timeline-badge work">{icon}</TimelineBadge>
+    <TimelinePanel inverted={inverted}>
+      <div style={{ padding: "12px" }}>{children}</div>
+    </TimelinePanel>
+  </TimelineElementContainer>
+);
 
 export const Timeline: React.FC = () => (
   <TimelineContentContainer>
     <TimelineContainer>
-      <TimelineElementContainer>
-        <TimelineBadge className="timeline-badge work">
-          <Briefcase size={25} />
-        </TimelineBadge>
-        <TimelinePanel inverted={false}>
-          <StaticImage
-            className="timeline-image"
-            width={80}
-            height={80}
-            src={"../../../images/carrier/lastminute-group.png"}
-            alt={"lastminute"}
-            imgStyle={{
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginBottom: "15px",
-              display: "block",
-            }}
-          />
-          <Heading4>Lastminute.com group</Heading4>
-          <Heading5 className="timeline-subtitle">
-            Mobile application developer
-          </Heading5>
-          <Paragraph>February 2017</Paragraph>
-          <Paragraph>
-            Designing and implementing iOS and Android apps for the main brands
-            of the company: Lastminute.com, Volagratis, Bravofly, Rumbo.
-          </Paragraph>
-        </TimelinePanel>
-      </TimelineElementContainer>
-      <TimelineElementContainer>
-        <TimelineBadge>
-          <GraduationCap />
-        </TimelineBadge>
-        <TimelinePanel inverted={true}>
-          <StaticImage
-            className="timeline-image"
-            width={80}
-            height={80}
-            src={"../../../images/carrier/unimib.jpg"}
-            alt={"unimib"}
-            imgStyle={{
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginBottom: "15px",
-              display: "block",
-            }}
-          />
-          <Heading4 className="timeline-title">
-            Milano-Bicocca University
-          </Heading4>
-          <Heading5 className="timeline-subtitle">
-            {"Master's degree in Computer Science"}
-          </Heading5>
-          <Paragraph>July 2016</Paragraph>
-          <Paragraph>
-            Thesis: “Spectral Clara Lux Tracer: physically based ray tracer with
-            multiple shading models support”. You can find more info about it in
-            the project section.
-          </Paragraph>
-          <List>
-            <li>Computer graphics</li>
-            <li>Software engineering</li>
-            <li>Algorithm and Theoretical CS</li>
-            <li>IT security</li>
-            <li>IT management</li>
-            <li>Design and user experience</li>
-          </List>
-        </TimelinePanel>
-      </TimelineElementContainer>
-      <TimelineElementContainer>
-        <TimelineBadge>
-          <Briefcase />
-        </TimelineBadge>
-        <TimelinePanel inverted={false}>
-          <StaticImage
-            backgroundColor={"#fff"}
-            className="timeline-image"
-            width={80}
-            height={80}
-            src={"../../../images/carrier/condenast.png"}
-            alt={"condenast"}
-            imgStyle={{
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginBottom: "15px",
-              display: "block",
-            }}
-          />
-          <Heading4 className="timeline-title">Condé Nast Italia</Heading4>
-          <Heading5 className="timeline-subtitle">
-            Mobile/Web application developer
-          </Heading5>
-          <Paragraph>June 2013</Paragraph>
-          <Paragraph>
-            Designing and implementing iOS and Android apps for the main brands
-            of the company: Vanity Fair, Glamour, Wired, Vogue. I also worked
-            with the web team to develop the new version of the official web
-            sites for GQ Italia, Glamour, CNLive! and Vogue Italia.
-          </Paragraph>
-        </TimelinePanel>
-      </TimelineElementContainer>
-      <TimelineElementContainer>
-        <TimelineBadge>
-          <Briefcase />
-        </TimelineBadge>
-        <TimelinePanel inverted={false}>
-          <StaticImage
-            className="timeline-image"
-            width={80}
-            height={80}
-            src={"../../../images/carrier/shi.png"}
-            alt={"shi"}
-            imgStyle={{
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginBottom: "15px",
-              display: "block",
-            }}
-          />
-          <Heading4 className="timeline-title">SHI</Heading4>
-          <Heading5 className="timeline-subtitle">iOS/Web Developer</Heading5>
-          <Paragraph>October 2010</Paragraph>
-          <Paragraph>
-            Design and development of mobile application on iOS, Android and
-            Windows phone platform, for enterprise distribution (ad-hoc
-            distribution) or within the various app store. Design and
-            development of Web application used as backend for mobile app.
-            Design and development of Enterprise Web application.
-          </Paragraph>
-        </TimelinePanel>
-      </TimelineElementContainer>
+      <TimelineElement inverted={false} icon={<Briefcase size={20} />}>
+        <StaticImage
+          className="timeline-image"
+          width={80}
+          height={80}
+          src={"../../../images/carrier/lastminute-group.png"}
+          alt={"lastminute"}
+          imgStyle={{
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginBottom: "15px",
+            display: "block",
+          }}
+        />
+        <Heading5>Lastminute.com group</Heading5>
+        <Heading6 className="timeline-subtitle">
+          Mobile application developer
+        </Heading6>
+        <Paragraph>February 2017</Paragraph>
+        <Paragraph>
+          Designing and implementing iOS and Android apps for the main brands of
+          the company: Lastminute.com, Volagratis, Bravofly, Rumbo.
+        </Paragraph>
+      </TimelineElement>
+      <TimelineElement inverted={true} icon={<GraduationCap size={20} />}>
+        <StaticImage
+          className="timeline-image"
+          width={80}
+          height={80}
+          src={"../../../images/carrier/unimib.jpg"}
+          alt={"unimib"}
+          imgStyle={{
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginBottom: "15px",
+            display: "block",
+          }}
+        />
+        <Heading6 className="timeline-title">
+          Milano-Bicocca University
+        </Heading6>
+        <Heading7 className="timeline-subtitle">
+          {"Master's degree in Computer Science"}
+        </Heading7>
+        <Paragraph>July 2016</Paragraph>
+        <Paragraph>
+          Thesis: “Spectral Clara Lux Tracer: physically based ray tracer with
+          multiple shading models support”. You can find more info about it in
+          the project section.
+        </Paragraph>
+        <List>
+          <li>Computer graphics</li>
+          <li>Software engineering</li>
+          <li>Algorithm and Theoretical CS</li>
+          <li>IT security</li>
+          <li>IT management</li>
+          <li>Design and user experience</li>
+        </List>
+      </TimelineElement>
+      <TimelineElement inverted={false} icon={<GraduationCap size={20} />}>
+        <StaticImage
+          width={80}
+          height={80}
+          src={"../../../images/carrier/condenast.png"}
+          alt={"condenast"}
+          imgStyle={{
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginBottom: "15px",
+            display: "block",
+          }}
+        />
+        <Heading4>Condé Nast Italia</Heading4>
+        <Heading5>Mobile/Web application developer</Heading5>
+        <Paragraph>June 2013</Paragraph>
+        <Paragraph>
+          Designing and implementing iOS and Android apps for the main brands of
+          the company: Vanity Fair, Glamour, Wired, Vogue. I also worked with
+          the web team to develop the new version of the official web sites for
+          GQ Italia, Glamour, CNLive! and Vogue Italia.
+        </Paragraph>
+      </TimelineElement>
+      <TimelineElement inverted={false} icon={<Briefcase size={20} />}>
+        <StaticImage
+          className="timeline-image"
+          width={80}
+          height={80}
+          src={"../../../images/carrier/shi.png"}
+          alt={"shi"}
+          imgStyle={{
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginBottom: "15px",
+            display: "block",
+          }}
+        />
+        <Heading4>SHI</Heading4>
+        <Heading5>iOS/Web Developer</Heading5>
+        <Paragraph>October 2010</Paragraph>
+        <Paragraph>
+          Design and development of mobile application on iOS, Android and
+          Windows phone platform, for enterprise distribution (ad-hoc
+          distribution) or within the various app store. Design and
+          development of Web application used as backend for mobile app.
+          Design and development of Enterprise Web application.
+        </Paragraph>
+      </TimelineElement>
       <TimelineElementContainer>
         <TimelineBadge>
           <Briefcase />
