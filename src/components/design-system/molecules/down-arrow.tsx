@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 const IconContainer = styled(Icon)`
   text-align: center;
+  margin-bottom: ${props => props.theme.spacing[2]};
 `;
 
 export const DownArrow: React.FC = () => (
