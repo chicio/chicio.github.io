@@ -53,6 +53,10 @@ const PostCardLink = styled(StandardInternalLink)`
   }
 `;
 
+const PostCardTitle = styled(Heading5)`
+  word-wrap: break-word;
+`;
+
 interface PostCardProps {
   slug: string;
   title: string;
@@ -85,7 +89,7 @@ export const PostCard: React.FC<PostCardProps> = ({
         );
       }}
     >
-      <Heading5>{title}</Heading5>
+      <PostCardTitle>{title}</PostCardTitle>
       <PostCardImageContainer>
         <GatsbyImage
           alt={title}

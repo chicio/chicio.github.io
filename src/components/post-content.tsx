@@ -8,6 +8,7 @@ import { syntax } from "./design-system/atoms/syntax";
 export const PostContentContainer = styled.div`
   color: ${(props) => props.theme.light.primaryTextColor};
   line-height: ${(props) => props.theme.lineHeight};
+  word-break: break-word;
   
   & ul li {
     font-size: ${(props) => props.theme.fontSizes[2]};

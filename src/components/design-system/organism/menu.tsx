@@ -1,8 +1,8 @@
 import React from "react";
 import { track, tracking } from "../../../utils/tracking";
 import { MenuItem } from "../molecules/menu-item";
-import { Container } from "../atoms/container";
 import styled, { css } from "styled-components";
+import { Container } from "../atoms/container";
 
 const MenuContainer = styled.div`
   background-color: ${(props) => props.theme.light.primaryColor};
