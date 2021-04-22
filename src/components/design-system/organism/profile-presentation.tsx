@@ -7,6 +7,22 @@ import styled from "styled-components";
 import { CallToActionInternal } from "../atoms/call-to-action-internal";
 import { Heading2 } from "../atoms/heading2";
 
+const Author = styled(Heading2)`
+  color: ${(props) => props.theme.light.textAbovePrimaryColor};
+
+  @media (prefers-color-scheme: dark) {
+    color: ${(props) => props.theme.dark.textAbovePrimaryColor};
+  }
+`;
+
+const Job = styled(Heading5)`
+  color: ${(props) => props.theme.light.textAbovePrimaryColor};
+
+  @media (prefers-color-scheme: dark) {
+    color: ${(props) => props.theme.dark.textAbovePrimaryColor};
+  }
+`;
+
 const SocialContactsContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -59,8 +75,8 @@ export const ProfilePresentation: React.FC<ProfilePresentationProps> = ({
       src={"../../../images/authors/fabrizio-duroni.jpg"}
       alt={author}
     />
-    <Heading2>{author}</Heading2>
-    <Heading5>Software Developer</Heading5>
+    <Author>{author}</Author>
+    <Job>Software Developer</Job>
     <SocialContactsContainer>
       <SocialContacts
         trackingCategory={tracking.category.home}

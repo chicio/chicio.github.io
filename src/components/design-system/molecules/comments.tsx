@@ -9,6 +9,10 @@ interface CommentsProps {
 
 const CommentsContainer = styled.div`
   margin-bottom: ${(props) => props.theme.spacing[7]};
+
+  #thread__container {
+    font-family: "Open Sans", Arial, sans-serif;
+  }
 `;
 
 export const Comments: React.FC<CommentsProps> = ({ url, title }) => (

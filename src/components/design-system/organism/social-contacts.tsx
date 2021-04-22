@@ -66,7 +66,7 @@ export const SocialContacts: React.FC<SocialContactsProps> = ({
         icon={<Linkedin size={30} title={"Linkedin"} />}
       />
       <SocialContact
-        link={data.site!.siteMetadata!.contacts!.email!}
+        link={`mailto:${data.site!.siteMetadata!.contacts!.email!}`}
         trackingAction={tracking.action.send_mail}
         trackingCategory={trackingCategory}
         trackingLabel={trackingLabel}

@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { ContainerFluid } from "../atoms/container-fluid";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Paragraph } from "../atoms/paragraph";
-import { StandardInternalLink } from "../atoms/standard-internal-link";
+import { StandardExternalLink } from "../atoms/standard-external-link";
 
 const PostAuthorsContainer = styled(ContainerFluid)`
   padding: 0;
@@ -82,7 +82,7 @@ export const PostAuthors: React.FC<PostAuthorsProps> = ({
             />
             <Paragraph>
               {enableUrl && (
-                <StandardInternalLink
+                <StandardExternalLink
                   onClick={() =>
                     track(
                       tracking.action.open_blog_author,
@@ -90,10 +90,11 @@ export const PostAuthors: React.FC<PostAuthorsProps> = ({
                       trackingLabel
                     )
                   }
-                  to={blogAuthor.url}
+                  href={blogAuthor.url}
+                  target={"_blank"}
                 >
                   {blogAuthor.name}
-                </StandardInternalLink>
+                </StandardExternalLink>
               )}
               {!enableUrl && blogAuthor.name}
             </Paragraph>

@@ -11,6 +11,11 @@ import { BlogPage } from "../components/design-system/templates/blog-page";
 import { PostTags } from "../components/design-system/molecules/post-tags";
 import { Heading2 } from "../components/design-system/atoms/heading2";
 import { PostContent } from "../components/post-content";
+import styled from "styled-components";
+
+const PostTitle = styled(Heading2)`
+  margin: 0;
+`;
 
 const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
   const post = data.markdownRemark!;
@@ -30,9 +35,9 @@ const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
       trackingCategory={tracking.category.blog_post}
     >
       <div>
-        <Heading2 className="blog-post-title">
+        <PostTitle className="blog-post-title">
           {post.frontmatter!.title}
-        </Heading2>
+        </PostTitle>
         <PostAuthors
           authors={post.frontmatter!.authors!}
           trackingCategory={tracking.category.blog_post}

@@ -161,59 +161,6 @@ const ID3TagEditor: React.FC = () => (
   />
 );
 
-const RangeUISlider: React.FC = () => (
-  <Project
-    reverse={false}
-    name={"RangeUISlider"}
-    image={
-      <StaticImage
-        width={500}
-        height={500}
-        src={"../../../images/projects/range-ui-slider.png"}
-        alt={"RangeUISlider"}
-      />
-    }
-    description={
-      <>
-        <Paragraph>
-          A highly customizable iOS range selection slider, developed using
-          autolayout and completely customizable using IBDesignabled and
-          IBInspectable. Distributed as a custom framework and with{" "}
-          <StandardExternalLink href="https://cocoapods.org/pods/RangeUISlider">
-            cocoapods
-          </StandardExternalLink>
-          .
-        </Paragraph>
-        <List>
-          <li>Cocoa Touch</li>
-          <li>Custom UI Component</li>
-          <li>Autolayout</li>
-          <li>IBDesignable</li>
-          <li>IBInspectable</li>
-          <li>iOS</li>
-          <li>Swift</li>
-        </List>
-      </>
-    }
-    callToActions={[
-      {
-        label: "Github",
-        trackingCategory: tracking.category.home,
-        trackingAction: tracking.action.open_rangeuislider_github,
-        trackingLabel: tracking.label.body,
-        link: "https://github.com/chicio/RangeUISlider",
-      },
-      {
-        label: "Docs",
-        trackingCategory: tracking.category.home,
-        trackingAction: tracking.action.open_rangeuislider_doc,
-        trackingLabel: tracking.label.body,
-        link: "https://rangeuislider.fabrizioduroni.it",
-      },
-    ]}
-  />
-);
-
 const TabBarUIAction: React.FC = () => (
   <Project
     reverse={true}
@@ -254,8 +201,7 @@ const TabBarUIAction: React.FC = () => (
         trackingCategory: tracking.category.home,
         trackingAction: tracking.action.open_tabbaruiaction_doc,
         trackingLabel: tracking.label.body,
-        link:
-          "https://tabbaruiaction.fabrizioduroni.it",
+        link: "https://tabbaruiaction.fabrizioduroni.it",
       },
     ]}
   />
@@ -308,6 +254,59 @@ const Mp3Id3Tagger: React.FC = () => (
         trackingLabel: tracking.label.body,
         link:
           "https://github.com/chicio/Mp3ID3Tagger/raw/master/Release/Mp3ID3Tagger.dmg",
+      },
+    ]}
+  />
+);
+
+const RangeUISlider: React.FC = () => (
+  <Project
+    reverse={true}
+    name={"RangeUISlider"}
+    image={
+      <StaticImage
+        width={500}
+        height={500}
+        src={"../../../images/projects/range-ui-slider.png"}
+        alt={"RangeUISlider"}
+      />
+    }
+    description={
+      <>
+        <Paragraph>
+          A highly customizable iOS range selection slider, developed using
+          autolayout and completely customizable using IBDesignabled and
+          IBInspectable. Distributed as a custom framework and with{" "}
+          <StandardExternalLink href="https://cocoapods.org/pods/RangeUISlider">
+            cocoapods
+          </StandardExternalLink>
+          .
+        </Paragraph>
+        <List>
+          <li>Cocoa Touch</li>
+          <li>Custom UI Component</li>
+          <li>Autolayout</li>
+          <li>IBDesignable</li>
+          <li>IBInspectable</li>
+          <li>iOS</li>
+          <li>Swift</li>
+        </List>
+      </>
+    }
+    callToActions={[
+      {
+        label: "Github",
+        trackingCategory: tracking.category.home,
+        trackingAction: tracking.action.open_rangeuislider_github,
+        trackingLabel: tracking.label.body,
+        link: "https://github.com/chicio/RangeUISlider",
+      },
+      {
+        label: "Docs",
+        trackingCategory: tracking.category.home,
+        trackingAction: tracking.action.open_rangeuislider_doc,
+        trackingLabel: tracking.label.body,
+        link: "https://rangeuislider.fabrizioduroni.it",
       },
     ]}
   />

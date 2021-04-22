@@ -5,7 +5,7 @@ interface Colors {
   primaryColorDark: string;
   primaryColorLight: string;
   generalBackground: string;
-  primaryColorText: string;
+  textAbovePrimaryColor: string;
   primaryTextColor: string;
   secondaryTextColor: string;
   accentColor: string;

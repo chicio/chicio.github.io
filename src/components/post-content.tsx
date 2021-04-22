@@ -113,6 +113,10 @@ export const PostContentContainer = styled.div`
     line-height: ${(props) => props.theme.lineHeight};
   }
 
+  & .katex * {
+    font-size: ${(props) => props.theme.fontSizes[4]};
+  }
+
   & .emoji-icon {
     top: 4px;
   }
