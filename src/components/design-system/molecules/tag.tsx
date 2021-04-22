@@ -16,7 +16,7 @@ const TagLink = styled(StandardInternalLink)<TagContentProps>`
   }
 
   ${(props) =>
-    props.big &&
+    props.big === true &&
     css`
       margin-bottom: ${(props) => props.theme.spacing[4]};
     `}
