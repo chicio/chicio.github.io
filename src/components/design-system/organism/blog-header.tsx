@@ -21,6 +21,7 @@ const BlogTitle = styled(Heading3)`
   margin: 0;
   font-weight: bold;
   display: block;
+  line-height: 1.5;
 
   @media (prefers-color-scheme: dark) {
     color: ${(props) => props.theme.dark.primaryTextColor};
@@ -39,6 +40,7 @@ const BlogDescription = styled.span`
   display: block;
   font-size: ${(props) => props.theme.fontSizes[4]};
   color: ${(props) => props.theme.light.secondaryTextColor};
+  line-height: 1.5;
 
   @media (prefers-color-scheme: dark) {
     color: ${(props) => props.theme.dark.secondaryTextColor};

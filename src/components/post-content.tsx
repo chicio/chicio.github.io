@@ -7,49 +7,68 @@ import { syntax } from "./design-system/atoms/syntax";
 
 export const PostContentContainer = styled.div`
   color: ${(props) => props.theme.light.primaryTextColor};
-  line-height: ${(props) => props.theme.lineHeight};
-  word-break: break-word;
-  
+  line-height: 1.5;
+
   & ul li {
     font-size: ${(props) => props.theme.fontSizes[2]};
+    line-height: ${(props) => props.theme.lineHeight};
   }
 
   & p {
     font-size: ${(props) => props.theme.fontSizes[2]};
+    margin-left: 0;
+    margin-right: 0;
+    line-height: ${(props) => props.theme.lineHeight};
   }
 
   & figure figcaption {
     font-size: ${(props) => props.theme.fontSizes[1]};
     text-align: center;
+    line-height: ${(props) => props.theme.lineHeight};
   }
 
   & h3 {
-    ${heading3Style}
+    ${heading3Style};
+    margin-left: 0;
+    margin-right: 0;
+    line-height: ${(props) => props.theme.lineHeight};
   }
 
   & h4 {
-    ${heading4Style}
+    ${heading4Style};
+    margin-left: 0;
+    margin-right: 0;
+    line-height: ${(props) => props.theme.lineHeight};
   }
 
   & a {
-    ${standardLinkStyle}
+    ${standardLinkStyle};
+    line-height: ${(props) => props.theme.lineHeight};
   }
-  
+
   & blockquote {
+    line-height: ${(props) => props.theme.lineHeight};
     color: ${(props) => props.theme.light.secondaryTextColor};
     border-left: 5px solid ${(props) => props.theme.light.secondaryTextColor};
-    padding: ${(props) => props.theme.spacing[4]} ${(props) =>
-  props.theme.spacing[2]};
+    margin-left: 0;
+    margin-right: 0;
+    padding: ${(props) => props.theme.spacing[4]}
+      ${(props) => props.theme.spacing[2]};
   }
 
   & blockquote p {
-    margin-bottom: 0
+    line-height: ${(props) => props.theme.lineHeight};
+    margin-bottom: 0;
+    margin-top: 0;
   }
 
   & hr {
-    background-color: ${(props) => props.theme.light.dividerColor}
+    color: ${(props) => props.theme.light.dividerColor};
+    background-color: ${(props) => props.theme.light.dividerColor};
     width: 100%;
     margin: ${(props) => props.theme.spacing[4]} 0;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
 
   @media (prefers-color-scheme: dark) {
@@ -59,9 +78,10 @@ export const PostContentContainer = styled.div`
       color: ${(props) => props.theme.dark.secondaryTextColor};
       border-left: 5px solid ${(props) => props.theme.dark.secondaryTextColor};
     }
-    
+
     & hr {
-      background-color: ${(props) => props.theme.dark.dividerColor}
+      color: ${(props) => props.theme.dark.dividerColor};
+      background-color: ${(props) => props.theme.dark.dividerColor};
     }
   }
 
@@ -74,7 +94,9 @@ export const PostContentContainer = styled.div`
     margin: ${(props) => props.theme.spacing[2]} 0;
   }
 
-  & .embedVideo-container iframe, .embedVideo-container object, .embedVideo-container embed {
+  & .embedVideo-container iframe,
+  .embedVideo-container object,
+  .embedVideo-container embed {
     position: absolute;
     top: 0;
     left: 0;
@@ -88,6 +110,11 @@ export const PostContentContainer = styled.div`
     max-width: 100%;
     overflow-x: scroll;
     text-align: initial;
+    line-height: ${(props) => props.theme.lineHeight};
+  }
+
+  & .emoji-icon {
+    top: 4px;
   }
 
   ${syntax}

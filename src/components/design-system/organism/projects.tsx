@@ -318,8 +318,8 @@ export const Projects: React.FC = () => (
     <SpectralClaraLuxTracer />
     <SpectralBRDFExplorer />
     <ID3TagEditor />
-    <RangeUISlider />
     <TabBarUIAction />
     <Mp3Id3Tagger />
+    <RangeUISlider />
   </>
 );
