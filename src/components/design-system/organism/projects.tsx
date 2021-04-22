@@ -161,58 +161,6 @@ const ID3TagEditor: React.FC = () => (
   />
 );
 
-const Mp3Id3Tagger: React.FC = () => (
-  <Project
-    reverse={true}
-    name={"ID3TagEditor"}
-    image={
-      <StaticImage
-        width={500}
-        height={500}
-        src={"../../../images/projects/mp3id3tagger.jpg"}
-        alt={"ID3TagEditor"}
-      />
-    }
-    description={
-      <>
-        <Paragraph>
-          A macOS application to edit the ID3 tag of your mp3 files.
-          Mp3ID3Tagger supports the following ID3 tag versions: 2.2. and 2.3. It
-          will let you modify the following information inside the ID3 tag of
-          you mp3 files:
-        </Paragraph>
-        <List className="project-features">
-          <li>version of the tag</li>
-          <li>title</li>
-          <li>artist</li>
-          <li>album</li>
-          <li>year</li>
-          <li>track position</li>
-          <li>genre</li>
-          <li>attached picture set as Front cover</li>
-        </List>
-      </>
-    }
-    callToActions={[
-      {
-        label: "Github",
-        trackingCategory: tracking.category.home,
-        trackingAction: tracking.action.open_mp3id3tagger_github,
-        trackingLabel: tracking.label.body,
-        link: "https://github.com/chicio/Mp3ID3Tagger",
-      },
-      {
-        label: "Download",
-        trackingCategory: tracking.category.home,
-        trackingAction: tracking.action.open_mp3id3tagger_github,
-        trackingLabel: tracking.label.body,
-        link:
-          "https://github.com/chicio/Mp3ID3Tagger/raw/master/Release/Mp3ID3Tagger.dmg",
-      },
-    ]}
-  />
-);
-
 const RangeUISlider: React.FC = () => (
   <Project
     reverse={false}
@@ -266,12 +214,112 @@ const RangeUISlider: React.FC = () => (
   />
 );
 
+const TabBarUIAction: React.FC = () => (
+  <Project
+    reverse={true}
+    name={"TabBarUIAction"}
+    image={
+      <StaticImage
+        width={500}
+        height={500}
+        src={"../../../images/projects/tabbaruiaction.png"}
+        alt={"TabBarUIAction"}
+      />
+    }
+    description={
+      <>
+        <Paragraph>
+          A SwiftUI custom TabBar view with action button for modal content
+          display. Fully compatible with Mac Catalyst. Available as a standalone
+          framework, a SwiftPM package and as a Cocoapods pod. Its main feature
+          are:
+        </Paragraph>
+        <List>
+          <li>customizable tab item</li>
+          <li>custom central tab item action to show modal screens</li>
+          <li>supported platform: iOS, iPadOS and macOS</li>
+        </List>
+      </>
+    }
+    callToActions={[
+      {
+        label: "Github",
+        trackingCategory: tracking.category.home,
+        trackingAction: tracking.action.open_tabbaruiaction_github,
+        trackingLabel: tracking.label.body,
+        link: "https://github.com/chicio/TabBarUIAction",
+      },
+      {
+        label: "Docs",
+        trackingCategory: tracking.category.home,
+        trackingAction: tracking.action.open_tabbaruiaction_doc,
+        trackingLabel: tracking.label.body,
+        link:
+          "https://tabbaruiaction.fabrizioduroni.it",
+      },
+    ]}
+  />
+);
+
+const Mp3Id3Tagger: React.FC = () => (
+  <Project
+    reverse={false}
+    name={"Mp3ID3Tagger"}
+    image={
+      <StaticImage
+        width={500}
+        height={500}
+        src={"../../../images/projects/mp3id3tagger.jpg"}
+        alt={"ID3TagEditor"}
+      />
+    }
+    description={
+      <>
+        <Paragraph>
+          A macOS application to edit the ID3 tag of your mp3 files.
+          Mp3ID3Tagger supports the following ID3 tag versions: 2.2. and 2.3. It
+          will let you modify the following information inside the ID3 tag of
+          you mp3 files:
+        </Paragraph>
+        <List className="project-features">
+          <li>version of the tag</li>
+          <li>title</li>
+          <li>artist</li>
+          <li>album</li>
+          <li>year</li>
+          <li>track position</li>
+          <li>genre</li>
+          <li>attached picture set as Front cover</li>
+        </List>
+      </>
+    }
+    callToActions={[
+      {
+        label: "Github",
+        trackingCategory: tracking.category.home,
+        trackingAction: tracking.action.open_mp3id3tagger_github,
+        trackingLabel: tracking.label.body,
+        link: "https://github.com/chicio/Mp3ID3Tagger",
+      },
+      {
+        label: "Download",
+        trackingCategory: tracking.category.home,
+        trackingAction: tracking.action.open_mp3id3tagger_github,
+        trackingLabel: tracking.label.body,
+        link:
+          "https://github.com/chicio/Mp3ID3Tagger/raw/master/Release/Mp3ID3Tagger.dmg",
+      },
+    ]}
+  />
+);
+
 export const Projects: React.FC = () => (
   <>
     <SpectralClaraLuxTracer />
     <SpectralBRDFExplorer />
     <ID3TagEditor />
-    <Mp3Id3Tagger />
     <RangeUISlider />
+    <TabBarUIAction />
+    <Mp3Id3Tagger />
   </>
 );
