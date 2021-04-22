@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import { InternalCallToAction } from "../atoms/internal-call-to-action";
+import { CallToActionInternal } from "../atoms/internal-call-to-action";
 import { track, tracking } from "../../../utils/tracking";
 
 const CenterHorizontallyContainer = styled.div`
@@ -9,7 +9,7 @@ const CenterHorizontallyContainer = styled.div`
   padding: ${(props) => props.theme.spacing[4]};
 `;
 
-const PageNavigationCallToAction = styled(InternalCallToAction)`
+const PageNavigationCallToAction = styled(CallToActionInternal)`
   width: 100px;
   text-align: center;
 `;

@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { InternalCallToAction } from "../atoms/internal-call-to-action";
+import { CallToActionInternal } from "../atoms/internal-call-to-action";
 import { Heading6 } from "../atoms/heading6";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import React from "react";
 import { Paragraph } from "../atoms/paragraph";
 import { track, tracking } from "../../../utils/tracking";
 
-const CardButton = styled(InternalCallToAction)`
+const CardButton = styled(CallToActionInternal)`
   margin-top: auto;
   display: block;
 `;

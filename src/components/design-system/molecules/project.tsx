@@ -1,6 +1,6 @@
 import React from "react";
 import { Heading3 } from "../atoms/heading3";
-import { ExternalCallToAction } from "../atoms/external-call-to-action";
+import { CallToActionExternal } from "../atoms/external-call-to-action";
 import { track } from "../../../utils/tracking";
 import styled from "styled-components";
 import { Container } from "../atoms/container";
@@ -65,7 +65,7 @@ export const Project: React.FC<ProjectProps> = ({
       {description}
       <CallToActionContainer>
         {callToActions.map((callToAction) => (
-          <ExternalCallToAction
+          <CallToActionExternal
             key={callToAction.label}
             href={callToAction.link}
             onClick={() => {
@@ -79,7 +79,7 @@ export const Project: React.FC<ProjectProps> = ({
             rel="noopener noreferrer"
           >
             {callToAction.label}
-          </ExternalCallToAction>
+          </CallToActionExternal>
         ))}
       </CallToActionContainer>
     </ProjectContentContainer>

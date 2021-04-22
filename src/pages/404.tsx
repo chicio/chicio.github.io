@@ -3,7 +3,7 @@ import { track, tracking } from "../utils/tracking";
 import { Heading1 } from "../components/design-system/atoms/heading1";
 import { Paragraph } from "../components/design-system/atoms/paragraph";
 import { ContainerFullscreen } from "../components/design-system/atoms/container-fullscreen";
-import { InternalCallToAction } from "../components/design-system/atoms/internal-call-to-action";
+import { CallToActionInternal } from "../components/design-system/atoms/internal-call-to-action";
 import { Page } from "../components/design-system/templates/page";
 
 const NotFoundPage: React.FC = () => {
@@ -12,7 +12,7 @@ const NotFoundPage: React.FC = () => {
       <ContainerFullscreen>
         <Heading1>404!</Heading1>
         <Paragraph>Opss!?! Keep calm and go to</Paragraph>
-        <InternalCallToAction
+        <CallToActionInternal
           to={"/"}
           onClick={() => {
             track(
@@ -23,7 +23,7 @@ const NotFoundPage: React.FC = () => {
           }}
         >
           Homepage
-        </InternalCallToAction>
+        </CallToActionInternal>
       </ContainerFullscreen>
     </Page>
   );

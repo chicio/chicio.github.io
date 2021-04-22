@@ -4,7 +4,7 @@ import { Heading5 } from "../atoms/heading5";
 import { SocialContacts } from "./social-contacts";
 import { track, tracking } from "../../../utils/tracking";
 import styled from "styled-components";
-import { InternalCallToAction } from "../atoms/internal-call-to-action";
+import { CallToActionInternal } from "../atoms/internal-call-to-action";
 import { Heading2 } from "../atoms/heading2";
 
 const SocialContactsContainer = styled.div`
@@ -15,7 +15,7 @@ const SocialContactsContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-const BlogCallToAction = styled(InternalCallToAction)`
+const BlogCallToAction = styled(CallToActionInternal)`
   width: 150px;
 `;
 
