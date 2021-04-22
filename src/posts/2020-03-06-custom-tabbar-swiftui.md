@@ -15,11 +15,8 @@ potential. Let's see how I used SwiftUI to create a custom TabBar with modal and
 
 ---
 
-#### ***NB.: Considering the success of this blog post, I decided to create a new custom TabBar SwiftUI library
-called [TabBarUIAction](https://github.com/chicio/TabBarUIAction "TabBArUIAction custom tab bar swiftui"). Go and check
-it out!!!***
+**NB.: Considering the success of this blog post, I decided to create a new custom TabBar SwiftUI library called [TabBarUIAction](https://github.com/chicio/TabBarUIAction "TabBArUIAction custom tab bar swiftui"). Go and check it out!!!**
 
-<br/>  
 In the last week I started to develop a new personal project: a new iOS mobile app (that I will show you in the following months). 
 As a consequence of the fact that this was a greenfield project I decided to use SwiftUI to develop all the User 
 Interface and Combine for data binging. These frameworks are the Apple implementation of reactive programming 
