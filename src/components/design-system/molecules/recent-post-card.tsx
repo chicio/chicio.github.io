@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { CallToActionInternal } from "../atoms/internal-call-to-action";
+import { CallToActionInternal } from "../atoms/call-to-action-internal";
 import { Heading6 } from "../atoms/heading6";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import React from "react";

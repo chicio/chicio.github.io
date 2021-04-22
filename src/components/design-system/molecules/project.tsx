@@ -1,6 +1,6 @@
 import React from "react";
 import { Heading3 } from "../atoms/heading3";
-import { CallToActionExternal } from "../atoms/external-call-to-action";
+import { CallToActionExternal } from "../atoms/call-to-action-external";
 import { track } from "../../../utils/tracking";
 import styled from "styled-components";
 import { Container } from "../atoms/container";

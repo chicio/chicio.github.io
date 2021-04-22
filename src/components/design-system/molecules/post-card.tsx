@@ -36,13 +36,15 @@ const PostCardContainer = styled.div`
 
 const PostCardImageContainer = styled.div`
   width: 100%;
-  margin-top: ${(props) => props.theme.spacing[2]};
-  margin-bottom: ${(props) => props.theme.spacing[0]};
-  height: 200px;
+  height: 120px;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (min-width: 768px) {
+    height: 200px;
+  }
 `;
 
 const PostCardLink = styled(StandardInternalLink)`
@@ -54,6 +56,7 @@ const PostCardLink = styled(StandardInternalLink)`
 `;
 
 const PostCardTitle = styled(Heading5)`
+  margin: 0 0 ${(props) => props.theme.spacing[2]};
   word-wrap: break-word;
 `;
 

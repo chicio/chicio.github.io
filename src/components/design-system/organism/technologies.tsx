@@ -2,8 +2,9 @@ import { StaticImage } from "gatsby-plugin-image";
 import * as React from "react";
 import { Paragraph } from "../atoms/paragraph";
 import styled from "styled-components";
+import { ContainerFluid } from "../atoms/container-fluid";
 
-const TechnologiesContainer = styled.div`
+const TechnologiesContainer = styled(ContainerFluid)`
   margin: 0;
   display: flex;
   flex-direction: column;

@@ -50,4 +50,9 @@ export const GlobalStyle: GlobalStyleComponent<
     display: flex;
     flex-direction: column;
   }
+
+  /* https://www.w3schools.com/css/css3_box-sizing.asp */
+  * {
+    box-sizing: border-box;
+  }
 `;

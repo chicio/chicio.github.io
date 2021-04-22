@@ -3,7 +3,7 @@ import { track, tracking } from "../utils/tracking";
 import { Heading1 } from "../components/design-system/atoms/heading1";
 import { Paragraph } from "../components/design-system/atoms/paragraph";
 import { ContainerFullscreen } from "../components/design-system/atoms/container-fullscreen";
-import { CallToActionInternal } from "../components/design-system/atoms/internal-call-to-action";
+import { CallToActionInternal } from "../components/design-system/atoms/call-to-action-internal";
 import { Page } from "../components/design-system/templates/page";
 
 const NotFoundPage: React.FC = () => {

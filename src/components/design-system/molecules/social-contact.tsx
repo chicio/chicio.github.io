@@ -1,6 +1,6 @@
 import * as React from "react";
 import { track } from "../../../utils/tracking";
-import { CallToActionExternal } from "../atoms/external-call-to-action";
+import { CallToActionExternal } from "../atoms/call-to-action-external";
 import { Icon } from "../atoms/icon";
 
 interface SocialContactProps {

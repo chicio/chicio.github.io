@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import { CallToActionInternal } from "../atoms/internal-call-to-action";
+import { CallToActionInternal } from "../atoms/call-to-action-internal";
 import { track, tracking } from "../../../utils/tracking";
 
 const CenterHorizontallyContainer = styled.div`
