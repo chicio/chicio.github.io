@@ -24,7 +24,7 @@ const TagLink = styled(StandardInternalLink)<TagContentProps>`
 
 const TagText = styled.span<TagContentProps>`
   background-color: ${(props) => props.theme.light.primaryColor};
-  color: ${(props) => props.theme.light.primaryColorText};
+  color: ${(props) => props.theme.light.textAbovePrimaryColor};
   margin-right: ${(props) => props.theme.spacing[0]};
   margin-bottom: ${(props) => props.theme.spacing[0]};
   border-radius: 3px;
@@ -38,7 +38,12 @@ const TagText = styled.span<TagContentProps>`
       display: block;
       margin-right: ${(props) => props.theme.spacing[4]};
       margin-bottom: ${(props) => props.theme.spacing[4]};
-    `}
+    `};
+
+  @media (prefers-color-scheme: dark) {
+    background-color: ${(props) => props.theme.dark.primaryColor};
+    color: ${(props) => props.theme.dark.textAbovePrimaryColor};
+  }
 `;
 
 type TagProps = TagContentProps & {

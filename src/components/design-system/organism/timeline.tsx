@@ -31,6 +31,7 @@ const TimelineContainer = styled.ul`
     width: 3px;
     left: 50%;
     margin-left: -1.5px;
+    background-color: ${(props) => props.theme.light.dividerColor};
   }
 
   @media (min-width: 992px) {
@@ -47,7 +48,7 @@ const TimelineContainer = styled.ul`
     background-color: ${(props) => props.theme.dark.generalBackground};
 
     &:before {
-      background-color: ${(props) => props.theme.dark.generalBackgroundLight};
+      background-color: ${(props) => props.theme.dark.dividerColor};
     }
   }
 `;
@@ -106,26 +107,6 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
     content: " ";
   }
 
-  ${(props) =>
-    props.inverted &&
-    css`
-      float: right;
-
-      &:before {
-        border-right-width: 15px;
-        border-left-width: 0;
-        left: -15px;
-        right: auto;
-      }
-
-      &:after {
-        border-right-width: 0;
-        border-left-width: 14px;
-        left: -14px;
-        right: auto;
-      }
-    `};
-
   @media (max-width: 992px) {
     width: calc(100% - 90px);
     width: -moz-calc(100% - 90px);
@@ -134,8 +115,8 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
 
     &:before {
       border-left-width: 0;
-      border-right-width: 15px;
-      left: -15px;
+      border-right-width: 14px;
+      left: -14px;
       right: auto;
     }
 
@@ -146,6 +127,26 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
       right: auto;
     }
   }
+
+  ${(props) =>
+    props.inverted &&
+    css`
+      float: right;
+
+      &:before {
+        border-left-width: 0;
+        border-right-width: 14px;
+        left: -14px;
+        right: auto;
+      }
+
+      &:after {
+        border-left-width: 0;
+        border-right-width: 14px;
+        left: -13px;
+        right: auto;
+      }
+    `};
 
   @media (prefers-color-scheme: dark) {
     background-color: ${(props) => props.theme.dark.generalBackgroundLight};
@@ -163,26 +164,6 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
       border-right: ${(props) => props.theme.dark.generalBackgroundLight} 0px
         solid;
     }
-
-    ${(props) =>
-      props.inverted &&
-      css`
-        float: right;
-
-        &:before {
-          border-left-width: 0;
-          border-right-width: 14px;
-          left: -14px;
-          right: auto;
-        }
-
-        &:after {
-          border-left-width: 0;
-          border-right-width: 14px;
-          left: -14px;
-          right: auto;
-        }
-      `};
 
     @media (max-width: 992px) {
       width: calc(100% - 90px);
@@ -204,12 +185,32 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
         right: auto;
       }
     }
+
+    ${(props) =>
+      props.inverted &&
+      css`
+        float: right;
+
+        &:before {
+          border-left-width: 0;
+          border-right-width: 14px;
+          left: -14px;
+          right: auto;
+        }
+
+        &:after {
+          border-left-width: 0;
+          border-right-width: 14px;
+          left: -13px;
+          right: auto;
+        }
+      `};
   }
 `;
 
 const TimelineBadge = styled.div`
   background-color: ${(props) => props.theme.light.primaryColor};
-  color: ${(props) => props.theme.light.primaryColorText};
+  color: ${(props) => props.theme.light.textAbovePrimaryColor};
   width: 40px;
   height: 40px;
   line-height: 40px;
@@ -224,7 +225,7 @@ const TimelineBadge = styled.div`
 
   @media (prefers-color-scheme: dark) {
     background-color: ${(props) => props.theme.dark.primaryColor};
-    color: ${(props) => props.theme.dark.primaryColorText};
+    color: ${(props) => props.theme.dark.textAbovePrimaryColor};
   }
 
   @media (max-width: 992px) {
@@ -275,6 +276,9 @@ export const Timeline: React.FC = () => {
     display: "block",
     backgroundColor: "#fff",
   };
+  const imgContainerStyle = {
+    border: "1px solid gray",
+  };
 
   return (
     <TimelineContentContainer>
@@ -286,6 +290,7 @@ export const Timeline: React.FC = () => {
             src={"../../../images/carrier/lastminute-group.png"}
             alt={"lastminute"}
             imgStyle={imgStyle}
+            style={imgContainerStyle}
           />
           <TimelineTitle>Lastminute.com group</TimelineTitle>
           <TimelineSubtitle>Mobile application developer</TimelineSubtitle>
@@ -302,6 +307,7 @@ export const Timeline: React.FC = () => {
             src={"../../../images/carrier/unimib.jpg"}
             alt={"unimib"}
             imgStyle={imgStyle}
+            style={imgContainerStyle}
           />
           <TimelineTitle>Milano-Bicocca University</TimelineTitle>
           <TimelineSubtitle>
@@ -329,6 +335,7 @@ export const Timeline: React.FC = () => {
             src={"../../../images/carrier/condenast.png"}
             alt={"condenast"}
             imgStyle={imgStyle}
+            style={imgContainerStyle}
           />
           <TimelineTitle>Condé Nast Italia</TimelineTitle>
           <TimelineSubtitle>Mobile/Web application developer</TimelineSubtitle>
@@ -347,6 +354,7 @@ export const Timeline: React.FC = () => {
             src={"../../../images/carrier/shi.png"}
             alt={"shi"}
             imgStyle={imgStyle}
+            style={imgContainerStyle}
           />
           <TimelineTitle>SHI</TimelineTitle>
           <TimelineSubtitle>iOS/Web Developer</TimelineSubtitle>
@@ -366,6 +374,7 @@ export const Timeline: React.FC = () => {
             src={"../../../images/carrier/bottinelli-informatica.png"}
             alt={"bottinelli informatica"}
             imgStyle={imgStyle}
+            style={imgContainerStyle}
           />
           <TimelineTitle>Bottinelli informatica</TimelineTitle>
           <TimelineSubtitle>Developer</TimelineSubtitle>
@@ -379,6 +388,7 @@ export const Timeline: React.FC = () => {
             src={"../../../images/carrier/avanade.png"}
             alt={"avanade"}
             imgStyle={imgStyle}
+            style={imgContainerStyle}
           />
           <TimelineTitle>Avanade</TimelineTitle>
           <TimelineSubtitle>PMO Consultant</TimelineSubtitle>
@@ -414,6 +424,7 @@ export const Timeline: React.FC = () => {
             src={"../../../images/carrier/insubria.png"}
             alt={"insubria"}
             imgStyle={imgStyle}
+            style={imgContainerStyle}
           />
           <TimelineTitle>Insubria University</TimelineTitle>
           <TimelineSubtitle>

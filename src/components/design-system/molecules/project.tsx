@@ -48,7 +48,7 @@ type ProjectProps = ProjectContainerProps & {
 };
 
 const CallToActionContainer = styled.div`
-  margin: ${(props) => props.theme.spacing[5]} 0;
+  margin: ${(props) => props.theme.spacing[6]} 0;
 `;
 
 export const Project: React.FC<ProjectProps> = ({

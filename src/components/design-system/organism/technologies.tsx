@@ -19,6 +19,11 @@ const TechnologiesContainer = styled(ContainerFluid)`
 const TechnologyParagraph = styled(Paragraph)`
   text-align: center;
   margin-bottom: ${(props) => props.theme.spacing[7]};
+  color: ${(props) => props.theme.light.textAbovePrimaryColor};
+
+  @media (prefers-color-scheme: dark) {
+    color: ${(props) => props.theme.dark.textAbovePrimaryColor};
+  }
 
   @media (min-width: 992px) {
     padding: 0 ${(props) => props.theme.spacing[12]};

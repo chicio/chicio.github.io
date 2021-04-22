@@ -46,6 +46,14 @@ const FooterAuthorDescription = styled.div`
   }
 `;
 
+const MadeWithLoveParagraph = styled(Paragraph)`
+  color: ${(props) => props.theme.light.textAbovePrimaryColor};
+
+  @media (prefers-color-scheme: dark) {
+    color: ${(props) => props.theme.dark.textAbovePrimaryColor};
+  }
+`;
+
 interface FooterProps {
   author: string;
   trackingCategory: string;
@@ -127,7 +135,7 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
         />
       </FooterContentContainer>
       <FooterContentContainer>
-        <Paragraph>{`Made with 💝 by ${author} 'Chicio'`}</Paragraph>
+        <MadeWithLoveParagraph>{`Made with 💝 by ${author} 'Chicio'`}</MadeWithLoveParagraph>
       </FooterContentContainer>
     </FooterAuthorDescription>
   </FooterContainer>
