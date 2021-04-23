@@ -328,7 +328,7 @@ export const Timeline: React.FC = () => {
             <li>Design and user experience</li>
           </List>
         </TimelineElement>
-        <TimelineElement inverted={false} icon={graduationCap}>
+        <TimelineElement inverted={false} icon={briefcase}>
           <StaticImage
             width={imgSize}
             height={imgSize}
