@@ -118,9 +118,7 @@ colors. It is a fragment shader that could be used to implement per fragment lig
 lighting calculation is done in the fragment shader on each fragment (maybe this is material for a new post :
 stuck_out_tongue_closed_eyes:). It was written using OpenGL ES 3.0 and GLSL 3.0. It uses a single light for all the
 component calculation.
-
-<script src="https://gist.github.com/chicio/d983fff6ff304bd55bebd6ff05a2f9dd.js"></script>
-
+You can find the entire code in this [github gist](https://gist.github.com/chicio/d983fff6ff304bd55bebd6ff05a2f9dd).  
 The following image is an example of the happy buddha Stanford mesh rendered using
 my [Spectral BRDF explorer](https://github.com/chicio/Spectral-BRDF-Explorer "Spectral BRDF explorer") iOS renderer. The
 lighting is (obviously) calculated using the Phong reflection model. The surface simulated is bronze (you can find 

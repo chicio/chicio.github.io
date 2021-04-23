@@ -1,16 +1,10 @@
 import * as React from "react";
-import "@fortawesome/fontawesome-svg-core/styles.css";
-import "../styles/style.blog.home.scss";
-import { graphql, Link, PageProps } from "gatsby";
-import { Masthead } from "../components/Masthead";
-import { track, tracking } from "../utils/tracking";
-import { BlogHeader } from "../components/BlogHeader";
-import { Footer } from "../components/Footer";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { graphql, PageProps } from "gatsby";
+import { tracking } from "../utils/tracking";
 import { BlogListQuery } from "../../graphql-types";
-import { PostAuthors } from "../components/PostAuthors";
-import { PostMeta } from "../components/PostMeta";
-import { Head } from "../components/Head";
+import { BlogPage } from "../components/design-system/templates/blog-page";
+import { PaginationNavigation } from "../components/design-system/molecules/pagination-navigation";
+import { PostCard } from "../components/design-system/molecules/post-card";
 
 interface BlogPageContext {
   limit: number;
@@ -37,105 +31,36 @@ const Blog: React.FC<PageProps<BlogListQuery, BlogPageContext>> = ({
   const featuredImage = siteMetadata.featuredImage!;
 
   return (
-    <main>
-      <Head
-        url={location.href}
-        pageType={"website"}
-        imageUrl={`/${featuredImage}`}
-      />
-      <Masthead
+    <BlogPage
+      author={author}
+      location={location}
+      ogImage={`/${featuredImage}`}
+      ogPageType={"website"}
+      trackingCategory={tracking.category.blog_home}
+    >
+      {posts.map((post) => (
+        <PostCard
+          key={post.node.fields!.slug!}
+          slug={post.node.fields!.slug!}
+          title={post.node.frontmatter!.title!}
+          image={post.node.frontmatter!.image!.childImageSharp!.gatsbyImageData}
+          authors={post.node.frontmatter!.authors!}
+          date={post.node.frontmatter!.date!}
+          readingTime={post.node.fields!.readingTime!.text!}
+          description={post.node.frontmatter!.description!}
+          trackingCategory={tracking.category.blog_home}
+        />
+      ))}
+      <PaginationNavigation
         trackingCategory={tracking.category.blog_home}
-        pathname={location.pathname}
+        previousPageUrl={prevPage}
+        previousPageTrackingAction={tracking.action.open_blog_previous_page}
+        nextPageUrl={nextPage}
+        nextPageTrackingAction={tracking.action.open_blog_next_page}
+        isFirst={isFirst}
+        isLast={isLast}
       />
-      <div className="container blog-posts">
-        <BlogHeader trackingCategory={tracking.category.blog_home} />
-        <div className="blog-main">
-          <div className="blog-posts-list">
-            {posts.map((post) => {
-              const frontMatter = post.node.frontmatter!;
-              return (
-                <div className="blog-posts-post" key={post.node.fields!.slug}>
-                  <Link
-                    to={post.node.fields!.slug!}
-                    onClick={() => {
-                      track(
-                        tracking.action.open_blog_post,
-                        tracking.category.blog_home,
-                        tracking.label.body
-                      );
-                    }}
-                    className="blog-posts-post-link"
-                  >
-                    <span className="blog-posts-post-title">
-                      {frontMatter.title}
-                    </span>
-                    <div className="blog-posts-post-img-container">
-                      <GatsbyImage
-                        className={"img blog-posts-post-img"}
-                        alt={frontMatter.title!}
-                        image={
-                          frontMatter.image!.childImageSharp!.gatsbyImageData
-                        }
-                      />
-                    </div>
-                    <PostAuthors
-                      authors={frontMatter.authors!}
-                      trackingCategory={tracking.category.blog_home}
-                      trackingLabel={tracking.label.body}
-                      enableUrl={false}
-                    />
-                    <PostMeta
-                      date={frontMatter.date!}
-                      readingTime={post.node.fields!.readingTime!.text!}
-                    />
-                    <span className="blog-posts-post-description">
-                      {frontMatter.description!}
-                    </span>
-                  </Link>
-                </div>
-              );
-            })}
-          </div>
-          <div className="d-flex flex-row justify-content-center">
-            {!isFirst && (
-              <Link
-                className="btn blog-pages-button"
-                onClick={() => {
-                  track(
-                    tracking.action.open_blog_previous_page,
-                    tracking.category.blog_home,
-                    tracking.label.body
-                  );
-                }}
-                to={prevPage}
-              >
-                Previous
-              </Link>
-            )}
-            {!isLast && (
-              <Link
-                className="btn blog-pages-button"
-                onClick={() => {
-                  track(
-                    tracking.action.open_blog_next_page,
-                    tracking.category.blog_home,
-                    tracking.label.body
-                  );
-                }}
-                to={nextPage}
-              >
-                Next
-              </Link>
-            )}
-          </div>
-        </div>
-      </div>
-      <Footer
-        author={author}
-        trackingCategory={tracking.category.blog_home}
-        trackingLabel={tracking.label.footer}
-      />
-    </main>
+    </BlogPage>
   );
 };
 

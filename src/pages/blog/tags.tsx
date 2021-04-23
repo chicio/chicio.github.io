@@ -1,14 +1,18 @@
 import React from "react";
-import "@fortawesome/fontawesome-svg-core/styles.css";
-import "../../styles/style.blog.tags.scss";
-import "@fontsource/open-sans";
-import { Link, graphql, PageProps } from "gatsby";
-import { Head } from "../../components/Head";
-import { Masthead } from "../../components/Masthead";
+import { graphql, PageProps } from "gatsby";
 import { tracking } from "../../utils/tracking";
 import { PostsGroupByTagsQuery } from "../../../graphql-types";
-import { Footer } from "../../components/Footer";
-import { BlogHeader } from "../../components/BlogHeader";
+import { BlogPage } from "../../components/design-system/templates/blog-page";
+import { Tag } from "../../components/design-system/molecules/tag";
+import { ContainerFluid } from "../../components/design-system/atoms/container-fluid";
+import styled from "styled-components";
+import { PageTitle } from "../../components/design-system/molecules/page-title";
+import { generateTagLink } from "../../components/design-system/templates/tag";
+
+const TagsContainer = styled(ContainerFluid)`
+  padding: 0;
+  margin-bottom: ${(props) => props.theme.spacing[4]};
+`;
 
 const TagsPage: React.FC<PageProps<PostsGroupByTagsQuery>> = ({
   data,
@@ -19,41 +23,25 @@ const TagsPage: React.FC<PageProps<PostsGroupByTagsQuery>> = ({
   const featuredImage = siteMetadata.featuredImage!;
 
   return (
-    <main>
-      <Head
-        url={location.href}
-        pageType={"website"}
-        imageUrl={`/${featuredImage}`}
-      />
-      <Masthead
-        trackingCategory={tracking.category.blog_archive}
-        pathname={location.pathname}
-      />
-      <div className="container blog-posts">
-        <BlogHeader trackingCategory={tracking.category.blog_tags} />
-        <div className="blog-tags-list">
-          <div className="blog-main">
-            <div className="blog-tags">
-              {data.allMarkdownRemark.group.map((tag) => (
-                <Link
-                  to={`/blog/tags/${tag.fieldValue!.split(" ").join("-")}/`}
-                  key={tag.fieldValue}
-                >
-                  <span className={"big"}>
-                    {tag.fieldValue} ({tag.totalCount})
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-      <Footer
-        author={author}
-        trackingCategory={tracking.category.blog_tags}
-        trackingLabel={tracking.label.footer}
-      />
-    </main>
+    <BlogPage
+      location={location}
+      author={author}
+      ogPageType={"website"}
+      ogImage={`/${featuredImage}`}
+      trackingCategory={tracking.category.blog_tags}
+    >
+      <TagsContainer>
+        <PageTitle>Tags</PageTitle>
+        {data.allMarkdownRemark.group.map((tag) => (
+          <Tag
+            big={true}
+            link={generateTagLink(tag.fieldValue!)}
+            tag={`${tag.fieldValue} (${tag.totalCount})`}
+            key={tag.fieldValue}
+          />
+        ))}
+      </TagsContainer>
+    </BlogPage>
   );
 };
 

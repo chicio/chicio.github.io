@@ -7,7 +7,7 @@ export interface BlogAuthor {
 export const blogAuthors: { [authorName: string]: BlogAuthor } = {
   fabrizio_duroni: {
     name: "Fabrizio Duroni",
-    url: "https://www.fabrizioduroni.it",
+    url: "https://www.linkedin.com/in/fabrizio-duroni/",
     image: "fabrizio-duroni-small.jpg",
   },
   francesco_bonfadelli: {

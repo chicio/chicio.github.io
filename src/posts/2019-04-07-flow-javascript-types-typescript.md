@@ -60,7 +60,8 @@ Flow operations:
   to be able to remove the whitespaces that flow-remove-types leaves in the source when it removes the types annotation.
 
 Below you can see the entire script I created (that you can
-find [flow script also at this url](https://github.com/chicio/chicio.github.io/blob/v1.23.0/_scripts/flow.sh "flow script"))
+find [flow script also at this url](https://github.com/chicio/old.chicio.github.io/blob/v1.23.0/_scripts/flow.sh "flow 
+script"))
 .
 
 ```shell

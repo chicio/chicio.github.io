@@ -276,6 +276,6 @@ self.addEventListener('fetch', (event) => {
 
 By adding all the above implementation my blog is now a Progressive Web App (that's right, the article you're reading
 part of a PWA :smirk:). If you want to see the entire source code of my website/blog discussed here you can have a look
-at [this repository](https://github.com/chicio/chicio.github.io "chicio coding repository").  
+at [this repository](https://github.com/chicio/old.chicio.github.io "chicio coding repository").  
 So now it's time to start to develop you first PWA or transform you website/ web application in PWA. If you want, you
 could share your experience with me in the comments below :two_hearts:.

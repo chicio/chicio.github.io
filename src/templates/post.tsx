@@ -1,19 +1,21 @@
 import React from "react";
-import "@fortawesome/fontawesome-svg-core/styles.css";
-import "../styles/style.blog.post.scss";
-import { graphql, Link, PageProps } from "gatsby";
-import { Masthead } from "../components/Masthead";
+import { graphql, PageProps } from "gatsby";
 import { tracking } from "../utils/tracking";
-import { PullToRefresh } from "../components/PullToRefresh";
-import { BlogHeader } from "../components/BlogHeader";
-import { Footer } from "../components/Footer";
-import { Comments } from "../components/Comments";
-import { PostMeta } from "../components/PostMeta";
+import { Comments } from "../components/design-system/molecules/comments";
+import { PostMeta } from "../components/design-system/molecules/post-meta";
 import { PostQuery } from "../../graphql-types";
-import { PostAuthors } from "../components/PostAuthors";
-import { RecentPosts } from "../components/RecentPosts";
-import { Head } from "../components/Head";
+import { PostAuthors } from "../components/design-system/molecules/post-authors";
+import { RecentPosts } from "../components/design-system/organism/recent-posts";
 import { getSrc } from "gatsby-plugin-image";
+import { BlogPage } from "../components/design-system/templates/blog-page";
+import { PostTags } from "../components/design-system/molecules/post-tags";
+import { Heading2 } from "../components/design-system/atoms/heading2";
+import { PostContent } from "../components/post-content";
+import styled from "styled-components";
+
+const PostTitle = styled(Heading2)`
+  margin: 0;
+`;
 
 const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
   const post = data.markdownRemark!;
@@ -23,58 +25,37 @@ const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
   }
 
   return (
-    <main>
-      <Head
-        url={location.href}
-        pageType={"article"}
-        imageUrl={`${getSrc(
-          post.frontmatter!.image!.childImageSharp?.gatsbyImageData
-        )!}`}
-        customTitle={post.frontmatter!.title!}
-        date={post.frontmatter!.date}
-        description={post.frontmatter!.description!}
-      />
-      <Masthead
-        trackingCategory={tracking.category.blog_home}
-        pathname={location.pathname}
-      />
-      <PullToRefresh />
-      <div className="container blog-posts start-pull pullable-content">
-        <BlogHeader trackingCategory={tracking.category.blog_post} />
-        <div className="blog-main">
-          <div className="blog-post" id="blog-post-math-content">
-            <h2 className="blog-post-title">{post.frontmatter!.title}</h2>
-            <PostAuthors
-              authors={post.frontmatter!.authors!}
-              trackingCategory={tracking.category.blog_post}
-              trackingLabel={tracking.label.body}
-              enableUrl={true}
-            />
-            <PostMeta
-              date={post.frontmatter!.date!}
-              readingTime={post.fields!.readingTime!.text!}
-            />
-            <div dangerouslySetInnerHTML={{ __html: post.html! }} />
-            <div className="blog-tags">
-              {post.frontmatter!.tags!.map((tag) => (
-                <Link to={`/blog/tags/${tag!.split(" ").join("-")}/`} key={tag}>
-                  <span>{tag}</span>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-        <RecentPosts currentSlug={location.pathname} />
-        {post.frontmatter?.comments && (
-          <Comments url={location.href} title={post.frontmatter!.title!} />
-        )}
+    <BlogPage
+      location={location}
+      author={data.site!.siteMetadata!.author!}
+      ogPageType={"article"}
+      ogImage={`${getSrc(
+        post.frontmatter!.image!.childImageSharp?.gatsbyImageData
+      )!}`}
+      trackingCategory={tracking.category.blog_post}
+    >
+      <div>
+        <PostTitle className="blog-post-title">
+          {post.frontmatter!.title}
+        </PostTitle>
+        <PostAuthors
+          authors={post.frontmatter!.authors!}
+          trackingCategory={tracking.category.blog_post}
+          trackingLabel={tracking.label.body}
+          enableUrl={true}
+        />
+        <PostMeta
+          date={post.frontmatter!.date!}
+          readingTime={post.fields!.readingTime!.text!}
+        />
+        <PostContent html={post.html!} />
+        <PostTags tags={post.frontmatter!.tags!} />
       </div>
-      <Footer
-        author={data.site!.siteMetadata!.author!}
-        trackingCategory={tracking.category.blog_post}
-        trackingLabel={tracking.label.footer}
-      />
-    </main>
+      <RecentPosts currentSlug={location.pathname} />
+      {post.frontmatter?.comments && (
+        <Comments url={location.href} title={post.frontmatter!.title!} />
+      )}
+    </BlogPage>
   );
 };
 

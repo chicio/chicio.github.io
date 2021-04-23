@@ -383,10 +383,7 @@ var render = function() {
 };
 ```
 
-The entire scene code is showed below in the gist.
-
-<script src="https://gist.github.com/chicio/af13397f22c21a05b6ac007c83f84403.js"></script>
-
+You can find the entire scene code is [this github gist](https://gist.github.com/chicio/af13397f22c21a05b6ac007c83f84403).  
 Yeah!!! You made it!! You create a 3D computer graphics web application using three.js :blush:!! And it is also a scene
 that supports advanced feature, in particular physically based rendering :open_mouth:!!
 

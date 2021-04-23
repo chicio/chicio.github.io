@@ -65,10 +65,7 @@ I decided to use the following gulp libraries to improve my work (using the same
 * browser-sync for live reloading during development
 * travis for CI
 
-Below you can find the complete gulpfile:
-
-<script src="https://gist.github.com/chicio/ce1b5339fa2f30c0c14fceb3616d60d3.js"></script>  
-
+You can find the complete gulpfile in this [github gist](https://gist.github.com/chicio/ce1b5339fa2f30c0c14fceb3616d60d3).  
 As you can see I have two gulp task. I use the first from my local environment during development. The second one is
 used by by travis to make a test build on each commit. All the assets created are saved in the assets folder. Jekyll
 copies each folder that is not prefix with and underscore. I also installed some gems to improve and automatize some
