@@ -1,6 +1,14 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [4.1.0](https://github.com/chicio/chicio.github.io/releases/tag/v4.1.0)
+Release date: 2021-04-23
+
+#### Added
+
+- Styled component
+- Design system
+
 ## [4.0.0](https://github.com/chicio/chicio.github.io/releases/tag/v4.0.0)
 Release date: 2021-04-15
 
