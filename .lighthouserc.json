@@ -6,6 +6,8 @@
     "assert": {
       "preset": "lighthouse:recommended",
       "assertions": {
+        "heading-order": "off",
+        "unsized-images": "off",
         "link-name": "off",
         "aria-valid-attr-value": "off"
       }
