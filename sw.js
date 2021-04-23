@@ -27,17 +27,17 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-7c1b6fd7836a09893b64.js"
+    "url": "webpack-runtime-d82ce9e0fb44b2e34f86.js"
   },
   {
     "url": "framework-21031c32233e04cc5ab1.js"
   },
   {
-    "url": "app-2a40e24651e2dfb98478.js"
+    "url": "app-f91aa5c507fba67c1394.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "2a0a8610e03420e265691a3deaf853b9"
+    "revision": "a3bdd9ba790d5616d8b28257e9bd4fc9"
   },
   {
     "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-05ce09b8838f6c52478b.js"
@@ -46,30 +46,24 @@ self.__precacheManifest = [
     "url": "polyfill-b04e4eb4466a1b053d68.js"
   },
   {
-    "url": "styles.22d94de2cada21d71a55.css"
-  },
-  {
     "url": "fonts/opensans/OpenSans-Regular.woff2",
     "revision": "237aa94493d93bcf630b9a062f455d0a"
   },
   {
-    "url": "cb1608f2-67e0c7a31d4f521bb8b2.js"
+    "url": "227fa363aede6f8cf8fa8798f64bed716da73c4e-837bf24cde60a30f2bc1.js"
   },
   {
-    "url": "a9a7754c-fada732ed99b0449f4d5.js"
+    "url": "914958666ef227473ebbe31d2950aff9e5b3296f-72d135c10f0968858cc5.js"
   },
   {
-    "url": "914958666ef227473ebbe31d2950aff9e5b3296f-920bdaa61b5f188f46ab.js"
-  },
-  {
-    "url": "component---src-pages-index-tsx-170b589a6b07aff3a34c.js"
+    "url": "component---src-pages-index-tsx-799442527822be3ae234.js"
   },
   {
     "url": "page-data/index/page-data.json",
-    "revision": "15d3a604268ddbd5e57eed5428569b2e"
+    "revision": "4412c3d1750b7b88cfdf40ec7f6a2363"
   },
   {
-    "url": "page-data/sq/d/3045757177.json",
+    "url": "page-data/sq/d/3076394108.json",
     "revision": "2e6032f945ee777fb1b8f3127223a0d7"
   },
   {
@@ -82,18 +76,18 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "cf10a24cf32e176cc612444bd8b85d16"
+    "revision": "8133595dc3ac30ad72b8209cc1b3c141"
   },
   {
-    "url": "component---src-templates-blog-tsx-aba15f707be844af1bc0.js"
+    "url": "component---src-templates-blog-tsx-d92edaf0e68a5e0402de.js"
   },
   {
     "url": "page-data/blog/page-data.json",
-    "revision": "856c3402cb655077178b40d7e0c0d3dc"
+    "revision": "76b762da8aa9b07de40dd8037b56754e"
   },
   {
     "url": "page-data/sq/d/3736063423.json",
-    "revision": "f24f1cebbcdee08b430c13540bfd6f72"
+    "revision": "3fa6ec430716b5cb15bca68077ff51a0"
   },
   {
     "url": "manifest.webmanifest",
@@ -189,7 +183,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/app-2a40e24651e2dfb98478.js`))) {
+  if (!resources || !(await caches.match(`/app-f91aa5c507fba67c1394.js`))) {
     return await fetch(event.request)
   }
 
