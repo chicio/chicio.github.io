@@ -8,6 +8,7 @@
       "assertions": {
         "heading-order": "off",
         "unsized-images": "off",
+        "uses-rel-preconnect": "off",
         "link-name": "off",
         "aria-valid-attr-value": "off"
       }
