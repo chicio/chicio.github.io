@@ -6,7 +6,7 @@ import { BlogPage } from "../components/design-system/templates/blog-page";
 import { Heading1 } from "../components/design-system/atoms/heading1";
 import { Heading4 } from "../components/design-system/atoms/heading4";
 import { List } from "../components/design-system/atoms/list";
-import { Section } from "../components/design-system/atoms/section";
+import { ContainerSection } from "../components/design-system/atoms/container-section";
 import { Paragraph } from "../components/design-system/atoms/paragraph";
 import { StandardExternalLink } from "../components/design-system/atoms/standard-external-link";
 
@@ -58,7 +58,7 @@ const PrivacyPolicy: React.FC<PageProps> = ({ location }) => {
         Terms and Conditions, which is accessible at chicio coding unless
         otherwise defined in this Privacy Policy.
       </Paragraph>
-      <Section>
+      <ContainerSection>
         <Heading4>Information Collection and Use</Heading4>
         <Paragraph>
           For a better experience, while using our Service, I may require you to
@@ -85,8 +85,8 @@ const PrivacyPolicy: React.FC<PageProps> = ({ location }) => {
             </StandardExternalLink>
           </li>
         </List>
-      </Section>
-      <Section>
+      </ContainerSection>
+      <ContainerSection>
         <Heading4>Log Data</Heading4>
         <Paragraph>
           I want to inform you that whenever you use my Service, in a case of an
@@ -97,8 +97,8 @@ const PrivacyPolicy: React.FC<PageProps> = ({ location }) => {
           when utilizing my Service, the time and date of your use of the
           Service, and other statistics.
         </Paragraph>
-      </Section>
-      <Section>
+      </ContainerSection>
+      <ContainerSection>
         <Heading4>Cookies</Heading4>
         <Paragraph>
           Cookies are files with a small amount of data that are commonly used
@@ -114,8 +114,8 @@ const PrivacyPolicy: React.FC<PageProps> = ({ location }) => {
           your device. If you choose to refuse our cookies, you may not be able
           to use some portions of this Service.
         </Paragraph>
-      </Section>
-      <Section>
+      </ContainerSection>
+      <ContainerSection>
         <Heading4>Service Providers</Heading4>
         <Paragraph>
           I may employ third-party companies and individuals due to the
@@ -133,8 +133,8 @@ const PrivacyPolicy: React.FC<PageProps> = ({ location }) => {
           tasks assigned to them on our behalf. However, they are obligated not
           to disclose or use the information for any other purpose.
         </Paragraph>
-      </Section>
-      <Section>
+      </ContainerSection>
+      <ContainerSection>
         <Heading4>
           <strong>Security</strong>
         </Heading4>
@@ -145,8 +145,8 @@ const PrivacyPolicy: React.FC<PageProps> = ({ location }) => {
           method of electronic storage is 100% secure and reliable, and I cannot
           guarantee its absolute security.
         </Paragraph>
-      </Section>
-      <Section>
+      </ContainerSection>
+      <ContainerSection>
         <Heading4>Links to Other Sites</Heading4>
         <Paragraph>
           This Service may contain links to other sites. If you click on a
@@ -156,8 +156,8 @@ const PrivacyPolicy: React.FC<PageProps> = ({ location }) => {
           over and assume no responsibility for the content, privacy policies,
           or practices of any third-party sites or services.
         </Paragraph>
-      </Section>
-      <Section>
+      </ContainerSection>
+      <ContainerSection>
         <Heading4>Children’s Privacy</Heading4>
         <Paragraph>
           These Services do not address anyone under the age of 13. I do not
@@ -168,8 +168,8 @@ const PrivacyPolicy: React.FC<PageProps> = ({ location }) => {
           provided us with personal information, please contact me so that I
           will be able to do necessary actions.
         </Paragraph>{" "}
-      </Section>
-      <Section>
+      </ContainerSection>
+      <ContainerSection>
         <Heading4>
           <strong>Changes to This Privacy Policy</strong>
         </Heading4>
@@ -180,8 +180,8 @@ const PrivacyPolicy: React.FC<PageProps> = ({ location }) => {
           page. These changes are effective immediately after they are posted on
           this page.
         </Paragraph>
-      </Section>
-      <Section>
+      </ContainerSection>
+      <ContainerSection>
         <Heading4>
           <strong>Contact Us</strong>
         </Heading4>
@@ -189,7 +189,7 @@ const PrivacyPolicy: React.FC<PageProps> = ({ location }) => {
           If you have any questions or suggestions about my Privacy Policy, do
           not hesitate to contact me.
         </Paragraph>
-      </Section>
+      </ContainerSection>
     </BlogPage>
   );
 };

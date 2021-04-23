@@ -7,7 +7,7 @@ import { Heading1 } from "../components/design-system/atoms/heading1";
 import { Paragraph } from "../components/design-system/atoms/paragraph";
 import { Heading4 } from "../components/design-system/atoms/heading4";
 import { List } from "../components/design-system/atoms/list";
-import { Section } from "../components/design-system/atoms/section";
+import { ContainerSection } from "../components/design-system/atoms/container-section";
 import { StandardExternalLink } from "../components/design-system/atoms/standard-external-link";
 
 const CookiePolicy: React.FC<PageProps> = ({ location }) => {
@@ -43,7 +43,7 @@ const CookiePolicy: React.FC<PageProps> = ({ location }) => {
         I use cookies, how third­parties I may partner with may use cookies on the Service, 
         your choices regarding cookies and further information about cookies`}
       </Paragraph>
-      <Section>
+      <ContainerSection>
         <Heading4>What are cookies</Heading4>
         <Paragraph>
           {`Cookies are small pieces of text sent by your web browser by a website
@@ -52,8 +52,8 @@ const CookiePolicy: React.FC<PageProps> = ({ location }) => {
         easier and the Service more useful to you. Cookies can be "persistent"
         or "session" cookies.`}
         </Paragraph>
-      </Section>
-      <Section>
+      </ContainerSection>
+      <ContainerSection>
         <Heading4>
           <strong>{`How "Fabrizio Duroni" uses cookies`}</strong>
         </Heading4>
@@ -75,16 +75,16 @@ const CookiePolicy: React.FC<PageProps> = ({ location }) => {
             users advertisement.
           </li>
         </List>
-      </Section>
-      <Section>
+      </ContainerSection>
+      <ContainerSection>
         <Heading4>Third party cookies</Heading4>
         <Paragraph>
           In addition to our own cookies, I may also use various third parties
           cookies to report usage statistics of the Service, deliver
           advertisements on and through the Service, and so on.
         </Paragraph>
-      </Section>
-      <Section>
+      </ContainerSection>
+      <ContainerSection>
         <Heading4>
           <strong>What are your choices regarding cookies</strong>
         </Heading4>
@@ -96,8 +96,8 @@ const CookiePolicy: React.FC<PageProps> = ({ location }) => {
         not be able to store your preferences, and some of my pages might not
         display properly.`}
         </Paragraph>
-      </Section>
-      <Section>
+      </ContainerSection>
+      <ContainerSection>
         <Heading4>Where can your find more information about cookies</Heading4>
         <Paragraph>
           You can learn more about cookies and the following third party
@@ -117,7 +117,7 @@ const CookiePolicy: React.FC<PageProps> = ({ location }) => {
             </StandardExternalLink>
           </li>
         </List>
-      </Section>
+      </ContainerSection>
     </BlogPage>
   );
 };
