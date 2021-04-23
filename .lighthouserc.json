@@ -12,7 +12,6 @@
         "uses-rel-preconnect": "off",
         "unused-javascript": "off",
         "unsized-images": "off",
-        "unused-css-rules": "off",
         "link-name": "off",
         "aria-valid-attr-value": "off"
       }
