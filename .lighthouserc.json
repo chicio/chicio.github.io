@@ -6,9 +6,6 @@
     "assert": {
       "preset": "lighthouse:recommended",
       "assertions": {
-        "uses-responsive-images": "off",
-        "uses-rel-preconnect": "off",
-        "unused-javascript": "off",
         "link-name": "off",
         "aria-valid-attr-value": "off"
       }
