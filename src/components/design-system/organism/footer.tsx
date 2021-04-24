@@ -26,7 +26,6 @@ const FooterMenu = styled.div`
 
 const FooterMenuItem = styled(MenuItem)`
   margin: ${(props) => props.theme.spacing[0]};
-  font-size: ${(props) => props.theme.fontSizes[2]};
 `;
 
 const FooterContentContainer = styled.div`
