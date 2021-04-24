@@ -5,7 +5,7 @@ import { heading4Style } from "./design-system/atoms/heading4";
 import { standardLinkStyle } from "./design-system/atoms/standard-link-style";
 import { syntax } from "./design-system/atoms/syntax";
 
-export const PostContentContainer = styled.div`
+const PostContentContainer = styled.div`
   color: ${(props) => props.theme.light.primaryTextColor};
   line-height: 1.5;
 
