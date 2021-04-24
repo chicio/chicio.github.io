@@ -6,6 +6,7 @@
     "assert": {
       "preset": "lighthouse:recommended",
       "assertions": {
+        "uses-responsive-images": "off",
         "heading-order": "off",
         "unsized-images": "off",
         "uses-rel-preconnect": "off",
