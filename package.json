@@ -35,7 +35,7 @@
     "clean": "gatsby clean",
     "deploy": "npm run build && gh-pages -d public -b main",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -o ./static/chicio-coding-design-system"
   },
   "dependencies": {
     "@styled-icons/fa-brands": "^10.26.0",
