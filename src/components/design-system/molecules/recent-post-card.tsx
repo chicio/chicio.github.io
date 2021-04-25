@@ -52,7 +52,7 @@ const CardContainer = styled.div<CardContainerProps>`
   }
 `;
 
-interface RecentPostCardProps {
+export interface RecentPostCardProps {
   position: number;
   slug: string;
   title: string;
