@@ -23,6 +23,18 @@ const PostAuthorContainer = styled(ContainerFluid)`
   align-items: center;
 `;
 
+const PostAuthorImageContainer = styled.div`
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background-color: ${(props) => props.theme.light.dividerColor};
+
+  @media (prefers-color-scheme: dark) {
+    background-color: ${(props) => props.theme.dark.dividerColor};
+  }
+`;
+
 export interface PostAuthorsProps {
   authors: Maybe<string>[];
   trackingCategory: string;
@@ -69,17 +81,19 @@ export const PostAuthors: React.FC<PostAuthorsProps> = ({
           <PostAuthorContainer
             key={`${author}${Math.floor(Math.random() * 100)}`}
           >
-            <GatsbyImage
-              alt={blogAuthor.name}
-              image={blogAuthorImage}
-              style={{
-                width: 30,
-                height: 30,
-                marginRight: "5px",
-                borderRadius: "50%",
-              }}
-              imgStyle={{ borderRadius: "50%" }}
-            />
+            <PostAuthorImageContainer>
+              <GatsbyImage
+                alt={blogAuthor.name}
+                image={blogAuthorImage}
+                style={{
+                  width: 30,
+                  height: 30,
+                  marginRight: "5px",
+                  borderRadius: "50%",
+                }}
+                imgStyle={{ borderRadius: "50%" }}
+              />
+            </PostAuthorImageContainer>
             <Paragraph>
               {enableUrl && (
                 <StandardExternalLink

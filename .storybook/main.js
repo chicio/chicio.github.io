@@ -27,7 +27,11 @@ module.exports = {
         presets: [["react-app", { flow: false, typescript: true }]],
         plugins: [
           require.resolve("@babel/plugin-proposal-class-properties"),
-          require.resolve("babel-plugin-remove-graphql-queries"),
+          /** https://github.com/gatsbyjs/gatsby/issues/26099 **/
+          [require.resolve("babel-plugin-remove-graphql-queries"), {
+            stage: config.mode === `development` ? "develop-html" : "build-html",
+            staticQueryDir: "page-data/sq/d",
+          }],
         ],
       },
     })

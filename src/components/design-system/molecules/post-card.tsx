@@ -60,7 +60,7 @@ const PostCardTitle = styled(Heading5)`
   word-wrap: break-word;
 `;
 
-interface PostCardProps {
+export interface PostCardProps {
   slug: string;
   title: string;
   image: IGatsbyImageData;
