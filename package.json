@@ -33,7 +33,7 @@
     "build-ci": "./scripts/build-ci.sh",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "deploy": "npm run build && gh-pages -d public -b main",
+    "deploy": "npm run build-storybook && npm run build && gh-pages -d public -b main",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o ./static/chicio-coding-design-system"
   },
