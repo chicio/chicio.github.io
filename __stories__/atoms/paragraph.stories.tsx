@@ -18,5 +18,5 @@ MultipleParagraph.storyName = "Paragraph";
 
 export default {
   title: "Atoms/Typography",
-  component: MultipleParagraph,
+  component: Paragraph,
 } as Meta;

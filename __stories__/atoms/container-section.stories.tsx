@@ -13,5 +13,5 @@ export const Section: React.VFC = () => (
 
 export default {
   title: "Atoms/Containers",
-  component: Section,
+  component: ContainerSection,
 } as Meta;

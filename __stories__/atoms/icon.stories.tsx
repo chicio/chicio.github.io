@@ -14,5 +14,5 @@ IconContainer.storyName = "Icon";
 
 export default {
   title: "Atoms/Typography",
-  component: IconContainer,
+  component: Icon,
 } as Meta;

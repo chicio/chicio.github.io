@@ -13,5 +13,5 @@ export const Fluid: React.VFC = () => (
 
 export default {
   title: "Atoms/Containers",
-  component: Fluid,
+  component: ContainerFluid,
 } as Meta;

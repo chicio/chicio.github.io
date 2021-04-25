@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
 
-interface MenuItemProps {
+export interface MenuItemProps {
   selected?: boolean;
 }
 

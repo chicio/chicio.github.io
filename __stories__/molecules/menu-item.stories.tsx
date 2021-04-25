@@ -1,18 +1,27 @@
 import React from "react";
-import { Meta } from "@storybook/react";
-import { MenuItem } from "../../src/components/design-system/molecules/menu-item";
+import { Meta, Story } from "@storybook/react";
+import {
+  MenuItem,
+  MenuItemProps,
+} from "../../src/components/design-system/molecules/menu-item";
 
-export const NotSelected: React.VFC = () => (
-  <MenuItem to={""} selected={false}>
-    An item
+const Template: Story<MenuItemProps> = (args) => (
+  <MenuItem {...args} to={""}>
+    A menu item
   </MenuItem>
 );
-export const Selected: React.VFC = () => (
-  <MenuItem to={""} selected={true}>
-    An item
-  </MenuItem>
-);
+
+export const NotSelected = Template.bind({});
+NotSelected.args = {
+  selected: false,
+};
+
+export const SelectedSelected = Template.bind({});
+SelectedSelected.args = {
+  selected: true,
+};
 
 export default {
   title: "Molecules/Menu Item",
+  component: MenuItem,
 } as Meta;

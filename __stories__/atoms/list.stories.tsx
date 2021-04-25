@@ -15,5 +15,5 @@ ListContainer.storyName = "List";
 
 export default {
   title: "Atoms/Typography",
-  component: ListContainer,
+  component: List,
 } as Meta;

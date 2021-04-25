@@ -13,5 +13,5 @@ export const FullScreen: React.VFC = () => (
 
 export default {
   title: "Atoms/Containers",
-  component: FullScreen,
+  component: ContainerFullscreen,
 } as Meta;

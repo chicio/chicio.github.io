@@ -9,5 +9,5 @@ DownArrowContainer.storyName = "Down Arrow";
 
 export default {
   title: "Molecules",
-  component: DownArrowContainer,
+  component: DownArrow,
 } as Meta;

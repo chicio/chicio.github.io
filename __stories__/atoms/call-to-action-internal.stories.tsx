@@ -8,5 +8,5 @@ export const Internal: React.VFC = () => (
 
 export default {
   title: "Atoms/Call To Action",
-  component: Internal,
+  component: CallToActionInternal,
 } as Meta;

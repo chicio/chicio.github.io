@@ -18,5 +18,5 @@ TimeContainer.storyName = "Time";
 
 export default {
   title: "Atoms/Typography",
-  component: TimeContainer,
+  component: Time,
 } as Meta;

@@ -14,7 +14,7 @@ const PageNavigationCallToAction = styled(CallToActionInternal)`
   text-align: center;
 `;
 
-interface PageNavigationProps {
+export interface PageNavigationProps {
   trackingCategory: string;
   previousPageUrl: string;
   previousPageTrackingAction: string;
