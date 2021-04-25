@@ -55,23 +55,33 @@ const BlogDescription = styled.span`
   }
 `;
 
+const ImageContainer = styled.div`
+  width: 80px;
+  height: 80px;
+  background-color: ${(props) => props.theme.light.generalBackgroundLight};
+  margin-right: ${(props) => props.theme.spacing[2]};
+  border-radius: 10px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.575);
+
+  @media (prefers-color-scheme: dark) {
+    background-color: ${(props) => props.theme.dark.generalBackgroundLight};
+  }
+`;
+
 export const BlogHeader: React.FC = () => (
   <BlogHeaderContainer>
-    <StaticImage
-      src={"../../../images/blog-logo.jpg"}
-      alt={"blog logo"}
-      width={80}
-      height={80}
-      style={{
-        marginRight: "10px",
-        borderRadius: "10px",
-        boxShadow: "1px 1px 4px rgba(0, 0, 0, 0.575)",
-      }}
-      imgStyle={{
-        borderRadius: "10px",
-        boxShadow: "1px 1px 4px rgba(0, 0, 0, 0.575)",
-      }}
-    />
+    <ImageContainer>
+      <StaticImage
+        src={"../../../images/blog-logo.jpg"}
+        alt={"blog logo"}
+        width={80}
+        height={80}
+        imgStyle={{
+          borderRadius: "10px",
+          boxShadow: "1px 1px 4px rgba(0, 0, 0, 0.575)",
+        }}
+      />
+    </ImageContainer>
     <BlogHeaderColumn>
       <BlogTitle>CHICIO CODING</BlogTitle>
       <BlogDescription>

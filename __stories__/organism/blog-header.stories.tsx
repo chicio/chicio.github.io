@@ -5,9 +5,9 @@ import { BlogHeader } from "../../src/components/design-system/organism/blog-hea
 export const BlogHeaderContainer: React.VFC = () => <BlogHeader />;
 
 // @ts-ignore
-BlogHeaderContainer.storyName = "Header";
+BlogHeaderContainer.storyName = "Blog Header";
 
 export default {
-  title: "Organism/Blog",
+  title: "Organism/Blog Header",
   component: BlogHeaderContainer,
 } as Meta;

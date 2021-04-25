@@ -24,11 +24,6 @@ const NavBar = styled(Container)`
   height: 55px;
 `;
 
-interface MastheadProps {
-  trackingCategory: string;
-  pathname: string;
-}
-
 const NavBarMenuItem = styled(MenuItem)`
   position: relative;
   display: inline-block;
@@ -60,10 +55,12 @@ const NavBarMenuItem = styled(MenuItem)`
     `};
 `;
 
-export const Menu: React.FC<MastheadProps> = ({
-  trackingCategory,
-  pathname,
-}) => (
+export interface MenuProps {
+  trackingCategory: string;
+  pathname: string;
+}
+
+export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => (
   <MenuContainer>
     <NavBar>
       <NavBarMenuItem

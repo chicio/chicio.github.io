@@ -46,7 +46,7 @@ const TagText = styled.span<TagContentProps>`
   }
 `;
 
-type TagProps = TagContentProps & {
+export type TagProps = TagContentProps & {
   link: string;
   tag: string;
 };

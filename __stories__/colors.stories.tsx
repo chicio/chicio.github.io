@@ -31,6 +31,7 @@ const Color = styled(ContainerFluid)<ColorProps>`
 const ColorColumnTitle = styled.span`
   color: white;
   font-size: 22px;
+  color: red;
 `;
 
 export const Colors: React.VFC = () => (

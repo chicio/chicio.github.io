@@ -30,6 +30,11 @@ const ProjectImageContainer = styled(ProjectContentContainer)`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: ${(props) => props.theme.dark.generalBackgroundLight};
+
+  @media (prefers-color-scheme: dark) {
+    background-color: ${(props) => props.theme.dark.generalBackgroundLight};
+  }
 `;
 
 interface ProjectCallToAction {

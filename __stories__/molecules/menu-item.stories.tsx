@@ -11,15 +11,12 @@ const Template: Story<MenuItemProps> = (args) => (
   </MenuItem>
 );
 
-export const NotSelected = Template.bind({});
-NotSelected.args = {
+export const MenuItemStory = Template.bind({});
+MenuItemStory.args = {
   selected: false,
 };
 
-export const SelectedSelected = Template.bind({});
-SelectedSelected.args = {
-  selected: true,
-};
+MenuItemStory.storyName = "Menu Item";
 
 export default {
   title: "Molecules/Menu Item",

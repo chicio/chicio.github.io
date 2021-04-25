@@ -90,7 +90,7 @@ const TabsContainer = styled.ul`
   border: 1px solid transparent;
 `;
 
-interface TabsProps {
+export interface TabsProps {
   tab1: TabProps;
   tab2: TabProps;
 }
