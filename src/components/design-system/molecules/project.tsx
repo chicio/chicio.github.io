@@ -40,16 +40,16 @@ interface ProjectCallToAction {
   trackingLabel: string;
 }
 
-type ProjectProps = ProjectContainerProps & {
+const CallToActionContainer = styled.div`
+  margin: ${(props) => props.theme.spacing[6]} 0;
+`;
+
+export type ProjectProps = ProjectContainerProps & {
   name: string;
   image: React.ReactElement;
   description: React.ReactElement;
   callToActions: ProjectCallToAction[];
 };
-
-const CallToActionContainer = styled.div`
-  margin: ${(props) => props.theme.spacing[6]} 0;
-`;
 
 export const Project: React.FC<ProjectProps> = ({
   reverse,

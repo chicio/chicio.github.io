@@ -23,7 +23,7 @@ const PostAuthorContainer = styled(ContainerFluid)`
   align-items: center;
 `;
 
-interface PostAuthorsProps {
+export interface PostAuthorsProps {
   authors: Maybe<string>[];
   trackingCategory: string;
   trackingLabel: string;

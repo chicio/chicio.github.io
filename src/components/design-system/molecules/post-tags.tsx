@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import { Maybe } from "../../../../graphql-types";
 
-interface PostTagsProps {
+export interface PostTagsProps {
   tags: Maybe<string>[];
 }
 
