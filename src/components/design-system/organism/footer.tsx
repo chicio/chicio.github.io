@@ -127,12 +127,10 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
       </FooterMenuItem>
     </FooterMenu>
     <FooterAuthorDescription>
-      <FooterContentContainer>
-        <SocialContacts
-          trackingCategory={trackingCategory}
-          trackingLabel={tracking.label.footer}
-        />
-      </FooterContentContainer>
+      <SocialContacts
+        trackingCategory={trackingCategory}
+        trackingLabel={tracking.label.footer}
+      />
       <FooterContentContainer>
         <MadeWithLoveParagraph>{`Made with 💝 by ${author} 'Chicio'`}</MadeWithLoveParagraph>
       </FooterContentContainer>

@@ -13,8 +13,17 @@ import {
 } from "@styled-icons/fa-brands";
 import { Envelope, Mobile } from "@styled-icons/fa-solid";
 import { SocialContactsQuery } from "../../../../graphql-types";
+import styled from "styled-components";
 
-interface SocialContactsProps {
+const SocialContactsContainers = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: ${(props) => props.theme.spacing[0]};
+  text-align: center;
+  flex-wrap: wrap;
+`;
+
+export interface SocialContactsProps {
   trackingCategory: string;
   trackingLabel: string;
 }
@@ -50,7 +59,7 @@ export const SocialContacts: React.FC<SocialContactsProps> = ({
   const links = data.site!.siteMetadata!.contacts!.links!;
 
   return (
-    <>
+    <SocialContactsContainers>
       <SocialContact
         link={links.github!}
         trackingAction={tracking.action.open_github}
@@ -114,6 +123,6 @@ export const SocialContacts: React.FC<SocialContactsProps> = ({
         trackingLabel={trackingLabel}
         icon={<Mobile size={30} title={"phone"} />}
       />
-    </>
+    </SocialContactsContainers>
   );
 };

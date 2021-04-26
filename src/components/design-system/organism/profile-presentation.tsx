@@ -23,14 +23,6 @@ const Job = styled(Heading5)`
   }
 `;
 
-const SocialContactsContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: ${(props) => props.theme.spacing[0]};
-  text-align: center;
-  flex-wrap: wrap;
-`;
-
 const BlogCallToAction = styled(CallToActionInternal)`
   width: 150px;
 `;
@@ -60,7 +52,6 @@ const ProfileImageContainer = styled.div`
   width: 130px;
   height: 130px;
   border-radius: 50%;
-  margin: auto;
   background-color: ${(props) => props.theme.light.generalBackgroundLight};
 
   @media (prefers-color-scheme: dark) {
@@ -91,12 +82,10 @@ export const ProfilePresentation: React.FC<ProfilePresentationProps> = ({
     </ProfileImageContainer>
     <Author>{author}</Author>
     <Job>Software Developer</Job>
-    <SocialContactsContainer>
-      <SocialContacts
-        trackingCategory={tracking.category.home}
-        trackingLabel={tracking.label.body}
-      />
-    </SocialContactsContainer>
+    <SocialContacts
+      trackingCategory={tracking.category.home}
+      trackingLabel={tracking.label.body}
+    />
     <BlogCallToAction
       onClick={() =>
         track(
