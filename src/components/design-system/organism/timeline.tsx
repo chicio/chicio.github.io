@@ -247,6 +247,19 @@ const TimelinePanelContentContainer = styled.div`
   padding: ${(props) => props.theme.spacing[2]};
 `;
 
+const imgSize = 80;
+
+const TimelineImageContainer = styled.div`
+  border: 1px solid gray;
+  margin-left: ${(props) => props.theme.spacing[0]};
+  margin-right: auto;
+  margin-bottom: 15px;
+  display: block;
+  background-color: #fff;
+  width: ${imgSize}px;
+  height: ${imgSize}px;
+`;
+
 type TimelineElementProps = TimelinePanelProps & {
   icon: React.ReactElement;
 };
@@ -268,30 +281,19 @@ export const Timeline: React.FC = () => {
   const iconsSize = 20;
   const briefcase = <Briefcase size={iconsSize} />;
   const graduationCap = <GraduationCap size={iconsSize} />;
-  const imgSize = 80;
-  const imgStyle = {
-    marginLeft: "auto",
-    marginRight: "auto",
-    marginBottom: "15px",
-    display: "block",
-    backgroundColor: "#fff",
-  };
-  const imgContainerStyle = {
-    border: "1px solid gray",
-  };
 
   return (
     <TimelineContentContainer>
       <TimelineContainer>
         <TimelineElement inverted={false} icon={briefcase}>
-          <StaticImage
-            width={imgSize}
-            height={imgSize}
-            src={"../../../images/carrier/lastminute-group.png"}
-            alt={"lastminute"}
-            imgStyle={imgStyle}
-            style={imgContainerStyle}
-          />
+          <TimelineImageContainer>
+            <StaticImage
+              width={imgSize}
+              height={imgSize}
+              src={"../../../images/carrier/lastminute-group.png"}
+              alt={"lastminute"}
+            />
+          </TimelineImageContainer>
           <TimelineTitle>Lastminute.com group</TimelineTitle>
           <TimelineSubtitle>Mobile application developer</TimelineSubtitle>
           <Paragraph>February 2017</Paragraph>
@@ -301,14 +303,14 @@ export const Timeline: React.FC = () => {
           </Paragraph>
         </TimelineElement>
         <TimelineElement inverted={true} icon={graduationCap}>
-          <StaticImage
-            width={imgSize}
-            height={imgSize}
-            src={"../../../images/carrier/unimib.jpg"}
-            alt={"unimib"}
-            imgStyle={imgStyle}
-            style={imgContainerStyle}
-          />
+          <TimelineImageContainer>
+            <StaticImage
+              width={imgSize}
+              height={imgSize}
+              src={"../../../images/carrier/unimib.jpg"}
+              alt={"unimib"}
+            />
+          </TimelineImageContainer>
           <TimelineTitle>Milano-Bicocca University</TimelineTitle>
           <TimelineSubtitle>
             {"Master's degree in Computer Science"}
@@ -329,14 +331,14 @@ export const Timeline: React.FC = () => {
           </List>
         </TimelineElement>
         <TimelineElement inverted={false} icon={briefcase}>
-          <StaticImage
-            width={imgSize}
-            height={imgSize}
-            src={"../../../images/carrier/condenast.png"}
-            alt={"condenast"}
-            imgStyle={imgStyle}
-            style={imgContainerStyle}
-          />
+          <TimelineImageContainer>
+            <StaticImage
+              width={imgSize}
+              height={imgSize}
+              src={"../../../images/carrier/condenast.png"}
+              alt={"condenast"}
+            />
+          </TimelineImageContainer>
           <TimelineTitle>Condé Nast Italia</TimelineTitle>
           <TimelineSubtitle>Mobile/Web application developer</TimelineSubtitle>
           <Paragraph>June 2013</Paragraph>
@@ -348,14 +350,14 @@ export const Timeline: React.FC = () => {
           </Paragraph>
         </TimelineElement>
         <TimelineElement inverted={false} icon={briefcase}>
-          <StaticImage
-            width={imgSize}
-            height={imgSize}
-            src={"../../../images/carrier/shi.png"}
-            alt={"shi"}
-            imgStyle={imgStyle}
-            style={imgContainerStyle}
-          />
+          <TimelineImageContainer>
+            <StaticImage
+              width={imgSize}
+              height={imgSize}
+              src={"../../../images/carrier/shi.png"}
+              alt={"shi"}
+            />
+          </TimelineImageContainer>
           <TimelineTitle>SHI</TimelineTitle>
           <TimelineSubtitle>iOS/Web Developer</TimelineSubtitle>
           <Paragraph>October 2010</Paragraph>
@@ -368,28 +370,28 @@ export const Timeline: React.FC = () => {
           </Paragraph>
         </TimelineElement>
         <TimelineElement inverted={false} icon={briefcase}>
-          <StaticImage
-            width={imgSize}
-            height={imgSize}
-            src={"../../../images/carrier/bottinelli-informatica.png"}
-            alt={"bottinelli informatica"}
-            imgStyle={imgStyle}
-            style={imgContainerStyle}
-          />
+          <TimelineImageContainer>
+            <StaticImage
+              width={imgSize}
+              height={imgSize}
+              src={"../../../images/carrier/bottinelli-informatica.png"}
+              alt={"bottinelli informatica"}
+            />
+          </TimelineImageContainer>
           <TimelineTitle>Bottinelli informatica</TimelineTitle>
           <TimelineSubtitle>Developer</TimelineSubtitle>
           <Paragraph>September 2009</Paragraph>
           <Paragraph>Software development for textile industry.</Paragraph>
         </TimelineElement>
         <TimelineElement inverted={false} icon={briefcase}>
-          <StaticImage
-            width={imgSize}
-            height={imgSize}
-            src={"../../../images/carrier/avanade.png"}
-            alt={"avanade"}
-            imgStyle={imgStyle}
-            style={imgContainerStyle}
-          />
+          <TimelineImageContainer>
+            <StaticImage
+              width={imgSize}
+              height={imgSize}
+              src={"../../../images/carrier/avanade.png"}
+              alt={"avanade"}
+            />
+          </TimelineImageContainer>
           <TimelineTitle>Avanade</TimelineTitle>
           <TimelineSubtitle>PMO Consultant</TimelineSubtitle>
           <Paragraph>October 2008</Paragraph>
@@ -418,14 +420,14 @@ export const Timeline: React.FC = () => {
           </List>
         </TimelineElement>
         <TimelineElement inverted={true} icon={graduationCap}>
-          <StaticImage
-            width={imgSize}
-            height={imgSize}
-            src={"../../../images/carrier/insubria.png"}
-            alt={"insubria"}
-            imgStyle={imgStyle}
-            style={imgContainerStyle}
-          />
+          <TimelineImageContainer>
+            <StaticImage
+              width={imgSize}
+              height={imgSize}
+              src={"../../../images/carrier/insubria.png"}
+              alt={"insubria"}
+            />
+          </TimelineImageContainer>
           <TimelineTitle>Insubria University</TimelineTitle>
           <TimelineSubtitle>
             {"Bachelor's degree in Computer Science"}

@@ -47,7 +47,7 @@ const TechnologyImageContainer = styled.div`
   align-items: center;
 `;
 
-interface TechnologiesProps {
+export interface TechnologiesProps {
   author: string;
 }
 
