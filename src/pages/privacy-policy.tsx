@@ -1,5 +1,5 @@
 import React from "react";
-import { tracking } from "../utils/tracking";
+import { tracking } from "../logic/tracking";
 import { graphql, PageProps, useStaticQuery } from "gatsby";
 import { PrivacyPolicyQuery } from "../../graphql-types";
 import { BlogPage } from "../components/design-system/templates/blog-page";
@@ -9,6 +9,7 @@ import { List } from "../components/design-system/atoms/list";
 import { ContainerSection } from "../components/design-system/atoms/container-section";
 import { Paragraph } from "../components/design-system/atoms/paragraph";
 import { StandardExternalLink } from "../components/design-system/atoms/standard-external-link";
+import { getCurrentLocationFrom } from "../logic/location";
 
 const PrivacyPolicy: React.FC<PageProps> = ({ location }) => {
   const data = useStaticQuery<PrivacyPolicyQuery>(
@@ -30,7 +31,7 @@ const PrivacyPolicy: React.FC<PageProps> = ({ location }) => {
 
   return (
     <BlogPage
-      location={location}
+      location={getCurrentLocationFrom(location)}
       author={author}
       ogPageType={"website"}
       ogImage={`/${featuredImage}`}

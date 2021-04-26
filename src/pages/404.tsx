@@ -1,5 +1,5 @@
 import React from "react";
-import { track, tracking } from "../utils/tracking";
+import { track, tracking } from "../logic/tracking";
 import { Heading1 } from "../components/design-system/atoms/heading1";
 import { Paragraph } from "../components/design-system/atoms/paragraph";
 import { ContainerFullscreen } from "../components/design-system/atoms/container-fullscreen";

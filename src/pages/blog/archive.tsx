@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
 import { ArchiveQuery } from "../../../graphql-types";
-import { tracking } from "../../utils/tracking";
+import { tracking } from "../../logic/tracking";
 import { BlogGenericPostListPage } from "../../components/design-system/templates/blog-generic-post-list-page";
 
 const Archive: React.FC<PageProps<ArchiveQuery>> = ({ data, location }) => {

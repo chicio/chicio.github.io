@@ -1,5 +1,5 @@
 import React from "react";
-import { track, tracking } from "../../../utils/tracking";
+import { track, tracking } from "../../../logic/tracking";
 import { SocialContacts } from "./social-contacts";
 import styled from "styled-components";
 import { MenuItem } from "../molecules/menu-item";

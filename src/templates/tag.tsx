@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
-import { tracking } from "../utils/tracking";
+import { tracking } from "../logic/tracking";
 import { TagPostsQuery } from "../../graphql-types";
 import { BlogGenericPostListPage } from "../components/design-system/templates/blog-generic-post-list-page";
 

@@ -1,6 +1,6 @@
 import React from "react";
-import { track, tracking } from "../../../utils/tracking";
-import { BlogAuthor, blogAuthors } from "../../../utils/blog-authors";
+import { track, tracking } from "../../../logic/tracking";
+import { BlogAuthor, blogAuthors } from "../../../logic/blog-authors";
 import { AuthorsImagesQuery, Maybe } from "../../../../graphql-types";
 import { graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";

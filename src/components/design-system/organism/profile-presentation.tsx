@@ -2,7 +2,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import * as React from "react";
 import { Heading5 } from "../atoms/heading5";
 import { SocialContacts } from "./social-contacts";
-import { track, tracking } from "../../../utils/tracking";
+import { track, tracking } from "../../../logic/tracking";
 import styled from "styled-components";
 import { CallToActionInternal } from "../atoms/call-to-action-internal";
 import { Heading2 } from "../atoms/heading2";

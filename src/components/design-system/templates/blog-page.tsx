@@ -6,15 +6,15 @@ import * as React from "react";
 import styled from "styled-components";
 import { Container } from "../atoms/container";
 import { Footer } from "../organism/footer";
-import { WindowLocation } from "@reach/router";
+import { CurrentLocation } from "../../../logic/location";
 
 const BlogContainer = styled(Container)`
   margin-top: ${(props) => props.theme.spacing[12]};
   flex: 1 0 auto;
 `;
 
-interface BlogPageProps {
-  location: WindowLocation<WindowLocation["state"]>;
+export interface BlogPageProps {
+  location: CurrentLocation;
   author: string;
   ogPageType: string;
   ogImage: string;
@@ -30,7 +30,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
   trackingCategory,
 }) => (
   <Page>
-    <Head url={location.href} pageType={ogPageType} imageUrl={ogImage} />
+    <Head url={location.url} pageType={ogPageType} imageUrl={ogImage} />
     <Menu trackingCategory={trackingCategory} pathname={location.pathname} />
     <BlogContainer>
       <BlogHeader />

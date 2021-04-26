@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import { CallToActionInternal } from "../atoms/call-to-action-internal";
-import { track, tracking } from "../../../utils/tracking";
+import { track, tracking } from "../../../logic/tracking";
 
 const CenterHorizontallyContainer = styled.div`
   display: flex;

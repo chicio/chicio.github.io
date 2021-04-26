@@ -1,6 +1,6 @@
 import * as React from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import { tracking } from "../../../utils/tracking";
+import { tracking } from "../../../logic/tracking";
 import { SocialContact } from "../molecules/social-contact";
 import {
   Dev,

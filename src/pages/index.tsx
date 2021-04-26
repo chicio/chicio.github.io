@@ -9,7 +9,7 @@ import { HomePageQuery } from "../../graphql-types";
 import { Page } from "../components/design-system/templates/page";
 import { ContainerFullscreen } from "../components/design-system/atoms/container-fullscreen";
 import { Footer } from "../components/design-system/organism/footer";
-import { tracking } from "../utils/tracking";
+import { tracking } from "../logic/tracking";
 
 const HomePage: React.FC<PageProps> = ({ location }) => {
   const data = useStaticQuery<HomePageQuery>(

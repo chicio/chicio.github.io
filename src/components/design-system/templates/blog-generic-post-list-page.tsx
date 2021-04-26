@@ -10,8 +10,9 @@ import { WindowLocation } from "@reach/router";
 import React from "react";
 import { BlogPage } from "./blog-page";
 import { StandardInternalLink } from "../atoms/standard-internal-link";
-import { track, tracking } from "../../../utils/tracking";
+import { track, tracking } from "../../../logic/tracking";
 import { PageTitle } from "../molecules/page-title";
+import { getCurrentLocationFrom } from "../../../logic/location";
 
 const PostContainer = styled(ContainerFluid)`
   display: flex;
@@ -70,7 +71,7 @@ export const BlogGenericPostListPage: React.FC<BlogGenericPostListPageProps> = (
   trackingCategory,
 }) => (
   <BlogPage
-    location={location}
+    location={getCurrentLocationFrom(location)}
     author={author}
     ogPageType={ogPageType}
     ogImage={ogImage}

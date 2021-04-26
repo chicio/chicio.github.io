@@ -2,7 +2,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import { Paragraph } from "../atoms/paragraph";
 import { StandardExternalLink } from "../atoms/standard-external-link";
 import { List } from "../atoms/list";
-import { tracking } from "../../../utils/tracking";
+import { tracking } from "../../../logic/tracking";
 import { Project } from "../molecules/project";
 import React from "react";
 

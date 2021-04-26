@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { StandardExternalLink } from "../atoms/standard-external-link";
-import { track } from "../../../utils/tracking";
+import { track } from "../../../logic/tracking";
 import React from "react";
 
 interface TabLinkProps {

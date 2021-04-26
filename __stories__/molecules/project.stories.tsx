@@ -7,7 +7,7 @@ import {
 import { Paragraph } from "../../src/components/design-system/atoms/paragraph";
 import { StandardExternalLink } from "../../src/components/design-system/atoms/standard-external-link";
 import { List } from "../../src/components/design-system/atoms/list";
-import { tracking } from "../../src/utils/tracking";
+import { tracking } from "../../src/logic/tracking";
 
 const Template: Story<ProjectProps> = (args) => <Project {...args} />;
 

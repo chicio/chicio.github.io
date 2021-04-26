@@ -1,13 +1,14 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
-import { tracking } from "../../utils/tracking";
+import { tracking } from "../../logic/tracking";
 import { PostsGroupByTagsQuery } from "../../../graphql-types";
 import { BlogPage } from "../../components/design-system/templates/blog-page";
 import { Tag } from "../../components/design-system/molecules/tag";
 import { ContainerFluid } from "../../components/design-system/atoms/container-fluid";
 import styled from "styled-components";
 import { PageTitle } from "../../components/design-system/molecules/page-title";
-import { generateTagLink } from "../../components/design-system/templates/tag";
+import { generateTagLink } from "../../logic/tag";
+import { getCurrentLocationFrom } from "../../logic/location";
 
 const TagsContainer = styled(ContainerFluid)`
   padding: 0;
@@ -24,7 +25,7 @@ const TagsPage: React.FC<PageProps<PostsGroupByTagsQuery>> = ({
 
   return (
     <BlogPage
-      location={location}
+      location={getCurrentLocationFrom(location)}
       author={author}
       ogPageType={"website"}
       ogImage={`/${featuredImage}`}

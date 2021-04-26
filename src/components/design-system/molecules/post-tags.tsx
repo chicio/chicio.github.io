@@ -1,5 +1,5 @@
 import { Tag } from "./tag";
-import { generateTagLink } from "../templates/tag";
+import { generateTagLink } from "../../../logic/tag";
 import React from "react";
 import styled from "styled-components";
 import { Maybe } from "../../../../graphql-types";

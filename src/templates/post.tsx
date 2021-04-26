@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
-import { tracking } from "../utils/tracking";
+import { tracking } from "../logic/tracking";
 import { Comments } from "../components/design-system/molecules/comments";
 import { PostMeta } from "../components/design-system/molecules/post-meta";
 import { PostQuery } from "../../graphql-types";
@@ -12,6 +12,7 @@ import { PostTags } from "../components/design-system/molecules/post-tags";
 import { Heading2 } from "../components/design-system/atoms/heading2";
 import { PostContent } from "../components/post-content";
 import styled from "styled-components";
+import { getCurrentLocationFrom } from "../logic/location";
 
 const PostTitle = styled(Heading2)`
   margin: 0;
@@ -26,7 +27,7 @@ const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
 
   return (
     <BlogPage
-      location={location}
+      location={getCurrentLocationFrom(location)}
       author={data.site!.siteMetadata!.author!}
       ogPageType={"article"}
       ogImage={`${getSrc(

@@ -1,5 +1,5 @@
 import React from "react";
-import { tracking } from "../utils/tracking";
+import { tracking } from "../logic/tracking";
 import { graphql, PageProps, useStaticQuery } from "gatsby";
 import { CookiePolicyQuery } from "../../graphql-types";
 import { BlogPage } from "../components/design-system/templates/blog-page";
@@ -9,6 +9,7 @@ import { Heading4 } from "../components/design-system/atoms/heading4";
 import { List } from "../components/design-system/atoms/list";
 import { ContainerSection } from "../components/design-system/atoms/container-section";
 import { StandardExternalLink } from "../components/design-system/atoms/standard-external-link";
+import { getCurrentLocationFrom } from "../logic/location";
 
 const CookiePolicy: React.FC<PageProps> = ({ location }) => {
   const data = useStaticQuery<CookiePolicyQuery>(
@@ -30,7 +31,7 @@ const CookiePolicy: React.FC<PageProps> = ({ location }) => {
 
   return (
     <BlogPage
-      location={location}
+      location={getCurrentLocationFrom(location)}
       ogPageType={"website"}
       ogImage={`/${featuredImage}`}
       author={author}

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { track } from "../../../utils/tracking";
+import { track } from "../../../logic/tracking";
 import { CallToActionExternal } from "../atoms/call-to-action-external";
 import { Icon } from "../atoms/icon";
 import styled from "styled-components";
