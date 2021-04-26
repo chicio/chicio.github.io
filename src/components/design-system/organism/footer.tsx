@@ -53,7 +53,7 @@ const MadeWithLoveParagraph = styled(Paragraph)`
   }
 `;
 
-interface FooterProps {
+export interface FooterProps {
   author: string;
   trackingCategory: string;
 }

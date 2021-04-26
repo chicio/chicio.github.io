@@ -56,7 +56,19 @@ const ProfileContainer = styled.div`
   }
 `;
 
-interface ProfilePresentationProps {
+const ProfileImageContainer = styled.div`
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  margin: auto;
+  background-color: ${(props) => props.theme.light.generalBackgroundLight};
+
+  @media (prefers-color-scheme: dark) {
+    background-color: ${(props) => props.theme.dark.generalBackgroundLight};
+  }
+`;
+
+export interface ProfilePresentationProps {
   author: string;
 }
 
@@ -64,17 +76,19 @@ export const ProfilePresentation: React.FC<ProfilePresentationProps> = ({
   author,
 }) => (
   <ProfileContainer>
-    <StaticImage
-      placeholder={"none"}
-      imgStyle={{
-        width: "130px",
-        height: "130px",
-        borderRadius: "50%",
-        margin: "auto",
-      }}
-      src={"../../../images/authors/fabrizio-duroni.jpg"}
-      alt={author}
-    />
+    <ProfileImageContainer>
+      <StaticImage
+        placeholder={"none"}
+        imgStyle={{
+          width: "130px",
+          height: "130px",
+          borderRadius: "50%",
+          margin: "auto",
+        }}
+        src={"../../../images/authors/fabrizio-duroni.jpg"}
+        alt={author}
+      />
+    </ProfileImageContainer>
     <Author>{author}</Author>
     <Job>Software Developer</Job>
     <SocialContactsContainer>

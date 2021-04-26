@@ -24,7 +24,7 @@ const RecentPostsContainer = styled.div`
   margin-bottom: ${(props) => props.theme.spacing[4]};
 `;
 
-interface RecentPostsProps {
+export interface RecentPostsProps {
   currentSlug: string;
 }
 

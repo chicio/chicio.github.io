@@ -1,10 +1,10 @@
 import React from "react";
-import { Meta, Story } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { Projects } from "../../src/components/design-system/organism/projects";
 
-const Template: Story = () => <Projects />;
+export const ProjectsStory: React.VFC = () => <Projects />;
 
-export const ProjectsStory = Template.bind({});
+// @ts-ignore
 ProjectsStory.storyName = "Projects";
 
 export default {
