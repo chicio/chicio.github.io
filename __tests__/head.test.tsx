@@ -1,0 +1,101 @@
+import React from "react";
+import { render } from "@testing-library/react";
+import { Head } from "../src/components/head";
+import { useStaticQuery } from "gatsby";
+import { Helmet, HelmetData } from "react-helmet";
+
+// function getMeta(metaName: string) {
+//   const metas = document.getElementsByTagName("meta");
+//   for (let i = 0; i < metas.length; i += 1) {
+//     if (metas[i].getAttribute("name") === metaName) {
+//       return metas[i].getAttribute("content");
+//     }
+//   }
+//   return "";
+// }
+
+describe("<Head />", () => {
+  const useStaticQueryMock = useStaticQuery as jest.MockedFunction<
+    typeof useStaticQuery
+  >;
+
+  beforeEach(() => {
+    useStaticQueryMock.mockReturnValue({
+      site: {
+        siteMetadata: {
+          title: "Fabrizio Duroni | Fabrizio Duroni ‘Chicio Coding’",
+          siteUrl: "https://www.fabrizioduroni.it",
+          featuredImage: "chicio-coding-feature-graphic.jpg",
+          author: "Fabrizio Duroni",
+          contacts: {
+            email: "fabrizio.duroni@gmail.com",
+            phone: "+393285926828",
+            links: {
+              twitter: "https://twitter.com/chicio86",
+              facebook: "https://www.facebook.com/fabrizio.duroni",
+              linkedin: "https://www.linkedin.com/in/fabrizio-duroni/",
+              github: "https://github.com/chicio",
+              medium: "https://medium.com/@chicio",
+              devto: "https://dev.to/chicio",
+              instagram: "https://www.instagram.com/__chicio__/",
+            },
+          },
+        },
+      },
+    });
+  });
+
+  describe("title", () => {
+    it("custom received as prop", async () => {
+      render(
+        <Head
+          url={"https://localhost:8000/blog"}
+          pageType={"website"}
+          imageUrl={""}
+          customTitle={"a custom title"}
+          date={""}
+          description={""}
+        />
+      );
+
+      const helmet: HelmetData = Helmet.peek();
+
+      expect(helmet.title).toEqual("a custom title");
+    });
+
+    it("default", () => {
+      render(
+        <Head
+          url={"https://localhost:8000/blog"}
+          pageType={"website"}
+          imageUrl={""}
+          date={""}
+          description={""}
+        />
+      );
+
+      const helmet: HelmetData = Helmet.peek();
+
+      expect(helmet.title).toEqual(
+        "Fabrizio Duroni | Fabrizio Duroni ‘Chicio Coding’"
+      );
+    });
+  });
+
+  it("html attributes", () => {
+    render(
+      <Head
+        url={"https://localhost:8000/blog"}
+        pageType={"website"}
+        imageUrl={""}
+        customTitle={"a custom title"}
+        date={""}
+        description={""}
+      />
+    );
+
+    const helmet: HelmetData = Helmet.peek();
+
+    expect(helmet.htmlAttributes).toEqual({ lang: "en" });
+  });
+});
