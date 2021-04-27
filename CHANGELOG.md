@@ -1,6 +1,14 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [4.2.0](https://github.com/chicio/chicio.github.io/releases/tag/v4.2.0)
+Release date: 2021-04-27
+
+#### Added
+
+- Storybook 
+- Published and linked design system
+
 ## [4.1.0](https://github.com/chicio/chicio.github.io/releases/tag/v4.1.0)
 Release date: 2021-04-23
 
