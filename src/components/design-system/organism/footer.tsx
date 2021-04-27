@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { MenuItem } from "../molecules/menu-item";
 import { Paragraph } from "../atoms/paragraph";
 import { StandardInternalLink } from "../atoms/standard-internal-link";
+import { StandardExternalLink } from "../atoms/standard-external-link";
 
 const FooterContainer = styled.footer`
   flex-shrink: 0;
@@ -83,7 +84,6 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
             tracking.label.footer
           );
         }}
-        className="nav-item-footer"
       >
         Blog
       </FooterMenuItem>
@@ -96,7 +96,6 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
             tracking.label.footer
           );
         }}
-        className="nav-item-footer"
       >
         About Me
       </FooterMenuItem>
@@ -109,7 +108,6 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
             tracking.label.footer
           );
         }}
-        className="nav-item-footer"
       >
         Archive
       </FooterMenuItem>
@@ -122,7 +120,6 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
             tracking.label.footer
           );
         }}
-        className="nav-item-footer last"
       >
         Tags
       </FooterMenuItem>
@@ -135,11 +132,12 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
       <FooterContentContainer>
         <MadeWithLoveParagraph>
           {`Made with 💝 by ${author} 'Chicio' using `}
-          <StandardInternalLink
-            to={"/static/chicio-coding-design-system/index.html"}
+          <StandardExternalLink
+            href={"/chicio-coding-design-system/index.html"}
+            target={"_blank"}
           >
             Chicio Coding Design System
-          </StandardInternalLink>
+          </StandardExternalLink>
         </MadeWithLoveParagraph>
       </FooterContentContainer>
     </FooterAuthorDescription>

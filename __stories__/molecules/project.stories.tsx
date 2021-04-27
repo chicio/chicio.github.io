@@ -32,14 +32,12 @@ ProjectStory.args = {
         degree thesis at{" "}
         <StandardExternalLink
           href="https://www.disco.unimib.it"
-          className="project-info-link"
         >
           University Milano-Bicocca
         </StandardExternalLink>{" "}
         -
         <StandardExternalLink
           href="http://www.ivl.disco.unimib.it"
-          className="project-info-link"
         >
           Imaging and Vision Laboratory
         </StandardExternalLink>
