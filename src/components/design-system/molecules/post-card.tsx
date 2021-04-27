@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Paragraph } from "../atoms/paragraph";
 import { StandardInternalLink } from "../atoms/standard-internal-link";
-import { track, tracking } from "../../../utils/tracking";
+import { track, tracking } from "../../../logic/tracking";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import { PostAuthors } from "./post-authors";
 import { PostMeta } from "./post-meta";
@@ -60,7 +60,7 @@ const PostCardTitle = styled(Heading5)`
   word-wrap: break-word;
 `;
 
-interface PostCardProps {
+export interface PostCardProps {
   slug: string;
   title: string;
   image: IGatsbyImageData;

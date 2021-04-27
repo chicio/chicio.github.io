@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { RecentPostsQuery } from "../../../../graphql-types";
-import { tracking } from "../../../utils/tracking";
+import { tracking } from "../../../logic/tracking";
 import { Heading4 } from "../atoms/heading4";
 import styled from "styled-components";
 import { RecentPostCard } from "../molecules/recent-post-card";
@@ -24,7 +24,7 @@ const RecentPostsContainer = styled.div`
   margin-bottom: ${(props) => props.theme.spacing[4]};
 `;
 
-interface RecentPostsProps {
+export interface RecentPostsProps {
   currentSlug: string;
 }
 

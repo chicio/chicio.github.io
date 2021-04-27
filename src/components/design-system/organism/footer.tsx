@@ -1,9 +1,10 @@
 import React from "react";
-import { track, tracking } from "../../../utils/tracking";
+import { track, tracking } from "../../../logic/tracking";
 import { SocialContacts } from "./social-contacts";
 import styled from "styled-components";
 import { MenuItem } from "../molecules/menu-item";
 import { Paragraph } from "../atoms/paragraph";
+import { StandardExternalLink } from "../atoms/standard-external-link";
 
 const FooterContainer = styled.footer`
   flex-shrink: 0;
@@ -26,7 +27,6 @@ const FooterMenu = styled.div`
 
 const FooterMenuItem = styled(MenuItem)`
   margin: ${(props) => props.theme.spacing[0]};
-  font-size: ${(props) => props.theme.fontSizes[2]};
 `;
 
 const FooterContentContainer = styled.div`
@@ -54,7 +54,7 @@ const MadeWithLoveParagraph = styled(Paragraph)`
   }
 `;
 
-interface FooterProps {
+export interface FooterProps {
   author: string;
   trackingCategory: string;
 }
@@ -83,7 +83,6 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
             tracking.label.footer
           );
         }}
-        className="nav-item-footer"
       >
         Blog
       </FooterMenuItem>
@@ -96,7 +95,6 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
             tracking.label.footer
           );
         }}
-        className="nav-item-footer"
       >
         About Me
       </FooterMenuItem>
@@ -109,7 +107,6 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
             tracking.label.footer
           );
         }}
-        className="nav-item-footer"
       >
         Archive
       </FooterMenuItem>
@@ -122,20 +119,25 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
             tracking.label.footer
           );
         }}
-        className="nav-item-footer last"
       >
         Tags
       </FooterMenuItem>
     </FooterMenu>
     <FooterAuthorDescription>
+      <SocialContacts
+        trackingCategory={trackingCategory}
+        trackingLabel={tracking.label.footer}
+      />
       <FooterContentContainer>
-        <SocialContacts
-          trackingCategory={trackingCategory}
-          trackingLabel={tracking.label.footer}
-        />
-      </FooterContentContainer>
-      <FooterContentContainer>
-        <MadeWithLoveParagraph>{`Made with 💝 by ${author} 'Chicio'`}</MadeWithLoveParagraph>
+        <MadeWithLoveParagraph>
+          {`Made with 💝 by ${author} 'Chicio' using `}
+          <StandardExternalLink
+            href={"/chicio-coding-design-system/index.html"}
+            target={"_blank"}
+          >
+            Chicio Coding Design System
+          </StandardExternalLink>
+        </MadeWithLoveParagraph>
       </FooterContentContainer>
     </FooterAuthorDescription>
   </FooterContainer>

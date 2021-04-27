@@ -1,32 +1,37 @@
 import { DefaultTheme } from "styled-components";
+import { Colors } from "./styled";
+
+export const dark: Colors = {
+  primaryColor: "#3F51B5",
+  primaryColorDark: "#303F9F",
+  primaryColorLight: "#DFDFF1",
+  generalBackground: "#181918",
+  textAbovePrimaryColor: "#FFFFFF",
+  primaryTextColor: "#FAFAFA",
+  secondaryTextColor: "#A6A6A6",
+  accentColor: "#4fA7ff",
+  generalBackgroundLight: "#363636",
+  boxShadowLight: "rgba(0, 0, 0, 0.2)",
+  dividerColor: "#575757",
+};
+
+export const light: Colors = {
+  primaryColor: "#3F51B5",
+  primaryColorDark: "#303F9F",
+  primaryColorLight: "#DFDFF1",
+  generalBackground: "#FBFBFB",
+  textAbovePrimaryColor: "#FFFFFF",
+  primaryTextColor: "#151515",
+  secondaryTextColor: "#575757",
+  accentColor: "#1F67FF",
+  generalBackgroundLight: "#FFFFFF",
+  boxShadowLight: "rgba(0, 0, 0, 0.2)",
+  dividerColor: "#BDBDBD",
+};
 
 export const theme: DefaultTheme = {
-  dark: {
-    primaryColor: "#3F51B5",
-    primaryColorDark: "#303F9F",
-    primaryColorLight: "#DFDFF1",
-    generalBackground: "#181918",
-    textAbovePrimaryColor: "#FFFFFF",
-    primaryTextColor: "#FAFAFA",
-    secondaryTextColor: "#A6A6A6",
-    accentColor: "#4fA7ff",
-    generalBackgroundLight: "#363636",
-    boxShadowLight: "rgba(0, 0, 0, 0.2)",
-    dividerColor: "#575757",
-  },
-  light: {
-    primaryColor: "#3F51B5",
-    primaryColorDark: "#303F9F",
-    primaryColorLight: "#DFDFF1",
-    textAbovePrimaryColor: "#FFFFFF",
-    primaryTextColor: "#151515",
-    secondaryTextColor: "#575757",
-    generalBackground: "#FBFBFB",
-    accentColor: "#1F67FF",
-    generalBackgroundLight: "#FFFFFF",
-    boxShadowLight: "rgba(0, 0, 0, 0.2)",
-    dividerColor: "#BDBDBD",
-  },
+  dark,
+  light,
   fontSizes: [
     "12px",
     "14px",

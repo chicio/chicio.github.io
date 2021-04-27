@@ -2,7 +2,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import * as React from "react";
 import { Heading5 } from "../atoms/heading5";
 import { SocialContacts } from "./social-contacts";
-import { track, tracking } from "../../../utils/tracking";
+import { track, tracking } from "../../../logic/tracking";
 import styled from "styled-components";
 import { CallToActionInternal } from "../atoms/call-to-action-internal";
 import { Heading2 } from "../atoms/heading2";
@@ -21,14 +21,6 @@ const Job = styled(Heading5)`
   @media (prefers-color-scheme: dark) {
     color: ${(props) => props.theme.dark.textAbovePrimaryColor};
   }
-`;
-
-const SocialContactsContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: ${(props) => props.theme.spacing[0]};
-  text-align: center;
-  flex-wrap: wrap;
 `;
 
 const BlogCallToAction = styled(CallToActionInternal)`
@@ -56,7 +48,18 @@ const ProfileContainer = styled.div`
   }
 `;
 
-interface ProfilePresentationProps {
+const ProfileImageContainer = styled.div`
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background-color: ${(props) => props.theme.light.generalBackgroundLight};
+
+  @media (prefers-color-scheme: dark) {
+    background-color: ${(props) => props.theme.dark.generalBackgroundLight};
+  }
+`;
+
+export interface ProfilePresentationProps {
   author: string;
 }
 
@@ -64,25 +67,25 @@ export const ProfilePresentation: React.FC<ProfilePresentationProps> = ({
   author,
 }) => (
   <ProfileContainer>
-    <StaticImage
-      placeholder={"none"}
-      imgStyle={{
-        width: "130px",
-        height: "130px",
-        borderRadius: "50%",
-        margin: "auto",
-      }}
-      src={"../../../images/authors/fabrizio-duroni.jpg"}
-      alt={author}
-    />
+    <ProfileImageContainer>
+      <StaticImage
+        placeholder={"none"}
+        imgStyle={{
+          width: "130px",
+          height: "130px",
+          borderRadius: "50%",
+          margin: "auto",
+        }}
+        src={"../../../images/authors/fabrizio-duroni.jpg"}
+        alt={author}
+      />
+    </ProfileImageContainer>
     <Author>{author}</Author>
     <Job>Software Developer</Job>
-    <SocialContactsContainer>
-      <SocialContacts
-        trackingCategory={tracking.category.home}
-        trackingLabel={tracking.label.body}
-      />
-    </SocialContactsContainer>
+    <SocialContacts
+      trackingCategory={tracking.category.home}
+      trackingLabel={tracking.label.body}
+    />
     <BlogCallToAction
       onClick={() =>
         track(

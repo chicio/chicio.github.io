@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { StandardExternalLink } from "../atoms/standard-external-link";
-import { track } from "../../../utils/tracking";
+import { track } from "../../../logic/tracking";
 import React from "react";
 
 interface TabLinkProps {
@@ -90,7 +90,7 @@ const TabsContainer = styled.ul`
   border: 1px solid transparent;
 `;
 
-interface TabsProps {
+export interface TabsProps {
   tab1: TabProps;
   tab2: TabProps;
 }

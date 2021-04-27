@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { tracking } from "../../../utils/tracking";
+import { tracking } from "../../../logic/tracking";
 import { ContainerFluid } from "../atoms/container-fluid";
 import styled from "styled-components";
 import { Tabs } from "../molecules/tabs";

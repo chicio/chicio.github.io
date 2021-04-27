@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
 
-interface MenuItemProps {
+export interface MenuItemProps {
   selected?: boolean;
 }
 
@@ -10,6 +10,7 @@ export const MenuItem = styled(Link)<MenuItemProps>`
     props.selected
       ? props.theme.light.textAbovePrimaryColor
       : props.theme.light.primaryColorLight};
+  font-size: ${(props) => props.theme.fontSizes[2]};
   font-weight: 500;
   text-decoration: none;
   line-height: ${(props) => props.theme.lineHeight};

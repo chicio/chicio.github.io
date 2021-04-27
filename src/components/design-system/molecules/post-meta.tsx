@@ -3,7 +3,7 @@ import { Time } from "../atoms/time";
 import { Paragraph } from "../atoms/paragraph";
 import styled from "styled-components";
 
-interface PostMetaProps {
+export interface PostMetaProps {
   date: string;
   readingTime: string;
 }

@@ -1,10 +1,11 @@
 import * as React from "react";
 import { graphql, PageProps } from "gatsby";
-import { tracking } from "../utils/tracking";
+import { tracking } from "../logic/tracking";
 import { BlogListQuery } from "../../graphql-types";
 import { BlogPage } from "../components/design-system/templates/blog-page";
 import { PaginationNavigation } from "../components/design-system/molecules/pagination-navigation";
 import { PostCard } from "../components/design-system/molecules/post-card";
+import { getCurrentLocationFrom } from "../logic/location";
 
 interface BlogPageContext {
   limit: number;
@@ -33,7 +34,7 @@ const Blog: React.FC<PageProps<BlogListQuery, BlogPageContext>> = ({
   return (
     <BlogPage
       author={author}
-      location={location}
+      location={getCurrentLocationFrom(location)}
       ogImage={`/${featuredImage}`}
       ogPageType={"website"}
       trackingCategory={tracking.category.blog_home}

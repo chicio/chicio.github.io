@@ -4,7 +4,7 @@ import { Heading6 } from "../atoms/heading6";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import React from "react";
 import { Paragraph } from "../atoms/paragraph";
-import { track, tracking } from "../../../utils/tracking";
+import { track, tracking } from "../../../logic/tracking";
 
 const CardButton = styled(CallToActionInternal)`
   margin-top: auto;
@@ -52,7 +52,7 @@ const CardContainer = styled.div<CardContainerProps>`
   }
 `;
 
-interface RecentPostCardProps {
+export interface RecentPostCardProps {
   position: number;
   slug: string;
   title: string;

@@ -1,8 +1,9 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
 import { ArchiveQuery } from "../../../graphql-types";
-import { tracking } from "../../utils/tracking";
+import { tracking } from "../../logic/tracking";
 import { BlogGenericPostListPage } from "../../components/design-system/templates/blog-generic-post-list-page";
+import { getCurrentLocationFrom } from "../../logic/location";
 
 const Archive: React.FC<PageProps<ArchiveQuery>> = ({ data, location }) => {
   const siteMetadata = data.site!.siteMetadata!;
@@ -14,7 +15,7 @@ const Archive: React.FC<PageProps<ArchiveQuery>> = ({ data, location }) => {
       title={"Archive"}
       posts={data.allMarkdownRemark.edges}
       author={author}
-      location={location}
+      location={getCurrentLocationFrom(location)}
       ogPageType={"website"}
       ogImage={`/${featuredImage}`}
       trackingCategory={tracking.category.blog_archive}

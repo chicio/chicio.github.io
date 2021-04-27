@@ -1,6 +1,6 @@
 import React from "react";
-import { track, tracking } from "../../../utils/tracking";
-import { BlogAuthor, blogAuthors } from "../../../utils/blog-authors";
+import { track, tracking } from "../../../logic/tracking";
+import { BlogAuthor, blogAuthors } from "../../../logic/blog-authors";
 import { AuthorsImagesQuery, Maybe } from "../../../../graphql-types";
 import { graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";
@@ -23,7 +23,19 @@ const PostAuthorContainer = styled(ContainerFluid)`
   align-items: center;
 `;
 
-interface PostAuthorsProps {
+const PostAuthorImageContainer = styled.div`
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background-color: ${(props) => props.theme.light.dividerColor};
+
+  @media (prefers-color-scheme: dark) {
+    background-color: ${(props) => props.theme.dark.dividerColor};
+  }
+`;
+
+export interface PostAuthorsProps {
   authors: Maybe<string>[];
   trackingCategory: string;
   trackingLabel: string;
@@ -69,17 +81,19 @@ export const PostAuthors: React.FC<PostAuthorsProps> = ({
           <PostAuthorContainer
             key={`${author}${Math.floor(Math.random() * 100)}`}
           >
-            <GatsbyImage
-              alt={blogAuthor.name}
-              image={blogAuthorImage}
-              style={{
-                width: 30,
-                height: 30,
-                marginRight: "5px",
-                borderRadius: "50%",
-              }}
-              imgStyle={{ borderRadius: "50%" }}
-            />
+            <PostAuthorImageContainer>
+              <GatsbyImage
+                alt={blogAuthor.name}
+                image={blogAuthorImage}
+                style={{
+                  width: 30,
+                  height: 30,
+                  marginRight: "5px",
+                  borderRadius: "50%",
+                }}
+                imgStyle={{ borderRadius: "50%" }}
+              />
+            </PostAuthorImageContainer>
             <Paragraph>
               {enableUrl && (
                 <StandardExternalLink

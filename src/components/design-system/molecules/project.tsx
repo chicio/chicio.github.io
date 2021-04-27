@@ -1,7 +1,7 @@
 import React from "react";
 import { Heading3 } from "../atoms/heading3";
 import { CallToActionExternal } from "../atoms/call-to-action-external";
-import { track } from "../../../utils/tracking";
+import { track } from "../../../logic/tracking";
 import styled from "styled-components";
 import { Container } from "../atoms/container";
 
@@ -40,16 +40,16 @@ interface ProjectCallToAction {
   trackingLabel: string;
 }
 
-type ProjectProps = ProjectContainerProps & {
+const CallToActionContainer = styled.div`
+  margin: ${(props) => props.theme.spacing[6]} 0;
+`;
+
+export type ProjectProps = ProjectContainerProps & {
   name: string;
   image: React.ReactElement;
   description: React.ReactElement;
   callToActions: ProjectCallToAction[];
 };
-
-const CallToActionContainer = styled.div`
-  margin: ${(props) => props.theme.spacing[6]} 0;
-`;
 
 export const Project: React.FC<ProjectProps> = ({
   reverse,
