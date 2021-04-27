@@ -4,7 +4,6 @@ import { SocialContacts } from "./social-contacts";
 import styled from "styled-components";
 import { MenuItem } from "../molecules/menu-item";
 import { Paragraph } from "../atoms/paragraph";
-import { StandardInternalLink } from "../atoms/standard-internal-link";
 import { StandardExternalLink } from "../atoms/standard-external-link";
 
 const FooterContainer = styled.footer`
