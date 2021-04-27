@@ -54,6 +54,14 @@ const MadeWithLoveParagraph = styled(Paragraph)`
   }
 `;
 
+const FooterCallToAction = styled(StandardExternalLink)`
+  color: ${(props) => props.theme.light.accentColorLight};
+
+  @media (prefers-color-scheme: dark) {
+    color: ${(props) => props.theme.dark.accentColorLight};
+  }
+`;
+
 export interface FooterProps {
   author: string;
   trackingCategory: string;
@@ -131,14 +139,14 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
       <FooterContentContainer>
         <MadeWithLoveParagraph>
           {`Made with 💝 by ${author} 'Chicio' using `}
-          <StandardExternalLink
+          <FooterCallToAction
             href={
               "/chicio-coding-design-system/index.html?path=/story/colors--colors"
             }
             target={"_blank"}
           >
             Chicio Coding Design System
-          </StandardExternalLink>
+          </FooterCallToAction>
         </MadeWithLoveParagraph>
       </FooterContentContainer>
     </FooterAuthorDescription>
