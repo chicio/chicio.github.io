@@ -4,6 +4,7 @@ import { SocialContacts } from "./social-contacts";
 import styled from "styled-components";
 import { MenuItem } from "../molecules/menu-item";
 import { Paragraph } from "../atoms/paragraph";
+import { StandardInternalLink } from "../atoms/standard-internal-link";
 
 const FooterContainer = styled.footer`
   flex-shrink: 0;
@@ -132,7 +133,14 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
         trackingLabel={tracking.label.footer}
       />
       <FooterContentContainer>
-        <MadeWithLoveParagraph>{`Made with 💝 by ${author} 'Chicio'`}</MadeWithLoveParagraph>
+        <MadeWithLoveParagraph>
+          {`Made with 💝 by ${author} 'Chicio' using `}
+          <StandardInternalLink
+            to={"/static/chicio-coding-design-system/index.html"}
+          >
+            Chicio Coding Design System
+          </StandardInternalLink>
+        </MadeWithLoveParagraph>
       </FooterContentContainer>
     </FooterAuthorDescription>
   </FooterContainer>
