@@ -132,7 +132,9 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
         <MadeWithLoveParagraph>
           {`Made with 💝 by ${author} 'Chicio' using `}
           <StandardExternalLink
-            href={"/chicio-coding-design-system/index.html"}
+            href={
+              "/chicio-coding-design-system/index.html?path=/story/colors--colors"
+            }
             target={"_blank"}
           >
             Chicio Coding Design System
