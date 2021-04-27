@@ -14,6 +14,6 @@ RecentPostsStory.args = {
 RecentPostsStory.storyName = "Recent Posts";
 
 export default {
-  title: "Organism/Recent Posts",
+  title: "Organisms/Recent Posts",
   component: RecentPosts,
 } as Meta;

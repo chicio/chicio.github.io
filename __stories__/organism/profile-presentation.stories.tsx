@@ -16,6 +16,6 @@ ProfilePresentationStory.args = {
 ProfilePresentationStory.storyName = "Profile Presentation";
 
 export default {
-  title: "Organism/Profile Presentation",
+  title: "Organisms/Profile Presentation",
   component: ProfilePresentation,
 } as Meta;

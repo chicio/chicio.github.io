@@ -24,6 +24,6 @@ BlogPageStory.args = {
 BlogPageStory.storyName = "Blog Page";
 
 export default {
-  title: "Organism/Blog Page",
+  title: "Templates/Blog Page",
   component: BlogPage,
 } as Meta;

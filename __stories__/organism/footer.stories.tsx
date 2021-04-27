@@ -15,6 +15,6 @@ FooterStory.args = {
 FooterStory.storyName = "Footer";
 
 export default {
-  title: "Organism/Footer",
+  title: "Organisms/Footer",
   component: Footer,
 } as Meta;

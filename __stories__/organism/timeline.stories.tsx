@@ -7,6 +7,6 @@ export const TimelineStory: Story = () => <Timeline />;
 TimelineStory.storyName = "Timeline";
 
 export default {
-  title: "Organism/Timeline",
+  title: "Organisms/Timeline",
   component: Timeline,
 } as Meta;

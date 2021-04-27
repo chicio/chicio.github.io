@@ -15,6 +15,6 @@ SocialContactsStory.args = {
 SocialContactsStory.storyName = "Social Contacts";
 
 export default {
-  title: "Organism/Social Contacts",
+  title: "Organisms/Social Contacts",
   component: SocialContacts,
 } as Meta;

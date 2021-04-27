@@ -26,6 +26,7 @@ const Color = styled(ContainerFluid)<ColorProps>`
   color: red;
   font-size: 18px;
   font-style: italic;
+  border: 1px solid lightgray;
 `;
 
 const ColorColumnTitle = styled.span`

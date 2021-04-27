@@ -8,6 +8,6 @@ export const BlogHeaderContainer: React.VFC = () => <BlogHeader />;
 BlogHeaderContainer.storyName = "Blog Header";
 
 export default {
-  title: "Organism/Blog Header",
+  title: "Organisms/Blog Header",
   component: BlogHeaderContainer,
 } as Meta;

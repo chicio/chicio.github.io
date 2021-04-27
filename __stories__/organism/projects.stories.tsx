@@ -8,6 +8,6 @@ export const ProjectsStory: React.VFC = () => <Projects />;
 ProjectsStory.storyName = "Projects";
 
 export default {
-  title: "Organism/Projects",
+  title: "Organisms/Projects",
   component: Projects,
 } as Meta;

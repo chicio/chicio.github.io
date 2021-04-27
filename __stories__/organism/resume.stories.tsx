@@ -7,6 +7,6 @@ export const ResumeStory: Story = () => <Resume />;
 ResumeStory.storyName = "Resume";
 
 export default {
-  title: "Organism/Resume",
+  title: "Organisms/Resume",
   component: Resume,
 } as Meta;

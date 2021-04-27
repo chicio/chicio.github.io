@@ -15,6 +15,6 @@ MenuStory.args = {
 MenuStory.storyName = "Menu";
 
 export default {
-  title: "Organism/Menu",
+  title: "Organisms/Menu",
   component: Menu,
 } as Meta;

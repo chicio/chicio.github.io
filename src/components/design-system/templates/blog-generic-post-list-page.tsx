@@ -6,13 +6,12 @@ import {
   MarkdownRemarkFrontmatter,
   Maybe,
 } from "../../../../graphql-types";
-import { WindowLocation } from "@reach/router";
 import React from "react";
 import { BlogPage } from "./blog-page";
 import { StandardInternalLink } from "../atoms/standard-internal-link";
 import { track, tracking } from "../../../logic/tracking";
 import { PageTitle } from "../molecules/page-title";
-import { getCurrentLocationFrom } from "../../../logic/location";
+import { CurrentLocation } from "../../../logic/location";
 
 const PostContainer = styled(ContainerFluid)`
   display: flex;
@@ -46,7 +45,7 @@ const PostLink = styled(StandardInternalLink)`
   font-size: ${(props) => props.theme.fontSizes[4]};
 `;
 
-interface BlogGenericPostListPageProps {
+export interface BlogGenericPostListPageProps {
   title: string;
   posts: Array<{
     node: {
@@ -55,7 +54,7 @@ interface BlogGenericPostListPageProps {
     };
   }>;
   author: string;
-  location: WindowLocation<WindowLocation["state"]>;
+  location: CurrentLocation;
   ogPageType: string;
   ogImage: string;
   trackingCategory: string;
@@ -71,7 +70,7 @@ export const BlogGenericPostListPage: React.FC<BlogGenericPostListPageProps> = (
   trackingCategory,
 }) => (
   <BlogPage
-    location={getCurrentLocationFrom(location)}
+    location={location}
     author={author}
     ogPageType={ogPageType}
     ogImage={ogImage}

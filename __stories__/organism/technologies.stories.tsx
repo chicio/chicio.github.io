@@ -12,6 +12,6 @@ export const TechnologiesStory: Story<TechnologiesProps> = (args) => (
 TechnologiesStory.storyName = "Technologies";
 
 export default {
-  title: "Organism/Technologies",
+  title: "Organisms/Technologies",
   component: Technologies,
 } as Meta;
