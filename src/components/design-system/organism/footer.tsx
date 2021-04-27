@@ -55,10 +55,10 @@ const MadeWithLoveParagraph = styled(Paragraph)`
 `;
 
 const FooterCallToAction = styled(StandardExternalLink)`
-  color: ${(props) => props.theme.light.accentColorLight};
+  color: ${(props) => props.theme.light.accentColorAbovePrimaryColor};
 
   @media (prefers-color-scheme: dark) {
-    color: ${(props) => props.theme.dark.accentColorLight};
+    color: ${(props) => props.theme.dark.accentColorAbovePrimaryColor};
   }
 `;
 

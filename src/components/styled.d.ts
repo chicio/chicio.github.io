@@ -9,7 +9,7 @@ interface Colors {
   primaryTextColor: string;
   secondaryTextColor: string;
   accentColor: string;
-  accentColorLight: string;
+  accentColorAbovePrimaryColor: string;
   generalBackgroundLight: string;
   boxShadowLight: string;
   dividerColor: string;
