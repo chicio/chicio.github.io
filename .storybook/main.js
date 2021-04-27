@@ -29,7 +29,7 @@ module.exports = {
           require.resolve("@babel/plugin-proposal-class-properties"),
           /** https://github.com/gatsbyjs/gatsby/issues/26099 **/
           [require.resolve("babel-plugin-remove-graphql-queries"), {
-            stage: config.mode === `development` ? "develop-html" : "build-html",
+            stage: "develop-html",
             staticQueryDir: "page-data/sq/d",
           }],
         ],
