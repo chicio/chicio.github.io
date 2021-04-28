@@ -5,16 +5,6 @@ import { useStaticQuery } from "gatsby";
 import { Helmet, HelmetData } from "react-helmet";
 import { OgPageType } from "../src/logic/seo";
 
-// function getMeta(metaName: string) {
-//   const metas = document.getElementsByTagName("meta");
-//   for (let i = 0; i < metas.length; i += 1) {
-//     if (metas[i].getAttribute("name") === metaName) {
-//       return metas[i].getAttribute("content");
-//     }
-//   }
-//   return "";
-// }
-
 describe("<Head />", () => {
   const useStaticQueryMock = useStaticQuery as jest.MockedFunction<
     typeof useStaticQuery
