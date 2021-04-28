@@ -33,11 +33,11 @@
     "start": "gatsby develop",
     "prebuild": "npm run test",
     "build": "gatsby build",
-    "postbuild": "npm run build-storybook",
+    "postbuild": "npm run build-storybook && cp -R ./static/chicio-coding-design-system ./public/",
     "build-ci": "./scripts/build-ci.sh",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "predeploy": "npm run clean && npm run build && cp -R ./static/chicio-coding-design-system ./public/",
+    "predeploy": "npm run clean && npm run build",
     "deploy": "gh-pages -d public -b main",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o ./static/chicio-coding-design-system"
