@@ -29,7 +29,9 @@
   "homepage": "https://github.com/chicio/chicio.github.io#readme",
   "scripts": {
     "test": "jest",
+    "test-ci": "jest",
     "start": "gatsby develop",
+    "prebuild": "npm run test",
     "build": "gatsby build",
     "postbuild": "npm run build-storybook",
     "build-ci": "./scripts/build-ci.sh",
