@@ -3,11 +3,16 @@ import { render } from "@testing-library/react";
 import { Head } from "../src/components/head";
 import { useStaticQuery } from "gatsby";
 import { Helmet, HelmetData } from "react-helmet";
-import { OgPageType } from "../src/logic/seo";
+import { createMetaAttributes, OgPageType } from "../src/logic/seo";
+
+jest.mock("../src/logic/seo");
 
 describe("<Head />", () => {
   const useStaticQueryMock = useStaticQuery as jest.MockedFunction<
     typeof useStaticQuery
+  >;
+  const createMetaAttributesMock = createMetaAttributes as jest.MockedFunction<
+    typeof createMetaAttributes
   >;
 
   beforeEach(() => {
@@ -34,6 +39,9 @@ describe("<Head />", () => {
         },
       },
     });
+    createMetaAttributesMock.mockReturnValueOnce([
+      { name: "attribute", content: "content" },
+    ]);
   });
 
   describe("title", () => {
@@ -89,4 +97,5 @@ describe("<Head />", () => {
 
     expect(helmet.htmlAttributes).toEqual({ lang: "en" });
   });
+
 });

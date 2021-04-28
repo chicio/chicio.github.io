@@ -35,8 +35,3 @@ jobs:
       - name: Build
         run: |
           npm run test-ci
-      - name: Archive generated site source
-        uses: actions/upload-artifact@v1
-        with:
-          name: site
-          path: public
