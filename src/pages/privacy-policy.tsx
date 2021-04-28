@@ -34,7 +34,7 @@ const PrivacyPolicy: React.FC<PageProps> = ({ location }) => {
     <BlogPage
       location={getCurrentLocationFrom(location)}
       author={author}
-      ogPageType={OgPageType.website}
+      ogPageType={OgPageType.WebSite}
       ogImage={`/${featuredImage}`}
       trackingCategory={tracking.category.privacy_policy}
     >

@@ -34,7 +34,7 @@ const HomePage: React.FC<PageProps> = ({ location }) => {
     <Page>
       <Head
         url={location.href}
-        pageType={OgPageType.profile}
+        pageType={OgPageType.Person}
         imageUrl={`/${featuredImage}`}
       />
       <ContainerFullscreen>

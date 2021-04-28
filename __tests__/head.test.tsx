@@ -63,7 +63,7 @@ describe("<Head />", () => {
       render(
         <Head
           url={"https://localhost:8000/blog"}
-          pageType={OgPageType.website}
+          pageType={OgPageType.WebSite}
           imageUrl={""}
           customTitle={"a custom title"}
           date={""}
@@ -80,7 +80,7 @@ describe("<Head />", () => {
       render(
         <Head
           url={"https://localhost:8000/blog"}
-          pageType={OgPageType.website}
+          pageType={OgPageType.WebSite}
           imageUrl={""}
           date={""}
           description={""}
@@ -99,7 +99,7 @@ describe("<Head />", () => {
     render(
       <Head
         url={"https://localhost:8000/blog"}
-        pageType={OgPageType.website}
+        pageType={OgPageType.WebSite}
         imageUrl={""}
         customTitle={"a custom title"}
         date={""}
@@ -116,7 +116,7 @@ describe("<Head />", () => {
     render(
       <Head
         url={"https://localhost:8000/blog"}
-        pageType={OgPageType.website}
+        pageType={OgPageType.WebSite}
         imageUrl={""}
         customTitle={"a custom title"}
         date={""}
@@ -136,7 +136,7 @@ describe("<Head />", () => {
     render(
       <Head
         url={"https://localhost:8000/blog"}
-        pageType={OgPageType.website}
+        pageType={OgPageType.WebSite}
         imageUrl={""}
         customTitle={"a custom title"}
         date={""}
@@ -169,7 +169,7 @@ describe("<Head />", () => {
     render(
       <Head
         url={"https://localhost:8000/blog"}
-        pageType={OgPageType.website}
+        pageType={OgPageType.WebSite}
         imageUrl={""}
         customTitle={"a custom title"}
         date={""}

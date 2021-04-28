@@ -17,7 +17,7 @@ const Archive: React.FC<PageProps<ArchiveQuery>> = ({ data, location }) => {
       posts={data.allMarkdownRemark.edges}
       author={author}
       location={getCurrentLocationFrom(location)}
-      ogPageType={OgPageType.website}
+      ogPageType={OgPageType.WebSite}
       ogImage={`/${featuredImage}`}
       trackingCategory={tracking.category.blog_archive}
     />

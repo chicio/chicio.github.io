@@ -1,9 +1,9 @@
 import { SiteSiteMetadataContactsLinks } from "../../graphql-types";
 
 export enum OgPageType {
-  article = "article",
-  website = "website",
-  profile = "profile",
+  BlogPosting = "BlogPosting",
+  WebSite = "WebSite",
+  Person = "Person",
 }
 
 export const createMetaAttributes = (
@@ -127,12 +127,17 @@ export const createJsonLD = (
   description?: string,
   date?: string
 ) => `{
-        ${date ? `"datePublished":"${date}",` : ""}
-        "@type":"${ogPageType === "article" ? "BlogPosting" : "WebSite"}",
+        ${
+          date
+            ? `"datePublished":"${date}",
+               "dateModified":"${date}", `
+            : ""
+        }
+        "@type":"${ogPageType}",
         "url":"${url}",
         "image":"${imageUrl}",
         ${
-          ogPageType === "article"
+          ogPageType === OgPageType.BlogPosting
             ? `"mainEntityOfPage":{\n"@type":"WebPage",\n"@id":"${url}"\n},`
             : ""
         }
@@ -148,8 +153,10 @@ export const createJsonLD = (
           },
           "name":"${author}"
         },
-        "headline":"${ogPageType === "article" ? title : author}",
-        "description":"${ogPageType === "article" ? description : title}",
+        "headline":"${ogPageType === OgPageType.BlogPosting ? title : author}",
+        "description":"${
+          ogPageType === OgPageType.BlogPosting ? description : title
+        }",
         "sameAs":[
           "${links!.twitter}",
           "${links!.facebook}",
@@ -157,6 +164,5 @@ export const createJsonLD = (
           "${links!.github}"
         ],
         "name":"${author}",
-        ${date ? `"dateModified":"${date}",` : ""}
         "@context":"https://schema.org"
       }`;

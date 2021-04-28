@@ -27,7 +27,7 @@ const Tag: React.FC<PageProps<TagPostsQuery, TagPageContext>> = ({
       posts={edges}
       author={author}
       location={getCurrentLocationFrom(location)}
-      ogPageType={OgPageType.website}
+      ogPageType={OgPageType.WebSite}
       ogImage={`/${featuredImage}`}
       trackingCategory={tracking.category.blog_tag}
     />

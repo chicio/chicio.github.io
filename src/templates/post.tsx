@@ -30,7 +30,7 @@ const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
     <BlogPage
       location={getCurrentLocationFrom(location)}
       author={data.site!.siteMetadata!.author!}
-      ogPageType={OgPageType.article}
+      ogPageType={OgPageType.BlogPosting}
       ogImage={`${getSrc(
         post.frontmatter!.image!.childImageSharp?.gatsbyImageData
       )!}`}
