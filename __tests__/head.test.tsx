@@ -3,6 +3,7 @@ import { render } from "@testing-library/react";
 import { Head } from "../src/components/head";
 import { useStaticQuery } from "gatsby";
 import { Helmet, HelmetData } from "react-helmet";
+import { OgPageType } from "../src/logic/seo";
 
 // function getMeta(metaName: string) {
 //   const metas = document.getElementsByTagName("meta");
@@ -67,7 +68,7 @@ describe("<Head />", () => {
       render(
         <Head
           url={"https://localhost:8000/blog"}
-          pageType={"website"}
+          pageType={OgPageType.website}
           imageUrl={""}
           date={""}
           description={""}
@@ -86,7 +87,7 @@ describe("<Head />", () => {
     render(
       <Head
         url={"https://localhost:8000/blog"}
-        pageType={"website"}
+        pageType={OgPageType.website}
         imageUrl={""}
         customTitle={"a custom title"}
         date={""}
