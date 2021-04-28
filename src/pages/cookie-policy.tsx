@@ -9,7 +9,8 @@ import { Heading4 } from "../components/design-system/atoms/heading4";
 import { List } from "../components/design-system/atoms/list";
 import { ContainerSection } from "../components/design-system/atoms/container-section";
 import { StandardExternalLink } from "../components/design-system/atoms/standard-external-link";
-import { getCurrentLocationFrom } from "../logic/location";
+import { OgPageType } from "../logic/seo";
+import { getCurrentLocationFrom } from "../logic/url";
 
 const CookiePolicy: React.FC<PageProps> = ({ location }) => {
   const data = useStaticQuery<CookiePolicyQuery>(
@@ -32,7 +33,7 @@ const CookiePolicy: React.FC<PageProps> = ({ location }) => {
   return (
     <BlogPage
       location={getCurrentLocationFrom(location)}
-      ogPageType={"website"}
+      ogPageType={OgPageType.website}
       ogImage={`/${featuredImage}`}
       author={author}
       trackingCategory={tracking.category.cookie_policy}

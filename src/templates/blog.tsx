@@ -5,7 +5,8 @@ import { BlogListQuery } from "../../graphql-types";
 import { BlogPage } from "../components/design-system/templates/blog-page";
 import { PaginationNavigation } from "../components/design-system/molecules/pagination-navigation";
 import { PostCard } from "../components/design-system/molecules/post-card";
-import { getCurrentLocationFrom } from "../logic/location";
+import { OgPageType } from "../logic/seo";
+import { getCurrentLocationFrom } from "../logic/url";
 
 interface BlogPageContext {
   limit: number;
@@ -36,7 +37,7 @@ const Blog: React.FC<PageProps<BlogListQuery, BlogPageContext>> = ({
       author={author}
       location={getCurrentLocationFrom(location)}
       ogImage={`/${featuredImage}`}
-      ogPageType={"website"}
+      ogPageType={OgPageType.website}
       trackingCategory={tracking.category.blog_home}
     >
       {posts.map((post) => (

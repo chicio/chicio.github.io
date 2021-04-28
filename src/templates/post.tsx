@@ -12,7 +12,8 @@ import { PostTags } from "../components/design-system/molecules/post-tags";
 import { Heading2 } from "../components/design-system/atoms/heading2";
 import { PostContent } from "../components/post-content";
 import styled from "styled-components";
-import { getCurrentLocationFrom } from "../logic/location";
+import { OgPageType } from "../logic/seo";
+import { getCurrentLocationFrom } from "../logic/url";
 
 const PostTitle = styled(Heading2)`
   margin: 0;
@@ -29,7 +30,7 @@ const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
     <BlogPage
       location={getCurrentLocationFrom(location)}
       author={data.site!.siteMetadata!.author!}
-      ogPageType={"article"}
+      ogPageType={OgPageType.article}
       ogImage={`${getSrc(
         post.frontmatter!.image!.childImageSharp?.gatsbyImageData
       )!}`}

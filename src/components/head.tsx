@@ -2,10 +2,11 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { graphql, useStaticQuery } from "gatsby";
 import { HeadQuery } from "../../graphql-types";
+import { OgPageType } from "../logic/seo";
 
 interface HeadProps {
   url: string;
-  pageType: string;
+  pageType: OgPageType;
   imageUrl: string;
   customTitle?: string;
   date?: string;

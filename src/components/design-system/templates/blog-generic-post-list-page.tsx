@@ -11,7 +11,8 @@ import { BlogPage } from "./blog-page";
 import { StandardInternalLink } from "../atoms/standard-internal-link";
 import { track, tracking } from "../../../logic/tracking";
 import { PageTitle } from "../molecules/page-title";
-import { CurrentLocation } from "../../../logic/location";
+import { OgPageType } from "../../../logic/seo";
+import { CurrentLocation } from "../../../logic/url";
 
 const PostContainer = styled(ContainerFluid)`
   display: flex;
@@ -55,7 +56,7 @@ export interface BlogGenericPostListPageProps {
   }>;
   author: string;
   location: CurrentLocation;
-  ogPageType: string;
+  ogPageType: OgPageType;
   ogImage: string;
   trackingCategory: string;
 }

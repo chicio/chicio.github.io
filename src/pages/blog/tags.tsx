@@ -8,7 +8,8 @@ import { ContainerFluid } from "../../components/design-system/atoms/container-f
 import styled from "styled-components";
 import { PageTitle } from "../../components/design-system/molecules/page-title";
 import { generateTagLink } from "../../logic/tag";
-import { getCurrentLocationFrom } from "../../logic/location";
+import { OgPageType } from "../../logic/seo";
+import { getCurrentLocationFrom } from "../../logic/url";
 
 const TagsContainer = styled(ContainerFluid)`
   padding: 0;
@@ -27,7 +28,7 @@ const TagsPage: React.FC<PageProps<PostsGroupByTagsQuery>> = ({
     <BlogPage
       location={getCurrentLocationFrom(location)}
       author={author}
-      ogPageType={"website"}
+      ogPageType={OgPageType.website}
       ogImage={`/${featuredImage}`}
       trackingCategory={tracking.category.blog_tags}
     >
