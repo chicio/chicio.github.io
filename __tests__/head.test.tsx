@@ -3,16 +3,29 @@ import { render } from "@testing-library/react";
 import { Head } from "../src/components/head";
 import { useStaticQuery } from "gatsby";
 import { Helmet, HelmetData } from "react-helmet";
-import { createMetaAttributes, OgPageType } from "../src/logic/seo";
+import {
+  createLinkAttributes,
+  createMetaAttributes,
+  OgPageType,
+} from "../src/logic/seo";
 
-jest.mock("../src/logic/seo");
+jest.mock("../src/logic/seo", () => ({
+  ...jest.requireActual("../src/logic/seo"),
+  createMetaAttributes: jest.fn(),
+  createLinkAttributes: jest.fn(),
+}));
+
+const createMetaAttributesMock = createMetaAttributes as jest.MockedFunction<
+  typeof createMetaAttributes
+>;
+
+const createLinkAttributesMock = createLinkAttributes as jest.MockedFunction<
+  typeof createLinkAttributes
+>;
 
 describe("<Head />", () => {
   const useStaticQueryMock = useStaticQuery as jest.MockedFunction<
     typeof useStaticQuery
-  >;
-  const createMetaAttributesMock = createMetaAttributes as jest.MockedFunction<
-    typeof createMetaAttributes
   >;
 
   beforeEach(() => {
@@ -39,8 +52,11 @@ describe("<Head />", () => {
         },
       },
     });
-    createMetaAttributesMock.mockReturnValueOnce([
+    createMetaAttributesMock.mockImplementation(() => [
       { name: "attribute", content: "content" },
+    ]);
+    createLinkAttributesMock.mockImplementation(() => [
+      { rel: "author", href: "/humans.txt" },
     ]);
   });
 
@@ -98,4 +114,56 @@ describe("<Head />", () => {
     expect(helmet.htmlAttributes).toEqual({ lang: "en" });
   });
 
+  it("meta attributes", () => {
+    render(
+      <Head
+        url={"https://localhost:8000/blog"}
+        pageType={OgPageType.website}
+        imageUrl={""}
+        customTitle={"a custom title"}
+        date={""}
+        description={""}
+      />
+    );
+
+    const helmet = Helmet.peek();
+
+    // @ts-ignore
+    expect(helmet.metaTags).toEqual([
+      { name: "attribute", content: "content" },
+    ]);
+  });
+
+  it("link attributes", () => {
+    render(
+      <Head
+        url={"https://localhost:8000/blog"}
+        pageType={OgPageType.website}
+        imageUrl={""}
+        customTitle={"a custom title"}
+        date={""}
+        description={""}
+      />
+    );
+
+    const helmet = Helmet.peek();
+
+    // @ts-ignore
+    expect(helmet.linkTags).toEqual([
+      {
+        href: "https://localhost:8000/blog",
+        rel: "canonical",
+      },
+      {
+        href: "/humans.txt",
+        rel: "author",
+      },
+      {
+        as: "font",
+        crossOrigin: "anonymous",
+        href: "/fonts/opensans/OpenSans-Regular.woff2",
+        rel: "preload",
+      },
+    ]);
+  });
 });

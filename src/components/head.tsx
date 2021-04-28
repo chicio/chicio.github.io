@@ -55,17 +55,9 @@ export const Head: React.FC<HeadProps> = ({
       title={title}
       htmlAttributes={{ lang: "en" }}
       meta={createMetaAttributes(author, title, url, imageUrl, pageType)}
-      link={[
-        {
-          rel: "author",
-          href: "/humans.txt",
-        },
-        {
-          rel: "canonical",
-          href: url,
-        },
-      ]}
     >
+      <link rel="canonical" href={url} />
+      <link rel="author" href={"/humans.txt"} />
       <link
         rel="preload"
         href="/fonts/opensans/OpenSans-Regular.woff2"
