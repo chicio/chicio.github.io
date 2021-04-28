@@ -51,7 +51,7 @@ describe("<Head />", () => {
       render(
         <Head
           url={"https://localhost:8000/blog"}
-          pageType={"website"}
+          pageType={OgPageType.website}
           imageUrl={""}
           customTitle={"a custom title"}
           date={""}
