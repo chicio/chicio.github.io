@@ -1,5 +1,5 @@
 import { Tag } from "./tag";
-import { generateTagLink } from "../../../logic/tag";
+import { generateTagUrl } from "../../../logic/url";
 import React from "react";
 import styled from "styled-components";
 import { Maybe } from "../../../../graphql-types";
@@ -15,7 +15,7 @@ const PostTagsContainer = styled.div`
 export const PostTags: React.FC<PostTagsProps> = ({ tags }) => (
   <PostTagsContainer>
     {tags!.map((tag) => (
-      <Tag tag={tag!} link={generateTagLink(tag!)} big={false} key={tag} />
+      <Tag tag={tag!} link={generateTagUrl(tag!)} big={false} key={tag} />
     ))}
   </PostTagsContainer>
 );
