@@ -4,7 +4,7 @@ import { Head } from "../src/components/head";
 import { useStaticQuery } from "gatsby";
 import { Helmet, HelmetData } from "react-helmet";
 import {
-  createLinkAttributes,
+  createJsonLD,
   createMetaAttributes,
   OgPageType,
 } from "../src/logic/seo";
@@ -12,15 +12,15 @@ import {
 jest.mock("../src/logic/seo", () => ({
   ...jest.requireActual("../src/logic/seo"),
   createMetaAttributes: jest.fn(),
-  createLinkAttributes: jest.fn(),
+  createJsonLD: jest.fn(),
 }));
 
 const createMetaAttributesMock = createMetaAttributes as jest.MockedFunction<
   typeof createMetaAttributes
 >;
 
-const createLinkAttributesMock = createLinkAttributes as jest.MockedFunction<
-  typeof createLinkAttributes
+const createJsonLDMock = createJsonLD as jest.MockedFunction<
+  typeof createJsonLD
 >;
 
 describe("<Head />", () => {
@@ -55,9 +55,7 @@ describe("<Head />", () => {
     createMetaAttributesMock.mockImplementation(() => [
       { name: "attribute", content: "content" },
     ]);
-    createLinkAttributesMock.mockImplementation(() => [
-      { rel: "author", href: "/humans.txt" },
-    ]);
+    createJsonLDMock.mockImplementation(() => `json-ld`);
   });
 
   describe("title", () => {
@@ -165,5 +163,26 @@ describe("<Head />", () => {
         rel: "preload",
       },
     ]);
+  });
+
+  it("json ld", () => {
+    render(
+      <Head
+        url={"https://localhost:8000/blog"}
+        pageType={OgPageType.website}
+        imageUrl={""}
+        customTitle={"a custom title"}
+        date={""}
+        description={""}
+      />
+    );
+
+    const helmet = Helmet.peek();
+
+    // @ts-ignore
+    expect(helmet.scriptTags[2]).toEqual({
+      type: "application/ld+json",
+      innerHTML: "json-ld",
+    });
   });
 });

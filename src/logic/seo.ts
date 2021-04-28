@@ -1,3 +1,5 @@
+import { SiteSiteMetadataContactsLinks } from "../../graphql-types";
+
 export enum OgPageType {
   article = "article",
   website = "website",
@@ -105,3 +107,56 @@ export const createMetaAttributes = (
     content: `/mstile-144x144.png`,
   },
 ];
+
+export const createJsonLD = (
+  ogPageType: OgPageType,
+  url: string,
+  imageUrl: string,
+  author: string,
+  title: string,
+  links: Pick<
+    SiteSiteMetadataContactsLinks,
+    | "twitter"
+    | "facebook"
+    | "linkedin"
+    | "github"
+    | "medium"
+    | "devto"
+    | "instagram"
+  >,
+  description?: string,
+  date?: string
+) => `{
+        ${date ? `"datePublished":"${date}",` : ""}
+        "@type":"${ogPageType === "article" ? "BlogPosting" : "WebSite"}",
+        "url":"${url}",
+        "image":"${imageUrl}",
+        ${
+          ogPageType === "article"
+            ? `"mainEntityOfPage":{\n"@type":"WebPage",\n"@id":"${url}"\n},`
+            : ""
+        }
+        "author":{
+          "@type":"Person",
+          "name":"${author}"
+        },
+        "publisher":{
+          "@type":"Organization",
+          "logo":{
+            "@type":"ImageObject",
+            "url":"${imageUrl}"
+          },
+          "name":"${author}"
+        },
+        "headline":"${ogPageType === "article" ? title : author}",
+        "description":"${ogPageType === "article" ? description : title}",
+        "sameAs":[
+          "${links!.twitter}",
+          "${links!.facebook}",
+          "${links!.linkedin}",
+          "${links!.github}"
+        ],
+        "name":"${author}",
+        ${date ? `"dateModified":"${date}",` : ""}
+        "@context":"https://schema.org"
+      }`;

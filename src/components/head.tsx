@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { graphql, useStaticQuery } from "gatsby";
 import { HeadQuery } from "../../graphql-types";
-import { createMetaAttributes, OgPageType } from "../logic/seo";
+import { createJsonLD, createMetaAttributes, OgPageType } from "../logic/seo";
 
 interface HeadProps {
   url: string;
@@ -122,40 +122,16 @@ export const Head: React.FC<HeadProps> = ({
           "}"}
       </script>
       <script type="application/ld+json">
-        {`{
-        ${date ? `"datePublished":"${date}",` : ""}
-        "@type":"${pageType === "article" ? "BlogPosting" : "WebSite"}",
-        "url":"${url}",
-        "image":"${imageUrl}",
-        ${
-          pageType === "article"
-            ? `"mainEntityOfPage":{\n"@type":"WebPage",\n"@id":"${url}"\n},`
-            : ""
-        }
-        "author":{
-          "@type":"Person",
-          "name":"${author}"
-        },
-        "publisher":{
-          "@type":"Organization",
-          "logo":{
-            "@type":"ImageObject",
-            "url":"${imageUrl}"
-          },
-          "name":"${author}"
-        },
-        "headline":"${pageType === "article" ? title : author}",
-        "description":"${pageType === "article" ? description : title}",
-        "sameAs":[
-          "${links!.twitter}",
-          "${links!.facebook}",
-          "${links!.linkedin}",
-          "${links!.github}"
-        ],
-        "name":"${author}",
-        ${date ? `"dateModified":"${date}",` : ""}
-        "@context":"https://schema.org"
-      }`}
+        {createJsonLD(
+          pageType,
+          url,
+          imageUrl,
+          author,
+          title,
+          links,
+          description,
+          date
+        )}
       </script>
     </Helmet>
   );
