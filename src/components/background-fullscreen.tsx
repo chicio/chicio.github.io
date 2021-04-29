@@ -1,20 +1,14 @@
 import React from "react";
 import Particles from "react-tsparticles";
 import { textAbovePrimaryColor } from "./theme";
-import { useHardwareConcurrency, useMemoryStatus } from "react-adaptive-hooks";
-import { isSafari, isDesktop } from "react-device-detect";
+import { isSafariDesktop, useIsPowerfulDesktop } from "../logic/device";
 
 export const BackgroundFullScreen: React.FC = () => {
-  const { deviceMemory } = useMemoryStatus({ deviceMemory: 4 });
-  const { numberOfLogicalProcessors } = useHardwareConcurrency();
+  const isPowerfulDesktop = useIsPowerfulDesktop();
 
   return (
     <div>
-      {((isSafari && isDesktop) ||
-        (isDesktop &&
-          deviceMemory >= 8 &&
-          numberOfLogicalProcessors != null &&
-          numberOfLogicalProcessors >= 8)) && (
+      {(isSafariDesktop() || isPowerfulDesktop) && (
         <Particles
           id="tsparticles"
           style={{
