@@ -213,5 +213,241 @@ describe("Seo", () => {
         )
       ).toContain(`"url":"http://url/"`);
     });
+
+    it("image", () => {
+      expect(
+        createJsonLD(
+          OgPageType.WebSite,
+          "http://url/",
+          "/image.jpg",
+          "Fabrizio Duroni",
+          "The title",
+          links,
+          "The description",
+          "2021 Apr 28"
+        )
+      ).toContain(`"image":"/image.jpg"`);
+    });
+
+    describe("mainEntityOfPage", () => {
+      it("for OgPageType.BlogPosting", () => {
+        expect(
+          createJsonLD(
+            OgPageType.BlogPosting,
+            "http://url/",
+            "/image.jpg",
+            "Fabrizio Duroni",
+            "The title",
+            links,
+            "The description",
+            "2021 Apr 28"
+          )
+        ).toContain(
+          `"mainEntityOfPage":{\n"@type":"WebPage",\n"@id":"http://url/"\n}`
+        );
+      });
+
+      it("for other OgPageType", () => {
+        let jsonLD = createJsonLD(
+          OgPageType.WebSite,
+          "http://url/",
+          "/image.jpg",
+          "Fabrizio Duroni",
+          "The title",
+          links,
+          "The description",
+          "2021 Apr 28"
+        );
+        expect(jsonLD.includes("mainEntityOfPage", 0)).toBeFalsy();
+
+        jsonLD = createJsonLD(
+          OgPageType.Person,
+          "http://url/",
+          "/image.jpg",
+          "Fabrizio Duroni",
+          "The title",
+          links,
+          "The description",
+          "2021 Apr 28"
+        );
+        expect(jsonLD.includes("mainEntityOfPage", 0)).toBeFalsy();
+      });
+    });
+
+    it("author", () => {
+      expect(
+        createJsonLD(
+          OgPageType.WebSite,
+          "http://url/",
+          "/image.jpg",
+          "Fabrizio Duroni",
+          "The title",
+          links,
+          "The description",
+          "2021 Apr 28"
+        )
+      ).toContain(`"author":{
+          "@type":"Person",
+          "name":"Fabrizio Duroni"
+        }`);
+    });
+
+    it("publisher", () => {
+      expect(
+        createJsonLD(
+          OgPageType.WebSite,
+          "http://url/",
+          "/image.jpg",
+          "Fabrizio Duroni",
+          "The title",
+          links,
+          "The description",
+          "2021 Apr 28"
+        )
+      ).toContain(`"publisher":{
+          "@type":"Organization",
+          "logo":{
+            "@type":"ImageObject",
+            "url":"/image.jpg"
+          },
+          "name":"Fabrizio Duroni"
+        }`);
+    });
+
+    describe("headline", () => {
+      it("for OgPageType.BlogPosting", () => {
+        expect(
+          createJsonLD(
+            OgPageType.BlogPosting,
+            "http://url/",
+            "/image.jpg",
+            "Fabrizio Duroni",
+            "The title",
+            links,
+            "The description",
+            "2021 Apr 28"
+          )
+        ).toContain(`"headline":"The title"`);
+      });
+
+      it("for other OgPageType", () => {
+        let jsonLD = createJsonLD(
+          OgPageType.WebSite,
+          "http://url/",
+          "/image.jpg",
+          "Fabrizio Duroni",
+          "The title",
+          links,
+          "The description",
+          "2021 Apr 28"
+        );
+        expect(jsonLD).toContain(`"headline":"Fabrizio Duroni"`);
+
+        jsonLD = createJsonLD(
+          OgPageType.Person,
+          "http://url/",
+          "/image.jpg",
+          "Fabrizio Duroni",
+          "The title",
+          links,
+          "The description",
+          "2021 Apr 28"
+        );
+        expect(jsonLD).toContain(`"headline":"Fabrizio Duroni"`);
+      });
+    });
+
+    describe("description", () => {
+      it("for OgPageType.BlogPosting", () => {
+        expect(
+          createJsonLD(
+            OgPageType.BlogPosting,
+            "http://url/",
+            "/image.jpg",
+            "Fabrizio Duroni",
+            "The title",
+            links,
+            "The description",
+            "2021 Apr 28"
+          )
+        ).toContain(`"description":"The description"`);
+      });
+
+      it("for other OgPageType", () => {
+        let jsonLD = createJsonLD(
+          OgPageType.WebSite,
+          "http://url/",
+          "/image.jpg",
+          "Fabrizio Duroni",
+          "The title",
+          links,
+          "The description",
+          "2021 Apr 28"
+        );
+        expect(jsonLD).toContain(`"description":"The title"`);
+
+        jsonLD = createJsonLD(
+          OgPageType.Person,
+          "http://url/",
+          "/image.jpg",
+          "Fabrizio Duroni",
+          "The title",
+          links,
+          "The description",
+          "2021 Apr 28"
+        );
+        expect(jsonLD).toContain(`"description":"The title"`);
+      });
+    });
+
+    it("sameAs", () => {
+      expect(
+        createJsonLD(
+          OgPageType.WebSite,
+          "http://url/",
+          "/image.jpg",
+          "Fabrizio Duroni",
+          "The title",
+          links,
+          "The description",
+          "2021 Apr 28"
+        )
+      ).toContain(`"sameAs":[
+          "${links!.twitter}",
+          "${links!.facebook}",
+          "${links!.linkedin}",
+          "${links!.github}"
+        ]`);
+    });
+
+    it("name", () => {
+      expect(
+        createJsonLD(
+          OgPageType.WebSite,
+          "http://url/",
+          "/image.jpg",
+          "Fabrizio Duroni",
+          "The title",
+          links,
+          "The description",
+          "2021 Apr 28"
+        )
+      ).toContain(`"name":"Fabrizio Duroni"`);
+    });
+
+    it("@context", () => {
+      expect(
+        createJsonLD(
+          OgPageType.WebSite,
+          "http://url/",
+          "/image.jpg",
+          "Fabrizio Duroni",
+          "The title",
+          links,
+          "The description",
+          "2021 Apr 28"
+        )
+      ).toContain(`@context":"https://schema.org`);
+    });
   });
 });

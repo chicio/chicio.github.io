@@ -132,7 +132,7 @@ describe("<Head />", () => {
     ]);
   });
 
-  it("link attributes", () => {
+  it("links", () => {
     render(
       <Head
         url={"https://localhost:8000/blog"}
@@ -161,6 +161,41 @@ describe("<Head />", () => {
         crossOrigin: "anonymous",
         href: "/fonts/opensans/OpenSans-Regular.woff2",
         rel: "preload",
+      },
+    ]);
+  });
+
+  it("scripts", () => {
+    render(
+      <Head
+        url={"https://localhost:8000/blog"}
+        pageType={OgPageType.WebSite}
+        imageUrl={""}
+        customTitle={"a custom title"}
+        date={""}
+        description={""}
+      />
+    );
+
+    const helmet = Helmet.peek();
+
+    // @ts-ignore
+    expect(helmet.scriptTags).toEqual([
+      {
+        type: "text/javascript",
+        defer: true,
+        src:
+          "https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js",
+        "data-cfasync": "false",
+      },
+      {
+        type: "text/javascript",
+        innerHTML:
+          "\nif (typeof window !== \"undefined\") {\n  window.addEventListener('load', () => { \n       window.cookieconsent.initialise({\n                      palette: {\n                          popup: {\n                              background: '#303F9F',\n                              text: '#ffffff'\n                          },\n                          button: {\n                              background: '#0F67FF',\n                              text: '#ffffff'\n                          }\n                      },\n                      theme: 'classic',\n                      content: {\n                          dismiss: 'Ok',\n                          href: window.location.protocol + '//' + window.location.host + '/cookie-policy/',\n                          message: 'This website uses cookies to ensure you get the best experience.',\n                          link: 'Learn more about cookie policy'\n                      }\n       });\n  });\n} else {\n  console.log(\"no cookieconsent\");\n}      \n",
+      },
+      {
+        type: "application/ld+json",
+        innerHTML: "json-ld",
       },
     ]);
   });
