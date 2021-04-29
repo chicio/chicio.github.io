@@ -1,6 +1,18 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [4.3.0](https://github.com/chicio/chicio.github.io/releases/tag/v4.3.0)
+Release date: 2021-04-29
+
+#### Added
+
+- Jest
+- react testing library
+- refactoring head 
+
+#### Fixed
+- Canonical and humans.txt were missing
+
 ## [4.2.0](https://github.com/chicio/chicio.github.io/releases/tag/v4.2.0)
 Release date: 2021-04-27
 
