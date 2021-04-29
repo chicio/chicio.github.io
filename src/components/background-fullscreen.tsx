@@ -1,14 +1,15 @@
 import React from "react";
 import Particles from "react-tsparticles";
 import { textAbovePrimaryColor } from "./theme";
-import { isSafariDesktop, useIsPowerfulDevice } from "../logic/device";
+import { useIsPowerfulMobileDevice } from "../logic/device";
+import { isDesktop } from "react-device-detect";
 
 export const BackgroundFullScreen: React.FC = () => {
-  const isPowerfulDesktop = useIsPowerfulDevice();
+  const isPowerfulMobileDevice = useIsPowerfulMobileDevice();
 
   return (
     <div>
-      {(isSafariDesktop() || isPowerfulDesktop) && (
+      {(isDesktop || isPowerfulMobileDevice) && (
         <Particles
           id="tsparticles"
           style={{

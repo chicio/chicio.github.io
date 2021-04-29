@@ -1,14 +1,13 @@
-import { isDesktop, isSafari } from "react-device-detect";
 import { useHardwareConcurrency, useMemoryStatus } from "react-adaptive-hooks";
+import { isMobile } from "react-device-detect";
 
-export const isSafariDesktop = () => isSafari && isDesktop;
-
-export const useIsPowerfulDevice = () => {
+export const useIsPowerfulMobileDevice = () => {
   const { deviceMemory } = useMemoryStatus({ deviceMemory: 1 });
   const { numberOfLogicalProcessors } = useHardwareConcurrency();
 
   return (
-    deviceMemory >= 8 &&
+    isMobile &&
+    deviceMemory >= 3 &&
     numberOfLogicalProcessors != null &&
     numberOfLogicalProcessors >= 8
   );
