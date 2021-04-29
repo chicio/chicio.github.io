@@ -12,6 +12,7 @@ import { Footer } from "../components/design-system/organism/footer";
 import { tracking } from "../logic/tracking";
 import { OgPageType } from "../logic/seo";
 import Particles from "react-tsparticles";
+import { textAbovePrimaryColor } from "../components/theme";
 
 const HomePage: React.FC<PageProps> = ({ location }) => {
   const data = useStaticQuery<HomePageQuery>(
@@ -70,42 +71,44 @@ const HomePage: React.FC<PageProps> = ({ location }) => {
             },
             particles: {
               color: {
-                value: "#ffffff",
+                value: textAbovePrimaryColor,
               },
               links: {
-                color: "#ffffff",
-                distance: 200,
                 enable: true,
-                opacity: 0.7,
-                width: 0.5,
+                color: textAbovePrimaryColor,
+                blink: true,
+                distance: 200,
+                opacity: 0.5,
+                width: 1,
               },
               collisions: {
-                enable: true,
+                enable: false,
+                mode: "bounce",
               },
               move: {
                 direction: "none",
                 enable: true,
                 outMode: "bounce",
                 random: false,
-                speed: 4,
+                speed: 3,
                 straight: false,
               },
               number: {
                 density: {
                   enable: true,
-                  value_area: 1000,
+                  value_area: 800,
                 },
-                value: 100,
+                value: 80,
               },
               opacity: {
                 value: 0.5,
               },
               shape: {
-                type: ["edge", "circle"],
+                type: "circle",
               },
               size: {
                 random: true,
-                value: 5,
+                value: 3,
               },
             },
             detectRetina: true,
