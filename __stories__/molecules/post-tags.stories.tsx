@@ -9,7 +9,7 @@ const Template: Story<PostTagsProps> = (args) => <PostTags {...args} />;
 
 export const PostTagsStory = Template.bind({});
 PostTagsStory.args = {
-  tags: ["iOS", "macOS", "mobile app development"],
+  tags: ["ios", "macos", "mobile app development"],
 };
 PostTagsStory.storyName = "Post Tags";
 

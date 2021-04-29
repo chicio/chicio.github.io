@@ -4,7 +4,7 @@ description: "The first of a short series of post in which I describe my two lat
 Mp3ID3Tagger. In this post I will talk about why I started to develop them."
 date: 2018-05-07
 image: ../images/posts/mp3id3tagger-id3tageditor.jpg
-tags: [swift, ios, apple, mobile application development, macOS]
+tags: [swift, ios, apple, mobile application development, macos]
 comments: true
 math: false
 authors: [fabrizio_duroni]
