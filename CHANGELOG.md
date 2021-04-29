@@ -1,6 +1,15 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [4.4.0](https://github.com/chicio/chicio.github.io/releases/tag/v4.4.0)
+Release date: 2021-04-29
+
+#### Added
+
+- New home background with tsParticle
+- Added adaptive loading dependency
+- Added device detect dependency
+
 ## [4.3.0](https://github.com/chicio/chicio.github.io/releases/tag/v4.3.0)
 Release date: 2021-04-29
 
