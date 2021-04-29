@@ -1,12 +1,17 @@
 import { DefaultTheme } from "styled-components";
 import { Colors } from "./styled";
 
+export const primaryColor = "#3F51B5";
+export const primaryColorDark = "#303F9F";
+export const primaryColorLight = "#DFDFF1";
+export const textAbovePrimaryColor = "#FFFFFF";
+
 export const dark: Colors = {
-  primaryColor: "#3F51B5",
-  primaryColorDark: "#303F9F",
-  primaryColorLight: "#DFDFF1",
+  primaryColor,
+  primaryColorDark,
+  primaryColorLight,
   generalBackground: "#181918",
-  textAbovePrimaryColor: "#FFFFFF",
+  textAbovePrimaryColor,
   primaryTextColor: "#FAFAFA",
   secondaryTextColor: "#A6A6A6",
   accentColor: "#4fA7ff",
@@ -17,11 +22,11 @@ export const dark: Colors = {
 };
 
 export const light: Colors = {
-  primaryColor: "#3F51B5",
-  primaryColorDark: "#303F9F",
-  primaryColorLight: "#DFDFF1",
+  primaryColor,
+  primaryColorDark,
+  primaryColorLight,
   generalBackground: "#FBFBFB",
-  textAbovePrimaryColor: "#FFFFFF",
+  textAbovePrimaryColor,
   primaryTextColor: "#151515",
   secondaryTextColor: "#575757",
   accentColor: "#1F67FF",

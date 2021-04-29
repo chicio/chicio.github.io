@@ -11,6 +11,7 @@ import { ContainerFullscreen } from "../components/design-system/atoms/container
 import { Footer } from "../components/design-system/organism/footer";
 import { tracking } from "../logic/tracking";
 import { OgPageType } from "../logic/seo";
+import { BackgroundFullScreen } from "../components/background-fullscreen";
 
 const HomePage: React.FC<PageProps> = ({ location }) => {
   const data = useStaticQuery<HomePageQuery>(
@@ -38,6 +39,7 @@ const HomePage: React.FC<PageProps> = ({ location }) => {
         imageUrl={`/${featuredImage}`}
       />
       <ContainerFullscreen>
+        <BackgroundFullScreen />
         <ProfilePresentation author={author} />
         <DownArrow />
       </ContainerFullscreen>
