@@ -1,10 +1,10 @@
 import React from "react";
 import Particles from "react-tsparticles";
 import { textAbovePrimaryColor } from "./theme";
-import { isSafariDesktop, useIsPowerfulDesktop } from "../logic/device";
+import { isSafariDesktop, useIsPowerfulDevice } from "../logic/device";
 
 export const BackgroundFullScreen: React.FC = () => {
-  const isPowerfulDesktop = useIsPowerfulDesktop();
+  const isPowerfulDesktop = useIsPowerfulDevice();
 
   return (
     <div>

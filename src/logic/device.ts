@@ -3,7 +3,7 @@ import { useHardwareConcurrency, useMemoryStatus } from "react-adaptive-hooks";
 
 export const isSafariDesktop = () => isSafari && isDesktop;
 
-export const useIsPowerfulDesktop = () => {
+export const useIsPowerfulDevice = () => {
   const { deviceMemory } = useMemoryStatus({ deviceMemory: 1 });
   const { numberOfLogicalProcessors } = useHardwareConcurrency();
 
