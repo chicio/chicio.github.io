@@ -79,6 +79,7 @@ My website has been created for Github Pages using:
     * [gatsby-plugin-catch-links](https://www.gatsbyjs.com/plugins/gatsby-plugin-catch-links/)
 * [Styled components](https://styled-components.com)
 * [TypeScript](https://www.typescriptlang.org) 
+* [Jest](https://github.com/facebook/jest) + [React Testing Library](https://github.com/testing-library/react-testing-library)
 
 Go and checkout my [homepage](https://www.fabrizioduroni.it "homepage") and my [blog](https://www.fabrizioduroni.it/blog/ "blog").
 
