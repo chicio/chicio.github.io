@@ -80,6 +80,7 @@ My website has been created for Github Pages using:
 * [Styled components](https://styled-components.com)
 * [TypeScript](https://www.typescriptlang.org) 
 * [Jest](https://github.com/facebook/jest) + [React Testing Library](https://github.com/testing-library/react-testing-library)
+* [tsParticles](https://github.com/matteobruni/tsparticles) + [react-adaptive-hooks](https://github.com/GoogleChromeLabs/react-adaptive-hooks)
 
 Go and checkout my [homepage](https://www.fabrizioduroni.it "homepage") and my [blog](https://www.fabrizioduroni.it/blog/ "blog").
 
