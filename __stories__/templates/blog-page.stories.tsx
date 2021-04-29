@@ -17,7 +17,7 @@ BlogPageStory.args = {
     url: "http://localhost:8000/blog/",
   },
   author: "Fabrizio Duroni",
-  ogPageType: "website",
+  ogPageType: "WebSite",
   ogImage: "/a-photo.jpg",
   trackingCategory: "blog",
 };

@@ -3,7 +3,8 @@ import { graphql, PageProps } from "gatsby";
 import { tracking } from "../logic/tracking";
 import { TagPostsQuery } from "../../graphql-types";
 import { BlogGenericPostListPage } from "../components/design-system/templates/blog-generic-post-list-page";
-import { getCurrentLocationFrom } from "../logic/location";
+import { OgPageType } from "../logic/seo";
+import { getCurrentLocationFrom } from "../logic/url";
 
 interface TagPageContext {
   tag: string;
@@ -26,7 +27,7 @@ const Tag: React.FC<PageProps<TagPostsQuery, TagPageContext>> = ({
       posts={edges}
       author={author}
       location={getCurrentLocationFrom(location)}
-      ogPageType={"website"}
+      ogPageType={OgPageType.WebSite}
       ogImage={`/${featuredImage}`}
       trackingCategory={tracking.category.blog_tag}
     />

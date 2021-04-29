@@ -6,7 +6,8 @@ import * as React from "react";
 import styled from "styled-components";
 import { Container } from "../atoms/container";
 import { Footer } from "../organism/footer";
-import { CurrentLocation } from "../../../logic/location";
+import { OgPageType } from "../../../logic/seo";
+import { CurrentLocation } from "../../../logic/url";
 
 const BlogContainer = styled(Container)`
   margin-top: ${(props) => props.theme.spacing[12]};
@@ -16,7 +17,7 @@ const BlogContainer = styled(Container)`
 export interface BlogPageProps {
   location: CurrentLocation;
   author: string;
-  ogPageType: string;
+  ogPageType: OgPageType;
   ogImage: string;
   trackingCategory: string;
 }

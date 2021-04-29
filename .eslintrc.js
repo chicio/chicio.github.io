@@ -14,8 +14,9 @@ module.exports = {
     browser: true,
     node: true,
     es6: true,
+    jest: true,
   },
-  plugins: ["react", "@typescript-eslint"],
+  plugins: ["react", "@typescript-eslint", "testing-library"],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -36,6 +37,10 @@ module.exports = {
       rules: {
         "@typescript-eslint/no-var-requires": "off", //
       },
+    },
+    {
+      files: ["__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
+      extends: ["plugin:testing-library/react"],
     },
   ],
 };

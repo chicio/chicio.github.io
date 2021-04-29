@@ -135,7 +135,7 @@ BlogGenericPostListPagePageStory.args = {
     pathname: "/blog/archive/",
     url: "http://localhost:8000/blog/archive/",
   },
-  ogPageType: "website",
+  ogPageType: "WebSite",
   ogImage: "/a-photo.jpg",
   trackingCategory: "archive",
 };

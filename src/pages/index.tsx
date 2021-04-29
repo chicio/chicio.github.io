@@ -10,6 +10,7 @@ import { Page } from "../components/design-system/templates/page";
 import { ContainerFullscreen } from "../components/design-system/atoms/container-fullscreen";
 import { Footer } from "../components/design-system/organism/footer";
 import { tracking } from "../logic/tracking";
+import { OgPageType } from "../logic/seo";
 
 const HomePage: React.FC<PageProps> = ({ location }) => {
   const data = useStaticQuery<HomePageQuery>(
@@ -33,7 +34,7 @@ const HomePage: React.FC<PageProps> = ({ location }) => {
     <Page>
       <Head
         url={location.href}
-        pageType={"profile"}
+        pageType={OgPageType.Person}
         imageUrl={`/${featuredImage}`}
       />
       <ContainerFullscreen>
