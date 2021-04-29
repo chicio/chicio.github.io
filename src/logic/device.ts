@@ -8,7 +8,6 @@ export const useIsPowerfulDesktop = () => {
   const { numberOfLogicalProcessors } = useHardwareConcurrency();
 
   return (
-    isDesktop &&
     deviceMemory >= 8 &&
     numberOfLogicalProcessors != null &&
     numberOfLogicalProcessors >= 8
