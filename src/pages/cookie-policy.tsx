@@ -10,7 +10,7 @@ import { List } from "../components/design-system/atoms/list";
 import { ContainerSection } from "../components/design-system/atoms/container-section";
 import { StandardExternalLink } from "../components/design-system/atoms/standard-external-link";
 import { OgPageType } from "../logic/seo";
-import { getCurrentLocationFrom } from "../logic/url";
+import { getCurrentLocationFrom } from "../logic/current-location";
 
 const CookiePolicy: React.FC<PageProps> = ({ location }) => {
   const data = useStaticQuery<CookiePolicyQuery>(

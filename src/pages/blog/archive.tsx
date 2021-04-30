@@ -4,7 +4,7 @@ import { ArchiveQuery } from "../../../graphql-types";
 import { tracking } from "../../logic/tracking";
 import { BlogGenericPostListPage } from "../../components/design-system/templates/blog-generic-post-list-page";
 import { OgPageType } from "../../logic/seo";
-import { getCurrentLocationFrom } from "../../logic/url";
+import { getCurrentLocationFrom } from "../../logic/current-location";
 
 const Archive: React.FC<PageProps<ArchiveQuery>> = ({ data, location }) => {
   const siteMetadata = data.site!.siteMetadata!;

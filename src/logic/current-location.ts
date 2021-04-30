@@ -1,8 +1,5 @@
 import { WindowLocation } from "@reach/router";
 
-export const generateTagUrl = (tag: string) =>
-  `/blog/tags/${tag!.split(" ").join("-")}/`;
-
 export interface CurrentLocation {
   url: string;
   pathname: string;
