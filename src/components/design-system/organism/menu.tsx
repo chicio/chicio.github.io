@@ -3,6 +3,7 @@ import { track, tracking } from "../../../logic/tracking";
 import { MenuItem } from "../molecules/menu-item";
 import styled, { css } from "styled-components";
 import { Container } from "../atoms/container";
+import { slugs } from "../../../logic/slug";
 
 const MenuContainer = styled.div`
   background-color: ${(props) => props.theme.light.primaryColor};
@@ -77,8 +78,8 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => (
         {"Home"}
       </NavBarMenuItem>
       <NavBarMenuItem
-        selected={pathname !== "/2017/05/10/about-me/"}
-        to={"/blog/"}
+        selected={pathname !== slugs.aboutMe}
+        to={slugs.blog}
         onClick={() => {
           track(
             tracking.action.open_blog,
@@ -90,8 +91,8 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => (
         {"Blog"}
       </NavBarMenuItem>
       <NavBarMenuItem
-        selected={pathname === "/2017/05/10/about-me/"}
-        to={"/2017/05/10/about-me/"}
+        selected={pathname === slugs.aboutMe}
+        to={slugs.aboutMe}
         onClick={() => {
           track(
             tracking.action.open_about_me,

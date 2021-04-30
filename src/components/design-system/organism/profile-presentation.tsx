@@ -6,6 +6,7 @@ import { track, tracking } from "../../../logic/tracking";
 import styled from "styled-components";
 import { CallToActionInternal } from "../atoms/call-to-action-internal";
 import { Heading2 } from "../atoms/heading2";
+import { slugs } from "../../../logic/slug";
 
 const Author = styled(Heading2)`
   color: ${(props) => props.theme.light.textAbovePrimaryColor};
@@ -94,7 +95,7 @@ export const ProfilePresentation: React.FC<ProfilePresentationProps> = ({
           tracking.label.body
         )
       }
-      to="/blog/"
+      to={slugs.blog}
     >
       Blog
     </BlogCallToAction>

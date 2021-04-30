@@ -8,7 +8,8 @@ import { ContainerFluid } from "../../components/design-system/atoms/container-f
 import styled from "styled-components";
 import { PageTitle } from "../../components/design-system/molecules/page-title";
 import { OgPageType } from "../../logic/seo";
-import { getCurrentLocationFrom, generateTagUrl } from "../../logic/url";
+import { getCurrentLocationFrom } from "../../logic/current-location";
+import { generateTagSlug } from "../../logic/slug";
 
 const TagsContainer = styled(ContainerFluid)`
   padding: 0;
@@ -36,7 +37,7 @@ const TagsPage: React.FC<PageProps<PostsGroupByTagsQuery>> = ({
         {data.allMarkdownRemark.group.map((tag) => (
           <Tag
             big={true}
-            link={generateTagUrl(tag.fieldValue!)}
+            link={generateTagSlug(tag.fieldValue!)}
             tag={`${tag.fieldValue} (${tag.totalCount})`}
             key={tag.fieldValue}
           />

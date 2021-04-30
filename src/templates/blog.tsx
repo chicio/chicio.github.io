@@ -6,7 +6,8 @@ import { BlogPage } from "../components/design-system/templates/blog-page";
 import { PaginationNavigation } from "../components/design-system/molecules/pagination-navigation";
 import { PostCard } from "../components/design-system/molecules/post-card";
 import { OgPageType } from "../logic/seo";
-import { getCurrentLocationFrom } from "../logic/url";
+import { getCurrentLocationFrom } from "../logic/current-location";
+import { slugs } from "../logic/slug";
 
 interface BlogPageContext {
   limit: number;
@@ -24,10 +25,10 @@ const Blog: React.FC<PageProps<BlogListQuery, BlogPageContext>> = ({
   const { currentPage, numberOfPages } = pageContext;
   const isFirst = currentPage === 1;
   const isLast = currentPage === numberOfPages;
-  const prevPage = `/blog/${
+  const prevPage = `${slugs.blog}${
     currentPage - 1 === 1 ? "" : (currentPage - 1).toString()
   }`;
-  const nextPage = `/blog/${(currentPage + 1).toString()}`;
+  const nextPage = `${slugs.blog}${(currentPage + 1).toString()}`;
   const siteMetadata = data.site!.siteMetadata!;
   const author = siteMetadata.author!;
   const featuredImage = siteMetadata.featuredImage!;

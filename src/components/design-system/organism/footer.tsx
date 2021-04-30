@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { MenuItem } from "../molecules/menu-item";
 import { Paragraph } from "../atoms/paragraph";
 import { StandardExternalLink } from "../atoms/standard-external-link";
+import { slugs } from "../../../logic/slug";
 
 const FooterContainer = styled.footer`
   flex-shrink: 0;
@@ -83,7 +84,7 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
         Home
       </FooterMenuItem>
       <FooterMenuItem
-        to="/blog/"
+        to={slugs.blog}
         onClick={() => {
           track(
             tracking.action.open_blog,
@@ -107,7 +108,7 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
         About Me
       </FooterMenuItem>
       <FooterMenuItem
-        to="/blog/archive/"
+        to={slugs.archive}
         onClick={() => {
           track(
             tracking.action.open_blog_archive,
@@ -119,7 +120,7 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
         Archive
       </FooterMenuItem>
       <FooterMenuItem
-        to="/blog/tags/"
+        to={slugs.tags}
         onClick={() => {
           track(
             tracking.action.open_blog_tags,

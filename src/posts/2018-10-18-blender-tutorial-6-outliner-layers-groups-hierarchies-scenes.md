@@ -4,7 +4,7 @@ description: "In this new post of the series Blender tutorial I will talk about 
 and scenes."
 date: 2018-10-18
 image: ../images/posts/blender-outliner.jpg
-tags: [test driven development, agile, clean code]
+tags: [computer graphics, blender]
 comments: true
 math: false
 authors: [fabrizio_duroni]

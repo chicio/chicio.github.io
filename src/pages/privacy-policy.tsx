@@ -10,7 +10,7 @@ import { ContainerSection } from "../components/design-system/atoms/container-se
 import { Paragraph } from "../components/design-system/atoms/paragraph";
 import { StandardExternalLink } from "../components/design-system/atoms/standard-external-link";
 import { OgPageType } from "../logic/seo";
-import { getCurrentLocationFrom } from "../logic/url";
+import { getCurrentLocationFrom } from "../logic/current-location";
 
 const PrivacyPolicy: React.FC<PageProps> = ({ location }) => {
   const data = useStaticQuery<PrivacyPolicyQuery>(

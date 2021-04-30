@@ -1,4 +1,9 @@
 const path = require("path");
+const {
+  slugs,
+  generateTagSlug,
+  generatePostSlug,
+} = require("./src/logic/slug");
 const { createFilePath } = require("gatsby-source-filesystem");
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
@@ -28,7 +33,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   );
 
   if (result.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`);
+    reporter.panicOnBuild(`Create Pages Error while running GraphQL query.`);
     return;
   }
 
@@ -50,7 +55,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const numberOfPages = Math.ceil(posts.length / postsPerPage);
   Array.from({ length: numberOfPages }).forEach((_, i) => {
     createPage({
-      path: i === 0 ? `/blog/` : `/blog/${i + 1}`,
+      path: i === 0 ? slugs.blog : `${slugs.blog}${i + 1}`,
       component: path.resolve("./src/templates/blog.tsx"),
       context: {
         limit: postsPerPage,
@@ -65,7 +70,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const tags = result.data.tagsGroup.group;
   tags.forEach((tag) => {
     createPage({
-      path: `/blog/tags/${tag.fieldValue.split(" ").join("-")}/`,
+      path: generateTagSlug(tag.fieldValue),
       component: path.resolve("./src/templates/tag.tsx"),
       context: {
         tag: tag.fieldValue,
@@ -78,8 +83,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   if (node.internal.type === `MarkdownRemark`) {
     const filename = createFilePath({ node, getNode, basePath: `pages` });
-    const [year, month, day, ...title] = filename.substring(1).split("-");
-    const slug = `/${year}/${month}/${day}/${title.join("-")}`;
-    createNodeField({ node, name: `slug`, value: slug });
+    createNodeField({ node, name: `slug`, value: generatePostSlug(filename) });
   }
 };

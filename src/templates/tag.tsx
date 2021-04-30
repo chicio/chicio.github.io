@@ -4,7 +4,7 @@ import { tracking } from "../logic/tracking";
 import { TagPostsQuery } from "../../graphql-types";
 import { BlogGenericPostListPage } from "../components/design-system/templates/blog-generic-post-list-page";
 import { OgPageType } from "../logic/seo";
-import { getCurrentLocationFrom } from "../logic/url";
+import { getCurrentLocationFrom } from "../logic/current-location";
 
 interface TagPageContext {
   tag: string;

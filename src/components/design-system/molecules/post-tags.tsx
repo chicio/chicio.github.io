@@ -1,8 +1,8 @@
 import { Tag } from "./tag";
-import { generateTagUrl } from "../../../logic/url";
 import React from "react";
 import styled from "styled-components";
 import { Maybe } from "../../../../graphql-types";
+import { generateTagSlug } from "../../../logic/slug";
 
 export interface PostTagsProps {
   tags: Maybe<string>[];
@@ -15,7 +15,7 @@ const PostTagsContainer = styled.div`
 export const PostTags: React.FC<PostTagsProps> = ({ tags }) => (
   <PostTagsContainer>
     {tags!.map((tag) => (
-      <Tag tag={tag!} link={generateTagUrl(tag!)} big={false} key={tag} />
+      <Tag tag={tag!} link={generateTagSlug(tag!)} big={false} key={tag} />
     ))}
   </PostTagsContainer>
 );

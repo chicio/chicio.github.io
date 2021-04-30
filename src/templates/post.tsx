@@ -13,7 +13,7 @@ import { Heading2 } from "../components/design-system/atoms/heading2";
 import { PostContent } from "../components/post-content";
 import styled from "styled-components";
 import { OgPageType } from "../logic/seo";
-import { getCurrentLocationFrom } from "../logic/url";
+import { getCurrentLocationFrom } from "../logic/current-location";
 
 const PostTitle = styled(Heading2)`
   margin: 0;
