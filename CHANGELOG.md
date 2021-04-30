@@ -8,6 +8,7 @@ Release date: 2021-04-30
 
 - Removed sass dependency
 - standard featured image url centralized
+- urls and slugs centralized
 
 ## [4.4.0](https://github.com/chicio/chicio.github.io/releases/tag/v4.4.0)
 Release date: 2021-04-29
