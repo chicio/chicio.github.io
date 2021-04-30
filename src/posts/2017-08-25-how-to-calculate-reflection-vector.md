@@ -1,4 +1,3 @@
-
 ---
 title: "How to calculate the reflection vector"
 description: "In this post I will talk about reflection vector used in some lighting models, for example the Phong
