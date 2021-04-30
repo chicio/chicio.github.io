@@ -18,7 +18,7 @@ const Archive: React.FC<PageProps<ArchiveQuery>> = ({ data, location }) => {
       author={author}
       location={getCurrentLocationFrom(location)}
       ogPageType={OgPageType.WebSite}
-      ogImage={`/${featuredImage}`}
+      ogImage={featuredImage}
       trackingCategory={tracking.category.blog_archive}
     />
   );

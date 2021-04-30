@@ -36,7 +36,7 @@ const Blog: React.FC<PageProps<BlogListQuery, BlogPageContext>> = ({
     <BlogPage
       author={author}
       location={getCurrentLocationFrom(location)}
-      ogImage={`/${featuredImage}`}
+      ogImage={featuredImage}
       ogPageType={OgPageType.WebSite}
       trackingCategory={tracking.category.blog_home}
     >

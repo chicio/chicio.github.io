@@ -34,7 +34,7 @@ const CookiePolicy: React.FC<PageProps> = ({ location }) => {
     <BlogPage
       location={getCurrentLocationFrom(location)}
       ogPageType={OgPageType.WebSite}
-      ogImage={`/${featuredImage}`}
+      ogImage={featuredImage}
       author={author}
       trackingCategory={tracking.category.cookie_policy}
     >

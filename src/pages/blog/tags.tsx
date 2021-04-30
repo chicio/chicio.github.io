@@ -28,7 +28,7 @@ const TagsPage: React.FC<PageProps<PostsGroupByTagsQuery>> = ({
       location={getCurrentLocationFrom(location)}
       author={author}
       ogPageType={OgPageType.WebSite}
-      ogImage={`/${featuredImage}`}
+      ogImage={featuredImage}
       trackingCategory={tracking.category.blog_tags}
     >
       <TagsContainer>
