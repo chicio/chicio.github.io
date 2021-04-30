@@ -58,7 +58,6 @@ My website has been created for Github Pages using:
 
 
 * [GatsbyJS](https://www.gatsbyjs.com/) with the following plugins:
-    * [gatsby-plugin-sass](https://www.gatsbyjs.com/plugins/gatsby-plugin-sass/)
     * [gatsby-plugin-image](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-plugin-image/)
     * [gatsby-plugin-google-tag](https://www.gatsbyjs.com/plugins/gatsby-plugin-google-gtag/)
     * [gatsby-plugin-react-helmet](https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/)
