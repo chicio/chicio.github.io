@@ -54,6 +54,23 @@ export const tracking = {
   },
 };
 
+export interface Tracking {
+  category: string;
+  label: string;
+  action: string;
+}
+
+export const trackWith = (tracking: Tracking) => {
+  const payload = tracking.label
+    ? { event_category: tracking.category, event_label: tracking.label }
+    : { event_category: tracking.category };
+  // @ts-ignore
+  if (typeof window !== "undefined" && typeof window.gtag !== "undefined") {
+    // @ts-ignore
+    window.gtag("event", tracking.action, payload);
+  }
+};
+
 export const track = (action: string, category: string, label: string) => {
   const payload = label
     ? { event_category: category, event_label: label }
