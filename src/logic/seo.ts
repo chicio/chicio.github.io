@@ -161,12 +161,12 @@ export const createJsonLD = (
         },`
             : ""
         }
-        ${ogPageType === OgPageType.WebSite ? `"headline":"${author}"` : ""}
+        ${ogPageType === OgPageType.WebSite ? `"headline":"${author}",` : ""}
         ${
           ogPageType === OgPageType.BlogPosting
             ? `"headline":"${
                 title.length > 110 ? title.substr(0, 110) : title
-              }"`
+              }",`
             : ""
         }
         "description":"${
