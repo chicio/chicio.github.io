@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { Paragraph } from "../atoms/paragraph";
-import { StandardInternalLink } from "../atoms/standard-internal-link";
-import { track, tracking } from "../../../logic/tracking";
+import { tracking } from "../../../logic/tracking";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import { PostAuthors } from "./post-authors";
 import { PostMeta } from "./post-meta";
 import * as React from "react";
 import { Maybe } from "../../../../graphql-types";
 import { Heading5 } from "../atoms/heading5";
+import { StandardInternalLinkWithTracking } from "../../standard-internal-link-with-tracking";
 
 const PostDescription = styled(Paragraph)`
   margin-right: 0;
@@ -47,7 +47,7 @@ const PostCardImageContainer = styled.div`
   }
 `;
 
-const PostCardLink = styled(StandardInternalLink)`
+const PostCardLink = styled(StandardInternalLinkWithTracking)`
   text-decoration: none;
 
   &:hover {
@@ -84,12 +84,10 @@ export const PostCard: React.FC<PostCardProps> = ({
   <PostCardContainer key={slug}>
     <PostCardLink
       to={slug}
-      onClick={() => {
-        track(
-          tracking.action.open_blog_post,
-          trackingCategory,
-          tracking.label.body
-        );
+      trackingData={{
+        action: tracking.action.open_blog_post,
+        category: trackingCategory,
+        label: tracking.label.body,
       }}
     >
       <PostCardTitle>{title}</PostCardTitle>

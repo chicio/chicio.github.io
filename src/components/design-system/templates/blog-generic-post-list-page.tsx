@@ -8,11 +8,11 @@ import {
 } from "../../../../graphql-types";
 import React from "react";
 import { BlogPage } from "./blog-page";
-import { StandardInternalLink } from "../atoms/standard-internal-link";
-import { track, tracking } from "../../../logic/tracking";
+import { tracking } from "../../../logic/tracking";
 import { PageTitle } from "../molecules/page-title";
 import { OgPageType } from "../../../logic/seo";
 import { CurrentLocation } from "../../../logic/current-location";
+import { StandardInternalLinkWithTracking } from "../../standard-internal-link-with-tracking";
 
 const PostContainer = styled(ContainerFluid)`
   display: flex;
@@ -42,7 +42,7 @@ const PostTime = styled(Time)`
   font-size: ${(props) => props.theme.fontSizes[4]};
 `;
 
-const PostLink = styled(StandardInternalLink)`
+const PostLink = styled(StandardInternalLinkWithTracking)`
   font-size: ${(props) => props.theme.fontSizes[4]};
 `;
 
@@ -86,13 +86,11 @@ export const BlogGenericPostListPage: React.FC<BlogGenericPostListPageProps> = (
         <Column size={"85%"}>
           <PostLink
             to={post.node.fields!.slug!}
-            onClick={() =>
-              track(
-                tracking.action.open_blog_post,
-                trackingCategory,
-                tracking.label.body
-              )
-            }
+            trackingData={{
+              action: tracking.action.open_blog_post,
+              category: trackingCategory,
+              label: tracking.label.body,
+            }}
           >
             {post.node.frontmatter?.title}
           </PostLink>

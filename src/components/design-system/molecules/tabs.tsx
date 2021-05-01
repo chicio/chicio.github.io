@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { StandardExternalLink } from "../atoms/standard-external-link";
-import { track } from "../../../logic/tracking";
+import { trackWith } from "../../../logic/tracking";
 import React from "react";
 
 interface TabLinkProps {
@@ -73,7 +73,11 @@ const Tab: React.FC<TabProps> = ({
       href={link}
       onClick={(event) => {
         event.preventDefault();
-        track(trackingAction, trackingCategory, trackingLabel);
+        trackWith({
+          action: trackingAction,
+          category: trackingCategory,
+          label: trackingLabel,
+        });
         action();
       }}
     >

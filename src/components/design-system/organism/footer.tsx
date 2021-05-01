@@ -1,11 +1,11 @@
 import React from "react";
-import { track, tracking } from "../../../logic/tracking";
+import { tracking } from "../../../logic/tracking";
 import { SocialContacts } from "./social-contacts";
 import styled from "styled-components";
-import { MenuItem } from "../molecules/menu-item";
 import { Paragraph } from "../atoms/paragraph";
-import { StandardExternalLink } from "../atoms/standard-external-link";
 import { slugs } from "../../../logic/slug";
+import { StandardExternalLinkWithTracking } from "../../standard-external-link-with-tracking";
+import { MenuItemWithTracking } from "../../menu-item-with-tracking";
 
 const FooterContainer = styled.footer`
   flex-shrink: 0;
@@ -26,7 +26,7 @@ const FooterMenu = styled.div`
   padding: ${(props) => props.theme.spacing[2]};
 `;
 
-const FooterMenuItem = styled(MenuItem)`
+const FooterMenuItem = styled(MenuItemWithTracking)`
   margin: ${(props) => props.theme.spacing[0]};
 `;
 
@@ -55,7 +55,7 @@ const MadeWithLoveParagraph = styled(Paragraph)`
   }
 `;
 
-const FooterCallToAction = styled(StandardExternalLink)`
+const FooterCallToAction = styled(StandardExternalLinkWithTracking)`
   color: ${(props) => props.theme.light.accentColorAbovePrimaryColor};
 
   @media (prefers-color-scheme: dark) {
@@ -73,60 +73,50 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
     <FooterMenu>
       <FooterMenuItem
         to="/"
-        onClick={() => {
-          track(
-            tracking.action.open_home,
-            trackingCategory,
-            tracking.label.footer
-          );
+        trackingData={{
+          action: tracking.action.open_home,
+          category: trackingCategory,
+          label: tracking.label.footer,
         }}
       >
         Home
       </FooterMenuItem>
       <FooterMenuItem
         to={slugs.blog}
-        onClick={() => {
-          track(
-            tracking.action.open_blog,
-            trackingCategory,
-            tracking.label.footer
-          );
+        trackingData={{
+          action: tracking.action.open_blog,
+          category: trackingCategory,
+          label: tracking.label.footer,
         }}
       >
         Blog
       </FooterMenuItem>
       <FooterMenuItem
         to="/2017/05/10/about-me/"
-        onClick={() => {
-          track(
-            tracking.action.open_about_me,
-            trackingCategory,
-            tracking.label.footer
-          );
+        trackingData={{
+          action: tracking.action.open_about_me,
+          category: trackingCategory,
+          label: tracking.label.footer,
         }}
       >
         About Me
       </FooterMenuItem>
       <FooterMenuItem
         to={slugs.archive}
-        onClick={() => {
-          track(
-            tracking.action.open_blog_archive,
-            trackingCategory,
-            tracking.label.footer
-          );
+        trackingData={{
+          action: tracking.action.open_blog_archive,
+          category: trackingCategory,
+          label: tracking.label.footer,
         }}
       >
         Archive
       </FooterMenuItem>
       <FooterMenuItem
         to={slugs.tags}
-        onClick={() => {
-          track(
-            tracking.action.open_blog_tags,
-            trackingCategory,
-            tracking.label.footer
-          );
+        trackingData={{
+          action: tracking.action.open_blog_tags,
+          category: trackingCategory,
+          label: tracking.label.footer,
         }}
       >
         Tags
@@ -141,6 +131,11 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
         <MadeWithLoveParagraph>
           {`Made with 💝 by ${author} 'Chicio' using `}
           <FooterCallToAction
+            trackingData={{
+              category: trackingCategory,
+              action: tracking.action.open_design_system,
+              label: tracking.label.footer,
+            }}
             href={
               "/chicio-coding-design-system/index.html?path=/story/colors--colors"
             }

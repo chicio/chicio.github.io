@@ -1,9 +1,9 @@
 import React from "react";
-import { track, tracking } from "../../../logic/tracking";
-import { MenuItem } from "../molecules/menu-item";
+import { tracking } from "../../../logic/tracking";
 import styled, { css } from "styled-components";
 import { Container } from "../atoms/container";
 import { slugs } from "../../../logic/slug";
+import { MenuItemWithTracking } from "../../menu-item-with-tracking";
 
 const MenuContainer = styled.div`
   background-color: ${(props) => props.theme.light.primaryColor};
@@ -25,7 +25,7 @@ const NavBar = styled(Container)`
   height: 55px;
 `;
 
-const NavBarMenuItem = styled(MenuItem)`
+const NavBarMenuItem = styled(MenuItemWithTracking)`
   position: relative;
   display: inline-block;
   margin-right: 15px;
@@ -67,12 +67,10 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => (
       <NavBarMenuItem
         selected={pathname === "/"}
         to={"/"}
-        onClick={() => {
-          track(
-            tracking.action.open_home,
-            trackingCategory,
-            tracking.label.header
-          );
+        trackingData={{
+          action: tracking.action.open_home,
+          category: trackingCategory,
+          label: tracking.label.header,
         }}
       >
         {"Home"}
@@ -80,12 +78,10 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => (
       <NavBarMenuItem
         selected={pathname !== slugs.aboutMe}
         to={slugs.blog}
-        onClick={() => {
-          track(
-            tracking.action.open_blog,
-            trackingCategory,
-            tracking.label.header
-          );
+        trackingData={{
+          action: tracking.action.open_blog,
+          category: trackingCategory,
+          label: tracking.label.header,
         }}
       >
         {"Blog"}
@@ -93,12 +89,10 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => (
       <NavBarMenuItem
         selected={pathname === slugs.aboutMe}
         to={slugs.aboutMe}
-        onClick={() => {
-          track(
-            tracking.action.open_about_me,
-            trackingCategory,
-            tracking.label.header
-          );
+        trackingData={{
+          action: tracking.action.open_about_me,
+          category: trackingCategory,
+          label: tracking.label.header,
         }}
       >
         {"About me"}

@@ -157,6 +157,13 @@ const ID3TagEditor: React.FC = () => (
         trackingLabel: tracking.label.body,
         link: "https://github.com/chicio/ID3TagEditor",
       },
+      {
+        label: "Docs",
+        trackingCategory: tracking.category.home,
+        trackingAction: tracking.action.open_id3tageditor_doc,
+        trackingLabel: tracking.label.body,
+        link: "https://id3tageditor.fabrizioduroni.it",
+      },
     ]}
   />
 );

@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { CallToActionInternal } from "../atoms/call-to-action-internal";
 import { Heading6 } from "../atoms/heading6";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import React from "react";
 import { Paragraph } from "../atoms/paragraph";
-import { track, tracking } from "../../../logic/tracking";
+import { tracking } from "../../../logic/tracking";
+import { CallToActionInternalWithTracking } from "../../call-to-action-internal-with-tracking";
 
-const CardButton = styled(CallToActionInternal)`
+const CardButton = styled(CallToActionInternalWithTracking)`
   margin-top: auto;
   display: block;
 `;
@@ -94,9 +94,11 @@ export const RecentPostCard: React.FC<RecentPostCardProps> = ({
       <CardButton
         key={`${slug}link`}
         to={slug}
-        onClick={() =>
-          track(tracking.action.open_blog_post, trackingCategory, trackingLabel)
-        }
+        trackingData={{
+          action: tracking.action.open_blog_post,
+          category: trackingCategory,
+          label: trackingLabel,
+        }}
       >
         Read More
       </CardButton>

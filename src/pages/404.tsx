@@ -1,10 +1,10 @@
 import React from "react";
-import { track, tracking } from "../logic/tracking";
+import { tracking } from "../logic/tracking";
 import { Heading1 } from "../components/design-system/atoms/heading1";
 import { Paragraph } from "../components/design-system/atoms/paragraph";
 import { ContainerFullscreen } from "../components/design-system/atoms/container-fullscreen";
-import { CallToActionInternal } from "../components/design-system/atoms/call-to-action-internal";
 import { Page } from "../components/design-system/templates/page";
+import { CallToActionInternalWithTracking } from "../components/call-to-action-internal-with-tracking";
 
 const NotFoundPage: React.FC = () => {
   return (
@@ -12,18 +12,16 @@ const NotFoundPage: React.FC = () => {
       <ContainerFullscreen>
         <Heading1>404!</Heading1>
         <Paragraph>Opss!?! Keep calm and go to</Paragraph>
-        <CallToActionInternal
+        <CallToActionInternalWithTracking
           to={"/"}
-          onClick={() => {
-            track(
-              tracking.action.open_home,
-              tracking.category.notfound,
-              tracking.label.body
-            );
+          trackingData={{
+            action: tracking.action.open_home,
+            category: tracking.category.notfound,
+            label: tracking.label.body,
           }}
         >
           Homepage
-        </CallToActionInternal>
+        </CallToActionInternalWithTracking>
       </ContainerFullscreen>
     </Page>
   );

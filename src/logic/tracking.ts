@@ -34,6 +34,7 @@ export const tracking = {
     open_blog_previous_page: "open_blog_previous_page",
     open_blog_author: "open_blog_author",
     open_blog_tag: "open_blog_tag",
+    open_design_system: "open_design_system",
     pull_to_refresh: "pull_to_refresh",
   },
   category: {
@@ -54,13 +55,23 @@ export const tracking = {
   },
 };
 
-export const track = (action: string, category: string, label: string) => {
-  const payload = label
-    ? { event_category: category, event_label: label }
-    : { event_category: category };
+export interface TrackingData {
+  category: string;
+  label: string;
+  action: string;
+}
+
+export interface TrackingElementProps {
+  trackingData: TrackingData;
+}
+
+export const trackWith = (tracking: TrackingData) => {
+  const payload = tracking.label
+    ? { event_category: tracking.category, event_label: tracking.label }
+    : { event_category: tracking.category };
   // @ts-ignore
   if (typeof window !== "undefined" && typeof window.gtag !== "undefined") {
     // @ts-ignore
-    window.gtag("event", action, payload);
+    window.gtag("event", tracking.action, payload);
   }
 };
