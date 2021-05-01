@@ -20,6 +20,9 @@ export interface BlogPageProps {
   ogPageType: OgPageType;
   ogImage: string;
   trackingCategory: string;
+  customTitle?: string;
+  description?: string;
+  date?: string;
 }
 
 export const BlogPage: React.FC<BlogPageProps> = ({
@@ -29,9 +32,19 @@ export const BlogPage: React.FC<BlogPageProps> = ({
   ogPageType,
   ogImage,
   trackingCategory,
+  customTitle,
+  description,
+  date,
 }) => (
   <Page>
-    <Head url={location.url} pageType={ogPageType} imageUrl={ogImage} />
+    <Head
+      url={location.url}
+      pageType={ogPageType}
+      imageUrl={ogImage}
+      customTitle={customTitle}
+      description={description}
+      date={date}
+    />
     <Menu trackingCategory={trackingCategory} pathname={location.pathname} />
     <BlogContainer>
       <BlogHeader />
