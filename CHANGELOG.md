@@ -1,6 +1,14 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [4.6.0](https://github.com/chicio/chicio.github.io/releases/tag/v4.6.0)
+Release date: 2021-05-01
+
+#### Fixed
+
+- ld+json conform to the schema specification for all the pages
+- Tracking actions centralized 
+
 ## [4.5.0](https://github.com/chicio/chicio.github.io/releases/tag/v4.5.0)
 Release date: 2021-04-30
 
