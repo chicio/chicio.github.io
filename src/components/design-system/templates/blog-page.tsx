@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { Container } from "../atoms/container";
 import { Footer } from "../organism/footer";
 import { OgPageType } from "../../../logic/seo";
-import { CurrentLocation } from "../../../logic/url";
+import { CurrentLocation } from "../../../logic/current-location";
 
 const BlogContainer = styled(Container)`
   margin-top: ${(props) => props.theme.spacing[12]};
@@ -20,6 +20,9 @@ export interface BlogPageProps {
   ogPageType: OgPageType;
   ogImage: string;
   trackingCategory: string;
+  customTitle?: string;
+  description?: string;
+  date?: string;
 }
 
 export const BlogPage: React.FC<BlogPageProps> = ({
@@ -29,9 +32,19 @@ export const BlogPage: React.FC<BlogPageProps> = ({
   ogPageType,
   ogImage,
   trackingCategory,
+  customTitle,
+  description,
+  date,
 }) => (
   <Page>
-    <Head url={location.url} pageType={ogPageType} imageUrl={ogImage} />
+    <Head
+      url={location.url}
+      pageType={ogPageType}
+      imageUrl={ogImage}
+      customTitle={customTitle}
+      description={description}
+      date={date}
+    />
     <Menu trackingCategory={trackingCategory} pathname={location.pathname} />
     <BlogContainer>
       <BlogHeader />

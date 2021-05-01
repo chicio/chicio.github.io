@@ -141,19 +141,34 @@ export const createJsonLD = (
             ? `"mainEntityOfPage":{\n"@type":"WebPage",\n"@id":"${url}"\n},`
             : ""
         }
-        "author":{
+        ${
+          ogPageType !== OgPageType.Person
+            ? `"author":{
           "@type":"Person",
           "name":"${author}"
-        },
-        "publisher":{
+        },`
+            : ""
+        }
+        ${
+          ogPageType !== OgPageType.Person
+            ? `"publisher":{
           "@type":"Organization",
           "logo":{
             "@type":"ImageObject",
             "url":"${imageUrl}"
           },
           "name":"${author}"
-        },
-        "headline":"${ogPageType === OgPageType.BlogPosting ? title : author}",
+        },`
+            : ""
+        }
+        ${ogPageType === OgPageType.WebSite ? `"headline":"${author}",` : ""}
+        ${
+          ogPageType === OgPageType.BlogPosting
+            ? `"headline":"${
+                title.length > 110 ? title.substr(0, 110) : title
+              }",`
+            : ""
+        }
         "description":"${
           ogPageType === OgPageType.BlogPosting ? description : title
         }",

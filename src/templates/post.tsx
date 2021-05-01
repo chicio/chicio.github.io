@@ -21,6 +21,7 @@ const PostTitle = styled(Heading2)`
 
 const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
   const post = data.markdownRemark!;
+  const title = post.frontmatter!.title!;
 
   if (post.frontmatter?.math === true) {
     require("katex/dist/katex.min.css");
@@ -35,6 +36,9 @@ const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
         post.frontmatter!.image!.childImageSharp?.gatsbyImageData
       )!}`}
       trackingCategory={tracking.category.blog_post}
+      customTitle={title}
+      description={post.frontmatter!.description!}
+      date={post.frontmatter!.date!}
     >
       <div>
         <PostTitle className="blog-post-title">
@@ -59,7 +63,7 @@ const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
       </div>
       <RecentPosts currentSlug={location.pathname} />
       {post.frontmatter?.comments && (
-        <Comments url={location.href} title={post.frontmatter!.title!} />
+        <Comments url={location.href} title={title} />
       )}
     </BlogPage>
   );
