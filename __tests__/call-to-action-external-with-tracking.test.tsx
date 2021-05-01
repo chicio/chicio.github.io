@@ -1,8 +1,8 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { CallToActionInternalWithTracking } from "../src/components/call-to-action-internal-with-tracking";
 import { trackWith } from "../src/logic/tracking";
 import { Page } from "../src/components/design-system/templates/page";
+import { CallToActionExternalWithTracking } from "../src/components/call-to-action-external-with-tracking";
 
 jest.mock("../src/logic/tracking", () => ({
   ...jest.requireActual("../src/logic/tracking"),
@@ -11,12 +11,12 @@ jest.mock("../src/logic/tracking", () => ({
 
 const trackWithMock = trackWith as jest.MockedFunction<typeof trackWith>;
 
-describe("CallToActionInternalWithTracking", () => {
+describe("CallToActionExternalWithTracking", () => {
   it("track", async () => {
     render(
       <Page>
-        <CallToActionInternalWithTracking
-          to={"/an-url"}
+        <CallToActionExternalWithTracking
+          href={"/an-url"}
           trackingData={{
             category: "category",
             action: "action",
@@ -24,7 +24,7 @@ describe("CallToActionInternalWithTracking", () => {
           }}
         >
           Button
-        </CallToActionInternalWithTracking>
+        </CallToActionExternalWithTracking>
       </Page>
     );
     const button = screen.getByText("Button");

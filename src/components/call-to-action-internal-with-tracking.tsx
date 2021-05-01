@@ -1,21 +1,20 @@
 import React from "react";
 import { CallToActionInternal } from "./design-system/atoms/call-to-action-internal";
-import { Tracking, trackWith } from "../logic/tracking";
+import { TrackingElementProps, trackWith } from "../logic/tracking";
 
-interface CallToActionInternalWithTrackingProps {
+type CallToActionInternalWithTrackingProps = TrackingElementProps & {
   to: string;
-  tracking: Tracking;
-}
+};
 
 export const CallToActionInternalWithTracking: React.FC<CallToActionInternalWithTrackingProps> = ({
   children,
   to,
-  tracking,
+  trackingData,
 }) => (
   <CallToActionInternal
     to={to}
     onClick={() => {
-      trackWith(tracking);
+      trackWith(trackingData);
     }}
   >
     {children}

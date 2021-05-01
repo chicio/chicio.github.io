@@ -54,13 +54,17 @@ export const tracking = {
   },
 };
 
-export interface Tracking {
+export interface TrackingData {
   category: string;
   label: string;
   action: string;
 }
 
-export const trackWith = (tracking: Tracking) => {
+export interface TrackingElementProps {
+  trackingData: TrackingData;
+}
+
+export const trackWith = (tracking: TrackingData) => {
   const payload = tracking.label
     ? { event_category: tracking.category, event_label: tracking.label }
     : { event_category: tracking.category };
