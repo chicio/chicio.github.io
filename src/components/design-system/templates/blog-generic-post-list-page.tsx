@@ -12,7 +12,7 @@ import { StandardInternalLink } from "../atoms/standard-internal-link";
 import { track, tracking } from "../../../logic/tracking";
 import { PageTitle } from "../molecules/page-title";
 import { OgPageType } from "../../../logic/seo";
-import { CurrentLocation } from "../../../logic/url";
+import { CurrentLocation } from "../../../logic/current-location";
 
 const PostContainer = styled(ContainerFluid)`
   display: flex;

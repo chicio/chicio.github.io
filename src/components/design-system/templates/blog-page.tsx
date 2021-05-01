@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { Container } from "../atoms/container";
 import { Footer } from "../organism/footer";
 import { OgPageType } from "../../../logic/seo";
-import { CurrentLocation } from "../../../logic/url";
+import { CurrentLocation } from "../../../logic/current-location";
 
 const BlogContainer = styled(Container)`
   margin-top: ${(props) => props.theme.spacing[12]};
