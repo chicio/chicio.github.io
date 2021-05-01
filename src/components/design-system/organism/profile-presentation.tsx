@@ -2,11 +2,11 @@ import { StaticImage } from "gatsby-plugin-image";
 import * as React from "react";
 import { Heading5 } from "../atoms/heading5";
 import { SocialContacts } from "./social-contacts";
-import { track, tracking } from "../../../logic/tracking";
+import { tracking } from "../../../logic/tracking";
 import styled from "styled-components";
-import { CallToActionInternal } from "../atoms/call-to-action-internal";
 import { Heading2 } from "../atoms/heading2";
 import { slugs } from "../../../logic/slug";
+import { CallToActionInternalWithTracking } from "../../call-to-action-internal-with-tracking";
 
 const Author = styled(Heading2)`
   color: ${(props) => props.theme.light.textAbovePrimaryColor};
@@ -24,7 +24,7 @@ const Job = styled(Heading5)`
   }
 `;
 
-const BlogCallToAction = styled(CallToActionInternal)`
+const BlogCallToAction = styled(CallToActionInternalWithTracking)`
   width: 150px;
 `;
 
@@ -88,13 +88,11 @@ export const ProfilePresentation: React.FC<ProfilePresentationProps> = ({
       trackingLabel={tracking.label.body}
     />
     <BlogCallToAction
-      onClick={() =>
-        track(
-          tracking.action.open_blog,
-          tracking.category.home,
-          tracking.label.body
-        )
-      }
+      trackingData={{
+        action: tracking.action.open_blog,
+        category: tracking.category.home,
+        label: tracking.label.body,
+      }}
       to={slugs.blog}
     >
       Blog

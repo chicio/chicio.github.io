@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from "react";
-import { CallToActionInternal } from "../atoms/call-to-action-internal";
-import { track, tracking } from "../../../logic/tracking";
+import { tracking } from "../../../logic/tracking";
+import { CallToActionInternalWithTracking } from "../../call-to-action-internal-with-tracking";
 
 const CenterHorizontallyContainer = styled.div`
   display: flex;
@@ -9,7 +9,7 @@ const CenterHorizontallyContainer = styled.div`
   padding: ${(props) => props.theme.spacing[4]};
 `;
 
-const PageNavigationCallToAction = styled(CallToActionInternal)`
+const PageNavigationCallToAction = styled(CallToActionInternalWithTracking)`
   width: 100px;
   text-align: center;
 `;
@@ -37,12 +37,10 @@ export const PaginationNavigation: React.FC<PageNavigationProps> = ({
     {!isFirst && (
       <PageNavigationCallToAction
         to={previousPageUrl}
-        onClick={() => {
-          track(
-            previousPageTrackingAction,
-            trackingCategory,
-            tracking.label.body
-          );
+        trackingData={{
+          category: trackingCategory,
+          label: tracking.label.body,
+          action: previousPageTrackingAction,
         }}
       >
         Previous
@@ -51,8 +49,10 @@ export const PaginationNavigation: React.FC<PageNavigationProps> = ({
     {!isLast && (
       <PageNavigationCallToAction
         to={nextPageUrl}
-        onClick={() => {
-          track(nextPageTrackingAction, trackingCategory, tracking.label.body);
+        trackingData={{
+          category: trackingCategory,
+          label: tracking.label.body,
+          action: nextPageTrackingAction,
         }}
       >
         Next
