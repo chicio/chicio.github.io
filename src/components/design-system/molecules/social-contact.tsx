@@ -1,8 +1,7 @@
 import * as React from "react";
-import { track } from "../../../logic/tracking";
-import { CallToActionExternal } from "../atoms/call-to-action-external";
 import { Icon } from "../atoms/icon";
 import styled from "styled-components";
+import { CallToActionExternalWithTracking } from "../../call-to-action-external-with-tracking";
 
 export interface SocialContactProps {
   link: string;
@@ -12,7 +11,7 @@ export interface SocialContactProps {
   icon: React.ReactElement;
 }
 
-const CallToActionBlock = styled(CallToActionExternal)`
+const CallToActionBlock = styled(CallToActionExternalWithTracking)`
   display: block;
 `;
 
@@ -25,8 +24,10 @@ export const SocialContact: React.FC<SocialContactProps> = ({
 }) => (
   <CallToActionBlock
     href={link}
-    onClick={() => {
-      track(trackingAction, trackingCategory, trackingLabel);
+    trackingData={{
+      action: trackingAction,
+      category: trackingCategory,
+      label: trackingLabel,
     }}
     target="_blank"
     rel="noopener noreferrer"

@@ -1,25 +1,28 @@
 import React from "react";
 import { TrackingElementProps, trackWith } from "../logic/tracking";
-import { StandardInternalLink } from "./design-system/atoms/standard-internal-link";
+import { MenuItem } from "./design-system/molecules/menu-item";
 
-type StandardInternalLinkWithTrackingProps = TrackingElementProps & {
+type MenuItemWithTrackingProps = TrackingElementProps & {
   to: string;
   className?: string;
+  selected: boolean;
 };
 
-export const StandardInternalLinkWithTracking: React.FC<StandardInternalLinkWithTrackingProps> = ({
+export const MenuItemWithTracking: React.FC<MenuItemWithTrackingProps> = ({
   children,
   className,
   to,
   trackingData,
+  selected,
 }) => (
-  <StandardInternalLink
+  <MenuItem
     className={className}
     to={to}
     onClick={() => {
       trackWith(trackingData);
     }}
+    selected={selected}
   >
     {children}
-  </StandardInternalLink>
+  </MenuItem>
 );

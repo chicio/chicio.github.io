@@ -34,6 +34,7 @@ export const tracking = {
     open_blog_previous_page: "open_blog_previous_page",
     open_blog_author: "open_blog_author",
     open_blog_tag: "open_blog_tag",
+    open_design_system: "open_design_system",
     pull_to_refresh: "pull_to_refresh",
   },
   category: {
@@ -72,16 +73,5 @@ export const trackWith = (tracking: TrackingData) => {
   if (typeof window !== "undefined" && typeof window.gtag !== "undefined") {
     // @ts-ignore
     window.gtag("event", tracking.action, payload);
-  }
-};
-
-export const track = (action: string, category: string, label: string) => {
-  const payload = label
-    ? { event_category: category, event_label: label }
-    : { event_category: category };
-  // @ts-ignore
-  if (typeof window !== "undefined" && typeof window.gtag !== "undefined") {
-    // @ts-ignore
-    window.gtag("event", action, payload);
   }
 };

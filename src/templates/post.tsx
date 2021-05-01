@@ -51,7 +51,11 @@ const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
           readingTime={post.fields!.readingTime!.text!}
         />
         <PostContent html={post.html!} />
-        <PostTags tags={post.frontmatter!.tags!} />
+        <PostTags
+          tags={post.frontmatter!.tags!}
+          trackingCategory={tracking.category.blog_post}
+          trackingLabel={tracking.label.body}
+        />
       </div>
       <RecentPosts currentSlug={location.pathname} />
       {post.frontmatter?.comments && (

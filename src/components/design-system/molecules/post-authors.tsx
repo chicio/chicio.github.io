@@ -1,5 +1,5 @@
 import React from "react";
-import { track, tracking } from "../../../logic/tracking";
+import { tracking } from "../../../logic/tracking";
 import { BlogAuthor, blogAuthors } from "../../../logic/blog-authors";
 import { AuthorsImagesQuery, Maybe } from "../../../../graphql-types";
 import { graphql, useStaticQuery } from "gatsby";
@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { ContainerFluid } from "../atoms/container-fluid";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Paragraph } from "../atoms/paragraph";
-import { StandardExternalLink } from "../atoms/standard-external-link";
+import { StandardExternalLinkWithTracking } from "../../standard-external-link-with-tracking";
 
 const PostAuthorsContainer = styled(ContainerFluid)`
   padding: 0;
@@ -96,19 +96,17 @@ export const PostAuthors: React.FC<PostAuthorsProps> = ({
             </PostAuthorImageContainer>
             <Paragraph>
               {enableUrl && (
-                <StandardExternalLink
-                  onClick={() =>
-                    track(
-                      tracking.action.open_blog_author,
-                      trackingCategory,
-                      trackingLabel
-                    )
-                  }
+                <StandardExternalLinkWithTracking
+                  trackingData={{
+                    action: tracking.action.open_blog_author,
+                    category: trackingCategory,
+                    label: trackingLabel,
+                  }}
                   href={blogAuthor.url}
                   target={"_blank"}
                 >
                   {blogAuthor.name}
-                </StandardExternalLink>
+                </StandardExternalLinkWithTracking>
               )}
               {!enableUrl && blogAuthor.name}
             </Paragraph>

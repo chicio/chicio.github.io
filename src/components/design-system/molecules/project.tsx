@@ -1,9 +1,8 @@
 import React from "react";
 import { Heading3 } from "../atoms/heading3";
-import { CallToActionExternal } from "../atoms/call-to-action-external";
-import { track } from "../../../logic/tracking";
 import styled from "styled-components";
 import { Container } from "../atoms/container";
+import { CallToActionExternalWithTracking } from "../../call-to-action-external-with-tracking";
 
 interface ProjectContainerProps {
   reverse: boolean;
@@ -65,21 +64,19 @@ export const Project: React.FC<ProjectProps> = ({
       {description}
       <CallToActionContainer>
         {callToActions.map((callToAction) => (
-          <CallToActionExternal
+          <CallToActionExternalWithTracking
             key={callToAction.label}
             href={callToAction.link}
-            onClick={() => {
-              track(
-                callToAction.trackingAction,
-                callToAction.trackingCategory,
-                callToAction.trackingLabel
-              );
+            trackingData={{
+              action: callToAction.trackingAction,
+              category: callToAction.trackingCategory,
+              label: callToAction.trackingLabel,
             }}
             target="_blank"
             rel="noopener noreferrer"
           >
             {callToAction.label}
-          </CallToActionExternal>
+          </CallToActionExternalWithTracking>
         ))}
       </CallToActionContainer>
     </ProjectContentContainer>

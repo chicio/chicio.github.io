@@ -1,12 +1,13 @@
-import { StandardInternalLink } from "../atoms/standard-internal-link";
 import styled, { css } from "styled-components";
 import React from "react";
+import { StandardInternalLinkWithTracking } from "../../standard-internal-link-with-tracking";
+import { tracking } from "../../../logic/tracking";
 
 interface TagContentProps {
   big: boolean;
 }
 
-const TagLink = styled(StandardInternalLink)<TagContentProps>`
+const TagLink = styled(StandardInternalLinkWithTracking)<TagContentProps>`
   display: inline-block;
   height: 46px;
   text-decoration: none;
@@ -49,10 +50,20 @@ const TagText = styled.span<TagContentProps>`
 export type TagProps = TagContentProps & {
   link: string;
   tag: string;
+  trackingCategory: string;
+  trackingLabel: string;
 };
 
-export const Tag: React.FC<TagProps> = ({ tag, link, big }) => (
-  <TagLink to={link} big={big}>
+export const Tag: React.FC<TagProps> = ({ tag, link, big, trackingCategory, trackingLabel }) => (
+  <TagLink
+    trackingData={{
+      action: tracking.action.open_blog_tag,
+      category: trackingCategory,
+      label: trackingLabel,
+    }}
+    to={link}
+    big={big}
+  >
     <TagText big={big}>{tag}</TagText>
   </TagLink>
 );
