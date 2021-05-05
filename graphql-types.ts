@@ -4011,7 +4011,10 @@ export type HeadQuery = { site?: Maybe<{ siteMetadata?: Maybe<(
 export type ArtQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ArtQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'author' | 'featuredImage'>> }> };
+export type ArtQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'author' | 'featuredImage'>> }>, allFile: { edges: Array<{ node: (
+        Pick<File, 'name'>
+        & { childImageSharp?: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
+      ) }> } };
 
 export type ArchiveQueryVariables = Exact<{ [key: string]: never; }>;
 

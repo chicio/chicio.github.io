@@ -8,28 +8,33 @@ import { OgPageType } from "../logic/seo";
 import styled from "styled-components";
 import { PageTitle } from "../components/design-system/molecules/page-title";
 import { ContainerFluid } from "../components/design-system/atoms/container-fluid";
-
-// https://www.imarketinx.de/artikel/responsive-image-gallery-with-css-grid.html
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const GalleryContainer = styled(ContainerFluid)`
   padding: 0;
-  margin: 0;
+  margin: 0 0 ${(props) => props.theme.spacing[7]};
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  grid-gap: 20px;
+  align-items: center;
   justify-items: center;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+  @media (min-width: 992px) {
+    grid-column-gap: 20px;
+    grid-row-gap: 40px;
+  }
 `;
 
 const GalleryImageFrame = styled.figure`
-  padding: 0.5rem;
-  font-size: 1.2rem;
-  text-align: center;
+  padding: ${(props) => props.theme.spacing[2]};
+  margin: 0;
   background-color: #333;
-  color: #d9d9d9;
 `;
 
-const GalleryImage = styled.img`
+const GalleryImage = styled(GatsbyImage)`
   height: auto;
+  width: 250px;
   object-fit: cover;
   transition: opacity 0.25s ease-in-out;
 
@@ -53,53 +58,16 @@ const Art: React.FC<PageProps<ArtQuery>> = ({ data, location }) => {
       customTitle={"Fabrizio Duroni art gallery"}
       description={"Fabrizio Duroni art gallery"}
     >
-      <PageTitle>Fabrizio Duroni Art</PageTitle>
+      <PageTitle>My drawings</PageTitle>
       <GalleryContainer>
-        <GalleryImageFrame>
-          <GalleryImage
-            className="gallery-img"
-            src="https://picsum.photos/230/300?random=1"
-            alt="Image form https://picsum.photos"
-            title="Image form https://picsum.photos"
-          />
-          <figcaption>Image Title</figcaption>
-        </GalleryImageFrame>
-        <GalleryImageFrame>
-          <GalleryImage
-            className="gallery-img"
-            src="https://picsum.photos/230/300?random=1"
-            alt="Image form https://picsum.photos"
-            title="Image form https://picsum.photos"
-          />
-          <figcaption>Image Title</figcaption>
-        </GalleryImageFrame>
-        <GalleryImageFrame>
-          <GalleryImage
-            className="gallery-img"
-            src="https://picsum.photos/230/300?random=1"
-            alt="Image form https://picsum.photos"
-            title="Image form https://picsum.photos"
-          />
-          <figcaption>Image Title</figcaption>
-        </GalleryImageFrame>
-        <GalleryImageFrame>
-          <GalleryImage
-            className="gallery-img"
-            src="https://picsum.photos/230/300?random=1"
-            alt="Image form https://picsum.photos"
-            title="Image form https://picsum.photos"
-          />
-          <figcaption>Image Title</figcaption>
-        </GalleryImageFrame>
-        <GalleryImageFrame>
-          <GalleryImage
-            className="gallery-img"
-            src="https://picsum.photos/230/300?random=1"
-            alt="Image form https://picsum.photos"
-            title="Image form https://picsum.photos"
-          />
-          <figcaption>Image Title</figcaption>
-        </GalleryImageFrame>
+        {data.allFile.edges.map((image) => (
+          <GalleryImageFrame key={image.node.name}>
+            <GalleryImage
+              alt={image.node.name}
+              image={image.node.childImageSharp!.gatsbyImageData!}
+            />
+          </GalleryImageFrame>
+        ))}
       </GalleryContainer>
     </PageWithContent>
   );
@@ -114,6 +82,21 @@ export const artQuery = graphql`
         title
         author
         featuredImage
+      }
+    }
+    allFile(
+      filter: {
+        relativeDirectory: { eq: "art" }
+        extension: { regex: "/(jpg)|(jpeg)|(png)/" }
+      }
+    ) {
+      edges {
+        node {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH)
+          }
+          name
+        }
       }
     }
   }
