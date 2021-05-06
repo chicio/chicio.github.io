@@ -8,7 +8,8 @@ import { OgPageType } from "../logic/seo";
 import styled from "styled-components";
 import { PageTitle } from "../components/design-system/molecules/page-title";
 import { ContainerFluid } from "../components/design-system/atoms/container-fluid";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, getSrc, IGatsbyImageData } from "gatsby-plugin-image";
+import { useState } from "react";
 
 const GalleryContainer = styled(ContainerFluid)`
   padding: 0;
@@ -43,10 +44,39 @@ const GalleryImage = styled(GatsbyImage)`
   }
 `;
 
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.6);
+`;
+
+const Modal = styled.div`
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 100%;
+  max-width: 100%;
+  width: 600px;
+  z-index: 100;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
+`;
+
 const Art: React.FC<PageProps<ArtQuery>> = ({ data, location }) => {
   const siteMetadata = data.site!.siteMetadata!;
   const author = siteMetadata.author!;
   const featuredImage = siteMetadata.featuredImage!;
+  const [currentImage, setCurrentImage] = useState<IGatsbyImageData | null>(
+    null
+  );
 
   return (
     <PageWithContent
@@ -65,10 +95,24 @@ const Art: React.FC<PageProps<ArtQuery>> = ({ data, location }) => {
             <GalleryImage
               alt={image.node.name}
               image={image.node.childImageSharp!.gatsbyImageData!}
+              onClick={() =>
+                setCurrentImage(image.node.childImageSharp!.gatsbyImageData!)
+              }
             />
           </GalleryImageFrame>
         ))}
       </GalleryContainer>
+      {currentImage && (
+        <>
+          <ModalOverlay onClick={() => setCurrentImage(null)} />
+          <Modal>
+            <img
+              style={{ width: "100%", height: "auto" }}
+              src={getSrc(currentImage)}
+            />
+          </Modal>
+        </>
+      )}
     </PageWithContent>
   );
 };
