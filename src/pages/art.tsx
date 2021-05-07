@@ -12,6 +12,7 @@ import { GatsbyImage, getSrc, IGatsbyImageData } from "gatsby-plugin-image";
 import { useState } from "react";
 import { Paragraph } from "../components/design-system/atoms/paragraph";
 import { artDescriptions } from "../logic/art";
+import { CallToActionExternal } from "../components/design-system/atoms/call-to-action-external";
 
 const GalleryContainer = styled(ContainerFluid)`
   padding: 0;
@@ -61,8 +62,20 @@ const ModalOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 50;
+  z-index: 400;
   background: rgba(0, 0, 0, 0.6);
+
+  opacity: 0;
+  animation: show-profile-introduction 0.25s linear 0.25s;
+  animation-fill-mode: forwards;
+
+  @keyframes show-profile-introduction {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
 `;
 
 const Modal = styled.div`
@@ -75,11 +88,23 @@ const Modal = styled.div`
   max-width: 100%;
   width: 700px;
   height: 700px;
-  z-index: 100;
+  z-index: 400;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   padding: ${(props) => props.theme.spacing[4]};
+  opacity: 0;
+  animation: show-profile-introduction 0.25s linear 0.25s;
+  animation-fill-mode: forwards;
+
+  @keyframes show-profile-introduction {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
 
 const ModalImage = styled.img`
@@ -129,6 +154,9 @@ const Art: React.FC<PageProps<ArtQuery>> = ({ data, location }) => {
           <ModalOverlay onClick={() => setCurrentImage(null)} />
           <Modal>
             <ModalImage src={getSrc(currentImage)} />
+            <CallToActionExternal onClick={() => setCurrentImage(null)}>
+              Close
+            </CallToActionExternal>
           </Modal>
         </>
       )}
