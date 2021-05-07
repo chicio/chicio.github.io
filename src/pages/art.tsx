@@ -10,6 +10,8 @@ import { PageTitle } from "../components/design-system/molecules/page-title";
 import { ContainerFluid } from "../components/design-system/atoms/container-fluid";
 import { GatsbyImage, getSrc, IGatsbyImageData } from "gatsby-plugin-image";
 import { useState } from "react";
+import { Paragraph } from "../components/design-system/atoms/paragraph";
+import { artDescriptions } from "../logic/art";
 
 const GalleryContainer = styled(ContainerFluid)`
   padding: 0;
@@ -30,7 +32,16 @@ const GalleryContainer = styled(ContainerFluid)`
 const GalleryImageFrame = styled.figure`
   padding: ${(props) => props.theme.spacing[2]};
   margin: 0;
-  background-color: #333;
+  background-color: ${(props) => props.theme.light.generalBackgroundLight};
+
+  @media (prefers-color-scheme: dark) {
+    background: ${(props) => props.theme.dark.generalBackgroundLight};
+  }
+`;
+
+const GalleryImageDescription = styled(Paragraph)`
+  width: 250px;
+  text-align: center;
 `;
 
 const GalleryImage = styled(GatsbyImage)`
@@ -57,17 +68,25 @@ const ModalOverlay = styled.div`
 const Modal = styled.div`
   position: fixed;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   max-height: 100%;
   max-width: 100%;
-  width: 600px;
+  width: 700px;
+  height: 700px;
   z-index: 100;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background: white;
-  box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
+  padding: ${(props) => props.theme.spacing[4]};
+`;
+
+const ModalImage = styled.img`
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
 `;
 
 const Art: React.FC<PageProps<ArtQuery>> = ({ data, location }) => {
@@ -99,6 +118,9 @@ const Art: React.FC<PageProps<ArtQuery>> = ({ data, location }) => {
                 setCurrentImage(image.node.childImageSharp!.gatsbyImageData!)
               }
             />
+            <GalleryImageDescription>
+              {artDescriptions[image.node.name]}
+            </GalleryImageDescription>
           </GalleryImageFrame>
         ))}
       </GalleryContainer>
@@ -106,10 +128,7 @@ const Art: React.FC<PageProps<ArtQuery>> = ({ data, location }) => {
         <>
           <ModalOverlay onClick={() => setCurrentImage(null)} />
           <Modal>
-            <img
-              style={{ width: "100%", height: "auto" }}
-              src={getSrc(currentImage)}
-            />
+            <ModalImage src={getSrc(currentImage)} />
           </Modal>
         </>
       )}
@@ -133,6 +152,7 @@ export const artQuery = graphql`
         relativeDirectory: { eq: "art" }
         extension: { regex: "/(jpg)|(jpeg)|(png)/" }
       }
+      sort: { fields: name, order: DESC }
     ) {
       edges {
         node {
