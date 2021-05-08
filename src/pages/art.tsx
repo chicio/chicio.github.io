@@ -42,7 +42,11 @@ const GalleryImageFrame = styled.figure`
 
 const GalleryImageDescription = styled(Paragraph)`
   width: 250px;
+  height: 55px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const GalleryImage = styled(GatsbyImage)`
