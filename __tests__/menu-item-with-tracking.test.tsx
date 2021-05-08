@@ -22,6 +22,7 @@ describe("MenuItemWithTracking", () => {
             action: "action",
             label: "label",
           }}
+          selected={false}
         >
           Link
         </MenuItemWithTracking>

@@ -78,6 +78,7 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
           category: trackingCategory,
           label: tracking.label.footer,
         }}
+        selected={false}
       >
         Home
       </FooterMenuItem>
@@ -88,6 +89,7 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
           category: trackingCategory,
           label: tracking.label.footer,
         }}
+        selected={false}
       >
         Blog
       </FooterMenuItem>
@@ -98,6 +100,7 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
           category: trackingCategory,
           label: tracking.label.footer,
         }}
+        selected={false}
       >
         About Me
       </FooterMenuItem>
@@ -108,6 +111,7 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
           category: trackingCategory,
           label: tracking.label.footer,
         }}
+        selected={false}
       >
         Archive
       </FooterMenuItem>
@@ -118,6 +122,7 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
           category: trackingCategory,
           label: tracking.label.footer,
         }}
+        selected={false}
       >
         Tags
       </FooterMenuItem>

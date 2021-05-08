@@ -47,6 +47,7 @@ export const tracking = {
     cookie_policy: "cookie_policy",
     privacy_policy: "privacy_policy",
     notfound: "notfound",
+    art: "art",
   },
   label: {
     footer: "footer",
