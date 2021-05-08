@@ -1,6 +1,11 @@
 export const artDescriptions: { [imageName: string]: string } = {
-  "2021-03-24": "Screaming woman demon 😱😈",
-  "2021-03-25": "Take out your anger 😡🤬",
-  "2021-03-26": "Take out your anger 😡🤬 jdjdjdjjd jdjdjjd ",
-  "2021-03-27": "Take out your anger 😡🤬 jdjdjdjjd jdjdjjd ",
+  "2020-10-20": "Don’t let the world melt you down 🧊🤯",
+  "2020-11-11": "Flamingo, the lastminute.com mascot 🦩",
+  "2020-12-21": "Still life nature 🧺🍎",
+  "2021-01-13": "Tea pot 🫖☕️",
+  "2021-01-31": "I spray bits of code and blog posts every now and then 👨‍🎨💻",
+  "2021-02-21": "After the teapot, tea cup 🍵 ☕️",
+  "2021-03-07": "Monster mix with some self portrait details 😈💀",
+  "2021-03-18": "Screaming woman demon 😱😈",
+  "2021-04-18": "Fabergé eggs 🥚🥚",
 };

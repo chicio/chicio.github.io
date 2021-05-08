@@ -40,6 +40,8 @@ const GalleryImageDescription = styled(Paragraph)`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 0;
+  margin-right: 0;
 `;
 
 const GalleryImage = styled(GatsbyImage)`
