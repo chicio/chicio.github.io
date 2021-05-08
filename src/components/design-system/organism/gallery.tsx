@@ -87,6 +87,7 @@ export const Gallery: React.FC<GalleryProps> = ({ images }) => {
       {currentImage && (
         <ModalWithImage
           imageUrl={getSrc(currentImage)!}
+          imageAlt={"Modal Image"}
           onClick={() => setCurrentImage(null)}
         />
       )}

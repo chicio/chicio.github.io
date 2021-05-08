@@ -53,17 +53,19 @@ const ModalImage = styled.img`
 
 export interface ModalWithImageProps {
   imageUrl: string;
+  imageAlt: string;
   onClick: () => void;
 }
 
 export const ModalWithImage: React.FC<ModalWithImageProps> = ({
   imageUrl,
+  imageAlt,
   onClick,
 }) => (
   <>
     <ModalOverlay onClick={onClick} />
     <ModalContainer>
-      <ModalImage src={imageUrl} />
+      <ModalImage src={imageUrl} alt={imageAlt} />
       <CallToActionExternal onClick={onClick}>Close</CallToActionExternal>
     </ModalContainer>
   </>
