@@ -82,3 +82,5 @@ export const RecentPosts: React.FC<RecentPostsProps> = ({ currentSlug }) => {
     </RecentPostsContainer>
   );
 };
+
+export default RecentPosts;

@@ -198,5 +198,6 @@ module.exports = {
     },
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-loadable-components-ssr`,
   ],
 };

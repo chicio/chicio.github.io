@@ -32,3 +32,5 @@ export const PostTags: React.FC<PostTagsProps> = ({
     ))}
   </PostTagsContainer>
 );
+
+export default PostTags;

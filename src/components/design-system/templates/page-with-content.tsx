@@ -4,9 +4,11 @@ import { Page } from "./page";
 import * as React from "react";
 import styled from "styled-components";
 import { Container } from "../atoms/container";
-import { Footer } from "../organism/footer";
 import { OgPageType } from "../../../logic/seo";
 import { CurrentLocation } from "../../../logic/current-location";
+import loadable from "@loadable/component";
+
+const Footer = loadable(() => import(`../organism/footer`));
 
 const ContentContainer = styled(Container)`
   margin-top: ${(props) => props.theme.spacing[12]};

@@ -43,8 +43,10 @@
     "build-storybook": "build-storybook -o ./public/chicio-coding-design-system"
   },
   "dependencies": {
+    "@loadable/component": "^5.15.0",
     "@styled-icons/fa-brands": "^10.26.0",
     "@styled-icons/fa-solid": "^10.32.0",
+    "@types/loadable__component": "^5.13.3",
     "@types/react-adaptive-hooks": "0.0.0",
     "@types/styled-components": "^5.1.9",
     "babel-plugin-styled-components": "^1.12.0",
@@ -55,6 +57,7 @@
     "gatsby-plugin-google-gtag": "^3.2.0",
     "gatsby-plugin-graphql-codegen": "^2.7.1",
     "gatsby-plugin-image": "^1.2.0",
+    "gatsby-plugin-loadable-components-ssr": "^2.1.0",
     "gatsby-plugin-manifest": "^3.2.0",
     "gatsby-plugin-offline": "^4.2.0",
     "gatsby-plugin-react-helmet": "^4.2.0",

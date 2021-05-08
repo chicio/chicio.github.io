@@ -1,23 +1,33 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
 import { tracking } from "../logic/tracking";
-import { Comments } from "../components/design-system/molecules/comments";
 import { PostMeta } from "../components/design-system/molecules/post-meta";
 import { PostQuery } from "../../graphql-types";
 import { PostAuthors } from "../components/design-system/molecules/post-authors";
-import { RecentPosts } from "../components/design-system/organism/recent-posts";
 import { getSrc } from "gatsby-plugin-image";
 import { BlogPage } from "../components/design-system/templates/blog-page";
-import { PostTags } from "../components/design-system/molecules/post-tags";
 import { Heading2 } from "../components/design-system/atoms/heading2";
 import { PostContent } from "../components/post-content";
 import styled from "styled-components";
 import { OgPageType } from "../logic/seo";
 import { getCurrentLocationFrom } from "../logic/current-location";
+import loadable from "@loadable/component";
 
 const PostTitle = styled(Heading2)`
   margin: 0;
 `;
+
+const RecentPosts = loadable(
+  () => import(`../components/design-system/organism/recent-posts`)
+);
+
+const PostTags = loadable(
+  () => import(`../components/design-system/molecules/post-tags`)
+);
+
+const Comments = loadable(
+  () => import(`../components/design-system/molecules/comments`)
+);
 
 const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
   const post = data.markdownRemark!;

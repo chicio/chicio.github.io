@@ -153,3 +153,5 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
     </FooterAuthorDescription>
   </FooterContainer>
 );
+
+export default Footer;

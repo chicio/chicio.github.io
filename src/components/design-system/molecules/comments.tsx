@@ -23,3 +23,5 @@ export const Comments: React.FC<CommentsProps> = ({ url, title }) => (
     />
   </CommentsContainer>
 );
+
+export default Comments;
