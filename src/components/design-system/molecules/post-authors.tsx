@@ -8,7 +8,6 @@ import { ContainerFluid } from "../atoms/container-fluid";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Paragraph } from "../atoms/paragraph";
 import { StandardExternalLinkWithTracking } from "../../standard-external-link-with-tracking";
-import { CallToActionExternalWithTracking } from "../../call-to-action-external-with-tracking";
 
 const PostAuthorsContainer = styled(ContainerFluid)`
   padding: 0;
