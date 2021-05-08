@@ -1,6 +1,6 @@
 export const artDescriptions: { [imageName: string]: string } = {
   "2020-10-20": "Don’t let the world melt you down 🧊🤯",
-  "2020-11-11": "Flamingo, the lastminute.com mascot 🦩",
+  "2020-11-11": "Flamingo, the lastminute mascot 🦩",
   "2020-12-21": "Still life nature 🧺🍎",
   "2021-01-13": "Tea pot 🫖☕️",
   "2021-01-31": "I spray bits of code and blog posts every now and then 👨‍🎨💻",
