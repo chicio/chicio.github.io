@@ -7,6 +7,7 @@ Release date: 2021-05-08
 #### Added
 
 - New art section (without content)
+- loadable components for lazy loading of below the fold content
 
 #### Fixed
 
