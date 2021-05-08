@@ -1,6 +1,17 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [4.7.0](https://github.com/chicio/chicio.github.io/releases/tag/v4.7.0)
+Release date: 2021-05-08
+
+#### Added
+
+- New art section (without content)
+
+#### Fixed
+
+- image url for seo with base path
+
 ## [4.6.0](https://github.com/chicio/chicio.github.io/releases/tag/v4.6.0)
 Release date: 2021-05-01
 

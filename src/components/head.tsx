@@ -66,6 +66,7 @@ export const Head: React.FC<HeadProps> = ({
           siteMetadata {
             author
             title
+            siteUrl
             contacts {
               links {
                 twitter
@@ -86,13 +87,20 @@ export const Head: React.FC<HeadProps> = ({
   const siteMetadata = data.site!.siteMetadata!;
   const title = customTitle ? customTitle : siteMetadata.title!;
   const author = siteMetadata.author!;
+  const siteUrl = siteMetadata.siteUrl!;
   const links = siteMetadata.contacts!.links!;
 
   return (
     <Helmet
       title={title}
       htmlAttributes={{ lang: "en" }}
-      meta={createMetaAttributes(author, title, url, imageUrl, pageType)}
+      meta={createMetaAttributes(
+        author,
+        title,
+        url,
+        `${siteUrl}${imageUrl}`,
+        pageType
+      )}
     >
       <link rel="canonical" href={url} />
       <link rel="author" href={"/humans.txt"} />
