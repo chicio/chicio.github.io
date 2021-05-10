@@ -1,4 +1,7 @@
 export const artDescriptions: { [imageName: string]: string } = {
+  "2020-08-20": "The crown (personal reinterpretation) 👑👸",
+  "2020-09-08": "Bat 🦇",
+  "2020-10-08": "Metró de Patris",
   "2020-10-20": "Don’t let the world melt you down 🧊🤯",
   "2020-11-11": "Flamingo, the lastminute mascot 🦩",
   "2020-12-21": "Still life nature 🧺🍎",
