@@ -1,4 +1,6 @@
 export const artDescriptions: { [imageName: string]: string } = {
+  "2020-07-08": "Triceratops 🦖",
+  "2020-07-21": "Snail 🐌",
   "2020-08-20": "The crown (personal reinterpretation) 👑👸",
   "2020-09-08": "Bat 🦇",
   "2020-10-08": "Metró de Patris",
