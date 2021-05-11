@@ -1,4 +1,11 @@
 export const artDescriptions: { [imageName: string]: string } = {
+  "2020-04-23": "Tiger's eyes 🐯 (one of the most mainstream tattoo ever 😂)",
+  "2020-05-02": "Bass guitar 🎸",
+  "2020-05-15": "Jonathan Davis mic stand design by H.R. Giger. Korn!!❤️❤️",
+  "2020-05-25": "Gun and bullets 💣",
+  "2020-06-07": "Pan’s labyrinth faun 💝",
+  "2020-06-16": "Alien octopus with skull 💀🐙",
+  "2020-06-25": "Thor hammer (Mjölnir) 🔨",
   "2020-07-08": "Triceratops 🦖",
   "2020-07-21": "Snail 🐌",
   "2020-08-20": "The crown (personal reinterpretation) 👑👸",
