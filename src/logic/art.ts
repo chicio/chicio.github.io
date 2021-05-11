@@ -1,4 +1,7 @@
 export const artDescriptions: { [imageName: string]: string } = {
+  "2020-03-17": "Topolino 🐭",
+  "2020-04-04": "Slimer 👻",
+  "2020-04-15": "Wolf Spider 🕷",
   "2020-04-23": "Tiger's eyes 🐯 (one of the most mainstream tattoo ever 😂)",
   "2020-05-02": "Bass guitar 🎸",
   "2020-05-15": "Jonathan Davis mic stand design by H.R. Giger. Korn!!❤️❤️",
