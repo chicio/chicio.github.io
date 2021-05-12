@@ -67,7 +67,7 @@ const images = [
 ];
 
 describe("Gallery", () => {
-  it("show the image when the user clicks on it", async () => {
+  it("shows the image when the user clicks on it", async () => {
     render(
       <Page>
         <Gallery images={images} />
