@@ -1,4 +1,10 @@
 export const artDescriptions: { [imageName: string]: string } = {
+  "2019-11-05": "Old school tattoo draw 🐍🤝",
+  "2019-11-15": "Ex-voto ❤️",
+  "2019-11-26": "Yoshi",
+  "2019-12-07": "500 🚗🏎",
+  "2019-12-15": "Scarab 🕷 with moon 🌝",
+  "2019-12-23": "Baby yoda from the mandalorian Disney series 🪐☄️👽",
   "2020-01-05": "Wall-e 🤖",
   "2020-01-16": "Peonia 🌸🌼",
   "2020-01-26": "Gizmo from the gremlins series 👻",
