@@ -15,26 +15,30 @@ const GalleryContainer = styled(ContainerFluid)`
   justify-items: center;
   grid-column-gap: 20px;
   grid-row-gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-
-  @media (min-width: 992px) {
-    grid-column-gap: 20px;
-    grid-row-gap: 40px;
-  }
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 `;
 
 const GalleryImageFrame = styled.figure`
-  padding: ${(props) => props.theme.spacing[2]};
+  padding: ${(props) => props.theme.spacing[1]};
   margin: 0;
   background-color: ${(props) => props.theme.light.generalBackgroundLight};
+  box-shadow: 0 3px 10px 0 ${(props) => props.theme.light.boxShadowLight};
+  transition: transform 0.2s;
+
+  @media (min-width: 992px) {
+    &:hover {
+      transform: scale(1.025);
+    }
+  }
 
   @media (prefers-color-scheme: dark) {
     background: ${(props) => props.theme.dark.generalBackgroundLight};
+    box-shadow: 0 3px 10px 0 ${(props) => props.theme.dark.boxShadowLight};
   }
 `;
 
 const GalleryImageDescription = styled(Paragraph)`
-  width: 250px;
+  width: 280px;
   height: 55px;
   text-align: center;
   display: flex;
@@ -45,8 +49,8 @@ const GalleryImageDescription = styled(Paragraph)`
 `;
 
 const GalleryImage = styled(GatsbyImage)`
-  height: auto;
-  width: 250px;
+  width: 280px;
+  height: 280px;
   object-fit: cover;
   transition: opacity 0.25s ease-in-out;
 
