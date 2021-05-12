@@ -1,15 +1,7 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { CallToActionExternal } from "../atoms/call-to-action-external";
 import * as React from "react";
-
-const opacity = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`;
+import { opacity } from "../../opacity-keyframes";
 
 const ModalOverlay = styled.div`
   position: fixed;

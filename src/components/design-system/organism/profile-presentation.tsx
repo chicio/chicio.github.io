@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { Heading2 } from "../atoms/heading2";
 import { slugs } from "../../../logic/slug";
 import { CallToActionInternalWithTracking } from "../../call-to-action-internal-with-tracking";
+import { opacity } from "../../opacity-keyframes";
 
 const Author = styled(Heading2)`
   color: ${(props) => props.theme.light.textAbovePrimaryColor};
@@ -36,17 +37,8 @@ const ProfileContainer = styled.div`
   justify-content: center;
   text-align: center;
   opacity: 0;
-  animation: show-profile-introduction 1s linear 0.5s;
+  animation: ${opacity} 1s linear 0.5s;
   animation-fill-mode: forwards;
-
-  @keyframes show-profile-introduction {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
 `;
 
 const ProfileImageContainer = styled.div`
