@@ -1,4 +1,8 @@
 export const artDescriptions: { [imageName: string]: string } = {
+  "2020-01-05": "Wall-e 🤖",
+  "2020-01-16": "Peonia 🌸🌼",
+  "2020-01-26": "Gizmo from the gremlins series 👻",
+  "2020-02-15": "E.t. 👽",
   "2020-02-26": "Nemo 🐠🐟🐡",
   "2020-03-04": "Geometric trip + mental problems 😰",
   "2020-03-12": "Brain 🧠",
