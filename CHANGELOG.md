@@ -1,6 +1,14 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [4.8.0](https://github.com/chicio/chicio.github.io/releases/tag/v4.8.0)
+Release date: 2021-05-13
+
+#### Added
+
+- Some images for art section
+- Header hide/show on scroll
+
 ## [4.7.0](https://github.com/chicio/chicio.github.io/releases/tag/v4.7.0)
 Release date: 2021-05-08
 
