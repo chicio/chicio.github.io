@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { tracking } from "../../../logic/tracking";
 import styled, { css } from "styled-components";
 import { Container } from "../atoms/container";
 import { slugs } from "../../../logic/slug";
 import { MenuItemWithTracking } from "../../menu-item-with-tracking";
 
-const MenuContainer = styled.div`
+interface MenuContainerProps {
+  shouldHide: boolean;
+}
+
+const MenuContainer = styled.div<MenuContainerProps>`
   background-color: ${(props) => props.theme.light.primaryColor};
   box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.1);
   position: fixed;
-  top: 0;
+  top: ${(props) => (props.shouldHide ? "-55px" : 0)};
+  transition: top 0.3s ease 0s;
   width: 100%;
   height: 55px;
   z-index: 300;
@@ -56,47 +61,92 @@ const NavBarMenuItem = styled(MenuItemWithTracking)`
     `};
 `;
 
+enum ScrollDirection {
+  up,
+  down,
+}
+
+const useScrollDirection = () => {
+  const threshold = 100;
+  const [scrollDir, setScrollDir] = useState(ScrollDirection.up);
+
+  useEffect(() => {
+    let previousScrollYPosition = window.pageYOffset;
+
+    const scrolledMoreThanThreshold = (currentScrollYPosition: number) =>
+      Math.abs(currentScrollYPosition - previousScrollYPosition) > threshold;
+
+    const isScrollingUp = (currentScrollYPosition: number) =>
+      currentScrollYPosition > previousScrollYPosition;
+
+    const updateScrollDir = () => {
+      const currentScrollYPosition = window.pageYOffset;
+
+      if (scrolledMoreThanThreshold(currentScrollYPosition)) {
+        const newScrollDirection = isScrollingUp(currentScrollYPosition)
+          ? ScrollDirection.down
+          : ScrollDirection.up;
+        setScrollDir(newScrollDirection);
+        previousScrollYPosition =
+          currentScrollYPosition > 0 ? currentScrollYPosition : 0;
+      }
+    };
+
+    const onScroll = () => window.requestAnimationFrame(updateScrollDir);
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return scrollDir;
+};
+
 export interface MenuProps {
   trackingCategory: string;
   pathname: string;
 }
 
-export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => (
-  <MenuContainer>
-    <NavBar>
-      <NavBarMenuItem
-        selected={pathname === "/"}
-        to={"/"}
-        trackingData={{
-          action: tracking.action.open_home,
-          category: trackingCategory,
-          label: tracking.label.header,
-        }}
-      >
-        {"Home"}
-      </NavBarMenuItem>
-      <NavBarMenuItem
-        selected={pathname !== slugs.aboutMe}
-        to={slugs.blog}
-        trackingData={{
-          action: tracking.action.open_blog,
-          category: trackingCategory,
-          label: tracking.label.header,
-        }}
-      >
-        {"Blog"}
-      </NavBarMenuItem>
-      <NavBarMenuItem
-        selected={pathname === slugs.aboutMe}
-        to={slugs.aboutMe}
-        trackingData={{
-          action: tracking.action.open_about_me,
-          category: trackingCategory,
-          label: tracking.label.header,
-        }}
-      >
-        {"About me"}
-      </NavBarMenuItem>
-    </NavBar>
-  </MenuContainer>
-);
+export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
+  const direction = useScrollDirection();
+
+  return (
+    <MenuContainer shouldHide={direction == ScrollDirection.down}>
+      <NavBar>
+        <NavBarMenuItem
+          selected={pathname === "/"}
+          to={"/"}
+          trackingData={{
+            action: tracking.action.open_home,
+            category: trackingCategory,
+            label: tracking.label.header,
+          }}
+        >
+          {"Home"}
+        </NavBarMenuItem>
+        <NavBarMenuItem
+          selected={pathname !== slugs.aboutMe}
+          to={slugs.blog}
+          trackingData={{
+            action: tracking.action.open_blog,
+            category: trackingCategory,
+            label: tracking.label.header,
+          }}
+        >
+          {"Blog"}
+        </NavBarMenuItem>
+        <NavBarMenuItem
+          selected={pathname === slugs.aboutMe}
+          to={slugs.aboutMe}
+          trackingData={{
+            action: tracking.action.open_about_me,
+            category: trackingCategory,
+            label: tracking.label.header,
+          }}
+        >
+          {"About me"}
+        </NavBarMenuItem>
+      </NavBar>
+    </MenuContainer>
+  );
+};
