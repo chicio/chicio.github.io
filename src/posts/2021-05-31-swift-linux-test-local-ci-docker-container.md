@@ -1,16 +1,16 @@
 ---
 title: "How to test you Swift source code on Linux locally and on Github Actions"
-description: "Quick tips (useful for open source projects) on how you can test your Swift source code on Linux locally 
+description: "Quick tips (useful for open source projects) for testing your Swift source code on Linux locally 
 and with Github Actions."
 date: 2021-05-15 
-image: ../images/posts/XXX
+image: ../images/posts/spm-swift.jpg
 tags: [swift, ios, apple, mobile application development, macos, tvos, watchos]
 comments: true 
 math: false 
 authors: [fabrizio_duroni]
 ---
 
-*Quick tips (useful for open source projects) on how you can test your Swift source code on Linux locally
+*Quick tips (useful for open source projects) for testing your Swift source code on Linux locally
 and with Github Actions.*
 
 ---
