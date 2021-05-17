@@ -8,8 +8,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.ACCESS_TOKEN }}
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
@@ -28,7 +26,7 @@ jobs:
           npm run build-ci
           git config --global user.email "fabrizio.duroni@gmail.com"
           git config --global user.name "Fabrizio Duroni"
-          git remote set-url origin https://github.com/chicio/chicio.github.io.git
+          git remote set-url origin https://chicio:${{ secrets.ACCESS_TOKEN }}@github.com/repo.git
           npm run deploy
       - name: Archive generated site source
         uses: actions/upload-artifact@v1
