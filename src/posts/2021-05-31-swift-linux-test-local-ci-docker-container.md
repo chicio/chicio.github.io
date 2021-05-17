@@ -45,7 +45,7 @@ docker run --rm --privileged \
 You can replace the `ID3TagEditor` folder name above with any name you want. After the container is created you will 
 be in your source code dir and you can use the usual `swift build`, `swift test` (and if you need `swift package 
 clean`) to test your source code.  
-Now that you tested your code locally your ready to publish it on Github. Obviously you want to put in place a 
+Now that you tested your code locally you are ready to publish it on Github. Obviously you want to put in place a 
 CI workflow with Github Actions to test that changes to the code will not break it. How can you do it? If you search 
 on Google, you will find some Github Actions that replicate with some scripts all the steps needed in order to 
 install Swift on Linux. Do NOT use them!! There's no need for this type of actions!! :satisfied: In fact we just 
@@ -89,4 +89,4 @@ jobs:
 #### Conclusion
 
 Yes that's all for Swift testing on Linux locally and on Github Actions. I promised you it would have been a "quick 
-tips" post :stuck_out_tongue_closed_eyes:. I hope you will find it useful.  
+tips" post. :stuck_out_tongue_closed_eyes: I hope you will find it useful.  
