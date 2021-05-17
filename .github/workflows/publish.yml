@@ -6,8 +6,27 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: enriikke/gatsby-gh-pages-action@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v1
         with:
-          access-token: ${{ secrets.ACCESS_TOKEN }}
-          deploy-branch: main
+          node-version: '14'
+      - name: Cache npm
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Publish
+        run: |
+          npm run build-ci
+          npm run deploy
+      - name: Archive generated site source
+        uses: actions/upload-artifact@v1
+        with:
+          name: site
+          path: public
