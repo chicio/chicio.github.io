@@ -39,6 +39,7 @@
     "build-ci": "./scripts/build-ci.sh",
     "predeploy": "npm run clean && npm run build",
     "deploy": "gh-pages -d public -b main",
+    "deploy-ci": "./scripts/deploy-ci.sh",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o ./public/chicio-coding-design-system"
   },

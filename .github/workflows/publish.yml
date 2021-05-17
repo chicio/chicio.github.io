@@ -23,11 +23,10 @@ jobs:
             ${{ runner.os }}-
       - name: Publish
         run: |
-          npm run build-ci
           git config --global user.email "fabrizio.duroni@gmail.com"
           git config --global user.name "Fabrizio Duroni"
-          git remote set-url origin https://chicio:${{ secrets.ACCESS_TOKEN }}@github.com/repo.git
-          npm run deploy
+          git remote set-url origin https://chicio:${{ secrets.ACCESS_TOKEN }}@github.com/chicio.github.io.git
+          npm run deploy-ci
       - name: Archive generated site source
         uses: actions/upload-artifact@v1
         with:
