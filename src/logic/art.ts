@@ -1,4 +1,11 @@
 export const artDescriptions: { [imageName: string]: string } = {
+  "2019-08-31": "Astronaut, inspired by Buzz Aldrin moon photo 🚀",
+  "2019-09-07":
+    "Spaceship inspired by nasa shuttle discovery and Atlantis 🚀🚀",
+  "2019-09-11": "Toad from Super Mario games",
+  "2019-09-16": "❤️ Heart ❤️",
+  "2019-09-22": "Robin with inspirational google search image ❤️",
+  "2019-09-23": "Freehand baby Goku from Dragon Ball series ❤️",
   "2019-10-07": "Cloud Strife from Final Fantasy VII 👾🗡",
   "2019-10-20": "Tiger studies 🐯",
   "2019-10-30": "Princess 🍑",
