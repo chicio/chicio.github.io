@@ -1,25 +1,20 @@
 name: Lighthouse
 
-on:
-  push:
-    branches: 
-      - '*'
-  schedule:
-    - cron: '0 */6 * * *' 
+on: [workflow_dispatch]
 
 jobs:
-  build-and-test:      
+  build-and-test:
     name: Lighthouse Audit
     runs-on: macos-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2              
+        uses: actions/checkout@v2
       - name: Lhci
         uses: treosh/lighthouse-ci-action@v3
         with:
           urls: |
             https://www.fabrizioduroni.it
             https://www.fabrizioduroni.it/blog/
-          configPath: './.lighthouserc.json'  
+          configPath: './.lighthouserc.json'
           uploadArtifacts: true
-          temporaryPublicStorage: true                
+          temporaryPublicStorage: true
