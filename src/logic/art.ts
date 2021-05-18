@@ -1,4 +1,7 @@
 export const artDescriptions: { [imageName: string]: string } = {
+  "2019-08-13": "Hand ✋",
+  "2019-08-14": "Foot 🦶",
+  "2019-08-16": "Skull 😍💀",
   "2019-08-31": "Astronaut, inspired by Buzz Aldrin moon photo 🚀",
   "2019-09-07":
     "Spaceship inspired by nasa shuttle discovery and Atlantis 🚀🚀",
