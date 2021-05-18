@@ -19,7 +19,8 @@ jobs:
           node-version: '14'
       - name: Release
         run: |
-          npm run build-ci
+          sh ./scripts/install-ci.sh
+          npm run build
           zip -r site.zip public/
       - name: Create Release
         id: create_release

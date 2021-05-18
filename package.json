@@ -32,13 +32,11 @@
     "clean": "gatsby clean",
     "serve": "gatsby serve",
     "test": "jest",
-    "test-ci": "./scripts/test-ci.sh",
     "prebuild": "npm run test",
     "build": "gatsby build",
     "postbuild": "npm run build-storybook",
     "predeploy": "npm run clean && npm run build",
     "deploy": "gh-pages -d public -b main",
-    "deploy-ci": "./scripts/deploy-ci.sh",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o ./public/chicio-coding-design-system"
   },
