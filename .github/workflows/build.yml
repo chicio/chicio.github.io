@@ -27,7 +27,8 @@ jobs:
             ${{ runner.os }}-
       - name: Build
         run: |
-          npm run build-ci
+          sh ./scripts/install-ci.sh
+          npm run build
       - name: Archive generated site source
         uses: actions/upload-artifact@v1
         with:

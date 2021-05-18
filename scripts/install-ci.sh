@@ -1,7 +1,6 @@
 #!/usr/bin/env zsh
 
-# Build script for CI
+# Install script for CI
 
 npm install -g gatsby-cli
 npm install
-npm run build

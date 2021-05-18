@@ -36,7 +36,6 @@
     "prebuild": "npm run test",
     "build": "gatsby build",
     "postbuild": "npm run build-storybook",
-    "build-ci": "./scripts/build-ci.sh",
     "predeploy": "npm run clean && npm run build",
     "deploy": "gh-pages -d public -b main",
     "deploy-ci": "./scripts/deploy-ci.sh",
