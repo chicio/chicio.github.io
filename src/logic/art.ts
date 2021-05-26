@@ -1,4 +1,7 @@
 export const artDescriptions: { [imageName: string]: string } = {
+  "2018-11-15": "Flowers 🌺",
+  "2018-11-16": "Rose 🌹",
+  "2018-11-28": "Flower 🌺",
   "2019-01-20": "Horse 🐴",
   "2019-02-18": "Oak 🌳",
   "2019-04-18": "Ears 👂",
