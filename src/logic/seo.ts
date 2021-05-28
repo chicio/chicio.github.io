@@ -106,6 +106,10 @@ export const createMetaAttributes = (
     name: "msapplication-TileImage",
     content: `/mstile-144x144.png`,
   },
+  {
+    name: "yandex-verification",
+    content: "741cf901cb1dbdf5",
+  },
 ];
 
 export const createJsonLD = (
