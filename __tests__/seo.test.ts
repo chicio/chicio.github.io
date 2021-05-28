@@ -108,6 +108,10 @@ describe("Seo", () => {
         name: "msapplication-TileImage",
         content: `/mstile-144x144.png`,
       },
+      {
+        name: "yandex-verification",
+        content: "741cf901cb1dbdf5",
+      },
     ]);
   });
 
