@@ -1,6 +1,6 @@
 ---
 title: "A Domain Driven Design dictionary for newbies"
-description: "In the last months, I started to heard a lot of stuff about Domain Driven Design. What is DDD? What does it try to solve? This is a post for all the newbies (like me) that are searching for a definition of what DDD is, what are its main parts and what is its main goal"
+description: "In the last months, I started to hear a lot of stuff about Domain Driven Design. What is DDD? What does it try to solve? This is a post for all the newbies (like me) that are searching for a definition of what DDD is, which are its main parts and what is its main goal."
 date: 2021-07-15 
 image: ../images/posts/ddd-bounded-context-ubiquitous-language.jpg
 tags: [domain driven design]
@@ -9,13 +9,12 @@ math: false
 authors: [fabrizio_duroni]
 ---
 
-**In the last months, I started to heard a lot of stuff about Domain Driven Design. What is DDD? What does it try to solve? This is a post for all the newbies (like me) that are searching for a definition of what DDD is, what are its main parts and what is its main goal**
+*In the last months, I started to hear a lot of stuff about Domain Driven Design. What is DDD? What does it try to solve? This is a post for all the newbies (like me) that are searching for a definition of what DDD is, which are its main parts and what is its main goal.*
 
 ---
 
 In the last months the main focus of my daily job at Lastminute.com group was the existing refund process development in order to support our customer hit by the COVID-19 pandemic. While I’m still working (a lot :laughing:) on it, I also had the opportunity to partecipate to the start up of a new project (anyway, still related to the refund stuff :sweat_smile:). In this new project we decided to take leverage of the power of DDD to approach the problem we need to solve. In my mind I said: ”Ok, let’s do it”, but then I started to think: ”What the f%*§ is this DDD? I do know nothing about it” :sweat_smile:.  
-This is why I recently attended the video course “Domain Driven Design Distilled” by [Vaughn Vernon](https://twitter.com/vaughnvernon?lang=en), one of the top expert about DDD.  
-In this post I will try to share with you what I learnt about DDD and I will try to give you the best (opinionated) definition of DDD and of all its parts. 
+This is why I recently attended the video course “Domain Driven Design Distilled” by [Vaughn Vernon](https://twitter.com/vaughnvernon?lang=en), one of the top expert about DDD. In this post I will try to share with you what I learnt about DDD and I will try to give you the best (opinionated) definition of DDD and of all its parts. 
 
 #### DDD
 So let’s start from the basis. What is DDD? DDD is a set of tools that help an organization to model software around its business model. Generally speaking a company CAN’T be the best at everything. The DDD tools help organizations to better understand their business and to choose at what they should excel. In this way through DDD an organization can implement what is usually called Effective Design to develop its software. It main features are:
@@ -43,7 +42,7 @@ Strategic design is the first phase of DDD. With a set of specific tool strategi
 
 Let’s see them in details.
 
-##### Bounded Context and Ubiquitous language
+#### Bounded Context and Ubiquitous language
 Let’s start from the definition of Bounded Context from the Vaughn Vernon course:
 
 > …a Bounded Context is a semantic contextual boundary. This means that within the boundary each component of the software model has a specific meaning and does specific things. The components inside a Bounded Context are context specific and semantically motivated…  
@@ -57,11 +56,11 @@ Usually the team that is working on a bounded context should work strictly with 
 
 > …The software model inside the context boundary reflects a language that is developed by the team working in the Bounded Context and is spoken by every member of the team that creates the software model that functions within that Bounded Context. The language is called the Ubiquitous Language because it is both spoken among the team members and implemented in the software model…  
 
-![ddd bounded context ubiquitous language (credits “DDD distilled” by V. Vernon)](../images/posts/ddd-bounded-context-ubiquitous-language.jpg)
+![DDD bounded context ubiquitous language (credits “DDD distilled” by V. Vernon)](../images/posts/ddd-bounded-context-ubiquitous-language.jpg)
 
 How many bounded context will your project have? How do they map to your business  domain parts. Let’s answer to these question with Subdomain
 
-##### Subdomains
+#### Subdomains
 
 Let’s start as always from a definition of what a subdomain is.
 
@@ -77,7 +76,7 @@ In DDD a subdomain maps tot a single bounded context. The domain expert of a par
 
 From the definition above it should be clear that every software project will have multiple subdomains and bounded context. How do you integrate them together?
 
-##### Context mapping
+#### Context mapping
 Context mapping lets you integrate different bounded contexts. It is the translation between them. It is important to evaluate the “translation” trade off when a context mapping is required. This is usually related to the type of relation between bounded context we would like to achieve. In particular its important to consider the real needs of a relationship two bounded contexts.
 There are various types of context mapping:
 
@@ -94,7 +93,7 @@ There are various types of context mapping:
 In the previous paragraph we explored all the details of Strategic Design. At this point I think it’s clear that Strategic Design is an high level design phase, because it lets you define the subdivision of your domain and of your software model without entering into details.  In particular, at this point with strategic design we defined all our bounded contexts but not what live inside them. All the details of the bounded contexts are defined in the Tactical Design phase.  
 What are the details we want to define during the Tactical Design? We would like to define the concepts contained in a bounded context. This are usually represented as Aggregates.
 
-##### Aggregates
+#### Aggregates
 An aggregate is a set of domain objects, usually called Entities and Value Objects, that are considered as a single item inside our bounded context. One of the entities that make up the Aggregate is called the Aggregate Root or Root Entity. This entity owns all the others inside the aggregate. Value objects are used, as the name implies, to represent values. We can have a look at Vernon definition that I think is enough clear.
 
 > A Value Object, or simply a Value, models an immutable conceptual whole. Within the model the Value is just that, a value. Unlike an Entity, it does not have a unique identity, and equivalence is determined by comparing the attributes encapsulated by the Value type. Furthermore, a Value Object is not a thing but is often used to describe, quantify, or measure an Entity.  
@@ -112,7 +111,7 @@ Let’s try to analyze them. The first one refer to the fact that is the busines
 The second one is easy (and common in computer science :laughing:): keep your aggregates small in order to reduce memory footprint and complexity.  The third one also is simple and clear: aggregates should reference each other by identity fields in order to (again) reduce memory footprint but also, and more important in this case, enforce the transactional boundary that each aggregate represents.  
 Last but not least the eventual consistency update rule. As we already said, aggregates are transactional boundaries. How do we signal that another aggregate should be updated when another one finished its update transaction. We can use a messaging mechanism in order to guarantee that after the transaction on one aggregates, others should be updated too. For this scope Domain Events come to rescue us.
 
-##### Domain Events
+#### Domain Events
 Let’ quote (again :laughing:) the Vernon definition of Domain Events.
 
 > A Domain Event is a record of some business-significant occurrence in a Bounded Context.  
@@ -125,7 +124,7 @@ So domain events are the fundamentals of communication between aggregates in ord
 
 As we said above domain events should be saved while updating aggregates. This is useful in order to have a clear understand of what happened to an aggregates. We can also use them to implement event sourcing.
 
-###### Event sourcing
+##### Event sourcing
 Event sourcing is a technique where an aggregate current state is reconstructed by applying in temporal order all the domain events related to an aggregate. Let’s take a look at the explanation from Vernon:
 
 > Event Sourcing can be described as persisting all Domain Events that have occurred for an Aggregate instance as a record of what changed about that Aggregate instance. Rather than persisting the Aggregate state as a whole, you store all the individual Domain Events that have happened to it. Let’s step through how this is supported.    
@@ -134,4 +133,4 @@ Event sourcing is a technique where an aggregate current state is reconstructed 
 Event sourcing has a lot of advantages, from a business point of view and from the developer point of view. One of the greatest advantages of using it from the business point of view is that you have historical data that you can use for many reasons, ones that you can imagine today, such as compliance and analytics, and ones that you won’t realize until later. For developers it can enable them to use event streams to examine usage trends and to debug their source code.
 
 #### Conclusion
-If you came until here I hope you enjoyed the read, but more important that you found the answers you were searching for. If this post didn’t clarify your doubts, let me know in the comments, so that I can try to add what is missing and improve it :kissing_heart:.
+If you came until here I hope you enjoyed the read, but more important that you found the answers you were searching for. If this post didn’t clarify your doubts, let me know in the comments, so that I can try to add what is missing and improve it. :kissing_heart:
