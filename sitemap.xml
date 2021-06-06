@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://www.fabrizioduroni.it/2021/06/06/ddd-dictionary/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.fabrizioduroni.it/2021/05/31/swift-linux-test-local-ci-docker-container/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.fabrizioduroni.it/2021/03/08/ios-test-multiple-configuration-test-plan/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.fabrizioduroni.it/2021/01/27/kotlin-junit5-mockk/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -77,6 +78,7 @@
 <url> <loc>https://www.fabrizioduroni.it/blog/5</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.fabrizioduroni.it/blog/6</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.fabrizioduroni.it/blog/7</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://www.fabrizioduroni.it/blog/8</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.fabrizioduroni.it/blog/tags/IDE/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.fabrizioduroni.it/blog/tags/agile/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.fabrizioduroni.it/blog/tags/android/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -89,6 +91,7 @@
 <url> <loc>https://www.fabrizioduroni.it/blog/tags/computer-graphics/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.fabrizioduroni.it/blog/tags/conference/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.fabrizioduroni.it/blog/tags/design/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://www.fabrizioduroni.it/blog/tags/domain-driven-design/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.fabrizioduroni.it/blog/tags/github-pages/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.fabrizioduroni.it/blog/tags/gulp/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.fabrizioduroni.it/blog/tags/ios/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
