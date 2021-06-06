@@ -124,7 +124,7 @@ So domain events are the fundamentals of communication between aggregates in ord
 
 As we said above domain events should be saved while updating aggregates. This is useful in order to have a clear understand of what happened to an aggregates. We can also use them to implement event sourcing.
 
-##### Event sourcing
+#### Event sourcing
 Event sourcing is a technique where an aggregate current state is reconstructed by applying in temporal order all the domain events related to an aggregate. Let’s take a look at the explanation from Vernon:
 
 > Event Sourcing can be described as persisting all Domain Events that have occurred for an Aggregate instance as a record of what changed about that Aggregate instance. Rather than persisting the Aggregate state as a whole, you store all the individual Domain Events that have happened to it. Let’s step through how this is supported.    
