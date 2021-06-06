@@ -1,4 +1,4 @@
-----
+---
 title: "A Domain Driven Design dictionary for newbies"
 description: "In the last months, I started to heard a lot of stuff about Domain Driven Design. What is DDD? What does it try to solve? This is a post for all the newbies (like me) that are searching for a definition of what DDD is, what are its main parts and what is its main goal"
 date: 2021-07-15 
@@ -7,11 +7,11 @@ tags: [domain driven design]
 comments: true 
 math: false 
 authors: [fabrizio_duroni]
-----
+---
 
 **In the last months, I started to heard a lot of stuff about Domain Driven Design. What is DDD? What does it try to solve? This is a post for all the newbies (like me) that are searching for a definition of what DDD is, what are its main parts and what is its main goal**
 
-----
+---
 
 In the last months the main focus of my daily job at Lastminute.com group was the existing refund process development in order to support our customer hit by the COVID-19 pandemic. While I’m still working (a lot :laughing:) on it, I also had the opportunity to partecipate to the start up of a new project (anyway, still related to the refund stuff :sweat_smile:). In this new project we decided to take leverage of the power of DDD to approach the problem we need to solve. In my mind I said: ”Ok, let’s do it”, but then I started to think: ”What the f%*§ is this DDD? I do know nothing about it” :sweat_smile:.  
 This is why I recently attended the video course “Domain Driven Design Distilled” by [Vaughn Vernon](https://twitter.com/vaughnvernon?lang=en), one of the top expert about DDD.  
