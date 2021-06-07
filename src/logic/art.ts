@@ -64,4 +64,5 @@ export const artDescriptions: { [imageName: string]: string } = {
   "2021-03-07": "Monster mix with some self portrait details 😈💀",
   "2021-03-18": "Screaming woman demon 😱😈",
   "2021-04-18": "Fabergé eggs 🥚🥚",
+  "2021-06-06": "Iron Man 🦾🦿",
 };
