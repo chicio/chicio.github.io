@@ -14,6 +14,11 @@ authors: [fabrizio_duroni]
 
 ---
 
+**NB.: The scene described in this post is no longer available in production (due to a revamp of the entire website).
+You can find it in the [old repository of this website](https://github.com/chicio/old.chicio.github.io) or you can 
+check the [codesandbox](https://codesandbox.io/s/threejs-tutorial-vanillajs-tj1ty?file=/index.html) created by 
+[Arthur Denner](https://github.com/arthurdenner).**
+
 I love three.js. I think it's one of the most beautiful javascript and computer graphics library out there. Don't you
 know what three.js is? Let's see the description from
 the [official github repo](https://github.com/mrdoob/three.js/ "official threejs github repo"):
