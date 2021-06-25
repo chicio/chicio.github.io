@@ -33,9 +33,9 @@ its parts.
 So let’s start from the basis. What is DDD? DDD is a set of tools that help an organization to model software around its
 business model. Generally speaking a company CAN’T be the best at everything. The DDD tools help organizations to better
 understand their business and to choose at what they should excel. In this way through DDD an organization can implement
-what is usually called Effective Design to develop its software. It main features are:
+what is usually called Effective Design to develop its software. Its main features are:
 
-* The final design meets the needs of the business to distinguish itself from the the other competitors.
+* The final design meets the needs of the business to distinguish itself from the  other competitors.
 * Force the organization where it should excel.
 
 For the second point, I would like to quote a phrase from the Vernon DDD distilled course:
@@ -108,10 +108,10 @@ the team in charge of the related bounded context. There are 3 types of subdomai
 * Core domain: the most important subdomain of your organization. This is what differentiate your company from the
   competition in terms of business features. This is the domain where an organization will invest most of its energy and
   resources.
-* Supporting subdomains: this is a subdomain where the organization should invest in term of development effort because
+* Supporting subdomains: this is a subdomain where the organization should invest in terms of development effort because
   there isn’t an existing software solution that covers the business needs. Anyway this subdomain is not as important as
   the Core Domain from a strategical point of view. This is way this kind of development are usually outsourced to
-  external companies in order to avoid to put to much effort and resources on it.
+  external companies in order to avoid putting too much effort and resources on it.
 * Generic subdomains: this kind of subdomains includes needs where a software solution is already available to be
   purchased without the needs for any development efforts.
 
