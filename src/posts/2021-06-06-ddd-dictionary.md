@@ -70,7 +70,7 @@ Let’s start from the definition of Bounded Context from the Vaughn Vernon cour
 
 From the definition (and also from the name itself :laughing: ) a bounded context is a specific limit boundary within a
 software model. Inside a bounded context everything is explicit about the model. The software model inside a bounded
-context is created using terms from a language developed but the team working on the it. This language is called
+context is created using terms from a language developed by the team working on the it. This language is called
 Ubiquitous language and its main features are:
 
 * It should be rigorous and non ambiguous
@@ -102,7 +102,7 @@ Let’s start as always from the Vernon definition of what a subdomain is.
 > more Domain Experts who understand very well the aspects of the business that a specific Subdomain facilitates. 
 > The Subdomain also has greater or lesser strategic significance to your business...
 
-In DDD, a subdomain maps tot a single bounded context. The domain expert of a particular subdomain are an active part of
+In DDD, a subdomain maps to a single bounded context. The domain expert of a particular subdomain are an active part of
 the team in charge of the related bounded context. There are 3 types of subdomains:
 
 * Core domain: the most important subdomain of your organization. This is what differentiate your company from the
