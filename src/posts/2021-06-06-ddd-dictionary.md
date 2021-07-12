@@ -110,8 +110,8 @@ the team in charge of the related bounded context. There are 3 types of subdomai
   resources.
 * Supporting subdomain: this is a subdomain where the organization should invest in terms of development effort because
   there isn’t an existing software solution that covers the business needs. Anyway this subdomain is not as important as
-  the Core Domain from a strategical point of view. This is way this kind of development are usually outsourced to
-  external companies in order to avoid putting too much effort and resources on it.
+  the Core Domain from a strategical point of view. This is the reason why this kind of development are usually 
+  outsourced to external companies in order to avoid putting too much effort and resources on it.
 * Generic subdomain: this kind of subdomains includes needs where a software solution is already available to be
   purchased without the needs for any development efforts.
 
