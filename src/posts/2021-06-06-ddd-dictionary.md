@@ -108,11 +108,11 @@ the team in charge of the related bounded context. There are 3 types of subdomai
 * Core domain: the most important subdomain of your organization. This is what differentiate your company from the
   competition in terms of business features. This is the domain where an organization will invest most of its energy and
   resources.
-* Supporting subdomains: this is a subdomain where the organization should invest in terms of development effort because
+* Supporting subdomain: this is a subdomain where the organization should invest in terms of development effort because
   there isn’t an existing software solution that covers the business needs. Anyway this subdomain is not as important as
   the Core Domain from a strategical point of view. This is way this kind of development are usually outsourced to
   external companies in order to avoid putting too much effort and resources on it.
-* Generic subdomains: this kind of subdomains includes needs where a software solution is already available to be
+* Generic subdomain: this kind of subdomains includes needs where a software solution is already available to be
   purchased without the needs for any development efforts.
 
 ![Type of DDD subdomains (credits “DDD distilled” by V. Vernon)](../images/posts/ddd-subdomains.jpg)
