@@ -179,7 +179,7 @@ There are 4 rules of thumb reported by Vernon to be considered when you’re cre
 
 ![DDD aggregates rule of thumb (credits “DDD distilled” by V. Vernon)](../images/posts/ddd-aggregates-rules-of-thumb.jpg)
 
-Let’s try to analyze them. The first one refer to the fact that is the business should determine Aggregate anatomy based
+Let’s try to analyze them. The first one refer to the fact that the business should determine Aggregate anatomy based
 on what should be consistent when a transaction is committed.  
 The second one is easy (and common in computer science :laughing:): keep your aggregates small in order to reduce memory
 footprint and complexity. The third one also is simple and clear: aggregates should reference each other by identity
