@@ -186,7 +186,7 @@ footprint and complexity. The third one also is simple and clear: aggregates sho
 fields in order to (again) reduce memory footprint but also, and more important in this case, enforce the transactional
 boundary that each aggregate represents.  
 Last but not least the eventual consistency update rule. As we already said, aggregates are transactional boundaries.
-How do we signal that another aggregate should be updated when another one finished its update transaction. We can use a
+How do we signal that another aggregate should be updated when another one finished its update transaction? We can use a
 messaging mechanism in order to guarantee that after the transaction on one aggregates, others should be updated too.
 For this scope Domain Events come to rescue us.
 
