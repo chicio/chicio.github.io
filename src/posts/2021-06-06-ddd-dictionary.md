@@ -133,8 +133,8 @@ relationship two bounded contexts. There are various types of context mapping:
   requires an high commitment in terms of shared agreement between the teams.
 * Customer-Supplier: as the name implies, the teams work in a “customer supplier” way. It’s important that the supplier
   understand the real needs of its customer in order to avoid an evolution of the model not needed by the customer.
-* Conformist: one of the team from in a relation conforms to the existing model of another team in another bounded
-  context.
+* Conformist: - Conformist: a team will integrate with a very large and complex model that is already well established by another
+  team.
 * Anticorruption layer: a translation layer is created between the communication of teams from different bounded
   context. In this way the teams that receive the information could adapt them based on the their specific business
   needs. It should be used whenever possible.
