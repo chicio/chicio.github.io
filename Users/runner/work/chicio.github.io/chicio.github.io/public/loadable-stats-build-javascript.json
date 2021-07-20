@@ -1,0 +1,686 @@
+{
+  "hash": "44daffc72998946b35aa",
+  "publicPath": "/",
+  "outputPath": "/Users/runner/work/chicio.github.io/chicio.github.io/public",
+  "assetsByChunkName": {
+    "polyfill": [
+      "polyfill-64b173aabe591052c3a7.js"
+    ],
+    "app": [
+      "app-a1b2a4f66d27ceda0286.js"
+    ],
+    "webpack-runtime": [
+      "webpack-runtime-71d8d86947927e801a8b.js"
+    ],
+    "component---cache-caches-gatsby-plugin-offline-app-shell-js": [
+      "component---cache-caches-gatsby-plugin-offline-app-shell-js-23a1d57c5192a6d397dc.js"
+    ],
+    "component---src-pages-404-tsx": [
+      "component---src-pages-404-tsx-68509dae41c1c3c2fdc2.js"
+    ],
+    "component---src-pages-art-tsx": [
+      "component---src-pages-art-tsx-882dbde5850a15fad3d6.js"
+    ],
+    "component---src-pages-blog-archive-tsx": [
+      "component---src-pages-blog-archive-tsx-8998e45937c5d083998a.js"
+    ],
+    "component---src-pages-blog-tags-tsx": [
+      "component---src-pages-blog-tags-tsx-d1adee337b173ebe9e00.js"
+    ],
+    "component---src-pages-cookie-policy-tsx": [
+      "component---src-pages-cookie-policy-tsx-1c8b73f5fde19313c318.js"
+    ],
+    "component---src-pages-index-tsx": [
+      "component---src-pages-index-tsx-ee8caa40b699c537e26e.js"
+    ],
+    "component---src-pages-privacy-policy-tsx": [
+      "component---src-pages-privacy-policy-tsx-11d8efbbe4d94d759e98.js"
+    ],
+    "component---src-templates-blog-tsx": [
+      "component---src-templates-blog-tsx-4f42fc681d27d059f31a.js"
+    ],
+    "component---src-templates-post-tsx": [
+      "component---src-templates-post-tsx-62e4d78619e7f855f3ea.js"
+    ],
+    "component---src-templates-tag-tsx": [
+      "component---src-templates-tag-tsx-8313517a1f0966566874.js"
+    ],
+    "organism-footer": [
+      "organism-footer-45ef93171b337672c8df.js"
+    ],
+    "components-bottom-index": [
+      "components-bottom-index-5aa5e0adb813c8c0ba00.js"
+    ],
+    "components-design-system-organism-footer": [
+      "components-design-system-organism-footer-b23cecbc669871133154.js"
+    ],
+    "components-design-system-organism-recent-posts": [
+      "components-design-system-organism-recent-posts-7804b68f3403658601eb.js"
+    ],
+    "components-design-system-molecules-post-tags": [
+      "components-design-system-molecules-post-tags-37b849265484554b2b41.js"
+    ],
+    "components-design-system-molecules-comments": [
+      "components-design-system-molecules-comments-aa02dc9b7ae2886ede85.js"
+    ],
+    "framework": [
+      "framework-0068a62ee68a6c63e163.js"
+    ],
+    "styles": [
+      "styles.2ef9d87f247f11a52605.css"
+    ],
+    "ee48cde3db4c2d3faf4aa08aad159cfd6f88b4e6": [
+      "ee48cde3db4c2d3faf4aa08aad159cfd6f88b4e6-d8e754f6ebe10890fea3.js"
+    ],
+    "7d922248f3170ff62b5a6da11be4c0a74b264aae": [
+      "7d922248f3170ff62b5a6da11be4c0a74b264aae-e8f5e84f7f20c20c1e0c.js"
+    ],
+    "2a69574c883e993fddd016d4916ae12587d04023": [
+      "2a69574c883e993fddd016d4916ae12587d04023-27b6d5bdb8a48eaa48bd.js"
+    ]
+  },
+  "assets": [
+    {
+      "type": "assets by status",
+      "cached": true,
+      "filteredChildren": 75,
+      "size": 2333140
+    }
+  ],
+  "namedChunkGroups": {
+    "polyfill": {
+      "name": "polyfill",
+      "chunks": [
+        658,
+        920
+      ],
+      "assets": [
+        {
+          "name": "webpack-runtime-71d8d86947927e801a8b.js"
+        },
+        {
+          "name": "polyfill-64b173aabe591052c3a7.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 2,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    },
+    "app": {
+      "name": "app",
+      "chunks": [
+        658,
+        774,
+        143
+      ],
+      "assets": [
+        {
+          "name": "webpack-runtime-71d8d86947927e801a8b.js"
+        },
+        {
+          "name": "framework-0068a62ee68a6c63e163.js"
+        },
+        {
+          "name": "app-a1b2a4f66d27ceda0286.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 3,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    },
+    "component---cache-caches-gatsby-plugin-offline-app-shell-js": {
+      "name": "component---cache-caches-gatsby-plugin-offline-app-shell-js",
+      "chunks": [
+        306
+      ],
+      "assets": [
+        {
+          "name": "component---cache-caches-gatsby-plugin-offline-app-shell-js-23a1d57c5192a6d397dc.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 1,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    },
+    "component---src-pages-404-tsx": {
+      "name": "component---src-pages-404-tsx",
+      "chunks": [
+        128,
+        218
+      ],
+      "assets": [
+        {
+          "name": "ee48cde3db4c2d3faf4aa08aad159cfd6f88b4e6-d8e754f6ebe10890fea3.js"
+        },
+        {
+          "name": "component---src-pages-404-tsx-68509dae41c1c3c2fdc2.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 2,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    },
+    "component---src-pages-art-tsx": {
+      "name": "component---src-pages-art-tsx",
+      "chunks": [
+        128,
+        224,
+        878
+      ],
+      "assets": [
+        {
+          "name": "ee48cde3db4c2d3faf4aa08aad159cfd6f88b4e6-d8e754f6ebe10890fea3.js"
+        },
+        {
+          "name": "7d922248f3170ff62b5a6da11be4c0a74b264aae-e8f5e84f7f20c20c1e0c.js"
+        },
+        {
+          "name": "component---src-pages-art-tsx-882dbde5850a15fad3d6.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 3,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    },
+    "component---src-pages-blog-archive-tsx": {
+      "name": "component---src-pages-blog-archive-tsx",
+      "chunks": [
+        128,
+        224,
+        542
+      ],
+      "assets": [
+        {
+          "name": "ee48cde3db4c2d3faf4aa08aad159cfd6f88b4e6-d8e754f6ebe10890fea3.js"
+        },
+        {
+          "name": "7d922248f3170ff62b5a6da11be4c0a74b264aae-e8f5e84f7f20c20c1e0c.js"
+        },
+        {
+          "name": "component---src-pages-blog-archive-tsx-8998e45937c5d083998a.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 3,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    },
+    "component---src-pages-blog-tags-tsx": {
+      "name": "component---src-pages-blog-tags-tsx",
+      "chunks": [
+        128,
+        224,
+        403
+      ],
+      "assets": [
+        {
+          "name": "ee48cde3db4c2d3faf4aa08aad159cfd6f88b4e6-d8e754f6ebe10890fea3.js"
+        },
+        {
+          "name": "7d922248f3170ff62b5a6da11be4c0a74b264aae-e8f5e84f7f20c20c1e0c.js"
+        },
+        {
+          "name": "component---src-pages-blog-tags-tsx-d1adee337b173ebe9e00.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 3,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    },
+    "component---src-pages-cookie-policy-tsx": {
+      "name": "component---src-pages-cookie-policy-tsx",
+      "chunks": [
+        128,
+        224,
+        364
+      ],
+      "assets": [
+        {
+          "name": "ee48cde3db4c2d3faf4aa08aad159cfd6f88b4e6-d8e754f6ebe10890fea3.js"
+        },
+        {
+          "name": "7d922248f3170ff62b5a6da11be4c0a74b264aae-e8f5e84f7f20c20c1e0c.js"
+        },
+        {
+          "name": "component---src-pages-cookie-policy-tsx-1c8b73f5fde19313c318.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 3,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    },
+    "component---src-pages-index-tsx": {
+      "name": "component---src-pages-index-tsx",
+      "chunks": [
+        128,
+        224,
+        529,
+        691
+      ],
+      "assets": [
+        {
+          "name": "ee48cde3db4c2d3faf4aa08aad159cfd6f88b4e6-d8e754f6ebe10890fea3.js"
+        },
+        {
+          "name": "7d922248f3170ff62b5a6da11be4c0a74b264aae-e8f5e84f7f20c20c1e0c.js"
+        },
+        {
+          "name": "2a69574c883e993fddd016d4916ae12587d04023-27b6d5bdb8a48eaa48bd.js"
+        },
+        {
+          "name": "component---src-pages-index-tsx-ee8caa40b699c537e26e.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 4,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    },
+    "component---src-pages-privacy-policy-tsx": {
+      "name": "component---src-pages-privacy-policy-tsx",
+      "chunks": [
+        128,
+        224,
+        806
+      ],
+      "assets": [
+        {
+          "name": "ee48cde3db4c2d3faf4aa08aad159cfd6f88b4e6-d8e754f6ebe10890fea3.js"
+        },
+        {
+          "name": "7d922248f3170ff62b5a6da11be4c0a74b264aae-e8f5e84f7f20c20c1e0c.js"
+        },
+        {
+          "name": "component---src-pages-privacy-policy-tsx-11d8efbbe4d94d759e98.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 3,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    },
+    "component---src-templates-blog-tsx": {
+      "name": "component---src-templates-blog-tsx",
+      "chunks": [
+        128,
+        224,
+        536
+      ],
+      "assets": [
+        {
+          "name": "ee48cde3db4c2d3faf4aa08aad159cfd6f88b4e6-d8e754f6ebe10890fea3.js"
+        },
+        {
+          "name": "7d922248f3170ff62b5a6da11be4c0a74b264aae-e8f5e84f7f20c20c1e0c.js"
+        },
+        {
+          "name": "component---src-templates-blog-tsx-4f42fc681d27d059f31a.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 3,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    },
+    "component---src-templates-post-tsx": {
+      "name": "component---src-templates-post-tsx",
+      "chunks": [
+        532,
+        128,
+        224,
+        186
+      ],
+      "assets": [
+        {
+          "name": "styles.2ef9d87f247f11a52605.css"
+        },
+        {
+          "name": "ee48cde3db4c2d3faf4aa08aad159cfd6f88b4e6-d8e754f6ebe10890fea3.js"
+        },
+        {
+          "name": "7d922248f3170ff62b5a6da11be4c0a74b264aae-e8f5e84f7f20c20c1e0c.js"
+        },
+        {
+          "name": "component---src-templates-post-tsx-62e4d78619e7f855f3ea.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 50,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    },
+    "component---src-templates-tag-tsx": {
+      "name": "component---src-templates-tag-tsx",
+      "chunks": [
+        128,
+        224,
+        902
+      ],
+      "assets": [
+        {
+          "name": "ee48cde3db4c2d3faf4aa08aad159cfd6f88b4e6-d8e754f6ebe10890fea3.js"
+        },
+        {
+          "name": "7d922248f3170ff62b5a6da11be4c0a74b264aae-e8f5e84f7f20c20c1e0c.js"
+        },
+        {
+          "name": "component---src-templates-tag-tsx-8313517a1f0966566874.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 3,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    },
+    "organism-footer": {
+      "name": "organism-footer",
+      "chunks": [
+        529,
+        475
+      ],
+      "assets": [
+        {
+          "name": "2a69574c883e993fddd016d4916ae12587d04023-27b6d5bdb8a48eaa48bd.js"
+        },
+        {
+          "name": "organism-footer-45ef93171b337672c8df.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 2,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    },
+    "components-bottom-index": {
+      "name": "components-bottom-index",
+      "chunks": [
+        524
+      ],
+      "assets": [
+        {
+          "name": "components-bottom-index-5aa5e0adb813c8c0ba00.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 1,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    },
+    "components-design-system-organism-footer": {
+      "name": "components-design-system-organism-footer",
+      "chunks": [
+        86
+      ],
+      "assets": [
+        {
+          "name": "components-design-system-organism-footer-b23cecbc669871133154.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 1,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    },
+    "components-design-system-organism-recent-posts": {
+      "name": "components-design-system-organism-recent-posts",
+      "chunks": [
+        794
+      ],
+      "assets": [
+        {
+          "name": "components-design-system-organism-recent-posts-7804b68f3403658601eb.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 1,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    },
+    "components-design-system-molecules-post-tags": {
+      "name": "components-design-system-molecules-post-tags",
+      "chunks": [
+        21
+      ],
+      "assets": [
+        {
+          "name": "components-design-system-molecules-post-tags-37b849265484554b2b41.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 1,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    },
+    "components-design-system-molecules-comments": {
+      "name": "components-design-system-molecules-comments",
+      "chunks": [
+        760
+      ],
+      "assets": [
+        {
+          "name": "components-design-system-molecules-comments-aa02dc9b7ae2886ede85.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 1,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "generator": "loadable-components",
+  "chunks": [
+    {
+      "id": 920,
+      "files": [
+        "polyfill-64b173aabe591052c3a7.js"
+      ]
+    },
+    {
+      "id": 143,
+      "files": [
+        "app-a1b2a4f66d27ceda0286.js"
+      ]
+    },
+    {
+      "id": 658,
+      "files": [
+        "webpack-runtime-71d8d86947927e801a8b.js"
+      ]
+    },
+    {
+      "id": 231,
+      "files": [
+        "231-0a649ab5edcbda1ea140.js"
+      ]
+    },
+    {
+      "id": 776,
+      "files": [
+        "776-6233de6dd8933b5183f9.js"
+      ]
+    },
+    {
+      "id": 175,
+      "files": [
+        "175-2b91e102e28547caf3ba.js"
+      ]
+    },
+    {
+      "id": 306,
+      "files": [
+        "component---cache-caches-gatsby-plugin-offline-app-shell-js-23a1d57c5192a6d397dc.js"
+      ]
+    },
+    {
+      "id": 218,
+      "files": [
+        "component---src-pages-404-tsx-68509dae41c1c3c2fdc2.js"
+      ]
+    },
+    {
+      "id": 878,
+      "files": [
+        "component---src-pages-art-tsx-882dbde5850a15fad3d6.js"
+      ]
+    },
+    {
+      "id": 542,
+      "files": [
+        "component---src-pages-blog-archive-tsx-8998e45937c5d083998a.js"
+      ]
+    },
+    {
+      "id": 403,
+      "files": [
+        "component---src-pages-blog-tags-tsx-d1adee337b173ebe9e00.js"
+      ]
+    },
+    {
+      "id": 364,
+      "files": [
+        "component---src-pages-cookie-policy-tsx-1c8b73f5fde19313c318.js"
+      ]
+    },
+    {
+      "id": 691,
+      "files": [
+        "component---src-pages-index-tsx-ee8caa40b699c537e26e.js"
+      ]
+    },
+    {
+      "id": 806,
+      "files": [
+        "component---src-pages-privacy-policy-tsx-11d8efbbe4d94d759e98.js"
+      ]
+    },
+    {
+      "id": 536,
+      "files": [
+        "component---src-templates-blog-tsx-4f42fc681d27d059f31a.js"
+      ]
+    },
+    {
+      "id": 186,
+      "files": [
+        "component---src-templates-post-tsx-62e4d78619e7f855f3ea.js"
+      ]
+    },
+    {
+      "id": 902,
+      "files": [
+        "component---src-templates-tag-tsx-8313517a1f0966566874.js"
+      ]
+    },
+    {
+      "id": 475,
+      "files": [
+        "organism-footer-45ef93171b337672c8df.js"
+      ]
+    },
+    {
+      "id": 524,
+      "files": [
+        "components-bottom-index-5aa5e0adb813c8c0ba00.js"
+      ]
+    },
+    {
+      "id": 86,
+      "files": [
+        "components-design-system-organism-footer-b23cecbc669871133154.js"
+      ]
+    },
+    {
+      "id": 794,
+      "files": [
+        "components-design-system-organism-recent-posts-7804b68f3403658601eb.js"
+      ]
+    },
+    {
+      "id": 21,
+      "files": [
+        "components-design-system-molecules-post-tags-37b849265484554b2b41.js"
+      ]
+    },
+    {
+      "id": 760,
+      "files": [
+        "components-design-system-molecules-comments-aa02dc9b7ae2886ede85.js"
+      ]
+    },
+    {
+      "id": 774,
+      "files": [
+        "framework-0068a62ee68a6c63e163.js"
+      ]
+    },
+    {
+      "id": 532,
+      "files": [
+        "styles.2ef9d87f247f11a52605.css"
+      ]
+    },
+    {
+      "id": 128,
+      "files": [
+        "ee48cde3db4c2d3faf4aa08aad159cfd6f88b4e6-d8e754f6ebe10890fea3.js"
+      ]
+    },
+    {
+      "id": 224,
+      "files": [
+        "7d922248f3170ff62b5a6da11be4c0a74b264aae-e8f5e84f7f20c20c1e0c.js"
+      ]
+    },
+    {
+      "id": 529,
+      "files": [
+        "2a69574c883e993fddd016d4916ae12587d04023-27b6d5bdb8a48eaa48bd.js"
+      ]
+    }
+  ]
+}
