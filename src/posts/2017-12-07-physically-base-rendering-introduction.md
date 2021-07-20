@@ -109,8 +109,8 @@ The BRDF has two important properties:
   {o},\omega_{i})$
 * it satisfies the **energy conservation principle**: *the light reflected is less than or equal to the incident light*.
 
-A lot of models has been developed to describe the BRDF of different surfaces. In particular, in the last years the **
-microfacet** models have gained attention. In these kind of models the surface is represented as composed by infinitely
+A lot of models has been developed to describe the BRDF of different surfaces. In particular, in the last years the **microfacet** 
+models have gained attention. In these kind of models the surface is represented as composed by infinitely
 small microfacets that model in a more realistic way the vast majority of surfaces in the real world. Each one of these
 microfacets has is geometric definition (in particular its normal).  
 Some specific material surfaces, for example glass, reflect and transmit light at the same time. So a fraction of light
