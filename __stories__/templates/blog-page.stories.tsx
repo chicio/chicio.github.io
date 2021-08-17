@@ -5,6 +5,7 @@ import {
   BlogPageProps,
 } from "../../src/components/design-system/templates/blog-page";
 import { Paragraph } from "../../src/components/design-system/atoms/paragraph";
+import { OgPageType } from "../../src/logic/seo";
 
 export const BlogPageStory: Story<BlogPageProps> = (args) => (
   <BlogPage {...args}>
@@ -17,7 +18,7 @@ BlogPageStory.args = {
     url: "http://localhost:8000/blog/",
   },
   author: "Fabrizio Duroni",
-  ogPageType: "WebSite",
+  ogPageType: OgPageType.WebSite,
   ogImage: "/a-photo.jpg",
   trackingCategory: "blog",
 };
