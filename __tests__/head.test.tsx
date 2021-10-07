@@ -71,7 +71,7 @@ describe("<Head />", () => {
         />
       );
 
-      const helmet: HelmetData = Helmet.peek();
+      const helmet = Helmet.peek();
 
       expect(helmet.title).toEqual("a custom title");
     });
@@ -87,7 +87,7 @@ describe("<Head />", () => {
         />
       );
 
-      const helmet: HelmetData = Helmet.peek();
+      const helmet = Helmet.peek();
 
       expect(helmet.title).toEqual(
         "Fabrizio Duroni | Fabrizio Duroni ‘Chicio Coding’"
@@ -107,7 +107,7 @@ describe("<Head />", () => {
       />
     );
 
-    const helmet: HelmetData = Helmet.peek();
+    const helmet = Helmet.peek();
 
     expect(helmet.htmlAttributes).toEqual({ lang: "en" });
   });
