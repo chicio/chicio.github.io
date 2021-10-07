@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import { Head } from "../src/components/head";
 import { useStaticQuery } from "gatsby";
-import { Helmet, HelmetData } from "react-helmet";
+import { Helmet } from "react-helmet";
 import {
   createJsonLD,
   createMetaAttributes,
