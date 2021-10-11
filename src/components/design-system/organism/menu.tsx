@@ -4,10 +4,21 @@ import styled, { css } from "styled-components";
 import { Container } from "../atoms/container";
 import { slugs } from "../../../logic/slug";
 import { MenuItemWithTracking } from "../../menu-item-with-tracking";
+import { HamburgerMenu } from "../molecules/hamburger-menu";
 
 interface MenuContainerProps {
   shouldHide: boolean;
 }
+
+const MenuButtonContainer = styled.div`
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
 
 const MenuContainer = styled.div<MenuContainerProps>`
   background-color: ${(props) => props.theme.light.primaryColor};
@@ -26,17 +37,26 @@ const MenuContainer = styled.div<MenuContainerProps>`
 
 const NavBar = styled(Container)`
   display: flex;
+  flex-direction: column;
   align-items: center;
   height: 55px;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 const NavBarMenuItem = styled(MenuItemWithTracking)`
   position: relative;
-  display: inline-block;
+  display: none;
   margin-right: 15px;
   height: 55px;
   line-height: 70px;
   font-size: ${(props) => props.theme.fontSizes[5]};
+
+  @media (min-width: 768px) {
+    display: inline-block;
+  }
 
   ${(props) =>
     props.selected &&
@@ -146,6 +166,9 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
         >
           {"About me"}
         </NavBarMenuItem>
+        <MenuButtonContainer>
+          <HamburgerMenu />
+        </MenuButtonContainer>
       </NavBar>
     </MenuContainer>
   );

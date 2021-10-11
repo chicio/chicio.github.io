@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "@loadable/component": "^5.15.0",
+    "@styled-icons/boxicons-regular": "^10.38.0",
     "@styled-icons/fa-brands": "^10.34.0",
     "@styled-icons/fa-solid": "^10.34.0",
     "@types/loadable__component": "^5.13.4",
