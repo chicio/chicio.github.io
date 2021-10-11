@@ -3,8 +3,9 @@ import { Meta, Story } from "@storybook/react";
 import { BlogPage } from "../../src/components/design-system/templates/blog-page";
 import {
   BlogGenericPostListPage,
-  BlogGenericPostListPageProps,
+  BlogGenericPostListPageProps
 } from "../../src/components/design-system/templates/blog-generic-post-list-page";
+import { OgPageType } from "../../src/logic/seo";
 
 export const BlogGenericPostListPagePageStory: Story<BlogGenericPostListPageProps> = (
   args
@@ -135,7 +136,7 @@ BlogGenericPostListPagePageStory.args = {
     pathname: "/blog/archive/",
     url: "http://localhost:8000/blog/archive/",
   },
-  ogPageType: "WebSite",
+  ogPageType: OgPageType.WebSite,
   ogImage: "/a-photo.jpg",
   trackingCategory: "archive",
 };
