@@ -6,10 +6,6 @@ import { slugs } from "../../../logic/slug";
 import { MenuItemWithTracking } from "../../menu-item-with-tracking";
 import { HamburgerMenu } from "../molecules/hamburger-menu";
 
-interface MenuContainerProps {
-  shouldHide: boolean;
-}
-
 const MenuButtonContainer = styled.div`
   position: absolute;
   top: 10px;
@@ -20,6 +16,11 @@ const MenuButtonContainer = styled.div`
   }
 `;
 
+interface MenuContainerProps {
+  shouldHide: boolean;
+  shouldOpenMenu: boolean;
+}
+
 const MenuContainer = styled.div<MenuContainerProps>`
   background-color: ${(props) => props.theme.light.primaryColor};
   box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.1);
@@ -27,58 +28,65 @@ const MenuContainer = styled.div<MenuContainerProps>`
   top: ${(props) => (props.shouldHide ? "-55px" : 0)};
   transition: top 0.3s ease 0s;
   width: 100%;
-  height: 55px;
   z-index: 300;
+  height: ${(props) => (props.shouldOpenMenu ? "auto" : "55px")};
 
   @media (prefers-color-scheme: dark) {
     background-color: ${(props) => props.theme.dark.primaryColor};
   }
 `;
 
-const NavBar = styled(Container)`
+interface NavBarProps {
+  shouldOpenMenu: boolean;
+}
+
+const NavBar = styled(Container)<NavBarProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 55px;
+  height: ${(props) => (props.shouldOpenMenu ? "auto" : "55px")};
 
   @media (min-width: 768px) {
     flex-direction: row;
   }
 `;
 
-const NavBarMenuItem = styled(MenuItemWithTracking)`
+interface NavBarMenuItemProps {
+  shouldOpenMenu: boolean;
+}
+
+const NavBarMenuItem = styled(MenuItemWithTracking)<NavBarMenuItemProps>`
   position: relative;
-  display: none;
+  display: ${(props) => (props.shouldOpenMenu ? "inline-block" : "none")};
   margin-right: 15px;
-  height: 55px;
   line-height: 70px;
   font-size: ${(props) => props.theme.fontSizes[5]};
+  height: ${(props) => (props.shouldOpenMenu ? "auto" : "55px")};
 
   @media (min-width: 768px) {
     display: inline-block;
+    ${(props) =>
+      props.selected &&
+      css`
+        &:after {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          width: 0;
+          height: 0;
+          margin-left: -5px;
+          content: " ";
+          border-right: 5px solid transparent;
+          border-bottom: 5px solid
+            ${(props) => props.theme.light.generalBackground};
+          border-left: 5px solid transparent;
+  
+          @media (prefers-color-scheme: dark) {
+            border-bottom: 5px solid ${(props) =>
+              props.theme.dark.generalBackground};
+          }
+      `};
   }
-
-  ${(props) =>
-    props.selected &&
-    css`
-      &:after {
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        height: 0;
-        margin-left: -5px;
-        content: " ";
-        border-right: 5px solid transparent;
-        border-bottom: 5px solid
-          ${(props) => props.theme.light.generalBackground};
-        border-left: 5px solid transparent;
-
-        @media (prefers-color-scheme: dark) {
-          border-bottom: 5px solid ${(props) =>
-            props.theme.dark.generalBackground};
-        }
-    `};
 `;
 
 enum ScrollDirection {
@@ -129,11 +137,16 @@ export interface MenuProps {
 
 export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
   const direction = useScrollDirection();
+  const [shouldOpenMenu, setShouldOpenMenu] = useState(false);
 
   return (
-    <MenuContainer shouldHide={direction == ScrollDirection.down}>
-      <NavBar>
+    <MenuContainer
+      shouldOpenMenu={shouldOpenMenu}
+      shouldHide={direction == ScrollDirection.down}
+    >
+      <NavBar shouldOpenMenu={shouldOpenMenu}>
         <NavBarMenuItem
+          shouldOpenMenu={shouldOpenMenu}
           selected={pathname === "/"}
           to={"/"}
           trackingData={{
@@ -145,6 +158,7 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
           {"Home"}
         </NavBarMenuItem>
         <NavBarMenuItem
+          shouldOpenMenu={shouldOpenMenu}
           selected={pathname !== slugs.aboutMe}
           to={slugs.blog}
           trackingData={{
@@ -156,6 +170,7 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
           {"Blog"}
         </NavBarMenuItem>
         <NavBarMenuItem
+          shouldOpenMenu={shouldOpenMenu}
           selected={pathname === slugs.aboutMe}
           to={slugs.aboutMe}
           trackingData={{
@@ -167,7 +182,11 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
           {"About me"}
         </NavBarMenuItem>
         <MenuButtonContainer>
-          <HamburgerMenu />
+          <HamburgerMenu
+            onClick={() => {
+              setShouldOpenMenu(!shouldOpenMenu);
+            }}
+          />
         </MenuButtonContainer>
       </NavBar>
     </MenuContainer>
