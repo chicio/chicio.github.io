@@ -3,6 +3,7 @@ const allSlugs = {
   tags: "/blog/tags/",
   archive: "/blog/archive/",
   aboutMe: "/2017/05/10/about-me/",
+  art: "/art/",
 };
 
 exports.slugs = allSlugs;

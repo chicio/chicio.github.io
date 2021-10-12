@@ -94,7 +94,18 @@ export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
         Blog
       </FooterMenuItem>
       <FooterMenuItem
-        to="/2017/05/10/about-me/"
+        to={slugs.art}
+        trackingData={{
+          action: tracking.action.open_art,
+          category: trackingCategory,
+          label: tracking.label.footer,
+        }}
+        selected={false}
+      >
+        Art
+      </FooterMenuItem>
+      <FooterMenuItem
+        to={slugs.aboutMe}
         trackingData={{
           action: tracking.action.open_about_me,
           category: trackingCategory,

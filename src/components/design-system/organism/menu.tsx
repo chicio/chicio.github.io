@@ -29,7 +29,7 @@ const MenuContainer = styled.div<MenuContainerProps>`
   transition: top 0.3s ease 0s;
   width: 100%;
   z-index: 300;
-  height: ${(props) => (props.shouldOpenMenu ? "auto" : "55px")};
+  height: ${(props) => (props.shouldOpenMenu ? "200px" : "55px")};
 
   @media (prefers-color-scheme: dark) {
     background-color: ${(props) => props.theme.dark.primaryColor};
@@ -44,7 +44,6 @@ const NavBar = styled(Container)<NavBarProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: ${(props) => (props.shouldOpenMenu ? "auto" : "55px")};
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -59,7 +58,7 @@ const NavBarMenuItem = styled(MenuItemWithTracking)<NavBarMenuItemProps>`
   position: relative;
   display: ${(props) => (props.shouldOpenMenu ? "inline-block" : "none")};
   margin-right: 15px;
-  line-height: 70px;
+  line-height: 50px;
   font-size: ${(props) => props.theme.fontSizes[5]};
   height: ${(props) => (props.shouldOpenMenu ? "auto" : "55px")};
 
@@ -159,7 +158,7 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
         </NavBarMenuItem>
         <NavBarMenuItem
           shouldOpenMenu={shouldOpenMenu}
-          selected={pathname !== slugs.aboutMe}
+          selected={pathname !== slugs.aboutMe && pathname !== slugs.art}
           to={slugs.blog}
           trackingData={{
             action: tracking.action.open_blog,
@@ -168,6 +167,18 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
           }}
         >
           {"Blog"}
+        </NavBarMenuItem>
+        <NavBarMenuItem
+          shouldOpenMenu={shouldOpenMenu}
+          selected={pathname === slugs.art}
+          to={slugs.art}
+          trackingData={{
+            action: tracking.action.open_about_me,
+            category: trackingCategory,
+            label: tracking.label.header,
+          }}
+        >
+          {"Art"}
         </NavBarMenuItem>
         <NavBarMenuItem
           shouldOpenMenu={shouldOpenMenu}
