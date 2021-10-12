@@ -5,6 +5,7 @@ import { Container } from "../atoms/container";
 import { slugs } from "../../../logic/slug";
 import { MenuItemWithTracking } from "../../menu-item-with-tracking";
 import { HamburgerMenu } from "../molecules/hamburger-menu";
+import { Overlay } from "../atoms/overlay";
 
 const MenuButtonContainer = styled.div`
   position: absolute;
@@ -26,7 +27,7 @@ const MenuContainer = styled.div<MenuContainerProps>`
   box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: ${(props) => (props.shouldHide ? "-55px" : 0)};
-  transition: top 0.3s ease 0s;
+  transition: top 0.3s ease 0s, height 0.3s ease 0s;
   width: 100%;
   z-index: 300;
   height: ${(props) => (props.shouldOpenMenu ? "200px" : "55px")};
@@ -139,67 +140,78 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
   const [shouldOpenMenu, setShouldOpenMenu] = useState(false);
 
   return (
-    <MenuContainer
-      shouldOpenMenu={shouldOpenMenu}
-      shouldHide={direction == ScrollDirection.down}
-    >
-      <NavBar shouldOpenMenu={shouldOpenMenu}>
-        <NavBarMenuItem
-          shouldOpenMenu={shouldOpenMenu}
-          selected={pathname === "/"}
-          to={"/"}
-          trackingData={{
-            action: tracking.action.open_home,
-            category: trackingCategory,
-            label: tracking.label.header,
-          }}
-        >
-          {"Home"}
-        </NavBarMenuItem>
-        <NavBarMenuItem
-          shouldOpenMenu={shouldOpenMenu}
-          selected={pathname !== slugs.aboutMe && pathname !== slugs.art}
-          to={slugs.blog}
-          trackingData={{
-            action: tracking.action.open_blog,
-            category: trackingCategory,
-            label: tracking.label.header,
-          }}
-        >
-          {"Blog"}
-        </NavBarMenuItem>
-        <NavBarMenuItem
-          shouldOpenMenu={shouldOpenMenu}
-          selected={pathname === slugs.art}
-          to={slugs.art}
-          trackingData={{
-            action: tracking.action.open_about_me,
-            category: trackingCategory,
-            label: tracking.label.header,
-          }}
-        >
-          {"Art"}
-        </NavBarMenuItem>
-        <NavBarMenuItem
-          shouldOpenMenu={shouldOpenMenu}
-          selected={pathname === slugs.aboutMe}
-          to={slugs.aboutMe}
-          trackingData={{
-            action: tracking.action.open_about_me,
-            category: trackingCategory,
-            label: tracking.label.header,
-          }}
-        >
-          {"About me"}
-        </NavBarMenuItem>
-        <MenuButtonContainer>
-          <HamburgerMenu
-            onClick={() => {
-              setShouldOpenMenu(!shouldOpenMenu);
+    <>
+      <MenuContainer
+        shouldOpenMenu={shouldOpenMenu}
+        shouldHide={direction == ScrollDirection.down}
+      >
+        <NavBar shouldOpenMenu={shouldOpenMenu}>
+          <NavBarMenuItem
+            shouldOpenMenu={shouldOpenMenu}
+            selected={pathname === "/"}
+            to={"/"}
+            trackingData={{
+              action: tracking.action.open_home,
+              category: trackingCategory,
+              label: tracking.label.header,
             }}
-          />
-        </MenuButtonContainer>
-      </NavBar>
-    </MenuContainer>
+          >
+            {"Home"}
+          </NavBarMenuItem>
+          <NavBarMenuItem
+            shouldOpenMenu={shouldOpenMenu}
+            selected={pathname !== slugs.aboutMe && pathname !== slugs.art}
+            to={slugs.blog}
+            trackingData={{
+              action: tracking.action.open_blog,
+              category: trackingCategory,
+              label: tracking.label.header,
+            }}
+          >
+            {"Blog"}
+          </NavBarMenuItem>
+          <NavBarMenuItem
+            shouldOpenMenu={shouldOpenMenu}
+            selected={pathname === slugs.art}
+            to={slugs.art}
+            trackingData={{
+              action: tracking.action.open_about_me,
+              category: trackingCategory,
+              label: tracking.label.header,
+            }}
+          >
+            {"Art"}
+          </NavBarMenuItem>
+          <NavBarMenuItem
+            shouldOpenMenu={shouldOpenMenu}
+            selected={pathname === slugs.aboutMe}
+            to={slugs.aboutMe}
+            trackingData={{
+              action: tracking.action.open_about_me,
+              category: trackingCategory,
+              label: tracking.label.header,
+            }}
+          >
+            {"About me"}
+          </NavBarMenuItem>
+          <MenuButtonContainer>
+            <HamburgerMenu
+              onClick={() => {
+                setShouldOpenMenu(!shouldOpenMenu);
+              }}
+            />
+          </MenuButtonContainer>
+        </NavBar>
+      </MenuContainer>
+      {shouldOpenMenu && (
+        <Overlay
+          zIndex={250}
+          delay={false}
+          onClick={() => {
+            setShouldOpenMenu(!shouldOpenMenu);
+          }}
+        />
+      )}
+    </>
   );
 };
