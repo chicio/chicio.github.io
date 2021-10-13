@@ -53,18 +53,23 @@ const NavBar = styled(Container)<NavBarProps>`
 
 interface NavBarMenuItemProps {
   shouldOpenMenu: boolean;
+  delayAnimation: number;
 }
 
 const NavBarMenuItem = styled(MenuItemWithTracking)<NavBarMenuItemProps>`
   position: relative;
-  display: ${(props) => (props.shouldOpenMenu ? "inline-block" : "none")};
+  display: inline-block;
+  visibility: ${(props) => (props.shouldOpenMenu ? "visible" : "hidden")};
   margin-right: 15px;
   line-height: 50px;
   font-size: ${(props) => props.theme.fontSizes[5]};
   height: ${(props) => (props.shouldOpenMenu ? "auto" : "55px")};
+  opacity: ${(props) => (props.shouldOpenMenu ? 1 : 0)};
+  transition: opacity 0.4s ease ${(props) => `${props.delayAnimation}s`};
 
   @media (min-width: 768px) {
-    display: inline-block;
+    visibility: visible;
+    opacity: 1;
     ${(props) =>
       props.selected &&
       css`
@@ -148,6 +153,7 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
         <NavBar shouldOpenMenu={shouldOpenMenu}>
           <NavBarMenuItem
             shouldOpenMenu={shouldOpenMenu}
+            delayAnimation={0.7}
             selected={pathname === "/"}
             to={"/"}
             trackingData={{
@@ -160,6 +166,7 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
           </NavBarMenuItem>
           <NavBarMenuItem
             shouldOpenMenu={shouldOpenMenu}
+            delayAnimation={1}
             selected={pathname !== slugs.aboutMe && pathname !== slugs.art}
             to={slugs.blog}
             trackingData={{
@@ -172,6 +179,7 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
           </NavBarMenuItem>
           <NavBarMenuItem
             shouldOpenMenu={shouldOpenMenu}
+            delayAnimation={1.2}
             selected={pathname === slugs.art}
             to={slugs.art}
             trackingData={{
@@ -184,6 +192,7 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
           </NavBarMenuItem>
           <NavBarMenuItem
             shouldOpenMenu={shouldOpenMenu}
+            delayAnimation={1.4}
             selected={pathname === slugs.aboutMe}
             to={slugs.aboutMe}
             trackingData={{
