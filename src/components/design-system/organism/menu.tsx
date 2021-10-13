@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { tracking } from "../../../logic/tracking";
 import styled, { css } from "styled-components";
 import { Container } from "../atoms/container";
@@ -6,6 +6,7 @@ import { slugs } from "../../../logic/slug";
 import { MenuItemWithTracking } from "../../menu-item-with-tracking";
 import { HamburgerMenu } from "../molecules/hamburger-menu";
 import { Overlay } from "../atoms/overlay";
+import { CSSTransition } from "react-transition-group";
 
 const MenuButtonContainer = styled.div`
   position: absolute;
@@ -51,12 +52,14 @@ const NavBar = styled(Container)<NavBarProps>`
   }
 `;
 
+const animationDuration = 800;
+
 interface NavBarMenuItemProps {
   shouldOpenMenu: boolean;
   delayAnimation: number;
 }
 
-const NavBarMenuItem = styled(MenuItemWithTracking)<NavBarMenuItemProps>`
+const NavBarMenuItem = memo(styled(MenuItemWithTracking)<NavBarMenuItemProps>`
   position: relative;
   display: inline-block;
   visibility: ${(props) => (props.shouldOpenMenu ? "visible" : "hidden")};
@@ -64,8 +67,25 @@ const NavBarMenuItem = styled(MenuItemWithTracking)<NavBarMenuItemProps>`
   line-height: 50px;
   font-size: ${(props) => props.theme.fontSizes[5]};
   height: ${(props) => (props.shouldOpenMenu ? "auto" : "55px")};
-  opacity: ${(props) => (props.shouldOpenMenu ? 1 : 0)};
-  transition: opacity 0.4s ease ${(props) => `${props.delayAnimation}s`};
+
+  &.my-node-enter {
+    visibility: visible;
+    opacity: 0;
+  }
+  &.my-node-enter-active {
+    opacity: 1;
+    transition: opacity ${animationDuration}ms ease
+      ${(props) => `${props.delayAnimation}s`};
+  }
+  &.my-node-exit {
+    opacity: 1;
+  }
+  &.my-node-exit-active {
+    opacity: 0;
+    transition: opacity ${animationDuration}ms ease
+      ${(props) => `${props.delayAnimation}s`};
+    visibility: hidden;
+  }
 
   @media (min-width: 768px) {
     visibility: visible;
@@ -92,7 +112,7 @@ const NavBarMenuItem = styled(MenuItemWithTracking)<NavBarMenuItemProps>`
           }
       `};
   }
-`;
+`);
 
 enum ScrollDirection {
   up,
@@ -143,6 +163,7 @@ export interface MenuProps {
 export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
   const direction = useScrollDirection();
   const [shouldOpenMenu, setShouldOpenMenu] = useState(false);
+  const [enableMenuButton, setEnableMenuButton] = useState(true);
 
   return (
     <>
@@ -151,62 +172,92 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
         shouldHide={direction == ScrollDirection.down}
       >
         <NavBar shouldOpenMenu={shouldOpenMenu}>
-          <NavBarMenuItem
-            shouldOpenMenu={shouldOpenMenu}
-            delayAnimation={0.7}
-            selected={pathname === "/"}
-            to={"/"}
-            trackingData={{
-              action: tracking.action.open_home,
-              category: trackingCategory,
-              label: tracking.label.header,
+          <CSSTransition in={shouldOpenMenu} timeout={200} classNames="my-node">
+            <NavBarMenuItem
+              shouldOpenMenu={shouldOpenMenu}
+              delayAnimation={0.3}
+              selected={pathname === "/"}
+              to={"/"}
+              trackingData={{
+                action: tracking.action.open_home,
+                category: trackingCategory,
+                label: tracking.label.header,
+              }}
+            >
+              {"Home"}
+            </NavBarMenuItem>
+          </CSSTransition>
+          <CSSTransition in={shouldOpenMenu} timeout={200} classNames="my-node">
+            <NavBarMenuItem
+              shouldOpenMenu={shouldOpenMenu}
+              delayAnimation={0.4}
+              selected={pathname !== slugs.aboutMe && pathname !== slugs.art}
+              to={slugs.blog}
+              trackingData={{
+                action: tracking.action.open_blog,
+                category: trackingCategory,
+                label: tracking.label.header,
+              }}
+            >
+              {"Blog"}
+            </NavBarMenuItem>
+          </CSSTransition>
+          <CSSTransition in={shouldOpenMenu} timeout={200} classNames="my-node">
+            <NavBarMenuItem
+              shouldOpenMenu={shouldOpenMenu}
+              delayAnimation={0.5}
+              selected={pathname === slugs.art}
+              to={slugs.art}
+              trackingData={{
+                action: tracking.action.open_about_me,
+                category: trackingCategory,
+                label: tracking.label.header,
+              }}
+            >
+              {"Art"}
+            </NavBarMenuItem>
+          </CSSTransition>
+          <CSSTransition
+            in={shouldOpenMenu}
+            timeout={animationDuration}
+            classNames="my-node"
+            onEnter={() => {
+              setEnableMenuButton(false);
+              console.log("start");
+            }}
+            onEntered={() => {
+              setEnableMenuButton(true);
+              console.log("finish");
+            }}
+            onExit={() => {
+              setEnableMenuButton(false);
+              console.log("start");
+            }}
+            onExited={() => {
+              setEnableMenuButton(true);
+              console.log("finish");
             }}
           >
-            {"Home"}
-          </NavBarMenuItem>
-          <NavBarMenuItem
-            shouldOpenMenu={shouldOpenMenu}
-            delayAnimation={1}
-            selected={pathname !== slugs.aboutMe && pathname !== slugs.art}
-            to={slugs.blog}
-            trackingData={{
-              action: tracking.action.open_blog,
-              category: trackingCategory,
-              label: tracking.label.header,
-            }}
-          >
-            {"Blog"}
-          </NavBarMenuItem>
-          <NavBarMenuItem
-            shouldOpenMenu={shouldOpenMenu}
-            delayAnimation={1.2}
-            selected={pathname === slugs.art}
-            to={slugs.art}
-            trackingData={{
-              action: tracking.action.open_about_me,
-              category: trackingCategory,
-              label: tracking.label.header,
-            }}
-          >
-            {"Art"}
-          </NavBarMenuItem>
-          <NavBarMenuItem
-            shouldOpenMenu={shouldOpenMenu}
-            delayAnimation={1.4}
-            selected={pathname === slugs.aboutMe}
-            to={slugs.aboutMe}
-            trackingData={{
-              action: tracking.action.open_about_me,
-              category: trackingCategory,
-              label: tracking.label.header,
-            }}
-          >
-            {"About me"}
-          </NavBarMenuItem>
+            <NavBarMenuItem
+              shouldOpenMenu={shouldOpenMenu}
+              delayAnimation={0.6}
+              selected={pathname === slugs.aboutMe}
+              to={slugs.aboutMe}
+              trackingData={{
+                action: tracking.action.open_about_me,
+                category: trackingCategory,
+                label: tracking.label.header,
+              }}
+            >
+              {"About me"}
+            </NavBarMenuItem>
+          </CSSTransition>
           <MenuButtonContainer>
             <HamburgerMenu
               onClick={() => {
-                setShouldOpenMenu(!shouldOpenMenu);
+                if (enableMenuButton) {
+                  setShouldOpenMenu(!shouldOpenMenu);
+                }
               }}
             />
           </MenuButtonContainer>
