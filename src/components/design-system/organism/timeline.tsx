@@ -1,4 +1,3 @@
-import { Briefcase, GraduationCap } from "@styled-icons/fa-solid";
 import { StaticImage } from "gatsby-plugin-image";
 import { Heading5 } from "../atoms/heading5";
 import { Paragraph } from "../atoms/paragraph";
@@ -7,6 +6,8 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { Container } from "../atoms/container";
 import { Heading6 } from "../atoms/heading6";
+import { Briefcase } from "styled-icons/boxicons-regular";
+import { GraduationCap } from "styled-icons/fa-solid";
 
 const TimelineContentContainer = styled(Container)`
   padding: 0;

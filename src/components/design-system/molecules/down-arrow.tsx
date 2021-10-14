@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Icon } from "../atoms/icon";
-import { ChevronDown } from "@styled-icons/fa-solid";
 import styled from "styled-components";
+import { ChevronDown } from "styled-icons/boxicons-regular";
 
 const IconContainer = styled(Icon)`
   text-align: center;

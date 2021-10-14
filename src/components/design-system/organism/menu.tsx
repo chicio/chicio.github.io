@@ -74,11 +74,12 @@ const NavBarMenuItem = memo(styled(MenuItemWithTracking)<NavBarMenuItemProps>`
 
   &.opacity-enter-active {
     opacity: 1;
-    transition: opacity ${(props) => `${props.delayAnimation}ms`} ease
+    transition: opacity ${(props) => `${props.animationDuration}ms`} ease
       ${(props) => `${props.delayAnimation}s`};
   }
 
   &.opacity-exit {
+    visibility: visible;
     opacity: 1;
   }
 
@@ -152,7 +153,7 @@ const AnimatedNavBarItem: React.FC<AnimatedNavBarItemProps> = ({
   >
     <NavBarMenuItem
       shouldOpenMenu={shouldOpenMenu}
-      animationDuration={800}
+      animationDuration={300}
       delayAnimation={delayAnimation}
       selected={selected}
       to={slug}
@@ -218,12 +219,12 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
   const [shouldOpenMenu, setShouldOpenMenu] = useState(false);
   const [enableMenuButton, setEnableMenuButton] = useState(true);
 
-  const onStartAnimation = useCallback(() => {
-    setEnableMenuButton(false);
-  }, [setEnableMenuButton]);
-  const onFinishAnimation = useCallback(() => {
-    setEnableMenuButton(true);
-  }, [setEnableMenuButton]);
+  const onStartAnimation = useCallback(() => setEnableMenuButton(false), [
+    setEnableMenuButton,
+  ]);
+  const onFinishAnimation = useCallback(() => setEnableMenuButton(true), [
+    setEnableMenuButton,
+  ]);
 
   return (
     <>
