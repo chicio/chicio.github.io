@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import { tracking } from "../../../logic/tracking";
 import styled, { css } from "styled-components";
 import { Container } from "../atoms/container";
@@ -52,10 +52,9 @@ const NavBar = styled(Container)<NavBarProps>`
   }
 `;
 
-const animationDuration = 800;
-
 interface NavBarMenuItemProps {
   shouldOpenMenu: boolean;
+  animationDuration: number;
   delayAnimation: number;
 }
 
@@ -68,21 +67,24 @@ const NavBarMenuItem = memo(styled(MenuItemWithTracking)<NavBarMenuItemProps>`
   font-size: ${(props) => props.theme.fontSizes[5]};
   height: ${(props) => (props.shouldOpenMenu ? "auto" : "55px")};
 
-  &.my-node-enter {
+  &.opacity-enter {
     visibility: visible;
     opacity: 0;
   }
-  &.my-node-enter-active {
+
+  &.opacity-enter-active {
     opacity: 1;
-    transition: opacity ${animationDuration}ms ease
+    transition: opacity ${(props) => `${props.delayAnimation}ms`} ease
       ${(props) => `${props.delayAnimation}s`};
   }
-  &.my-node-exit {
+
+  &.opacity-exit {
     opacity: 1;
   }
-  &.my-node-exit-active {
+
+  &.opacity-exit-active {
     opacity: 0;
-    transition: opacity ${animationDuration}ms ease
+    transition: opacity ${(props) => `${props.delayAnimation}ms`} ease
       ${(props) => `${props.delayAnimation}s`};
     visibility: hidden;
   }
@@ -113,6 +115,57 @@ const NavBarMenuItem = memo(styled(MenuItemWithTracking)<NavBarMenuItemProps>`
       `};
   }
 `);
+
+interface AnimatedNavBarItemProps {
+  label: string;
+  slug: string;
+  selected: boolean;
+  trackingAction: string;
+  trackingCategory: string;
+  shouldOpenMenu: boolean;
+  delayAnimation: number;
+  onStartAnimation: () => void;
+  onFinishAnimation: () => void;
+}
+
+const AnimatedNavBarItem: React.FC<AnimatedNavBarItemProps> = ({
+  label,
+  slug,
+  selected,
+  trackingAction,
+  trackingCategory,
+  shouldOpenMenu,
+  delayAnimation,
+  onStartAnimation,
+  onFinishAnimation,
+}) => (
+  <CSSTransition
+    in={shouldOpenMenu}
+    classNames="opacity"
+    addEndListener={(node, done) => {
+      node.addEventListener("transitionend", done, false);
+    }}
+    onEnter={onStartAnimation}
+    onEntered={onFinishAnimation}
+    onExit={onStartAnimation}
+    onExited={onFinishAnimation}
+  >
+    <NavBarMenuItem
+      shouldOpenMenu={shouldOpenMenu}
+      animationDuration={800}
+      delayAnimation={delayAnimation}
+      selected={selected}
+      to={slug}
+      trackingData={{
+        action: trackingAction,
+        category: trackingCategory,
+        label: tracking.label.header,
+      }}
+    >
+      {label}
+    </NavBarMenuItem>
+  </CSSTransition>
+);
 
 enum ScrollDirection {
   up,
@@ -165,6 +218,13 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
   const [shouldOpenMenu, setShouldOpenMenu] = useState(false);
   const [enableMenuButton, setEnableMenuButton] = useState(true);
 
+  const onStartAnimation = useCallback(() => {
+    setEnableMenuButton(false);
+  }, [setEnableMenuButton]);
+  const onFinishAnimation = useCallback(() => {
+    setEnableMenuButton(true);
+  }, [setEnableMenuButton]);
+
   return (
     <>
       <MenuContainer
@@ -172,86 +232,50 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
         shouldHide={direction == ScrollDirection.down}
       >
         <NavBar shouldOpenMenu={shouldOpenMenu}>
-          <CSSTransition in={shouldOpenMenu} timeout={200} classNames="my-node">
-            <NavBarMenuItem
-              shouldOpenMenu={shouldOpenMenu}
-              delayAnimation={0.3}
-              selected={pathname === "/"}
-              to={"/"}
-              trackingData={{
-                action: tracking.action.open_home,
-                category: trackingCategory,
-                label: tracking.label.header,
-              }}
-            >
-              {"Home"}
-            </NavBarMenuItem>
-          </CSSTransition>
-          <CSSTransition in={shouldOpenMenu} timeout={200} classNames="my-node">
-            <NavBarMenuItem
-              shouldOpenMenu={shouldOpenMenu}
-              delayAnimation={0.4}
-              selected={pathname !== slugs.aboutMe && pathname !== slugs.art}
-              to={slugs.blog}
-              trackingData={{
-                action: tracking.action.open_blog,
-                category: trackingCategory,
-                label: tracking.label.header,
-              }}
-            >
-              {"Blog"}
-            </NavBarMenuItem>
-          </CSSTransition>
-          <CSSTransition in={shouldOpenMenu} timeout={200} classNames="my-node">
-            <NavBarMenuItem
-              shouldOpenMenu={shouldOpenMenu}
-              delayAnimation={0.5}
-              selected={pathname === slugs.art}
-              to={slugs.art}
-              trackingData={{
-                action: tracking.action.open_about_me,
-                category: trackingCategory,
-                label: tracking.label.header,
-              }}
-            >
-              {"Art"}
-            </NavBarMenuItem>
-          </CSSTransition>
-          <CSSTransition
-            in={shouldOpenMenu}
-            timeout={animationDuration}
-            classNames="my-node"
-            onEnter={() => {
-              setEnableMenuButton(false);
-              console.log("start");
-            }}
-            onEntered={() => {
-              setEnableMenuButton(true);
-              console.log("finish");
-            }}
-            onExit={() => {
-              setEnableMenuButton(false);
-              console.log("start");
-            }}
-            onExited={() => {
-              setEnableMenuButton(true);
-              console.log("finish");
-            }}
-          >
-            <NavBarMenuItem
-              shouldOpenMenu={shouldOpenMenu}
-              delayAnimation={0.6}
-              selected={pathname === slugs.aboutMe}
-              to={slugs.aboutMe}
-              trackingData={{
-                action: tracking.action.open_about_me,
-                category: trackingCategory,
-                label: tracking.label.header,
-              }}
-            >
-              {"About me"}
-            </NavBarMenuItem>
-          </CSSTransition>
+          <AnimatedNavBarItem
+            label={"Home"}
+            slug={"/"}
+            selected={pathname === "/"}
+            trackingAction={tracking.action.open_home}
+            trackingCategory={trackingCategory}
+            shouldOpenMenu={shouldOpenMenu}
+            delayAnimation={0.3}
+            onStartAnimation={onStartAnimation}
+            onFinishAnimation={onFinishAnimation}
+          />
+          <AnimatedNavBarItem
+            label={"Blog"}
+            slug={slugs.blog}
+            selected={pathname !== slugs.art && pathname !== slugs.aboutMe}
+            trackingAction={tracking.action.open_blog}
+            trackingCategory={trackingCategory}
+            shouldOpenMenu={shouldOpenMenu}
+            delayAnimation={0.4}
+            onStartAnimation={onStartAnimation}
+            onFinishAnimation={onFinishAnimation}
+          />
+          <AnimatedNavBarItem
+            label={"Art"}
+            slug={slugs.art}
+            selected={pathname === slugs.art}
+            trackingAction={tracking.action.open_art}
+            trackingCategory={trackingCategory}
+            shouldOpenMenu={shouldOpenMenu}
+            delayAnimation={0.5}
+            onStartAnimation={onStartAnimation}
+            onFinishAnimation={onFinishAnimation}
+          />
+          <AnimatedNavBarItem
+            label={"About me"}
+            slug={slugs.aboutMe}
+            selected={pathname === slugs.aboutMe}
+            trackingAction={tracking.action.open_about_me}
+            trackingCategory={trackingCategory}
+            shouldOpenMenu={shouldOpenMenu}
+            delayAnimation={0.6}
+            onStartAnimation={onStartAnimation}
+            onFinishAnimation={onFinishAnimation}
+          />
           <MenuButtonContainer>
             <HamburgerMenu
               onClick={() => {
