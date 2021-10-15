@@ -27,6 +27,9 @@
     "url": "https://github.com/chicio/chicio.github.io/issues"
   },
   "homepage": "https://github.com/chicio/chicio.github.io#readme",
+  "engines": {
+    "node": "^16.11.1"
+  },
   "scripts": {
     "start": "gatsby develop",
     "clean": "gatsby clean",
