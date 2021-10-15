@@ -65,4 +65,9 @@ export const artDescriptions: { [imageName: string]: string } = {
   "2021-03-18": "Screaming woman demon 😱😈",
   "2021-04-18": "Fabergé eggs 🥚🥚",
   "2021-06-06": "Iron Man 🦾🦿",
+  "2021-06-22": "Ice-cream 🧊🍦",
+  "2021-07-10": "Domestika course for tattoo design",
+  "2021-07-24": "Confused bomb 💣 🥴",
+  "2021-08-20": "Bumblebee 🐝",
+  "2021-09-26": "Loto flower 🌸",
 };
