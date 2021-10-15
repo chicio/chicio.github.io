@@ -258,7 +258,7 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
             trackingCategory={trackingCategory}
             shouldOpenMenu={shouldOpenMenu}
             enterDelayAnimation={0.3}
-            exitDelayAnimation={0.6}
+            exitDelayAnimation={0.3}
             onStartAnimation={onStartAnimation}
             onFinishAnimation={onFinishAnimation}
           />
@@ -270,7 +270,7 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
             trackingCategory={trackingCategory}
             shouldOpenMenu={shouldOpenMenu}
             enterDelayAnimation={0.4}
-            exitDelayAnimation={0.4}
+            exitDelayAnimation={0.2}
             onStartAnimation={onStartAnimation}
             onFinishAnimation={onFinishAnimation}
           />
@@ -282,7 +282,7 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
             trackingCategory={trackingCategory}
             shouldOpenMenu={shouldOpenMenu}
             enterDelayAnimation={0.5}
-            exitDelayAnimation={0.2}
+            exitDelayAnimation={0.1}
             onStartAnimation={onStartAnimation}
             onFinishAnimation={onFinishAnimation}
           />
