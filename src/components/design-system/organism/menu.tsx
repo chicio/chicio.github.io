@@ -57,16 +57,16 @@ const NavBar = styled(Container)<NavBarProps>`
 
 interface NavBarMenuItemProps {
   shouldOpenMenu: boolean;
-  animationDuration: number;
-  enterDelayAnimation: number;
-  exitDelayAnimation: number;
+  animationDuration: string;
+  enterDelayAnimation: string;
+  exitDelayAnimation: string;
 }
 
 const NavBarMenuItem = memo(styled(MenuItemWithTracking)<NavBarMenuItemProps>`
   position: relative;
   display: inline-block;
   visibility: ${(props) => (props.shouldOpenMenu ? "visible" : "hidden")};
-  margin-right: 15px;
+  margin-right: 20px;
   line-height: 50px;
   font-size: ${(props) => props.theme.fontSizes[5]};
   height: auto;
@@ -78,8 +78,9 @@ const NavBarMenuItem = memo(styled(MenuItemWithTracking)<NavBarMenuItemProps>`
 
   &.opacity-enter-active {
     opacity: 1;
-    transition: opacity ${(props) => `${props.animationDuration}ms`} ease
-      ${(props) => `${props.enterDelayAnimation}s`};
+    visibility: visible;
+    transition: opacity ${(props) => props.animationDuration} ease
+      ${(props) => props.enterDelayAnimation};
   }
 
   &.opacity-exit {
@@ -89,8 +90,8 @@ const NavBarMenuItem = memo(styled(MenuItemWithTracking)<NavBarMenuItemProps>`
 
   &.opacity-exit-active {
     opacity: 0;
-    transition: opacity ${(props) => `${props.animationDuration}ms`} ease
-      ${(props) => `${props.exitDelayAnimation}s`};
+    transition: opacity ${(props) => props.animationDuration} ease
+      ${(props) => props.exitDelayAnimation};
     visibility: visible;
   }
 
@@ -98,6 +99,12 @@ const NavBarMenuItem = memo(styled(MenuItemWithTracking)<NavBarMenuItemProps>`
     visibility: visible;
     opacity: 1;
     height: 55px;
+    transition: transform 0.15s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
     ${(props) =>
       props.selected &&
       css`
@@ -129,8 +136,8 @@ interface AnimatedNavBarItemProps {
   trackingAction: string;
   trackingCategory: string;
   shouldOpenMenu: boolean;
-  enterDelayAnimation: number;
-  exitDelayAnimation: number;
+  enterDelayAnimation: string;
+  exitDelayAnimation: string;
   onStartAnimation: () => void;
   onFinishAnimation: () => void;
 }
@@ -160,7 +167,7 @@ const AnimatedNavBarItem: React.FC<AnimatedNavBarItemProps> = ({
   >
     <NavBarMenuItem
       shouldOpenMenu={shouldOpenMenu}
-      animationDuration={300}
+      animationDuration={"0.3s"}
       enterDelayAnimation={enterDelayAnimation}
       exitDelayAnimation={exitDelayAnimation}
       selected={selected}
@@ -257,8 +264,8 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
             trackingAction={tracking.action.open_home}
             trackingCategory={trackingCategory}
             shouldOpenMenu={shouldOpenMenu}
-            enterDelayAnimation={0.3}
-            exitDelayAnimation={0.3}
+            enterDelayAnimation={"0.3s"}
+            exitDelayAnimation={"0.3s"}
             onStartAnimation={onStartAnimation}
             onFinishAnimation={onFinishAnimation}
           />
@@ -269,8 +276,8 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
             trackingAction={tracking.action.open_blog}
             trackingCategory={trackingCategory}
             shouldOpenMenu={shouldOpenMenu}
-            enterDelayAnimation={0.4}
-            exitDelayAnimation={0.2}
+            enterDelayAnimation={"0.4s"}
+            exitDelayAnimation={"0.2s"}
             onStartAnimation={onStartAnimation}
             onFinishAnimation={onFinishAnimation}
           />
@@ -281,8 +288,8 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
             trackingAction={tracking.action.open_art}
             trackingCategory={trackingCategory}
             shouldOpenMenu={shouldOpenMenu}
-            enterDelayAnimation={0.5}
-            exitDelayAnimation={0.1}
+            enterDelayAnimation={"0.5s"}
+            exitDelayAnimation={"0.1s"}
             onStartAnimation={onStartAnimation}
             onFinishAnimation={onFinishAnimation}
           />
@@ -293,8 +300,8 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
             trackingAction={tracking.action.open_about_me}
             trackingCategory={trackingCategory}
             shouldOpenMenu={shouldOpenMenu}
-            enterDelayAnimation={0.6}
-            exitDelayAnimation={0.0}
+            enterDelayAnimation={"0.6s"}
+            exitDelayAnimation={"0s"}
             onStartAnimation={onStartAnimation}
             onFinishAnimation={onFinishAnimation}
           />
