@@ -1,6 +1,6 @@
 {
   "name": "fabrizioduroni.it",
-  "version": "4.9.0",
+  "version": "4.10.0",
   "private": true,
   "description": "Fabrizio Duroni aka 'chicio' website",
   "repository": {
@@ -77,7 +77,7 @@
     "prismjs": "^1.24.1",
     "react": "^17.0.1",
     "react-adaptive-hooks": "0.0.8",
-    "react-device-detect": "^1.17.0",
+    "react-device-detect": "^2.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-transition-group": "^4.4.2",
