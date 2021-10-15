@@ -75,7 +75,7 @@ describe("Gallery", () => {
     );
 
     const image = screen.getByAltText("2021-03-30");
-    await fireEvent.click(image);
+    fireEvent.click(image);
     const modal = screen.getByAltText("Modal Image");
 
     expect(modal).toBeDefined();
