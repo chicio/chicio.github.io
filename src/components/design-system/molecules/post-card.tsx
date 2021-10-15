@@ -18,11 +18,11 @@ const PostCardContainer = styled.div`
   border-radius: 4px;
   padding: ${(props) => props.theme.spacing[4]};
   margin-top: ${(props) => props.theme.spacing[4]};
-  transition: transform 0.2s;
   background-color: ${(props) => props.theme.light.generalBackgroundLight};
   box-shadow: 0 3px 10px 0 ${(props) => props.theme.light.boxShadowLight};
 
   @media (min-width: 992px) {
+    transition: transform 0.2s;
     &:hover {
       transform: scale(1.025);
     }

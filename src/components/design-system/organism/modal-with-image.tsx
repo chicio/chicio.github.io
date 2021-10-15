@@ -2,21 +2,15 @@ import styled from "styled-components";
 import { CallToActionExternal } from "../atoms/call-to-action-external";
 import * as React from "react";
 import { opacity } from "../../opacity-keyframes";
+import { Overlay } from "../atoms/overlay";
 
-const ModalOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 400;
-  background: rgba(0, 0, 0, 0.6);
-  opacity: 0;
-  animation: ${opacity} 0.25s linear 0.25s;
-  animation-fill-mode: forwards;
-`;
+const zIndex = 400;
 
-const ModalContainer = styled.div`
+interface ModalContainerProps {
+  zIndex: number;
+}
+
+const ModalContainer = styled.div<ModalContainerProps>`
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -26,7 +20,7 @@ const ModalContainer = styled.div`
   max-width: 100%;
   width: 700px;
   height: 700px;
-  z-index: 400;
+  z-index: ${(props) => props.zIndex};
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -55,8 +49,8 @@ export const ModalWithImage: React.FC<ModalWithImageProps> = ({
   onClick,
 }) => (
   <>
-    <ModalOverlay onClick={onClick} />
-    <ModalContainer>
+    <Overlay zIndex={zIndex} onClick={onClick} delay={"0.25s"} />
+    <ModalContainer zIndex={zIndex}>
       <ModalImage src={imageUrl} alt={imageAlt} />
       <CallToActionExternal onClick={onClick}>Close</CallToActionExternal>
     </ModalContainer>

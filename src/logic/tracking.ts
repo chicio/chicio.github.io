@@ -26,6 +26,7 @@ export const tracking = {
     open_tabbaruiaction_doc: "open_tabbaruiaction_doc",
     open_home: "open_home",
     open_about_me: "open_about_me",
+    open_art: "open_art",
     open_blog_archive: "open_blog_archive",
     open_blog_tags: "open_blog_tags",
     reload: "reload",

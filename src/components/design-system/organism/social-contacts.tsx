@@ -2,18 +2,18 @@ import * as React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { tracking } from "../../../logic/tracking";
 import { SocialContact } from "../molecules/social-contact";
+import { SocialContactsQuery } from "../../../../graphql-types";
+import styled from "styled-components";
 import {
-  Dev,
+  DevTo,
   Facebook,
   Github,
   Instagram,
   Linkedin,
   Medium,
-  Twitter,
-} from "@styled-icons/fa-brands";
-import { Envelope, Mobile } from "@styled-icons/fa-solid";
-import { SocialContactsQuery } from "../../../../graphql-types";
-import styled from "styled-components";
+} from "styled-icons/boxicons-logos";
+import { Twitter } from "styled-icons/boxicons-logos";
+import { Envelope, Mobile } from "styled-icons/boxicons-regular";
 
 const SocialContactsContainers = styled.div`
   display: flex;
@@ -93,7 +93,7 @@ export const SocialContacts: React.FC<SocialContactsProps> = ({
         trackingAction={tracking.action.open_devto}
         trackingCategory={trackingCategory}
         trackingLabel={trackingLabel}
-        icon={<Dev size={30} title={"Devto"} />}
+        icon={<DevTo size={30} title={"Devto"} />}
       />
       <SocialContact
         link={links.twitter!}
