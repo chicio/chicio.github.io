@@ -7,6 +7,7 @@ import { MenuItemWithTracking } from "../../menu-item-with-tracking";
 import { HamburgerMenu } from "../molecules/hamburger-menu";
 import { Overlay } from "../atoms/overlay";
 import { CSSTransition } from "react-transition-group";
+import { Close } from "../molecules/close";
 
 const MenuButtonContainer = styled.div`
   position: absolute;
@@ -21,6 +22,7 @@ const MenuButtonContainer = styled.div`
 interface MenuContainerProps {
   shouldHide: boolean;
   shouldOpenMenu: boolean;
+  delayOpenCloseMenuAnimation: number;
 }
 
 const MenuContainer = styled.div<MenuContainerProps>`
@@ -28,7 +30,8 @@ const MenuContainer = styled.div<MenuContainerProps>`
   box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: ${(props) => (props.shouldHide ? "-55px" : 0)};
-  transition: top 0.3s ease 0s, height 0.3s ease 0s;
+  transition: top 0.3s ease 0s,
+    height 0.3s ease ${(props) => `${props.delayOpenCloseMenuAnimation}s`};
   width: 100%;
   z-index: 300;
   height: ${(props) => (props.shouldOpenMenu ? "200px" : "55px")};
@@ -55,7 +58,8 @@ const NavBar = styled(Container)<NavBarProps>`
 interface NavBarMenuItemProps {
   shouldOpenMenu: boolean;
   animationDuration: number;
-  delayAnimation: number;
+  enterDelayAnimation: number;
+  exitDelayAnimation: number;
 }
 
 const NavBarMenuItem = memo(styled(MenuItemWithTracking)<NavBarMenuItemProps>`
@@ -65,7 +69,7 @@ const NavBarMenuItem = memo(styled(MenuItemWithTracking)<NavBarMenuItemProps>`
   margin-right: 15px;
   line-height: 50px;
   font-size: ${(props) => props.theme.fontSizes[5]};
-  height: ${(props) => (props.shouldOpenMenu ? "auto" : "55px")};
+  height: auto;
 
   &.opacity-enter {
     visibility: visible;
@@ -75,7 +79,7 @@ const NavBarMenuItem = memo(styled(MenuItemWithTracking)<NavBarMenuItemProps>`
   &.opacity-enter-active {
     opacity: 1;
     transition: opacity ${(props) => `${props.animationDuration}ms`} ease
-      ${(props) => `${props.delayAnimation}s`};
+      ${(props) => `${props.enterDelayAnimation}s`};
   }
 
   &.opacity-exit {
@@ -85,14 +89,15 @@ const NavBarMenuItem = memo(styled(MenuItemWithTracking)<NavBarMenuItemProps>`
 
   &.opacity-exit-active {
     opacity: 0;
-    transition: opacity ${(props) => `${props.delayAnimation}ms`} ease
-      ${(props) => `${props.delayAnimation}s`};
-    visibility: hidden;
+    transition: opacity ${(props) => `${props.animationDuration}ms`} ease
+      ${(props) => `${props.exitDelayAnimation}s`};
+    visibility: visible;
   }
 
   @media (min-width: 768px) {
     visibility: visible;
     opacity: 1;
+    height: 55px;
     ${(props) =>
       props.selected &&
       css`
@@ -124,7 +129,8 @@ interface AnimatedNavBarItemProps {
   trackingAction: string;
   trackingCategory: string;
   shouldOpenMenu: boolean;
-  delayAnimation: number;
+  enterDelayAnimation: number;
+  exitDelayAnimation: number;
   onStartAnimation: () => void;
   onFinishAnimation: () => void;
 }
@@ -136,7 +142,8 @@ const AnimatedNavBarItem: React.FC<AnimatedNavBarItemProps> = ({
   trackingAction,
   trackingCategory,
   shouldOpenMenu,
-  delayAnimation,
+  enterDelayAnimation,
+  exitDelayAnimation,
   onStartAnimation,
   onFinishAnimation,
 }) => (
@@ -154,7 +161,8 @@ const AnimatedNavBarItem: React.FC<AnimatedNavBarItemProps> = ({
     <NavBarMenuItem
       shouldOpenMenu={shouldOpenMenu}
       animationDuration={300}
-      delayAnimation={delayAnimation}
+      enterDelayAnimation={enterDelayAnimation}
+      exitDelayAnimation={exitDelayAnimation}
       selected={selected}
       to={slug}
       trackingData={{
@@ -225,12 +233,21 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
   const onFinishAnimation = useCallback(() => setEnableMenuButton(true), [
     setEnableMenuButton,
   ]);
+  const changeMenuStatus = useCallback(
+    (enableMenuButton: boolean, shouldOpenMenu: boolean) => {
+      if (enableMenuButton) {
+        setShouldOpenMenu(!shouldOpenMenu);
+      }
+    },
+    [setShouldOpenMenu]
+  );
 
   return (
     <>
       <MenuContainer
         shouldOpenMenu={shouldOpenMenu}
         shouldHide={direction == ScrollDirection.down}
+        delayOpenCloseMenuAnimation={shouldOpenMenu ? 0 : 0.4}
       >
         <NavBar shouldOpenMenu={shouldOpenMenu}>
           <AnimatedNavBarItem
@@ -240,7 +257,8 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
             trackingAction={tracking.action.open_home}
             trackingCategory={trackingCategory}
             shouldOpenMenu={shouldOpenMenu}
-            delayAnimation={0.3}
+            enterDelayAnimation={0.3}
+            exitDelayAnimation={0.6}
             onStartAnimation={onStartAnimation}
             onFinishAnimation={onFinishAnimation}
           />
@@ -251,7 +269,8 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
             trackingAction={tracking.action.open_blog}
             trackingCategory={trackingCategory}
             shouldOpenMenu={shouldOpenMenu}
-            delayAnimation={0.4}
+            enterDelayAnimation={0.4}
+            exitDelayAnimation={0.4}
             onStartAnimation={onStartAnimation}
             onFinishAnimation={onFinishAnimation}
           />
@@ -262,7 +281,8 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
             trackingAction={tracking.action.open_art}
             trackingCategory={trackingCategory}
             shouldOpenMenu={shouldOpenMenu}
-            delayAnimation={0.5}
+            enterDelayAnimation={0.5}
+            exitDelayAnimation={0.2}
             onStartAnimation={onStartAnimation}
             onFinishAnimation={onFinishAnimation}
           />
@@ -273,25 +293,33 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
             trackingAction={tracking.action.open_about_me}
             trackingCategory={trackingCategory}
             shouldOpenMenu={shouldOpenMenu}
-            delayAnimation={0.6}
+            enterDelayAnimation={0.6}
+            exitDelayAnimation={0.0}
             onStartAnimation={onStartAnimation}
             onFinishAnimation={onFinishAnimation}
           />
           <MenuButtonContainer>
-            <HamburgerMenu
-              onClick={() => {
-                if (enableMenuButton) {
-                  setShouldOpenMenu(!shouldOpenMenu);
+            {!shouldOpenMenu && (
+              <HamburgerMenu
+                onClick={() =>
+                  changeMenuStatus(enableMenuButton, shouldOpenMenu)
                 }
-              }}
-            />
+              />
+            )}
+            {shouldOpenMenu && (
+              <Close
+                onClick={() =>
+                  changeMenuStatus(enableMenuButton, shouldOpenMenu)
+                }
+              />
+            )}
           </MenuButtonContainer>
         </NavBar>
       </MenuContainer>
       {shouldOpenMenu && (
         <Overlay
           zIndex={250}
-          delay={false}
+          delay={shouldOpenMenu ? "0s" : "0.4s"}
           onClick={() => {
             setShouldOpenMenu(!shouldOpenMenu);
           }}

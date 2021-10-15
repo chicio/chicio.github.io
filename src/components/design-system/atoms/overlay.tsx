@@ -3,7 +3,7 @@ import { opacity } from "../../opacity-keyframes";
 
 interface OverlayProps {
   zIndex: number;
-  delay: boolean;
+  delay: string;
 }
 
 export const Overlay = styled.div<OverlayProps>`
@@ -15,7 +15,7 @@ export const Overlay = styled.div<OverlayProps>`
   z-index: ${(props) => props.zIndex};
   background: rgba(0, 0, 0, 0.6);
   opacity: 0;
-  animation: ${opacity} 0.25s linear ${(props) => props.delay ? '0.25s' : '0s'};
+  animation: ${opacity} 0.25s linear ${(props) => `${props.delay}`};
   animation-fill-mode: forwards;
   backdrop-filter: blur(4px);
 `;

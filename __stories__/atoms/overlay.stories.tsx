@@ -5,7 +5,7 @@ import { Paragraph } from "../../src/components/design-system/atoms/paragraph";
 
 export const Standard: React.VFC = () => (
   <>
-    <Overlay zIndex={100} delay={true} />
+    <Overlay zIndex={100} delay={"0.25s"} />
     <Paragraph>
       {"An overlay covers 100% of the visible contain with opacity"}
     </Paragraph>
