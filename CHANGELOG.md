@@ -1,6 +1,14 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [4.10.0](https://github.com/chicio/chicio.github.io/releases/tag/v4.10.0)
+Release date: 2021-10-xx
+
+#### Added
+
+- Updated deps
+- Fix background scroll for overlay
+
 ## [4.9.0](https://github.com/chicio/chicio.github.io/releases/tag/v4.9.0)
 Release date: 2021-10-15
 
