@@ -1,6 +1,6 @@
 {
   "name": "fabrizioduroni.it",
-  "version": "4.9.0",
+  "version": "4.10.0",
   "private": true,
   "description": "Fabrizio Duroni aka 'chicio' website",
   "repository": {
@@ -27,6 +27,9 @@
     "url": "https://github.com/chicio/chicio.github.io/issues"
   },
   "homepage": "https://github.com/chicio/chicio.github.io#readme",
+  "engines": {
+    "node": "^14.18.1"
+  },
   "scripts": {
     "start": "gatsby develop",
     "clean": "gatsby clean",
@@ -74,7 +77,7 @@
     "prismjs": "^1.24.1",
     "react": "^17.0.1",
     "react-adaptive-hooks": "0.0.8",
-    "react-device-detect": "^1.17.0",
+    "react-device-detect": "^2.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-transition-group": "^4.4.2",
@@ -84,15 +87,15 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
-    "@storybook/addon-actions": "^6.3.4",
-    "@storybook/addon-essentials": "^6.3.4",
-    "@storybook/addon-links": "^6.3.4",
-    "@storybook/builder-webpack5": "^6.3.4",
-    "@storybook/manager-webpack5": "^6.3.4",
-    "@storybook/react": "^6.3.4",
+    "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/builder-webpack5": "^6.3.12",
+    "@storybook/manager-webpack5": "^6.3.12",
+    "@storybook/react": "^6.3.12",
     "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
-    "@types/jest": "^26.0.24",
+    "@testing-library/react": "^12.1.2",
+    "@types/jest": "^27.0.2",
     "@types/node": "^14.17.5",
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
@@ -108,12 +111,12 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
-    "eslint-plugin-testing-library": "^4.9.1",
+    "eslint-plugin-testing-library": "^4.12.4",
     "gh-pages": "^3.2.3",
-    "html-webpack-plugin": "^5.3.2",
+    "html-webpack-plugin": "^5.4.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^27.0.6",
+    "jest": "^27.2.5",
     "react-test-renderer": "^17.0.2",
-    "typescript": "^4.3.5"
+    "typescript": "^4.4.4"
   }
 }

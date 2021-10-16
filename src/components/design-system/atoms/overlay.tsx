@@ -1,12 +1,38 @@
 import styled from "styled-components";
 import { opacity } from "../../opacity-keyframes";
+import React, { useLayoutEffect } from "react";
 
-interface OverlayProps {
+const useLockBodyScroll = () => {
+  useLayoutEffect(() => {
+    const originalStyle = window.getComputedStyle(document.body);
+    const originalPositionStyle = originalStyle.position;
+    const originalTopStyle = originalStyle.top;
+    const originalLeftStyle = originalStyle.left;
+    const originalRightStyle = originalStyle.right;
+    const currentScrollYPosition =
+      (window.scrollY || document.documentElement.scrollTop) -
+      (document.documentElement.clientTop || 0);
+    document.body.style.top = -currentScrollYPosition + "px";
+    document.body.style.position = "fixed";
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    return () => {
+      document.body.style.top = originalTopStyle;
+      document.body.style.position = originalPositionStyle;
+      document.body.style.left = originalLeftStyle;
+      document.body.style.right = originalRightStyle;
+      window.scrollTo(0, currentScrollYPosition);
+    };
+  }, []);
+};
+
+export interface OverlayProps {
   zIndex: number;
   delay: string;
+  onClick: () => void;
 }
 
-export const Overlay = styled.div<OverlayProps>`
+const StyledOverlay = styled.div<OverlayProps>`
   position: fixed;
   top: 0;
   left: 0;
@@ -19,3 +45,9 @@ export const Overlay = styled.div<OverlayProps>`
   animation-fill-mode: forwards;
   backdrop-filter: blur(4px);
 `;
+
+export const Overlay: React.FC<OverlayProps> = (props) => {
+  useLockBodyScroll();
+
+  return <StyledOverlay {...props} />;
+};

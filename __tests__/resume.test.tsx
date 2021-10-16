@@ -12,12 +12,14 @@ describe("Resume", () => {
     );
 
     const experienceTab = screen.getByText("Experience");
-    await fireEvent.click(experienceTab);
+    fireEvent.click(experienceTab);
 
-    expect(screen.getByText("Master's degree in Computer Science")).toBeDefined();
+    expect(
+      screen.getByText("Master's degree in Computer Science")
+    ).toBeDefined();
 
     const projectsTab = screen.getByText("Projects");
-    await fireEvent.click(projectsTab);
+    fireEvent.click(projectsTab);
 
     expect(screen.getByText("Spectral Clara Lux Tracer")).toBeDefined();
   });

@@ -199,7 +199,9 @@ const useScrollDirection = () => {
       Math.abs(currentScrollYPosition - previousScrollYPosition) > threshold;
 
     const isScrollingUp = (currentScrollYPosition: number) =>
-      currentScrollYPosition > previousScrollYPosition;
+      currentScrollYPosition > previousScrollYPosition &&
+      !(previousScrollYPosition > 0 && currentScrollYPosition === 0) &&
+      !(currentScrollYPosition > 0 && previousScrollYPosition === 0);
 
     const updateScrollDir = () => {
       const currentScrollYPosition = window.pageYOffset;
@@ -326,7 +328,7 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
       {shouldOpenMenu && (
         <Overlay
           zIndex={250}
-          delay={shouldOpenMenu ? "0s" : "0.4s"}
+          delay={"0.4s"}
           onClick={() => {
             setShouldOpenMenu(!shouldOpenMenu);
           }}

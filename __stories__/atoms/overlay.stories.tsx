@@ -1,16 +1,26 @@
 import React from "react";
-import { Meta } from "@storybook/react";
-import { Overlay } from "../../src/components/design-system/atoms/overlay";
+import { Meta, Story } from "@storybook/react";
+import {
+  Overlay,
+  OverlayProps,
+} from "../../src/components/design-system/atoms/overlay";
 import { Paragraph } from "../../src/components/design-system/atoms/paragraph";
 
-export const Standard: React.VFC = () => (
+const Template: Story<OverlayProps> = (args) => (
   <>
-    <Overlay zIndex={100} delay={"0.25s"} />
+    <Overlay {...args} />
     <Paragraph>
       {"An overlay covers 100% of the visible contain with opacity"}
     </Paragraph>
   </>
 );
+
+export const OverlayStory = Template.bind({});
+OverlayStory.args = {
+  zIndex: 200,
+  delay: "0.3s",
+};
+OverlayStory.storyName = "Menu";
 
 export default {
   title: "Atoms/Overlay",

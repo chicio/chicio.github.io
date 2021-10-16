@@ -29,7 +29,7 @@ describe("StandardExternalLinkWithTracking", () => {
     );
     const button = screen.getByText("Link");
 
-    await fireEvent.click(button);
+    fireEvent.click(button);
 
     expect(trackWithMock).toHaveBeenCalledTimes(1);
     expect(trackWithMock).toHaveBeenLastCalledWith({
