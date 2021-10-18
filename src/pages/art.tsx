@@ -5,13 +5,21 @@ import { PageWithContent } from "../components/design-system/templates/page-with
 import { getCurrentLocationFrom } from "../logic/current-location";
 import { tracking } from "../logic/tracking";
 import { OgPageType } from "../logic/seo";
-import { PageTitle } from "../components/design-system/molecules/page-title";
 import { Gallery } from "../components/design-system/organism/gallery";
 import { Paragraph } from "../components/design-system/atoms/paragraph";
 import styled from "styled-components";
+import { StaticImage } from "gatsby-plugin-image";
 
 const ArtDescription = styled(Paragraph)`
   margin-bottom: ${(props) => props.theme.spacing[6]};
+`;
+
+const ArtLogoContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: ${(props) => props.theme.spacing[8]}
+    ${(props) => props.theme.spacing[2]} ${(props) => props.theme.spacing[6]};
 `;
 
 const Art: React.FC<PageProps<ArtQuery>> = ({ data, location }) => {
@@ -29,7 +37,12 @@ const Art: React.FC<PageProps<ArtQuery>> = ({ data, location }) => {
       customTitle={"Fabrizio Duroni art gallery"}
       description={"Fabrizio Duroni art gallery"}
     >
-      <PageTitle>My drawings</PageTitle>
+      <ArtLogoContainer>
+        <StaticImage
+          src={"https://via.placeholder.com/700x500"}
+          alt={"Chicio Art Logo"}
+        />
+      </ArtLogoContainer>
       <ArtDescription>
         During the last years I started learning to draw. This page is a
         collection of all the draws I created. You can consider it like an art
