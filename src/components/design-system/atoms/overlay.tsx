@@ -4,11 +4,7 @@ import React, { useLayoutEffect } from "react";
 
 const useLockBodyScroll = () => {
   useLayoutEffect(() => {
-    const originalStyle = window.getComputedStyle(document.body);
-    const originalPositionStyle = originalStyle.position;
-    const originalTopStyle = originalStyle.top;
-    const originalLeftStyle = originalStyle.left;
-    const originalRightStyle = originalStyle.right;
+    const originalBodyStyle = window.getComputedStyle(document.body);
     const currentScrollYPosition =
       (window.scrollY || document.documentElement.scrollTop) -
       (document.documentElement.clientTop || 0);
@@ -17,10 +13,10 @@ const useLockBodyScroll = () => {
     document.body.style.left = "0";
     document.body.style.right = "0";
     return () => {
-      document.body.style.top = originalTopStyle;
-      document.body.style.position = originalPositionStyle;
-      document.body.style.left = originalLeftStyle;
-      document.body.style.right = originalRightStyle;
+      document.body.style.top = originalBodyStyle.top;
+      document.body.style.position = originalBodyStyle.position;
+      document.body.style.left = originalBodyStyle.left;
+      document.body.style.right = originalBodyStyle.right;
       window.scrollTo(0, currentScrollYPosition);
     };
   }, []);
