@@ -12,8 +12,7 @@ const images = [
           backgroundColor: "#b8a888",
           images: {
             fallback: {
-              src:
-                "/static/d3746394c1a8e0a5067cd1f090a5a9b8/e3115/2021-03-30.jpg",
+              src: "/static/d3746394c1a8e0a5067cd1f090a5a9b8/e3115/2021-03-30.jpg",
               srcSet:
                 "/static/d3746394c1a8e0a5067cd1f090a5a9b8/e3115/2021-03-30.jpg 640w",
               sizes: "100vw",
@@ -42,8 +41,7 @@ const images = [
           backgroundColor: "#b8a888",
           images: {
             fallback: {
-              src:
-                "/static/d3746394c1a8e0a5067cd1f090a5a9b8/e3115/2021-03-29.jpg",
+              src: "/static/d3746394c1a8e0a5067cd1f090a5a9b8/e3115/2021-03-29.jpg",
               srcSet:
                 "/static/d3746394c1a8e0a5067cd1f090a5a9b8/e3115/2021-03-29.jpg 640w",
               sizes: "100vw",

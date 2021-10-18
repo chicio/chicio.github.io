@@ -52,6 +52,12 @@ To deploy a new version in production:
 npm run deploy
 ```
 
+To bumb up dependecies versions use the following command: 
+
+```shell
+npx npm-check-updates -u 
+```
+
 ## Overview
 
 My website has been created for Github Pages using:

@@ -23,7 +23,7 @@ const createJsonLDMock = createJsonLD as jest.MockedFunction<
   typeof createJsonLD
 >;
 
-describe("<Head />", () => {
+describe("Head", () => {
   const useStaticQueryMock = useStaticQuery as jest.MockedFunction<
     typeof useStaticQuery
   >;
@@ -184,8 +184,7 @@ describe("<Head />", () => {
       {
         type: "text/javascript",
         defer: true,
-        src:
-          "https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js",
+        src: "https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js",
         "data-cfasync": "false",
       },
       {

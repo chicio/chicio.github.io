@@ -4,6 +4,7 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
+    "plugin:testing-library/react"
   ],
   settings: {
     react: {
