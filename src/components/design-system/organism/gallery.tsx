@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { ContainerFluid } from "../atoms/container-fluid";
 import { Paragraph } from "../atoms/paragraph";
 import { File, ImageSharp, Maybe } from "../../../../graphql-types";
+import { mediaQuery } from "../utils-css/media-query";
 
 const GalleryContainer = styled(ContainerFluid)`
   padding: 0;
@@ -25,7 +26,7 @@ const GalleryImageFrame = styled.figure`
   box-shadow: 0 3px 10px 0 ${(props) => props.theme.light.boxShadowLight};
   transition: transform 0.2s;
 
-  @media (min-width: 992px) {
+  ${mediaQuery.minWidth.md} {
     &:hover {
       transform: scale(1.025);
     }

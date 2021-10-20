@@ -8,13 +8,14 @@ import { HamburgerMenu } from "../molecules/hamburger-menu";
 import { Overlay } from "../atoms/overlay";
 import { CSSTransition } from "react-transition-group";
 import { Close } from "../molecules/close";
+import { mediaQuery } from "../utils-css/media-query";
 
 const MenuButtonContainer = styled.div`
   position: absolute;
   top: 10px;
   left: 10px;
 
-  @media (min-width: 768px) {
+  ${mediaQuery.minWidth.sm} {
     display: none;
   }
 `;
@@ -50,7 +51,7 @@ const NavBar = styled(Container)<NavBarProps>`
   flex-direction: column;
   align-items: center;
 
-  @media (min-width: 768px) {
+  ${mediaQuery.minWidth.sm} {
     flex-direction: row;
   }
 `;
@@ -95,7 +96,7 @@ const NavBarMenuItem = memo(styled(MenuItemWithTracking)<NavBarMenuItemProps>`
     visibility: visible;
   }
 
-  @media (min-width: 768px) {
+  ${mediaQuery.minWidth.sm} {
     visibility: visible;
     opacity: 1;
     height: 55px;

@@ -8,6 +8,7 @@ import { Container } from "../atoms/container";
 import { Heading6 } from "../atoms/heading6";
 import { Briefcase } from "styled-icons/boxicons-regular";
 import { GraduationCap } from "styled-icons/fa-solid";
+import { mediaQuery } from "../utils-css/media-query";
 
 const TimelineContentContainer = styled(Container)`
   padding: 0;
@@ -35,7 +36,7 @@ const TimelineContainer = styled.ul`
     background-color: ${(props) => props.theme.light.dividerColor};
   }
 
-  @media (min-width: 992px) {
+  ${mediaQuery.minWidth.md} {
     text-align: left;
   }
 

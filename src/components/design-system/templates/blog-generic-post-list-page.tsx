@@ -13,6 +13,7 @@ import { PageTitle } from "../molecules/page-title";
 import { OgPageType } from "../../../logic/seo";
 import { CurrentLocation } from "../../../logic/current-location";
 import { StandardInternalLinkWithTracking } from "../../standard-internal-link-with-tracking";
+import { mediaQuery } from "../utils-css/media-query";
 
 const PostContainer = styled(ContainerFluid)`
   display: flex;
@@ -22,7 +23,7 @@ const PostContainer = styled(ContainerFluid)`
   padding-left: 0;
   padding-right: 0;
 
-  @media (min-width: 992px) {
+  ${mediaQuery.minWidth.md} {
     flex-direction: row;
     align-items: center;
   }
@@ -33,7 +34,7 @@ interface ColumnProps {
 }
 
 const Column = styled.div<ColumnProps>`
-  @media (min-width: 992px) {
+  ${mediaQuery.minWidth.md} {
     flex: ${(props) => props.size};
   }
 `;

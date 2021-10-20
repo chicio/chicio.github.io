@@ -3,6 +3,7 @@ import { Heading3 } from "../atoms/heading3";
 import styled from "styled-components";
 import { Container } from "../atoms/container";
 import { CallToActionExternalWithTracking } from "../../call-to-action-external-with-tracking";
+import { mediaQuery } from "../utils-css/media-query";
 
 interface ProjectContainerProps {
   reverse: boolean;
@@ -14,7 +15,7 @@ const ProjectContainer = styled(Container)<ProjectContainerProps>`
   padding: 0;
   margin: ${(props) => props.theme.spacing[7]} auto;
 
-  @media (min-width: 992px) {
+  ${mediaQuery.minWidth.md} {
     flex-direction: ${(props) => (props.reverse ? "row-reverse" : "row")};
     max-width: 1100px;
   }
