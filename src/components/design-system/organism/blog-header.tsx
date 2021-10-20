@@ -2,6 +2,7 @@ import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { Heading3 } from "../atoms/heading3";
+import { mediaQuery } from "../utils-css/media-query";
 
 const BlogHeaderContainer = styled.div`
   display: flex;
@@ -27,11 +28,11 @@ const BlogTitle = styled(Heading3)`
     color: ${(props) => props.theme.dark.primaryTextColor};
   }
 
-  @media (max-width: 992px) {
+  ${mediaQuery.maxWidth.md} {
     font-size: 28px;
   }
 
-  @media (max-width: 320px) {
+  ${mediaQuery.maxWidth.xs} {
     font-size: 22px;
   }
 `;
@@ -46,11 +47,11 @@ const BlogDescription = styled.span`
     color: ${(props) => props.theme.dark.secondaryTextColor};
   }
 
-  @media (max-width: 992px) {
+  ${mediaQuery.maxWidth.md} {
     font-size: 12px;
   }
 
-  @media (max-width: 320px) {
+  ${mediaQuery.maxWidth.xs} {
     font-size: 10px;
   }
 `;

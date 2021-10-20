@@ -40,7 +40,7 @@ const TimelineContainer = styled.ul`
     text-align: left;
   }
 
-  @media (max-width: 992px) {
+  ${mediaQuery.maxWidth.md} {
     &:before {
       left: 40px;
     }
@@ -109,7 +109,7 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
     content: " ";
   }
 
-  @media (max-width: 992px) {
+  ${mediaQuery.maxWidth.md} {
     width: calc(100% - 90px);
     width: -moz-calc(100% - 90px);
     width: -webkit-calc(100% - 90px);
@@ -167,7 +167,7 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
         solid;
     }
 
-    @media (max-width: 992px) {
+    ${mediaQuery.maxWidth.md} {
       width: calc(100% - 90px);
       width: -moz-calc(100% - 90px);
       width: -webkit-calc(100% - 90px);
@@ -230,7 +230,7 @@ const TimelineBadge = styled.div`
     color: ${(props) => props.theme.dark.textAbovePrimaryColor};
   }
 
-  @media (max-width: 992px) {
+  ${mediaQuery.maxWidth.md} {
     left: 20px;
     margin-left: 0;
     top: 20px;
