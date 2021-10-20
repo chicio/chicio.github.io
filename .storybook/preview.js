@@ -1,8 +1,8 @@
 import React from 'react';
 import { action } from "@storybook/addon-actions"
 import { ThemeProvider } from 'styled-components';
-import { theme } from "../src/components/theme";
-import { GlobalStyle } from "../src/components/global-style";
+import { theme } from "../src/components/design-system/theme";
+import { GlobalStyle } from "../src/components/design-system/global-style";
 
 /** https://www.gatsbyjs.com/docs/how-to/testing/visual-testing-with-storybook/ **/
 global.___loader = {

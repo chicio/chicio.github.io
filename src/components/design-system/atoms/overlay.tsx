@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { opacity } from "../../opacity-keyframes";
+import { opacity } from "../utils-css/opacity-keyframes";
 import React, { useLayoutEffect } from "react";
 
 const useLockBodyScroll = () => {

@@ -2,7 +2,7 @@ import React from "react";
 import { Meta } from "@storybook/react";
 import styled from "styled-components";
 import { ContainerFluid } from "../src/components/design-system/atoms/container-fluid";
-import { dark, light } from "../src/components/theme";
+import { dark, light } from "../src/components/design-system/theme";
 
 const ColorsContainer = styled.div`
   display: flex;
