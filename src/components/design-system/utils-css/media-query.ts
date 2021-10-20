@@ -12,6 +12,12 @@ interface MediaQuery {
     md: string;
     lg: string;
   };
+  maxWidth: {
+    xs: string;
+    sm: string;
+    md: string;
+    lg: string;
+  };
 }
 
 const breakpoints: Record<BreakPoint, string> = {
@@ -21,8 +27,17 @@ const breakpoints: Record<BreakPoint, string> = {
   lg: "1200px",
 };
 
+const width: (
+  width: "max-width" | "min-width",
+  breakpoint: BreakPoint
+) => string = (width: "max-width" | "min-width", breakpoint: BreakPoint) =>
+  `@media (${width}: ${breakpoints[breakpoint]})`;
+
 const minWidth: (breakpoint: BreakPoint) => string = (breakpoint: BreakPoint) =>
-  `@media (min-width: ${breakpoints[breakpoint]})`;
+  width("min-width", breakpoint);
+
+const maxWidth: (breakpoint: BreakPoint) => string = (breakpoint: BreakPoint) =>
+  width("max-width", breakpoint);
 
 export const mediaQuery: MediaQuery = {
   minWidth: {
@@ -30,5 +45,11 @@ export const mediaQuery: MediaQuery = {
     sm: minWidth(BreakPoint.sm),
     md: minWidth(BreakPoint.md),
     lg: minWidth(BreakPoint.lg),
+  },
+  maxWidth: {
+    xs: maxWidth(BreakPoint.xs),
+    sm: maxWidth(BreakPoint.sm),
+    md: maxWidth(BreakPoint.md),
+    lg: maxWidth(BreakPoint.lg),
   },
 };
