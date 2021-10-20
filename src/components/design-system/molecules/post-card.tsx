@@ -22,9 +22,11 @@ const PostCardContainer = styled.div`
   box-shadow: 0 3px 10px 0 ${(props) => props.theme.light.boxShadowLight};
 
   @media (min-width: 992px) {
-    transition: transform 0.2s;
-    &:hover {
-      transform: scale(1.025);
+    @media (hover: hover) and (pointer: fine) {
+      transition: transform 0.2s;
+      &:hover {
+        transform: scale(1.025);
+      }
     }
   }
 
