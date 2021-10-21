@@ -5,6 +5,7 @@ import React from "react";
 import { Paragraph } from "../atoms/paragraph";
 import { tracking } from "../../../logic/tracking";
 import { CallToActionInternalWithTracking } from "../../call-to-action-internal-with-tracking";
+import { mediaQuery } from "../utils-css/media-query";
 
 const CardButton = styled(CallToActionInternalWithTracking)`
   margin-top: auto;
@@ -38,15 +39,18 @@ const CardContainer = styled.div<CardContainerProps>`
   display: flex;
   flex-direction: column;
 
-  @media (min-width: 992px) {
-    margin: 0 ${(props) => (props.margin ? props.theme.spacing[2] : "")};
-    transition: all 0.2s;
-    &:hover {
-      transform: scale(1.025);
+  ${mediaQuery.minWidth.md} {
+    ${mediaQuery.inputDevice.mouse} {
+      margin: 0 ${(props) => (props.margin ? props.theme.spacing[2] : "")};
+      transition: all 0.2s;
+
+      &:hover {
+        transform: scale(1.025);
+      }
     }
   }
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.generalBackgroundLight};
     box-shadow: ${(props) => props.theme.dark.boxShadowLight} 0 3px 10px 0;
   }

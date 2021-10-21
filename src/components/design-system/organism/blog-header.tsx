@@ -2,6 +2,7 @@ import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { Heading3 } from "../atoms/heading3";
+import { mediaQuery } from "../utils-css/media-query";
 
 const BlogHeaderContainer = styled.div`
   display: flex;
@@ -23,15 +24,15 @@ const BlogTitle = styled(Heading3)`
   display: block;
   line-height: 1.5;
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     color: ${(props) => props.theme.dark.primaryTextColor};
   }
 
-  @media (max-width: 992px) {
+  ${mediaQuery.maxWidth.md} {
     font-size: 28px;
   }
 
-  @media (max-width: 320px) {
+  ${mediaQuery.maxWidth.xs} {
     font-size: 22px;
   }
 `;
@@ -42,15 +43,15 @@ const BlogDescription = styled.span`
   color: ${(props) => props.theme.light.secondaryTextColor};
   line-height: 1.5;
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     color: ${(props) => props.theme.dark.secondaryTextColor};
   }
 
-  @media (max-width: 992px) {
+  ${mediaQuery.maxWidth.md} {
     font-size: 12px;
   }
 
-  @media (max-width: 320px) {
+  ${mediaQuery.maxWidth.xs} {
     font-size: 10px;
   }
 `;
@@ -63,7 +64,7 @@ const ImageContainer = styled.div`
   border-radius: 10px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.575);
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.generalBackgroundLight};
   }
 `;

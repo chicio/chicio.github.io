@@ -3,6 +3,7 @@ import {
   DefaultTheme,
   GlobalStyleComponent,
 } from "styled-components";
+import { mediaQuery } from "./utils-css/media-query";
 
 export const GlobalStyle: GlobalStyleComponent<
   {},
@@ -34,7 +35,7 @@ export const GlobalStyle: GlobalStyleComponent<
     height: 100%;
     margin: 0;
 
-    @media (prefers-color-scheme: dark) {
+    ${mediaQuery.dark} {
       background-color: ${(props) => props.theme.dark.generalBackground};
     }
   }

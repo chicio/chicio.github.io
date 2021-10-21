@@ -2,6 +2,7 @@ import React from "react";
 import { Time } from "../atoms/time";
 import { Paragraph } from "../atoms/paragraph";
 import styled from "styled-components";
+import { mediaQuery } from "../utils-css/media-query";
 
 export interface PostMetaProps {
   date: string;
@@ -13,7 +14,7 @@ const PostMetaParagraph = styled(Paragraph)`
     ${(props) => props.theme.spacing[3]} 0;
   color: ${(props) => props.theme.light.secondaryTextColor};
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     color: ${(props) => props.theme.dark.secondaryTextColor};
   }
 `;

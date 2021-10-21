@@ -4,6 +4,7 @@ import { heading3Style } from "./design-system/atoms/heading3";
 import { heading4Style } from "./design-system/atoms/heading4";
 import { standardLinkStyle } from "./design-system/atoms/standard-link-style";
 import { syntax } from "./design-system/atoms/syntax";
+import { mediaQuery } from "./design-system/utils-css/media-query";
 
 const PostContentContainer = styled.div`
   color: ${(props) => props.theme.light.primaryTextColor};
@@ -71,7 +72,7 @@ const PostContentContainer = styled.div`
     border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     color: ${(props) => props.theme.dark.primaryTextColor};
 
     & blockquote {

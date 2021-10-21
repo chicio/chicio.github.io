@@ -5,6 +5,7 @@ import { tracking } from "../../../logic/tracking";
 import { Heading4 } from "../atoms/heading4";
 import styled from "styled-components";
 import { RecentPostCard } from "../molecules/recent-post-card";
+import { mediaQuery } from "../utils-css/media-query";
 
 const RecentTitle = styled(Heading4)`
   margin: ${(props) => props.theme.spacing[2]} 0;
@@ -14,7 +15,7 @@ const CardsContainer = styled.div`
   display: block;
   width: 100%;
 
-  @media (min-width: 992px) {
+  ${mediaQuery.minWidth.md} {
     display: flex;
     flex-direction: row;
   }

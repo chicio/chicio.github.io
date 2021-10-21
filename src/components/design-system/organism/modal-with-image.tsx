@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { CallToActionExternal } from "../atoms/call-to-action-external";
 import * as React from "react";
-import { opacity } from "../../opacity-keyframes";
+import { opacity } from "../utils-css/opacity-keyframes";
 import { Overlay } from "../atoms/overlay";
 
 const zIndex = 400;

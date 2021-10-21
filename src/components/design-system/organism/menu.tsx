@@ -8,13 +8,14 @@ import { HamburgerMenu } from "../molecules/hamburger-menu";
 import { Overlay } from "../atoms/overlay";
 import { CSSTransition } from "react-transition-group";
 import { Close } from "../molecules/close";
+import { mediaQuery } from "../utils-css/media-query";
 
 const MenuButtonContainer = styled.div`
   position: absolute;
   top: 10px;
   left: 10px;
 
-  @media (min-width: 768px) {
+  ${mediaQuery.minWidth.sm} {
     display: none;
   }
 `;
@@ -36,7 +37,7 @@ const MenuContainer = styled.div<MenuContainerProps>`
   z-index: 300;
   height: ${(props) => (props.shouldOpenMenu ? "200px" : "55px")};
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.primaryColor};
   }
 `;
@@ -50,7 +51,7 @@ const NavBar = styled(Container)<NavBarProps>`
   flex-direction: column;
   align-items: center;
 
-  @media (min-width: 768px) {
+  ${mediaQuery.minWidth.sm} {
     flex-direction: row;
   }
 `;
@@ -95,14 +96,17 @@ const NavBarMenuItem = memo(styled(MenuItemWithTracking)<NavBarMenuItemProps>`
     visibility: visible;
   }
 
-  @media (min-width: 768px) {
+  ${mediaQuery.minWidth.sm} {
     visibility: visible;
     opacity: 1;
     height: 55px;
-    transition: transform 0.15s;
 
-    &:hover {
-      transform: scale(1.1);
+    ${mediaQuery.inputDevice.mouse} {
+      transition: transform 0.15s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
 
     ${(props) =>
@@ -121,7 +125,7 @@ const NavBarMenuItem = memo(styled(MenuItemWithTracking)<NavBarMenuItemProps>`
             ${(props) => props.theme.light.generalBackground};
           border-left: 5px solid transparent;
   
-          @media (prefers-color-scheme: dark) {
+          ${mediaQuery.dark} {
             border-bottom: 5px solid ${(props) =>
               props.theme.dark.generalBackground};
           }
@@ -236,12 +240,14 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
   const [shouldOpenMenu, setShouldOpenMenu] = useState(false);
   const [enableMenuButton, setEnableMenuButton] = useState(true);
 
-  const onStartAnimation = useCallback(() => setEnableMenuButton(false), [
-    setEnableMenuButton,
-  ]);
-  const onFinishAnimation = useCallback(() => setEnableMenuButton(true), [
-    setEnableMenuButton,
-  ]);
+  const onStartAnimation = useCallback(
+    () => setEnableMenuButton(false),
+    [setEnableMenuButton]
+  );
+  const onFinishAnimation = useCallback(
+    () => setEnableMenuButton(true),
+    [setEnableMenuButton]
+  );
   const changeMenuStatus = useCallback(
     (enableMenuButton: boolean, shouldOpenMenu: boolean) => {
       if (enableMenuButton) {

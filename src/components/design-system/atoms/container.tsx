@@ -1,16 +1,17 @@
 import styled from "styled-components";
 import { ContainerFluid } from "./container-fluid";
+import { mediaQuery } from "../utils-css/media-query";
 
 export const Container = styled(ContainerFluid)`
-  @media (min-width: 576px) {
+  ${mediaQuery.minWidth.xs} {
     max-width: 540px;
   }
 
-  @media (min-width: 768px) {
+  ${mediaQuery.minWidth.sm} {
     max-width: 720px;
   }
 
-  @media (min-width: 992px) {
+  ${mediaQuery.minWidth.md} {
     max-width: 960px;
   }
 `;

@@ -1,4 +1,4 @@
-import { textAbovePrimaryColor } from "../components/theme";
+import { textAbovePrimaryColor } from "../components/design-system/theme";
 import { ISourceOptions } from "tsparticles";
 import { useIsPowerfulDevice } from "./device";
 import { isDesktop, isMobile } from "react-device-detect";

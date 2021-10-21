@@ -1,4 +1,5 @@
 import { css } from "styled-components";
+import { mediaQuery } from "../utils-css/media-query";
 
 export const callToActionStyle = css`
   font-size: ${(props) => props.theme.fontSizes[3]};
@@ -11,7 +12,7 @@ export const callToActionStyle = css`
   line-height: 1;
   text-align: center;
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.accentColor};
     color: ${(props) => props.theme.dark.textAbovePrimaryColor};
   }

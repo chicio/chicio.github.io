@@ -5,13 +5,14 @@ import styled from "styled-components";
 import { Tabs } from "../molecules/tabs";
 import { Projects } from "./projects";
 import { Timeline } from "./timeline";
+import { mediaQuery } from "../utils-css/media-query";
 
 const ResumeContainer = styled(ContainerFluid)`
   padding-left: 0;
   padding-right: 0;
   background-color: ${(props) => props.theme.light.generalBackground};
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.generalBackground};
   }
 `;

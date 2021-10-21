@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mediaQuery } from "../utils-css/media-query";
 
 export const ContainerFullscreen = styled.div`
   display: flex;
@@ -10,7 +11,7 @@ export const ContainerFullscreen = styled.div`
   width: 100%;
   background-color: ${(props) => props.theme.light.primaryColor};
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.primaryColor};
   }
 `;

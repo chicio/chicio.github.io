@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { ContainerFluid } from "../atoms/container-fluid";
 import { Paragraph } from "../atoms/paragraph";
 import { File, ImageSharp, Maybe } from "../../../../graphql-types";
+import { mediaQuery } from "../utils-css/media-query";
 
 const GalleryContainer = styled(ContainerFluid)`
   padding: 0;
@@ -23,15 +24,18 @@ const GalleryImageFrame = styled.figure`
   margin: 0;
   background-color: ${(props) => props.theme.light.generalBackgroundLight};
   box-shadow: 0 3px 10px 0 ${(props) => props.theme.light.boxShadowLight};
-  transition: transform 0.2s;
 
-  @media (min-width: 992px) {
-    &:hover {
-      transform: scale(1.025);
+  ${mediaQuery.minWidth.md} {
+    ${mediaQuery.inputDevice.mouse} {
+      transition: transform 0.2s;
+
+      &:hover {
+        transform: scale(1.025);
+      }
     }
   }
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background: ${(props) => props.theme.dark.generalBackgroundLight};
     box-shadow: 0 3px 10px 0 ${(props) => props.theme.dark.boxShadowLight};
   }
@@ -52,10 +56,15 @@ const GalleryImage = styled(GatsbyImage)`
   width: 280px;
   height: 280px;
   object-fit: cover;
-  transition: opacity 0.25s ease-in-out;
 
-  &:hover {
-    opacity: 0.7;
+  ${mediaQuery.minWidth.md} {
+    ${mediaQuery.inputDevice.mouse} {
+      transition: opacity 0.25s ease-in-out;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
   }
 `;
 

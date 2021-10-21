@@ -3,6 +3,7 @@ import * as React from "react";
 import { Paragraph } from "../atoms/paragraph";
 import styled from "styled-components";
 import { ContainerFluid } from "../atoms/container-fluid";
+import { mediaQuery } from "../utils-css/media-query";
 
 const TechnologiesContainer = styled(ContainerFluid)`
   margin: 0;
@@ -11,7 +12,7 @@ const TechnologiesContainer = styled(ContainerFluid)`
   padding: ${(props) => props.theme.spacing[11]};
   background-color: ${(props) => props.theme.light.primaryColorDark};
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.primaryColorDark};
   }
 `;
@@ -21,11 +22,11 @@ const TechnologyParagraph = styled(Paragraph)`
   margin-bottom: ${(props) => props.theme.spacing[7]};
   color: ${(props) => props.theme.light.textAbovePrimaryColor};
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     color: ${(props) => props.theme.dark.textAbovePrimaryColor};
   }
 
-  @media (min-width: 992px) {
+  ${mediaQuery.minWidth.md} {
     padding: 0 ${(props) => props.theme.spacing[12]};
   }
 `;

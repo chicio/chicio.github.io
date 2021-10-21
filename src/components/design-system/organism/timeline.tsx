@@ -8,6 +8,7 @@ import { Container } from "../atoms/container";
 import { Heading6 } from "../atoms/heading6";
 import { Briefcase } from "styled-icons/boxicons-regular";
 import { GraduationCap } from "styled-icons/fa-solid";
+import { mediaQuery } from "../utils-css/media-query";
 
 const TimelineContentContainer = styled(Container)`
   padding: 0;
@@ -35,17 +36,17 @@ const TimelineContainer = styled.ul`
     background-color: ${(props) => props.theme.light.dividerColor};
   }
 
-  @media (min-width: 992px) {
+  ${mediaQuery.minWidth.md} {
     text-align: left;
   }
 
-  @media (max-width: 992px) {
+  ${mediaQuery.maxWidth.md} {
     &:before {
       left: 40px;
     }
   }
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.generalBackground};
 
     &:before {
@@ -108,7 +109,7 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
     content: " ";
   }
 
-  @media (max-width: 992px) {
+  ${mediaQuery.maxWidth.md} {
     width: calc(100% - 90px);
     width: -moz-calc(100% - 90px);
     width: -webkit-calc(100% - 90px);
@@ -149,7 +150,7 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
       }
     `};
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.generalBackgroundLight};
     border: ${(props) => props.theme.dark.dividerColor} 1px solid;
     box-shadow: ${(props) => props.theme.dark.boxShadowLight} 0 1px 6px;
@@ -166,7 +167,7 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
         solid;
     }
 
-    @media (max-width: 992px) {
+    ${mediaQuery.maxWidth.md} {
       width: calc(100% - 90px);
       width: -moz-calc(100% - 90px);
       width: -webkit-calc(100% - 90px);
@@ -224,12 +225,12 @@ const TimelineBadge = styled.div`
   z-index: 100;
   border-radius: 50%;
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.primaryColor};
     color: ${(props) => props.theme.dark.textAbovePrimaryColor};
   }
 
-  @media (max-width: 992px) {
+  ${mediaQuery.maxWidth.md} {
     left: 20px;
     margin-left: 0;
     top: 20px;

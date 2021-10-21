@@ -6,13 +6,14 @@ import { Paragraph } from "../atoms/paragraph";
 import { slugs } from "../../../logic/slug";
 import { StandardExternalLinkWithTracking } from "../../standard-external-link-with-tracking";
 import { MenuItemWithTracking } from "../../menu-item-with-tracking";
+import { mediaQuery } from "../utils-css/media-query";
 
 const FooterContainer = styled.footer`
   flex-shrink: 0;
   width: 100%;
   background-color: ${(props) => props.theme.light.primaryColor};
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.primaryColor};
   }
 `;
@@ -42,7 +43,7 @@ const FooterAuthorDescription = styled.div`
   padding: ${(props) => props.theme.spacing[2]};
   background-color: ${(props) => props.theme.light.primaryColorDark};
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     color: ${(props) => props.theme.dark.primaryColorDark};
   }
 `;
@@ -50,7 +51,7 @@ const FooterAuthorDescription = styled.div`
 const MadeWithLoveParagraph = styled(Paragraph)`
   color: ${(props) => props.theme.light.textAbovePrimaryColor};
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     color: ${(props) => props.theme.dark.textAbovePrimaryColor};
   }
 `;
@@ -58,7 +59,7 @@ const MadeWithLoveParagraph = styled(Paragraph)`
 const FooterCallToAction = styled(StandardExternalLinkWithTracking)`
   color: ${(props) => props.theme.light.accentColorAbovePrimaryColor};
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     color: ${(props) => props.theme.dark.accentColorAbovePrimaryColor};
   }
 `;

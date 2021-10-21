@@ -8,6 +8,7 @@ import * as React from "react";
 import { Maybe } from "../../../../graphql-types";
 import { Heading5 } from "../atoms/heading5";
 import { StandardInternalLinkWithTracking } from "../../standard-internal-link-with-tracking";
+import { mediaQuery } from "../utils-css/media-query";
 
 const PostDescription = styled(Paragraph)`
   margin-right: 0;
@@ -21,16 +22,17 @@ const PostCardContainer = styled.div`
   background-color: ${(props) => props.theme.light.generalBackgroundLight};
   box-shadow: 0 3px 10px 0 ${(props) => props.theme.light.boxShadowLight};
 
-  @media (min-width: 992px) {
-    @media (hover: hover) and (pointer: fine) {
+  ${mediaQuery.minWidth.md} {
+    ${mediaQuery.inputDevice.mouse} {
       transition: transform 0.2s;
+
       &:hover {
         transform: scale(1.025);
       }
     }
   }
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.generalBackgroundLight};
     box-shadow: 0 3px 10px 0 ${(props) => props.theme.dark.boxShadowLight};
   }
@@ -44,7 +46,7 @@ const PostCardImageContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media (min-width: 768px) {
+  ${mediaQuery.minWidth.sm} {
     height: 200px;
   }
 `;
