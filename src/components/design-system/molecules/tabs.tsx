@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { StandardExternalLink } from "../atoms/standard-external-link";
 import { trackWith } from "../../../logic/tracking";
 import React from "react";
+import { mediaQuery } from "../utils-css/media-query";
 
 interface TabLinkProps {
   active: boolean;
@@ -23,7 +24,7 @@ const TabLink = styled(StandardExternalLink)<TabLinkProps>`
   border-right: ${(props) => props.theme.light.dividerColor} 1px solid;
   text-align: center;
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     border-top: ${(props) => props.theme.dark.generalBackgroundLight} 1px solid;
     background-color: ${(props) => props.theme.dark.generalBackgroundLight};
     border-bottom: ${(props) => props.theme.dark.dividerColor} 1px solid;
@@ -39,7 +40,7 @@ const TabLink = styled(StandardExternalLink)<TabLinkProps>`
       border-left: ${(props) => props.theme.light.generalBackground} 1px solid;
       border-bottom: ${(props) => props.theme.light.generalBackground} 1px solid;
 
-      @media (prefers-color-scheme: dark) {
+      ${mediaQuery.dark} {
         background-color: ${(props) => props.theme.dark.generalBackground};
         border-right: ${(props) => props.theme.dark.generalBackground} 1px solid;
         border-left: ${(props) => props.theme.dark.generalBackground} 1px solid;

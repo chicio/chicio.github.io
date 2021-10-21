@@ -18,6 +18,7 @@ interface MediaQuery {
     md: string;
     lg: string;
   };
+  dark: string;
 }
 
 const breakpoints: Record<BreakPoint, string> = {
@@ -27,11 +28,15 @@ const breakpoints: Record<BreakPoint, string> = {
   lg: "1200px",
 };
 
+const media: (content: string) => string = (content) => `@media (${content})`;
+
+const dark = media("prefers-color-scheme: dark");
+
 const width: (
   width: "max-width" | "min-width",
   breakpoint: BreakPoint
 ) => string = (width: "max-width" | "min-width", breakpoint: BreakPoint) =>
-  `@media (${width}: ${breakpoints[breakpoint]})`;
+  media(`${width}: ${breakpoints[breakpoint]}`);
 
 const minWidth: (breakpoint: BreakPoint) => string = (breakpoint: BreakPoint) =>
   width("min-width", breakpoint);
@@ -52,4 +57,5 @@ export const mediaQuery: MediaQuery = {
     md: maxWidth(BreakPoint.md),
     lg: maxWidth(BreakPoint.lg),
   },
+  dark,
 };

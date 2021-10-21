@@ -8,6 +8,7 @@ import { ContainerFluid } from "../atoms/container-fluid";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Paragraph } from "../atoms/paragraph";
 import { StandardExternalLinkWithTracking } from "../../standard-external-link-with-tracking";
+import { mediaQuery } from "../utils-css/media-query";
 
 const PostAuthorsContainer = styled(ContainerFluid)`
   padding: 0;
@@ -30,7 +31,7 @@ const PostAuthorImageContainer = styled.div`
   border-radius: 50%;
   background-color: ${(props) => props.theme.light.dividerColor};
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.dividerColor};
   }
 `;

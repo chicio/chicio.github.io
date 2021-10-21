@@ -32,7 +32,7 @@ const GalleryImageFrame = styled.figure`
     }
   }
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background: ${(props) => props.theme.dark.generalBackgroundLight};
     box-shadow: 0 3px 10px 0 ${(props) => props.theme.dark.boxShadowLight};
   }

@@ -8,11 +8,12 @@ import { Heading2 } from "../atoms/heading2";
 import { slugs } from "../../../logic/slug";
 import { CallToActionInternalWithTracking } from "../../call-to-action-internal-with-tracking";
 import { opacity } from "../utils-css/opacity-keyframes";
+import { mediaQuery } from "../utils-css/media-query";
 
 const Author = styled(Heading2)`
   color: ${(props) => props.theme.light.textAbovePrimaryColor};
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     color: ${(props) => props.theme.dark.textAbovePrimaryColor};
   }
 `;
@@ -20,7 +21,7 @@ const Author = styled(Heading2)`
 const Job = styled(Heading5)`
   color: ${(props) => props.theme.light.textAbovePrimaryColor};
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     color: ${(props) => props.theme.dark.textAbovePrimaryColor};
   }
 `;
@@ -47,7 +48,7 @@ const ProfileImageContainer = styled.div`
   border-radius: 50%;
   background-color: ${(props) => props.theme.light.generalBackgroundLight};
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.generalBackgroundLight};
   }
 `;

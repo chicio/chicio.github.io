@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
+import { mediaQuery } from "../utils-css/media-query";
 
 export interface MenuItemProps {
   selected?: boolean;
@@ -21,7 +22,7 @@ export const MenuItem = styled(Link)<MenuItemProps>`
     text-decoration: none;
   }
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     color: ${(props) =>
       props.selected
         ? props.theme.dark.textAbovePrimaryColor

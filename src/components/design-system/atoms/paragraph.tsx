@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mediaQuery } from "../utils-css/media-query";
 
 export const Paragraph = styled.p`
   font-size: ${(props) => props.theme.fontSizes[2]};
@@ -6,7 +7,7 @@ export const Paragraph = styled.p`
   margin: ${(props) => props.theme.spacing[0]};
   line-height: ${(props) => props.theme.lineHeight};
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     color: ${(props) => props.theme.dark.primaryTextColor};
   }
 `;

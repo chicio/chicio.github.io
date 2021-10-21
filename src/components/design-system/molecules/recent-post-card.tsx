@@ -47,7 +47,7 @@ const CardContainer = styled.div<CardContainerProps>`
     }
   }
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.generalBackgroundLight};
     box-shadow: ${(props) => props.theme.dark.boxShadowLight} 0 3px 10px 0;
   }

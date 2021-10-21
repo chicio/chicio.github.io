@@ -37,7 +37,7 @@ const MenuContainer = styled.div<MenuContainerProps>`
   z-index: 300;
   height: ${(props) => (props.shouldOpenMenu ? "200px" : "55px")};
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.primaryColor};
   }
 `;
@@ -122,7 +122,7 @@ const NavBarMenuItem = memo(styled(MenuItemWithTracking)<NavBarMenuItemProps>`
             ${(props) => props.theme.light.generalBackground};
           border-left: 5px solid transparent;
   
-          @media (prefers-color-scheme: dark) {
+          ${mediaQuery.dark} {
             border-bottom: 5px solid ${(props) =>
               props.theme.dark.generalBackground};
           }

@@ -24,7 +24,7 @@ const BlogTitle = styled(Heading3)`
   display: block;
   line-height: 1.5;
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     color: ${(props) => props.theme.dark.primaryTextColor};
   }
 
@@ -43,7 +43,7 @@ const BlogDescription = styled.span`
   color: ${(props) => props.theme.light.secondaryTextColor};
   line-height: 1.5;
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     color: ${(props) => props.theme.dark.secondaryTextColor};
   }
 
@@ -64,7 +64,7 @@ const ImageContainer = styled.div`
   border-radius: 10px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.575);
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.generalBackgroundLight};
   }
 `;

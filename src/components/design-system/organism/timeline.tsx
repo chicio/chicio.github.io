@@ -46,7 +46,7 @@ const TimelineContainer = styled.ul`
     }
   }
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.generalBackground};
 
     &:before {
@@ -150,7 +150,7 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
       }
     `};
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.generalBackgroundLight};
     border: ${(props) => props.theme.dark.dividerColor} 1px solid;
     box-shadow: ${(props) => props.theme.dark.boxShadowLight} 0 1px 6px;
@@ -225,7 +225,7 @@ const TimelineBadge = styled.div`
   z-index: 100;
   border-radius: 50%;
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.primaryColor};
     color: ${(props) => props.theme.dark.textAbovePrimaryColor};
   }

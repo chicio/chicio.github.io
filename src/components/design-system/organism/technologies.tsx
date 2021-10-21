@@ -12,7 +12,7 @@ const TechnologiesContainer = styled(ContainerFluid)`
   padding: ${(props) => props.theme.spacing[11]};
   background-color: ${(props) => props.theme.light.primaryColorDark};
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.primaryColorDark};
   }
 `;
@@ -22,7 +22,7 @@ const TechnologyParagraph = styled(Paragraph)`
   margin-bottom: ${(props) => props.theme.spacing[7]};
   color: ${(props) => props.theme.light.textAbovePrimaryColor};
 
-  @media (prefers-color-scheme: dark) {
+  ${mediaQuery.dark} {
     color: ${(props) => props.theme.dark.textAbovePrimaryColor};
   }
 
