@@ -83,30 +83,32 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
   border-radius: 3px;
   position: relative;
 
-  &:before {
-    position: absolute;
-    top: 26px;
-    right: -15px;
-    display: inline-block;
-    border-top: 15px solid transparent;
-    border-left: ${(props) => props.theme.light.dividerColor} 14px solid;
-    border-right: ${(props) => props.theme.light.dividerColor} 0px solid;
-    border-bottom: 15px solid transparent;
-    content: " ";
-  }
+  ${mediaQuery.minWidth.md} {
+    &:before {
+      position: absolute;
+      top: 26px;
+      right: -15px;
+      display: inline-block;
+      border-top: 15px solid transparent;
+      border-left: ${(props) => props.theme.light.dividerColor} 14px solid;
+      border-right: ${(props) => props.theme.light.dividerColor} 0px solid;
+      border-bottom: 15px solid transparent;
+      content: " ";
+    }
 
-  &:after {
-    position: absolute;
-    top: 27px;
-    right: -14px;
-    display: inline-block;
-    border-left: ${(props) => props.theme.light.generalBackgroundLight} 14px
-      solid;
-    border-right: ${(props) => props.theme.light.generalBackgroundLight} 0px
-      solid;
-    border-top: 14px solid transparent;
-    border-bottom: 14px solid transparent;
-    content: " ";
+    &:after {
+      position: absolute;
+      top: 27px;
+      right: -14px;
+      display: inline-block;
+      border-left: ${(props) => props.theme.light.generalBackgroundLight} 14px
+        solid;
+      border-right: ${(props) => props.theme.light.generalBackgroundLight} 0px
+        solid;
+      border-top: 14px solid transparent;
+      border-bottom: 14px solid transparent;
+      content: " ";
+    }
   }
 
   ${mediaQuery.maxWidth.md} {
