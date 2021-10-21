@@ -1,5 +1,4 @@
 import { StaticImage } from "gatsby-plugin-image";
-import { Heading5 } from "../atoms/heading5";
 import { Paragraph } from "../atoms/paragraph";
 import { List } from "../atoms/list";
 import React from "react";
@@ -9,6 +8,9 @@ import { Heading6 } from "../atoms/heading6";
 import { Briefcase } from "styled-icons/boxicons-regular";
 import { GraduationCap } from "styled-icons/fa-solid";
 import { mediaQuery } from "../utils-css/media-query";
+import { StandardExternalLinkWithTracking } from "../../standard-external-link-with-tracking";
+import { Time } from "../atoms/time";
+import { tracking } from "../../../logic/tracking";
 
 const TimelineContentContainer = styled(Container)`
   padding: 0;
@@ -78,7 +80,7 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
   background-color: ${(props) => props.theme.light.generalBackgroundLight};
   border: ${(props) => props.theme.light.dividerColor} 1px solid;
   box-shadow: ${(props) => props.theme.light.boxShadowLight} 0 1px 6px;
-  width: 46%;
+  width: 100%;
   float: left;
   border-radius: 3px;
   position: relative;
@@ -111,8 +113,8 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
     }
   }
 
-  ${mediaQuery.maxWidth.md} {
-    width: 100%;
+  ${mediaQuery.minWidth.md} {
+    width: 46%;
   }
 
   ${(props) =>
@@ -200,13 +202,25 @@ const TimelineBadge = styled.div`
   }
 `;
 
-const TimelineTitle: React.FC = ({ children }) => (
-  <Heading5>{children}</Heading5>
-);
+const TimelineTitle = styled.div`
+  font-size: ${(props) => props.theme.fontSizes[7]};
+  margin: ${(props) => props.theme.spacing[0]};
+`;
 
-const TimelineSubtitle: React.FC = ({ children }) => (
-  <Heading6>{children}</Heading6>
-);
+const TimelineSubtitle = styled(Heading6)`
+  text-align: left;
+  margin-bottom: ${(props) => props.theme.spacing[2]};
+`;
+
+const TimelineDescription = styled(Paragraph)`
+  text-align: left;
+  margin-top: ${(props) => props.theme.spacing[2]};
+`;
+
+const TimelineTime = styled(Time)`
+  margin: ${(props) => props.theme.spacing[0]};
+  font-size: ${(props) => props.theme.fontSizes[3]};
+`;
 
 const TimelinePanelContentContainer = styled.div`
   padding: ${(props) => props.theme.spacing[2]};
@@ -259,13 +273,30 @@ export const Timeline: React.FC = () => {
               alt={"lastminute"}
             />
           </TimelineImageContainer>
-          <TimelineTitle>Lastminute.com group</TimelineTitle>
+          <StandardExternalLinkWithTracking
+            trackingData={{
+              action: tracking.action.open_experience_and_education,
+              category: tracking.category.home,
+              label: tracking.label.body,
+            }}
+            href={"https://lmgroup.lastminute.com/"}
+            target={"_blank"}
+            rel="noopener noreferrer"
+          >
+            <TimelineTitle>Lastminute.com group</TimelineTitle>
+          </StandardExternalLinkWithTracking>
           <TimelineSubtitle>Mobile application developer</TimelineSubtitle>
-          <Paragraph>February 2017</Paragraph>
-          <Paragraph>
+          <TimelineTime>February 2017</TimelineTime>
+          <TimelineDescription>
             Designing and implementing iOS and Android apps for the main brands
-            of the company: Lastminute.com, Volagratis, Bravofly, Rumbo.
-          </Paragraph>
+            of the company:
+            <List>
+              <li>lastminute.com</li>
+              <li>Volagratis</li>
+              <li>Rumbo</li>
+              <li>Weg.de</li>
+            </List>
+          </TimelineDescription>
         </TimelineElement>
         <TimelineElement inverted={true} icon={graduationCap}>
           <TimelineImageContainer>
@@ -276,16 +307,27 @@ export const Timeline: React.FC = () => {
               alt={"unimib"}
             />
           </TimelineImageContainer>
-          <TimelineTitle>Milano-Bicocca University</TimelineTitle>
+          <StandardExternalLinkWithTracking
+            trackingData={{
+              action: tracking.action.open_experience_and_education,
+              category: tracking.category.home,
+              label: tracking.label.body,
+            }}
+            href={"https://www.disco.unimib.it/it"}
+            target={"_blank"}
+            rel="noopener noreferrer"
+          >
+            <TimelineTitle>Milano-Bicocca University</TimelineTitle>
+          </StandardExternalLinkWithTracking>
           <TimelineSubtitle>
             {"Master's degree in Computer Science"}
           </TimelineSubtitle>
-          <Paragraph>July 2016</Paragraph>
-          <Paragraph>
+          <TimelineTime>July 2016</TimelineTime>
+          <TimelineDescription>
             Thesis: “Spectral Clara Lux Tracer: physically based ray tracer with
             multiple shading models support”. You can find more info about it in
             the project section.
-          </Paragraph>
+          </TimelineDescription>
           <List>
             <li>Computer graphics</li>
             <li>Software engineering</li>
@@ -304,15 +346,26 @@ export const Timeline: React.FC = () => {
               alt={"condenast"}
             />
           </TimelineImageContainer>
-          <TimelineTitle>Condé Nast Italia</TimelineTitle>
+          <StandardExternalLinkWithTracking
+            trackingData={{
+              action: tracking.action.open_experience_and_education,
+              category: tracking.category.home,
+              label: tracking.label.body,
+            }}
+            href={"https://www.condenast.it"}
+            target={"_blank"}
+            rel="noopener noreferrer"
+          >
+            <TimelineTitle>Condé Nast Italia</TimelineTitle>
+          </StandardExternalLinkWithTracking>
           <TimelineSubtitle>Mobile/Web application developer</TimelineSubtitle>
-          <Paragraph>June 2013</Paragraph>
-          <Paragraph>
+          <TimelineTime>June 2013</TimelineTime>
+          <TimelineDescription>
             Designing and implementing iOS and Android apps for the main brands
             of the company: Vanity Fair, Glamour, Wired, Vogue. I also worked
             with the web team to develop the new version of the official web
             sites for GQ Italia, Glamour, CNLive! and Vogue Italia.
-          </Paragraph>
+          </TimelineDescription>
         </TimelineElement>
         <TimelineElement inverted={false} icon={briefcase}>
           <TimelineImageContainer>
@@ -323,16 +376,29 @@ export const Timeline: React.FC = () => {
               alt={"shi"}
             />
           </TimelineImageContainer>
-          <TimelineTitle>SHI</TimelineTitle>
+          <StandardExternalLinkWithTracking
+            trackingData={{
+              action: tracking.action.open_experience_and_education,
+              category: tracking.category.home,
+              label: tracking.label.body,
+            }}
+            href={
+              "https://www.linkedin.com/company/shi-srl/?originalSubdomain=it"
+            }
+            target={"_blank"}
+            rel="noopener noreferrer"
+          >
+            <TimelineTitle>SHI</TimelineTitle>
+          </StandardExternalLinkWithTracking>
           <TimelineSubtitle>iOS/Web Developer</TimelineSubtitle>
-          <Paragraph>October 2010</Paragraph>
-          <Paragraph>
+          <TimelineTime>October 2010</TimelineTime>
+          <TimelineDescription>
             Design and development of mobile application on iOS, Android and
             Windows phone platform, for enterprise distribution (ad-hoc
             distribution) or within the various app store. Design and
             development of Web application used as backend for mobile app.
             Design and development of Enterprise Web application.
-          </Paragraph>
+          </TimelineDescription>
         </TimelineElement>
         <TimelineElement inverted={false} icon={briefcase}>
           <TimelineImageContainer>
@@ -343,10 +409,21 @@ export const Timeline: React.FC = () => {
               alt={"bottinelli informatica"}
             />
           </TimelineImageContainer>
-          <TimelineTitle>Bottinelli informatica</TimelineTitle>
+          <StandardExternalLinkWithTracking
+            trackingData={{
+              action: tracking.action.open_experience_and_education,
+              category: tracking.category.home,
+              label: tracking.label.body,
+            }}
+            href={"#"}
+            target={"_blank"}
+            rel="noopener noreferrer"
+          >
+            <TimelineTitle>Bottinelli informatica</TimelineTitle>
+          </StandardExternalLinkWithTracking>
           <TimelineSubtitle>Developer</TimelineSubtitle>
-          <Paragraph>September 2009</Paragraph>
-          <Paragraph>Software development for textile industry.</Paragraph>
+          <TimelineTime>August 2009</TimelineTime>
+          <TimelineDescription>Software development for textile industry.</TimelineDescription>
         </TimelineElement>
         <TimelineElement inverted={false} icon={briefcase}>
           <TimelineImageContainer>
@@ -357,32 +434,43 @@ export const Timeline: React.FC = () => {
               alt={"avanade"}
             />
           </TimelineImageContainer>
-          <TimelineTitle>Avanade</TimelineTitle>
+          <StandardExternalLinkWithTracking
+            trackingData={{
+              action: tracking.action.open_experience_and_education,
+              category: tracking.category.home,
+              label: tracking.label.body,
+            }}
+            href={"https://www.avanade.com"}
+            target={"_blank"}
+            rel="noopener noreferrer"
+          >
+            <TimelineTitle>Avanade</TimelineTitle>
+          </StandardExternalLinkWithTracking>
           <TimelineSubtitle>PMO Consultant</TimelineSubtitle>
-          <Paragraph>October 2008</Paragraph>
-          <Paragraph>
+          <TimelineTime>October 2008</TimelineTime>
+          <TimelineDescription>
             {" "}
             Assigned on Eurosig integration BA-HVB/Unicredit project, I worked
             with the Accenture Consultant team as a PMO.
-          </Paragraph>
-          <List>
-            <li>
-              Tracking creation and evolution of functional specification to
-              cover the gaps between ASC, CRE, PAY, MDM and BSS sector of the IT
-              systems of Unicredit and HVB bank.
-            </li>
-            <li>
-              Publishing statistics to show the state of art of the functional
-              specification produced, the open change request and the state of
-              user test. Maintenance of tools created with Microsoft Excel,
-              Microsoft Powerpoint and VBA used to generate the above mentioned
-              statistics.
-            </li>
-            <li>
-              Maintenance of tools used to manage WBS of the project inside
-              Accenture team.
-            </li>
-          </List>
+            <List>
+              <li>
+                Tracking creation and evolution of functional specification to
+                cover the gaps between ASC, CRE, PAY, MDM and BSS sector of the
+                IT systems of Unicredit and HVB bank.
+              </li>
+              <li>
+                Publishing statistics to show the state of art of the functional
+                specification produced, the open change request and the state of
+                user test. Maintenance of tools created with Microsoft Excel,
+                Microsoft Powerpoint and VBA used to generate the above
+                mentioned statistics.
+              </li>
+              <li>
+                Maintenance of tools used to manage WBS of the project inside
+                Accenture team.
+              </li>
+            </List>
+          </TimelineDescription>
         </TimelineElement>
         <TimelineElement inverted={true} icon={graduationCap}>
           <TimelineImageContainer>
@@ -393,18 +481,29 @@ export const Timeline: React.FC = () => {
               alt={"insubria"}
             />
           </TimelineImageContainer>
-          <TimelineTitle>Insubria University</TimelineTitle>
+          <StandardExternalLinkWithTracking
+            trackingData={{
+              action: tracking.action.open_experience_and_education,
+              category: tracking.category.home,
+              label: tracking.label.body,
+            }}
+            href={"https://www.uninsubria.it"}
+            target={"_blank"}
+            rel="noopener noreferrer"
+          >
+            <TimelineTitle>Insubria University</TimelineTitle>
+          </StandardExternalLinkWithTracking>
           <TimelineSubtitle>
             {"Bachelor's degree in Computer Science"}
           </TimelineSubtitle>
-          <Paragraph>October 2008</Paragraph>
-          <Paragraph>
+          <TimelineTime>October 2008</TimelineTime>
+          <TimelineDescription>
             Thesis: “Grandi Giardini: implementazione di un portale web con
             funzionalità e-commerce”. A web e-commerce developed for Grandi
             Giardini Italiani s.r.l., a company dealing with the organization of
             events in some of the most beautiful italian gardens (never deployed
             in production).
-          </Paragraph>
+          </TimelineDescription>
           <List>
             <li>Software engineering</li>
             <li>Algorithm and Theoretical CS</li>
@@ -415,9 +514,20 @@ export const Timeline: React.FC = () => {
           </List>
         </TimelineElement>
         <TimelineElement inverted={true} icon={graduationCap}>
-          <TimelineTitle>ITCG Romagnosi</TimelineTitle>
+          <StandardExternalLinkWithTracking
+            trackingData={{
+              action: tracking.action.open_experience_and_education,
+              category: tracking.category.home,
+              label: tracking.label.body,
+            }}
+            href={"#"}
+            target={"_blank"}
+            rel="noopener noreferrer"
+          >
+            <TimelineTitle>ITCG Romagnosi</TimelineTitle>
+          </StandardExternalLinkWithTracking>
           <TimelineSubtitle>High school in Accountant</TimelineSubtitle>
-          <Paragraph>July 2005</Paragraph>
+          <TimelineTime>July 2005</TimelineTime>
         </TimelineElement>
       </TimelineContainer>
     </TimelineContentContainer>
