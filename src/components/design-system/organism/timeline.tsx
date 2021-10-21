@@ -25,19 +25,19 @@ const TimelineContainer = styled.ul`
   margin: 0;
   background-color: ${(props) => props.theme.light.generalBackground};
 
-  &:before {
-    top: 0;
-    bottom: 0;
-    position: absolute;
-    content: " ";
-    width: 3px;
-    left: 50%;
-    margin-left: -1.5px;
-    background-color: ${(props) => props.theme.light.dividerColor};
-  }
-
   ${mediaQuery.minWidth.md} {
     text-align: left;
+
+    &:before {
+      top: 0;
+      bottom: 0;
+      position: absolute;
+      content: " ";
+      width: 3px;
+      left: 50%;
+      margin-left: -1.5px;
+      background-color: ${(props) => props.theme.light.dividerColor};
+    }
   }
 
   ${mediaQuery.maxWidth.md} {
@@ -110,24 +110,7 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
   }
 
   ${mediaQuery.maxWidth.md} {
-    width: calc(100% - 90px);
-    width: -moz-calc(100% - 90px);
-    width: -webkit-calc(100% - 90px);
-    float: right;
-
-    &:before {
-      border-left-width: 0;
-      border-right-width: 14px;
-      left: -14px;
-      right: auto;
-    }
-
-    &:after {
-      border-left-width: 0;
-      border-right-width: 14px;
-      left: -14px;
-      right: auto;
-    }
+    width: 100%;
   }
 
   ${(props) =>
@@ -167,27 +150,6 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
         solid;
     }
 
-    ${mediaQuery.maxWidth.md} {
-      width: calc(100% - 90px);
-      width: -moz-calc(100% - 90px);
-      width: -webkit-calc(100% - 90px);
-      float: right;
-
-      &:before {
-        border-left-width: 0;
-        border-right-width: 15px;
-        left: -15px;
-        right: auto;
-      }
-
-      &:after {
-        border-left-width: 0;
-        border-right-width: 14px;
-        left: -14px;
-        right: auto;
-      }
-    }
-
     ${(props) =>
       props.inverted &&
       css`
@@ -211,29 +173,28 @@ const TimelinePanel = styled.div<TimelinePanelProps>`
 `;
 
 const TimelineBadge = styled.div`
-  background-color: ${(props) => props.theme.light.primaryColor};
-  color: ${(props) => props.theme.light.textAbovePrimaryColor};
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  font-size: 1.4em;
-  text-align: center;
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  margin-left: -20px;
-  z-index: 100;
-  border-radius: 50%;
+  visibility: hidden;
+
+  ${mediaQuery.minWidth.md} {
+    visibility: visible;
+    background-color: ${(props) => props.theme.light.primaryColor};
+    color: ${(props) => props.theme.light.textAbovePrimaryColor};
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 1.4em;
+    text-align: center;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    margin-left: -20px;
+    z-index: 100;
+    border-radius: 50%;
+  }
 
   ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.primaryColor};
     color: ${(props) => props.theme.dark.textAbovePrimaryColor};
-  }
-
-  ${mediaQuery.maxWidth.md} {
-    left: 20px;
-    margin-left: 0;
-    top: 20px;
   }
 `;
 
@@ -272,7 +233,7 @@ const TimelineElement: React.FC<TimelineElementProps> = ({
   icon,
 }) => (
   <TimelineElementContainer>
-    <TimelineBadge className="timeline-badge work">{icon}</TimelineBadge>
+    <TimelineBadge>{icon}</TimelineBadge>
     <TimelinePanel inverted={inverted}>
       <TimelinePanelContentContainer>{children}</TimelinePanelContentContainer>
     </TimelinePanel>
