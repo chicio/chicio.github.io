@@ -25,6 +25,7 @@ const PostCardContainer = styled.div`
   ${mediaQuery.minWidth.md} {
     ${mediaQuery.inputDevice.mouse} {
       transition: transform 0.2s;
+
       &:hover {
         transform: scale(1.025);
       }

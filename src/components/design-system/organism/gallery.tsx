@@ -24,11 +24,14 @@ const GalleryImageFrame = styled.figure`
   margin: 0;
   background-color: ${(props) => props.theme.light.generalBackgroundLight};
   box-shadow: 0 3px 10px 0 ${(props) => props.theme.light.boxShadowLight};
-  transition: transform 0.2s;
 
   ${mediaQuery.minWidth.md} {
-    &:hover {
-      transform: scale(1.025);
+    ${mediaQuery.inputDevice.mouse} {
+      transition: transform 0.2s;
+
+      &:hover {
+        transform: scale(1.025);
+      }
     }
   }
 
@@ -53,10 +56,15 @@ const GalleryImage = styled(GatsbyImage)`
   width: 280px;
   height: 280px;
   object-fit: cover;
-  transition: opacity 0.25s ease-in-out;
 
-  &:hover {
-    opacity: 0.7;
+  ${mediaQuery.minWidth.md} {
+    ${mediaQuery.inputDevice.mouse} {
+      transition: opacity 0.25s ease-in-out;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
   }
 `;
 

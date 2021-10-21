@@ -40,10 +40,13 @@ const CardContainer = styled.div<CardContainerProps>`
   flex-direction: column;
 
   ${mediaQuery.minWidth.md} {
-    margin: 0 ${(props) => (props.margin ? props.theme.spacing[2] : "")};
-    transition: all 0.2s;
-    &:hover {
-      transform: scale(1.025);
+    ${mediaQuery.inputDevice.mouse} {
+      margin: 0 ${(props) => (props.margin ? props.theme.spacing[2] : "")};
+      transition: all 0.2s;
+
+      &:hover {
+        transform: scale(1.025);
+      }
     }
   }
 

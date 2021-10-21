@@ -100,10 +100,13 @@ const NavBarMenuItem = memo(styled(MenuItemWithTracking)<NavBarMenuItemProps>`
     visibility: visible;
     opacity: 1;
     height: 55px;
-    transition: transform 0.15s;
 
-    &:hover {
-      transform: scale(1.1);
+    ${mediaQuery.inputDevice.mouse} {
+      transition: transform 0.15s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
 
     ${(props) =>
@@ -237,12 +240,14 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
   const [shouldOpenMenu, setShouldOpenMenu] = useState(false);
   const [enableMenuButton, setEnableMenuButton] = useState(true);
 
-  const onStartAnimation = useCallback(() => setEnableMenuButton(false), [
-    setEnableMenuButton,
-  ]);
-  const onFinishAnimation = useCallback(() => setEnableMenuButton(true), [
-    setEnableMenuButton,
-  ]);
+  const onStartAnimation = useCallback(
+    () => setEnableMenuButton(false),
+    [setEnableMenuButton]
+  );
+  const onFinishAnimation = useCallback(
+    () => setEnableMenuButton(true),
+    [setEnableMenuButton]
+  );
   const changeMenuStatus = useCallback(
     (enableMenuButton: boolean, shouldOpenMenu: boolean) => {
       if (enableMenuButton) {
