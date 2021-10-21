@@ -29,6 +29,14 @@ const FooterMenu = styled.div`
 
 const FooterMenuItem = styled(MenuItemWithTracking)`
   margin: ${(props) => props.theme.spacing[0]};
+
+  ${mediaQuery.inputDevice.mouse} {
+    transition: transform 0.15s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 `;
 
 const FooterContentContainer = styled.div`
