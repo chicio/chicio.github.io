@@ -34,6 +34,7 @@ export const tracking = {
     open_blog_next_page: "open_blog_next_page",
     open_blog_previous_page: "open_blog_previous_page",
     open_blog_author: "open_blog_author",
+    open_experience_and_education: "open_experience_and_education",
     open_blog_tag: "open_blog_tag",
     open_design_system: "open_design_system",
     pull_to_refresh: "pull_to_refresh",

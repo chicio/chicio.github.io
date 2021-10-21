@@ -13,6 +13,7 @@ Release date: 2021-10-XX
 #### Fixed
 
 - disabled animation for touch devices
+- timeline on mobile is now without borders
 
 ## [4.10.0](https://github.com/chicio/chicio.github.io/releases/tag/v4.10.0)
 Release date: 2021-10-16

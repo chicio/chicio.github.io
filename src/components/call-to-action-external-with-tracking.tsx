@@ -9,23 +9,17 @@ type CallToActionExternalWithTrackingProps = TrackingElementProps & {
   rel?: string;
 };
 
-export const CallToActionExternalWithTracking: React.FC<CallToActionExternalWithTrackingProps> = ({
-  children,
-  className,
-  href,
-  trackingData,
-  target,
-  rel,
-}) => (
-  <CallToActionExternal
-    className={className}
-    href={href}
-    onClick={() => {
-      trackWith(trackingData);
-    }}
-    target={target}
-    rel={rel}
-  >
-    {children}
-  </CallToActionExternal>
-);
+export const CallToActionExternalWithTracking: React.FC<CallToActionExternalWithTrackingProps> =
+  ({ children, className, href, trackingData, target, rel }) => (
+    <CallToActionExternal
+      className={className}
+      href={href}
+      onClick={() => {
+        trackWith(trackingData);
+      }}
+      target={target}
+      rel={rel}
+    >
+      {children}
+    </CallToActionExternal>
+  );
