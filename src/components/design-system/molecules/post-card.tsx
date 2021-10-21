@@ -23,7 +23,7 @@ const PostCardContainer = styled.div`
   box-shadow: 0 3px 10px 0 ${(props) => props.theme.light.boxShadowLight};
 
   ${mediaQuery.minWidth.md} {
-    @media (hover: hover) and (pointer: fine) {
+    ${mediaQuery.inputDevice.mouse} {
       transition: transform 0.2s;
       &:hover {
         transform: scale(1.025);

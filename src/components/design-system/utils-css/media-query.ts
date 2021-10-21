@@ -19,6 +19,9 @@ interface MediaQuery {
     lg: string;
   };
   dark: string;
+  inputDevice: {
+    mouse: string;
+  };
 }
 
 const breakpoints: Record<BreakPoint, string> = {
@@ -28,15 +31,22 @@ const breakpoints: Record<BreakPoint, string> = {
   lg: "1200px",
 };
 
-const media: (content: string) => string = (content) => `@media (${content})`;
+const content: (properties: string) => string = (properties) =>
+  `(${properties})`;
 
-const dark = media("prefers-color-scheme: dark");
+const media: (content: string) => string = (content) => `@media ${content}`;
+
+const dark = media(content("prefers-color-scheme: dark"));
+
+const mouse = media(
+  `${content("hover: hover")} and ${content("pointer: fine")}`
+);
 
 const width: (
   width: "max-width" | "min-width",
   breakpoint: BreakPoint
 ) => string = (width: "max-width" | "min-width", breakpoint: BreakPoint) =>
-  media(`${width}: ${breakpoints[breakpoint]}`);
+  media(content(`${width}: ${breakpoints[breakpoint]}`));
 
 const minWidth: (breakpoint: BreakPoint) => string = (breakpoint: BreakPoint) =>
   width("min-width", breakpoint);
@@ -58,4 +68,7 @@ export const mediaQuery: MediaQuery = {
     lg: maxWidth(BreakPoint.lg),
   },
   dark,
+  inputDevice: {
+    mouse,
+  },
 };
