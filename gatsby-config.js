@@ -192,6 +192,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
+            title: "Chicio coding",
           },
         ],
       },

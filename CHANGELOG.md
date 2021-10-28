@@ -1,14 +1,15 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
-## [4.11.0](https://github.com/chicio/chicio.github.io/releases/tag/v4.11.0)
-Release date: 2021-10-XX
+## [5.0.0](https://github.com/chicio/chicio.github.io/releases/tag/v5.0.0)
+Release date: 2021-10-28
 
 #### Added
 
 - Media query styled components mixin
 - animation on footer elements
 - Header logo for art page
+- GatsbyJs 4
 
 #### Fixed
 
