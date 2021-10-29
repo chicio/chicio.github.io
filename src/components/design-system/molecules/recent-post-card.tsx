@@ -19,16 +19,6 @@ const CardDescriptionContainer = styled.div`
   flex-grow: 1;
 `;
 
-const CardHeading = styled(Heading6)`
-  margin-bottom: ${(props) => props.theme.spacing[3]};
-  margin-right: 0;
-  margin-left: 0;
-`;
-
-interface CardContainerProps {
-  margin: boolean;
-}
-
 const CardContainer = styled.div<CardContainerProps>`
   background-color: ${(props) => props.theme.light.generalBackgroundLight};
   box-shadow: ${(props) => props.theme.light.boxShadowLight} 0 3px 10px 0;
@@ -38,10 +28,10 @@ const CardContainer = styled.div<CardContainerProps>`
   margin: ${(props) => props.theme.spacing[2]} 0 0 0;
   display: flex;
   flex-direction: column;
+  margin: 0 ${(props) => (props.margin ? props.theme.spacing[2] : "")};
 
   ${mediaQuery.minWidth.md} {
     ${mediaQuery.inputDevice.mouse} {
-      margin: 0 ${(props) => (props.margin ? props.theme.spacing[2] : "")};
       transition: all 0.2s;
 
       &:hover {
@@ -55,6 +45,16 @@ const CardContainer = styled.div<CardContainerProps>`
     box-shadow: ${(props) => props.theme.dark.boxShadowLight} 0 3px 10px 0;
   }
 `;
+
+const CardHeading = styled(Heading6)`
+  margin-bottom: ${(props) => props.theme.spacing[3]};
+  margin-right: 0;
+  margin-left: 0;
+`;
+
+interface CardContainerProps {
+  margin: boolean;
+}
 
 export interface RecentPostCardProps {
   position: number;

@@ -26,7 +26,7 @@ const Job = styled(Heading5)`
   }
 `;
 
-const BlogCallToAction = styled(CallToActionInternalWithTracking)`
+const HomeCallToAction = styled(CallToActionInternalWithTracking)`
   width: 150px;
 `;
 
@@ -80,7 +80,7 @@ export const ProfilePresentation: React.FC<ProfilePresentationProps> = ({
       trackingCategory={tracking.category.home}
       trackingLabel={tracking.label.body}
     />
-    <BlogCallToAction
+    <HomeCallToAction
       trackingData={{
         action: tracking.action.open_blog,
         category: tracking.category.home,
@@ -89,6 +89,16 @@ export const ProfilePresentation: React.FC<ProfilePresentationProps> = ({
       to={slugs.blog}
     >
       Blog
-    </BlogCallToAction>
+    </HomeCallToAction>
+    <HomeCallToAction
+      trackingData={{
+        action: tracking.action.open_art,
+        category: tracking.category.home,
+        label: tracking.label.body,
+      }}
+      to={slugs.art}
+    >
+      Art
+    </HomeCallToAction>
   </ProfileContainer>
 );
