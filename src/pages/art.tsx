@@ -8,8 +8,32 @@ import { ShowcasePageTemplate } from "../components/design-system/templates/show
 import { artTheme } from "../components/design-system/theme";
 import loadable from "@loadable/component";
 import { artPrimaryColor } from "../components/design-system/art-colors";
+import styled from "styled-components";
+import { opacity } from "../components/design-system/utils-css/opacity-keyframes";
+// @ts-ignore
+import ChicioArt from "../images/chicio-art.png";
 
 const BottomArt = loadable(() => import(`../components/bottom-art`));
+
+const ArtPresentationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  animation: ${opacity} 1s linear 0.5s;
+  animation-fill-mode: forwards;
+  margin: ${(props) => props.theme.spacing[4]};
+  height: 50%;
+`;
+
+const LogoImage = styled.img`
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+`;
 
 const Art: React.FC<PageProps<ArtQuery>> = ({ data, location }) => {
   const siteMetadata = data.site!.siteMetadata!;
@@ -20,7 +44,11 @@ const Art: React.FC<PageProps<ArtQuery>> = ({ data, location }) => {
     <ShowcasePageTemplate
       location={getCurrentLocationFrom(location)}
       theme={artTheme}
-      fullScreenComponent={<div>ciao</div>}
+      fullScreenComponent={
+        <ArtPresentationContainer>
+          <LogoImage src={ChicioArt} alt={"chicio art logo"} />
+        </ArtPresentationContainer>
+      }
       trackingCategory={tracking.category.art}
       ogPageType={OgPageType.WebSite}
       title={"Chicio Art"}
