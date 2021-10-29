@@ -12,6 +12,8 @@ import styled from "styled-components";
 import { opacity } from "../components/design-system/utils-css/opacity-keyframes";
 // @ts-ignore
 import ChicioArt from "../images/chicio-art.png";
+// @ts-ignore
+import Background from "../images/wall-bricks-violet.jpg";
 
 const BottomArt = loadable(() => import(`../components/bottom-art`));
 
@@ -35,6 +37,16 @@ const LogoImage = styled.img`
   object-fit: contain;
 `;
 
+const BackgroundImage = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url(${Background});
+  width: 100%;
+  height: 100%;
+  z-index: -300;
+`;
+
 const Art: React.FC<PageProps<ArtQuery>> = ({ data, location }) => {
   const siteMetadata = data.site!.siteMetadata!;
   const author = siteMetadata.author!;
@@ -46,6 +58,7 @@ const Art: React.FC<PageProps<ArtQuery>> = ({ data, location }) => {
       theme={artTheme}
       fullScreenComponent={
         <ArtPresentationContainer>
+          <BackgroundImage />
           <LogoImage src={ChicioArt} alt={"chicio art logo"} />
         </ArtPresentationContainer>
       }
