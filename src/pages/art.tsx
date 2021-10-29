@@ -49,7 +49,6 @@ const BackgroundImage = styled.div`
 
 const Art: React.FC<PageProps<ArtQuery>> = ({ data, location }) => {
   const siteMetadata = data.site!.siteMetadata!;
-  const author = siteMetadata.author!;
   const artImage = siteMetadata.featuredArtImage!;
 
   return (
@@ -68,7 +67,7 @@ const Art: React.FC<PageProps<ArtQuery>> = ({ data, location }) => {
       featuredImage={artImage}
       cookieConsentColor={artPrimaryColor}
     >
-      <BottomArt author={author} images={data.allFile.edges} />
+      <BottomArt images={data.allFile.edges} />
     </ShowcasePageTemplate>
   );
 };

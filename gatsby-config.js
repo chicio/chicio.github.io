@@ -4,7 +4,7 @@ module.exports = {
       "Fabrizio Duroni | Fabrizio Duroni ‘Chicio Coding’ official site with profile details. Official blog chicio coding. Main skills: mobile application development, computer graphics, web development.",
     siteUrl: "https://www.fabrizioduroni.it",
     featuredImage: "/chicio-coding-feature-graphic.jpg",
-    featuredArtImage: "/chicio-art.jpg",
+    featuredArtImage: "/chicio-art-featured.png",
     author: "Fabrizio Duroni",
     contacts: {
       email: "fabrizio.duroni@gmail.com",
