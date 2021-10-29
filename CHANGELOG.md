@@ -1,6 +1,18 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [5.1.0](https://github.com/chicio/chicio.github.io/releases/tag/v5.1.0)
+Release date: 2021-10-29
+
+#### Added
+
+- Added animation to call to action
+- new mobile blog header
+
+#### Fixed
+
+- fix recent post cards
+
 ## [5.0.0](https://github.com/chicio/chicio.github.io/releases/tag/v5.0.0)
 Release date: 2021-10-28
 
