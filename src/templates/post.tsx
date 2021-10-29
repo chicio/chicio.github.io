@@ -15,6 +15,7 @@ import loadable from "@loadable/component";
 
 const PostTitle = styled(Heading2)`
   margin: 0;
+  word-wrap: break-word;
 `;
 
 const RecentPosts = loadable(

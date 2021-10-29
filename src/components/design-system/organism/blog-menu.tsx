@@ -20,6 +20,10 @@ const MobileBlogHeaderContainer = styled(ContainerFluid)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  ${mediaQuery.minWidth.sm} {
+    display: none;
+  }
 `;
 
 const Divider = styled.div`
