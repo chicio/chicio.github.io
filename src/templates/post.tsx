@@ -29,6 +29,10 @@ const Comments = loadable(
   () => import(`../components/design-system/molecules/comments`)
 );
 
+const PostContainer = styled.div`
+  margin-top: ${(props) => props.theme.spacing[5]};
+`;
+
 const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
   const post = data.markdownRemark!;
   const title = post.frontmatter!.title!;
@@ -50,7 +54,7 @@ const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
       description={post.frontmatter!.description!}
       date={post.frontmatter!.date!}
     >
-      <div>
+      <PostContainer>
         <PostTitle className="blog-post-title">
           {post.frontmatter!.title}
         </PostTitle>
@@ -70,7 +74,7 @@ const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
           trackingCategory={tracking.category.blog_post}
           trackingLabel={tracking.label.body}
         />
-      </div>
+      </PostContainer>
       <RecentPosts currentSlug={location.pathname} />
       {post.frontmatter?.comments && (
         <Comments url={location.href} title={title} />

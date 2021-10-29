@@ -70,6 +70,22 @@ const ImageContainer = styled.div`
   }
 `;
 
+export const DesktopContainer = styled.div`
+  display: none;
+
+  ${mediaQuery.minWidth.sm} {
+    display: block;
+  }
+`;
+
+export const MobileContainer = styled.div`
+  display: block;
+
+  ${mediaQuery.minWidth.sm} {
+    display: none;
+  }
+`;
+
 export const BlogHeader: React.FC = () => (
   <BlogHeaderContainer>
     <ImageContainer>
@@ -91,4 +107,16 @@ export const BlogHeader: React.FC = () => (
       </BlogDescription>
     </BlogHeaderColumn>
   </BlogHeaderContainer>
+);
+
+export const DesktopBlogHeader: React.FC = () => (
+  <DesktopContainer>
+    <BlogHeader />
+  </DesktopContainer>
+);
+
+export const MobileBlogHeader: React.FC = () => (
+  <MobileContainer>
+    <BlogHeader />
+  </MobileContainer>
 );

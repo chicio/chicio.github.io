@@ -1,4 +1,4 @@
-import { BlogHeader } from "../organism/blog-header";
+import { DesktopBlogHeader } from "../organism/blog-header";
 import * as React from "react";
 import { OgPageType } from "../../../logic/seo";
 import { CurrentLocation } from "../../../logic/current-location";
@@ -36,7 +36,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
     description={description}
     date={date}
   >
-    <BlogHeader />
+    <DesktopBlogHeader />
     {children}
   </PageWithContent>
 );

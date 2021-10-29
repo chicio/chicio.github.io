@@ -11,7 +11,7 @@ import loadable from "@loadable/component";
 const Footer = loadable(() => import(`../organism/footer`));
 
 const ContentContainer = styled(Container)`
-  margin-top: ${(props) => props.theme.spacing[12]};
+  margin-top: ${(props) => props.theme.spacing[14]};
   flex: 1 0 auto;
 `;
 

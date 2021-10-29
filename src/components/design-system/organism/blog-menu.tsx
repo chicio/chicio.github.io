@@ -9,6 +9,16 @@ import { Overlay } from "../atoms/overlay";
 import { CSSTransition } from "react-transition-group";
 import { Close } from "../molecules/close";
 import { mediaQuery } from "../utils-css/media-query";
+import { MobileBlogHeader } from "./blog-header";
+
+const menuHeight = "55px";
+
+const MobileBlogHeaderContainer = styled.div`
+  height: ${menuHeight};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const MenuButtonContainer = styled.div`
   position: absolute;
@@ -30,12 +40,12 @@ const MenuContainer = styled.div<MenuContainerProps>`
   background-color: ${(props) => props.theme.light.primaryColor};
   box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.1);
   position: fixed;
-  top: ${(props) => (props.shouldHide ? "-55px" : 0)};
+  top: ${(props) => (props.shouldHide ? `-${menuHeight}` : 0)};
   transition: top 0.3s ease 0s,
     height 0.3s ease ${(props) => `${props.delayOpenCloseMenuAnimation}s`};
   width: 100%;
   z-index: 300;
-  height: ${(props) => (props.shouldOpenMenu ? "150px" : "55px")};
+  height: ${(props) => (props.shouldOpenMenu ? "210px" : menuHeight)};
 
   ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.primaryColor};
@@ -99,7 +109,7 @@ const NavBarMenuItem = memo(styled(MenuItemWithTracking)<NavBarMenuItemProps>`
   ${mediaQuery.minWidth.sm} {
     visibility: visible;
     opacity: 1;
-    height: 55px;
+    height: ${menuHeight};
 
     ${(props) =>
       !props.selected &&
@@ -272,6 +282,9 @@ export const BlogMenu: React.FC<MenuProps> = ({
         delayOpenCloseMenuAnimation={shouldOpenMenu ? 0 : 0.4}
       >
         <NavBar shouldOpenMenu={shouldOpenMenu}>
+          <MobileBlogHeaderContainer>
+            <MobileBlogHeader />
+          </MobileBlogHeaderContainer>
           <AnimatedNavBarItem
             label={"Home"}
             slug={"/"}
