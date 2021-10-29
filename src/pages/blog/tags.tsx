@@ -2,7 +2,7 @@ import React from "react";
 import { graphql, PageProps } from "gatsby";
 import { tracking } from "../../logic/tracking";
 import { PostsGroupByTagsQuery } from "../../../graphql-types";
-import { BlogPage } from "../../components/design-system/templates/blog-page";
+import { BlogPageTemplate } from "../../components/design-system/templates/blog-page-template";
 import { Tag } from "../../components/design-system/molecules/tag";
 import { ContainerFluid } from "../../components/design-system/atoms/container-fluid";
 import styled from "styled-components";
@@ -25,7 +25,7 @@ const TagsPage: React.FC<PageProps<PostsGroupByTagsQuery>> = ({
   const featuredImage = siteMetadata.featuredImage!;
 
   return (
-    <BlogPage
+    <BlogPageTemplate
       location={getCurrentLocationFrom(location)}
       author={author}
       ogPageType={OgPageType.WebSite}
@@ -43,7 +43,7 @@ const TagsPage: React.FC<PageProps<PostsGroupByTagsQuery>> = ({
           />
         ))}
       </TagsContainer>
-    </BlogPage>
+    </BlogPageTemplate>
   );
 };
 

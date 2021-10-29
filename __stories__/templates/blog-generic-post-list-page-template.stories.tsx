@@ -1,16 +1,15 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react";
-import { BlogPage } from "../../src/components/design-system/templates/blog-page";
+import { BlogPageTemplate } from "../../src/components/design-system/templates/blog-page-template";
 import {
-  BlogGenericPostListPage,
-  BlogGenericPostListPageProps
-} from "../../src/components/design-system/templates/blog-generic-post-list-page";
+  BlogGenericPostListPageTemplate,
+  BlogGenericPostListPageProps,
+} from "../../src/components/design-system/templates/blog-generic-post-list-page-template";
 import { OgPageType } from "../../src/logic/seo";
 
-export const BlogGenericPostListPagePageStory: Story<BlogGenericPostListPageProps> = (
-  args
-) => <BlogGenericPostListPage {...args} />;
-BlogGenericPostListPagePageStory.args = {
+export const BlogGenericPostListPagePageTemplateStory: Story<BlogGenericPostListPageProps> =
+  (args) => <BlogGenericPostListPageTemplate {...args} />;
+BlogGenericPostListPagePageTemplateStory.args = {
   title: "Archive",
   posts: [
     {
@@ -140,9 +139,10 @@ BlogGenericPostListPagePageStory.args = {
   ogImage: "/a-photo.jpg",
   trackingCategory: "archive",
 };
-BlogGenericPostListPagePageStory.storyName = "Blog Page Generic Post List";
+BlogGenericPostListPagePageTemplateStory.storyName =
+  "Blog Page Generic Post List";
 
 export default {
-  title: "Templates/Blog Page Generic Post List",
-  component: BlogPage,
+  title: "Templates/Blog Page Generic Post List Page Template",
+  component: BlogPageTemplate,
 } as Meta;

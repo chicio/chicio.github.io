@@ -5,7 +5,7 @@ import { PostMeta } from "../components/design-system/molecules/post-meta";
 import { PostQuery } from "../../graphql-types";
 import { PostAuthors } from "../components/design-system/molecules/post-authors";
 import { getSrc } from "gatsby-plugin-image";
-import { BlogPage } from "../components/design-system/templates/blog-page";
+import { BlogPageTemplate } from "../components/design-system/templates/blog-page-template";
 import { Heading2 } from "../components/design-system/atoms/heading2";
 import { PostContent } from "../components/post-content";
 import styled from "styled-components";
@@ -43,7 +43,7 @@ const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
   }
 
   return (
-    <BlogPage
+    <BlogPageTemplate
       location={getCurrentLocationFrom(location)}
       author={data.site!.siteMetadata!.author!}
       ogPageType={OgPageType.BlogPosting}
@@ -80,7 +80,7 @@ const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
       {post.frontmatter?.comments && (
         <Comments url={location.href} title={title} />
       )}
-    </BlogPage>
+    </BlogPageTemplate>
   );
 };
 

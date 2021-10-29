@@ -27,7 +27,7 @@ export interface BlogPageProps {
   date?: string;
 }
 
-export const BlogPage: React.FC<BlogPageProps> = ({
+export const BlogPageTemplate: React.FC<BlogPageProps> = ({
   children,
   location,
   author,

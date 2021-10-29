@@ -7,7 +7,7 @@ import {
   Maybe,
 } from "../../../../graphql-types";
 import React from "react";
-import { BlogPage } from "./blog-page";
+import { BlogPageTemplate } from "./blog-page-template";
 import { tracking } from "../../../logic/tracking";
 import { PageTitle } from "../molecules/page-title";
 import { OgPageType } from "../../../logic/seo";
@@ -62,7 +62,7 @@ export interface BlogGenericPostListPageProps {
   trackingCategory: string;
 }
 
-export const BlogGenericPostListPage: React.FC<BlogGenericPostListPageProps> =
+export const BlogGenericPostListPageTemplate: React.FC<BlogGenericPostListPageProps> =
   ({
     title,
     posts,
@@ -72,7 +72,7 @@ export const BlogGenericPostListPage: React.FC<BlogGenericPostListPageProps> =
     ogImage,
     trackingCategory,
   }) => (
-    <BlogPage
+    <BlogPageTemplate
       location={location}
       author={author}
       ogPageType={ogPageType}
@@ -99,5 +99,5 @@ export const BlogGenericPostListPage: React.FC<BlogGenericPostListPageProps> =
           </Column>
         </PostContainer>
       ))}
-    </BlogPage>
+    </BlogPageTemplate>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import { tracking } from "../logic/tracking";
 import { graphql, PageProps, useStaticQuery } from "gatsby";
 import { PrivacyPolicyQuery } from "../../graphql-types";
-import { BlogPage } from "../components/design-system/templates/blog-page";
+import { BlogPageTemplate } from "../components/design-system/templates/blog-page-template";
 import { Heading1 } from "../components/design-system/atoms/heading1";
 import { Heading4 } from "../components/design-system/atoms/heading4";
 import { List } from "../components/design-system/atoms/list";
@@ -31,7 +31,7 @@ const PrivacyPolicy: React.FC<PageProps> = ({ location }) => {
   const featuredImage = siteMetadata.featuredImage!;
 
   return (
-    <BlogPage
+    <BlogPageTemplate
       location={getCurrentLocationFrom(location)}
       author={author}
       ogPageType={OgPageType.WebSite}
@@ -192,7 +192,7 @@ const PrivacyPolicy: React.FC<PageProps> = ({ location }) => {
           not hesitate to contact me.
         </Paragraph>
       </ContainerSection>
-    </BlogPage>
+    </BlogPageTemplate>
   );
 };
 

@@ -19,7 +19,7 @@ interface ShowcasePageProps {
   title?: string;
 }
 
-export const ShowcasePage: React.FC<ShowcasePageProps> = ({
+export const ShowcasePageTemplate: React.FC<ShowcasePageProps> = ({
   children,
   location,
   fullScreenComponent,
