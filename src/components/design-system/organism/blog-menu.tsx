@@ -35,7 +35,7 @@ const MenuContainer = styled.div<MenuContainerProps>`
     height 0.3s ease ${(props) => `${props.delayOpenCloseMenuAnimation}s`};
   width: 100%;
   z-index: 300;
-  height: ${(props) => (props.shouldOpenMenu ? "200px" : "55px")};
+  height: ${(props) => (props.shouldOpenMenu ? "150px" : "55px")};
 
   ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.primaryColor};
@@ -239,7 +239,10 @@ export interface MenuProps {
   pathname: string;
 }
 
-export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
+export const BlogMenu: React.FC<MenuProps> = ({
+  trackingCategory,
+  pathname,
+}) => {
   const direction = useScrollDirection();
   const [shouldOpenMenu, setShouldOpenMenu] = useState(false);
   const [enableMenuButton, setEnableMenuButton] = useState(true);
@@ -294,26 +297,14 @@ export const Menu: React.FC<MenuProps> = ({ trackingCategory, pathname }) => {
             onFinishAnimation={onFinishAnimation}
           />
           <AnimatedNavBarItem
-            label={"Art"}
-            slug={slugs.art}
-            selected={pathname === slugs.art}
-            trackingAction={tracking.action.open_art}
-            trackingCategory={trackingCategory}
-            shouldOpenMenu={shouldOpenMenu}
-            enterDelayAnimation={"0.5s"}
-            exitDelayAnimation={"0.1s"}
-            onStartAnimation={onStartAnimation}
-            onFinishAnimation={onFinishAnimation}
-          />
-          <AnimatedNavBarItem
             label={"About me"}
             slug={slugs.aboutMe}
             selected={pathname === slugs.aboutMe}
             trackingAction={tracking.action.open_about_me}
             trackingCategory={trackingCategory}
             shouldOpenMenu={shouldOpenMenu}
-            enterDelayAnimation={"0.6s"}
-            exitDelayAnimation={"0s"}
+            enterDelayAnimation={"0.5s"}
+            exitDelayAnimation={"0.1s"}
             onStartAnimation={onStartAnimation}
             onFinishAnimation={onFinishAnimation}
           />

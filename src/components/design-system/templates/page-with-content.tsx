@@ -1,5 +1,5 @@
 import { Head } from "../../head";
-import { Menu } from "../organism/menu";
+import { BlogMenu } from "../organism/blog-menu";
 import { Page } from "./page";
 import * as React from "react";
 import styled from "styled-components";
@@ -46,7 +46,10 @@ export const PageWithContent: React.FC<PageWithContentProps> = ({
       description={description}
       date={date}
     />
-    <Menu trackingCategory={trackingCategory} pathname={location.pathname} />
+    <BlogMenu
+      trackingCategory={trackingCategory}
+      pathname={location.pathname}
+    />
     <ContentContainer>{children}</ContentContainer>
     <Footer author={author} trackingCategory={trackingCategory} />
   </Page>
