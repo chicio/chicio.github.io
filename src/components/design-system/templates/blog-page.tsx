@@ -1,8 +1,20 @@
-import { BlogHeader } from "../organism/blog-header";
+import { DesktopBlogHeader } from "../organism/blog-header";
 import * as React from "react";
 import { OgPageType } from "../../../logic/seo";
 import { CurrentLocation } from "../../../logic/current-location";
-import { PageWithContent } from "./page-with-content";
+import { Page } from "./page";
+import { Head } from "../../head";
+import { BlogMenu } from "../organism/blog-menu";
+import loadable from "@loadable/component";
+import styled from "styled-components";
+import { Container } from "../atoms/container";
+
+const Footer = loadable(() => import(`../organism/footer`));
+
+const ContentContainer = styled(Container)`
+  margin-top: ${(props) => props.theme.spacing[12]};
+  flex: 1 0 auto;
+`;
 
 export interface BlogPageProps {
   location: CurrentLocation;
@@ -26,17 +38,23 @@ export const BlogPage: React.FC<BlogPageProps> = ({
   description,
   date,
 }) => (
-  <PageWithContent
-    location={location}
-    author={author}
-    ogPageType={ogPageType}
-    ogImage={ogImage}
-    trackingCategory={trackingCategory}
-    customTitle={customTitle}
-    description={description}
-    date={date}
-  >
-    <BlogHeader />
-    {children}
-  </PageWithContent>
+  <Page>
+    <Head
+      url={location.url}
+      pageType={ogPageType}
+      imageUrl={ogImage}
+      customTitle={customTitle}
+      description={description}
+      date={date}
+    />
+    <BlogMenu
+      trackingCategory={trackingCategory}
+      pathname={location.pathname}
+    />
+    <ContentContainer>
+      <DesktopBlogHeader />
+      {children}
+    </ContentContainer>
+    <Footer author={author} trackingCategory={trackingCategory} />
+  </Page>
 );

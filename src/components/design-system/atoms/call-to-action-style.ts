@@ -11,6 +11,7 @@ export const callToActionStyle = css`
   margin: ${(props) => props.theme.spacing[0]};
   line-height: 1;
   text-align: center;
+  display: inline-block;
 
   ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.accentColor};
@@ -20,12 +21,20 @@ export const callToActionStyle = css`
   color: ${(props) => props.theme.light.textAbovePrimaryColor};
   text-decoration: none;
 
+  ${mediaQuery.inputDevice.mouse} {
+    transition: transform 0.15s;
+  }
+
   &:hover {
     color: ${(props) => props.theme.light.textAbovePrimaryColor};
     text-decoration: none;
 
     @media (prefers-color-scheme: dark) {
       color: ${(props) => props.theme.dark.textAbovePrimaryColor};
+    }
+
+    ${mediaQuery.inputDevice.mouse} {
+      transform: scale(1.1);
     }
   }
 `;
