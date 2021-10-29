@@ -6,6 +6,7 @@ import { ProfilePresentation } from "../../src/components/design-system/organism
 import { ShowcasePageTemplate } from "../../src/components/design-system/templates/showcase-page-template";
 import { BackgroundFullScreen } from "../../src/components/background-fullscreen";
 import BottomIndex from "../../src/components/bottom-index";
+import { blogTheme } from "../../src/components/design-system/theme";
 
 export const ShowcasePageTemplateStory: Story<BlogPageProps> = () => (
   <ShowcasePageTemplate
@@ -13,6 +14,7 @@ export const ShowcasePageTemplateStory: Story<BlogPageProps> = () => (
       pathname: "/",
       url: "http://localhost:8000/",
     }}
+    theme={blogTheme}
     fullScreenComponent={
       <>
         <BackgroundFullScreen />
@@ -21,6 +23,7 @@ export const ShowcasePageTemplateStory: Story<BlogPageProps> = () => (
     }
     trackingCategory={"tracking"}
     ogPageType={OgPageType.Person}
+    featuredImage={"url"}
   >
     <BottomIndex author={"author"} />
   </ShowcasePageTemplate>

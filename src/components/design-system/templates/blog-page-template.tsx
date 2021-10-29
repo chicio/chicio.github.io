@@ -2,7 +2,7 @@ import { DesktopBlogHeader } from "../organism/blog-header";
 import * as React from "react";
 import { OgPageType } from "../../../logic/seo";
 import { CurrentLocation } from "../../../logic/current-location";
-import { Page } from "./page";
+import { BlogThemePage } from "./blog-theme-page";
 import { Head } from "../../head";
 import { BlogMenu } from "../organism/blog-menu";
 import loadable from "@loadable/component";
@@ -38,7 +38,7 @@ export const BlogPageTemplate: React.FC<BlogPageProps> = ({
   description,
   date,
 }) => (
-  <Page>
+  <BlogThemePage>
     <Head
       url={location.url}
       pageType={ogPageType}
@@ -56,5 +56,5 @@ export const BlogPageTemplate: React.FC<BlogPageProps> = ({
       {children}
     </ContentContainer>
     <Footer author={author} trackingCategory={trackingCategory} />
-  </Page>
+  </BlogThemePage>
 );

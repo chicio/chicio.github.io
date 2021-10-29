@@ -1,6 +1,5 @@
 import { graphql, useStaticQuery } from "gatsby";
 import { ShowcasePageQuery } from "../../../../graphql-types";
-import { Page } from "./page";
 import { Head } from "../../head";
 import { OgPageType } from "../../../logic/seo";
 import { ContainerFullscreen } from "../atoms/container-fullscreen";
@@ -8,11 +7,14 @@ import { DownArrow } from "../molecules/down-arrow";
 import * as React from "react";
 import { CurrentLocation } from "../../../logic/current-location";
 import loadable from "@loadable/component";
+import { ThemePage } from "./theme-page";
+import { DefaultTheme } from "styled-components";
 
 const Footer = loadable(() => import(`..//organism/footer`));
 
 interface ShowcasePageProps {
   location: CurrentLocation;
+  theme: DefaultTheme;
   fullScreenComponent: React.ReactElement;
   trackingCategory: string;
   ogPageType: OgPageType;
@@ -23,6 +25,7 @@ interface ShowcasePageProps {
 export const ShowcasePageTemplate: React.FC<ShowcasePageProps> = ({
   children,
   location,
+  theme,
   fullScreenComponent,
   trackingCategory,
   ogPageType,
@@ -45,7 +48,7 @@ export const ShowcasePageTemplate: React.FC<ShowcasePageProps> = ({
   const author = siteMetadata.author!;
 
   return (
-    <Page>
+    <ThemePage theme={theme}>
       <Head
         url={location.url}
         pageType={ogPageType}
@@ -58,6 +61,6 @@ export const ShowcasePageTemplate: React.FC<ShowcasePageProps> = ({
       </ContainerFullscreen>
       {children}
       <Footer author={author} trackingCategory={trackingCategory} />
-    </Page>
+    </ThemePage>
   );
 };

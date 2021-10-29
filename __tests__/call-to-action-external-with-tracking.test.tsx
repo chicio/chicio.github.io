@@ -1,7 +1,7 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { trackWith } from "../src/logic/tracking";
-import { Page } from "../src/components/design-system/templates/page";
+import { BlogThemePage } from "../src/components/design-system/templates/blog-theme-page";
 import { CallToActionExternalWithTracking } from "../src/components/call-to-action-external-with-tracking";
 
 jest.mock("../src/logic/tracking", () => ({
@@ -14,7 +14,7 @@ const trackWithMock = trackWith as jest.MockedFunction<typeof trackWith>;
 describe("CallToActionExternalWithTracking", () => {
   it("track", async () => {
     render(
-      <Page>
+      <BlogThemePage>
         <CallToActionExternalWithTracking
           href={"/an-url"}
           trackingData={{
@@ -25,7 +25,7 @@ describe("CallToActionExternalWithTracking", () => {
         >
           Button
         </CallToActionExternalWithTracking>
-      </Page>
+      </BlogThemePage>
     );
     const button = screen.getByText("Button");
 

@@ -8,6 +8,7 @@ import { BackgroundFullScreen } from "../components/background-fullscreen";
 import loadable from "@loadable/component";
 import { ShowcasePageTemplate } from "../components/design-system/templates/showcase-page-template";
 import { getCurrentLocationFrom } from "../logic/current-location";
+import { blogTheme } from "../components/design-system/theme";
 
 const BottomIndex = loadable(() => import(`../components/bottom-index`));
 
@@ -31,6 +32,7 @@ const HomePage: React.FC<PageProps> = ({ location }) => {
   return (
     <ShowcasePageTemplate
       location={getCurrentLocationFrom(location)}
+      theme={blogTheme}
       fullScreenComponent={
         <>
           <BackgroundFullScreen />

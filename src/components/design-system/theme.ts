@@ -6,7 +6,7 @@ export const primaryColorDark = "#303F9F";
 export const primaryColorLight = "#DFDFF1";
 export const textAbovePrimaryColor = "#FFFFFF";
 
-export const dark: Colors = {
+export const blogDark: Colors = {
   primaryColor,
   primaryColorDark,
   primaryColorLight,
@@ -21,7 +21,7 @@ export const dark: Colors = {
   dividerColor: "#575757",
 };
 
-export const light: Colors = {
+export const blogLight: Colors = {
   primaryColor,
   primaryColorDark,
   primaryColorLight,
@@ -36,9 +36,9 @@ export const light: Colors = {
   dividerColor: "#BDBDBD",
 };
 
-export const theme: DefaultTheme = {
-  dark,
-  light,
+export const blogTheme: DefaultTheme = {
+  dark: blogDark,
+  light: blogLight,
   fontSizes: [
     "12px",
     "14px",
