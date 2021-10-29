@@ -256,6 +256,8 @@ export type DirectoryCtimeArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
+  port?: Maybe<Scalars['Int']>;
+  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -853,6 +855,8 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2161,6 +2165,8 @@ export type SiteFieldsEnum =
   | 'siteMetadata___contacts___links___medium'
   | 'siteMetadata___contacts___links___devto'
   | 'siteMetadata___contacts___links___instagram'
+  | 'port'
+  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -2294,6 +2300,8 @@ export type SiteGroupConnectionGroupArgs = {
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -3664,6 +3672,11 @@ export type SocialContactsQuery = { site?: Maybe<{ siteMetadata?: Maybe<{ contac
         & { links?: Maybe<Pick<SiteSiteMetadataContactsLinks, 'twitter' | 'facebook' | 'linkedin' | 'github' | 'medium' | 'devto' | 'instagram'>> }
       )> }> }> };
 
+export type ShowcasePageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ShowcasePageQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'author' | 'featuredImage'>> }> };
+
 export type HeadQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3698,7 +3711,7 @@ export type CookiePolicyQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteS
 export type HomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type HomePageQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'author' | 'featuredImage'>> }> };
+export type HomePageQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'author'>> }> };
 
 export type PrivacyPolicyQueryVariables = Exact<{ [key: string]: never; }>;
 
