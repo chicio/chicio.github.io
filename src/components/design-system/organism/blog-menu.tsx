@@ -80,6 +80,7 @@ const NavBar = styled(Container)<NavBarProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: ${menuHeight};
 
   ${mediaQuery.minWidth.sm} {
     flex-direction: row;
@@ -303,7 +304,7 @@ export const BlogMenu: React.FC<MenuProps> = ({
       >
         <NavBar shouldOpenMenu={shouldOpenMenu}>
           <MobileBlogHeaderContainer>
-            <MobileBlogHeader />
+            <MobileBlogHeader height={menuHeight}/>
             {shouldOpenMenu && <Divider />}
           </MobileBlogHeaderContainer>
           <AnimatedNavBarItem

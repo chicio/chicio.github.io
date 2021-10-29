@@ -78,8 +78,13 @@ export const DesktopContainer = styled.div`
   }
 `;
 
-export const MobileContainer = styled.div`
-  display: block;
+interface MobileContainerProps {
+  height: string;
+}
+
+export const MobileContainer = styled.div<MobileContainerProps>`
+  display: flex;
+  height: ${(props) => props.height};
 
   ${mediaQuery.minWidth.sm} {
     display: none;
@@ -115,8 +120,10 @@ export const DesktopBlogHeader: React.FC = () => (
   </DesktopContainer>
 );
 
-export const MobileBlogHeader: React.FC = () => (
-  <MobileContainer>
+export const MobileBlogHeader: React.FC<MobileContainerProps> = ({
+  height,
+}) => (
+  <MobileContainer height={height}>
     <BlogHeader />
   </MobileContainer>
 );
