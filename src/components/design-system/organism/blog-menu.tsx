@@ -61,6 +61,8 @@ const MenuContainer = styled.div<MenuContainerProps>`
   box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: ${(props) => (props.shouldHide ? `-${menuHeight}` : 0)};
+  left: 0;
+  right: 0;
   transition: top 0.3s ease 0s,
     height 0.3s ease ${(props) => `${props.delayOpenCloseMenuAnimation}s`};
   width: 100%;
