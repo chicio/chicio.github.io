@@ -256,6 +256,8 @@ export type DirectoryCtimeArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
+  port?: Maybe<Scalars['Int']>;
+  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -277,6 +279,7 @@ export type SiteSiteMetadata = {
   description?: Maybe<Scalars['String']>;
   siteUrl?: Maybe<Scalars['String']>;
   featuredImage?: Maybe<Scalars['String']>;
+  featuredArtImage?: Maybe<Scalars['String']>;
   author?: Maybe<Scalars['String']>;
   contacts?: Maybe<SiteSiteMetadataContacts>;
 };
@@ -853,6 +856,8 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2080,6 +2085,7 @@ export type SiteSiteMetadataFilterInput = {
   description?: Maybe<StringQueryOperatorInput>;
   siteUrl?: Maybe<StringQueryOperatorInput>;
   featuredImage?: Maybe<StringQueryOperatorInput>;
+  featuredArtImage?: Maybe<StringQueryOperatorInput>;
   author?: Maybe<StringQueryOperatorInput>;
   contacts?: Maybe<SiteSiteMetadataContactsFilterInput>;
 };
@@ -2151,6 +2157,7 @@ export type SiteFieldsEnum =
   | 'siteMetadata___description'
   | 'siteMetadata___siteUrl'
   | 'siteMetadata___featuredImage'
+  | 'siteMetadata___featuredArtImage'
   | 'siteMetadata___author'
   | 'siteMetadata___contacts___email'
   | 'siteMetadata___contacts___phone'
@@ -2161,6 +2168,8 @@ export type SiteFieldsEnum =
   | 'siteMetadata___contacts___links___medium'
   | 'siteMetadata___contacts___links___devto'
   | 'siteMetadata___contacts___links___instagram'
+  | 'port'
+  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -2294,6 +2303,8 @@ export type SiteGroupConnectionGroupArgs = {
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -3664,6 +3675,11 @@ export type SocialContactsQuery = { site?: Maybe<{ siteMetadata?: Maybe<{ contac
         & { links?: Maybe<Pick<SiteSiteMetadataContactsLinks, 'twitter' | 'facebook' | 'linkedin' | 'github' | 'medium' | 'devto' | 'instagram'>> }
       )> }> }> };
 
+export type ShowcasePageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ShowcasePageQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'author'>> }> };
+
 export type HeadQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3675,7 +3691,7 @@ export type HeadQuery = { site?: Maybe<{ siteMetadata?: Maybe<(
 export type ArtQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ArtQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'author' | 'featuredImage'>> }>, allFile: { edges: Array<{ node: (
+export type ArtQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'author' | 'featuredArtImage'>> }>, allFile: { edges: Array<{ node: (
         Pick<File, 'name'>
         & { childImageSharp?: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
       ) }> } };

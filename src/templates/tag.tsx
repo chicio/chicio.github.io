@@ -2,7 +2,7 @@ import React from "react";
 import { graphql, PageProps } from "gatsby";
 import { tracking } from "../logic/tracking";
 import { TagPostsQuery } from "../../graphql-types";
-import { BlogGenericPostListPage } from "../components/design-system/templates/blog-generic-post-list-page";
+import { BlogGenericPostListPageTemplate } from "../components/design-system/templates/blog-generic-post-list-page-template";
 import { OgPageType } from "../logic/seo";
 import { getCurrentLocationFrom } from "../logic/current-location";
 
@@ -22,7 +22,7 @@ const Tag: React.FC<PageProps<TagPostsQuery, TagPageContext>> = ({
   const tagHeader = `${pageContext.tag} (${totalCount})`;
 
   return (
-    <BlogGenericPostListPage
+    <BlogGenericPostListPageTemplate
       title={tagHeader}
       posts={edges}
       author={author}

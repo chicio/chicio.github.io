@@ -2,7 +2,7 @@ import * as React from "react";
 import { graphql, PageProps } from "gatsby";
 import { tracking } from "../logic/tracking";
 import { BlogListQuery } from "../../graphql-types";
-import { BlogPage } from "../components/design-system/templates/blog-page";
+import { BlogPageTemplate } from "../components/design-system/templates/blog-page-template";
 import { PaginationNavigation } from "../components/design-system/molecules/pagination-navigation";
 import { PostCard } from "../components/design-system/molecules/post-card";
 import { OgPageType } from "../logic/seo";
@@ -34,7 +34,7 @@ const Blog: React.FC<PageProps<BlogListQuery, BlogPageContext>> = ({
   const featuredImage = siteMetadata.featuredImage!;
 
   return (
-    <BlogPage
+    <BlogPageTemplate
       author={author}
       location={getCurrentLocationFrom(location)}
       ogImage={featuredImage}
@@ -63,7 +63,7 @@ const Blog: React.FC<PageProps<BlogListQuery, BlogPageContext>> = ({
         isFirst={isFirst}
         isLast={isLast}
       />
-    </BlogPage>
+    </BlogPageTemplate>
   );
 };
 

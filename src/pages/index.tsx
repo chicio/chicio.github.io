@@ -1,21 +1,17 @@
 import * as React from "react";
 import { graphql, PageProps, useStaticQuery } from "gatsby";
-import { DownArrow } from "../components/design-system/molecules/down-arrow";
 import { ProfilePresentation } from "../components/design-system/organism/profile-presentation";
-import { Head } from "../components/head";
 import { HomePageQuery } from "../../graphql-types";
-import { Page } from "../components/design-system/templates/page";
-import { ContainerFullscreen } from "../components/design-system/atoms/container-fullscreen";
 import { tracking } from "../logic/tracking";
 import { OgPageType } from "../logic/seo";
 import { BackgroundFullScreen } from "../components/background-fullscreen";
 import loadable from "@loadable/component";
+import { ShowcasePageTemplate } from "../components/design-system/templates/showcase-page-template";
+import { getCurrentLocationFrom } from "../logic/current-location";
+import { blogTheme } from "../components/design-system/theme";
+import { blogPrimaryColor } from "../components/design-system/blog-colors";
 
 const BottomIndex = loadable(() => import(`../components/bottom-index`));
-
-const Footer = loadable(
-  () => import(`../components/design-system/organism/footer`)
-);
 
 const HomePage: React.FC<PageProps> = ({ location }) => {
   const data = useStaticQuery<HomePageQuery>(
@@ -30,26 +26,27 @@ const HomePage: React.FC<PageProps> = ({ location }) => {
       }
     `
   );
-
-  const siteMetadata = data.site!.siteMetadata!;
-  const author = siteMetadata.author!;
-  const featuredImage = siteMetadata.featuredImage!;
+  const siteMetada = data.site!.siteMetadata!;
+  const author = siteMetada.author!;
+  const featuredImage = siteMetada.featuredImage!;
 
   return (
-    <Page>
-      <Head
-        url={location.href}
-        pageType={OgPageType.Person}
-        imageUrl={featuredImage}
-      />
-      <ContainerFullscreen>
-        <BackgroundFullScreen />
-        <ProfilePresentation author={author} />
-        <DownArrow />
-      </ContainerFullscreen>
+    <ShowcasePageTemplate
+      location={getCurrentLocationFrom(location)}
+      theme={blogTheme}
+      fullScreenComponent={
+        <>
+          <BackgroundFullScreen />
+          <ProfilePresentation author={author} />
+        </>
+      }
+      trackingCategory={tracking.category.home}
+      ogPageType={OgPageType.Person}
+      featuredImage={featuredImage}
+      cookieConsentColor={blogPrimaryColor}
+    >
       <BottomIndex author={author} />
-      <Footer author={author} trackingCategory={tracking.category.home} />
-    </Page>
+    </ShowcasePageTemplate>
   );
 };
 

@@ -4,50 +4,71 @@ import { ArtQuery } from "../../graphql-types";
 import { getCurrentLocationFrom } from "../logic/current-location";
 import { tracking } from "../logic/tracking";
 import { OgPageType } from "../logic/seo";
-import { PageTitle } from "../components/design-system/molecules/page-title";
-import { Gallery } from "../components/design-system/organism/gallery";
-import { Paragraph } from "../components/design-system/atoms/paragraph";
+import { ShowcasePageTemplate } from "../components/design-system/templates/showcase-page-template";
+import { artTheme } from "../components/design-system/theme";
+import loadable from "@loadable/component";
+import { artPrimaryColor } from "../components/design-system/art-colors";
 import styled from "styled-components";
-import { Page } from "../components/design-system/templates/page";
-import { Head } from "../components/head";
-import { Container } from "../components/design-system/atoms/container";
-import Footer from "../components/design-system/organism/footer";
+import { opacity } from "../components/design-system/utils-css/opacity-keyframes";
+// @ts-ignore
+import ChicioArt from "../images/chicio-art.png";
+// @ts-ignore
+import Background from "../images/wall-bricks-violet.jpg";
 
-const ArtDescription = styled(Paragraph)`
-  margin-bottom: ${(props) => props.theme.spacing[6]};
+const BottomArt = loadable(() => import(`../components/bottom-art`));
+
+const ArtPresentationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  animation: ${opacity} 1s linear 0.5s;
+  animation-fill-mode: forwards;
+  margin: ${(props) => props.theme.spacing[4]};
+  height: 50%;
 `;
 
-const ContentContainer = styled(Container)`
-  margin-top: ${(props) => props.theme.spacing[4]};
-  flex: 1 0 auto;
+const LogoImage = styled.img`
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+`;
+
+const BackgroundImage = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url(${Background});
+  width: 100%;
+  height: 100%;
+  z-index: -300;
 `;
 
 const Art: React.FC<PageProps<ArtQuery>> = ({ data, location }) => {
   const siteMetadata = data.site!.siteMetadata!;
-  const author = siteMetadata.author!;
-  const featuredImage = siteMetadata.featuredImage!;
+  const artImage = siteMetadata.featuredArtImage!;
 
   return (
-    <Page>
-      <Head
-        url={getCurrentLocationFrom(location).url}
-        pageType={OgPageType.WebSite}
-        imageUrl={featuredImage}
-        customTitle={"Fabrizio Duroni art gallery"}
-        description={"Fabrizio Duroni art gallery"}
-      />
-      <ContentContainer>
-        <PageTitle>My drawings</PageTitle>
-        <ArtDescription>
-          During the last years I started learning to draw. This page is a
-          collection of all the draws I created. You can consider it like an art
-          gallery, where you can see my drawing skill growing more and more. I
-          hope you will enjoy it and you will find something that you like.
-        </ArtDescription>
-        <Gallery images={data.allFile.edges} />
-      </ContentContainer>
-      <Footer author={author} trackingCategory={tracking.category.art} />
-    </Page>
+    <ShowcasePageTemplate
+      location={getCurrentLocationFrom(location)}
+      theme={artTheme}
+      fullScreenComponent={
+        <ArtPresentationContainer>
+          <BackgroundImage />
+          <LogoImage src={ChicioArt} alt={"chicio art logo"} />
+        </ArtPresentationContainer>
+      }
+      trackingCategory={tracking.category.art}
+      ogPageType={OgPageType.WebSite}
+      title={"Chicio Art"}
+      featuredImage={artImage}
+      cookieConsentColor={artPrimaryColor}
+    >
+      <BottomArt images={data.allFile.edges} />
+    </ShowcasePageTemplate>
   );
 };
 
@@ -57,9 +78,8 @@ export const artQuery = graphql`
   query Art {
     site {
       siteMetadata {
-        title
         author
-        featuredImage
+        featuredArtImage
       }
     }
     allFile(
