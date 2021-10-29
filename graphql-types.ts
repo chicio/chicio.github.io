@@ -277,6 +277,7 @@ export type SiteSiteMetadata = {
   description?: Maybe<Scalars['String']>;
   siteUrl?: Maybe<Scalars['String']>;
   featuredImage?: Maybe<Scalars['String']>;
+  featuredArtImage?: Maybe<Scalars['String']>;
   author?: Maybe<Scalars['String']>;
   contacts?: Maybe<SiteSiteMetadataContacts>;
 };
@@ -2080,6 +2081,7 @@ export type SiteSiteMetadataFilterInput = {
   description?: Maybe<StringQueryOperatorInput>;
   siteUrl?: Maybe<StringQueryOperatorInput>;
   featuredImage?: Maybe<StringQueryOperatorInput>;
+  featuredArtImage?: Maybe<StringQueryOperatorInput>;
   author?: Maybe<StringQueryOperatorInput>;
   contacts?: Maybe<SiteSiteMetadataContactsFilterInput>;
 };
@@ -2151,6 +2153,7 @@ export type SiteFieldsEnum =
   | 'siteMetadata___description'
   | 'siteMetadata___siteUrl'
   | 'siteMetadata___featuredImage'
+  | 'siteMetadata___featuredArtImage'
   | 'siteMetadata___author'
   | 'siteMetadata___contacts___email'
   | 'siteMetadata___contacts___phone'
@@ -3664,6 +3667,11 @@ export type SocialContactsQuery = { site?: Maybe<{ siteMetadata?: Maybe<{ contac
         & { links?: Maybe<Pick<SiteSiteMetadataContactsLinks, 'twitter' | 'facebook' | 'linkedin' | 'github' | 'medium' | 'devto' | 'instagram'>> }
       )> }> }> };
 
+export type ShowcasePageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ShowcasePageQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'author'>> }> };
+
 export type HeadQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3675,7 +3683,7 @@ export type HeadQuery = { site?: Maybe<{ siteMetadata?: Maybe<(
 export type ArtQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ArtQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'author' | 'featuredImage'>> }>, allFile: { edges: Array<{ node: (
+export type ArtQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'author' | 'featuredArtImage'>> }>, allFile: { edges: Array<{ node: (
         Pick<File, 'name'>
         & { childImageSharp?: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
       ) }> } };

@@ -2,7 +2,7 @@ import React from "react";
 import { Meta } from "@storybook/react";
 import styled from "styled-components";
 import { ContainerFluid } from "../src/components/design-system/atoms/container-fluid";
-import { dark, light } from "../src/components/design-system/theme";
+import { blogDark, blogLight } from "../src/components/design-system/theme";
 
 const ColorsContainer = styled.div`
   display: flex;
@@ -39,18 +39,18 @@ export const Colors: React.VFC = () => (
   <ColorsContainer>
     <ColorColumnContainer>
       <ColorColumnTitle>Dark theme</ColorColumnTitle>
-      {Object.keys(dark).map((color, index) => (
+      {Object.keys(blogDark).map((color, index) => (
         // @ts-ignore
-        <Color key={`${color}${index}dark`} color={dark[color]}>
+        <Color key={`${color}${index}dark`} color={blogDark[color]}>
           {color}
         </Color>
       ))}
     </ColorColumnContainer>
     <ColorColumnContainer>
       <ColorColumnTitle>Light theme</ColorColumnTitle>
-      {Object.keys(light).map((color, index) => (
+      {Object.keys(blogLight).map((color, index) => (
         // @ts-ignore
-        <Color key={`${color}${index}light`} color={light[color]}>
+        <Color key={`${color}${index}light`} color={blogLight[color]}>
           {color}
         </Color>
       ))}

@@ -2,7 +2,7 @@ import React from "react";
 import { graphql, PageProps } from "gatsby";
 import { ArchiveQuery } from "../../../graphql-types";
 import { tracking } from "../../logic/tracking";
-import { BlogGenericPostListPage } from "../../components/design-system/templates/blog-generic-post-list-page";
+import { BlogGenericPostListPageTemplate } from "../../components/design-system/templates/blog-generic-post-list-page-template";
 import { OgPageType } from "../../logic/seo";
 import { getCurrentLocationFrom } from "../../logic/current-location";
 
@@ -12,7 +12,7 @@ const Archive: React.FC<PageProps<ArchiveQuery>> = ({ data, location }) => {
   const featuredImage = siteMetadata.featuredImage!;
 
   return (
-    <BlogGenericPostListPage
+    <BlogGenericPostListPageTemplate
       title={"Archive"}
       posts={data.allMarkdownRemark.edges}
       author={author}

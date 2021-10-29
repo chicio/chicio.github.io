@@ -1,14 +1,14 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { Page } from "../src/components/design-system/templates/page";
+import { BlogThemePage } from "../src/components/design-system/templates/blog-theme-page";
 import React from "react";
 import { Resume } from "../src/components/design-system/organism/resume";
 
 describe("Resume", () => {
   it("shows the correct tab on click", async () => {
     render(
-      <Page>
+      <BlogThemePage>
         <Resume />
-      </Page>
+      </BlogThemePage>
     );
 
     const experienceTab = screen.getByText("Experience");

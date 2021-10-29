@@ -2,7 +2,7 @@ import React from "react";
 import { tracking } from "../logic/tracking";
 import { graphql, PageProps, useStaticQuery } from "gatsby";
 import { CookiePolicyQuery } from "../../graphql-types";
-import { BlogPage } from "../components/design-system/templates/blog-page";
+import { BlogPageTemplate } from "../components/design-system/templates/blog-page-template";
 import { Heading1 } from "../components/design-system/atoms/heading1";
 import { Paragraph } from "../components/design-system/atoms/paragraph";
 import { Heading4 } from "../components/design-system/atoms/heading4";
@@ -31,7 +31,7 @@ const CookiePolicy: React.FC<PageProps> = ({ location }) => {
   const featuredImage = siteMetadata.featuredImage!;
 
   return (
-    <BlogPage
+    <BlogPageTemplate
       location={getCurrentLocationFrom(location)}
       ogPageType={OgPageType.WebSite}
       ogImage={featuredImage}
@@ -120,7 +120,7 @@ const CookiePolicy: React.FC<PageProps> = ({ location }) => {
           </li>
         </List>
       </ContainerSection>
-    </BlogPage>
+    </BlogPageTemplate>
   );
 };
 

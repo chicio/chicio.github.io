@@ -1,7 +1,7 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Gallery } from "../src/components/design-system/organism/gallery";
-import { Page } from "../src/components/design-system/templates/page";
+import { BlogThemePage } from "../src/components/design-system/templates/blog-theme-page";
 
 const images = [
   {
@@ -67,9 +67,9 @@ const images = [
 describe("Gallery", () => {
   it("shows the image when the user clicks on it", async () => {
     render(
-      <Page>
+      <BlogThemePage>
         <Gallery images={images} />
-      </Page>
+      </BlogThemePage>
     );
 
     const image = screen.getByAltText("2021-03-30");

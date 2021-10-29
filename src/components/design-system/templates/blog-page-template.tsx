@@ -2,12 +2,13 @@ import { DesktopBlogHeader } from "../organism/blog-header";
 import * as React from "react";
 import { OgPageType } from "../../../logic/seo";
 import { CurrentLocation } from "../../../logic/current-location";
-import { Page } from "./page";
+import { BlogThemePage } from "./blog-theme-page";
 import { Head } from "../../head";
 import { BlogMenu } from "../organism/blog-menu";
 import loadable from "@loadable/component";
 import styled from "styled-components";
 import { Container } from "../atoms/container";
+import { blogPrimaryColor } from "../blog-colors";
 
 const Footer = loadable(() => import(`../organism/footer`));
 
@@ -27,7 +28,7 @@ export interface BlogPageProps {
   date?: string;
 }
 
-export const BlogPage: React.FC<BlogPageProps> = ({
+export const BlogPageTemplate: React.FC<BlogPageProps> = ({
   children,
   location,
   author,
@@ -38,7 +39,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
   description,
   date,
 }) => (
-  <Page>
+  <BlogThemePage>
     <Head
       url={location.url}
       pageType={ogPageType}
@@ -46,6 +47,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
       customTitle={customTitle}
       description={description}
       date={date}
+      cookieConsentColor={blogPrimaryColor}
     />
     <BlogMenu
       trackingCategory={trackingCategory}
@@ -56,5 +58,5 @@ export const BlogPage: React.FC<BlogPageProps> = ({
       {children}
     </ContentContainer>
     <Footer author={author} trackingCategory={trackingCategory} />
-  </Page>
+  </BlogThemePage>
 );

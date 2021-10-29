@@ -1,6 +1,13 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [5.2.0](https://github.com/chicio/chicio.github.io/releases/tag/v5.2.0)
+Release date: 2021-10-30
+
+#### Added
+
+- New art page
+
 ## [5.1.0](https://github.com/chicio/chicio.github.io/releases/tag/v5.1.0)
 Release date: 2021-10-29
 

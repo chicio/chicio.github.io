@@ -70,4 +70,5 @@ export const artDescriptions: { [imageName: string]: string } = {
   "2021-07-24": "Confused bomb 💣 🥴",
   "2021-08-20": "Bumblebee 🐝",
   "2021-09-26": "Loto flower 🌸",
+  "2021-10-24": "Chicio art logo™",
 };
