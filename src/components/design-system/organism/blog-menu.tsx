@@ -10,14 +10,30 @@ import { CSSTransition } from "react-transition-group";
 import { Close } from "../molecules/close";
 import { mediaQuery } from "../utils-css/media-query";
 import { MobileBlogHeader } from "./blog-header";
+import { ContainerFluid } from "../atoms/container-fluid";
 
 const menuHeight = "55px";
 
-const MobileBlogHeaderContainer = styled.div`
+const MobileBlogHeaderContainer = styled(ContainerFluid)`
   height: ${menuHeight};
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+const Divider = styled.div`
+  height: 1px;
+  background-color: ${(props) => props.theme.light.textAbovePrimaryColor};
+  position: absolute;
+  top: 54px;
+  left: ${(props) => props.theme.spacing[3]};
+  right: ${(props) => props.theme.spacing[3]};
+  opacity: 0.2;
+
+  ${mediaQuery.dark} {
+    background-color: ${(props) => props.theme.dark.textAbovePrimaryColor};
+  }
 `;
 
 const MenuButtonContainer = styled.div`
@@ -284,6 +300,7 @@ export const BlogMenu: React.FC<MenuProps> = ({
         <NavBar shouldOpenMenu={shouldOpenMenu}>
           <MobileBlogHeaderContainer>
             <MobileBlogHeader />
+            {shouldOpenMenu && <Divider />}
           </MobileBlogHeaderContainer>
           <AnimatedNavBarItem
             label={"Home"}
