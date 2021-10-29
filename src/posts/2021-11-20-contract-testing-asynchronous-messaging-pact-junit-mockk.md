@@ -1,8 +1,8 @@
 - - - -
 title: "Contract testing asynchronous messaging with Pact"
 description: "Let’s see how we used pact to test a message-based interaction between two microservices with Pact"
-date: 2021-11-20 
-image: .._images_posts/XXXX
+date: 2021-11-20
+image: ../images/posts/ddd-bounded-context-ubiquitous-language.jpg
 tags: [test driven development, contract test, pact,]
 comments: true 
 math: false 
