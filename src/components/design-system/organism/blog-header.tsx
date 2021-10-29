@@ -25,10 +25,14 @@ const BlogTitle = styled.span`
   font-weight: bold;
   display: block;
   line-height: 1.5;
-  font-size: ${(props) => props.theme.fontSizes[6]};
+  font-size: ${(props) => props.theme.fontSizes[4]};
 
   ${mediaQuery.dark} {
     color: ${(props) => props.theme.dark.primaryTextColor};
+  }
+
+  ${mediaQuery.minWidth.xs} {
+    font-size: ${(props) => props.theme.fontSizes[6]};
   }
 
   ${mediaQuery.minWidth.sm} {
