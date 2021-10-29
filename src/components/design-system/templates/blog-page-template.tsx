@@ -8,6 +8,7 @@ import { BlogMenu } from "../organism/blog-menu";
 import loadable from "@loadable/component";
 import styled from "styled-components";
 import { Container } from "../atoms/container";
+import { blogPrimaryColor } from "../blog-colors";
 
 const Footer = loadable(() => import(`../organism/footer`));
 
@@ -46,6 +47,7 @@ export const BlogPageTemplate: React.FC<BlogPageProps> = ({
       customTitle={customTitle}
       description={description}
       date={date}
+      cookieConsentColor={blogPrimaryColor}
     />
     <BlogMenu
       trackingCategory={trackingCategory}

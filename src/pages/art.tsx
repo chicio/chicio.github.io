@@ -5,8 +5,9 @@ import { getCurrentLocationFrom } from "../logic/current-location";
 import { tracking } from "../logic/tracking";
 import { OgPageType } from "../logic/seo";
 import { ShowcasePageTemplate } from "../components/design-system/templates/showcase-page-template";
-import { blogTheme } from "../components/design-system/theme";
+import { artTheme } from "../components/design-system/theme";
 import loadable from "@loadable/component";
+import { artPrimaryColor } from "../components/design-system/art-colors";
 
 const BottomArt = loadable(() => import(`../components/bottom-art`));
 
@@ -18,12 +19,13 @@ const Art: React.FC<PageProps<ArtQuery>> = ({ data, location }) => {
   return (
     <ShowcasePageTemplate
       location={getCurrentLocationFrom(location)}
-      theme={blogTheme}
+      theme={artTheme}
       fullScreenComponent={<div>ciao</div>}
       trackingCategory={tracking.category.art}
       ogPageType={OgPageType.WebSite}
       title={"Chicio Art"}
       featuredImage={artImage}
+      cookieConsentColor={artPrimaryColor}
     >
       <BottomArt author={author} images={data.allFile.edges} />
     </ShowcasePageTemplate>

@@ -20,6 +20,7 @@ interface ShowcasePageProps {
   ogPageType: OgPageType;
   title?: string;
   featuredImage: string;
+  cookieConsentColor: string;
 }
 
 export const ShowcasePageTemplate: React.FC<ShowcasePageProps> = ({
@@ -31,6 +32,7 @@ export const ShowcasePageTemplate: React.FC<ShowcasePageProps> = ({
   ogPageType,
   title,
   featuredImage,
+  cookieConsentColor,
 }) => {
   const data = useStaticQuery<ShowcasePageQuery>(
     graphql`
@@ -54,6 +56,7 @@ export const ShowcasePageTemplate: React.FC<ShowcasePageProps> = ({
         pageType={ogPageType}
         imageUrl={featuredImage}
         customTitle={title}
+        cookieConsentColor={cookieConsentColor}
       />
       <ContainerFullscreen>
         {fullScreenComponent}

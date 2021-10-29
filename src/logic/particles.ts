@@ -1,7 +1,7 @@
-import { textAbovePrimaryColor } from "../components/design-system/theme";
 import { ISourceOptions } from "tsparticles";
 import { useIsPowerfulDevice } from "./device";
 import { isDesktop, isMobile } from "react-device-detect";
+import { blogTextAbovePrimaryColor } from "../components/design-system/blog-colors";
 
 export const useParticlesConfiguration: () => ISourceOptions = () => {
   const isPowerfulDevice = useIsPowerfulDevice();
@@ -30,11 +30,11 @@ export const useParticlesConfiguration: () => ISourceOptions = () => {
     },
     particles: {
       color: {
-        value: textAbovePrimaryColor,
+        value: blogTextAbovePrimaryColor,
       },
       links: {
         enable: true,
-        color: textAbovePrimaryColor,
+        color: blogTextAbovePrimaryColor,
         blink: true,
         distance: isMobile ? 100 : 150,
         opacity: 0.5,

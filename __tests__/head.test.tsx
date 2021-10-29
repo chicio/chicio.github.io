@@ -68,6 +68,7 @@ describe("Head", () => {
           customTitle={"a custom title"}
           date={""}
           description={""}
+          cookieConsentColor={"303F9F"}
         />
       );
 
@@ -84,6 +85,7 @@ describe("Head", () => {
           imageUrl={""}
           date={""}
           description={""}
+          cookieConsentColor={"303F9F"}
         />
       );
 
@@ -104,6 +106,7 @@ describe("Head", () => {
         customTitle={"a custom title"}
         date={""}
         description={""}
+        cookieConsentColor={"303F9F"}
       />
     );
 
@@ -121,6 +124,7 @@ describe("Head", () => {
         customTitle={"a custom title"}
         date={""}
         description={""}
+        cookieConsentColor={"303F9F"}
       />
     );
 
@@ -141,6 +145,7 @@ describe("Head", () => {
         customTitle={"a custom title"}
         date={""}
         description={""}
+        cookieConsentColor={"303F9F"}
       />
     );
 
@@ -174,6 +179,7 @@ describe("Head", () => {
         customTitle={"a custom title"}
         date={""}
         description={""}
+        cookieConsentColor={"#303F9F"}
       />
     );
 
@@ -208,6 +214,7 @@ describe("Head", () => {
         customTitle={"a custom title"}
         date={""}
         description={""}
+        cookieConsentColor={"303F9F"}
       />
     );
 
