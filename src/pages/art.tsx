@@ -22,6 +22,7 @@ const ContentContainer = styled(Container)`
 const Art: React.FC<PageProps<ArtQuery>> = ({ data, location }) => {
   const siteMetadata = data.site!.siteMetadata!;
   const author = siteMetadata.author!;
+  const artImage = siteMetadata.featuredArtImage!;
 
   return (
     <ShowcasePageTemplate
@@ -30,6 +31,7 @@ const Art: React.FC<PageProps<ArtQuery>> = ({ data, location }) => {
       trackingCategory={tracking.category.art}
       ogPageType={OgPageType.WebSite}
       title={"Chicio Art"}
+      featuredImage={artImage}
     >
       <ContentContainer>
         <ArtDescription>
@@ -51,7 +53,7 @@ export const artQuery = graphql`
     site {
       siteMetadata {
         author
-        featuredImage
+        featuredArtImage
       }
     }
     allFile(

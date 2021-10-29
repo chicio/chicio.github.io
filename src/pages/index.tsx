@@ -18,12 +18,15 @@ const HomePage: React.FC<PageProps> = ({ location }) => {
         site {
           siteMetadata {
             author
+            featuredImage
           }
         }
       }
     `
   );
-  const author = data.site!.siteMetadata!.author!;
+  const siteMetada = data.site!.siteMetadata!;
+  const author = siteMetada.author!;
+  const featuredImage = siteMetada.featuredImage!;
 
   return (
     <ShowcasePageTemplate
@@ -36,6 +39,7 @@ const HomePage: React.FC<PageProps> = ({ location }) => {
       }
       trackingCategory={tracking.category.home}
       ogPageType={OgPageType.Person}
+      featuredImage={featuredImage}
     >
       <BottomIndex author={author} />
     </ShowcasePageTemplate>

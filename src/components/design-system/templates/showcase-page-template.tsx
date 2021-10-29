@@ -17,6 +17,7 @@ interface ShowcasePageProps {
   trackingCategory: string;
   ogPageType: OgPageType;
   title?: string;
+  featuredImage: string;
 }
 
 export const ShowcasePageTemplate: React.FC<ShowcasePageProps> = ({
@@ -26,6 +27,7 @@ export const ShowcasePageTemplate: React.FC<ShowcasePageProps> = ({
   trackingCategory,
   ogPageType,
   title,
+  featuredImage,
 }) => {
   const data = useStaticQuery<ShowcasePageQuery>(
     graphql`
@@ -33,7 +35,6 @@ export const ShowcasePageTemplate: React.FC<ShowcasePageProps> = ({
         site {
           siteMetadata {
             author
-            featuredImage
           }
         }
       }
@@ -42,7 +43,6 @@ export const ShowcasePageTemplate: React.FC<ShowcasePageProps> = ({
 
   const siteMetadata = data.site!.siteMetadata!;
   const author = siteMetadata.author!;
-  const featuredImage = siteMetadata.featuredImage!;
 
   return (
     <Page>
