@@ -43,7 +43,8 @@ const BackgroundImage = styled.div`
   left: 0;
   background: url(${Background});
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  min-height: 100vh;
   z-index: -300;
 `;
 
