@@ -47,7 +47,7 @@ module.exports = {
         start_url:
           "/?utm_source=pwa&utm_medium=application&utm_campaign=entry-point",
         display: "standalone",
-        background_color: "#181918",
+        background_color: "#303F9F",
         theme_color: "#3F51B5",
         orientation: "portrait",
       },
