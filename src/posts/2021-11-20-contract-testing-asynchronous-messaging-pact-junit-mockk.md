@@ -6,7 +6,7 @@ image: ../images/posts/ddd-bounded-context-ubiquitous-language.jpg
 tags: [test driven development, contract test, pact,]
 comments: true 
 math: false 
-authors: [fabrizio_duroni, XXX]
+authors: [fabrizio_duroni]
 - - - -
 
 In the last weeks I worked with my colleague XXX on a new feature for our company refund process (as may already know from some of [my previous posts]() in the last 2 years I worked mainly on backend applications). In this new feature we have a messaging-based communication between micro services. The messaging system used is [RabbitMQ](). In the company we are already using [Pact]() to implement contract testing for the classic RESTful interaction between microservices (introduced by XXX). What is contract testing? let’s have a look at the definition from the Pact website.
