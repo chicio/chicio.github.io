@@ -24,6 +24,12 @@ const ArtDescription = styled(Paragraph)`
   font-style: italic;
   font-size: ${(props) => props.theme.fontSizes[3]};
   margin: ${(props) => props.theme.spacing[4]};
+  color: ${(props) => props.theme.light.textAbovePrimaryColor};
+  
+  ${mediaQuery.dark} {
+    color: ${(props) => props.theme.dark.textAbovePrimaryColor};
+  }
+  
 
   ${mediaQuery.minWidth.xs} {
     font-size: ${(props) => props.theme.fontSizes[6]};
