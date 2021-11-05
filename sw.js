@@ -96,11 +96,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/blog/page-data.json",
-    "revision": "89e4b91c8b6868075809158c6a13d9ee"
+    "revision": "4584fe14fc64d5e4b721459bc8dfac3c"
   },
   {
     "url": "page-data/sq/d/3736063423.json",
-    "revision": "58b9801c2c7d16ba8b02b2df5270e020"
+    "revision": "0bd37b39385aaccb2a7764597841bf38"
   },
   {
     "url": "manifest.webmanifest",
