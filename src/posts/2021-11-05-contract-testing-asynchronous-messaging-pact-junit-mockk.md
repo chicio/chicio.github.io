@@ -1,13 +1,14 @@
-----
-title: "Contract testing asynchronous messaging with Pact"
-description: "Let’s see how we used pact to test a message-based interaction between two microservices with Pact"
+---
+title: "Contract testing asynchronous messaging with Pact and MockK"
+description: "In the last weeks I worked with my colleague Felice Giovinazzo on a new feature for the refund 
+process. Let’s see how we used pact to test a message-based interaction between two microservices with Pact"
 date: 2021-11-05
 image: ../images/posts/pact-mockk-message.jpg
 tags: [test driven development, contract test, pact]
 comments: true
 math: false
 authors: [fabrizio_duroni, felice_giovinazzo]
-----
+---
 
 In the last weeks I worked with my colleague [Felice Giovinazzo](https://www.linkedin.com/in/felice-giovinazzo-17277b55/) 
 on a new feature for the refund process (as may already know from some of
