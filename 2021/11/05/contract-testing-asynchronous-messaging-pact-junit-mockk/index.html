@@ -972,7 +972,9 @@ interaction found for the pact files for the provider. The annotations are:</p>
 <li><code class="language-text">@PactBroker(host = "localhost", port = "80")</code>, to define the location of the pact broker</li>
 </ul>
 <p>Then we have the <code class="language-text">testTemplate</code> and <code class="language-text">before</code> methods that completes our setup. As you can see the target of our
-<code class="language-text">PactVerificationContext</code> is of type <code class="language-text">MessageTestTarget</code>.</p>
+<code class="language-text">PactVerificationContext</code> is of type <code class="language-text">MessageTestTarget</code>. One important thing: in the constructor of
+<code class="language-text">MessageTestTarget</code> we are passing the <code class="language-text">packagesToScan = listOf(this::class.java.packageName)</code> parameter in order to
+let Pact search for pact methods (see below <code class="language-text">@PactVerifyProvide</code>) only in the package of the class under test.</p>
 <div class="gatsby-highlight" data-language="kotlin"><pre class="language-kotlin"><code class="language-kotlin"><span class="token comment">//...</span>
 
 <span class="token annotation builtin">@TestTemplate</span>
@@ -983,7 +985,7 @@ interaction found for the pact files for the provider. The annotations are:</p>
 
 <span class="token annotation builtin">@BeforeEach</span>
 <span class="token keyword">fun</span> <span class="token function">before</span><span class="token punctuation">(</span>context<span class="token operator">:</span> PactVerificationContext<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    context<span class="token punctuation">.</span>target <span class="token operator">=</span> <span class="token function">MessageTestTarget</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    context<span class="token punctuation">.</span>target <span class="token operator">=</span> <span class="token function">MessageTestTarget</span><span class="token punctuation">(</span>packagesToScan <span class="token operator">=</span> <span class="token function">listOf</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">.</span>java<span class="token punctuation">.</span>packageName<span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment">//...</span></code></pre></div>
@@ -1009,7 +1011,7 @@ the message we are generating in the test and the one contained in the contract.
 
     <span class="token annotation builtin">@BeforeEach</span>
     <span class="token keyword">fun</span> <span class="token function">before</span><span class="token punctuation">(</span>context<span class="token operator">:</span> PactVerificationContext<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        context<span class="token punctuation">.</span>target <span class="token operator">=</span> <span class="token function">MessageTestTarget</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        context<span class="token punctuation">.</span>target <span class="token operator">=</span> <span class="token function">MessageTestTarget</span><span class="token punctuation">(</span>packagesToScan <span class="token operator">=</span> <span class="token function">listOf</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">.</span>java<span class="token punctuation">.</span>packageName<span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 
     <span class="token annotation builtin">@State</span><span class="token punctuation">(</span><span class="token string">"a refund ready to be sent to the user"</span><span class="token punctuation">)</span>
