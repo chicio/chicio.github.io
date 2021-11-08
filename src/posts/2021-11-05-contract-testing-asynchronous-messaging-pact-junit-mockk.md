@@ -7,7 +7,7 @@ image: ../images/posts/pact-mockk-message.jpg
 tags: [test driven development, contract test, pact]
 comments: true
 math: false
-authors: [fabrizio_duroni, felice_giovinazzo]
+authors: [fabrizio_duroni, felice_giovinazzo, stefano_varesi]
 ---
 
 In the last weeks I worked with my colleague [Felice Giovinazzo](https://www.linkedin.com/in/felice-giovinazzo-17277b55/) 
@@ -32,8 +32,9 @@ describe the API or the message exchanged between them. Cool, isn’t it? 😏
 
 ![contract testing pact](../images/posts/pact-contract-testing.jpg "Pact contract testing")
 
-In this post I will show you how we tested a messaging interaction between two microservices using Pact. How does it
-work? Pact is a [consumer driven contract testing](https://martinfowler.com/articles/consumerDrivenContracts.html
+In this post I will show you how me and Felice tested a messaging interaction between two microservices using Pact with 
+the help of [Stefano Varesi](https://www.linkedin.com/in/stefanovaresi/), a senior software engineer that works in 
+the lastminute.com team that introduced Pact in the company. How does it work? Pact is a [consumer driven contract testing](https://martinfowler.com/articles/consumerDrivenContracts.html
 "consumer driven contract testing"): it is responsibility of the consumer to generate the contract that will be used by
 the provider to verify its correctness. As you can see from the image above, there are three key actors in pact test:
 
