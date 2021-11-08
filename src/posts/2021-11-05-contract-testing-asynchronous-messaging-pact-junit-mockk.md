@@ -572,7 +572,9 @@ interaction found for the pact files for the provider. The annotations are:
 * `@PactBroker(host = "localhost", port = "80")`, to define the location of the pact broker
 
 Then we have the `testTemplate` and `before` methods that completes our setup. As you can see the target of our 
-`PactVerificationContext` is of type `MessageTestTarget`.
+`PactVerificationContext` is of type `MessageTestTarget`. One important thing: in the constructor of 
+`MessageTestTarget` we are passing the `packagesToScan = listOf(this::class.java.packageName)` parameter in order to 
+let Pact search for pact methods (see below `@PactVerifyProvide`) only in the package of the class under test.
 
 ```kotlin
 //...
@@ -585,7 +587,7 @@ fun testTemplate(pact: Pact, interaction: Interaction, context: PactVerification
 
 @BeforeEach
 fun before(context: PactVerificationContext) {
-    context.target = MessageTestTarget()
+    context.target = MessageTestTarget(packagesToScan = listOf(this::class.java.packageName))
 }
 
 //...
@@ -615,7 +617,7 @@ class RefundReadyMessageProducerTest {
 
     @BeforeEach
     fun before(context: PactVerificationContext) {
-        context.target = MessageTestTarget()
+        context.target = MessageTestTarget(packagesToScan = listOf(this::class.java.packageName))
     }
 
     @State("a refund ready to be sent to the user")
