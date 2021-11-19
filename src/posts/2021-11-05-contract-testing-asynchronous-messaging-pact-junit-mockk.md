@@ -438,7 +438,7 @@ Then we need to mock the collaborator of our consumer `refundReadyMessagePayload
 `sendCommunicationForRefundReadyUseCase`. We can do it by using the `@MockK` annotation. Now we are ready to write 
 our pact. We can do it by adding a new method `refundReadyMessagePact` annotated with the `@Pact(consumer = "account-service", provider = 
 "refund-service")` annotation. In this method we will define a pact where we expect to receive a message, 
-represented will be represented in our test as an instance of `MessagePact`, that contains the data we listed above 
+represented in our test as an instance of `MessagePact`, that contains the data we listed above 
 (refund id, and amount). The two actors of our pact are `refund-service` and `account-service`. The first one will 
 send us a message `"a refund ready to be sent to the user"`, stated by the `given` method of the 
 `MessagePactBuilder` class, and we expect to receive `"the refund data to be communicated"`, stated by the 

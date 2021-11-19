@@ -301,12 +301,12 @@ export const BlogMenu: React.FC<MenuProps> = ({
     <>
       <MenuContainer
         shouldOpenMenu={shouldOpenMenu}
-        shouldHide={direction == ScrollDirection.down}
+        shouldHide={direction === ScrollDirection.down}
         delayOpenCloseMenuAnimation={shouldOpenMenu ? 0 : 0.4}
       >
         <NavBar shouldOpenMenu={shouldOpenMenu}>
           <MobileBlogHeaderContainer>
-            <MobileBlogHeader height={menuHeight}/>
+            <MobileBlogHeader height={menuHeight} />
             {shouldOpenMenu && <Divider />}
           </MobileBlogHeaderContainer>
           <AnimatedNavBarItem
