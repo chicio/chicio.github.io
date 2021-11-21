@@ -64,7 +64,7 @@ const SpectralClaraLuxTracer: React.FC = () => (
         trackingAction: tracking.action.open_sclt_thesis,
         trackingLabel: tracking.label.body,
         link:
-          "https://drive.google.com/file/d/0BxeVnHLvT8-7dkxQRjV6M29TeUk/view",
+          "/tesi-fabrizio-duroni-770157.pdf",
       },
     ]}
   />
