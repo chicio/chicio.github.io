@@ -10,6 +10,11 @@ math: false
 authors: [fabrizio_duroni, felice_giovinazzo, stefano_varesi]
 ---
 
+*In the last weeks I worked with my colleague Felice Giovinazzo on a new feature for the refund
+process. Let’s see how we used pact to test a message-based interaction between two microservices with Pact*
+
+---
+
 In the last weeks I worked with my colleague [Felice Giovinazzo](https://www.linkedin.com/in/felice-giovinazzo-17277b55/) 
 on a new feature for the refund process (as may already know from some of
 [my previous posts](/2020/12/23/rest-template-webclient-spring-boot/ "kotlin spring boot") in the last 2 years I 
