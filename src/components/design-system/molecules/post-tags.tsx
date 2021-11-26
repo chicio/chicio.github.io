@@ -1,11 +1,10 @@
 import { Tag } from "./tag";
 import React from "react";
 import styled from "styled-components";
-import { Maybe } from "../../../../graphql-types";
 import { generateTagSlug } from "../../../logic/slug";
 
 export interface PostTagsProps {
-  tags: Maybe<string>[];
+  tags: Array<string | null | undefined>;
   trackingCategory: string;
   trackingLabel: string;
 }

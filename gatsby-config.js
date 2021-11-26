@@ -140,7 +140,6 @@ module.exports = {
               noInlineHighlight: false,
             },
           },
-          `gatsby-remark-reading-time`,
         ],
       },
     },

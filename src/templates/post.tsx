@@ -19,7 +19,7 @@ const PostTitle = styled(Heading2)`
 `;
 
 const RecentPosts = loadable(
-  () => import(`../components/design-system/organism/recent-posts`)
+  () => import(`../components/design-system/organism/read-next`)
 );
 
 const PostTags = loadable(

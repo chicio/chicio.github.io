@@ -10,6 +10,9 @@ module.exports = {
   core: {
     builder: "webpack5",
   },
+  typescript: {
+    reactDocgen: false
+  },
   webpackFinal: async config => {
     config.module.rules[0].exclude = [/node_modules\/(?!(gatsby)\/)/]
     config.module.rules[0].use[0].loader = require.resolve("babel-loader")

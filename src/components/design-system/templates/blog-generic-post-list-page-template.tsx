@@ -62,42 +62,41 @@ export interface BlogGenericPostListPageProps {
   trackingCategory: string;
 }
 
-export const BlogGenericPostListPageTemplate: React.FC<BlogGenericPostListPageProps> =
-  ({
-    title,
-    posts,
-    author,
-    location,
-    ogPageType,
-    ogImage,
-    trackingCategory,
-  }) => (
-    <BlogPageTemplate
-      location={location}
-      author={author}
-      ogPageType={ogPageType}
-      ogImage={ogImage}
-      trackingCategory={trackingCategory}
-    >
-      <PageTitle>{title}</PageTitle>
-      {posts.map((post) => (
-        <PostContainer key={post.node.fields!.slug!}>
-          <Column size={"15%"}>
-            <PostTime>{post.node.frontmatter?.date}</PostTime>
-          </Column>
-          <Column size={"85%"}>
-            <PostLink
-              to={post.node.fields!.slug!}
-              trackingData={{
-                action: tracking.action.open_blog_post,
-                category: trackingCategory,
-                label: tracking.label.body,
-              }}
-            >
-              {post.node.frontmatter?.title}
-            </PostLink>
-          </Column>
-        </PostContainer>
-      ))}
-    </BlogPageTemplate>
-  );
+export const BlogGenericPostListPageTemplate: React.FC<BlogGenericPostListPageProps> = ({
+  title,
+  posts,
+  author,
+  location,
+  ogPageType,
+  ogImage,
+  trackingCategory,
+}) => (
+  <BlogPageTemplate
+    location={location}
+    author={author}
+    ogPageType={ogPageType}
+    ogImage={ogImage}
+    trackingCategory={trackingCategory}
+  >
+    <PageTitle>{title}</PageTitle>
+    {posts.map((post) => (
+      <PostContainer key={post.node.fields!.slug!}>
+        <Column size={"15%"}>
+          <PostTime>{post.node.frontmatter?.date}</PostTime>
+        </Column>
+        <Column size={"85%"}>
+          <PostLink
+            to={post.node.fields!.slug!}
+            trackingData={{
+              action: tracking.action.open_blog_post,
+              category: trackingCategory,
+              label: tracking.label.body,
+            }}
+          >
+            {post.node.frontmatter?.title}
+          </PostLink>
+        </Column>
+      </PostContainer>
+    ))}
+  </BlogPageTemplate>
+);

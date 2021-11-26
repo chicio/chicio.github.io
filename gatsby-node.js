@@ -1,4 +1,5 @@
 const path = require("path");
+const readingTime = require("reading-time");
 const {
   slugs,
   generateTagSlug,
@@ -84,5 +85,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   if (node.internal.type === `MarkdownRemark`) {
     const filename = createFilePath({ node, getNode, basePath: `pages` });
     createNodeField({ node, name: `slug`, value: generatePostSlug(filename) });
+    createNodeField({ node, name: `readingTime`, value: readingTime(node.rawMarkdownBody) });
   }
 };

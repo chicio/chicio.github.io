@@ -3,7 +3,7 @@ import { Meta, Story } from "@storybook/react";
 import {
   RecentPosts,
   RecentPostsProps,
-} from "../../src/components/design-system/organism/recent-posts";
+} from "../../src/components/design-system/organism/read-next";
 
 const Template: Story<RecentPostsProps> = (args) => <RecentPosts {...args} />;
 
