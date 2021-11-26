@@ -6,8 +6,9 @@ import { Heading4 } from "../atoms/heading4";
 import styled from "styled-components";
 import { RecentPostCard } from "../molecules/recent-post-card";
 import { mediaQuery } from "../utils-css/media-query";
+import { useShuffleArray } from "../hooks/use-shuffle-array";
 
-const RecentTitle = styled(Heading4)`
+const Recent = styled(Heading4)`
   margin: ${(props) => props.theme.spacing[2]} 0;
 `;
 
@@ -21,7 +22,7 @@ const CardsContainer = styled.div`
   }
 `;
 
-const RecentPostsContainer = styled.div`
+const ReadNextContainer = styled.div`
   margin-bottom: ${(props) => props.theme.spacing[4]};
 `;
 
@@ -34,7 +35,7 @@ export const RecentPosts: React.FC<RecentPostsProps> = ({ currentSlug }) => {
     graphql`
       query RecentPosts {
         allMarkdownRemark(
-          limit: 4
+          limit: 15
           sort: { fields: frontmatter___date, order: DESC }
         ) {
           edges {
@@ -59,11 +60,14 @@ export const RecentPosts: React.FC<RecentPostsProps> = ({ currentSlug }) => {
   );
 
   return (
-    <RecentPostsContainer>
-      <RecentTitle>Recent posts</RecentTitle>
+    <ReadNextContainer>
+      <Recent>Read next</Recent>
       <CardsContainer>
-        {data.allMarkdownRemark.edges
-          .filter((post) => post.node!.fields!.slug !== currentSlug)
+        {useShuffleArray(
+          data.allMarkdownRemark.edges.filter(
+            (post) => post.node!.fields!.slug !== currentSlug
+          )
+        )
           .slice(0, 3)
           .map((post, index) => (
             <RecentPostCard
@@ -80,7 +84,7 @@ export const RecentPosts: React.FC<RecentPostsProps> = ({ currentSlug }) => {
             />
           ))}
       </CardsContainer>
-    </RecentPostsContainer>
+    </ReadNextContainer>
   );
 };
 
