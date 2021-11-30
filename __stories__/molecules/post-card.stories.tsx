@@ -40,6 +40,7 @@ PostCardStory.args = {
   description:
     "I recently discovered MockK, a mocking library created for Kotlin. Let's see how it is possible to write modern unit tests with MockK + JUnit 5.",
   trackingCategory: "",
+  tags: ["react", "gatsbyjs"],
 };
 PostCardStory.storyName = "Post Card";
 

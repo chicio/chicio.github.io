@@ -10,7 +10,6 @@ interface TagContentProps {
 
 const TagLink = styled(StandardInternalLinkWithTracking)<TagContentProps>`
   display: inline-block;
-  height: 46px;
   text-decoration: none;
 
   &:hover {

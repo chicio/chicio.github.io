@@ -52,6 +52,7 @@ const Blog: React.FC<PageProps<BlogListQuery, BlogPageContext>> = ({
           readingTime={post.node.fields!.readingTime!.text!}
           description={post.node.frontmatter!.description!}
           trackingCategory={tracking.category.blog_home}
+          tags={post.node.frontmatter!.tags}
         />
       ))}
       <PaginationNavigation
@@ -88,6 +89,7 @@ export const blogListQuery = graphql`
             title
             description
             authors
+            tags
             date(formatString: "DD MMM YYYY")
             image {
               childImageSharp {

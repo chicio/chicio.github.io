@@ -3706,7 +3706,7 @@ export type BlogListQueryVariables = Exact<{
 }>;
 
 
-export type BlogListQuery = { allMarkdownRemark: { edges: Array<{ node: { fields?: { slug?: string | null | undefined, readingTime?: { text?: string | null | undefined } | null | undefined } | null | undefined, frontmatter?: { title?: string | null | undefined, description?: string | null | undefined, authors?: Array<string | null | undefined> | null | undefined, date?: any | null | undefined, image?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined } }> }, site?: { siteMetadata?: { title?: string | null | undefined, author?: string | null | undefined, featuredImage?: string | null | undefined } | null | undefined } | null | undefined };
+export type BlogListQuery = { allMarkdownRemark: { edges: Array<{ node: { fields?: { slug?: string | null | undefined, readingTime?: { text?: string | null | undefined } | null | undefined } | null | undefined, frontmatter?: { title?: string | null | undefined, description?: string | null | undefined, authors?: Array<string | null | undefined> | null | undefined, tags?: Array<string | null | undefined> | null | undefined, date?: any | null | undefined, image?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined } }> }, site?: { siteMetadata?: { title?: string | null | undefined, author?: string | null | undefined, featuredImage?: string | null | undefined } | null | undefined } | null | undefined };
 
 export type PostQueryVariables = Exact<{
   slug: Scalars['String'];

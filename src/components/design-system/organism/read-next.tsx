@@ -23,7 +23,7 @@ const CardsContainer = styled.div`
 `;
 
 const ReadNextContainer = styled.div`
-  margin-bottom: ${(props) => props.theme.spacing[4]};
+  margin: ${(props) => props.theme.spacing[4]} 0;
 `;
 
 export interface RecentPostsProps {

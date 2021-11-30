@@ -10,7 +10,7 @@ export interface PostTagsProps {
 }
 
 const PostTagsContainer = styled.div`
-  margin: ${(props) => props.theme.spacing[4]} 0;
+  margin: ${(props) => props.theme.spacing[2]} 0;
 `;
 
 export const PostTags: React.FC<PostTagsProps> = ({

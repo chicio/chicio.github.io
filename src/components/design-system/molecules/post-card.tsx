@@ -8,6 +8,7 @@ import * as React from "react";
 import { Heading5 } from "../atoms/heading5";
 import { StandardInternalLinkWithTracking } from "../../standard-internal-link-with-tracking";
 import { mediaQuery } from "../utils-css/media-query";
+import PostTags from "./post-tags";
 
 const PostDescription = styled(Paragraph)`
   margin-right: 0;
@@ -36,17 +37,18 @@ const PostCardContainer = styled.div`
   }
 `;
 
-const PostCardImageContainer = styled.div`
+const PostCardImageContainer = styled(GatsbyImage)`
   width: 100%;
+  object-fit: cover;
   height: 200px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   ${mediaQuery.minWidth.sm} {
     height: 250px;
   }
+`;
+
+const A = styled.div`
+  border-radius: 20px;
 `;
 
 const PostCardLink = styled(StandardInternalLinkWithTracking)`
@@ -71,6 +73,7 @@ export interface PostCardProps {
   title: string;
   image: IGatsbyImageData;
   authors: (string | null | undefined)[];
+  tags: (string | null | undefined)[] | null | undefined;
   date: string;
   readingTime: string;
   description: string;
@@ -82,34 +85,14 @@ export const PostCard: React.FC<PostCardProps> = ({
   title,
   image,
   authors,
+  tags,
   date,
   readingTime,
   description,
   trackingCategory,
 }) => (
   <PostCardContainer key={slug}>
-    <PostCardLink
-      to={slug}
-      trackingData={{
-        action: tracking.action.open_blog_post,
-        category: trackingCategory,
-        label: tracking.label.body,
-      }}
-    >
-      <PostCardImageContainer>
-        <GatsbyImage
-          alt={title}
-          image={image}
-          imgStyle={{ borderRadius: "4px" }}
-          style={{
-            width: "110%",
-            height: "auto",
-            borderRadius: "4px",
-          }}
-        />
-      </PostCardImageContainer>
-    </PostCardLink>
-    <PostCardMetaContainer>
+    <A>
       <PostCardLink
         to={slug}
         trackingData={{
@@ -118,16 +101,41 @@ export const PostCard: React.FC<PostCardProps> = ({
           label: tracking.label.body,
         }}
       >
-        <PostCardTitle>{title}</PostCardTitle>
-        <PostAuthors
-          authors={authors}
-          trackingCategory={trackingCategory}
-          trackingLabel={tracking.label.body}
-          enableUrl={false}
+        <PostCardImageContainer
+          alt={title}
+          image={image}
+          imgStyle={{
+            borderRadius: "4px 4px 0 0",
+          }}
         />
-        <PostMeta date={date} readingTime={readingTime} />
-        <PostDescription>{`${description} [...]`}</PostDescription>
       </PostCardLink>
-    </PostCardMetaContainer>
+      <PostCardMetaContainer>
+        <PostCardLink
+          to={slug}
+          trackingData={{
+            action: tracking.action.open_blog_post,
+            category: trackingCategory,
+            label: tracking.label.body,
+          }}
+        >
+          <PostCardTitle>{title}</PostCardTitle>
+          <PostAuthors
+            authors={authors}
+            trackingCategory={trackingCategory}
+            trackingLabel={tracking.label.body}
+            enableUrl={false}
+          />
+          <PostMeta date={date} readingTime={readingTime} />
+          <PostDescription>{`${description} [...]`}</PostDescription>
+        </PostCardLink>
+        {tags && (
+          <PostTags
+            tags={tags}
+            trackingCategory={tracking.category.blog_home}
+            trackingLabel={tracking.label.body}
+          />
+        )}
+      </PostCardMetaContainer>
+    </A>
   </PostCardContainer>
 );
