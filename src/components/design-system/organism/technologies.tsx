@@ -66,12 +66,14 @@ export const Technologies: React.FC<TechnologiesProps> = ({ author }) => (
           objectFit={"contain"}
           src={"../../../images/technologies/xcode.png"}
           alt={"xcode"}
+          placeholder={"blurred"}
         />
       </TechnologyImageContainer>
       <TechnologyImageContainer>
         <StaticImage
           src={"../../../images/technologies/swift.png"}
           alt={"swift"}
+          placeholder={"blurred"}
         />
       </TechnologyImageContainer>
       <TechnologyImageContainer>
@@ -79,6 +81,7 @@ export const Technologies: React.FC<TechnologiesProps> = ({ author }) => (
           objectFit={"contain"}
           src={"../../../images/technologies/android.png"}
           alt={"android"}
+          placeholder={"blurred"}
         />
       </TechnologyImageContainer>
       <TechnologyImageContainer>
@@ -86,6 +89,7 @@ export const Technologies: React.FC<TechnologiesProps> = ({ author }) => (
           objectFit={"contain"}
           src={"../../../images/technologies/cpp.png"}
           alt={"c++"}
+          placeholder={"blurred"}
         />
       </TechnologyImageContainer>
       <TechnologyImageContainer>
@@ -93,6 +97,7 @@ export const Technologies: React.FC<TechnologiesProps> = ({ author }) => (
           objectFit={"contain"}
           src={"../../../images/technologies/opengl-es.png"}
           alt={"opengl"}
+          placeholder={"blurred"}
         />
       </TechnologyImageContainer>
       <TechnologyImageContainer>
@@ -100,6 +105,7 @@ export const Technologies: React.FC<TechnologiesProps> = ({ author }) => (
           objectFit={"contain"}
           src={"../../../images/technologies/react.png"}
           alt={"react"}
+          placeholder={"blurred"}
         />
       </TechnologyImageContainer>
       <TechnologyImageContainer>
@@ -107,6 +113,7 @@ export const Technologies: React.FC<TechnologiesProps> = ({ author }) => (
           objectFit={"contain"}
           src={"../../../images/technologies/php.png"}
           alt={"php"}
+          placeholder={"blurred"}
         />
       </TechnologyImageContainer>
       <TechnologyImageContainer>
@@ -114,6 +121,7 @@ export const Technologies: React.FC<TechnologiesProps> = ({ author }) => (
           objectFit={"contain"}
           src={"../../../images/technologies/html-css-js.png"}
           alt={"js"}
+          placeholder={"blurred"}
         />
       </TechnologyImageContainer>
       <TechnologyImageContainer>
@@ -121,6 +129,7 @@ export const Technologies: React.FC<TechnologiesProps> = ({ author }) => (
           objectFit={"contain"}
           src={"../../../images/technologies/typescript.png"}
           alt={"typescript"}
+          placeholder={"blurred"}
         />
       </TechnologyImageContainer>
     </TechnologiesIconsContainer>

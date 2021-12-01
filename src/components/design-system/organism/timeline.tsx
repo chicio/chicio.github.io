@@ -271,6 +271,7 @@ export const Timeline: React.FC = () => {
               height={imgSize}
               src={"../../../images/carrier/lastminute-group.png"}
               alt={"lastminute"}
+              placeholder={"blurred"}
             />
           </TimelineImageContainer>
           <StandardExternalLinkWithTracking
@@ -305,6 +306,7 @@ export const Timeline: React.FC = () => {
               height={imgSize}
               src={"../../../images/carrier/unimib.jpg"}
               alt={"unimib"}
+              placeholder={"blurred"}
             />
           </TimelineImageContainer>
           <StandardExternalLinkWithTracking
@@ -344,6 +346,7 @@ export const Timeline: React.FC = () => {
               height={imgSize}
               src={"../../../images/carrier/condenast.png"}
               alt={"condenast"}
+              placeholder={"blurred"}
             />
           </TimelineImageContainer>
           <StandardExternalLinkWithTracking
@@ -374,6 +377,7 @@ export const Timeline: React.FC = () => {
               height={imgSize}
               src={"../../../images/carrier/shi.png"}
               alt={"shi"}
+              placeholder={"blurred"}
             />
           </TimelineImageContainer>
           <StandardExternalLinkWithTracking
@@ -407,6 +411,7 @@ export const Timeline: React.FC = () => {
               height={imgSize}
               src={"../../../images/carrier/bottinelli-informatica.png"}
               alt={"bottinelli informatica"}
+              placeholder={"blurred"}
             />
           </TimelineImageContainer>
           <StandardExternalLinkWithTracking
@@ -423,7 +428,9 @@ export const Timeline: React.FC = () => {
           </StandardExternalLinkWithTracking>
           <TimelineSubtitle>Developer</TimelineSubtitle>
           <TimelineTime>August 2009</TimelineTime>
-          <TimelineDescription>Software development for textile industry.</TimelineDescription>
+          <TimelineDescription>
+            Software development for textile industry.
+          </TimelineDescription>
         </TimelineElement>
         <TimelineElement inverted={false} icon={briefcase}>
           <TimelineImageContainer>
@@ -432,6 +439,7 @@ export const Timeline: React.FC = () => {
               height={imgSize}
               src={"../../../images/carrier/avanade.png"}
               alt={"avanade"}
+              placeholder={"blurred"}
             />
           </TimelineImageContainer>
           <StandardExternalLinkWithTracking
@@ -479,6 +487,7 @@ export const Timeline: React.FC = () => {
               height={imgSize}
               src={"../../../images/carrier/insubria.png"}
               alt={"insubria"}
+              placeholder={"blurred"}
             />
           </TimelineImageContainer>
           <StandardExternalLinkWithTracking

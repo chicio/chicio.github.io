@@ -63,8 +63,7 @@ const SpectralClaraLuxTracer: React.FC = () => (
         trackingCategory: tracking.category.home,
         trackingAction: tracking.action.open_sclt_thesis,
         trackingLabel: tracking.label.body,
-        link:
-          "/tesi-fabrizio-duroni-770157.pdf",
+        link: "/tesi-fabrizio-duroni-770157.pdf",
       },
     ]}
   />
@@ -80,6 +79,7 @@ const SpectralBRDFExplorer: React.FC = () => (
         height={500}
         src={"../../../images/projects/spectral-brdf-explorer.png"}
         alt={"Spectral BRDF Explorer"}
+        placeholder={"blurred"}
       />
     }
     description={
@@ -124,6 +124,7 @@ const ID3TagEditor: React.FC = () => (
         height={500}
         src={"../../../images/projects/id3tageditor.jpg"}
         alt={"ID3TagEditor"}
+        placeholder={"blurred"}
       />
     }
     description={
@@ -178,6 +179,7 @@ const TabBarUIAction: React.FC = () => (
         height={500}
         src={"../../../images/projects/tabbaruiaction.png"}
         alt={"TabBarUIAction"}
+        placeholder={"blurred"}
       />
     }
     description={
@@ -224,6 +226,7 @@ const Mp3Id3Tagger: React.FC = () => (
         height={500}
         src={"../../../images/projects/mp3id3tagger.jpg"}
         alt={"ID3TagEditor"}
+        placeholder={"blurred"}
       />
     }
     description={
@@ -276,6 +279,7 @@ const RangeUISlider: React.FC = () => (
         height={500}
         src={"../../../images/projects/range-ui-slider.png"}
         alt={"RangeUISlider"}
+        placeholder={"blurred"}
       />
     }
     description={
