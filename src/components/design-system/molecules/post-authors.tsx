@@ -60,7 +60,7 @@ export const PostAuthors: React.FC<PostAuthorsProps> = ({
         edges {
           node {
             childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH)
+              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
             }
             name
           }

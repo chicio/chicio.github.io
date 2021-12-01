@@ -8,6 +8,31 @@ import { PostCard } from "../components/design-system/molecules/post-card";
 import { OgPageType } from "../logic/seo";
 import { getCurrentLocationFrom } from "../logic/current-location";
 import { slugs } from "../logic/slug";
+import { mediaQuery } from "../components/design-system/utils-css/media-query";
+import styled from "styled-components";
+
+type groupByArrayType = <T>(array: T[], numberPerGroup: number) => T[][];
+
+const groupArrayBy: groupByArrayType = (data, n) => {
+  const group = Array(0);
+  for (let i = 0, j = 0; i < data.length; i += 1) {
+    if (i >= n && i % n === 0) j += 1;
+    group[j] = group[j] || [];
+    group[j].push(data[i]);
+  }
+  return group;
+};
+
+const PostsRow = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  ${mediaQuery.minWidth.md} {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`;
 
 interface BlogPageContext {
   limit: number;
@@ -33,6 +58,9 @@ const Blog: React.FC<PageProps<BlogListQuery, BlogPageContext>> = ({
   const author = siteMetadata.author!;
   const featuredImage = siteMetadata.featuredImage!;
 
+  const firstPost = posts[0];
+  const postsGrouped = groupArrayBy(posts.slice(1, posts.length), 2);
+
   return (
     <BlogPageTemplate
       author={author}
@@ -41,19 +69,58 @@ const Blog: React.FC<PageProps<BlogListQuery, BlogPageContext>> = ({
       ogPageType={OgPageType.WebSite}
       trackingCategory={tracking.category.blog_home}
     >
-      {posts.map((post) => (
-        <PostCard
-          key={post.node.fields!.slug!}
-          slug={post.node.fields!.slug!}
-          title={post.node.frontmatter!.title!}
-          image={post.node.frontmatter!.image!.childImageSharp!.gatsbyImageData}
-          authors={post.node.frontmatter!.authors!}
-          date={post.node.frontmatter!.date!}
-          readingTime={post.node.fields!.readingTime!.text!}
-          description={post.node.frontmatter!.description!}
-          trackingCategory={tracking.category.blog_home}
-          tags={post.node.frontmatter!.tags}
-        />
+      <PostCard
+        big={true}
+        key={firstPost.node.fields!.slug!}
+        slug={firstPost.node.fields!.slug!}
+        title={firstPost.node.frontmatter!.title!}
+        image={
+          firstPost.node.frontmatter!.image!.childImageSharp!.gatsbyImageData
+        }
+        authors={firstPost.node.frontmatter!.authors!}
+        date={firstPost.node.frontmatter!.date!}
+        readingTime={firstPost.node.fields!.readingTime!.text!}
+        description={firstPost.node.frontmatter!.description!}
+        trackingCategory={tracking.category.blog_home}
+        tags={firstPost.node.frontmatter!.tags}
+      />
+      {postsGrouped.map((postsGroup, index) => (
+        <PostsRow key={`PostCardsRow${index}`}>
+          <PostCard
+            big={false}
+            key={postsGroup[0].node.fields!.slug!}
+            slug={postsGroup[0].node.fields!.slug!}
+            title={postsGroup[0].node.frontmatter!.title!}
+            image={
+              postsGroup[0].node.frontmatter!.image!.childImageSharp!
+                .gatsbyImageData
+            }
+            authors={postsGroup[0].node.frontmatter!.authors!}
+            date={postsGroup[0].node.frontmatter!.date!}
+            readingTime={postsGroup[0].node.fields!.readingTime!.text!}
+            description={postsGroup[0].node.frontmatter!.description!}
+            trackingCategory={tracking.category.blog_home}
+            tags={postsGroup[0].node.frontmatter!.tags}
+          />
+          {postsGroup[1] && (
+            <PostCard
+              big={false}
+              key={postsGroup[1].node.fields!.slug!}
+              slug={postsGroup[1].node.fields!.slug!}
+              title={postsGroup[1].node.frontmatter!.title!}
+              image={
+                postsGroup[1].node.frontmatter!.image!.childImageSharp!
+                  .gatsbyImageData
+              }
+              authors={postsGroup[1].node.frontmatter!.authors!}
+              date={postsGroup[1].node.frontmatter!.date!}
+              readingTime={postsGroup[1].node.fields!.readingTime!.text!}
+              description={postsGroup[1].node.frontmatter!.description!}
+              trackingCategory={tracking.category.blog_home}
+              tags={postsGroup[1].node.frontmatter!.tags}
+            />
+          )}
+        </PostsRow>
       ))}
       <PaginationNavigation
         trackingCategory={tracking.category.blog_home}
@@ -93,7 +160,7 @@ export const blogListQuery = graphql`
             date(formatString: "DD MMM YYYY")
             image {
               childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH)
+                gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
               }
             }
           }

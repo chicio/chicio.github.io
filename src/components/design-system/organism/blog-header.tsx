@@ -103,6 +103,7 @@ export const BlogHeader: React.FC = () => (
         alt={"blog logo"}
         width={80}
         height={80}
+        placeholder={"blurred"}
         imgStyle={{
           borderRadius: "10px",
           boxShadow: "1px 1px 4px rgba(0, 0, 0, 0.575)",

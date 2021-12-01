@@ -52,7 +52,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   });
 
   // Create blog home pages
-  const postsPerPage = 10;
+  const postsPerPage = 11;
   const numberOfPages = Math.ceil(posts.length / postsPerPage);
   Array.from({ length: numberOfPages }).forEach((_, i) => {
     createPage({
@@ -85,6 +85,10 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   if (node.internal.type === `MarkdownRemark`) {
     const filename = createFilePath({ node, getNode, basePath: `pages` });
     createNodeField({ node, name: `slug`, value: generatePostSlug(filename) });
-    createNodeField({ node, name: `readingTime`, value: readingTime(node.rawMarkdownBody) });
+    createNodeField({
+      node,
+      name: `readingTime`,
+      value: readingTime(node.rawMarkdownBody),
+    });
   }
 };

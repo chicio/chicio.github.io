@@ -9,14 +9,14 @@ export const blogDark: Colors = {
   primaryColor: blogPrimaryColor,
   primaryColorDark,
   primaryColorLight,
-  generalBackground: "#181918",
+  generalBackground: "#212221",
   textAbovePrimaryColor: blogTextAbovePrimaryColor,
   primaryTextColor: "#FAFAFA",
   secondaryTextColor: "#A6A6A6",
   accentColor: "#4fA7ff",
   accentColorAbovePrimaryColor: "#AAFFFF",
   generalBackgroundLight: "#363636",
-  boxShadowLight: "rgba(0, 0, 0, 0.2)",
+  boxShadowLight: "rgba(0, 0, 0, 0.75)",
   dividerColor: "#575757",
 };
 

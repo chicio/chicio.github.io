@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Paragraph } from "../atoms/paragraph";
 import { tracking } from "../../../logic/tracking";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
@@ -10,12 +10,16 @@ import { StandardInternalLinkWithTracking } from "../../standard-internal-link-w
 import { mediaQuery } from "../utils-css/media-query";
 import PostTags from "./post-tags";
 
+interface BigCardProps {
+  big: boolean;
+}
+
 const PostDescription = styled(Paragraph)`
   margin-right: 0;
   margin-left: 0;
 `;
 
-const PostCardContainer = styled.div`
+const PostCardContainer = styled.div<BigCardProps>`
   border-radius: 4px;
   margin-top: ${(props) => props.theme.spacing[4]};
   background-color: ${(props) => props.theme.light.generalBackgroundLight};
@@ -29,6 +33,12 @@ const PostCardContainer = styled.div`
         transform: scale(1.025);
       }
     }
+
+    ${(props) =>
+      !props.big &&
+      css`
+        width: 48%;
+      `}
   }
 
   ${mediaQuery.dark} {
@@ -68,7 +78,7 @@ const PostCardMetaContainer = styled.div`
   padding: ${(props) => props.theme.spacing[4]};
 `;
 
-export interface PostCardProps {
+export type PostCardProps = BigCardProps & {
   slug: string;
   title: string;
   image: IGatsbyImageData;
@@ -78,9 +88,10 @@ export interface PostCardProps {
   readingTime: string;
   description: string;
   trackingCategory: string;
-}
+};
 
 export const PostCard: React.FC<PostCardProps> = ({
+  big,
   slug,
   title,
   image,
@@ -91,7 +102,7 @@ export const PostCard: React.FC<PostCardProps> = ({
   description,
   trackingCategory,
 }) => (
-  <PostCardContainer key={slug}>
+  <PostCardContainer big={big} key={slug}>
     <A>
       <PostCardLink
         to={slug}
