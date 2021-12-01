@@ -9,6 +9,7 @@ import { Heading5 } from "../atoms/heading5";
 import { StandardInternalLinkWithTracking } from "../../standard-internal-link-with-tracking";
 import { mediaQuery } from "../utils-css/media-query";
 import PostTags from "./post-tags";
+import { gatsbyImagePlaceholderSelector } from "../utils-css/gatsby-image-selector";
 
 interface BigCardProps {
   big: boolean;
@@ -54,6 +55,10 @@ const PostCardImageContainer = styled(GatsbyImage)`
 
   ${mediaQuery.minWidth.sm} {
     height: 250px;
+  }
+
+  ${gatsbyImagePlaceholderSelector} {
+    border-radius: 4px 4px 0 0;
   }
 `;
 

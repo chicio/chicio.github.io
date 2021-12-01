@@ -2,6 +2,7 @@ import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { mediaQuery } from "../utils-css/media-query";
+import { gatsbyImagePlaceholderSelector } from "../utils-css/gatsby-image-selector";
 
 const BlogHeaderContainer = styled.div`
   display: flex;
@@ -58,8 +59,6 @@ const BlogDescription = styled.span`
 const ImageContainer = styled.div`
   width: 35px;
   height: 35px;
-
-  background-color: ${(props) => props.theme.light.generalBackgroundLight};
   margin-right: ${(props) => props.theme.spacing[2]};
   border-radius: 10px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.575);
@@ -71,6 +70,10 @@ const ImageContainer = styled.div`
 
   ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.generalBackgroundLight};
+  }
+
+  ${gatsbyImagePlaceholderSelector} {
+    border-radius: 10px;
   }
 `;
 
