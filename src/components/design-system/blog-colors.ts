@@ -4,9 +4,11 @@ export const blogPrimaryColor = "#3F51B5";
 export const blogTextAbovePrimaryColor = "#FFFFFF";
 const primaryColorDark = "#303F9F";
 const primaryColorLight = "#DFDFF1";
+const secondaryColor = "#b5763f";
 
 export const blogDark: Colors = {
   primaryColor: blogPrimaryColor,
+  secondaryColor,
   primaryColorDark,
   primaryColorLight,
   generalBackground: "#212221",
@@ -22,6 +24,7 @@ export const blogDark: Colors = {
 
 export const blogLight: Colors = {
   primaryColor: blogPrimaryColor,
+  secondaryColor,
   primaryColorDark,
   primaryColorLight,
   generalBackground: "#FBFBFB",

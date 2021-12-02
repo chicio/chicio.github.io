@@ -9,6 +9,21 @@ import { OgPageType } from "../logic/seo";
 import { getCurrentLocationFrom } from "../logic/current-location";
 import { slugs } from "../logic/slug";
 import { PostsRow } from "../components/design-system/molecules/posts-row";
+import styled from "styled-components";
+
+const Background = styled.div`
+  background-image: linear-gradient(
+    to bottom,
+    ${(props) => props.theme.dark.secondaryColor},
+    ${(props) => props.theme.dark.primaryColor}
+  );
+  height: 400px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -100;
+`;
 
 type groupByArrayType = <T>(array: T[], numberPerGroup: number) => T[][];
 
@@ -57,6 +72,7 @@ const Blog: React.FC<PageProps<BlogListQuery, BlogPageContext>> = ({
       ogPageType={OgPageType.WebSite}
       trackingCategory={tracking.category.blog_home}
     >
+      <Background />
       <PostCard
         big={true}
         key={firstPost.node.fields!.slug!}

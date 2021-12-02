@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useState } from "react";
+import React, { memo, useCallback, useState } from "react";
 import { tracking } from "../../../logic/tracking";
 import styled, { css } from "styled-components";
 import { Container } from "../atoms/container";
@@ -11,6 +11,10 @@ import { Close } from "../molecules/close";
 import { mediaQuery } from "../utils-css/media-query";
 import { MobileBlogHeader } from "./blog-header";
 import { ContainerFluid } from "../atoms/container-fluid";
+import {
+  ScrollDirection,
+  useScrollDirection,
+} from "../hooks/use-scroll-direction";
 
 const menuHeight = "55px";
 
@@ -57,7 +61,7 @@ interface MenuContainerProps {
 }
 
 const MenuContainer = styled.div<MenuContainerProps>`
-  background-color: ${(props) => props.theme.light.primaryColor};
+  background-color: ${(props) => props.theme.light.primaryColorDark};
   box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: ${(props) => (props.shouldHide ? `-${menuHeight}` : 0)};
@@ -70,7 +74,7 @@ const MenuContainer = styled.div<MenuContainerProps>`
   height: ${(props) => (props.shouldOpenMenu ? "210px" : menuHeight)};
 
   ${mediaQuery.dark} {
-    background-color: ${(props) => props.theme.dark.primaryColor};
+    background-color: ${(props) => props.theme.dark.primaryColorDark};
   }
 `;
 
@@ -224,49 +228,6 @@ const AnimatedNavBarItem: React.FC<AnimatedNavBarItemProps> = ({
   </CSSTransition>
 );
 
-enum ScrollDirection {
-  up,
-  down,
-}
-
-const useScrollDirection = () => {
-  const threshold = 100;
-  const [scrollDir, setScrollDir] = useState(ScrollDirection.up);
-
-  useEffect(() => {
-    let previousScrollYPosition = window.pageYOffset;
-
-    const scrolledMoreThanThreshold = (currentScrollYPosition: number) =>
-      Math.abs(currentScrollYPosition - previousScrollYPosition) > threshold;
-
-    const isScrollingUp = (currentScrollYPosition: number) =>
-      currentScrollYPosition > previousScrollYPosition &&
-      !(previousScrollYPosition > 0 && currentScrollYPosition === 0) &&
-      !(currentScrollYPosition > 0 && previousScrollYPosition === 0);
-
-    const updateScrollDir = () => {
-      const currentScrollYPosition = window.pageYOffset;
-
-      if (scrolledMoreThanThreshold(currentScrollYPosition)) {
-        const newScrollDirection = isScrollingUp(currentScrollYPosition)
-          ? ScrollDirection.down
-          : ScrollDirection.up;
-        setScrollDir(newScrollDirection);
-        previousScrollYPosition =
-          currentScrollYPosition > 0 ? currentScrollYPosition : 0;
-      }
-    };
-
-    const onScroll = () => window.requestAnimationFrame(updateScrollDir);
-
-    window.addEventListener("scroll", onScroll);
-
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  return scrollDir;
-};
-
 export interface MenuProps {
   trackingCategory: string;
   pathname: string;
@@ -280,14 +241,12 @@ export const BlogMenu: React.FC<MenuProps> = ({
   const [shouldOpenMenu, setShouldOpenMenu] = useState(false);
   const [enableMenuButton, setEnableMenuButton] = useState(true);
 
-  const onStartAnimation = useCallback(
-    () => setEnableMenuButton(false),
-    [setEnableMenuButton]
-  );
-  const onFinishAnimation = useCallback(
-    () => setEnableMenuButton(true),
-    [setEnableMenuButton]
-  );
+  const onStartAnimation = useCallback(() => setEnableMenuButton(false), [
+    setEnableMenuButton,
+  ]);
+  const onFinishAnimation = useCallback(() => setEnableMenuButton(true), [
+    setEnableMenuButton,
+  ]);
   const changeMenuStatus = useCallback(
     (enableMenuButton: boolean, shouldOpenMenu: boolean) => {
       if (enableMenuButton) {
