@@ -62,7 +62,7 @@ interface MenuContainerProps {
 
 const MenuContainer = styled.div<MenuContainerProps>`
   background-color: ${(props) => props.theme.light.primaryColorDark};
-  box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   position: fixed;
   top: ${(props) => (props.shouldHide ? `-${menuHeight}` : 0)};
   left: 0;
@@ -148,28 +148,6 @@ const NavBarMenuItem = memo(styled(MenuItemWithTracking)<NavBarMenuItemProps>`
             transform: scale(1.1);
           }
         }
-      `};
-
-    ${(props) =>
-      props.selected &&
-      css`
-        &:after {
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          width: 0;
-          height: 0;
-          margin-left: -5px;
-          content: " ";
-          border-right: 5px solid transparent;
-          border-bottom: 5px solid
-            ${(props) => props.theme.light.generalBackground};
-          border-left: 5px solid transparent;
-  
-          ${mediaQuery.dark} {
-            border-bottom: 5px solid ${(props) =>
-              props.theme.dark.generalBackground};
-          }
       `};
   }
 `);
