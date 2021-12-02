@@ -3653,7 +3653,7 @@ export type AuthorsImagesQuery = { allFile: { edges: Array<{ node: { name: strin
 export type RecentPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type RecentPostsQuery = { allMarkdownRemark: { edges: Array<{ node: { frontmatter?: { title?: string | null | undefined, description?: string | null | undefined, image?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined, fields?: { slug?: string | null | undefined } | null | undefined } }> } };
+export type RecentPostsQuery = { allMarkdownRemark: { edges: Array<{ node: { fields?: { slug?: string | null | undefined, readingTime?: { text?: string | null | undefined } | null | undefined } | null | undefined, frontmatter?: { title?: string | null | undefined, description?: string | null | undefined, authors?: Array<string | null | undefined> | null | undefined, tags?: Array<string | null | undefined> | null | undefined, date?: any | null | undefined, image?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined } }> } };
 
 export type SocialContactsQueryVariables = Exact<{ [key: string]: never; }>;
 
