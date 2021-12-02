@@ -8,7 +8,7 @@ import { RecentPostCard } from "../molecules/recent-post-card";
 import { mediaQuery } from "../utils-css/media-query";
 import { useShuffleArray } from "../hooks/use-shuffle-array";
 
-const Recent = styled(Heading4)`
+const ReadNextTitle = styled(Heading4)`
   margin: ${(props) => props.theme.spacing[2]} 0;
 `;
 
@@ -61,7 +61,7 @@ export const RecentPosts: React.FC<RecentPostsProps> = ({ currentSlug }) => {
 
   return (
     <ReadNextContainer>
-      <Recent>Read next</Recent>
+      <ReadNextTitle>Read next</ReadNextTitle>
       <CardsContainer>
         {useShuffleArray(
           data.allMarkdownRemark.edges.filter(

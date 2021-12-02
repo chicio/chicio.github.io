@@ -8,8 +8,7 @@ import { PostCard } from "../components/design-system/molecules/post-card";
 import { OgPageType } from "../logic/seo";
 import { getCurrentLocationFrom } from "../logic/current-location";
 import { slugs } from "../logic/slug";
-import { mediaQuery } from "../components/design-system/utils-css/media-query";
-import styled from "styled-components";
+import { PostsRow } from "../components/design-system/molecules/posts-row";
 
 type groupByArrayType = <T>(array: T[], numberPerGroup: number) => T[][];
 
@@ -22,17 +21,6 @@ const groupArrayBy: groupByArrayType = (data, n) => {
   }
   return group;
 };
-
-const PostsRow = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-
-  ${mediaQuery.minWidth.md} {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-`;
 
 interface BlogPageContext {
   limit: number;
@@ -85,42 +73,7 @@ const Blog: React.FC<PageProps<BlogListQuery, BlogPageContext>> = ({
         tags={firstPost.node.frontmatter!.tags}
       />
       {postsGrouped.map((postsGroup, index) => (
-        <PostsRow key={`PostCardsRow${index}`}>
-          <PostCard
-            big={false}
-            key={postsGroup[0].node.fields!.slug!}
-            slug={postsGroup[0].node.fields!.slug!}
-            title={postsGroup[0].node.frontmatter!.title!}
-            image={
-              postsGroup[0].node.frontmatter!.image!.childImageSharp!
-                .gatsbyImageData
-            }
-            authors={postsGroup[0].node.frontmatter!.authors!}
-            date={postsGroup[0].node.frontmatter!.date!}
-            readingTime={postsGroup[0].node.fields!.readingTime!.text!}
-            description={postsGroup[0].node.frontmatter!.description!}
-            trackingCategory={tracking.category.blog_home}
-            tags={postsGroup[0].node.frontmatter!.tags}
-          />
-          {postsGroup[1] && (
-            <PostCard
-              big={false}
-              key={postsGroup[1].node.fields!.slug!}
-              slug={postsGroup[1].node.fields!.slug!}
-              title={postsGroup[1].node.frontmatter!.title!}
-              image={
-                postsGroup[1].node.frontmatter!.image!.childImageSharp!
-                  .gatsbyImageData
-              }
-              authors={postsGroup[1].node.frontmatter!.authors!}
-              date={postsGroup[1].node.frontmatter!.date!}
-              readingTime={postsGroup[1].node.fields!.readingTime!.text!}
-              description={postsGroup[1].node.frontmatter!.description!}
-              trackingCategory={tracking.category.blog_home}
-              tags={postsGroup[1].node.frontmatter!.tags}
-            />
-          )}
-        </PostsRow>
+        <PostsRow postsGroup={postsGroup} key={`PostCardsRow${index}`} />
       ))}
       <PaginationNavigation
         trackingCategory={tracking.category.blog_home}
