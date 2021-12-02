@@ -26,6 +26,7 @@ export interface BlogPageProps {
   customTitle?: string;
   description?: string;
   date?: string;
+  big?: boolean;
 }
 
 export const BlogPageTemplate: React.FC<BlogPageProps> = ({
@@ -38,6 +39,7 @@ export const BlogPageTemplate: React.FC<BlogPageProps> = ({
   customTitle,
   description,
   date,
+  big = false,
 }) => (
   <BlogThemePage>
     <Head
@@ -54,7 +56,7 @@ export const BlogPageTemplate: React.FC<BlogPageProps> = ({
       pathname={location.pathname}
     />
     <ContentContainer>
-      <DesktopBlogHeader />
+      <DesktopBlogHeader big={big} />
       {children}
     </ContentContainer>
     <Footer author={author} trackingCategory={trackingCategory} />

@@ -1,14 +1,14 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react";
-import { BlogPageTemplate } from "../../src/components/design-system/templates/blog-page-template";
 import {
   BlogGenericPostListPageTemplate,
   BlogGenericPostListPageProps,
 } from "../../src/components/design-system/templates/blog-generic-post-list-page-template";
 import { OgPageType } from "../../src/logic/seo";
 
-export const BlogGenericPostListPagePageTemplateStory: Story<BlogGenericPostListPageProps> =
-  (args) => <BlogGenericPostListPageTemplate {...args} />;
+export const BlogGenericPostListPagePageTemplateStory: Story<BlogGenericPostListPageProps> = (
+  args
+) => <BlogGenericPostListPageTemplate {...args} />;
 BlogGenericPostListPagePageTemplateStory.args = {
   title: "Archive",
   posts: [
@@ -144,5 +144,5 @@ BlogGenericPostListPagePageTemplateStory.storyName =
 
 export default {
   title: "Templates/Blog Page Generic Post List Page Template",
-  component: BlogPageTemplate,
+  component: BlogGenericPostListPageTemplate,
 } as Meta;

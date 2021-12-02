@@ -10,7 +10,7 @@ const BlogHeaderContainer = styled.div`
 
   ${mediaQuery.minWidth.sm} {
     margin-top: ${(props) => props.theme.spacing[10]};
-    margin-bottom: ${(props) => props.theme.spacing[10]};
+    margin-bottom: ${(props) => props.theme.spacing[14]};
   }
 `;
 
@@ -21,7 +21,7 @@ const BlogHeaderColumn = styled.div`
 `;
 
 const BlogTitle = styled.span`
-  color: ${(props) => props.theme.light.primaryTextColor};
+  color: ${(props) => props.theme.light.textAbovePrimaryColor};
   margin: 0;
   font-weight: bold;
   display: block;
@@ -29,7 +29,7 @@ const BlogTitle = styled.span`
   font-size: ${(props) => props.theme.fontSizes[4]};
 
   ${mediaQuery.dark} {
-    color: ${(props) => props.theme.dark.primaryTextColor};
+    color: ${(props) => props.theme.dark.textAbovePrimaryColor};
   }
 
   ${mediaQuery.minWidth.xs} {
@@ -47,11 +47,11 @@ const BlogDescription = styled.span`
   ${mediaQuery.minWidth.sm} {
     display: block;
     font-size: ${(props) => props.theme.fontSizes[4]};
-    color: ${(props) => props.theme.light.secondaryTextColor};
+    color: ${(props) => props.theme.light.textAbovePrimaryColor};
     line-height: 1.5;
 
     ${mediaQuery.dark} {
-      color: ${(props) => props.theme.dark.secondaryTextColor};
+      color: ${(props) => props.theme.dark.textAbovePrimaryColor};
     }
   }
 `;
@@ -98,6 +98,20 @@ export const MobileContainer = styled.div<MobileContainerProps>`
   }
 `;
 
+const Background = styled.div<DesktopHeaderProps>`
+  background-image: linear-gradient(
+    to bottom,
+    ${(props) => props.theme.dark.secondaryColor},
+    ${(props) => props.theme.dark.primaryColor}
+  );
+  height: ${(props) => (props.big ? "400px" : "220px")};
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -100;
+`;
+
 export const BlogHeader: React.FC = () => (
   <BlogHeaderContainer>
     <ImageContainer>
@@ -122,9 +136,14 @@ export const BlogHeader: React.FC = () => (
   </BlogHeaderContainer>
 );
 
-export const DesktopBlogHeader: React.FC = () => (
+interface DesktopHeaderProps {
+  big: boolean;
+}
+
+export const DesktopBlogHeader: React.FC<DesktopHeaderProps> = ({ big }) => (
   <DesktopContainer>
     <BlogHeader />
+    <Background big={big} />
   </DesktopContainer>
 );
 

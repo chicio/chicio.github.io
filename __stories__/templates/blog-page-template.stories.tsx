@@ -21,6 +21,7 @@ BlogPageTemplateStory.args = {
   ogPageType: OgPageType.WebSite,
   ogImage: "/a-photo.jpg",
   trackingCategory: "blog",
+  big: false,
 };
 BlogPageTemplateStory.storyName = "Blog Page Template";
 
