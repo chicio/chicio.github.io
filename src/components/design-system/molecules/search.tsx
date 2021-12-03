@@ -21,7 +21,7 @@ const SearchListContainer = styled(Container)`
   right: 0;
   left: 0;
   bottom: 0;
-  height: calc(100vh - 55px);
+  height: calc(100vh - 55px - env(safe-area-inset-bottom, 0));
   overflow: scroll;
   border-radius: 4px;
 `;
