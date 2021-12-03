@@ -80,7 +80,7 @@ const MenuContainer = styled.div<MenuContainerProps>`
     height 0.3s ease ${(props) => `${props.delayOpenCloseMenuAnimation}s`};
   width: 100%;
   z-index: 300;
-  height: ${(props) => (props.shouldOpenMenu ? "210px" : menuHeight)};
+  height: ${(props) => (props.shouldOpenMenu ? "260px" : menuHeight)};
 
   ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.primaryColorDark};
@@ -264,7 +264,7 @@ export const BlogMenu: React.FC<MenuProps> = ({
             trackingCategory={trackingCategory}
             shouldOpenMenu={shouldOpenMenu}
             enterDelayAnimation={"0.3s"}
-            exitDelayAnimation={"0.3s"}
+            exitDelayAnimation={"0.4s"}
             onStartAnimation={onStartAnimation}
             onFinishAnimation={onFinishAnimation}
           />
@@ -276,6 +276,18 @@ export const BlogMenu: React.FC<MenuProps> = ({
             trackingCategory={trackingCategory}
             shouldOpenMenu={shouldOpenMenu}
             enterDelayAnimation={"0.4s"}
+            exitDelayAnimation={"0.3s"}
+            onStartAnimation={onStartAnimation}
+            onFinishAnimation={onFinishAnimation}
+          />
+          <AnimatedNavBarItem
+            label={"Art"}
+            slug={slugs.art}
+            selected={pathname === slugs.art}
+            trackingAction={tracking.action.open_art}
+            trackingCategory={trackingCategory}
+            shouldOpenMenu={shouldOpenMenu}
+            enterDelayAnimation={"0.5s"}
             exitDelayAnimation={"0.2s"}
             onStartAnimation={onStartAnimation}
             onFinishAnimation={onFinishAnimation}
@@ -287,7 +299,7 @@ export const BlogMenu: React.FC<MenuProps> = ({
             trackingAction={tracking.action.open_about_me}
             trackingCategory={trackingCategory}
             shouldOpenMenu={shouldOpenMenu}
-            enterDelayAnimation={"0.5s"}
+            enterDelayAnimation={"0.6s"}
             exitDelayAnimation={"0.1s"}
             onStartAnimation={onStartAnimation}
             onFinishAnimation={onFinishAnimation}
