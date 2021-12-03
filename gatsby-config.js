@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 module.exports = {
   siteMetadata: {
     title:
@@ -200,5 +202,13 @@ module.exports = {
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-loadable-components-ssr`,
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        queries: require("./src/logic/algolia"),
+      },
+    },
   ],
 };
