@@ -48,7 +48,7 @@ interface StartSearchProps {
 const SearchAltContainer = styled.span<StartSearchProps>`
   position: absolute;
   top: 50%;
-  right: -2px;
+  right: 3px;
   transform: translate(-50%, -50%);
   color: ${(props) => props.theme.light.textAbovePrimaryColor};
   transition: 0.2s;
