@@ -15,6 +15,7 @@ import {
   ScrollDirection,
   useScrollDirection,
 } from "../hooks/use-scroll-direction";
+import { Search } from "../molecules/search";
 
 const menuHeight = "55px";
 
@@ -298,6 +299,7 @@ export const BlogMenu: React.FC<MenuProps> = ({
               />
             )}
           </MenuButtonContainer>
+          <Search />
         </NavBar>
       </MenuContainer>
       {shouldOpenMenu && (
