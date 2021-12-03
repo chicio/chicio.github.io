@@ -52,6 +52,7 @@
     "babel-plugin-styled-components": "^2.0.1",
     "disqus-react": "^1.1.2",
     "gatsby": "^4.2.0",
+    "gatsby-plugin-algolia": "^0.24.0",
     "gatsby-plugin-catch-links": "^4.2.0",
     "gatsby-plugin-feed": "^4.2.0",
     "gatsby-plugin-google-gtag": "^4.2.0",
