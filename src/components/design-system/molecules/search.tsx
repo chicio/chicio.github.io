@@ -10,6 +10,7 @@ import { HitsProvided, SearchBoxProvided } from "react-instantsearch-core";
 import { Link } from "gatsby";
 import styled, { css } from "styled-components";
 import { SearchAlt } from "styled-icons/boxicons-regular";
+import { mediaQuery } from "../utils-css/media-query";
 
 const SearchHitsContainer = styled.ul`
   list-style: none;
@@ -37,10 +38,7 @@ const SearchHits: React.FC<HitsProvided<{ title: string; slug: string }>> = ({
 );
 
 const SearchBoxContainer = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(0, 0);
 `;
 
 interface StartSearchProps {
@@ -50,11 +48,14 @@ interface StartSearchProps {
 const SearchAltContainer = styled.span<StartSearchProps>`
   position: absolute;
   top: 50%;
-  right: 15px;
+  right: -2px;
   transform: translate(-50%, -50%);
-  font-size: 26px;
-  color: #ffd52d;
+  color: ${(props) => props.theme.light.textAbovePrimaryColor};
   transition: 0.2s;
+
+  ${mediaQuery.dark} {
+    color: ${(props) => props.theme.dark.textAbovePrimaryColor};
+  }
 
   ${(props) =>
     props.startSearch &&
@@ -66,23 +67,32 @@ const SearchAltContainer = styled.span<StartSearchProps>`
 
 const SearchBoxInput = styled.input<StartSearchProps>`
   padding: 10px;
-  width: 80px;
-  height: 80px;
+  width: 35px;
+  height: 35px;
   background: none;
-  border: 4px solid #ffd52d;
   border-radius: 50px;
   box-sizing: border-box;
-  font-size: 26px;
-  color: #ffd52d;
+  font-size: ${(props) => props.theme.fontSizes[3]};
+  color: ${(props) => props.theme.light.primaryTextColor};
+  border: 2px solid ${(props) => props.theme.light.textAbovePrimaryColor};
   outline: none;
   transition: 0.5s;
+
+  ${mediaQuery.dark} {
+    color: ${(props) => props.theme.dark.primaryTextColor};
+    border: 2px solid ${(props) => props.theme.dark.textAbovePrimaryColor};
+  }
 
   ${(props) =>
     props.startSearch &&
     css`
-      width: 350px;
-      background: #272133;
-      border-radius: 10px;
+      width: 200px;
+      background: ${(props) => props.theme.light.generalBackground};
+      border-radius: 4px;
+
+      ${mediaQuery.dark} {
+        background: ${(props) => props.theme.dark.generalBackground};
+      }
     `}
 `;
 
@@ -94,17 +104,19 @@ const SearchBox: React.FC<
   SearchBoxProvided & StartSearchProps & OnClickProp
 > = ({ currentRefinement, refine, startSearch, onClick }) => {
   return (
-    <SearchBoxContainer>
-      <SearchBoxInput
-        startSearch={startSearch}
-        type="search"
-        value={startSearch ? currentRefinement : ""}
-        onChange={(event) => refine(event.currentTarget.value)}
-      />
-      <SearchAltContainer startSearch={startSearch} onClick={onClick}>
-        <SearchAlt width={25} height={25} />
-      </SearchAltContainer>
-    </SearchBoxContainer>
+    <div>
+      <SearchBoxContainer>
+        <SearchBoxInput
+          startSearch={startSearch}
+          type="search"
+          value={startSearch ? currentRefinement : ""}
+          onChange={(event) => refine(event.currentTarget.value)}
+        />
+        <SearchAltContainer startSearch={startSearch} onClick={onClick}>
+          <SearchAlt width={20} height={20} />
+        </SearchAltContainer>
+      </SearchBoxContainer>
+    </div>
   );
 };
 
