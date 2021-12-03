@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import {
   connectHits,
   connectSearchBox,
@@ -10,7 +10,6 @@ import { HitsProvided, SearchBoxProvided } from "react-instantsearch-core";
 import { Link } from "gatsby";
 import styled, { css } from "styled-components";
 import { SearchAlt } from "styled-icons/boxicons-regular";
-import { Overlay } from "../atoms/overlay";
 
 const SearchHitsContainer = styled.ul`
   list-style: none;
@@ -95,16 +94,14 @@ const SearchBox: React.FC<
   SearchBoxProvided & StartSearchProps & OnClickProp
 > = ({ currentRefinement, refine, startSearch, onClick }) => {
   return (
-    <SearchBoxContainer onClick={onClick}>
+    <SearchBoxContainer>
       <SearchBoxInput
         startSearch={startSearch}
         type="search"
-        value={currentRefinement}
-        onChange={(event) =>
-          refine(startSearch ? event.currentTarget.value : "")
-        }
+        value={startSearch ? currentRefinement : ""}
+        onChange={(event) => refine(event.currentTarget.value)}
       />
-      <SearchAltContainer startSearch={startSearch}>
+      <SearchAltContainer startSearch={startSearch} onClick={onClick}>
         <SearchAlt width={25} height={25} />
       </SearchAltContainer>
     </SearchBoxContainer>
@@ -124,7 +121,15 @@ const AlgoliaResults = connectStateResults(
 
 const AlgoliaSearchBox = connectSearchBox(SearchBox);
 
-export const Search: React.FC = () => {
+interface SearchProps {
+  startSearch: boolean;
+  setStartSearch: (value: ((prevState: boolean) => boolean) | boolean) => void;
+}
+
+export const Search: React.FC<SearchProps> = ({
+  startSearch,
+  setStartSearch,
+}) => {
   const searchClient = useMemo(
     () =>
       algoliasearch(
@@ -133,7 +138,6 @@ export const Search: React.FC = () => {
       ),
     []
   );
-  const [startSearch, setStartSearch] = useState(false);
 
   return (
     <>
@@ -142,17 +146,12 @@ export const Search: React.FC = () => {
           startSearch={startSearch}
           onClick={() => setStartSearch(!startSearch)}
         />
-        <AlgoliaResults>
-          <AlgoliaHits />
-        </AlgoliaResults>
+        {startSearch && (
+          <AlgoliaResults>
+            <AlgoliaHits />
+          </AlgoliaResults>
+        )}
       </InstantSearch>
-      {startSearch && (
-        <Overlay
-          zIndex={50}
-          delay={"0.2s"}
-          onClick={() => setStartSearch(false)}
-        />
-      )}
     </>
   );
 };

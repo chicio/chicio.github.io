@@ -219,6 +219,7 @@ export const BlogMenu: React.FC<MenuProps> = ({
   const direction = useScrollDirection();
   const [shouldOpenMenu, setShouldOpenMenu] = useState(false);
   const [enableMenuButton, setEnableMenuButton] = useState(true);
+  const [startSearch, setStartSearch] = useState(false);
 
   const onStartAnimation = useCallback(() => setEnableMenuButton(false), [
     setEnableMenuButton,
@@ -299,15 +300,20 @@ export const BlogMenu: React.FC<MenuProps> = ({
               />
             )}
           </MenuButtonContainer>
-          <Search />
+          <Search startSearch={startSearch} setStartSearch={setStartSearch} />
         </NavBar>
       </MenuContainer>
-      {shouldOpenMenu && (
+      {(shouldOpenMenu || startSearch) && (
         <Overlay
           zIndex={250}
           delay={"0.4s"}
           onClick={() => {
-            setShouldOpenMenu(!shouldOpenMenu);
+            if (shouldOpenMenu) {
+              setShouldOpenMenu(false);
+            }
+            if (startSearch) {
+              setStartSearch(false);
+            }
           }}
         />
       )}
