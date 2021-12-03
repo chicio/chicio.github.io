@@ -54,7 +54,13 @@ export type TagProps = TagContentProps & {
   trackingLabel: string;
 };
 
-export const Tag: React.FC<TagProps> = ({ tag, link, big, trackingCategory, trackingLabel }) => (
+export const Tag: React.FC<TagProps> = ({
+  tag,
+  link,
+  big,
+  trackingCategory,
+  trackingLabel,
+}) => (
   <TagLink
     trackingData={{
       action: tracking.action.open_blog_tag,

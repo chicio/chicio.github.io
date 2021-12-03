@@ -17,14 +17,22 @@ import {
 } from "../hooks/use-scroll-direction";
 import { Search } from "../molecules/search";
 
-const menuHeight = "55px";
+export const menuHeight = "55px";
 
-const MobileBlogHeaderContainer = styled(ContainerFluid)`
+interface MobileBlogHeaderContainerProps {
+  hide: boolean;
+}
+
+const MobileBlogHeaderContainer = styled(
+  ContainerFluid
+)<MobileBlogHeaderContainerProps>`
   height: ${menuHeight};
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: opacity 0.2s ease ${(props) => (props.hide ? "0s" : "0.4s")};
+  opacity: ${(props) => (props.hide ? 0 : 1)};
 
   ${mediaQuery.minWidth.sm} {
     display: none;
@@ -244,7 +252,7 @@ export const BlogMenu: React.FC<MenuProps> = ({
         delayOpenCloseMenuAnimation={shouldOpenMenu ? 0 : 0.4}
       >
         <NavBar shouldOpenMenu={shouldOpenMenu}>
-          <MobileBlogHeaderContainer>
+          <MobileBlogHeaderContainer hide={startSearch}>
             <MobileBlogHeader height={menuHeight} />
             {shouldOpenMenu && <Divider />}
           </MobileBlogHeaderContainer>
@@ -284,22 +292,26 @@ export const BlogMenu: React.FC<MenuProps> = ({
             onStartAnimation={onStartAnimation}
             onFinishAnimation={onFinishAnimation}
           />
-          <MenuButtonContainer>
-            {!shouldOpenMenu && (
-              <HamburgerMenu
-                onClick={() =>
-                  changeMenuStatus(enableMenuButton, shouldOpenMenu)
-                }
-              />
-            )}
-            {shouldOpenMenu && (
-              <Close
-                onClick={() =>
-                  changeMenuStatus(enableMenuButton, shouldOpenMenu)
-                }
-              />
-            )}
-          </MenuButtonContainer>
+          {!startSearch && (
+            <MenuButtonContainer>
+              {!shouldOpenMenu && (
+                <HamburgerMenu
+                  onClick={() => {
+                    if (!startSearch) {
+                      changeMenuStatus(enableMenuButton, shouldOpenMenu);
+                    }
+                  }}
+                />
+              )}
+              {shouldOpenMenu && (
+                <Close
+                  onClick={() =>
+                    changeMenuStatus(enableMenuButton, shouldOpenMenu)
+                  }
+                />
+              )}
+            </MenuButtonContainer>
+          )}
           <Search startSearch={startSearch} setStartSearch={setStartSearch} />
         </NavBar>
       </MenuContainer>

@@ -40,6 +40,8 @@ const TagsPage: React.FC<PageProps<PostsGroupByTagsQuery>> = ({
             link={generateTagSlug(tag.fieldValue!)}
             tag={`${tag.fieldValue} (${tag.totalCount})`}
             key={tag.fieldValue}
+            trackingCategory={tracking.category.blog_tags}
+            trackingLabel={tracking.label.body}
           />
         ))}
       </TagsContainer>

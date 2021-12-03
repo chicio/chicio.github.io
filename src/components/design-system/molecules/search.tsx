@@ -7,38 +7,90 @@ import {
 } from "react-instantsearch-dom";
 import algoliasearch from "algoliasearch/lite";
 import { HitsProvided, SearchBoxProvided } from "react-instantsearch-core";
-import { Link } from "gatsby";
 import styled, { css } from "styled-components";
 import { SearchAlt } from "styled-icons/boxicons-regular";
 import { mediaQuery } from "../utils-css/media-query";
+import { Container } from "../atoms/container";
+import { List } from "../atoms/list";
+import { Paragraph } from "../atoms/paragraph";
+import { Link } from "gatsby";
 
-const SearchHitsContainer = styled.ul`
+const SearchListContainer = styled(Container)`
+  position: absolute;
+  top: 55px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: calc(100vh - 55px);
+  overflow: scroll;
+  border-radius: 4px;
+`;
+
+const SearchHitsList = styled(List)`
   list-style: none;
+  padding: ${(props) => props.theme.spacing[2]};
+  margin: 0;
+  background-color: ${(props) => props.theme.light.generalBackground};
+  border-radius: 4px;
+
+  ${mediaQuery.dark} {
+    background-color: ${(props) => props.theme.dark.generalBackground};
+  }
 `;
 
 const SearchHitContainer = styled.li`
   display: flex;
   flex-direction: column;
+  border-bottom: 1px solid ${(props) => props.theme.light.dividerColor};
+
+  ${mediaQuery.dark} {
+    border-bottom: 1px solid ${(props) => props.theme.dark.dividerColor};
+  }
 `;
 
-const SearchHitLink = styled(Link)`
+const SearchLink = styled(Link)`
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
 `;
 
-const SearchHits: React.FC<HitsProvided<{ title: string; slug: string }>> = ({
-  hits,
-}) => (
-  <SearchHitsContainer>
-    {hits.map((hit, index) => (
-      <SearchHitContainer key={"SearchResult" + index}>
-        <SearchHitLink to={hit.slug}>{hit.title}</SearchHitLink>
-      </SearchHitContainer>
-    ))}
-  </SearchHitsContainer>
+const SearchTitle = styled(Paragraph)`
+  font-size: ${(props) => props.theme.fontSizes[3]};
+  color: ${(props) => props.theme.light.accentColor};
+
+  ${mediaQuery.dark} {
+    color: ${(props) => props.theme.dark.accentColor};
+  }
+`;
+
+const SearchHits: React.FC<
+  HitsProvided<{ title: string; slug: string; description: string }>
+> = ({ hits }) => (
+  <SearchListContainer>
+    <SearchHitsList>
+      {hits.map((hit, index) => (
+        <SearchHitContainer key={"SearchResult" + index}>
+          <SearchLink to={hit.slug}>
+            <SearchTitle>{hit.title}</SearchTitle>
+            <Paragraph>{hit.description}</Paragraph>
+          </SearchLink>
+        </SearchHitContainer>
+      ))}
+    </SearchHitsList>
+  </SearchListContainer>
 );
 
 const SearchBoxContainer = styled.div`
   transform: translate(0, 0);
+  margin-left: auto;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  ${mediaQuery.minWidth.sm} {
+    position: static;
+    margin-left: auto;
+  }
 `;
 
 interface StartSearchProps {
@@ -48,7 +100,7 @@ interface StartSearchProps {
 const SearchAltContainer = styled.span<StartSearchProps>`
   position: absolute;
   top: 50%;
-  right: 3px;
+  right: -3px;
   transform: translate(-50%, -50%);
   color: ${(props) => props.theme.light.textAbovePrimaryColor};
   transition: 0.2s;
@@ -104,19 +156,17 @@ const SearchBox: React.FC<
   SearchBoxProvided & StartSearchProps & OnClickProp
 > = ({ currentRefinement, refine, startSearch, onClick }) => {
   return (
-    <div>
-      <SearchBoxContainer>
-        <SearchBoxInput
-          startSearch={startSearch}
-          type="search"
-          value={startSearch ? currentRefinement : ""}
-          onChange={(event) => refine(event.currentTarget.value)}
-        />
-        <SearchAltContainer startSearch={startSearch} onClick={onClick}>
-          <SearchAlt width={20} height={20} />
-        </SearchAltContainer>
-      </SearchBoxContainer>
-    </div>
+    <SearchBoxContainer>
+      <SearchBoxInput
+        startSearch={startSearch}
+        value={startSearch ? currentRefinement : ""}
+        placeholder={startSearch ? "Search" : ""}
+        onChange={(event) => refine(event.currentTarget.value)}
+      />
+      <SearchAltContainer startSearch={startSearch} onClick={onClick}>
+        <SearchAlt width={20} height={20} />
+      </SearchAltContainer>
+    </SearchBoxContainer>
   );
 };
 

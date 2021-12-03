@@ -4,7 +4,7 @@ description: "In the last weeks I worked with my colleague Felice Giovinazzo on 
 process. Let’s see how we used pact to test a message-based interaction between two microservices with Pact"
 date: 2021-11-05
 image: ../images/posts/pact-mockk-message.jpg
-tags: [test driven development, contract test, pact]
+tags: [test driven development, contract test, pact, backend]
 comments: true
 math: false
 authors: [fabrizio_duroni, felice_giovinazzo, stefano_varesi]
