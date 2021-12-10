@@ -29,7 +29,7 @@ const SearchListContainer = styled(Container)`
 const SearchHitsList = styled(List)`
   list-style: none;
   padding: ${(props) => props.theme.spacing[2]};
-  margin: 0;
+  margin: ${(props) => props.theme.spacing[6]} 0;
   background-color: ${(props) => props.theme.light.generalBackground};
   border-radius: 4px;
 
