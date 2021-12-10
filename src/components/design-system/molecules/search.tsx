@@ -14,6 +14,7 @@ import { Container } from "../atoms/container";
 import { List } from "../atoms/list";
 import { Paragraph } from "../atoms/paragraph";
 import { Link } from "gatsby";
+import { isIOS } from "react-device-detect";
 
 const SearchListContainer = styled(Container)`
   position: absolute;
@@ -21,7 +22,7 @@ const SearchListContainer = styled(Container)`
   right: 0;
   left: 0;
   bottom: 0;
-  height: calc(100vh - 55px);
+  height: calc(100vh - 55px ${isIOS ? " - 100px" : ""});
   overflow: scroll;
   border-radius: 4px;
 `;
