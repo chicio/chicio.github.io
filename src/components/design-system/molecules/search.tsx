@@ -162,6 +162,7 @@ const SearchBox: React.FC<
         value={startSearch ? currentRefinement : ""}
         placeholder={startSearch ? "Search" : ""}
         onChange={(event) => refine(event.currentTarget.value)}
+        disabled={!startSearch}
       />
       <SearchAltContainer startSearch={startSearch} onClick={onClick}>
         <SearchAlt width={20} height={20} />
