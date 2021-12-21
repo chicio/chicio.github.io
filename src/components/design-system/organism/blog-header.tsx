@@ -3,6 +3,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { mediaQuery } from "../utils-css/media-query";
 import { gatsbyImagePlaceholderSelector } from "../utils-css/gatsby-image-selector";
+import { transform } from "../utils-css/transform-keyframes";
 
 const BlogHeaderContainer = styled.div`
   display: flex;
@@ -41,6 +42,15 @@ const BlogTitle = styled.span`
   }
 `;
 
+const BlogDescriptionContainer = styled.div`
+  display: none;
+  overflow: hidden;
+
+  ${mediaQuery.minWidth.sm} {
+    display: block;
+  }
+`;
+
 const BlogDescription = styled.span`
   display: none;
 
@@ -49,6 +59,8 @@ const BlogDescription = styled.span`
     font-size: ${(props) => props.theme.fontSizes[4]};
     color: ${(props) => props.theme.light.textAbovePrimaryColor};
     line-height: 1.5;
+    transform: translate(0, 25px);
+    animation: ${transform} 0.2s linear 0.35s forwards;
 
     ${mediaQuery.dark} {
       color: ${(props) => props.theme.dark.textAbovePrimaryColor};
@@ -129,9 +141,11 @@ export const BlogHeader: React.FC = () => (
     </ImageContainer>
     <BlogHeaderColumn>
       <BlogTitle>CHICIO CODING</BlogTitle>
-      <BlogDescription>
-        Dirty clean code. Creative Stuff. Stuff.
-      </BlogDescription>
+      <BlogDescriptionContainer>
+        <BlogDescription>
+          Dirty clean code. Creative Stuff. Stuff.
+        </BlogDescription>
+      </BlogDescriptionContainer>
     </BlogHeaderColumn>
   </BlogHeaderContainer>
 );
