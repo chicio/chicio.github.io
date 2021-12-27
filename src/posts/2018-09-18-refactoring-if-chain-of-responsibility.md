@@ -470,7 +470,7 @@ public class HandBaggageInformationFactory {
 ##### 2. Creating the components of the chain
 
 By using again the `Extract method object` feature of Idea, you can easily extract the first condition into a class. In
-this way we get `new MyCompanyOneWayAfterTheFirstOfNovember().canHandle(flight, flightOutboundDate)` in the first `if`
+this way we get `new MyCompanyOneWayAfterTheFirstOfNovember()` method `canHandle(flight, flightOutboundDate)` in the first `if`
 condition. ([Source code](https://github.com/bonfa/IfRemovingARealUseCase/blob/6767ecfcbc8b1f90f38f525c2d2d7522d25fafb4/src/main/java/it/fbonfadelli/hand_baggage/HandBaggageInformationFactory.java))
 
 ```diff
@@ -533,7 +533,7 @@ public class HandBaggageInformationFactory {
 }
 ```
 
-And, after that, we can move `newMyCompanyHandBaggageInformationFactory.from(renderLanguage)`
+And, after that, we can move `newMyCompanyHandBaggageInformationFactory` method `from(renderLanguage)`
 inside `MyCompanyOneWayAfterTheFirstOfNovember`.
 
 ```diff
@@ -607,8 +607,7 @@ public class HandBaggageInformationFactory {
 ```
 
 Then, we repeat the operation for all the conditions except for the ones that use our default
-value, `notMyCompanyHandBaggageInformationFactory.make()`. First of all, we remove the condition that once true uses the
-default behaviour (`!flight.isOneWay() && !isMyCompany(flight)`), because it is redundant. Then, for each remaining
+value, `notMyCompanyHandBaggageInformationFactory` method `make()`. First of all, we remove the condition that once true uses the default behaviour (`!flight.isOneWay() && !isMyCompany(flight)`), because it is redundant. Then, for each remaining
 condition we create a class containing the evaluation of the condition and the related action.  
 I skip this step by step diff because it is a repetition of the previous one, but in the repo there are all the commits
 that show the process. The resulting code, after having extracted all the conditions, is the
