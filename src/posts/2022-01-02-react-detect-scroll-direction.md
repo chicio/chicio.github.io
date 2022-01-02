@@ -60,7 +60,7 @@ Now we are ready to write our scroll detection logic. The first thing to do is t
 * `updateScrollDirection` is the other core function. It basically uses the previous defined functions to check if the user is scrolling more that the threshold and the scroll direction (using the `isScrollingUp`  function). It then update the `scrollDir`  state and the `previousScrollYPosition` variable if a scroll change has been detected.
 * `onScroll`  is a function that attaches the  `updateScrollDirection` function to the `window.requestAnimationFrame`  so that we can calculate our scroll direction in sync with the window refresh frame rate (so if you have a refresh of 60 fps you will receive 60 calls per seconds).
 
-Now we have all the function we need in order to detect the scroll direction. 
+Now we have all the functions we need in order to detect the scroll direction. 
 The last thing we need to do is to attach the `onScroll` function to the scroll listener with the `window.addEventListener("scroll", onScroll);` instruction.
 Wait…how do we clean/remove the listener? 🤔 Well, the `useEffect` hooks can return a function that will be used to cleanup every resource used in the hook when the component that launched it will be unmounted. 
 So the (real 🙇) last thing we need to do is to return the clean up function that will basically call  `window.removeEventListener("scroll", onScroll)`  to remove the listener.
