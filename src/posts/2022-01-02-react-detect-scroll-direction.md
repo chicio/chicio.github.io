@@ -2,7 +2,7 @@
 title: "React hooks quick tip: useScrollDirection"
 description: "How do you detect scroll direction using React hooks? Let’s find out in this new post."
 date: 2022-01-15 
-image: .._images_posts/react-scroll-direction.jpg
+image: .._images_posts/react-hook-scroll-direction.jpg
 tags: [react, web development]
 comments: true 
 math: false 
