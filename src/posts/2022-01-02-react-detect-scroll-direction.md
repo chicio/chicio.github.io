@@ -1,5 +1,5 @@
 ---
-title: "React hooks quick tip: useScrollDirection"
+title: "A simple react hook to detect scroll direction"
 description: "How do you detect scroll direction using React hooks? Let’s find out in this new post."
 date: 2022-01-15 
 image: ../images/posts/react-hook-scroll-direction.jpg
