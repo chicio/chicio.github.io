@@ -13,7 +13,7 @@ authors: [fabrizio_duroni]
 
 --- 
 
-In the last year I migrated this blog on [GatsbyJS](https://www.gatsbyjs.com). This basically means that now this blog is powered by [React, a framework I love](https://www.fabrizioduroni.it/2018/07/04/react-native-typescript-existing-app/). In particular, I used only [hooks](https://reactjs.org/docs/hooks-intro.html "react hooks") and functional components. One of the thing I had to do was to detect the scroll direction in order to implement the sticky header with hide on scroll feature that you can find at the top of this page (and everywhere on this website). How can we do this? In this blog post I will show you a simple and effective react hook that you can use to detect the scroll direction in a page.
+In the last year I migrated this blog on [GatsbyJS](https://www.gatsbyjs.com). This basically means that now this blog is powered by [React, a framework I love](https://www.fabrizioduroni.it/2018/07/04/react-native-typescript-existing-app/). In particular, I used only [hooks](https://reactjs.org/docs/hooks-intro.html "react hooks") and functional components. One of the thing I had to do was to detect the scroll direction in order to implement the sticky header with hide on scroll feature that you can find at the top of this page (and everywhere on this website). How can we do this? Searching on the web I found this [well written post on stackoverflow](https://stackoverflow.com/questions/62497110/detect-scroll-direction-in-react-js "react scroll detection") that contains a raw implementation of what I needed. In this blog post I will show you how I evolved that react hook into into a production ready one that you can use to detect the scroll direction in a page.
 
 #### Implementation
 
@@ -58,13 +58,13 @@ Now we are ready to write our scroll detection logic. The first thing to do is t
 * `scrolledMoreThanThreshold(currentScrollYPosition)` is a function that will detect is the user scroll more pixel than the ones defined in the `threshold` variable we defined before. To do this it will basically check that the absolute difference (no sign) between the  `previousScrollYPosition` and the current scroll position received as parameter is greater than `threshold`
 * `isScrollingUp(currentScrollYPosition)` is one of the two core function needed in order to detect the scroll direction. It basically check if the current scroll position is greater that the previous scroll position. We need also to define some **additional checks** needed in order to **to avoid to receive false positive scroll direction** (they will basically avoid scroll direction updates if the user is at the top/bottom of the page and it continues to scroll).
 * `updateScrollDirection` is the other core function. It basically uses the previous defined functions to check if the user is scrolling more that the threshold and the scroll direction (using the `isScrollingUp`  function). It then update the `scrollDir`  state and the `previousScrollYPosition` variable if a scroll change has been detected.
-* `onScroll`  is a function that attaches the  `updateScrollDirection` function to the `window.requestAnimationFrame`  so that we can calculate our scroll direction in sync with the window refresh frame rate (so if you have a refresh of 60 fps you will receive 60 calls per seconds).
+* `onScroll`  is a function that attaches the  `updateScrollDirection` function to the `window.requestAnimationFrame` function so that we can calculate our scroll direction in sync with the window refresh frame rate (so if you have a refresh of 60 fps you will receive 60 calls per seconds). In this way we will be sure that our scroll direction calculation will happen after each page render/repaint.
 
 Now we have all the functions we need in order to detect the scroll direction. 
 The last thing we need to do is to attach the `onScroll` function to the scroll listener with the `window.addEventListener("scroll", onScroll);` instruction.
 Wait…how do we clean/remove the listener? 🤔 Well, the `useEffect` hooks can return a function that will be used to cleanup every resource used in the hook when the component that launched it will be unmounted. 
 So the (real 🙇) last thing we need to do is to return the clean up function that will basically call  `window.removeEventListener("scroll", onScroll)`  to remove the listener.
-That’s it!!! 🚀🚀🚀 Below you can find the complete hook that you can copy/paste in your application.
+That’s it!!! 🚀🚀🚀 Below you can find the complete hook that you can copy/paste in your application. If you want you can try to go further by parametrizing some of the vaues used inside the hook (eg.: threshold)
 
 ```typescript 
 import { useEffect, useState } from "react";
