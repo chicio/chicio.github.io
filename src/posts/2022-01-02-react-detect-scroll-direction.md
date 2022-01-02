@@ -28,8 +28,8 @@ export enum ScrollDirection {
 
 Now we can start to create our hook. We will define it as `useScrollDirection`  function and we will define two thing:
 
-* a  `threshold`  variable that will be use as threshold: we will detect change in the scroll direction if the user scrolls for at least `100`  pixels up or down
-* a  `scrollDir`  react state defined with the `useState`  hook that will store the current scroll direction. This is what we will return as result from our hook.
+* a `threshold` variable that will be use as threshold: we will detect change in the scroll direction if the user scrolls for at least `100`  pixels up or down
+* a `scrollDir` react state defined with the `useState`  hook that will store the current scroll direction. This is what we will return as result from our hook.
 
 After this we will use the `useEffect` hooks, an hook used to [perform side effects in functional components](https://reactjs.org/docs/hooks-effect.html "react hook effect"). Inside it we will define all the scroll detection logic. The `useEffect` hook is invoked without dependencies (the empty array `[]` passed as second parameter). As you may already know this basically means that its behavior will be equivalent to the `componentDidMount`  react class component lifecycle method. This is what we came up so far.
 
@@ -55,8 +55,8 @@ export const useScrollDirection = () => {
 
 Now we are ready to write our scroll detection logic. The first thing to do is to save the initial Y scroll position of the window when we execute the hook. We will store in the `previousScrollYPosition` variable. Then we will write some functions:
 
-* `scrolledMoreThanThreshold(currentScrollYPosition)` is a function that will detect is the user scroll more pixel than the ones defined in the `threshold` variable we defined before. To do this it will basically check that the absolute difference (no sign) between the  `previousScrollYPosition` and the current scroll position received as parameter is greater than `threshold`
-* `isScrollingUp(currentScrollYPosition)` is one of the two core function needed in order to detect the scroll direction. It basically check if the current scroll position is greater that the previous scroll position. We need also to define some **additional checks** needed in order to **to avoid to receive false positive scroll direction** (they will basically avoid scroll direction updates if the user is at the top/bottom of the page and it continues to scroll).
+* `scrolledMoreThanThreshold` is a function that will detect is the user scroll more pixel than the ones defined in the `threshold` variable we defined before. To do this it will basically check that the absolute difference (no sign) between the  `previousScrollYPosition` and the current scroll position received as parameter is greater than `threshold`
+* `isScrollingUp` is one of the two core function needed in order to detect the scroll direction. It basically check if the current scroll position is greater that the previous scroll position. We need also to define some **additional checks** needed in order to **to avoid to receive false positive scroll direction** (they will basically avoid scroll direction updates if the user is at the top/bottom of the page and it continues to scroll).
 * `updateScrollDirection` is the other core function. It basically uses the previous defined functions to check if the user is scrolling more that the threshold and the scroll direction (using the `isScrollingUp`  function). It then update the `scrollDir`  state and the `previousScrollYPosition` variable if a scroll change has been detected.
 * `onScroll`  is a function that attaches the  `updateScrollDirection` function to the `window.requestAnimationFrame` function so that we can calculate our scroll direction in sync with the window refresh frame rate (so if you have a refresh of 60 fps you will receive 60 calls per seconds). In this way we will be sure that our scroll direction calculation will happen after each page render/repaint.
 
