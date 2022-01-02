@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 export enum ScrollDirection {
-  up,
-  down,
+  up = "up",
+  down = "down",
 }
 
 export const useScrollDirection = () => {
