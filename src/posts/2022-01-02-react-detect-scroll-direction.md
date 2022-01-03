@@ -17,7 +17,7 @@ In the last year I migrated this blog on [GatsbyJS](https://www.gatsbyjs.com). T
 
 #### Implementation
 
-Let’s start from defining an enum that will represent the scroll direction. Let’s define it as string, because you know that :bomb: [enums in typescript are dangerous if you don’t define explicit values] (https://www.aaron-powell.com/posts/2020-05-27-the-dangers-of-typescript-enums/ “enum typescript danger”)  :bomb:. 
+Let’s start from defining an enum that will represent the scroll direction. Let’s define it as string, because you know that :bomb: [enums in typescript are dangerous if you don’t define explicit values](https://www.aaron-powell.com/posts/2020-05-27-the-dangers-of-typescript-enums/ “enum typescript danger”) :bomb:. 
 
 ```typescript
 export enum ScrollDirection {
