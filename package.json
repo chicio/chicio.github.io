@@ -85,7 +85,7 @@
     "react-helmet": "^6.1.0",
     "react-instantsearch-dom": "^6.22.0",
     "react-transition-group": "^4.4.2",
-    "react-tsparticles": "1.37.4",
+    "react-tsparticles": "^1.37.4",
     "reading-time": "^1.5.0",
     "styled-components": "^5.3.3",
     "styled-icons": "^10.45.0"

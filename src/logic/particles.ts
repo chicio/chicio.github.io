@@ -12,6 +12,7 @@ export const useParticlesConfiguration: () => ISourceOptions = () => {
         value: "transparent",
       },
     },
+    fullScreen: false,
     fpsLimit: isPowerfulDevice ? 60 : 30,
     interactivity: {
       detectsOn: "canvas",
