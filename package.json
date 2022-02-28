@@ -75,7 +75,7 @@
     "gatsby-source-filesystem": "^4.8.0",
     "gatsby-transformer-remark": "^5.8.0",
     "gatsby-transformer-sharp": "^4.8.0",
-    "katex": "^0.13.3",
+    "katex": "0.13.3",
     "postcss": "^8.4.6",
     "prismjs": "^1.27.0",
     "react": "^17.0.2",
@@ -85,7 +85,7 @@
     "react-helmet": "^6.1.0",
     "react-instantsearch-dom": "^6.22.0",
     "react-transition-group": "^4.4.2",
-    "react-tsparticles": "^1.41.4",
+    "react-tsparticles": "1.37.4",
     "reading-time": "^1.5.0",
     "styled-components": "^5.3.3",
     "styled-icons": "^10.45.0"

@@ -3652,57 +3652,57 @@ export type MarkdownRemarkSortInput = {
 export type AuthorsImagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AuthorsImagesQuery = { allFile: { edges: Array<{ node: { name: string, childImageSharp?: { gatsbyImageData: any } | null | undefined } }> } };
+export type AuthorsImagesQuery = { allFile: { edges: Array<{ node: { name: string, childImageSharp?: { gatsbyImageData: any } | null } }> } };
 
 export type RecentPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type RecentPostsQuery = { allMarkdownRemark: { edges: Array<{ node: { fields?: { slug?: string | null | undefined, readingTime?: { text?: string | null | undefined } | null | undefined } | null | undefined, frontmatter?: { title?: string | null | undefined, description?: string | null | undefined, authors?: Array<string | null | undefined> | null | undefined, tags?: Array<string | null | undefined> | null | undefined, date?: any | null | undefined, image?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined } }> } };
+export type RecentPostsQuery = { allMarkdownRemark: { edges: Array<{ node: { fields?: { slug?: string | null, readingTime?: { text?: string | null } | null } | null, frontmatter?: { title?: string | null, description?: string | null, authors?: Array<string | null> | null, tags?: Array<string | null> | null, date?: any | null, image?: { childImageSharp?: { gatsbyImageData: any } | null } | null } | null } }> } };
 
 export type SocialContactsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SocialContactsQuery = { site?: { siteMetadata?: { contacts?: { email?: string | null | undefined, phone?: string | null | undefined, links?: { twitter?: string | null | undefined, facebook?: string | null | undefined, linkedin?: string | null | undefined, github?: string | null | undefined, medium?: string | null | undefined, devto?: string | null | undefined, instagram?: string | null | undefined } | null | undefined } | null | undefined } | null | undefined } | null | undefined };
+export type SocialContactsQuery = { site?: { siteMetadata?: { contacts?: { email?: string | null, phone?: string | null, links?: { twitter?: string | null, facebook?: string | null, linkedin?: string | null, github?: string | null, medium?: string | null, devto?: string | null, instagram?: string | null } | null } | null } | null } | null };
 
 export type ShowcasePageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ShowcasePageQuery = { site?: { siteMetadata?: { author?: string | null | undefined } | null | undefined } | null | undefined };
+export type ShowcasePageQuery = { site?: { siteMetadata?: { author?: string | null } | null } | null };
 
 export type HeadQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type HeadQuery = { site?: { siteMetadata?: { author?: string | null | undefined, title?: string | null | undefined, siteUrl?: string | null | undefined, contacts?: { links?: { twitter?: string | null | undefined, facebook?: string | null | undefined, linkedin?: string | null | undefined, github?: string | null | undefined, medium?: string | null | undefined, devto?: string | null | undefined, instagram?: string | null | undefined } | null | undefined } | null | undefined } | null | undefined } | null | undefined };
+export type HeadQuery = { site?: { siteMetadata?: { author?: string | null, title?: string | null, siteUrl?: string | null, contacts?: { links?: { twitter?: string | null, facebook?: string | null, linkedin?: string | null, github?: string | null, medium?: string | null, devto?: string | null, instagram?: string | null } | null } | null } | null } | null };
 
 export type ArtQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ArtQuery = { site?: { siteMetadata?: { author?: string | null | undefined, featuredArtImage?: string | null | undefined } | null | undefined } | null | undefined, allFile: { edges: Array<{ node: { name: string, childImageSharp?: { gatsbyImageData: any } | null | undefined } }> } };
+export type ArtQuery = { site?: { siteMetadata?: { author?: string | null, featuredArtImage?: string | null } | null } | null, allFile: { edges: Array<{ node: { name: string, childImageSharp?: { gatsbyImageData: any } | null } }> } };
 
 export type ArchiveQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ArchiveQuery = { allMarkdownRemark: { edges: Array<{ node: { fields?: { slug?: string | null | undefined } | null | undefined, frontmatter?: { date?: any | null | undefined, title?: string | null | undefined } | null | undefined } }> }, site?: { siteMetadata?: { title?: string | null | undefined, author?: string | null | undefined, featuredImage?: string | null | undefined } | null | undefined } | null | undefined };
+export type ArchiveQuery = { allMarkdownRemark: { edges: Array<{ node: { fields?: { slug?: string | null } | null, frontmatter?: { date?: any | null, title?: string | null } | null } }> }, site?: { siteMetadata?: { title?: string | null, author?: string | null, featuredImage?: string | null } | null } | null };
 
 export type PostsGroupByTagsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PostsGroupByTagsQuery = { site?: { siteMetadata?: { title?: string | null | undefined, author?: string | null | undefined, featuredImage?: string | null | undefined } | null | undefined } | null | undefined, allMarkdownRemark: { group: Array<{ fieldValue?: string | null | undefined, totalCount: number }> } };
+export type PostsGroupByTagsQuery = { site?: { siteMetadata?: { title?: string | null, author?: string | null, featuredImage?: string | null } | null } | null, allMarkdownRemark: { group: Array<{ fieldValue?: string | null, totalCount: number }> } };
 
 export type CookiePolicyQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type CookiePolicyQuery = { site?: { siteMetadata?: { title?: string | null | undefined, author?: string | null | undefined, featuredImage?: string | null | undefined } | null | undefined } | null | undefined };
+export type CookiePolicyQuery = { site?: { siteMetadata?: { title?: string | null, author?: string | null, featuredImage?: string | null } | null } | null };
 
 export type HomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type HomePageQuery = { site?: { siteMetadata?: { author?: string | null | undefined, featuredImage?: string | null | undefined } | null | undefined } | null | undefined };
+export type HomePageQuery = { site?: { siteMetadata?: { author?: string | null, featuredImage?: string | null } | null } | null };
 
 export type PrivacyPolicyQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PrivacyPolicyQuery = { site?: { siteMetadata?: { title?: string | null | undefined, author?: string | null | undefined, featuredImage?: string | null | undefined } | null | undefined } | null | undefined };
+export type PrivacyPolicyQuery = { site?: { siteMetadata?: { title?: string | null, author?: string | null, featuredImage?: string | null } | null } | null };
 
 export type BlogListQueryVariables = Exact<{
   skip: Scalars['Int'];
@@ -3710,44 +3710,44 @@ export type BlogListQueryVariables = Exact<{
 }>;
 
 
-export type BlogListQuery = { allMarkdownRemark: { edges: Array<{ node: { fields?: { slug?: string | null | undefined, readingTime?: { text?: string | null | undefined } | null | undefined } | null | undefined, frontmatter?: { title?: string | null | undefined, description?: string | null | undefined, authors?: Array<string | null | undefined> | null | undefined, tags?: Array<string | null | undefined> | null | undefined, date?: any | null | undefined, image?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined } }> }, site?: { siteMetadata?: { title?: string | null | undefined, author?: string | null | undefined, featuredImage?: string | null | undefined } | null | undefined } | null | undefined };
+export type BlogListQuery = { allMarkdownRemark: { edges: Array<{ node: { fields?: { slug?: string | null, readingTime?: { text?: string | null } | null } | null, frontmatter?: { title?: string | null, description?: string | null, authors?: Array<string | null> | null, tags?: Array<string | null> | null, date?: any | null, image?: { childImageSharp?: { gatsbyImageData: any } | null } | null } | null } }> }, site?: { siteMetadata?: { title?: string | null, author?: string | null, featuredImage?: string | null } | null } | null };
 
 export type PostQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-export type PostQuery = { markdownRemark?: { html?: string | null | undefined, frontmatter?: { title?: string | null | undefined, comments?: boolean | null | undefined, authors?: Array<string | null | undefined> | null | undefined, tags?: Array<string | null | undefined> | null | undefined, date?: any | null | undefined, description?: string | null | undefined, math?: boolean | null | undefined, image?: { childImageSharp?: { gatsbyImageData: any } | null | undefined } | null | undefined } | null | undefined, fields?: { slug?: string | null | undefined, readingTime?: { text?: string | null | undefined } | null | undefined } | null | undefined } | null | undefined, site?: { siteMetadata?: { author?: string | null | undefined } | null | undefined } | null | undefined };
+export type PostQuery = { markdownRemark?: { html?: string | null, frontmatter?: { title?: string | null, comments?: boolean | null, authors?: Array<string | null> | null, tags?: Array<string | null> | null, date?: any | null, description?: string | null, math?: boolean | null, image?: { childImageSharp?: { gatsbyImageData: any } | null } | null } | null, fields?: { slug?: string | null, readingTime?: { text?: string | null } | null } | null } | null, site?: { siteMetadata?: { author?: string | null } | null } | null };
 
 export type TagPostsQueryVariables = Exact<{
   tag?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type TagPostsQuery = { allMarkdownRemark: { totalCount: number, edges: Array<{ node: { fields?: { slug?: string | null | undefined } | null | undefined, frontmatter?: { title?: string | null | undefined, date?: any | null | undefined } | null | undefined } }> }, site?: { siteMetadata?: { title?: string | null | undefined, author?: string | null | undefined, featuredImage?: string | null | undefined } | null | undefined } | null | undefined };
+export type TagPostsQuery = { allMarkdownRemark: { totalCount: number, edges: Array<{ node: { fields?: { slug?: string | null } | null, frontmatter?: { title?: string | null, date?: any | null } | null } }> }, site?: { siteMetadata?: { title?: string | null, author?: string | null, featuredImage?: string | null } | null } | null };
 
-export type GatsbyImageSharpFixedFragment = { base64?: string | null | undefined, width: number, height: number, src: string, srcSet: string };
+export type GatsbyImageSharpFixedFragment = { base64?: string | null, width: number, height: number, src: string, srcSet: string };
 
-export type GatsbyImageSharpFixed_TracedSvgFragment = { tracedSVG?: string | null | undefined, width: number, height: number, src: string, srcSet: string };
+export type GatsbyImageSharpFixed_TracedSvgFragment = { tracedSVG?: string | null, width: number, height: number, src: string, srcSet: string };
 
-export type GatsbyImageSharpFixed_WithWebpFragment = { base64?: string | null | undefined, width: number, height: number, src: string, srcSet: string, srcWebp?: string | null | undefined, srcSetWebp?: string | null | undefined };
+export type GatsbyImageSharpFixed_WithWebpFragment = { base64?: string | null, width: number, height: number, src: string, srcSet: string, srcWebp?: string | null, srcSetWebp?: string | null };
 
-export type GatsbyImageSharpFixed_WithWebp_TracedSvgFragment = { tracedSVG?: string | null | undefined, width: number, height: number, src: string, srcSet: string, srcWebp?: string | null | undefined, srcSetWebp?: string | null | undefined };
+export type GatsbyImageSharpFixed_WithWebp_TracedSvgFragment = { tracedSVG?: string | null, width: number, height: number, src: string, srcSet: string, srcWebp?: string | null, srcSetWebp?: string | null };
 
 export type GatsbyImageSharpFixed_NoBase64Fragment = { width: number, height: number, src: string, srcSet: string };
 
-export type GatsbyImageSharpFixed_WithWebp_NoBase64Fragment = { width: number, height: number, src: string, srcSet: string, srcWebp?: string | null | undefined, srcSetWebp?: string | null | undefined };
+export type GatsbyImageSharpFixed_WithWebp_NoBase64Fragment = { width: number, height: number, src: string, srcSet: string, srcWebp?: string | null, srcSetWebp?: string | null };
 
-export type GatsbyImageSharpFluidFragment = { base64?: string | null | undefined, aspectRatio: number, src: string, srcSet: string, sizes: string };
+export type GatsbyImageSharpFluidFragment = { base64?: string | null, aspectRatio: number, src: string, srcSet: string, sizes: string };
 
 export type GatsbyImageSharpFluidLimitPresentationSizeFragment = { maxHeight: number, maxWidth: number };
 
-export type GatsbyImageSharpFluid_TracedSvgFragment = { tracedSVG?: string | null | undefined, aspectRatio: number, src: string, srcSet: string, sizes: string };
+export type GatsbyImageSharpFluid_TracedSvgFragment = { tracedSVG?: string | null, aspectRatio: number, src: string, srcSet: string, sizes: string };
 
-export type GatsbyImageSharpFluid_WithWebpFragment = { base64?: string | null | undefined, aspectRatio: number, src: string, srcSet: string, srcWebp?: string | null | undefined, srcSetWebp?: string | null | undefined, sizes: string };
+export type GatsbyImageSharpFluid_WithWebpFragment = { base64?: string | null, aspectRatio: number, src: string, srcSet: string, srcWebp?: string | null, srcSetWebp?: string | null, sizes: string };
 
-export type GatsbyImageSharpFluid_WithWebp_TracedSvgFragment = { tracedSVG?: string | null | undefined, aspectRatio: number, src: string, srcSet: string, srcWebp?: string | null | undefined, srcSetWebp?: string | null | undefined, sizes: string };
+export type GatsbyImageSharpFluid_WithWebp_TracedSvgFragment = { tracedSVG?: string | null, aspectRatio: number, src: string, srcSet: string, srcWebp?: string | null, srcSetWebp?: string | null, sizes: string };
 
 export type GatsbyImageSharpFluid_NoBase64Fragment = { aspectRatio: number, src: string, srcSet: string, sizes: string };
 
-export type GatsbyImageSharpFluid_WithWebp_NoBase64Fragment = { aspectRatio: number, src: string, srcSet: string, srcWebp?: string | null | undefined, srcSetWebp?: string | null | undefined, sizes: string };
+export type GatsbyImageSharpFluid_WithWebp_NoBase64Fragment = { aspectRatio: number, src: string, srcSet: string, srcWebp?: string | null, srcSetWebp?: string | null, sizes: string };
