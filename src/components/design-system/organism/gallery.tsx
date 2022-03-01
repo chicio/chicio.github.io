@@ -77,9 +77,8 @@ export interface GalleryProps {
 }
 
 export const Gallery: React.FC<GalleryProps> = ({ images }) => {
-  const [currentImage, setCurrentImage] = useState<IGatsbyImageData | null>(
-    null
-  );
+  const [currentImage, setCurrentImage] =
+    useState<IGatsbyImageData | null>(null);
 
   return (
     <>

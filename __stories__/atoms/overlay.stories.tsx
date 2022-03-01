@@ -20,9 +20,9 @@ OverlayStory.args = {
   zIndex: 200,
   delay: "0.3s",
 };
-OverlayStory.storyName = "Menu";
+OverlayStory.storyName = "Overlay";
 
 export default {
-  title: "Atoms/Overlay",
+  title: "Atoms",
   component: Overlay,
 } as Meta;
