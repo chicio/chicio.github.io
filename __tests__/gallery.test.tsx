@@ -68,9 +68,7 @@ describe("Gallery", () => {
   it("shows the image when the user clicks on it", async () => {
     render(
       <BlogThemePage>
-        <Gallery
-
-          images={images} />
+        <Gallery images={images} />
       </BlogThemePage>
     );
 
