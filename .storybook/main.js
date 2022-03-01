@@ -28,6 +28,8 @@ module.exports = {
         presets: [["react-app", { flow: false, typescript: true }]],
         plugins: [
           require.resolve("@babel/plugin-proposal-class-properties"),
+          require.resolve("@babel/plugin-proposal-private-methods"), /** https://github.com/babel/babel/issues/11622#issuecomment-638609015 **/
+          require.resolve("@babel/plugin-proposal-private-property-in-object"), /** https://github.com/babel/babel/issues/11622#issuecomment-638609015 **/
           /** https://github.com/gatsbyjs/gatsby/issues/26099 **/
           [require.resolve("babel-plugin-remove-graphql-queries"), {
             stage: "develop-html",
