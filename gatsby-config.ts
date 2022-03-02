@@ -2,6 +2,13 @@ import { GatsbyConfig } from "gatsby";
 
 require("dotenv").config();
 
+interface GatsbyPluginFeed {
+  query: {
+    site: any;
+    allMarkdownRemark: any;
+  };
+}
+
 const config: GatsbyConfig = {
   siteMetadata: {
     title:
@@ -162,13 +169,17 @@ const config: GatsbyConfig = {
         `,
         feeds: [
           {
-            serialize: (query: any) => {
-              return query.allMarkdownRemark.edges.map((edge: any) => {
+            serialize: (data: GatsbyPluginFeed) => {
+              return data.query.allMarkdownRemark.edges.map((edge: any) => {
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.excerpt,
                   date: edge.node.frontmatter.date,
-                  url: query.site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  guid: query.site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  url:
+                    data.query.site.siteMetadata.siteUrl +
+                    edge.node.fields.slug,
+                  guid:
+                    data.query.site.siteMetadata.siteUrl +
+                    edge.node.fields.slug,
                   custom_elements: [{ "content:encoded": edge.node.html }],
                 });
               });
