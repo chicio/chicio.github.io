@@ -1,15 +1,16 @@
-const path = require("path");
-const readingTime = require("reading-time");
-const {
-  slugs,
-  generateTagSlug,
-  generatePostSlug,
-} = require("./src/logic/slug");
-const { createFilePath } = require("gatsby-source-filesystem");
+import { GatsbyNode } from "gatsby";
+import readingTime from "reading-time";
+import * as path from "path";
+import { createFilePath } from "gatsby-source-filesystem";
+import { generatePostSlug, generateTagSlug, slugs } from "./src/logic/slug";
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
+export const createPages: GatsbyNode["createPages"] = async ({
+  graphql,
+  actions,
+  reporter,
+}) => {
   const { createPage } = actions;
-  const result = await graphql(
+  const result: any = await graphql(
     `
       {
         allMarkdownRemark(
@@ -41,12 +42,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const posts = result.data.allMarkdownRemark.edges;
 
   //Create posts pages
-  posts.forEach(({ node }) => {
+  posts.forEach((post: any) => {
     createPage({
-      path: node.fields.slug,
+      path: post.node.fields.slug,
       component: path.resolve(`./src/templates/post.tsx`),
       context: {
-        slug: node.fields.slug,
+        slug: post.node.fields.slug,
       },
     });
   });
@@ -68,8 +69,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   });
 
   //Create tag pages
-  const tags = result.data.tagsGroup.group;
-  tags.forEach((tag) => {
+  const tags: any = result.data.tagsGroup.group;
+  tags.forEach((tag: any) => {
     createPage({
       path: generateTagSlug(tag.fieldValue),
       component: path.resolve("./src/templates/tag.tsx"),
@@ -80,7 +81,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   });
 };
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+export const onCreateNode: GatsbyNode["onCreateNode"] = ({
+  node,
+  actions,
+  getNode,
+}) => {
   const { createNodeField } = actions;
   if (node.internal.type === `MarkdownRemark`) {
     const filename = createFilePath({ node, getNode, basePath: `pages` });
@@ -88,7 +93,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       node,
       name: `readingTime`,
-      value: readingTime(node.rawMarkdownBody),
+      value: readingTime(node.rawMarkdownBody as string),
     });
   }
 };
