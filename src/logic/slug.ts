@@ -1,4 +1,4 @@
-const allSlugs = {
+export const slugs = {
   blog: "/blog/",
   tags: "/blog/tags/",
   archive: "/blog/archive/",
@@ -6,12 +6,10 @@ const allSlugs = {
   art: "/art/",
 };
 
-exports.slugs = allSlugs;
+export const generateTagSlug = (tag: string) =>
+  `${slugs.tags}${tag.split(" ").join("-")}/`;
 
-exports.generateTagSlug = (tag) =>
-  `${allSlugs.tags}${tag.split(" ").join("-")}/`;
-
-exports.generatePostSlug = (filename) => {
+export const generatePostSlug = (filename: string) => {
   const [year, month, day, ...title] = filename.substring(1).split("-");
   return `/${year}/${month}/${day}/${title.join("-")}`;
 };
