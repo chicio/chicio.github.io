@@ -1,6 +1,8 @@
+import { GatsbyConfig } from "gatsby";
+
 require("dotenv").config();
 
-module.exports = {
+const config: GatsbyConfig = {
   siteMetadata: {
     title:
       "Fabrizio Duroni | Fabrizio Duroni ‘Chicio Coding’ official site with profile details. Official blog chicio coding. Main skills: mobile application development, computer graphics, web development.",
@@ -68,7 +70,6 @@ module.exports = {
         name: "images",
         path: "./src/images/",
       },
-      __key: "images",
     },
     {
       resolve: "gatsby-source-filesystem",
@@ -76,7 +77,6 @@ module.exports = {
         name: "pages",
         path: "./src/pages/",
       },
-      __key: "pages",
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -84,7 +84,6 @@ module.exports = {
         path: `./src/posts`,
         name: `posts`,
       },
-      __key: "posts",
     },
     {
       resolve: `gatsby-transformer-remark`,
@@ -163,13 +162,13 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map((edge) => {
+            serialize: (query: any) => {
+              return query.allMarkdownRemark.edges.map((edge: any) => {
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.excerpt,
                   date: edge.node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  url: query.site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  guid: query.site.siteMetadata.siteUrl + edge.node.fields.slug,
                   custom_elements: [{ "content:encoded": edge.node.html }],
                 });
               });
@@ -212,3 +211,5 @@ module.exports = {
     },
   ],
 };
+
+export default config;
