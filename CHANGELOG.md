@@ -6,6 +6,14 @@ Release date: 2021-12-03
 
 #### Added
 
+- gatsby-config migrated to typescript
+- gatsby-node migrated to typescript
+
+## [5.3.0](https://github.com/chicio/chicio.github.io/releases/tag/v5.3.0)
+Release date: 2021-12-03
+
+#### Added
+
 - New search feature with algolia
 
 ## [5.2.0](https://github.com/chicio/chicio.github.io/releases/tag/v5.2.0)
