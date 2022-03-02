@@ -2,7 +2,7 @@
 All changes to Chicio coding will be documented in this file.
 
 ## [5.4.0](https://github.com/chicio/chicio.github.io/releases/tag/v5.4.0)
-Release date: 2021-03-xx
+Release date: 2021-03-02
 
 #### Added
 
