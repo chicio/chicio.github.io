@@ -27,7 +27,7 @@ if we decide to stick with it) from one of our new app specific module *without 
 coupling/dependencies*. This is how me and [Alex Stabile](https://www.linkedin.com/in/alex-stabile-a9316b94/) 
 discovered the power of [Java Service Provider interface](https://www.baeldung.com/java-spi), used by [Jackson 
 Object Mapper](https://www.baeldung.com/jackson-object-mapper-tutorial) to register external custom [Modules](https://fasterxml.github.io/jackson-databind/javadoc/2.7/com/fasterxml/jackson/databind/Module.html) in order 
-to apply application specific serialization/deserialization procedures. 
+to apply application specific serialization/deserialization procedures.  
 Before starting with the implementation details, let me introduce Alex :rocket::clap:. He is a Senior Software 
 Engineer with 9 years of experience. He is able to develop software application as a real Full stack developer, from 
 the backend using a lot of different languages, to the frontend (web and mobile).
