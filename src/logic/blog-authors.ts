@@ -60,4 +60,9 @@ export const blogAuthors: { [authorName: string]: BlogAuthor } = {
     url: "https://www.linkedin.com/in/stefanovaresi/",
     image: "stefano-varesi.jpg",
   },
+  alex_stabile: {
+    name: "Alex Stabile",
+    url: "https://www.linkedin.com/in/alex-stabile-a9316b94/",
+    image: "alex-stabile.jpg",
+  },
 };
