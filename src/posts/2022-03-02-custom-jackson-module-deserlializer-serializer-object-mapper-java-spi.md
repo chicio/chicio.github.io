@@ -282,7 +282,8 @@ just have to add a file named `com.fasterxml.jackson.databind.Module` in  the `M
 
 That's it!!! :rocket: With the implementation above we have a custom Jackson `Module` that will be loaded by its 
 `ObjectMapper` automatically without creating any dependencies. In this way you will be able to publish your 
-custom serializer/deserializer as custom maven artifacts and you them in all your projects (without copy/paste them) :heart:.
+custom serializer/deserializer as custom maven artifacts and use them in all your projects (without copy/paste them)
+:heart:.
 
 #### Conclusion
 
