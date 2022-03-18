@@ -193,7 +193,7 @@ This is not what we want!!! :fearful:  What we would like to have as response is
 
 We also have the same problem in the `/product/add` endpoint, where we are forced to send a request with the payload 
 above, the one with all the `Money` fields, in order to add a product. How can we customize the way the Jackson 
-`ObjectMapper` serialize/deserialize `Money` instances? :thinking: We can write a custom `Module` for it. By 
+`ObjectMapper` serialize/deserialize `Money` instances? We can write a custom `Module` for it. By 
 defining a custom module we can add ad-hoc serializers and deserializers. We will define our object mapper module in 
 a *new maven module* called `money-module`.  
 Let's start by defining the`MoneyDeserializer`. It will give us the ability to define a `Money` instance from the data 
@@ -265,7 +265,7 @@ class ProductConfiguration {
 ```
 
 If you look closely to our `ObjectMapper` definition you can see something interesting: before returning the 
-instance creation there is a call to the `findAndRegisterModules`. What does this method do? :thinking: It contains 
+instance creation there is a call to the `findAndRegisterModules`. What does this method do? It contains 
 the core feature of Jackson `Module`s load :heart_eyes:. This method is in charge of loading external third party 
 modules using the [Java Service Provider interfaces](https://www.baeldung.com/java-spi).  
 This a feature of Java 6 that let (library) developer write code to load and discovery third party plugins for their 
