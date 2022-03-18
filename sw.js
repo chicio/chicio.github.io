@@ -27,45 +27,45 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-5f7e155352601270c515.js"
+    "url": "webpack-runtime-12214529b75deb08eae1.js"
   },
   {
-    "url": "framework-9cd0c2aa5690887dcdcb.js"
+    "url": "framework-32184bd0f1f807e0608e.js"
   },
   {
-    "url": "app-afc869317938bbf8013c.js"
+    "url": "app-ce8a556031a03666dff8.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "1bfed6f7c535dab833e9aaf88fecc7e6"
+    "revision": "faf89cbbdcfe77a5299744989b1f045b"
   },
   {
-    "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-d79825d632e08eb800de.js"
+    "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-1f7102e6b10dd0fe9aba.js"
   },
   {
-    "url": "polyfill-d96093af65fad258873e.js"
+    "url": "polyfill-38c833173d687e91d2b9.js"
   },
   {
     "url": "fonts/opensans/OpenSans-Regular.woff2",
     "revision": "237aa94493d93bcf630b9a062f455d0a"
   },
   {
-    "url": "components-bottom-index-2becda662bb977ba949b.js"
+    "url": "components-bottom-index-073791f8557399015237.js"
   },
   {
-    "url": "organism-footer-e88badfb45ae7fc13118.js"
+    "url": "organism-footer-fdd3055d54efe53570ac.js"
   },
   {
-    "url": "7d922248f3170ff62b5a6da11be4c0a74b264aae-e035c9f760b3e2e62426.js"
+    "url": "7d922248f3170ff62b5a6da11be4c0a74b264aae-986d1d3d4e34309caad3.js"
   },
   {
-    "url": "914958666ef227473ebbe31d2950aff9e5b3296f-d98f8db69618c83a63b1.js"
+    "url": "914958666ef227473ebbe31d2950aff9e5b3296f-f177e9792845097cb667.js"
   },
   {
-    "url": "5e6831fc1f485ba31a1357a8b6f36ac28377926f-77eb8c19221c2556714c.js"
+    "url": "5e6831fc1f485ba31a1357a8b6f36ac28377926f-2bb82ddbc36d5ee890d4.js"
   },
   {
-    "url": "component---src-pages-index-tsx-d3d86a37caac8fc5b379.js"
+    "url": "component---src-pages-index-tsx-3efab4473810713177ed.js"
   },
   {
     "url": "page-data/index/page-data.json",
@@ -89,21 +89,21 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "44ed495ae691085e04bbf04da8b90b98"
+    "revision": "4970fac6ed7bb78f008dd74ffb62789d"
   },
   {
-    "url": "745697599779acbf64bd6cb57221c6f0812223f3-00b54fbb08d43aba59b0.js"
+    "url": "745697599779acbf64bd6cb57221c6f0812223f3-fd906610d9b51bc7e90d.js"
   },
   {
-    "url": "component---src-templates-blog-tsx-898f7b76cc165731e011.js"
+    "url": "component---src-templates-blog-tsx-3d8621944c30a89daf00.js"
   },
   {
     "url": "page-data/blog/page-data.json",
-    "revision": "1c50baade8a8b091d23fa0b495ddf76e"
+    "revision": "78e5b3760e64be63361555330b334719"
   },
   {
     "url": "page-data/sq/d/379746230.json",
-    "revision": "921e0da11791ac7b1cdcd0fb81a42822"
+    "revision": "f6aa7fa2c27da80f7c319ec97d20057e"
   },
   {
     "url": "manifest.webmanifest",
@@ -133,6 +133,24 @@ const MessageAPI = {
 
   clearPathResources: event => {
     event.waitUntil(idbKeyval.clear())
+
+    // We detected compilation hash mismatch
+    // we should clear runtime cache as data
+    // files might be out of sync and we should
+    // do fresh fetches for them
+    event.waitUntil(
+      caches.keys().then(function (keyList) {
+        return Promise.all(
+          keyList.map(function (key) {
+            if (key && key.includes(`runtime`)) {
+              return caches.delete(key)
+            }
+
+            return Promise.resolve()
+          })
+        )
+      })
+    )
   },
 
   enableOfflineShell: () => {
@@ -199,7 +217,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/app-afc869317938bbf8013c.js`))) {
+  if (!resources || !(await caches.match(`/app-ce8a556031a03666dff8.js`))) {
     return await fetch(event.request)
   }
 
