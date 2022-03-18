@@ -268,7 +268,7 @@ If you look closely to our `ObjectMapper` definition you can see something inter
 instance creation there is a call to the `findAndRegisterModules`. What does this method do? It contains 
 the core feature of Jackson `Module`s load :heart_eyes:. This method is in charge of loading external third party 
 modules using the [Java Service Provider interfaces](https://www.baeldung.com/java-spi).  
-This a feature of Java 6 that let (library) developer write code to load and discovery third party plugins for their 
+This is a feature of Java 6 that let (library) developer write code to load and discovery third party plugins for their 
 library implementations that matches a specific interface. In our case Jackson uses it to load every third party 
 implementation that matches the `Module` interface. How does it work? The `ServiceProvider` will scan the classpath 
 searching for service definition adhering to the base interface defined for the external/third party implementation.  
