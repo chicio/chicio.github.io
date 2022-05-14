@@ -64,5 +64,4 @@ myFunction { (parameters) -> returnType in
 ```
 
 There is also the possibility to use a shorthand for the parameter: you can call them using `$` followed by the index of
-the argument in the call. Last but not least, you can capture self and avoid retain cycle using `[unowned self]` before
-the parameters. Go and show to the world the power of closure in Swift!! :sunglasses:
+the argument in the call. Last but not least, you can capture self and avoid retain cycle using `[unowned self]` before the parameters. Go and show to the world the power of closure in Swift!! :sunglasses:
