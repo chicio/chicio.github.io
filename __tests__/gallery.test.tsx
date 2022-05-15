@@ -66,6 +66,8 @@ const images = [
 
 describe("Gallery", () => {
   it("shows the image when the user clicks on it", async () => {
+    window.scrollTo = jest.fn();
+
     render(
       <BlogThemePage>
         <Gallery images={images} />
@@ -77,5 +79,7 @@ describe("Gallery", () => {
     const modal = screen.getByAltText("Modal Image");
 
     expect(modal).toBeDefined();
+
+    jest.clearAllMocks();
   });
 });
