@@ -1,4 +1,3 @@
-import * as React from "react";
 import { graphql, PageProps } from "gatsby";
 import { tracking } from "../logic/tracking";
 import { BlogListQuery } from "../../graphql-types";
@@ -9,6 +8,7 @@ import { OgPageType } from "../logic/seo";
 import { getCurrentLocationFrom } from "../logic/current-location";
 import { slugs } from "../logic/slug";
 import { PostsRow } from "../components/design-system/molecules/posts-row";
+import { FC } from "react";
 
 type groupByArrayType = <T>(array: T[], numberPerGroup: number) => T[][];
 
@@ -29,7 +29,7 @@ interface BlogPageContext {
   currentPage: number;
 }
 
-const Blog: React.FC<PageProps<BlogListQuery, BlogPageContext>> = ({
+const Blog: FC<PageProps<BlogListQuery, BlogPageContext>> = ({
   data,
   location,
   pageContext,

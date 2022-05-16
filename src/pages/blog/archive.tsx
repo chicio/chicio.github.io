@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { graphql, PageProps } from "gatsby";
 import { ArchiveQuery } from "../../../graphql-types";
 import { tracking } from "../../logic/tracking";
@@ -6,7 +6,7 @@ import { BlogGenericPostListPageTemplate } from "../../components/design-system/
 import { OgPageType } from "../../logic/seo";
 import { getCurrentLocationFrom } from "../../logic/current-location";
 
-const Archive: React.FC<PageProps<ArchiveQuery>> = ({ data, location }) => {
+const Archive: FC<PageProps<ArchiveQuery>> = ({ data, location }) => {
   const siteMetadata = data.site!.siteMetadata!;
   const author = siteMetadata.author!;
   const featuredImage = siteMetadata.featuredImage!;

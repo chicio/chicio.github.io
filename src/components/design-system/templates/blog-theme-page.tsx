@@ -1,7 +1,11 @@
 import { blogTheme } from "../theme";
-import React from "react";
+import { FC, ReactNode } from "react";
 import { ThemePage } from "./theme-page";
 
-export const BlogThemePage: React.FC = ({ children }) => (
+interface Props {
+  children?: ReactNode;
+}
+
+export const BlogThemePage: FC<Props> = ({ children }) => (
   <ThemePage theme={blogTheme}>{children}</ThemePage>
 );

@@ -1,4 +1,3 @@
-import * as React from "react";
 import { graphql, PageProps } from "gatsby";
 import { ArtQuery } from "../../graphql-types";
 import { getCurrentLocationFrom } from "../logic/current-location";
@@ -14,6 +13,7 @@ import { opacity } from "../components/design-system/utils-css/opacity-keyframes
 import ChicioArt from "../images/chicio-art.png";
 // @ts-ignore
 import Background from "../images/wall-bricks-violet.jpg";
+import { FC } from "react";
 
 const BottomArt = loadable(() => import(`../components/bottom-art`));
 
@@ -48,7 +48,7 @@ const BackgroundImage = styled.div`
   z-index: -300;
 `;
 
-const Art: React.FC<PageProps<ArtQuery>> = ({ data, location }) => {
+const Art: FC<PageProps<ArtQuery>> = ({ data, location }) => {
   const siteMetadata = data.site!.siteMetadata!;
   const artImage = siteMetadata.featuredArtImage!;
 

@@ -1,5 +1,4 @@
 import { DesktopBlogHeader } from "../organism/blog-header";
-import * as React from "react";
 import { OgPageType } from "../../../logic/seo";
 import { CurrentLocation } from "../../../logic/current-location";
 import { BlogThemePage } from "./blog-theme-page";
@@ -9,6 +8,7 @@ import loadable from "@loadable/component";
 import styled from "styled-components";
 import { Container } from "../atoms/container";
 import { blogPrimaryColor } from "../blog-colors";
+import { FC, ReactNode } from "react";
 
 const Footer = loadable(() => import(`../organism/footer`));
 
@@ -27,9 +27,10 @@ export interface BlogPageProps {
   description?: string;
   date?: string;
   big?: boolean;
+  children?: ReactNode;
 }
 
-export const BlogPageTemplate: React.FC<BlogPageProps> = ({
+export const BlogPageTemplate: FC<BlogPageProps> = ({
   children,
   location,
   author,

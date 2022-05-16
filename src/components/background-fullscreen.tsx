@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import Particles from "react-tsparticles";
 import { useParticlesConfiguration } from "../logic/particles";
 import { ContainerFullscreen } from "./design-system/atoms/container-fullscreen";
@@ -20,7 +20,7 @@ const BackgroundContainer = styled(ContainerFullscreen)`
   }
 `;
 
-export const BackgroundFullScreen: React.FC = () => {
+export const BackgroundFullScreen: FC = () => {
   const particlesConfiguration = useParticlesConfiguration();
   const particlesInit = async (engine: Engine) => {
     await loadFull(engine);
