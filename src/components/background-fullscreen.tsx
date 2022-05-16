@@ -3,6 +3,8 @@ import Particles from "react-tsparticles";
 import { useParticlesConfiguration } from "../logic/particles";
 import { ContainerFullscreen } from "./design-system/atoms/container-fullscreen";
 import styled from "styled-components";
+import { loadFull } from "tsparticles";
+import { Engine } from "tsparticles-engine";
 
 const BackgroundContainer = styled(ContainerFullscreen)`
   position: absolute;
@@ -20,11 +22,15 @@ const BackgroundContainer = styled(ContainerFullscreen)`
 
 export const BackgroundFullScreen: React.FC = () => {
   const particlesConfiguration = useParticlesConfiguration();
+  const particlesInit = async (engine: Engine) => {
+    await loadFull(engine);
+  };
 
   return (
     <BackgroundContainer>
       <Particles
         className={"tsparticles"}
+        init={particlesInit}
         options={particlesConfiguration}
       />
     </BackgroundContainer>

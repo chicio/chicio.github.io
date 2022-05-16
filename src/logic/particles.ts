@@ -1,7 +1,7 @@
-import { ISourceOptions } from "tsparticles";
 import { useIsPowerfulDevice } from "./device";
 import { isDesktop, isMobile } from "react-device-detect";
 import { blogTextAbovePrimaryColor } from "../components/design-system/blog-colors";
+import { ISourceOptions } from "tsparticles-engine";
 
 export const useParticlesConfiguration: () => ISourceOptions = () => {
   const isPowerfulDevice = useIsPowerfulDevice();
