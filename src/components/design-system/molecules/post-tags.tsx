@@ -1,7 +1,7 @@
 import { Tag } from "./tag";
-import React from "react";
 import styled from "styled-components";
 import { generateTagSlug } from "../../../logic/slug";
+import { FC } from "react";
 
 export interface PostTagsProps {
   tags: Array<string | null | undefined>;
@@ -13,7 +13,7 @@ const PostTagsContainer = styled.div`
   margin: ${(props) => props.theme.spacing[2]} 0;
 `;
 
-export const PostTags: React.FC<PostTagsProps> = ({
+export const PostTags: FC<PostTagsProps> = ({
   tags,
   trackingCategory,
   trackingLabel,

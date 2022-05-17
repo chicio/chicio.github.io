@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { TrackingElementProps, trackWith } from "../logic/tracking";
 import { StandardExternalLink } from "./design-system/atoms/standard-external-link";
 
@@ -6,6 +6,7 @@ type StandardExternalLinkWithTrackingProps = TrackingElementProps & {
   href: string;
   target?: string;
   rel?: string;
+  children?: ReactNode;
 };
 
 export const StandardExternalLinkWithTracking: React.FC<StandardExternalLinkWithTrackingProps> =

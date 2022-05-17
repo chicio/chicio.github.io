@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { opacity } from "../utils-css/opacity-keyframes";
-import React from "react";
+import { FC } from "react";
 import { useLockBodyScroll } from "../hooks/use-lock-body-scroll";
 
 export interface OverlayProps {
@@ -23,7 +23,7 @@ const StyledOverlay = styled.div<OverlayProps>`
   backdrop-filter: blur(4px);
 `;
 
-export const Overlay: React.FC<OverlayProps> = (props) => {
+export const Overlay: FC<OverlayProps> = (props) => {
   useLockBodyScroll();
 
   return <StyledOverlay {...props} />;

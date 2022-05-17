@@ -1,5 +1,4 @@
 import { StaticImage } from "gatsby-plugin-image";
-import * as React from "react";
 import { Heading5 } from "../atoms/heading5";
 import { SocialContacts } from "./social-contacts";
 import { tracking } from "../../../logic/tracking";
@@ -9,6 +8,7 @@ import { slugs } from "../../../logic/slug";
 import { CallToActionInternalWithTracking } from "../../call-to-action-internal-with-tracking";
 import { opacity } from "../utils-css/opacity-keyframes";
 import { mediaQuery } from "../utils-css/media-query";
+import { FC } from "react";
 
 const Author = styled(Heading2)`
   color: ${(props) => props.theme.light.textAbovePrimaryColor};
@@ -57,7 +57,7 @@ export interface ProfilePresentationProps {
   author: string;
 }
 
-export const ProfilePresentation: React.FC<ProfilePresentationProps> = ({
+export const ProfilePresentation: FC<ProfilePresentationProps> = ({
   author,
 }) => (
   <ProfileContainer>

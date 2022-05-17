@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { graphql, PageProps } from "gatsby";
 import { tracking } from "../../logic/tracking";
 import { PostsGroupByTagsQuery } from "../../../graphql-types";
@@ -16,10 +16,7 @@ const TagsContainer = styled(ContainerFluid)`
   margin-bottom: ${(props) => props.theme.spacing[4]};
 `;
 
-const TagsPage: React.FC<PageProps<PostsGroupByTagsQuery>> = ({
-  data,
-  location,
-}) => {
+const TagsPage: FC<PageProps<PostsGroupByTagsQuery>> = ({ data, location }) => {
   const siteMetadata = data.site!.siteMetadata!;
   const author = siteMetadata.author!;
   const featuredImage = siteMetadata.featuredImage!;

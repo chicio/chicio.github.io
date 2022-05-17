@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { tracking } from "../logic/tracking";
 import { graphql, PageProps, useStaticQuery } from "gatsby";
 import { CookiePolicyQuery } from "../../graphql-types";
@@ -12,7 +12,7 @@ import { StandardExternalLink } from "../components/design-system/atoms/standard
 import { OgPageType } from "../logic/seo";
 import { getCurrentLocationFrom } from "../logic/current-location";
 
-const CookiePolicy: React.FC<PageProps> = ({ location }) => {
+const CookiePolicy: FC<PageProps> = ({ location }) => {
   const data = useStaticQuery<CookiePolicyQuery>(
     graphql`
       query CookiePolicy {

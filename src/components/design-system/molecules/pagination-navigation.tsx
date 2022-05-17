@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React from "react";
+import { FC } from "react";
 import { tracking } from "../../../logic/tracking";
 import { CallToActionInternalWithTracking } from "../../call-to-action-internal-with-tracking";
 
@@ -24,7 +24,7 @@ export interface PageNavigationProps {
   isLast: boolean;
 }
 
-export const PaginationNavigation: React.FC<PageNavigationProps> = ({
+export const PaginationNavigation: FC<PageNavigationProps> = ({
   trackingCategory,
   previousPageUrl,
   previousPageTrackingAction,

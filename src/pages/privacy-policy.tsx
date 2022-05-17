@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { tracking } from "../logic/tracking";
 import { graphql, PageProps, useStaticQuery } from "gatsby";
 import { PrivacyPolicyQuery } from "../../graphql-types";
@@ -12,7 +12,7 @@ import { StandardExternalLink } from "../components/design-system/atoms/standard
 import { OgPageType } from "../logic/seo";
 import { getCurrentLocationFrom } from "../logic/current-location";
 
-const PrivacyPolicy: React.FC<PageProps> = ({ location }) => {
+const PrivacyPolicy: FC<PageProps> = ({ location }) => {
   const data = useStaticQuery<PrivacyPolicyQuery>(
     graphql`
       query PrivacyPolicy {
@@ -105,8 +105,8 @@ const PrivacyPolicy: React.FC<PageProps> = ({ location }) => {
         <Paragraph>
           Cookies are files with a small amount of data that are commonly used
           as anonymous unique identifiers. These are sent to your browser from
-          the websites that you visit and are stored on your device's internal
-          memory.
+          the websites that you visit and are stored on your device&apos;s
+          internal memory.
         </Paragraph>
         <Paragraph>
           This Service does not use these “cookies” explicitly. However, the app

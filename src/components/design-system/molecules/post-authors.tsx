@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { tracking } from "../../../logic/tracking";
 import { BlogAuthor, blogAuthors } from "../../../logic/blog-authors";
 import { AuthorsImagesQuery } from "../../../../graphql-types";
@@ -47,7 +47,7 @@ export interface PostAuthorsProps {
   enableUrl: boolean;
 }
 
-export const PostAuthors: React.FC<PostAuthorsProps> = ({
+export const PostAuthors: FC<PostAuthorsProps> = ({
   authors,
   trackingCategory,
   trackingLabel,
