@@ -1,9 +1,9 @@
 import { StaticImage } from "gatsby-plugin-image";
-import * as React from "react";
 import { Paragraph } from "../atoms/paragraph";
 import styled from "styled-components";
 import { ContainerFluid } from "../atoms/container-fluid";
 import { mediaQuery } from "../utils-css/media-query";
+import { FC } from "react";
 
 const TechnologiesContainer = styled(ContainerFluid)`
   margin: 0;
@@ -52,7 +52,7 @@ export interface TechnologiesProps {
   author: string;
 }
 
-export const Technologies: React.FC<TechnologiesProps> = ({ author }) => (
+export const Technologies: FC<TechnologiesProps> = ({ author }) => (
   <TechnologiesContainer>
     <TechnologyParagraph>
       {`I'm ${author}, a software developer with many years of experience.

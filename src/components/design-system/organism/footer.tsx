@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { tracking } from "../../../logic/tracking";
 import { SocialContacts } from "./social-contacts";
 import styled from "styled-components";
@@ -77,7 +77,7 @@ export interface FooterProps {
   trackingCategory: string;
 }
 
-export const Footer: React.FC<FooterProps> = ({ author, trackingCategory }) => (
+export const Footer: FC<FooterProps> = ({ author, trackingCategory }) => (
   <FooterContainer>
     <FooterMenu>
       <FooterMenuItem

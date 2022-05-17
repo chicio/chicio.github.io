@@ -1,7 +1,7 @@
 import { StaticImage } from "gatsby-plugin-image";
 import { Paragraph } from "../atoms/paragraph";
 import { List } from "../atoms/list";
-import React from "react";
+import { FC, ReactElement, ReactNode } from "react";
 import styled, { css } from "styled-components";
 import { Container } from "../atoms/container";
 import { Heading6 } from "../atoms/heading6";
@@ -240,10 +240,11 @@ const TimelineImageContainer = styled.div`
 `;
 
 type TimelineElementProps = TimelinePanelProps & {
-  icon: React.ReactElement;
+  icon: ReactElement;
+  children?: ReactNode;
 };
 
-const TimelineElement: React.FC<TimelineElementProps> = ({
+const TimelineElement: FC<TimelineElementProps> = ({
   children,
   inverted,
   icon,
@@ -256,7 +257,7 @@ const TimelineElement: React.FC<TimelineElementProps> = ({
   </TimelineElementContainer>
 );
 
-export const Timeline: React.FC = () => {
+export const Timeline: FC = () => {
   const iconsSize = 20;
   const briefcase = <Briefcase size={iconsSize} />;
   const graduationCap = <GraduationCap size={iconsSize} />;

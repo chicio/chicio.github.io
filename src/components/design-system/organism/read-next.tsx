@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { RecentPostsQuery } from "../../../../graphql-types";
 import { Heading4 } from "../atoms/heading4";
@@ -29,7 +29,7 @@ export interface RecentPostsProps {
   currentSlug: string;
 }
 
-export const RecentPosts: React.FC<RecentPostsProps> = ({ currentSlug }) => {
+export const RecentPosts: FC<RecentPostsProps> = ({ currentSlug }) => {
   const data = useStaticQuery<RecentPostsQuery>(
     graphql`
       query RecentPosts {

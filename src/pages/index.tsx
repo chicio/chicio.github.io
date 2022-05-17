@@ -1,4 +1,3 @@
-import * as React from "react";
 import { graphql, PageProps, useStaticQuery } from "gatsby";
 import { ProfilePresentation } from "../components/design-system/organism/profile-presentation";
 import { HomePageQuery } from "../../graphql-types";
@@ -10,10 +9,11 @@ import { ShowcasePageTemplate } from "../components/design-system/templates/show
 import { getCurrentLocationFrom } from "../logic/current-location";
 import { blogTheme } from "../components/design-system/theme";
 import { blogPrimaryColor } from "../components/design-system/blog-colors";
+import { FC } from "react";
 
 const BottomIndex = loadable(() => import(`../components/bottom-index`));
 
-const HomePage: React.FC<PageProps> = ({ location }) => {
+const HomePage: FC<PageProps> = ({ location }) => {
   const data = useStaticQuery<HomePageQuery>(
     graphql`
       query HomePage {

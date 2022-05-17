@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from "react";
+import { FC, memo, useCallback, useState } from "react";
 import { tracking } from "../../../logic/tracking";
 import styled, { css } from "styled-components";
 import { Container } from "../atoms/container";
@@ -174,7 +174,7 @@ interface AnimatedNavBarItemProps {
   onFinishAnimation: () => void;
 }
 
-const AnimatedNavBarItem: React.FC<AnimatedNavBarItemProps> = ({
+const AnimatedNavBarItem: FC<AnimatedNavBarItemProps> = ({
   label,
   slug,
   selected,
@@ -220,21 +220,20 @@ export interface MenuProps {
   pathname: string;
 }
 
-export const BlogMenu: React.FC<MenuProps> = ({
-  trackingCategory,
-  pathname,
-}) => {
+export const BlogMenu: FC<MenuProps> = ({ trackingCategory, pathname }) => {
   const direction = useScrollDirection();
   const [shouldOpenMenu, setShouldOpenMenu] = useState(false);
   const [enableMenuButton, setEnableMenuButton] = useState(true);
   const [startSearch, setStartSearch] = useState(false);
 
-  const onStartAnimation = useCallback(() => setEnableMenuButton(false), [
-    setEnableMenuButton,
-  ]);
-  const onFinishAnimation = useCallback(() => setEnableMenuButton(true), [
-    setEnableMenuButton,
-  ]);
+  const onStartAnimation = useCallback(
+    () => setEnableMenuButton(false),
+    [setEnableMenuButton]
+  );
+  const onFinishAnimation = useCallback(
+    () => setEnableMenuButton(true),
+    [setEnableMenuButton]
+  );
   const changeMenuStatus = useCallback(
     (enableMenuButton: boolean, shouldOpenMenu: boolean) => {
       if (enableMenuButton) {

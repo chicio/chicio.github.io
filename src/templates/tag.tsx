@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { graphql, PageProps } from "gatsby";
 import { tracking } from "../logic/tracking";
 import { TagPostsQuery } from "../../graphql-types";
@@ -10,7 +10,7 @@ interface TagPageContext {
   tag: string;
 }
 
-const Tag: React.FC<PageProps<TagPostsQuery, TagPageContext>> = ({
+const Tag: FC<PageProps<TagPostsQuery, TagPageContext>> = ({
   data,
   pageContext,
   location,

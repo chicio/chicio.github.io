@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { Helmet } from "react-helmet";
 import { graphql, useStaticQuery } from "gatsby";
 import { HeadQuery } from "../../graphql-types";
@@ -51,7 +51,7 @@ interface HeadProps {
   cookieConsentColor: string;
 }
 
-export const Head: React.FC<HeadProps> = ({
+export const Head: FC<HeadProps> = ({
   url,
   pageType,
   imageUrl,

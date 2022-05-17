@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { DiscussionEmbed } from "disqus-react";
 import styled from "styled-components";
 
@@ -15,7 +15,7 @@ const CommentsContainer = styled.div`
   }
 `;
 
-export const Comments: React.FC<CommentsProps> = ({ url, title }) => (
+export const Comments: FC<CommentsProps> = ({ url, title }) => (
   <CommentsContainer>
     <DiscussionEmbed
       shortname={"fabrizio-duroni"}

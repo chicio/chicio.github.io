@@ -4,11 +4,11 @@ import { Head } from "../../head";
 import { OgPageType } from "../../../logic/seo";
 import { ContainerFullscreen } from "../atoms/container-fullscreen";
 import { DownArrow } from "../molecules/down-arrow";
-import * as React from "react";
 import { CurrentLocation } from "../../../logic/current-location";
 import loadable from "@loadable/component";
 import { ThemePage } from "./theme-page";
 import { DefaultTheme } from "styled-components";
+import { FC, ReactNode } from "react";
 
 const Footer = loadable(() => import(`..//organism/footer`));
 
@@ -21,9 +21,10 @@ interface ShowcasePageProps {
   title?: string;
   featuredImage: string;
   cookieConsentColor: string;
+  children?: ReactNode;
 }
 
-export const ShowcasePageTemplate: React.FC<ShowcasePageProps> = ({
+export const ShowcasePageTemplate: FC<ShowcasePageProps> = ({
   children,
   location,
   theme,

@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { mediaQuery } from "../utils-css/media-query";
@@ -124,7 +124,7 @@ const Background = styled.div<DesktopHeaderProps>`
   z-index: -100;
 `;
 
-export const BlogHeader: React.FC = () => (
+export const BlogHeader: FC = () => (
   <BlogHeaderContainer>
     <ImageContainer>
       <StaticImage
@@ -154,16 +154,14 @@ interface DesktopHeaderProps {
   big: boolean;
 }
 
-export const DesktopBlogHeader: React.FC<DesktopHeaderProps> = ({ big }) => (
+export const DesktopBlogHeader: FC<DesktopHeaderProps> = ({ big }) => (
   <DesktopContainer>
     <BlogHeader />
     <Background big={big} />
   </DesktopContainer>
 );
 
-export const MobileBlogHeader: React.FC<MobileContainerProps> = ({
-  height,
-}) => (
+export const MobileBlogHeader: FC<MobileContainerProps> = ({ height }) => (
   <MobileContainer height={height}>
     <BlogHeader />
   </MobileContainer>

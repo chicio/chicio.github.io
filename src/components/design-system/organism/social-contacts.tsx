@@ -1,4 +1,3 @@
-import * as React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { tracking } from "../../../logic/tracking";
 import { SocialContact } from "../molecules/social-contact";
@@ -14,6 +13,7 @@ import {
 } from "styled-icons/boxicons-logos";
 import { Twitter } from "styled-icons/boxicons-logos";
 import { Envelope, Mobile } from "styled-icons/boxicons-regular";
+import { FC } from "react";
 
 const SocialContactsContainers = styled.div`
   display: flex;
@@ -28,7 +28,7 @@ export interface SocialContactsProps {
   trackingLabel: string;
 }
 
-export const SocialContacts: React.FC<SocialContactsProps> = ({
+export const SocialContacts: FC<SocialContactsProps> = ({
   trackingCategory,
   trackingLabel,
 }) => {

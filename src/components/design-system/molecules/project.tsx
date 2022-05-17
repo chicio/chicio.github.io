@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { Heading3 } from "../atoms/heading3";
 import styled from "styled-components";
 import { Container } from "../atoms/container";
@@ -51,7 +51,7 @@ export type ProjectProps = ProjectContainerProps & {
   callToActions: ProjectCallToAction[];
 };
 
-export const Project: React.FC<ProjectProps> = ({
+export const Project: FC<ProjectProps> = ({
   reverse,
   name,
   image,

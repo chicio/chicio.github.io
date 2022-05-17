@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { FC, useState } from "react";
 import { GatsbyImage, getSrc, IGatsbyImageData } from "gatsby-plugin-image";
 import { artDescriptions } from "../../../logic/art";
 import { ModalWithImage } from "./modal-with-image";
@@ -76,7 +76,7 @@ export interface GalleryProps {
   }>;
 }
 
-export const Gallery: React.FC<GalleryProps> = ({ images }) => {
+export const Gallery: FC<GalleryProps> = ({ images }) => {
   const [currentImage, setCurrentImage] =
     useState<IGatsbyImageData | null>(null);
 

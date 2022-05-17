@@ -4,7 +4,7 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
-    "plugin:testing-library/react"
+    "plugin:testing-library/react",
   ],
   settings: {
     react: {
@@ -26,17 +26,19 @@ module.exports = {
     sourceType: "module", // Allows for the use of imports
   },
   rules: {
-    "react/prop-types": "off", // Disable prop-types as we use TypeScript for type checking
+    "react/prop-types": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "error",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
   },
   overrides: [
     // Override some TypeScript rules just for .js files
     {
       files: ["*.js"],
       rules: {
-        "@typescript-eslint/no-var-requires": "off", //
+        "@typescript-eslint/no-var-requires": "off",
       },
     },
     {

@@ -1,11 +1,11 @@
 import { Gallery } from "./design-system/organism/gallery";
-import * as React from "react";
 import styled from "styled-components";
 import { mediaQuery } from "./design-system/utils-css/media-query";
 import { Container } from "./design-system/atoms/container";
 import { File, ImageSharp, Maybe } from "../../graphql-types";
 import { ContainerFullscreen } from "./design-system/atoms/container-fullscreen";
 import { Paragraph } from "./design-system/atoms/paragraph";
+import { FC } from "react";
 
 const ArtDescriptionContainer = styled(ContainerFullscreen)`
   padding: ${(props) => props.theme.spacing[10]};
@@ -53,7 +53,7 @@ interface BottomArtProps {
   }>;
 }
 
-const BottomArt: React.FC<BottomArtProps> = ({ images }) => (
+const BottomArt: FC<BottomArtProps> = ({ images }) => (
   <>
     <>
       <ArtDescriptionContainer>

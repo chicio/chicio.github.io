@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Heading6 } from "../atoms/heading6";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
-import React from "react";
+import { FC } from "react";
 import { Paragraph } from "../atoms/paragraph";
 import { tracking } from "../../../logic/tracking";
 import { CallToActionInternalWithTracking } from "../../call-to-action-internal-with-tracking";
@@ -66,7 +66,7 @@ export interface RecentPostCardProps {
   trackingLabel: string;
 }
 
-export const RecentPostCard: React.FC<RecentPostCardProps> = ({
+export const RecentPostCard: FC<RecentPostCardProps> = ({
   position,
   slug,
   title,

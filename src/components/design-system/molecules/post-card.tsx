@@ -4,12 +4,12 @@ import { tracking } from "../../../logic/tracking";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import { PostAuthors } from "./post-authors";
 import { PostMeta } from "./post-meta";
-import * as React from "react";
 import { Heading5 } from "../atoms/heading5";
 import { StandardInternalLinkWithTracking } from "../../standard-internal-link-with-tracking";
 import { mediaQuery } from "../utils-css/media-query";
 import PostTags from "./post-tags";
 import { gatsbyImagePlaceholderSelector } from "../utils-css/gatsby-image-selector";
+import { FC } from "react";
 
 interface BigCardProps {
   big: boolean;
@@ -95,7 +95,7 @@ export type PostCardProps = BigCardProps & {
   trackingCategory: string;
 };
 
-export const PostCard: React.FC<PostCardProps> = ({
+export const PostCard: FC<PostCardProps> = ({
   big,
   slug,
   title,

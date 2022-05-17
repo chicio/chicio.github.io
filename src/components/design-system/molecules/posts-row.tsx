@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import styled from "styled-components";
 import { mediaQuery } from "../utils-css/media-query";
 import { PostCard } from "./post-card";
@@ -48,7 +48,7 @@ interface PostsRowProps {
   }[];
 }
 
-export const PostsRow: React.FC<PostsRowProps> = ({ postsGroup }) => (
+export const PostsRow: FC<PostsRowProps> = ({ postsGroup }) => (
   <PostsRowContainer>
     <PostCard
       big={false}

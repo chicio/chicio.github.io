@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { FC, useMemo } from "react";
 import {
   connectHits,
   connectSearchBox,
@@ -64,7 +64,7 @@ const SearchTitle = styled(Paragraph)`
   }
 `;
 
-const SearchHits: React.FC<
+const SearchHits: FC<
   HitsProvided<{ title: string; slug: string; description: string }>
 > = ({ hits }) => (
   <SearchListContainer>
@@ -153,28 +153,30 @@ interface OnClickProp {
   onClick: () => void;
 }
 
-const SearchBox: React.FC<
-  SearchBoxProvided & StartSearchProps & OnClickProp
-> = ({ currentRefinement, refine, startSearch, onClick }) => {
-  return (
-    <SearchBoxContainer>
-      <SearchBoxInput
-        startSearch={startSearch}
-        value={startSearch ? currentRefinement : ""}
-        placeholder={startSearch ? "Search" : ""}
-        onChange={(event) => refine(event.currentTarget.value)}
-        disabled={!startSearch}
-      />
-      <SearchAltContainer startSearch={startSearch} onClick={onClick}>
-        <SearchAlt width={20} height={20} />
-      </SearchAltContainer>
-    </SearchBoxContainer>
-  );
-};
+const SearchBox: FC<SearchBoxProvided & StartSearchProps & OnClickProp> = ({
+  currentRefinement,
+  refine,
+  startSearch,
+  onClick,
+}) => (
+  <SearchBoxContainer>
+    <SearchBoxInput
+      startSearch={startSearch}
+      value={startSearch ? currentRefinement : ""}
+      placeholder={startSearch ? "Search" : ""}
+      onChange={(event) => refine(event.currentTarget.value)}
+      disabled={!startSearch}
+    />
+    <SearchAltContainer startSearch={startSearch} onClick={onClick}>
+      <SearchAlt width={20} height={20} />
+    </SearchAltContainer>
+  </SearchBoxContainer>
+);
 
 const AlgoliaHits = connectHits(SearchHits);
 
 const AlgoliaResults = connectStateResults(
+  // @ts-ignore
   ({ searchState, searchResults, children }) =>
     searchResults && searchResults.nbHits !== 0 && searchState.query ? (
       <>{children}</>
@@ -190,10 +192,7 @@ interface SearchProps {
   setStartSearch: (value: ((prevState: boolean) => boolean) | boolean) => void;
 }
 
-export const Search: React.FC<SearchProps> = ({
-  startSearch,
-  setStartSearch,
-}) => {
+export const Search: FC<SearchProps> = ({ startSearch, setStartSearch }) => {
   const searchClient = useMemo(
     () =>
       algoliasearch(

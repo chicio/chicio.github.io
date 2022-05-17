@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { tracking } from "../logic/tracking";
 import { Heading1 } from "../components/design-system/atoms/heading1";
 import { Paragraph } from "../components/design-system/atoms/paragraph";
@@ -6,7 +6,7 @@ import { ContainerFullscreen } from "../components/design-system/atoms/container
 import { BlogThemePage } from "../components/design-system/templates/blog-theme-page";
 import { CallToActionInternalWithTracking } from "../components/call-to-action-internal-with-tracking";
 
-const NotFoundPage: React.FC = () => {
+const NotFoundPage: FC = () => {
   return (
     <BlogThemePage>
       <ContainerFullscreen>

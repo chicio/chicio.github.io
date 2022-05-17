@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { CallToActionExternal } from "../atoms/call-to-action-external";
-import * as React from "react";
+import { FC } from "react";
 import { opacity } from "../utils-css/opacity-keyframes";
 import { Overlay } from "../atoms/overlay";
 
@@ -43,7 +43,7 @@ export interface ModalWithImageProps {
   onClick: () => void;
 }
 
-export const ModalWithImage: React.FC<ModalWithImageProps> = ({
+export const ModalWithImage: FC<ModalWithImageProps> = ({
   imageUrl,
   imageAlt,
   onClick,
