@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { FC, ReactNode } from "react";
 import { TrackingElementProps, trackWith } from "../logic/tracking";
 import { MenuItem } from "./design-system/molecules/menu-item";
 
@@ -9,7 +9,7 @@ type MenuItemWithTrackingProps = TrackingElementProps & {
   children?: ReactNode;
 };
 
-export const MenuItemWithTracking: React.FC<MenuItemWithTrackingProps> = ({
+export const MenuItemWithTracking: FC<MenuItemWithTrackingProps> = ({
   children,
   className,
   to,

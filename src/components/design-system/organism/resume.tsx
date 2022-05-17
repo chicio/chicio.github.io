@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { tracking } from "../../../logic/tracking";
 import { ContainerFluid } from "../atoms/container-fluid";
 import styled from "styled-components";
@@ -22,7 +22,7 @@ enum TabContent {
   carrier = "carrier",
 }
 
-export const Resume: React.FC = () => {
+export const Resume: FC = () => {
   const [currentTab, setTab] = useState<TabContent>(TabContent.projects);
 
   return (

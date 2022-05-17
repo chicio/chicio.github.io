@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { StandardExternalLink } from "../atoms/standard-external-link";
 import { trackWith } from "../../../logic/tracking";
-import React from "react";
+import { FC } from "react";
 import { mediaQuery } from "../utils-css/media-query";
 
 interface TabLinkProps {
@@ -59,7 +59,7 @@ type TabProps = TabLinkProps & {
   action: () => void;
 };
 
-const Tab: React.FC<TabProps> = ({
+const Tab: FC<TabProps> = ({
   active,
   label,
   link,
@@ -100,7 +100,7 @@ export interface TabsProps {
   tab2: TabProps;
 }
 
-export const Tabs: React.FC<TabsProps> = ({ tab1, tab2 }) => (
+export const Tabs: FC<TabsProps> = ({ tab1, tab2 }) => (
   <TabsContainer>
     <Tab
       active={tab1.active}

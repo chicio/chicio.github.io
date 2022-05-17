@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import React from "react";
+import { FC } from "react";
 import { StandardInternalLinkWithTracking } from "../../standard-internal-link-with-tracking";
 import { tracking } from "../../../logic/tracking";
 import { mediaQuery } from "../utils-css/media-query";
@@ -54,7 +54,7 @@ export type TagProps = TagContentProps & {
   trackingLabel: string;
 };
 
-export const Tag: React.FC<TagProps> = ({
+export const Tag: FC<TagProps> = ({
   tag,
   link,
   big,

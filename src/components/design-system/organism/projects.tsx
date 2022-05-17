@@ -4,9 +4,9 @@ import { StandardExternalLink } from "../atoms/standard-external-link";
 import { List } from "../atoms/list";
 import { tracking } from "../../../logic/tracking";
 import { Project } from "../molecules/project";
-import React from "react";
+import { FC } from "react";
 
-const SpectralClaraLuxTracer: React.FC = () => (
+const SpectralClaraLuxTracer: FC = () => (
   <Project
     reverse={false}
     name={"Spectral Clara Lux Tracer"}
@@ -69,7 +69,7 @@ const SpectralClaraLuxTracer: React.FC = () => (
   />
 );
 
-const SpectralBRDFExplorer: React.FC = () => (
+const SpectralBRDFExplorer: FC = () => (
   <Project
     reverse={true}
     name={"Spectral BRDF Explorer"}
@@ -114,7 +114,7 @@ const SpectralBRDFExplorer: React.FC = () => (
   />
 );
 
-const ID3TagEditor: React.FC = () => (
+const ID3TagEditor: FC = () => (
   <Project
     reverse={false}
     name={"ID3TagEditor"}
@@ -169,7 +169,7 @@ const ID3TagEditor: React.FC = () => (
   />
 );
 
-const TabBarUIAction: React.FC = () => (
+const TabBarUIAction: FC = () => (
   <Project
     reverse={true}
     name={"TabBarUIAction"}
@@ -216,7 +216,7 @@ const TabBarUIAction: React.FC = () => (
   />
 );
 
-const Mp3Id3Tagger: React.FC = () => (
+const Mp3Id3Tagger: FC = () => (
   <Project
     reverse={false}
     name={"Mp3ID3Tagger"}
@@ -262,14 +262,13 @@ const Mp3Id3Tagger: React.FC = () => (
         trackingCategory: tracking.category.home,
         trackingAction: tracking.action.open_mp3id3tagger_github,
         trackingLabel: tracking.label.body,
-        link:
-          "https://github.com/chicio/Mp3ID3Tagger/raw/master/Release/Mp3ID3Tagger.dmg",
+        link: "https://github.com/chicio/Mp3ID3Tagger/raw/master/Release/Mp3ID3Tagger.dmg",
       },
     ]}
   />
 );
 
-const RangeUISlider: React.FC = () => (
+const RangeUISlider: FC = () => (
   <Project
     reverse={true}
     name={"RangeUISlider"}
@@ -323,7 +322,7 @@ const RangeUISlider: React.FC = () => (
   />
 );
 
-export const Projects: React.FC = () => (
+export const Projects: FC = () => (
   <>
     <SpectralClaraLuxTracer />
     <SpectralBRDFExplorer />

@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { graphql, PageProps } from "gatsby";
 import { tracking } from "../logic/tracking";
 import { PostMeta } from "../components/design-system/molecules/post-meta";
@@ -34,7 +34,7 @@ const PostContainer = styled.div`
   margin-top: ${(props) => props.theme.spacing[5]};
 `;
 
-const Post: React.FC<PageProps<PostQuery>> = ({ data, location }) => {
+const Post: FC<PageProps<PostQuery>> = ({ data, location }) => {
   const post = data.markdownRemark!;
   const title = post.frontmatter!.title!;
 

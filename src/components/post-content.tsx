@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import styled from "styled-components";
 import { heading3Style } from "./design-system/atoms/heading3";
 import { heading4Style } from "./design-system/atoms/heading4";
@@ -129,6 +129,6 @@ interface PostContentProps {
   html: string;
 }
 
-export const PostContent: React.FC<PostContentProps> = ({ html }) => (
+export const PostContent: FC<PostContentProps> = ({ html }) => (
   <PostContentContainer dangerouslySetInnerHTML={{ __html: html }} />
 );
