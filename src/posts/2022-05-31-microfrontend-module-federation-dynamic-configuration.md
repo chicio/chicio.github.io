@@ -35,7 +35,9 @@ What is Module Federation? It is a JavaScript architecture invented by Zack Jack
 >A scalable solution to sharing code between independent applications has never been convenient, and near impossible at scale. The closest we had was externals or DLLPlugin, forcing centralized dependency on a external file. It was a hassle to share code, the separate applications were not truly standalone and usually, a limited number of dependencies are shared. Moreover, sharing actual feature code or components between separately bundled applications is unfeasible, unproductive, and unprofitable. ... Module federation allows a JavaScript application to dynamically load code from another application — in the process, sharing dependencies, if an application consuming a federated module does not have a dependency needed by the federated code — Webpack will download the missing dependency from that federated build origin.
 Code is shared if it can be, but fallbacks exist in each case. Federated code can always load its dependencies but will attempt to use the consumers’ dependencies before downloading more payload. Less code duplication, dependency sharing just like a monolithic Webpack build.
 
-... completa spiegazione module federation
+So module federation is a way to let an application dynamically load external parts/widgtes/components without relying on the classical npm dependecies management. It lets you build microfrontend application, but without sacrifice performances with the shared libraries mechanim. This seems very cool :rocket:.  
+In the next section I will show you how me and my colleague Alex Stabile create a new cancellation widget that is integrated in the my area app (the app that lets our users see his/her bookings). Let's start!! :rocket:  
+One note: the application described above is a simplification of the real stack we have in our codebase. We created this easier example in order to let you focus on the topic of the post.
 
 
 #### Implementation
