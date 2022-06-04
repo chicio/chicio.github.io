@@ -59,7 +59,7 @@ Let's first see how the two app are composed. Both of them use:
 The container app, `my-area`, uses [React Router](https://reactrouter.com "react router") to manage the navigation in the app. Obviously given that we are going to you module federation, both apps are bundled using [Webpack](https://webpack.js.org).  
 The `cancel-order` app exposes one widget called `CancelOrderWidget`, that is in charge of displaying and controlling the cancellation flow. Below you can find its (very simple) implementation.
 
-```react
+```typescript
 import {ChangeEvent, FC, useState} from "react";
 import {
     Button,
@@ -100,7 +100,7 @@ const CancelOrderWidget: FC<Props> = ({ orderId }) => {
 
 The `my-area` app has a main component called `App` where we have all the routes defined. One of this routes contained the `OrdersPage` that displays a list of `OrderCard`s. Each one of them has a button that let the user navigate to the cancel router where we display the `CancelOrderPage`, that will contain our `CancelOrderWidget` loaded with module federation. Below you can find the code for this components.
 
-```react
+```typescript
 ....
 
 // ...App.tsx
@@ -159,6 +159,209 @@ export const OrderCard: FC<Props> = ({ order }) =>
 
 ```
 
+So how do we intergate the two widgets with Module Federation? Let's find out!! We can start from the `cancel-order` Webpack configuration.  ....
+
+...spiega conf cancel order
+
+```javascript
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+
+const deps = require("./package.json").dependencies;
+module.exports = {
+  output: {
+    publicPath: "http://localhost:3001/",
+  },
+
+  resolve: {
+    extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
+  },
+
+  devServer: {
+    port: 3001,
+    historyApiFallback: true,
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.m?js/,
+        type: "javascript/auto",
+        resolve: {
+          fullySpecified: false,
+        },
+      },
+      {
+        test: /\.(css|s[ac]ss)$/i,
+        use: ["style-loader", "css-loader", "postcss-loader"],
+      },
+      {
+        test: /\.(ts|tsx|js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
+    ],
+  },
+
+  plugins: [
+    new ModuleFederationPlugin({
+      name: "cancelOrderWidget",
+      filename: "remoteEntry.js",
+      remotes: {},
+      exposes: {
+        "./CancelOrderWidget": "./src/components/CancelOrderWidget"
+      },
+      shared: {
+        ...deps,
+        react: {
+          singleton: true,
+          requiredVersion: deps.react,
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: deps["react-dom"],
+        },
+      },
+    }),
+    new HtmlWebPackPlugin({
+      template: "./src/index.html",
+    }),
+  ],
+};
+```
+
+...spiega conf myarea
+
+```javascript
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
+
+const deps = require("./package.json").dependencies;
+module.exports = {
+  output: {
+    publicPath: "http://localhost:3000/"
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
+  },
+  devServer: {
+    port: 3000,
+    historyApiFallback: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.m?js/,
+        type: "javascript/auto",
+        resolve: {
+          fullySpecified: false,
+        },
+      },
+      {
+        test: /\.(ts|tsx|js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
+    ],
+  },
+
+  plugins: [
+    new ModuleFederationPlugin({
+      name: "myarea",
+      remotes: {
+        cancelOrder: 'cancelOrderWidget@[widgets.cancellationOrderWidgetUrl]/remoteEntry.js'
+      },
+      shared: {
+        ...deps,
+        react: {
+          singleton: true,
+          requiredVersion: deps.react,
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: deps["react-dom"],
+        },
+      },
+    }),
+    new ExternalTemplateRemotesPlugin(),
+    new HtmlWebPackPlugin({
+      template: "./src/index.html",
+    }),
+  ],
+};
+```
+
+...spiega caricamento conf remota per prendere url widget
+
+
+```typescript
+
+// ...Configuration.ts
+
+export const loadConfiguration = async () => {
+    try {
+        const modulesResponse = await fetch('/api/widgets');
+        window.widgets = await modulesResponse.json();
+    } catch (e) {
+        console.error('Error retrieving modules configuration', e);
+    }
+}
+
+// ...index.ts
+
+
+import {server} from "./server";
+import {loadConfiguration} from "./logic/Configuration";
+
+server()
+
+loadConfiguration().then( () => {
+    import("./App");
+})
+```
+
+...spiega come widget viene caricato in pagina
+
+
+```typescript
+
+// ...CancelOrderWidget.d.ts
+
+declare module 'cancelOrder/CancelOrderWidget' {
+    const CancelOrderWidget: React.FC<{ orderId: string; }>;
+
+    export = CancelOrderWidget;
+}
+
+
+// ...CancelOrderPage.tsx
+
+import React, {FC} from "react";
+import {useParams} from "react-router-dom";
+
+const CancelOrderWidget = React.lazy(() => import("cancelOrder/CancelOrderWidget"));
+
+type UrlParams = {
+    orderId: string;
+}
+
+export const CancelOrderPage: FC = () => {
+    const { orderId } = useParams<UrlParams>();
+
+    return (
+        <React.Suspense fallback={<div/>}>
+            <CancelOrderWidget
+                orderId={orderId ?? ""}/>
+        </React.Suspense>
+    );
+}
+
+```
 
 #### Conclusion
 
