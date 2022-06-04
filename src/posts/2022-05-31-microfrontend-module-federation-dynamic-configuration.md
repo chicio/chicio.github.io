@@ -39,10 +39,125 @@ So module federation is a way to let an application dynamically load external pa
 In the next section I will show you how me and my colleague Alex Stabile create a new cancellation widget that is integrated in the my area app (the app that lets our users see his/her bookings). Let's start!! :rocket:  
 One note: the application described above is a simplification of the real stack we have in our codebase. We created this easier example in order to let you focus on the topic of the post.
 
-
 #### Implementation
 
-....TODO
+As we said before the applications we are going to work with are 2:
+
+* the first one called `cancel-order`, that is basically a widget that displays a flow where the user can cancel an order
+* another one, called `my-area`, that is an app where the user can manage his/her orders
+
+The final result we want to achive is integrate the `cancel-order` widget so that when the user click on the cancel button of an order card, the cancellation flow will start. In the video below you can see the final result we want to achieve.
+
+`youtube: XXXXX`
+
+Let's first see how the two app are composed. Both of them use:
+
+* React
+* [css in js](https://en.wikipedia.org/wiki/CSS-in-JS "css in js") framework [emotion](https://emotion.sh/docs/introduction "emotion")
+* [Material UI](https://mui.com "material ui") as components library
+
+The container app, `my-area`, uses [React Router](https://reactrouter.com "react router") to manage the navigation in the app. Obviously given that we are going to you module federation, both apps are bundled using [Webpack](https://webpack.js.org).  
+The `cancel-order` app exposes one widget called `CancelOrderWidget`, that is in charge of displaying and controlling the cancellation flow. Below you can find its (very simple) implementation.
+
+```react
+import {ChangeEvent, FC, useState} from "react";
+import {
+    Button,
+    Container,
+    FormControl,
+    FormControlLabel,
+    FormLabel,
+    Radio,
+    RadioGroup,
+    Typography
+} from "@mui/material";
+
+interface Props {
+    orderId: string;
+}
+
+const CancelOrderWidget: FC<Props> = ({ orderId }) => {
+    const [disable, setDisable] = useState<boolean>(true);
+
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setDisable(event.target.value === "no");
+    };
+
+    return <Container sx={{my: 3}}>
+        <Typography variant="h3" color="text.primary">
+            {`Do you really want to cancel order ${orderId}?`}
+        </Typography>
+        <FormControl sx={{my: 3}}>
+            <RadioGroup defaultValue={"no"} onChange={handleChange}>
+                <FormControlLabel value="yes" control={<Radio/>} label="Yes"/>
+                <FormControlLabel value="no" control={<Radio/>} label="No"/>
+            </RadioGroup>
+            <Button sx={{my : 2}} disabled={disable} size="small" variant={'contained'} onClick={() => alert("Order cancelled")} color={'error'}>Proceed</Button>
+        </FormControl>
+    </Container>;
+}
+```
+
+The `my-area` app has a main component called `App` where we have all the routes defined. One of this routes contained the `OrdersPage` that displays a list of `OrderCard`s. Each one of them has a button that let the user navigate to the cancel router where we display the `CancelOrderPage`, that will contain our `CancelOrderWidget` loaded with module federation. Below you can find the code for this components.
+
+```react
+....
+
+// ...App.tsx
+
+const App: FC = () => (
+    <>
+        <GlobalStyles styles={{body: {margin: 0, padding: 0}}}/>
+        <Header/>
+        <Container sx={{my: 3}}>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<OrdersPage orderRepository={new InMemoryOrderRepository()}/>} />
+                    <Route path={"/:orderId/cancel"} element={<CancelOrderPage />}/>
+                </Routes>
+            </BrowserRouter>
+        </Container>
+    </>
+);
+
+// ...OrdersPage.tsx
+
+interface Props {
+    orderRepository: OrderRepository;
+}
+
+export const OrdersPage: FC<Props> = ({ orderRepository }) =>
+    <>
+        {orderRepository.get().map(order => <OrderCard order={order} key={order.id}/>)}
+    </>
+
+
+// ...OrderCard.tsx
+
+
+interface Props {
+    order: Order
+}
+
+export const OrderCard: FC<Props> = ({ order }) =>
+    <Card sx={{ my : 2 }}>
+        <CardMedia
+            component="img"
+            height="300"
+            image="https://picsum.photos/1200/300"
+            alt="green iguana"
+        />
+        <CardContent>
+            <Typography variant="h5" color="text.primary">
+                {order.departure} to {order.destination} - {order.date}
+            </Typography>
+        </CardContent>
+        <CardActions>
+            <Button component={Link} to={`/${order.id}/cancel`} size="small" variant={'contained'} color={'error'}>Cancel</Button>
+        </CardActions>
+    </Card>
+
+```
 
 
 #### Conclusion
