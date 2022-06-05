@@ -98,7 +98,7 @@ const CancelOrderWidget: FC<Props> = ({ orderId }) => {
 }
 ```
 
-The `my-area` app has a main component called `App` where we have all the routes defined. One of this routes contained the `OrdersPage` that displays a list of `OrderCard`s. Each one of them has a button that let the user navigate to the cancel router where we display the `CancelOrderPage`, that will contain our `CancelOrderWidget` loaded with module federation. Below you can find the code for this components.
+The `my-area` app has a main component called `App` where we have all the routes defined. One of these routes contain the `OrdersPage` that displays a list of `OrderCard`s. Each one of them has a button that let the user navigate to the cancel order route where we display the `CancelOrderPage`, that will contain our `CancelOrderWidget` loaded with module federation. Below you can find the code for this components.
 
 ```typescript
 ....
@@ -159,9 +159,14 @@ export const OrderCard: FC<Props> = ({ order }) =>
 
 ```
 
-So how do we intergate the two widgets with Module Federation? Let's find out!! We can start from the `cancel-order` Webpack configuration.  ....
+So how do we intergate the two widgets with Module Federation? Let's find out!! We can start from the `cancel-order` Webpack configuration. The first thing we need to do is import the `ModuleFederationPlugin`. Than we can instantiate it with the correct configuration. In this case we will configurate it with the following parameters:
 
-...spiega conf cancel order
+* `cancelOrderWidget` as `name` of remote module federated. We need to be sure that **every federated module has a unique name with respect to the other**.
+* `remoteEntry.js` as `filename`. This option is used to give a name to the **remote entry file**. In thi file you will find the mapping between between the components exposed and their chunk url.
+* `exposes` parameter will contain a list of all the widgets exposed by this federated module. In our case we are exposing a single component `CancelOrderWidget`, specifing as value the path to it (in our project) and `./CancelOrderWidget` as key.
+* a list of dependecies in the `shared` parameter. This one is used to specify a list of all the libraries that this application will share with other applications in support of files listed in the exposes section. In our case we are telling to the module federation plugin to shared all the dependecies (notice the `...deps`). For `react` and `react-dom` we are sharing the dependecies with a specific override: we are basically telling to the module federation plugin it should not load more than one copy of them. This is a consequence of the fact that these libraries have internal state and multiple instances/versions cannot live in the browser at the same time. We are also specifing which version should be used or try to use a fallback with the `requiredVersion`. Module federation has an internal fallback strategy where it will decide which version of the library should be used bases on it module federate configuration (this is probably a topic for an entire new post :smirk:).
+
+Below you can find the complete configuration of the `cancel-order` widget.
 
 ```javascript
 const HtmlWebPackPlugin = require("html-webpack-plugin");
@@ -209,7 +214,6 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "cancelOrderWidget",
       filename: "remoteEntry.js",
-      remotes: {},
       exposes: {
         "./CancelOrderWidget": "./src/components/CancelOrderWidget"
       },
