@@ -236,7 +236,13 @@ module.exports = {
 };
 ```
 
-...spiega conf myarea
+Let's see the configuration for the `my-area` app. Also in this case we need to import the `ModuleFederationPlugin` and configure it in the proper way:
+
+* `myarea` as `name` of the federeated module
+* `remotes` parameter will contain the names of the other federated module applications that this application will consume code from. In our case we will define just one remote, with key `cancelOrder`. This key is the one we will use to reference in the code of the `myarea` app the remote module. As value we will set the name of the remote federate module (the value of the `name` parameter in the `ModuleFederationPlugin` configuration in the `cancel-order` app) followed by the url of the remote entry file of our `cancel-order` app.
+* again, the `shared` parameter with the same approach we used to defined the shared dependecies for the `cancel-order` app
+
+Below you can find the entire Webpack configuration for the `my-area` app.
 
 ```javascript
 const HtmlWebPackPlugin = require("html-webpack-plugin");
@@ -300,7 +306,16 @@ module.exports = {
 };
 ```
 
-...spiega caricamento conf remota per prendere url widget
+Now, if you look closely to the configuration above you noticed something strange:
+
+* the url of the remote entry file is defined as `'cancelOrderWidget@[widgets.cancellationOrderWidgetUrl]/remoteEntry.js'`, so it expecting to find it in some way defined in the `[widgets.cancellationOrderWidgetUrl]` placeholder.
+* we are calling an additional plugin from the module federartion world called `ExternalTemplateRemotesPlugin`.
+
+This combination in the configuration will let us define the url of the remote entry file dinamically at runtime when the application starts :heart_eyes:. This is a consequence of the fact that what we defined as `[widgets.cancellationOrderWidgetUrl]/remoteEntry.js'` will be replaced by the `ExternalTemplateRemotesPlugin` as `widgets.cancellationOrderWidgetUrl + "/remoteEntry.js"`, so a concatenation of a variable, `widgets.cancellationOrderWidgetUrl` that as you can see is defined on the `window` object, plus the fixed part of the url `"/remoteEntry.js"` ([here](https://github.com/module-federation/external-remotes-plugin/blob/main/index.js "ExternalTemplateRemotesPlugin") you can find the source code for the `ExternalTemplateRemotesPlugin` that contains the concatenation described here).  
+This is absolutely astonishing!! :rocket: This basically means we can have multiple federated module remote entry file urls configurations based on different needs, for example different urls for enviroment (eg. local, qa, production). This also means that we can dinamically update these url and let the `my-area` app configure itself at runtime with a list of urls that represents the latest versions of our federated remote modules :heart_eyes:.  
+How can we implement it?
+
+spiega load configurazione + attacco alla window di quest'ultima
 
 
 ```typescript
