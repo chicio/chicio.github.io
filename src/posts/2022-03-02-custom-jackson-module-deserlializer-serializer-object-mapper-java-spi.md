@@ -2,7 +2,7 @@
 title: "A custom module for Jackson object mapper using Java Service Provider"
 description: "Sometimes you have custom Jackson object mapper imported from external modules/libraries. How can you 
 customize their serialization/deserialization? Let's go to discover the power of Java Service Provider Interface."
-date: 2022-03-18
+date: 2022-03-02
 image: ../images/posts/fasterxml-logo.jpg
 tags: [java, kotlin, web development]
 comments: true 
@@ -16,11 +16,7 @@ customize their serialization/deserialization? Let's go to discover the power of
 --- 
 
 In the last weeks I started to work in a new team on a new project at [lm group](https://lmgroup.lastminute.com 
-"lastminute"). One of the goals we have is to renew the foundations of the company software overall architecture by 
-introducing in the development workflow new technologies. In particular, we are using [Axon](https://www.axoniq.io), 
-a framework to help developer to create [Domain Driven Design](https://www.fabrizioduroni.it/2021/06/06/ddd-dictionary/) applications 
-that leverage specific architectural pattern like [CQRS](https://martinfowler.com/bliki/CQRS.html) and 
-[Event Sourcing](https://martinfowler.com/eaaDev/EventSourcing.html).  
+"lastminute"). One of the goals we have is to renew the foundations of the company software overall architecture by introducing in the development workflow new technologies. In particular, we are using [Axon](https://www.axoniq.io), a framework to help developer to create [Domain Driven Design](https://www.fabrizioduroni.it/2021/06/06/ddd-dictionary/) applications that leverage specific architectural pattern like [CQRS](https://martinfowler.com/bliki/CQRS.html) and [Event Sourcing](https://martinfowler.com/eaaDev/EventSourcing.html).  
 During the definition of a new microservice we had to customize the object mapper used by Axon, 
 defined in one maven module (that will probably be integrated in our [app-framework framework](https://technology.lastminute.com/frontend-backend-languages-frameworks/) 
 if we decide to stick with it) from one of our new app specific module *without creating any kind of 
