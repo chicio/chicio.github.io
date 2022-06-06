@@ -2,7 +2,7 @@
 title: "Create a microfrontend app using module federation and dynamic configuration"
 description: "We are used to the term microservice in the backend world. Is there a way to achieve the same architectural indipendence in the frontend world? Let's see how it is possible to create a microfrontend app by leveraging Webpack 5 module federation with a widget-based custom remote configuration."
 date: 2022-06-06
-image: ../images/posts/XXXXX.jpg
+image: ../images/posts/webpack-module-federation.jpg
 tags: [react, web development, architectural pattern]
 comments: true 
 math: false 
