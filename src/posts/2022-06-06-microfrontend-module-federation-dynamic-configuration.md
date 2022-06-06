@@ -103,8 +103,6 @@ export default CancelOrderWidget;
 The `my-area` app has a main component called `App` where we have all the routes defined. One of these routes contain the `OrdersPage` that displays a list of `OrderCard`s. Each one of them has a button that let the user navigate to the cancel order route where we display the `CancelOrderPage`, that will contain our `CancelOrderWidget` loaded with module federation. Below you can find the code for this components.
 
 ```typescript
-....
-
 // ...App.tsx
 
 const App: FC = () => (
