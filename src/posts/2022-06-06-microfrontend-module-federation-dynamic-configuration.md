@@ -48,7 +48,7 @@ As we said before the applications we are going to work with are 2:
 
 The final result we want to achive is integrate the `cancel-order` widget so that when the user click on the cancel button of an order card, the cancellation flow will start. In the video below you can see the final result of the implementation described below.
 
-`youtube: XXXXX`
+`youtube: https://www.youtube.com/watch?v=iv6wQrp_K4s`
 
 Let's first see how the two app are composed. Both of them use:
 
@@ -382,10 +382,9 @@ export const CancelOrderPage: FC = () => {
 
   return (
     <Suspense fallback={<div/>}>
-  <CancelOrderWidget
-    orderId={orderId ?? ""}/>
-  </Suspense>
-);
+      <CancelOrderWidget orderId={orderId ?? ""}/>
+    </Suspense>
+  );
 }
 
 ```
