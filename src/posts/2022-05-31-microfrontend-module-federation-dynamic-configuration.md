@@ -392,6 +392,4 @@ export const CancelOrderPage: FC = () => {
 
 #### Conclusion
 
-
-....TODO
-
+In this [Github repository](https://github.com/chicio/module-federation-react-example "module federation react example") you can find the implementation fo the example described above. Module federation is relatively young feature of Webpack, but seems that can help a lot of developers to reach the goal of implementing a clean micro frontend architecture :heart:. What do you think? Let me know in the comment section :rocket:.
