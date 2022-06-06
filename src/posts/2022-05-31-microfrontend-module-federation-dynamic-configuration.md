@@ -46,7 +46,7 @@ As we said before the applications we are going to work with are 2:
 * the first one called `cancel-order`, that is basically a widget that displays a flow where the user can cancel an order
 * another one, called `my-area`, that is an app where the user can manage his/her orders
 
-The final result we want to achive is integrate the `cancel-order` widget so that when the user click on the cancel button of an order card, the cancellation flow will start. In the video below you can see the final result we want to achieve.
+The final result we want to achive is integrate the `cancel-order` widget so that when the user click on the cancel button of an order card, the cancellation flow will start. In the video below you can see the final result of the implementation described below.
 
 `youtube: XXXXX`
 
@@ -56,7 +56,7 @@ Let's first see how the two app are composed. Both of them use:
 * [css in js](https://en.wikipedia.org/wiki/CSS-in-JS "css in js") framework [emotion](https://emotion.sh/docs/introduction "emotion")
 * [Material UI](https://mui.com "material ui") as components library
 
-The container app, `my-area`, uses [React Router](https://reactrouter.com "react router") to manage the navigation in the app. Obviously given that we are going to you module federation, both apps are bundled using [Webpack](https://webpack.js.org).  
+The container app, `my-area`, uses [React Router](https://reactrouter.com "react router") to manage the navigation in the app. Obviously given that we are going to use module federation, both apps are bundled using [Webpack](https://webpack.js.org).  
 The `cancel-order` app exposes one widget called `CancelOrderWidget`, that is in charge of displaying and controlling the cancellation flow. Below you can find its (very simple) implementation.
 
 ```typescript
@@ -96,6 +96,8 @@ const CancelOrderWidget: FC<Props> = ({ orderId }) => {
         </FormControl>
     </Container>;
 }
+
+export default CancelOrderWidget;
 ```
 
 The `my-area` app has a main component called `App` where we have all the routes defined. One of these routes contain the `OrdersPage` that displays a list of `OrderCard`s. Each one of them has a button that let the user navigate to the cancel order route where we display the `CancelOrderPage`, that will contain our `CancelOrderWidget` loaded with module federation. Below you can find the code for this components.
@@ -240,7 +242,7 @@ Let's see the configuration for the `my-area` app. Also in this case we need to 
 
 * `myarea` as `name` of the federeated module
 * `remotes` parameter will contain the names of the other federated module applications that this application will consume code from. In our case we will define just one remote, with key `cancelOrder`. This key is the one we will use to reference in the code of the `myarea` app the remote module. As value we will set the name of the remote federate module (the value of the `name` parameter in the `ModuleFederationPlugin` configuration in the `cancel-order` app) followed by the url of the remote entry file of our `cancel-order` app.
-* again, the `shared` parameter with the same approach we used to defined the shared dependecies for the `cancel-order` app
+* again, the `shared` parameter with the same approach we used to defined the shared dependecies for the `cancel-order` app.
 
 Below you can find the entire Webpack configuration for the `my-area` app.
 
@@ -313,10 +315,16 @@ Now, if you look closely to the configuration above you noticed something strang
 
 This combination in the configuration will let us define the url of the remote entry file dinamically at runtime when the application starts :heart_eyes:. This is a consequence of the fact that what we defined as `[widgets.cancellationOrderWidgetUrl]/remoteEntry.js'` will be replaced by the `ExternalTemplateRemotesPlugin` as `widgets.cancellationOrderWidgetUrl + "/remoteEntry.js"`, so a concatenation of a variable, `widgets.cancellationOrderWidgetUrl` that as you can see is defined on the `window` object, plus the fixed part of the url `"/remoteEntry.js"` ([here](https://github.com/module-federation/external-remotes-plugin/blob/main/index.js "ExternalTemplateRemotesPlugin") you can find the source code for the `ExternalTemplateRemotesPlugin` that contains the concatenation described here).  
 This is absolutely astonishing!! :rocket: This basically means we can have multiple federated module remote entry file urls configurations based on different needs, for example different urls for enviroment (eg. local, qa, production). This also means that we can dinamically update these url and let the `my-area` app configure itself at runtime with a list of urls that represents the latest versions of our federated remote modules :heart_eyes:.  
-How can we implement it?
+How can we implement it? We can implement a configuration repository that loads a configuration with the list of urls for our federated module. This configuration will be downloaded from the GET api endpoint `'/api/widgets'`. In our case the response will contain just one url for our `cancel-order` federated module. This is the response we will get
 
-spiega load configurazione + attacco alla window di quest'ultima
+```json
+{
+  "cancellationOrderWidgetUrl": "http://localhost:3001",
+}
+```
 
+If you remember the configuration for the module federation of the `my-area` app, `cancellationOrderWidgetUrl` corresponds to the last part of the variable `widgets.cancellationOrderWidgetUrl`. o we just need to take this objectstuff received from the configuration and add it to the `window` object.  
+After this, we can start our `my-area` app in the right way. Below you can find the implementation of the `loadConfiguration` configuration repository, and how we are using it in the `index.ts`, our app entry point, in order to load the configuration and start the app.
 
 ```typescript
 
@@ -324,8 +332,8 @@ spiega load configurazione + attacco alla window di quest'ultima
 
 export const loadConfiguration = async () => {
     try {
-        const modulesResponse = await fetch('/api/widgets');
-        window.widgets = await modulesResponse.json();
+        const widgetsResponse = await fetch('/api/widgets');
+        window.widgets = await widgetsResponse.json();
     } catch (e) {
         console.error('Error retrieving modules configuration', e);
     }
@@ -344,8 +352,8 @@ loadConfiguration().then( () => {
 })
 ```
 
-...spiega come widget viene caricato in pagina
-
+At this point we have everything we need in place in order to load our remote federated module. To do this we will load the `CancelOrderWidget` as a standard dynamic component using `React.lazy` and `Suspense`. The import path for the widget is `cancelOrder/CancelOrderWidget`, that correspond to the `key` defined in the `remotes` section of the `my-area` webpack configuration plus the name of the widget as defined in the `exposes` section fo the `cancel-order` webpack configuration. As a consequence of the fact that the widget is not available in our `node_modules`, neither its types, we must define them manually.  
+After the last bits of code below, we will finally able to start our, and we will have the same result show in the video at the beginning of this explanation.
 
 ```typescript
 
