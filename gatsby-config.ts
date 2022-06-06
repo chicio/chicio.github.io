@@ -149,6 +149,7 @@ const config: GatsbyConfig = {
               noInlineHighlight: false,
             },
           },
+          "gatsby-remark-external-links",
         ],
       },
     },
