@@ -308,7 +308,9 @@ module.exports = {
 
 Now, if you look closely to the configuration above you noticed something strange:
 
-* the url of the remote entry file is defined as `'cancelOrderWidget@[widgets.cancellationOrderWidgetUrl]/remoteEntry.js'`, so it expecting to find it in some way defined in the `[widgets.cancellationOrderWidgetUrl]` placeholder.
+* the url of the remote entry file is defined as `'cancelOrderWidget@[widgets.cancellationOrderWidgetUrl]
+  /remoteEntry.js'`, so it expects to find it in some way defined in the `[widgets.cancellationOrderWidgetUrl]` 
+  placeholder.
 * we are calling an additional plugin from the module federartion world called `ExternalTemplateRemotesPlugin`.
 
 This combination in the configuration will let us define the url of the remote entry file dinamically at runtime when the application starts :heart_eyes:. This is a consequence of the fact that what we defined as `[widgets.cancellationOrderWidgetUrl]/remoteEntry.js'` will be replaced by the `ExternalTemplateRemotesPlugin` as `widgets.cancellationOrderWidgetUrl + "/remoteEntry.js"`, so a concatenation of a variable, `widgets.cancellationOrderWidgetUrl` that as you can see is defined on the `window` object, plus the fixed part of the url `"/remoteEntry.js"` ([here](https://github.com/module-federation/external-remotes-plugin/blob/main/index.js "ExternalTemplateRemotesPlugin") you can find the source code for the `ExternalTemplateRemotesPlugin` that contains the concatenation described here).  
