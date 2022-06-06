@@ -1,19 +1,19 @@
 ---
 title: "Create a microfrontend app using module federation and dynamic configuration"
 description: "We are used to the term microservice in the backend world. Is there a way to achieve the same architectural indipendence in the frontend world? Let's see how it is possible to create a microfrontend app by leveraging Webpack 5 module federation with a widget-based custom remote configuration."
-date: 2022-05-31
+date: 2022-06-06
 image: ../images/posts/XXXXX.jpg
 tags: [react, web development, architectural pattern]
 comments: true 
 math: false 
-authors: [fabrizio_duroni, alex_stabile, ?luca_mor?]
+authors: [fabrizio_duroni, alex_stabile]
 ---
 
 *We are used to the term microservice in the backend world. Is there a way to achieve the same architectural indipendence in the frontend world? Let's see how it is possible to create a microfrontend app by leveraging Webpack 5 module federation with a widget-based custom remote configuration.*
 
 ---
 
-As you may already know from [my previous post], in the last weeks I started to work in a new team on a new project at [lm group](https://lmgroup.lastminute.com "lastminute"). The goals we have is to renew the foundations of the company software overall architecture by introducing in the development workflow new technologies. While on the backend we defined a clear path to reach our goal from the beginning (DDD + Axon), on the frontend we still had some doubt. In fact the application we are developing, a new booking cancellation flow, will be integrated in our myarea, an app where the user that manage his/her bookings. We decided to develop this new app with React + Styled Components + Our internal design system, that in lastminute.com is the standard frontend stack (and is in some way already "enough" modern). But there was one problem: coupling between apps.  
+As you may already know from [my previous post](/2022/03/02/custom-jackson-module-deserlializer-serializer-object-mapper-java-spi/), in the last weeks I started to work in a new team on a new project at [lm group](https://lmgroup.lastminute.com "lastminute"). The goals we have is to renew the foundations of the company software overall architecture by introducing in the development workflow new technologies. While on the backend we defined a clear path to reach our goal from the beginning (DDD + Axon), on the frontend we still had some doubt. In fact the application we are developing, a new booking cancellation flow, will be integrated in our myarea, an app where the user that manage his/her bookings. We decided to develop this new app with React + Styled Components + Our internal design system, that in lastminute.com is the standard frontend stack (and is in some way already "enough" modern). But there was one problem: coupling between apps.  
 The myarea app at the moment already loads some widgets (usually associated to specific features) as npm packages. This packages are developed by different teams/external companies. This basically means:
 
 * that if a team want to deploy a new version of their widget, they have to update the package json of the myarea app, tag and release it.
