@@ -8,7 +8,7 @@ import {
 import algoliasearch from "algoliasearch/lite";
 import { HitsProvided, SearchBoxProvided } from "react-instantsearch-core";
 import styled, { css } from "styled-components";
-import { SearchAlt } from "styled-icons/boxicons-regular";
+import { SearchAlt } from "@styled-icons/boxicons-regular";
 import { mediaQuery } from "../utils-css/media-query";
 import { Container } from "../atoms/container";
 import { List } from "../atoms/list";

@@ -1,6 +1,6 @@
 import { Icon } from "../atoms/icon";
 import styled from "styled-components";
-import { ChevronDown } from "styled-icons/boxicons-regular";
+import { ChevronDown } from "@styled-icons/boxicons-regular";
 import { bounce } from "../utils-css/bounce-keyframes";
 import { FC } from "react";
 

@@ -10,9 +10,9 @@ import {
   Instagram,
   Linkedin,
   Medium,
-} from "styled-icons/boxicons-logos";
-import { Twitter } from "styled-icons/boxicons-logos";
-import { Envelope, Mobile } from "styled-icons/boxicons-regular";
+} from "@styled-icons/boxicons-logos";
+import { Twitter } from "@styled-icons/boxicons-logos";
+import { Envelope, Mobile } from "@styled-icons/boxicons-regular";
 import { FC } from "react";
 
 const SocialContactsContainers = styled.div`
