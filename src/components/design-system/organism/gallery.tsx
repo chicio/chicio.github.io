@@ -86,13 +86,15 @@ export const Gallery: FC<GalleryProps> = ({ images }) => {
     <>
       <GalleryContainer>
         {images.map((image) => (
-          <GalleryImageFrame key={image.node.name}>
+          <GalleryImageFrame
+            key={image.node.name}
+            onClick={() =>
+              setCurrentImage(image.node.childImageSharp!.gatsbyImageData!)
+            }
+          >
             <GalleryImage
               alt={image.node.name}
               image={image.node.childImageSharp!.gatsbyImageData!}
-              onClick={() =>
-                setCurrentImage(image.node.childImageSharp!.gatsbyImageData!)
-              }
             />
             <GalleryImageDescription>
               {artDescriptions[image.node.name]}

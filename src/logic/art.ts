@@ -75,4 +75,5 @@ export const artDescriptions: { [imageName: string]: string } = {
   "2021-11-13": "Collapsing world 🌎",
   "2021-12-18": "Alien world",
   "2022-04-09": "Alien 👽",
+  "2022-06-25": "Star wars Kylo Ren sword 🗡",
 };
