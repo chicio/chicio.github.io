@@ -6,8 +6,7 @@ Release date: 2022-07-01
 
 #### Added
 
-- gatsby-config migrated to typescript
-- gatsby-node migrated to typescript
+- gatsby graphql typegen
 
 ## [5.4.0](https://github.com/chicio/chicio.github.io/releases/tag/v5.4.0)
 Release date: 2022-03-02
