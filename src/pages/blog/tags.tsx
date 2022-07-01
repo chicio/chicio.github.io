@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { graphql, PageProps } from "gatsby";
 import { tracking } from "../../logic/tracking";
-import { PostsGroupByTagsQuery } from "../../../graphql-types";
 import { BlogPageTemplate } from "../../components/design-system/templates/blog-page-template";
 import { Tag } from "../../components/design-system/molecules/tag";
 import { ContainerFluid } from "../../components/design-system/atoms/container-fluid";
@@ -16,7 +15,10 @@ const TagsContainer = styled(ContainerFluid)`
   margin-bottom: ${(props) => props.theme.spacing[4]};
 `;
 
-const TagsPage: FC<PageProps<PostsGroupByTagsQuery>> = ({ data, location }) => {
+const TagsPage: FC<PageProps<Queries.PostsGroupByTagsQuery>> = ({
+  data,
+  location,
+}) => {
   const siteMetadata = data.site!.siteMetadata!;
   const author = siteMetadata.author!;
   const featuredImage = siteMetadata.featuredImage!;
@@ -34,9 +36,9 @@ const TagsPage: FC<PageProps<PostsGroupByTagsQuery>> = ({ data, location }) => {
         {data.allMarkdownRemark.group.map((tag) => (
           <Tag
             big={true}
-            link={generateTagSlug(tag.fieldValue!)}
-            tag={`${tag.fieldValue} (${tag.totalCount})`}
-            key={tag.fieldValue}
+            link={generateTagSlug(tag!.fieldValue!)}
+            tag={`${tag!.fieldValue} (${tag!.totalCount})`}
+            key={tag!.fieldValue}
             trackingCategory={tracking.category.blog_tags}
             trackingLabel={tracking.label.body}
           />

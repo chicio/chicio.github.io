@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { graphql, PageProps } from "gatsby";
 import { tracking } from "../logic/tracking";
-import { TagPostsQuery } from "../../graphql-types";
 import { BlogGenericPostListPageTemplate } from "../components/design-system/templates/blog-generic-post-list-page-template";
 import { OgPageType } from "../logic/seo";
 import { getCurrentLocationFrom } from "../logic/current-location";
@@ -10,7 +9,7 @@ interface TagPageContext {
   tag: string;
 }
 
-const Tag: FC<PageProps<TagPostsQuery, TagPageContext>> = ({
+const Tag: FC<PageProps<Queries.TagPostsQuery, TagPageContext>> = ({
   data,
   pageContext,
   location,

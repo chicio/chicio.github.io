@@ -1,4 +1,3 @@
-import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Gallery } from "../src/components/design-system/organism/gallery";
 import { BlogThemePage } from "../src/components/design-system/templates/blog-theme-page";
@@ -8,7 +7,7 @@ const images = [
     node: {
       childImageSharp: {
         gatsbyImageData: {
-          layout: "fullWidth",
+          layout: "fixed",
           backgroundColor: "#b8a888",
           images: {
             fallback: {
@@ -37,7 +36,7 @@ const images = [
     node: {
       childImageSharp: {
         gatsbyImageData: {
-          layout: "fullWidth",
+          layout: "fixed",
           backgroundColor: "#b8a888",
           images: {
             fallback: {
@@ -70,6 +69,7 @@ describe("Gallery", () => {
 
     render(
       <BlogThemePage>
+        {/* @ts-ignore */}
         <Gallery images={images} />
       </BlogThemePage>
     );

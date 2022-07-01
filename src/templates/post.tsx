@@ -2,7 +2,6 @@ import { FC } from "react";
 import { graphql, PageProps } from "gatsby";
 import { tracking } from "../logic/tracking";
 import { PostMeta } from "../components/design-system/molecules/post-meta";
-import { PostQuery } from "../../graphql-types";
 import { PostAuthors } from "../components/design-system/molecules/post-authors";
 import { getSrc } from "gatsby-plugin-image";
 import { BlogPageTemplate } from "../components/design-system/templates/blog-page-template";
@@ -34,7 +33,7 @@ const PostContainer = styled.div`
   margin-top: ${(props) => props.theme.spacing[5]};
 `;
 
-const Post: FC<PageProps<PostQuery>> = ({ data, location }) => {
+const Post: FC<PageProps<Queries.PostQuery>> = ({ data, location }) => {
   const post = data.markdownRemark!;
   const title = post.frontmatter!.title!;
 
@@ -48,7 +47,7 @@ const Post: FC<PageProps<PostQuery>> = ({ data, location }) => {
       author={data.site!.siteMetadata!.author!}
       ogPageType={OgPageType.BlogPosting}
       ogImage={`${getSrc(
-        post.frontmatter!.image!.childImageSharp?.gatsbyImageData
+        post.frontmatter!.image!.childImageSharp!.gatsbyImageData!
       )!}`}
       trackingCategory={tracking.category.blog_post}
       customTitle={title}

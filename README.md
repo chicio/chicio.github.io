@@ -79,7 +79,6 @@ My website has been created for Github Pages using:
         * [gatsby-remark-embed-video](https://www.gatsbyjs.com/plugins/gatsby-remark-embed-video/)
         * [gatsby-remark-katex](https://www.gatsbyjs.com/plugins/gatsby-remark-katex/)
         * [gatsby-remark-prismjs](https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/)
-    * [gatsby-plugin-graphql-codegen](https://www.gatsbyjs.com/plugins/gatsby-plugin-graphql-codegen/)
     * [gatsby-plugin-feed](https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/)
     * [gatsby-plugin-catch-links](https://www.gatsbyjs.com/plugins/gatsby-plugin-catch-links/)
     * [gatsby-plugin-loadable-components-ssr](https://www.gatsbyjs.com/plugins/gatsby-plugin-loadable-components-ssr/)

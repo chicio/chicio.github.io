@@ -1,7 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby";
 import { tracking } from "../../../logic/tracking";
 import { SocialContact } from "../molecules/social-contact";
-import { SocialContactsQuery } from "../../../../graphql-types";
 import styled from "styled-components";
 import {
   DevTo,
@@ -10,9 +9,9 @@ import {
   Instagram,
   Linkedin,
   Medium,
-} from "styled-icons/boxicons-logos";
-import { Twitter } from "styled-icons/boxicons-logos";
-import { Envelope, Mobile } from "styled-icons/boxicons-regular";
+} from "@styled-icons/boxicons-logos";
+import { Twitter } from "@styled-icons/boxicons-logos";
+import { Envelope, Mobile } from "@styled-icons/boxicons-regular";
 import { FC } from "react";
 
 const SocialContactsContainers = styled.div`
@@ -32,7 +31,7 @@ export const SocialContacts: FC<SocialContactsProps> = ({
   trackingCategory,
   trackingLabel,
 }) => {
-  const data = useStaticQuery<SocialContactsQuery>(
+  const data = useStaticQuery<Queries.SocialContactsQuery>(
     graphql`
       query SocialContacts {
         site {

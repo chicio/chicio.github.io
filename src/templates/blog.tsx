@@ -1,6 +1,5 @@
 import { graphql, PageProps } from "gatsby";
 import { tracking } from "../logic/tracking";
-import { BlogListQuery } from "../../graphql-types";
 import { BlogPageTemplate } from "../components/design-system/templates/blog-page-template";
 import { PaginationNavigation } from "../components/design-system/molecules/pagination-navigation";
 import { PostCard } from "../components/design-system/molecules/post-card";
@@ -29,7 +28,7 @@ interface BlogPageContext {
   currentPage: number;
 }
 
-const Blog: FC<PageProps<BlogListQuery, BlogPageContext>> = ({
+const Blog: FC<PageProps<Queries.BlogListQuery, BlogPageContext>> = ({
   data,
   location,
   pageContext,
@@ -71,7 +70,7 @@ const Blog: FC<PageProps<BlogListQuery, BlogPageContext>> = ({
         readingTime={firstPost.node.fields!.readingTime!.text!}
         description={firstPost.node.frontmatter!.description!}
         trackingCategory={tracking.category.blog_home}
-        tags={firstPost.node.frontmatter!.tags}
+        tags={firstPost.node.frontmatter!.tags!}
       />
       {postsGrouped.map((postsGroup, index) => (
         <PostsRow postsGroup={postsGroup} key={`PostCardsRow${index}`} />

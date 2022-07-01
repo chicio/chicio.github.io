@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import { RecentPostsQuery } from "../../../../graphql-types";
 import { Heading4 } from "../atoms/heading4";
 import styled from "styled-components";
 import { mediaQuery } from "../utils-css/media-query";
@@ -30,7 +29,7 @@ export interface RecentPostsProps {
 }
 
 export const RecentPosts: FC<RecentPostsProps> = ({ currentSlug }) => {
-  const data = useStaticQuery<RecentPostsQuery>(
+  const data = useStaticQuery<Queries.RecentPostsQuery>(
     graphql`
       query RecentPosts {
         allMarkdownRemark(

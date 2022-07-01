@@ -105,3 +105,5 @@ fabric.properties
 
 # Env private keys
 .env
+
+./src/gatsby-types.d.ts

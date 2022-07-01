@@ -5,7 +5,6 @@ import { ModalWithImage } from "./modal-with-image";
 import styled from "styled-components";
 import { ContainerFluid } from "../atoms/container-fluid";
 import { Paragraph } from "../atoms/paragraph";
-import { File, ImageSharp, Maybe } from "../../../../graphql-types";
 import { mediaQuery } from "../utils-css/media-query";
 
 const GalleryContainer = styled(ContainerFluid)`
@@ -69,9 +68,12 @@ const GalleryImage = styled(GatsbyImage)`
 `;
 
 export interface GalleryProps {
-  images: Array<{
-    node: Pick<File, "name"> & {
-      childImageSharp?: Maybe<Pick<ImageSharp, "gatsbyImageData">>;
+  images: ReadonlyArray<{
+    readonly node: {
+      readonly name: string;
+      readonly childImageSharp: {
+        readonly gatsbyImageData: IGatsbyImageData;
+      } | null;
     };
   }>;
 }
@@ -84,13 +86,15 @@ export const Gallery: FC<GalleryProps> = ({ images }) => {
     <>
       <GalleryContainer>
         {images.map((image) => (
-          <GalleryImageFrame key={image.node.name}>
+          <GalleryImageFrame
+            key={image.node.name}
+            onClick={() =>
+              setCurrentImage(image.node.childImageSharp!.gatsbyImageData!)
+            }
+          >
             <GalleryImage
               alt={image.node.name}
               image={image.node.childImageSharp!.gatsbyImageData!}
-              onClick={() =>
-                setCurrentImage(image.node.childImageSharp!.gatsbyImageData!)
-              }
             />
             <GalleryImageDescription>
               {artDescriptions[image.node.name]}
