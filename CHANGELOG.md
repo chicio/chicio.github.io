@@ -1,8 +1,16 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [5.5.0](https://github.com/chicio/chicio.github.io/releases/tag/v5.5.0)
+Release date: 2022-07-01
+
+#### Added
+
+- gatsby-config migrated to typescript
+- gatsby-node migrated to typescript
+
 ## [5.4.0](https://github.com/chicio/chicio.github.io/releases/tag/v5.4.0)
-Release date: 2021-03-02
+Release date: 2022-03-02
 
 #### Added
 
