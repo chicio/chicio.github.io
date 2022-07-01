@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { tracking } from "../../../logic/tracking";
 import { BlogAuthor, blogAuthors } from "../../../logic/blog-authors";
-import { AuthorsImagesQuery } from "../../../../graphql-types";
 import { graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 import { ContainerFluid } from "../atoms/container-fluid";
@@ -41,7 +40,7 @@ const PostAuthorImage = styled(GatsbyImage)`
 `;
 
 export interface PostAuthorsProps {
-  authors: Array<string | null | undefined>;
+  authors: ReadonlyArray<string | null>;
   trackingCategory: string;
   trackingLabel: string;
   enableUrl: boolean;
@@ -53,7 +52,7 @@ export const PostAuthors: FC<PostAuthorsProps> = ({
   trackingLabel,
   enableUrl,
 }) => {
-  const blogAuthorsImages = useStaticQuery<AuthorsImagesQuery>(graphql`
+  const blogAuthorsImages = useStaticQuery<Queries.AuthorsImagesQuery>(graphql`
     query AuthorsImages {
       allFile(
         filter: {

@@ -1,11 +1,6 @@
 import styled from "styled-components";
 import { ContainerFluid } from "../atoms/container-fluid";
 import { Time } from "../atoms/time";
-import {
-  MarkdownRemarkFields,
-  MarkdownRemarkFrontmatter,
-  Maybe,
-} from "../../../../graphql-types";
 import { FC } from "react";
 import { BlogPageTemplate } from "./blog-page-template";
 import { tracking } from "../../../logic/tracking";
@@ -49,10 +44,13 @@ const PostLink = styled(StandardInternalLinkWithTracking)`
 
 export interface BlogGenericPostListPageProps {
   title: string;
-  posts: Array<{
-    node: {
-      fields?: Maybe<Pick<MarkdownRemarkFields, "slug">>;
-      frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, "date" | "title">>;
+  posts: ReadonlyArray<{
+    readonly node: {
+      readonly fields: { readonly slug: string | null } | null;
+      readonly frontmatter: {
+        readonly title: string | null;
+        readonly date: string | null;
+      } | null;
     };
   }>;
   author: string;

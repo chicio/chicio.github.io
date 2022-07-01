@@ -32,6 +32,8 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": "error",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/no-namespace": "off",
+    "no-undef": "off",
   },
   overrides: [
     // Override some TypeScript rules just for .js files

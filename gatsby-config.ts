@@ -11,6 +11,7 @@ interface GatsbyPluginFeed {
 
 const config: GatsbyConfig = {
   jsxRuntime: "automatic",
+  graphqlTypegen: true,
   siteMetadata: {
     title:
       "Fabrizio Duroni | Fabrizio Duroni ‘Chicio Coding’ official site with profile details. Official blog chicio coding. Main skills: mobile application development, computer graphics, web development.",
@@ -153,7 +154,6 @@ const config: GatsbyConfig = {
         ],
       },
     },
-    `gatsby-plugin-graphql-codegen`,
     {
       resolve: `gatsby-plugin-feed`,
       options: {

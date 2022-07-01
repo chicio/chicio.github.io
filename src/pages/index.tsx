@@ -1,6 +1,5 @@
 import { graphql, PageProps, useStaticQuery } from "gatsby";
 import { ProfilePresentation } from "../components/design-system/organism/profile-presentation";
-import { HomePageQuery } from "../../graphql-types";
 import { tracking } from "../logic/tracking";
 import { OgPageType } from "../logic/seo";
 import { BackgroundFullScreen } from "../components/background-fullscreen";
@@ -14,7 +13,7 @@ import { FC } from "react";
 const BottomIndex = loadable(() => import(`../components/bottom-index`));
 
 const HomePage: FC<PageProps> = ({ location }) => {
-  const data = useStaticQuery<HomePageQuery>(
+  const data = useStaticQuery<Queries.HomePageQuery>(
     graphql`
       query HomePage {
         site {

@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { tracking } from "../logic/tracking";
 import { graphql, PageProps, useStaticQuery } from "gatsby";
-import { PrivacyPolicyQuery } from "../../graphql-types";
 import { BlogPageTemplate } from "../components/design-system/templates/blog-page-template";
 import { Heading1 } from "../components/design-system/atoms/heading1";
 import { Heading4 } from "../components/design-system/atoms/heading4";
@@ -13,7 +12,7 @@ import { OgPageType } from "../logic/seo";
 import { getCurrentLocationFrom } from "../logic/current-location";
 
 const PrivacyPolicy: FC<PageProps> = ({ location }) => {
-  const data = useStaticQuery<PrivacyPolicyQuery>(
+  const data = useStaticQuery<Queries.PrivacyPolicyQuery>(
     graphql`
       query PrivacyPolicy {
         site {

@@ -2,7 +2,6 @@ import { Gallery } from "./design-system/organism/gallery";
 import styled from "styled-components";
 import { mediaQuery } from "./design-system/utils-css/media-query";
 import { Container } from "./design-system/atoms/container";
-import { File, ImageSharp, Maybe } from "../../graphql-types";
 import { ContainerFullscreen } from "./design-system/atoms/container-fullscreen";
 import { Paragraph } from "./design-system/atoms/paragraph";
 import { FC } from "react";
@@ -46,9 +45,12 @@ const ContentContainer = styled(Container)`
 `;
 
 interface BottomArtProps {
-  images: Array<{
-    node: Pick<File, "name"> & {
-      childImageSharp?: Maybe<Pick<ImageSharp, "gatsbyImageData">>;
+  images: ReadonlyArray<{
+    readonly node: {
+      readonly name: string;
+      readonly childImageSharp: {
+        readonly gatsbyImageData: import("gatsby-plugin-image").IGatsbyImageData;
+      } | null;
     };
   }>;
 }

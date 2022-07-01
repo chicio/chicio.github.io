@@ -4,7 +4,7 @@ import { generateTagSlug } from "../../../logic/slug";
 import { FC } from "react";
 
 export interface PostTagsProps {
-  tags: Array<string | null | undefined>;
+  tags: ReadonlyArray<string | null>;
   trackingCategory: string;
   trackingLabel: string;
 }

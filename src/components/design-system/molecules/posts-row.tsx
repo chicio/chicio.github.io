@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { mediaQuery } from "../utils-css/media-query";
 import { PostCard } from "./post-card";
 import { tracking } from "../../../logic/tracking";
+import { IGatsbyImageData } from "gatsby-plugin-image";
 
 const PostsRowContainer = styled.div`
   display: flex;
@@ -18,32 +19,22 @@ const PostsRowContainer = styled.div`
 interface PostsRowProps {
   postsGroup: {
     node: {
-      fields?:
-        | {
-            slug?: string | null | undefined;
-            readingTime?:
-              | { text?: string | null | undefined }
-              | null
-              | undefined;
-          }
-        | null
-        | undefined;
-      frontmatter?:
-        | {
-            title?: string | null | undefined;
-            description?: string | null | undefined;
-            authors?: Array<string | null | undefined> | null | undefined;
-            tags?: Array<string | null | undefined> | null | undefined;
-            date?: any;
-            image?:
-              | {
-                  childImageSharp?: { gatsbyImageData: any } | null | undefined;
-                }
-              | null
-              | undefined;
-          }
-        | null
-        | undefined;
+      readonly fields: {
+        readonly slug: string | null;
+        readonly readingTime: { readonly text: string | null } | null;
+      } | null;
+      readonly frontmatter: {
+        readonly title: string | null;
+        readonly description: string | null;
+        readonly authors: ReadonlyArray<string | null> | null;
+        readonly tags: ReadonlyArray<string | null> | null;
+        readonly date: string | null;
+        readonly image: {
+          readonly childImageSharp: {
+            readonly gatsbyImageData: IGatsbyImageData;
+          } | null;
+        } | null;
+      } | null;
     };
   }[];
 }
@@ -63,7 +54,7 @@ export const PostsRow: FC<PostsRowProps> = ({ postsGroup }) => (
       readingTime={postsGroup[0].node.fields!.readingTime!.text!}
       description={postsGroup[0].node.frontmatter!.description!}
       trackingCategory={tracking.category.blog_home}
-      tags={postsGroup[0].node.frontmatter!.tags}
+      tags={postsGroup[0].node.frontmatter!.tags!}
     />
     {postsGroup[1] && (
       <PostCard
@@ -80,7 +71,7 @@ export const PostsRow: FC<PostsRowProps> = ({ postsGroup }) => (
         readingTime={postsGroup[1].node.fields!.readingTime!.text!}
         description={postsGroup[1].node.frontmatter!.description!}
         trackingCategory={tracking.category.blog_home}
-        tags={postsGroup[1].node.frontmatter!.tags}
+        tags={postsGroup[1].node.frontmatter!.tags!}
       />
     )}
   </PostsRowContainer>

@@ -1,5 +1,4 @@
 import { graphql, PageProps } from "gatsby";
-import { ArtQuery } from "../../graphql-types";
 import { getCurrentLocationFrom } from "../logic/current-location";
 import { tracking } from "../logic/tracking";
 import { OgPageType } from "../logic/seo";
@@ -48,7 +47,7 @@ const BackgroundImage = styled.div`
   z-index: -300;
 `;
 
-const Art: FC<PageProps<ArtQuery>> = ({ data, location }) => {
+const Art: FC<PageProps<Queries.ArtQuery>> = ({ data, location }) => {
   const siteMetadata = data.site!.siteMetadata!;
   const artImage = siteMetadata.featuredArtImage!;
 

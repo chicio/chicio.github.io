@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { Helmet } from "react-helmet";
 import { graphql, useStaticQuery } from "gatsby";
-import { HeadQuery } from "../../graphql-types";
 import { createJsonLD, createMetaAttributes, OgPageType } from "../logic/seo";
 
 const cookieConsentCss = `
@@ -60,7 +59,7 @@ export const Head: FC<HeadProps> = ({
   description,
   cookieConsentColor,
 }) => {
-  const data = useStaticQuery<HeadQuery>(
+  const data = useStaticQuery<Queries.HeadQuery>(
     graphql`
       query Head {
         site {

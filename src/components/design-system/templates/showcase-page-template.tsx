@@ -1,5 +1,4 @@
 import { graphql, useStaticQuery } from "gatsby";
-import { ShowcasePageQuery } from "../../../../graphql-types";
 import { Head } from "../../head";
 import { OgPageType } from "../../../logic/seo";
 import { ContainerFullscreen } from "../atoms/container-fullscreen";
@@ -35,7 +34,7 @@ export const ShowcasePageTemplate: FC<ShowcasePageProps> = ({
   featuredImage,
   cookieConsentColor,
 }) => {
-  const data = useStaticQuery<ShowcasePageQuery>(
+  const data = useStaticQuery<Queries.ShowcasePageQuery>(
     graphql`
       query ShowcasePage {
         site {

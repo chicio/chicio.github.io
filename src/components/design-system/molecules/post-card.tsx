@@ -87,8 +87,8 @@ export type PostCardProps = BigCardProps & {
   slug: string;
   title: string;
   image: IGatsbyImageData;
-  authors: (string | null | undefined)[];
-  tags: (string | null | undefined)[] | null | undefined;
+  authors: ReadonlyArray<string | null>;
+  tags: ReadonlyArray<string | null>;
   date: string;
   readingTime: string;
   description: string;
