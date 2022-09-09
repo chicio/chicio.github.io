@@ -42,9 +42,11 @@ const config: GatsbyConfig = {
           "UA-97399890-1", // Google Analytics / GA
           "G-B992TEM300",
         ],
+        gtagConfig: {
+          anonymize_ip: true,
+        },
         pluginConfig: {
           head: true,
-          anonymize_ip: true,
         },
       },
     },
