@@ -39,7 +39,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
         trackingIds: [
-          "UA-97399890-1", // Google Analytics / GA
+          "G-B992TEM300", // Google Analytics / GA
         ],
         pluginConfig: {
           head: true,
