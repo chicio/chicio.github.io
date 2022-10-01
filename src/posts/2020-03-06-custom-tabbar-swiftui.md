@@ -4,7 +4,7 @@ description: "SwiftUI has been introduced by Apple during the last WWDC. I start
 understand its potential. Let's see how I used SwiftUI to create a custom TabBar with modal and detail navigation."
 date: 2020-03-06
 image: ../images/posts/tabbar-swiftui.jpg
-tags: [swift, ios, apple, mobile application development]
+tags: [swift, swiftui, ios, apple, mobile application development]
 comments: true
 math: false
 authors: [fabrizio_duroni]
