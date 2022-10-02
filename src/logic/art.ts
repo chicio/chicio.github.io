@@ -76,4 +76,10 @@ export const artDescriptions: { [imageName: string]: string } = {
   "2021-12-18": "Alien world",
   "2022-04-09": "Alien 👽",
   "2022-06-25": "Star wars Kylo Ren sword 🗡",
+  "2022-07-03": "Sword 🗡 and heart ♥️",
+  "2022-07-04": "New school skull 💀",
+  "2022-07-11": "New school rose 🌹",
+  "2022-07-31": "New school lantern 🏮",
+  "2022-08-20": "Darth Vader 🛸",
+  "2022-09-10": "New school tattoo machine 🎨",
 };
