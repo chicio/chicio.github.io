@@ -26,7 +26,7 @@ project we are developing something new for our mobile app
 using [SwiftUI](https://developer.apple.com/xcode/swiftui/ "swiftui"). We had various challenges to overcome. 
 One of this has been to be able to display a cool inspirational title like the following one.
 
-![swiftui path shapes](../images/posts/swiftui-path.jpg "swiftui path shapes")
+![swiftui path shapes](../images/posts/swiftui-path.jpg "The inspirational title we want to create")
 
 The easiest way to go could be to simply include in the target bundle the localized version of an assets that 
 represent the title above. This is easily achievable using 
@@ -54,7 +54,6 @@ we used [https://swiftvg.mike-engel.com](https://swiftvg.mike-engel.com "swift s
 two svg path as the following `UIBezierPath`. 
 
 ```swift
-...
 // ...other code...
 
 private var whitePath: UIBezierPath {
@@ -79,7 +78,7 @@ private var purplePath: UIBezierPath {
 // ...other code...    
 ```
 
-Given the paths above a first navie implementation of the `TitleBackgroundShape` component could be the following.
+Given the paths above a first naive implementation of the `TitleBackgroundShape` component could be the following.
 
 ```swift
 private struct TitleBackgroundShape: Shape {
@@ -102,10 +101,9 @@ frame we are drawing into, represented by the `rect` parameter of the `func path
 How can we do this? There are 
 [affine transforms](https://people.cs.clemson.edu/~dhouse/courses/401/notes/affines-matrices.pdf "affine transform") to 
 the rescue!! 
-:rocket: They are very useful (and also used 
-:laughing: ) geometric linear transform that preserve collinearity and parallelism. The affine transform matrix for 
-scaling expressed as [homogenous coordinates](https://people.cs.clemson.edu/~dhouse/courses/401/notes/affines-matrices.pdf "affine transform")  
-(in order to preserve linearity if combined with other transformation) is the following one.
+:rocket: They are very useful (and also used a lot in computer graphics :laughing: ) geometric linear transform that 
+preserve collinearity and parallelism. The affine transform matrix for 
+scaling expressed as [homogenous coordinates](https://people.cs.clemson.edu/~dhouse/courses/401/notes/affines-matrices.pdf "affine transform") is the following one.
 
 $$
 \begin{bmatrix}
@@ -127,8 +125,9 @@ y \cdot S_{y} \\
 $$
 
 Guess what? Inside the `Core Graphics` framework we already have the `CGAffineTransform` struct with various init 
-methods, one each type of transform (rotate, scale and translation, but shear seems missing :laughing: ). In our 
-case we will use `CGAffineTransform(scaleX: <value>, y: <value>)`. Which are the value to be used as scale factor? 
+methods, one for each type of transform (rotate, scale and translation, but shear seems missing for unknown reasons 
+:laughing: ).
+In our case we will use `CGAffineTransform(scaleX: <value>, y: <value>)`. Which are the value to be used as scale factor? 
 For our goal we need to calculate the ratio between the `rect` parameter of the `func path(in rect: CGRect) -> Path` 
 function (that as we said before it is the `CGRect` in which we are drawing our shape) and the bounding rect of the 
 path itself. Luckily, SwiftUI exposes a beautiful `boundingRect` property on the `Path` that is exactly what we need.
