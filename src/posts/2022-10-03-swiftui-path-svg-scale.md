@@ -50,7 +50,7 @@ must return a `Path` that describe the outline of the `Shape` itself in the curr
 based on the usage context of the `Shape` itself.  
 So given the svg coordinate that I mentioned before, we can create a component named `TitleBackgroundShape` that 
 implement the `Shape` protocol that draws the path described by the svg. To quickly convert the svg path into code 
-we used [https://swiftvg.mike-engel.com](https://swiftvg.mike-engel.com "swift svg path"). This tool returned our 
+we used [https://swiftvg.mike-engel.com](https://swiftvg.mike-engel.com "swift svg path"). This tool transformed our 
 two svg path as the following `UIBezierPath`. 
 
 ```swift
