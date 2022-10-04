@@ -17,12 +17,13 @@ As you may already know, at [lastminute.com group](https://lmgroup.lastminute.co
 [Friyay instead of Friday](https://technology.lastminute.com/tech-learning-and-development-friyay/ "lastminute.com 
 learning"). In the Friyay everyone can learn and improve his/her skill on any subject. In particular, as you seen 
 from one of my [previous post](/2022/06/06/microfrontend-module-federation-dynamic-configuration/ "module 
-federation"), I spent some Friday mornings putting in place the first microfrontend architecture for the customer 
-area of lastminute.com websites (while also trying to master/study in deep some other topics).  
+federation"), I spent some Friyay putting in place the first microfrontend architecture for the customer 
+area of lastminute.com websites (while also trying to study in deep some other topics).  
 In the last weeks I started a new Friyay "secret" project with my colleague 
 [Marco De Lucchi](https://www.linkedin.com/in/marcodelucchi/). As you may already remember [I already worked with 
-Marco](/2020/01/18/react-native-activate-hermes/) in the past when I was part of the mobile app team. In this secret 
-project we are developing something new for our mobile app 
+Marco](/2020/01/18/react-native-activate-hermes/ "react native hermes") in the past when I was part of the mobile app 
+team.
+For this new secret project, we are developing something new for our mobile app 
 using [SwiftUI](https://developer.apple.com/xcode/swiftui/ "swiftui"). We had various challenges to overcome. 
 One of this has been to be able to display a cool inspirational title like the following one.
 
@@ -32,14 +33,14 @@ The easiest way to go could be to simply include in the target bundle the locali
 represent the title above. This is easily achievable using 
 [Xcode localized assets](https://developer.apple.com/documentation/xcode/localizing-assets-in-a-catalog "xcode 
 localized assets"). But given that we were already having fun with SwiftUI (remember, it is a Friyay project 
-:laughing:) and that we want to save bytes on the bundle size (that is always important), we decided to be bold and 
+:laughing: ) and that we want to save bytes on the bundle size (that is always important), we decided to be bold and 
 try to implement the title in the screenshot above using only code (no assets).  
 So in this post we will show you our own personal journey into the world of SwiftUI `Path` and `Shape` and how we 
 have been able to create the inspirational title in the screenshot above using only code. Let's go!! :rocket:
 
 #### Implementation
 
-Let's start from the most challenging part: the background. As you can see from the image above they are 
+Let's start from the most challenging part: the background. As you can see from the image above it is 
 basically the same shape drawn twice, one above each other, with different color and a slightly different position 
 in space. In the original Figma we received from UX we were able to extract the svg path coordinates for these shapes.  
 So how can we draw them in SwiftUI? We can use [Path](https://developer.apple.com/documentation/swiftui/path 
@@ -121,6 +122,7 @@ y \\
 x \cdot S_{x}\\
 y \cdot S_{y} \\
 1 \\
+1 \\
 \end{bmatrix}
 $$
 
@@ -131,7 +133,7 @@ In our case we will use `CGAffineTransform(scaleX: <value>, y: <value>)`. Which 
 For our goal we need to calculate the ratio between the `rect` parameter of the `func path(in rect: CGRect) -> Path` 
 function (that as we said before it is the `CGRect` in which we are drawing our shape) and the bounding rect of the 
 path itself. Luckily, SwiftUI exposes a beautiful `boundingRect` property on the `Path` that is exactly what we need.
-so in the end the final implementation of our `TitleBackgroundShape` is the following one.
+So in the end the final implementation of our `TitleBackgroundShape` is the following one.
 
 ```swift
 private struct TitleBackgroundShape: Shape {
@@ -201,7 +203,7 @@ spacing for each side.
 We are finally ready to add the custom background  component `TitleBackground` we created before. We need to put it 
 behind the text, but we want also to see it grows proportionally to the text dimension. This is why we included the 
 `Text` component in a `ZStack`, and we added with the `.background` modifier the `TitleBackground`. Below you can find 
-the complete implementation.
+the implementation.
 
 ```swift
 struct InspirationaTitle: View {
@@ -226,5 +228,5 @@ struct InspirationaTitle: View {
 #### Conclusion
 
 In this [github repository](https://github.com/chicio/Path-Example "swiftui path example") you can find the 
-implementation fo the example described above. I really excited to share with you the entire project where we used 
-the implementation above. Stay tuned! :ear: :rocket:
+implementation fo the example described above. I'm really excited to share with you in the next weeks the entire 
+project where we used the implementation above. Stay tuned! :ear: :rocket:
