@@ -104,7 +104,7 @@ How can we do this? There are
 the rescue!! 
 :rocket: They are very useful (and also used a lot in computer graphics :laughing: ) geometric linear transform that 
 preserve collinearity and parallelism. The affine transform matrix for 
-scaling expressed as [homogenous coordinates](https://people.cs.clemson.edu/~dhouse/courses/401/notes/affines-matrices.pdf "affine transform") is the following one.
+2D scaling expressed as [homogenous coordinates](https://people.cs.clemson.edu/~dhouse/courses/401/notes/affines-matrices.pdf "affine transform") is the following one.
 
 $$
 \begin{bmatrix}
@@ -121,7 +121,6 @@ y \\
 \begin{bmatrix}
 x \cdot S_{x}\\
 y \cdot S_{y} \\
-1 \\
 1 \\
 \end{bmatrix}
 $$
