@@ -1,6 +1,13 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [6.0.0](https://github.com/chicio/chicio.github.io/releases/tag/v6.0.0)
+Release date: 2022-11-09
+
+#### Added
+
+- gatsby graphql typegen
+
 ## [5.5.0](https://github.com/chicio/chicio.github.io/releases/tag/v5.5.0)
 Release date: 2022-07-01
 
