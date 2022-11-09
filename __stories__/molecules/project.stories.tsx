@@ -1,4 +1,3 @@
-import React from "react";
 import { Meta, Story } from "@storybook/react";
 import {
   Project,
@@ -30,15 +29,11 @@ ProjectStory.args = {
         Physically based ray tracer with multiple shading models support and
         Color Rendering Index (CRI) evaluation. Project developed for my master
         degree thesis at{" "}
-        <StandardExternalLink
-          href="https://www.disco.unimib.it"
-        >
+        <StandardExternalLink href="https://www.disco.unimib.it">
           University Milano-Bicocca
         </StandardExternalLink>{" "}
         -
-        <StandardExternalLink
-          href="http://www.ivl.disco.unimib.it"
-        >
+        <StandardExternalLink href="http://www.ivl.disco.unimib.it">
           Imaging and Vision Laboratory
         </StandardExternalLink>
         .

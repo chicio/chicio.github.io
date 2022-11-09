@@ -1,4 +1,3 @@
-import React from "react";
 import { Meta, Story } from "@storybook/react";
 import {
   Overlay,
@@ -6,9 +5,13 @@ import {
 } from "../../src/components/design-system/atoms/overlay";
 import { Paragraph } from "../../src/components/design-system/atoms/paragraph";
 
+const OverlayContainer: React.FC<OverlayProps> = (args) => (
+  <Overlay {...args} />
+);
+
 const Template: Story<OverlayProps> = (args) => (
   <>
-    <Overlay {...args} />
+    <OverlayContainer {...args} />
     <Paragraph>
       {"An overlay covers 100% of the visible contain with opacity"}
     </Paragraph>

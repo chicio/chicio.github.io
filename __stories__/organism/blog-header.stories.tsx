@@ -2,7 +2,7 @@ import React from "react";
 import { Meta } from "@storybook/react";
 import { BlogHeader } from "../../src/components/design-system/organism/blog-header";
 
-export const BlogHeaderContainer: React.VFC = () => <BlogHeader />;
+export const BlogHeaderContainer: React.FC = () => <BlogHeader />;
 
 // @ts-ignore
 BlogHeaderContainer.storyName = "Blog Header";

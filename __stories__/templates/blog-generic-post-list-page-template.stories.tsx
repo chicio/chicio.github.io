@@ -1,4 +1,3 @@
-import React from "react";
 import { Meta, Story } from "@storybook/react";
 import {
   BlogGenericPostListPageTemplate,
@@ -6,9 +5,8 @@ import {
 } from "../../src/components/design-system/templates/blog-generic-post-list-page-template";
 import { OgPageType } from "../../src/logic/seo";
 
-export const BlogGenericPostListPagePageTemplateStory: Story<BlogGenericPostListPageProps> = (
-  args
-) => <BlogGenericPostListPageTemplate {...args} />;
+export const BlogGenericPostListPagePageTemplateStory: Story<BlogGenericPostListPageProps> =
+  (args) => <BlogGenericPostListPageTemplate {...args} />;
 BlogGenericPostListPagePageTemplateStory.args = {
   title: "Archive",
   posts: [

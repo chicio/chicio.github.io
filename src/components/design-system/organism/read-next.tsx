@@ -32,10 +32,7 @@ export const RecentPosts: FC<RecentPostsProps> = ({ currentSlug }) => {
   const data = useStaticQuery<Queries.RecentPostsQuery>(
     graphql`
       query RecentPosts {
-        allMarkdownRemark(
-          limit: 15
-          sort: { fields: frontmatter___date, order: DESC }
-        ) {
+        allMarkdownRemark(limit: 15, sort: { frontmatter: { date: DESC } }) {
           edges {
             node {
               fields {

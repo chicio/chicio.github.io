@@ -1,4 +1,3 @@
-import React from "react";
 import { Meta, Story } from "@storybook/react";
 import {
   RecentPostCard,
@@ -19,8 +18,7 @@ RecentPostCardStory.args = {
     backgroundColor: "#e8c8c8",
     images: {
       fallback: {
-        src:
-          "https://www.fabrizioduroni.it/static/3abc914507de97c6aad016c603c0ce5f/05276/mockk-junit5-kotlin.jpg",
+        src: "https://www.fabrizioduroni.it/static/3abc914507de97c6aad016c603c0ce5f/05276/mockk-junit5-kotlin.jpg",
         srcSet:
           "https://www.fabrizioduroni.it/static/3abc914507de97c6aad016c603c0ce5f/20c4c/mockk-junit5-kotlin.jpg 750w,\nhttps://www.fabrizioduroni.it/static/3abc914507de97c6aad016c603c0ce5f/05276/mockk-junit5-kotlin.jpg 1000w",
         sizes: "100vw",

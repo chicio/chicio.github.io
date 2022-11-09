@@ -7,7 +7,7 @@ const ContainerWithColor = styled(ContainerFullscreen)`
   background-color: ${(props) => props.theme.light.primaryColor};
 `;
 
-export const FullScreen: React.VFC = () => (
+export const FullScreen: React.FC = () => (
   <ContainerWithColor>{"A fluid Container"}</ContainerWithColor>
 );
 

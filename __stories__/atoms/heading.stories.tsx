@@ -8,7 +8,7 @@ import { Heading5 } from "../../src/components/design-system/atoms/heading5";
 import { Heading6 } from "../../src/components/design-system/atoms/heading6";
 import { Heading7 } from "../../src/components/design-system/atoms/heading7";
 
-export const Heading: React.VFC = () => (
+export const Heading: React.FC = () => (
   <div>
     <Heading1>{"Heading 1"}</Heading1>
     <Heading2>{"Heading 2"}</Heading2>

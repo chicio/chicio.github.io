@@ -2,7 +2,7 @@ import React from "react";
 import { Meta } from "@storybook/react";
 import { Time } from "../../src/components/design-system/atoms/time";
 
-export const TimeContainer: React.VFC = () => (
+export const TimeContainer: React.FC = () => (
   <>
     <div>
       <Time>{"24 Apr 2021"}</Time>

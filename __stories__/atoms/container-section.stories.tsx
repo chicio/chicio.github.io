@@ -7,7 +7,7 @@ const ContainerWithColor = styled(ContainerSection)`
   background-color: ${(props) => props.theme.light.primaryColor};
 `;
 
-export const Section: React.VFC = () => (
+export const Section: React.FC = () => (
   <ContainerWithColor>{"A fluid Container"}</ContainerWithColor>
 );
 
