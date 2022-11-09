@@ -6,7 +6,7 @@ Release date: 2022-11-09
 
 #### Added
 
-- gatsby graphql typegen
+- gatsby 5 upgrade
 
 ## [5.5.0](https://github.com/chicio/chicio.github.io/releases/tag/v5.5.0)
 Release date: 2022-07-01
