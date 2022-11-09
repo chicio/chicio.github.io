@@ -1,4 +1,3 @@
-import React from "react";
 import { Meta, Story } from "@storybook/react";
 import { Timeline } from "../../src/components/design-system/organism/timeline";
 

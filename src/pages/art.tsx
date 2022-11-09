@@ -87,7 +87,7 @@ export const artQuery = graphql`
         relativeDirectory: { eq: "art" }
         extension: { regex: "/(jpg)|(jpeg)|(png)/" }
       }
-      sort: { fields: name, order: DESC }
+      sort: { name: DESC }
     ) {
       edges {
         node {

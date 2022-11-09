@@ -1,4 +1,3 @@
-import React from "react";
 import { Meta, Story } from "@storybook/react";
 import { BlogPageProps } from "../../src/components/design-system/templates/blog-page-template";
 import { OgPageType } from "../../src/logic/seo";
@@ -10,6 +9,7 @@ import { blogTheme } from "../../src/components/design-system/theme";
 
 export const ShowcasePageTemplateStory: Story<BlogPageProps> = () => (
   <ShowcasePageTemplate
+    cookieConsentColor={"#FF0000"}
     location={{
       pathname: "/",
       url: "http://localhost:8000/",

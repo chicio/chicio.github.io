@@ -124,7 +124,7 @@ const StyledExampleCode = styled.div`
   ${syntax}
 `;
 
-export const Code: React.VFC = () => (
+export const Code: React.FC = () => (
   <>
     <StyledExampleCode dangerouslySetInnerHTML={{ __html: htmlSwift }} />
     <StyledExampleCode dangerouslySetInnerHTML={{ __html: htmlKotlin }} />

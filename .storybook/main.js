@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 module.exports = {
   stories: [
     "../__stories__/**/*.stories.mdx",
@@ -14,7 +16,15 @@ module.exports = {
     reactDocgen: false
   },
   webpackFinal: async config => {
+    // To load react without having the jsx runtime issues
+    config.plugins.push(
+      new webpack.ProvidePlugin({
+        React: 'react',
+      })
+    );
     config.module.rules[0].exclude = [/node_modules\/(?!(gatsby)\/)/]
+    // Remove core-js to prevent issues with Storybook
+    config.module.rules[0].exclude= [/core-js/]
     config.module.rules[0].use[0].loader = require.resolve("babel-loader")
     config.module.rules[0].use[0].options.presets = [
       require.resolve("@babel/preset-react"),
