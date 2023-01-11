@@ -77,7 +77,7 @@
     "gatsby-remark-katex": "^7.0.0",
     "gatsby-remark-prismjs": "^7.0.0",
     "gatsby-source-filesystem": "^5.0.0",
-    "gatsby-transformer-remark": "^6.0.0",
+    "gatsby-transformer-remark": "^6.3.2",
     "gatsby-transformer-sharp": "^5.0.0",
     "katex": "0.16.3",
     "postcss": "^8.4.18",
