@@ -1,17 +1,27 @@
 import { FC } from "react";
-import { tracking } from "../logic/tracking";
-import { graphql, PageProps, useStaticQuery } from "gatsby";
-import { BlogPageTemplate } from "../components/design-system/templates/blog-page-template";
-import { Heading1 } from "../components/design-system/atoms/heading1";
-import { Heading4 } from "../components/design-system/atoms/heading4";
-import { List } from "../components/design-system/atoms/list";
-import { ContainerSection } from "../components/design-system/atoms/container-section";
-import { Paragraph } from "../components/design-system/atoms/paragraph";
-import { StandardExternalLink } from "../components/design-system/atoms/standard-external-link";
-import { OgPageType } from "../logic/seo";
-import { getCurrentLocationFrom } from "../logic/current-location";
+import { graphql, useStaticQuery } from "gatsby";
+import { BlogPageTemplate } from "./blog-page-template";
+import { getCurrentLocationFrom } from "../../../logic/current-location";
+import { OgPageType } from "../../../logic/seo";
+import { tracking } from "../../../logic/tracking";
+import { WindowLocation } from "@reach/router";
+import { Heading1 } from "../atoms/heading1";
+import { Paragraph } from "../atoms/paragraph";
+import { ContainerSection } from "../atoms/container-section";
+import { List } from "../atoms/list";
+import { Heading4 } from "../atoms/heading4";
+import { StandardExternalLink } from "../atoms/standard-external-link";
 
-const PrivacyPolicy: FC<PageProps> = ({ location }) => {
+interface Service {
+  name: string;
+  link: string;
+}
+
+export const PrivacyPolicyTemplate: FC<{
+  appName: String;
+  location: WindowLocation<WindowLocation["state"]>;
+  services: Service[];
+}> = ({ appName, location, services }) => {
   const data = useStaticQuery<Queries.PrivacyPolicyQuery>(
     graphql`
       query PrivacyPolicy {
@@ -37,10 +47,10 @@ const PrivacyPolicy: FC<PageProps> = ({ location }) => {
       ogImage={featuredImage}
       trackingCategory={tracking.category.privacy_policy}
     >
-      <Heading1>Privacy Policy</Heading1>
+      <Heading1>{appName} Privacy Policy</Heading1>
       <Paragraph>
-        Fabrizio Duroni built the chicio coding app as a Free app. This SERVICE
-        is provided by Fabrizio Duroni at no cost and is intended for use as is.
+        Fabrizio Duroni built the {appName} app as a Free app. This SERVICE is
+        provided by Fabrizio Duroni at no cost and is intended for use as is.
       </Paragraph>
       <Paragraph>
         This page is used to inform visitors regarding my policies with the
@@ -54,11 +64,6 @@ const PrivacyPolicy: FC<PageProps> = ({ location }) => {
         not use or share your information with anyone except as described in
         this Privacy Policy.
       </Paragraph>
-      <Paragraph>
-        The terms used in this Privacy Policy have the same meanings as in our
-        Terms and Conditions, which is accessible at chicio coding unless
-        otherwise defined in this Privacy Policy.
-      </Paragraph>
       <ContainerSection>
         <Heading4>Information Collection and Use</Heading4>
         <Paragraph>
@@ -67,25 +72,31 @@ const PrivacyPolicy: FC<PageProps> = ({ location }) => {
           information that I request will be retained on your device and is not
           collected by me in any way.
         </Paragraph>
-        <Paragraph>
-          The app does use third party services that may collect information
-          used to identify you.
-        </Paragraph>
-        <Paragraph>
-          Link to privacy policy of third party service providers used by the
-          app
-        </Paragraph>
-        <List>
-          <li>
-            <StandardExternalLink
-              href="https://www.google.com/policies/privacy/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Google Play Services
-            </StandardExternalLink>
-          </li>
-        </List>
+        {services.length > 0 && (
+          <>
+            <Paragraph>
+              The app does use third party services that may collect information
+              used to identify you.
+            </Paragraph>
+            <Paragraph>
+              Link to privacy policy of third party service providers used by
+              the app
+            </Paragraph>
+            <List>
+              {services.map((service) => (
+                <li key={service.name}>
+                  <StandardExternalLink
+                    href={service.link}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {service.name}
+                  </StandardExternalLink>
+                </li>
+              ))}
+            </List>
+          </>
+        )}
       </ContainerSection>
       <ContainerSection>
         <Heading4>Log Data</Heading4>
@@ -161,9 +172,9 @@ const PrivacyPolicy: FC<PageProps> = ({ location }) => {
       <ContainerSection>
         <Heading4>Children’s Privacy</Heading4>
         <Paragraph>
-          These Services do not address anyone under the age of 13. I do not
+          These Services do not address anyone under the age of 4. I do not
           knowingly collect personally identifiable information from children
-          under 13. In the case I discover that a child under 13 has provided me
+          under 4. In the case I discover that a child under 4 has provided me
           with personal information, I immediately delete this from our servers.
           If you are a parent or guardian and you are aware that your child has
           provided us with personal information, please contact me so that I
@@ -194,5 +205,3 @@ const PrivacyPolicy: FC<PageProps> = ({ location }) => {
     </BlogPageTemplate>
   );
 };
-
-export default PrivacyPolicy;
