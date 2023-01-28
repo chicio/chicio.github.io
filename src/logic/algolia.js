@@ -1,24 +1,22 @@
 const indexName = `fabrizioduroni.it`;
 const blogPostsQuery = `{
-    pages: allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] },    
-    ) {
-      edges {
-        node {
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            description
-            authors
-            tags
-          }
+  pages: allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
+    edges {
+      node {
+        id
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+          description
+          authors
+          tags
         }
       }
     }
   }
+}
 `;
 
 const pageToAlgoliaRecord = ({
