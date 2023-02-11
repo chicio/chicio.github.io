@@ -103,7 +103,7 @@ How can we do this? There are
 [affine transforms](https://people.cs.clemson.edu/~dhouse/courses/401/notes/affines-matrices.pdf "affine transform") to 
 the rescue!! 
 :rocket: They are very useful (and also used a lot in computer graphics :laughing: ) geometric linear transform that 
-preserve collinearity and parallelism. The affine transform matrix for 
+preserve co-linearity and parallelism. The affine transform matrix for 
 2D scaling expressed as [homogenous coordinates](https://people.cs.clemson.edu/~dhouse/courses/401/notes/affines-matrices.pdf "affine transform") is the following one.
 
 $$
