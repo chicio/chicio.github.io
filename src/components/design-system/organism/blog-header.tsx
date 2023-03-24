@@ -59,8 +59,6 @@ const BlogDescription = styled.span`
     font-size: ${(props) => props.theme.fontSizes[4]};
     color: ${(props) => props.theme.light.textAbovePrimaryColor};
     line-height: 1.5;
-    transform: translate(0, 25px);
-    animation: ${transform} 0.2s linear 0.35s forwards;
 
     ${mediaQuery.dark} {
       color: ${(props) => props.theme.dark.textAbovePrimaryColor};
