@@ -477,7 +477,7 @@ fun putSynchronous(): String {
 
 fun deleteSynchronous(): String {
     webClient
-            .put()
+            .delete()
             .uri(UriComponentsBuilder
                     .fromHttpUrl(tattooServiceConfiguration.url)
                     .path("/tattoo/123")
