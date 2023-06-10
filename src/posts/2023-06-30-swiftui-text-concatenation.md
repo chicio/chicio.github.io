@@ -22,7 +22,59 @@ After this discovery, we were ready to implement our own custom layout above. So
 
 ## Implementation
 
-XXXX..
+All our texts uses a custom font called [Ubuntu](https://fonts.google.com/specimen/Ubuntu "ubuntu font"), so first we had to create a custom modifier for the `Text` view that applies the it. One important thing, the overloaded `+` operator we discussed in the introduction is targeted on `Text` instances. This means that:
+
+* our custom modifier should return a `Text` instance, not the opaque data type `some View`
+* all the standard SwiftUI modifier applied to the concatenated `Text`s should be the one that return again `Text` instance, not the opaque data type `some View`
+
+```swift
+swiftui ubuntu modifier
+```
+
+Now we were ready to create our custom layout. In order to create it we needed to create a new SwiftUI view that contains the name and the ratings stars. We named it `HotelNameWithStars`. This new view receive as parameters:
+
+* the name of the hotel as a `String`
+* the rating of the hotel as an `Int`
+
+Obviously the text is separated in 2 parts, 
+
+* the name, a dark grey text with font size 14 and font weight bold
+* the rating stars, a yellow sequence of stars icons with font size 14
+
+For the name, it was easy, we just create a Text instance that contains the hotel name and a space (to separate it from the stars). We put it in a function named `formattedName`
+
+``` swift
+  //... other code
+
+  private func formattedName() -> Text {
+    return Text("\(name) ").ubuntu(size: 14.0, weight: TextWeight.bold)
+  }
+
+  //... other code
+```
+
+For the stars it was a little bit trickier. We needed to generate a text that contains a number of stars matching the rating. We basically needed to "loop over the rating" and generate an instance of `Text`containing the yellow stars. Which is in functional programming the high order function that given a sequence of data structure and a combining operationg gives you a return value of a new type? Reduce :heart:.
+So what we did:
+
+* we created a `Range` data structure using the rating as upper bound
+* we applied reduce to this range, combining the current accumulated stars as text with a new one, to which we applied also the custom formatting described above.
+
+``` swift
+  //... other code
+
+  private func formattedStars() -> Text {
+    return (0..<rating).reduce(Text("")) { toBeDisplayed, _ in
+      toBeDisplayed + Text(Image("icon_star")).foregroundColor(Color.yellow).ubuntu(size: 14.0)
+    }
+  }
+
+  //... other code
+```
+
+Now we were ready to combine all our `Text`s together. Obviously after combining multiple `Text`s, you can apply additional modifiers to obtained text. These modifier will be applied to the entire string content. In our case we needed to set the `lineLimit` to 3 and the `lineSpacing`.
+We also have an addition `fixedSize` modifier that we need to tell to the component where this will be used that the text should not be truncated vertical.  
+That's it. Below you can find the complete implementation.
+
 
 ```swift
 fileprivate struct HotelNameWithStars: View {
@@ -50,4 +102,4 @@ fileprivate struct HotelNameWithStars: View {
 
 ## Conclusion
 
-XXXX...
+We love SwiftUI :heart:. With every release Apple is making the app developer life easier than ever :rocket:. Also with the new additions during WWDC23, SwiftData and Macro above all, developers will have some fun in the near future :rocket:. Sooo stay tuned, our new widget where we implemented the custom layout above is going to be released very soon!!! :rocket:
