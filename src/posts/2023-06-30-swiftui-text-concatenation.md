@@ -71,7 +71,7 @@ For the name, it was easy, we just create a Text instance that contains the hote
   //... other code
 ```
 
-For the stars it was a little bit trickier. We needed to generate a text that contains a number of stars matching the rating. We basically needed to "loop over the rating" and generate an instance of `Text`containing the yellow stars. Which is in functional programming the high order function that given a sequence of data structure and a combining operationg gives you a return value of a new type? Reduce :heart:.
+For the stars it was a little bit trickier. We needed to generate a text that contains a number of stars matching the rating. The star itself was a custom image in our bundle assets. We basically needed to "loop over the rating" and generate an instance of `Text`containing the yellow stars. Which is in functional programming the high order function that given a sequence of data structure and a combining operationg gives you a return value of a new type? Reduce :heart:.
 So what we did:
 
 * we created a `Range` data structure using the rating as upper bound
