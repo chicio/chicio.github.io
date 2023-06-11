@@ -65,7 +65,7 @@ extension UIImage {
 }
 ```
 
-## Conclusion
+#### Conclusion
 
 The journey into WidgetKit during our FriYaY is not finished yet, and we are planning to introduce more new features 
 in the near future, sooo stay tuned!!! :heart:  

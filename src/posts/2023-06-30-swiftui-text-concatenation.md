@@ -2,7 +2,7 @@
 title: "SwiftUI and the Text contatenations super powers"
 description: "Do you need a way to compose beautiful text with images and custom font like you are used with Attributed String. The Text component has eveything we need to create some sort of 'attributed text' directly in SwiftUI. Let's go!!!"
 date: 2023-06-30
-image: ../images/posts/XXXX.jpg
+image: ../images/posts/swiftui-five-stars.png
 tags: [swift, swiftui, ios, apple, mobile-application-development]
 comments: true
 math: false
@@ -16,19 +16,22 @@ Our mobile app designer [Rafael de Sena Martinez] asked us to display the hotel 
 ![Image hotel name. + stars layout](../images/posts/XXXX.jpg)
 
 From iOS 15 the `Text` supports the new `AttributedString` from the `Foundation` framework as a parameter. But... given that the ne AttributedString are not always [easy to use](https://stackoverflow.com/questions/75513158/how-do-you-add-an-image-attachment-to-an-attributedstring) and we wanted a more "SwiftUI native" way to create our custom text, we wondered if there was another way to do our implementation.  
-Luckily we discovered that in SwiftUI the `+` is overloaded and does some incredible magic :crystal_ball:. It basically concates each `Text` content while keeping each own specific formatting :mind_blowing:. It's like having Attributed Strings directly implemented in SwiftUI :rocket:.  
+Luckily we discovered that in SwiftUI the `+` is overloaded and does some incredible magic :crystal_ball:. It basically concates each `Text` content while keeping each own specific formatting :scream:. It's like having Attributed Strings directly implemented in SwiftUI :rocket:.  
 After this discovery, we were ready to implement our own custom layout above. So let's no longer wait and jump into the implementation right now!!! :rocket:
 
 
-## Implementation
+#### Implementation
 
-All our texts uses a custom font called [Ubuntu](https://fonts.google.com/specimen/Ubuntu "ubuntu font"), so first we had to create a custom modifier for the `Text` view that applies the it. One important thing, the overloaded `+` operator we discussed in the introduction is targeted on `Text` instances. This means that:
+All our texts uses a custom font called [Ubuntu](https://fonts.google.com/specimen/Ubuntu "ubuntu font"), so first we had to find a way to apply this custom font to all the `Text` views in our code in a smart way (without reappying the entire `font` modifier every time).  
+The overloaded `+` operator we discussed in the introduction is targeted on `Text` instances. This means that:
 
-* our custom modifier should return a `Text` instance, not the opaque data type `some View`
+* if we create a custom modifier to apply the custom font, it should return a `Text` instance and not the opaque data type `some View`
 * all the standard SwiftUI modifier applied to the concatenated `Text`s should be the one that return again `Text` instance, not the opaque data type `some View`
 
+This is why we decided to create an extension of `Text` that apply our custom font.
+
 ```swift
-swiftui ubuntu modifier
+
 ```
 
 Now we were ready to create our custom layout. In order to create it we needed to create a new SwiftUI view that contains the name and the ratings stars. We named it `HotelNameWithStars`. This new view receive as parameters:
@@ -36,7 +39,7 @@ Now we were ready to create our custom layout. In order to create it we needed t
 * the name of the hotel as a `String`
 * the rating of the hotel as an `Int`
 
-Obviously the text is separated in 2 parts, 
+Obviously the text is separated in 2 parts: 
 
 * the name, a dark grey text with font size 14 and font weight bold
 * the rating stars, a yellow sequence of stars icons with font size 14
@@ -100,6 +103,6 @@ fileprivate struct HotelNameWithStars: View {
 }
 ```
 
-## Conclusion
+#### Conclusion
 
 We love SwiftUI :heart:. With every release Apple is making the app developer life easier than ever :rocket:. Also with the new additions during WWDC23, SwiftData and Macro above all, developers will have some fun in the near future :rocket:. Sooo stay tuned, our new widget where we implemented the custom layout above is going to be released very soon!!! :rocket:
