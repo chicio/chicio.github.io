@@ -13,7 +13,7 @@ In some recent posts (have a look [here](https://technology.lastminute.com/widge
 For the second widget we developed, one that will show to our users their bookings information, we faced a challenge to display the information of hotels.  
 Our mobile app designer [Rafael de Sena Martinez] asked us to display the hotel name and the hotel rating as if it was a single text, with the rating represented by a number of stars matching the rating itself.
 
-![Image hotel name. + stars layout](../images/posts/swiftui-hotel-layout.png)
+![The layout of the widget](../images/posts/swiftui-hotel-layout.png "The layout of the hotel widget")
 
 From iOS 15 the `Text` supports the new `AttributedString` from the `Foundation` framework as a parameter. But... given that the ne AttributedString are not always [easy to use](https://stackoverflow.com/questions/75513158/how-do-you-add-an-image-attachment-to-an-attributedstring) and we wanted a more "SwiftUI native" way to create our custom text, we wondered if there was another way to do our implementation.  
 Luckily we discovered that in SwiftUI the `+` is overloaded and does some incredible magic :crystal_ball:. It basically concates each `Text` content while keeping each own specific formatting :scream:. It's like having Attributed Strings directly implemented in SwiftUI :rocket:.  
@@ -31,7 +31,22 @@ The overloaded `+` operator we discussed in the introduction is targeted on `Tex
 This is why we decided to create an extension of `Text` that apply our custom font.
 
 ```swift
+enum TextWeight: String {
+  case normal = "Ubuntu-Regular"
+  case bold = "Ubuntu-Bold"
+}
 
+extension Text {
+  func ubuntu(
+    size: Double = 14.0,
+    color: Color = Color("TextColorGray"),
+    weight: TextWeight = TextWeight.normal
+  ) -> Text {
+    self
+      .font(Font.custom(weight.rawValue, size: size))
+      .foregroundColor(color)
+  }
+}
 ```
 
 Now we were ready to create our custom layout. In order to create it we needed to create a new SwiftUI view that contains the name and the ratings stars. We named it `HotelNameWithStars`. This new view receive as parameters:
@@ -44,7 +59,7 @@ Obviously the text is separated in 2 parts:
 * the name, a dark grey text with font size 14 and font weight bold
 * the rating stars, a yellow sequence of stars icons with font size 14
 
-For the name, it was easy, we just create a Text instance that contains the hotel name and a space (to separate it from the stars). We put it in a function named `formattedName`
+For the name, it was easy, we just create a Text instance that contains the hotel name and a space (to separate it from the stars). We put it in a function named `formattedName`.
 
 ``` swift
   //... other code
