@@ -28,7 +28,7 @@ The overloaded `+` operator we discussed in the introduction is targeted on `Tex
 * if we create a custom modifier to apply the custom font, it should return a `Text` instance and not the opaque data type `some View`
 * all the standard SwiftUI modifier applied to the concatenated `Text`s should be the one that return again `Text` instance, not the opaque data type `some View`
 
-This is why we decided to create an extension of `Text` that apply our custom font.
+This is why we decided to create an extension of `Text` that applies our custom font.
 
 ```swift
 enum TextWeight: String {
