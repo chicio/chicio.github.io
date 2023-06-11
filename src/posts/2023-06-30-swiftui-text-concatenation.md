@@ -13,7 +13,7 @@ In some recent posts (have a look [here](https://technology.lastminute.com/widge
 For the second widget we developed, one that will show to our users their bookings information, we faced a challenge to display the information of hotels.  
 Our mobile app designer [Rafael de Sena Martinez] asked us to display the hotel name and the hotel rating as if it was a single text, with the rating represented by a number of stars matching the rating itself.
 
-![Image hotel name. + stars layout](../images/posts/XXXX.jpg)
+![Image hotel name. + stars layout](../images/posts/swiftui-hotel-layout.png)
 
 From iOS 15 the `Text` supports the new `AttributedString` from the `Foundation` framework as a parameter. But... given that the ne AttributedString are not always [easy to use](https://stackoverflow.com/questions/75513158/how-do-you-add-an-image-attachment-to-an-attributedstring) and we wanted a more "SwiftUI native" way to create our custom text, we wondered if there was another way to do our implementation.  
 Luckily we discovered that in SwiftUI the `+` is overloaded and does some incredible magic :crystal_ball:. It basically concates each `Text` content while keeping each own specific formatting :scream:. It's like having Attributed Strings directly implemented in SwiftUI :rocket:.  
