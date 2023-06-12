@@ -1,4 +1,3 @@
-
 ---
 title: "SwiftUI and the Text concatenations super powers"
 description: "Do you need a way to compose beautiful text with images and custom font like you are used with 
