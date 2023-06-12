@@ -1,8 +1,9 @@
 
 ---
-title: "SwiftUI and the Text contatenations super powers"
-description: "Do you need a way to compose beautiful text with images and custom font like you are used with Attributed String. The Text component has eveything we need to create some sort of 'attributed text' directly in SwiftUI. Let's go!!!"
-date: 2023-06-30
+title: "SwiftUI and the Text concatenations super powers"
+description: "Do you need a way to compose beautiful text with images and custom font like you are used with 
+Attributed String. The Text component has everything we need to create some sort of 'attributed text' directly in SwiftUI. Let's go!!!"
+date: 2023-06-12
 image: ../images/posts/swiftui-five-stars.png
 tags: [swift, swiftui, ios, apple, mobile-application-development]
 comments: true
@@ -19,7 +20,9 @@ represented by a number of stars matching the rating itself.
 ![The layout of the hotel widget](../images/posts/swiftui-hotel-layout.png)
 
 From iOS 15 the `Text` supports the new `AttributedString` from the `Foundation` framework as a parameter. But... given that the ne AttributedString are not always [easy to use](https://stackoverflow.com/questions/75513158/how-do-you-add-an-image-attachment-to-an-attributedstring) and we wanted a more "SwiftUI native" way to create our custom text, we wondered if there was another way to do our implementation.  
-Luckily we discovered that in SwiftUI the `+` is overloaded and does some incredible magic :crystal_ball:. It basically concates each `Text` content while keeping each own specific formatting :scream:. It's like having Attributed Strings directly implemented in SwiftUI :rocket:.  
+Luckily we discovered that in SwiftUI the `+` is overloaded and does some incredible magic :crystal_ball:. It 
+basically concatenates each `Text` content while keeping each own specific formatting :scream:. It's like having 
+Attributed Strings directly implemented in SwiftUI :rocket:.  
 After this discovery, we were ready to implement our own custom layout above. So let's no longer wait and jump into the implementation right now!!! :rocket:
 
 
