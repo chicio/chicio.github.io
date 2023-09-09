@@ -29,41 +29,39 @@ export interface RecentPostsProps {
 }
 
 export const RecentPosts: FC<RecentPostsProps> = ({ currentSlug }) => {
-  const data = useStaticQuery<Queries.RecentPostsQuery>(
-    graphql`
-      query RecentPosts {
-        allMarkdownRemark(limit: 15, sort: { frontmatter: { date: DESC } }) {
-          edges {
-            node {
-              fields {
-                slug
-                readingTime {
-                  text
-                }
+  const data = useStaticQuery<Queries.RecentPostsQuery>(graphql`
+    query RecentPosts {
+      allMarkdownRemark(limit: 15, sort: { frontmatter: { date: DESC } }) {
+        edges {
+          node {
+            fields {
+              slug
+              readingTime {
+                text
               }
-              frontmatter {
-                title
-                description
-                authors
-                tags
-                date(formatString: "DD MMM YYYY")
-                image {
-                  childImageSharp {
-                    gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
-                  }
+            }
+            frontmatter {
+              title
+              description
+              authors
+              tags
+              date(formatString: "DD MMM YYYY")
+              image {
+                childImageSharp {
+                  gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
                 }
               }
             }
           }
         }
       }
-    `
-  );
+    }
+  `);
 
   const readNextPosts = useShuffleArray(
     data.allMarkdownRemark.edges.filter(
-      (post) => post.node!.fields!.slug !== currentSlug
-    )
+      (post) => post.node!.fields!.slug !== currentSlug,
+    ),
   ).slice(0, 2);
 
   return (

@@ -4,6 +4,7 @@ import * as path from "path";
 import * as fs from "fs";
 import { createFilePath } from "gatsby-source-filesystem";
 import { generatePostSlug, generateTagSlug, slugs } from "./src/logic/slug";
+import { blogPostApiAdapter } from "./src/logic/api/api-adapters";
 
 export const createPages: GatsbyNode["createPages"] = async ({
   graphql,
@@ -94,42 +95,51 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = ({
   }
 };
 
-const apiBasePath = "./public/api";
-
 export const onPostBuild: GatsbyNode["onPostBuild"] = async ({ graphql }) => {
   console.log("onPostBuild: generating API...");
+
+  const apiBasePath = "./public/api";
 
   if (!fs.existsSync(apiBasePath)) {
     fs.mkdirSync(apiBasePath);
   }
 
-  const blogPostsApi: any = await graphql(`
-    query BlogPostsListApi {
-      allMarkdownRemark(sort: { frontmatter: { date: DESC } }, limit: 1000) {
-        edges {
-          node {
-            fields {
-              slug
-              readingTime {
-                text
-              }
-            }
-            frontmatter {
-              title
-              description
-              authors
-              tags
-              date(formatString: "DD MMM YYYY")
-              image {
-                id
-                publicURL
+  const blogPostsApi = blogPostApiAdapter(
+    (
+      await graphql<Queries.BlogPostsListApiQuery>(`
+        query BlogPostsListApi {
+          allMarkdownRemark(
+            sort: { frontmatter: { date: DESC } }
+            limit: 1000
+          ) {
+            edges {
+              node {
+                fields {
+                  slug
+                  readingTime {
+                    text
+                  }
+                }
+                frontmatter {
+                  title
+                  description
+                  authors
+                  tags
+                  date(formatString: "DD MMM YYYY")
+                  image {
+                    id
+                    publicURL
+                  }
+                }
               }
             }
           }
         }
-      }
-    }
-  `);
+      `)
+    ).data!,
+  );
 
   fs.writeFileSync(`${apiBasePath}/posts.json`, JSON.stringify(blogPostsApi));
+
+  console.log("onPostBuild: API generation completed.");
 };
