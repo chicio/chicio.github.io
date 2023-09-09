@@ -1,6 +1,18 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [6.1.0](https://github.com/chicio/chicio.github.io/releases/tag/v6.1.0)
+Release date: 2023-09-09
+
+#### Added
+
+- deps bumps
+
+#### Removed
+
+- removed lighthouse
+- removed storybook
+
 ## [6.0.0](https://github.com/chicio/chicio.github.io/releases/tag/v6.0.0)
 Release date: 2022-11-09
 
