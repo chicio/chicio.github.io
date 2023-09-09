@@ -1,6 +1,7 @@
 import { GatsbyNode } from "gatsby";
 import readingTime from "reading-time";
 import * as path from "path";
+import * as fs from "fs";
 import { createFilePath } from "gatsby-source-filesystem";
 import { generatePostSlug, generateTagSlug, slugs } from "./src/logic/slug";
 
@@ -47,7 +48,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
     });
   });
 
-  // Create blog home pages
+  // Create blog home (paginated) pages
   const postsPerPage = 11;
   const numberOfPages = Math.ceil(posts.length / postsPerPage);
   Array.from({ length: numberOfPages }).forEach((_, i) => {
@@ -91,4 +92,44 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = ({
       value: readingTime(node.rawMarkdownBody as string),
     });
   }
+};
+
+const apiBasePath = "./public/api";
+
+export const onPostBuild: GatsbyNode["onPostBuild"] = async ({ graphql }) => {
+  console.log("onPostBuild: generating API...");
+
+  if (!fs.existsSync(apiBasePath)) {
+    fs.mkdirSync(apiBasePath);
+  }
+
+  const blogPostsApi: any = await graphql(`
+    query BlogPostsListApi {
+      allMarkdownRemark(sort: { frontmatter: { date: DESC } }, limit: 1000) {
+        edges {
+          node {
+            fields {
+              slug
+              readingTime {
+                text
+              }
+            }
+            frontmatter {
+              title
+              description
+              authors
+              tags
+              date(formatString: "DD MMM YYYY")
+              image {
+                id
+                publicURL
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  fs.writeFileSync(`${apiBasePath}/posts.json`, JSON.stringify(blogPostsApi));
 };

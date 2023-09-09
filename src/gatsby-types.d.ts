@@ -2934,5 +2934,10 @@ type BlogPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 type BlogPostsQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: { readonly fields: { readonly slug: string | null } | null } }> }, readonly tagsGroup: { readonly group: ReadonlyArray<{ readonly fieldValue: string | null }> } };
 
+type BlogPostsListApiQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type BlogPostsListApiQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: { readonly fields: { readonly slug: string | null, readonly readingTime: { readonly text: string | null } | null } | null, readonly frontmatter: { readonly title: string | null, readonly description: string | null, readonly authors: ReadonlyArray<string | null> | null, readonly tags: ReadonlyArray<string | null> | null, readonly date: string | null, readonly image: { readonly id: string, readonly publicURL: string | null } | null } | null } }> } };
+
 
 }

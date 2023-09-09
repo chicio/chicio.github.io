@@ -35,7 +35,7 @@
     "clean": "gatsby clean",
     "serve": "gatsby serve",
     "test": "jest",
-    "prebuild": "npm run test",
+    "prebuild": "npm run clean",
     "build": "gatsby build",
     "predeploy": "npm run clean && npm run build",
     "deploy": "gh-pages -d public -b main"
