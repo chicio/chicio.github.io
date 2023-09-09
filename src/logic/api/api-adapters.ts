@@ -7,7 +7,8 @@ import {
 import { blogAuthors } from "../blog-authors";
 
 export const blogPostApiAdapter = (
-  blogPostsApiQueryResult: Queries.BlogPostsListApiQuery,
+  apiBasePath: string,
+  blogPostsApiQueryResult: Queries.BlogPostsApiQuery,
 ): BlogPostsListApi => {
   const posts: BlogPostApi[] =
     blogPostsApiQueryResult!.allMarkdownRemark.edges.map(({ node }) => {
@@ -20,6 +21,10 @@ export const blogPostApiAdapter = (
         featuredImageUrl: frontmatter.image!.publicURL!,
         authors: frontmatter.authors!.map((it) => it!),
         tags: frontmatter.tags!.map((it) => it!),
+        resourceEndpoint: `${apiBasePath}/${node
+          .fields!.slug!.split("/")
+          .filter((component) => component !== "")
+          .join("-")}.json`,
       };
     });
 

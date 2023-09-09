@@ -101,71 +101,69 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = ({
 export const onPostBuild: GatsbyNode["onPostBuild"] = async ({ graphql }) => {
   console.log("onPostBuild: generating API...");
 
-  const apiBasePath = "./public/api";
+  const apiBasePath = "/api";
+  const apiFolder = `./public${apiBasePath}`;
 
-  if (!fs.existsSync(apiBasePath)) {
-    fs.mkdirSync(apiBasePath);
+  if (!fs.existsSync(apiFolder)) {
+    fs.mkdirSync(apiFolder);
   }
 
-  const blogPostsApi = blogPostApiAdapter(
-    (
-      await graphql<Queries.BlogPostsListApiQuery>(`
-        query BlogPostsListApi {
-          allMarkdownRemark(
-            sort: { frontmatter: { date: DESC } }
-            limit: 1000
-          ) {
-            edges {
-              node {
-                fields {
-                  slug
-                  readingTime {
-                    text
-                  }
-                }
-                frontmatter {
-                  title
-                  description
-                  authors
-                  tags
-                  date(formatString: "DD MMM YYYY")
-                  image {
-                    id
-                    publicURL
-                  }
+  const blogPostsQuery = (
+    await graphql<Queries.BlogPostsApiQuery>(`
+      query BlogPostsApi {
+        allMarkdownRemark(sort: { frontmatter: { date: DESC } }, limit: 1000) {
+          edges {
+            node {
+              fields {
+                slug
+                readingTime {
+                  text
                 }
               }
+              frontmatter {
+                title
+                description
+                authors
+                tags
+                math
+                date(formatString: "DD MMM YYYY")
+                image {
+                  publicURL
+                }
+              }
+              html
             }
           }
         }
-      `)
-    ).data!,
-  );
+      }
+    `)
+  ).data!;
 
-  const authorsApi = blogAuthorsApiAdapter(
-    (
-      await graphql<Queries.AuthorsImagesApiQuery>(`
-        query AuthorsImagesApi {
-          allFile(
-            filter: {
-              relativeDirectory: { eq: "authors" }
-              extension: { regex: "/(jpg)|(jpeg)|(png)/" }
-            }
-          ) {
-            edges {
-              node {
-                publicURL
-                name
-              }
+  const authorsImagesApiQuery = (
+    await graphql<Queries.AuthorsImagesApiQuery>(`
+      query AuthorsImagesApi {
+        allFile(
+          filter: {
+            relativeDirectory: { eq: "authors" }
+            extension: { regex: "/(jpg)|(jpeg)|(png)/" }
+          }
+        ) {
+          edges {
+            node {
+              publicURL
+              name
             }
           }
         }
-      `)
-    ).data!,
-  );
+      }
+    `)
+  ).data!;
 
-  fs.writeFileSync(`${apiBasePath}/posts.json`, JSON.stringify(blogPostsApi));
-  fs.writeFileSync(`${apiBasePath}/authors.json`, JSON.stringify(authorsApi));
+  const blogPostsApi = blogPostApiAdapter(apiBasePath, blogPostsQuery);
+  const authorsApi = blogAuthorsApiAdapter(authorsImagesApiQuery);
+
+  fs.writeFileSync(`${apiFolder}/posts.json`, JSON.stringify(blogPostsApi));
+  fs.writeFileSync(`${apiFolder}/authors.json`, JSON.stringify(authorsApi));
 
   console.log("onPostBuild: API generation completed.");
 };

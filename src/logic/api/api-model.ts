@@ -6,6 +6,7 @@ export interface BlogPostApi {
   featuredImageUrl: string;
   authors: string[];
   tags: string[];
+  resourceEndpoint: string;
 }
 
 export interface BlogPostsListApi {
