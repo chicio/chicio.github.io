@@ -10,26 +10,24 @@ export const createPages: GatsbyNode["createPages"] = async ({
   reporter,
 }) => {
   const { createPage } = actions;
-  const result: any = await graphql(
-    `
-      query BlogPosts {
-        allMarkdownRemark(sort: { frontmatter: { date: DESC } }, limit: 1000) {
-          edges {
-            node {
-              fields {
-                slug
-              }
+  const result: any = await graphql(`
+    query BlogPosts {
+      allMarkdownRemark(sort: { frontmatter: { date: DESC } }, limit: 1000) {
+        edges {
+          node {
+            fields {
+              slug
             }
           }
         }
-        tagsGroup: allMarkdownRemark(limit: 2000) {
-          group(field: { frontmatter: { tags: SELECT } }) {
-            fieldValue
-          }
+      }
+      tagsGroup: allMarkdownRemark(limit: 2000) {
+        group(field: { frontmatter: { tags: SELECT } }) {
+          fieldValue
         }
       }
-    `
-  );
+    }
+  `);
 
   if (result.errors) {
     reporter.panicOnBuild(`Create Pages Error while running GraphQL query.`);

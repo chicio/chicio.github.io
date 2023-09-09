@@ -1,9 +1,14 @@
 const indexName = `fabrizioduroni.it`;
+const pagePath = `/src/posts/`;
+
 const blogPostsQuery = `{
-  pages: allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
+  pages: allMarkdownRemark(
+    filter: {
+      fileAbsolutePath: { regex: "${pagePath}" },
+    }
+  ) {
     edges {
       node {
-        id
         fields {
           slug
         }
@@ -19,10 +24,8 @@ const blogPostsQuery = `{
 }
 `;
 
-const pageToAlgoliaRecord = ({
-  node: { id, frontmatter, fields, ...rest },
-}) => ({
-  objectID: id,
+const pageToAlgoliaRecord = ({ node: { frontmatter, fields, ...rest } }) => ({
+  objectID: fields.slug,
   ...frontmatter,
   ...fields,
   ...rest,

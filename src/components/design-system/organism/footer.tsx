@@ -4,7 +4,6 @@ import { SocialContacts } from "./social-contacts";
 import styled from "styled-components";
 import { Paragraph } from "../atoms/paragraph";
 import { slugs } from "../../../logic/slug";
-import { StandardExternalLinkWithTracking } from "../../standard-external-link-with-tracking";
 import { MenuItemWithTracking } from "../../menu-item-with-tracking";
 import { mediaQuery } from "../utils-css/media-query";
 
@@ -61,14 +60,6 @@ const MadeWithLoveParagraph = styled(Paragraph)`
 
   ${mediaQuery.dark} {
     color: ${(props) => props.theme.dark.textAbovePrimaryColor};
-  }
-`;
-
-const FooterCallToAction = styled(StandardExternalLinkWithTracking)`
-  color: ${(props) => props.theme.light.accentColorAbovePrimaryColor};
-
-  ${mediaQuery.dark} {
-    color: ${(props) => props.theme.dark.accentColorAbovePrimaryColor};
   }
 `;
 
@@ -154,20 +145,7 @@ export const Footer: FC<FooterProps> = ({ author, trackingCategory }) => (
       />
       <FooterContentContainer>
         <MadeWithLoveParagraph>
-          {`Made with 💝 by ${author} 'Chicio' using `}
-          <FooterCallToAction
-            trackingData={{
-              category: trackingCategory,
-              action: tracking.action.open_design_system,
-              label: tracking.label.footer,
-            }}
-            href={
-              "/chicio-coding-design-system/index.html?path=/story/colors--colors"
-            }
-            target={"_blank"}
-          >
-            Chicio Coding Design System
-          </FooterCallToAction>
+          {`Made with 💝 by ${author} 'Chicio'`}
         </MadeWithLoveParagraph>
       </FooterContentContainer>
     </FooterAuthorDescription>
