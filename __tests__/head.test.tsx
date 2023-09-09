@@ -1,4 +1,3 @@
-import React from "react";
 import { render } from "@testing-library/react";
 import { Head } from "../src/components/head";
 import { useStaticQuery } from "gatsby";
