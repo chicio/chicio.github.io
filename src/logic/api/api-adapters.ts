@@ -2,11 +2,21 @@ import {
   BlogAuthorApi,
   BlogAuthorsApi,
   BlogPostApi,
+  BlogPostDetailApi,
   BlogPostsListApi,
 } from "./api-model";
 import { blogAuthors } from "../blog-authors";
 
-export const blogPostApiAdapter = (
+const postResourceNameForEndpointCreator = (slug: string) =>
+  slug!
+    .split("/")
+    .filter((component) => component !== "")
+    .join("-");
+
+const postResourceEndpointCreator = (apiBasePath: string, slug: string) =>
+  `${apiBasePath}/${postResourceNameForEndpointCreator(slug)}.json`;
+
+export const blogPostsApiAdapter = (
   apiBasePath: string,
   blogPostsApiQueryResult: Queries.BlogPostsApiQuery,
 ): BlogPostsListApi => {
@@ -21,10 +31,11 @@ export const blogPostApiAdapter = (
         featuredImageUrl: frontmatter.image!.publicURL!,
         authors: frontmatter.authors!.map((it) => it!),
         tags: frontmatter.tags!.map((it) => it!),
-        resourceEndpoint: `${apiBasePath}/${node
-          .fields!.slug!.split("/")
-          .filter((component) => component !== "")
-          .join("-")}.json`,
+        resourceEndpoint: postResourceEndpointCreator(
+          apiBasePath,
+          node.fields!.slug!,
+        ),
+        webEndpoint: node.fields!.slug!,
       };
     });
 
@@ -32,6 +43,27 @@ export const blogPostApiAdapter = (
     posts,
   };
 };
+
+export const blogPostDetailsApiAdapter = (
+  blogPostsApiQueryResult: Queries.BlogPostsApiQuery,
+): Record<string, BlogPostDetailApi> =>
+  blogPostsApiQueryResult!.allMarkdownRemark.edges.reduce<
+    Record<string, BlogPostDetailApi>
+  >((accumulator, edge) => {
+    let frontmatter = edge.node.frontmatter!;
+    accumulator[postResourceNameForEndpointCreator(edge.node.fields!.slug!)] = {
+      title: frontmatter.title!,
+      description: frontmatter.description!,
+      date: frontmatter.date!,
+      readingTime: edge.node.fields!.readingTime!.text!,
+      featuredImageUrl: frontmatter.image!.publicURL!,
+      authors: frontmatter.authors!.map((it) => it!),
+      tags: frontmatter.tags!.map((it) => it!),
+      math: frontmatter.math!,
+      content: edge.node!.html!,
+    };
+    return accumulator;
+  }, {});
 
 export const blogAuthorsApiAdapter = (
   authorsImages: Queries.AuthorsImagesApiQuery,

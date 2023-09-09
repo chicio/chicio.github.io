@@ -6,7 +6,8 @@ import { createFilePath } from "gatsby-source-filesystem";
 import { generatePostSlug, generateTagSlug, slugs } from "./src/logic/slug";
 import {
   blogAuthorsApiAdapter,
-  blogPostApiAdapter,
+  blogPostDetailsApiAdapter,
+  blogPostsApiAdapter,
 } from "./src/logic/api/api-adapters";
 
 export const createPages: GatsbyNode["createPages"] = async ({
@@ -159,11 +160,18 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async ({ graphql }) => {
     `)
   ).data!;
 
-  const blogPostsApi = blogPostApiAdapter(apiBasePath, blogPostsQuery);
+  const blogPostsApi = blogPostsApiAdapter(apiBasePath, blogPostsQuery);
   const authorsApi = blogAuthorsApiAdapter(authorsImagesApiQuery);
+  let blogPostDetailApis = blogPostDetailsApiAdapter(blogPostsQuery);
 
   fs.writeFileSync(`${apiFolder}/posts.json`, JSON.stringify(blogPostsApi));
   fs.writeFileSync(`${apiFolder}/authors.json`, JSON.stringify(authorsApi));
+  Object.keys(blogPostDetailApis).forEach((key) => {
+    fs.writeFileSync(
+      `${apiFolder}/${key}.json`,
+      JSON.stringify(blogPostDetailApis[key]),
+    );
+  });
 
   console.log("onPostBuild: API generation completed.");
 };
