@@ -1,4 +1,10 @@
-import { BlogPostApi, BlogPostsListApi } from "./api-model";
+import {
+  BlogAuthorApi,
+  BlogAuthorsApi,
+  BlogPostApi,
+  BlogPostsListApi,
+} from "./api-model";
+import { blogAuthors } from "../blog-authors";
 
 export const blogPostApiAdapter = (
   blogPostsApiQueryResult: Queries.BlogPostsListApiQuery,
@@ -19,5 +25,22 @@ export const blogPostApiAdapter = (
 
   return {
     posts,
+  };
+};
+
+export const blogAuthorsApiAdapter = (
+  authorsImages: Queries.AuthorsImagesApiQuery,
+): BlogAuthorsApi => {
+  console.log(authorsImages);
+  const authors: BlogAuthorApi[] = Object.values(blogAuthors).map((author) => ({
+    name: author.name,
+    url: author.url,
+    imageUrl: authorsImages.allFile.edges.find(
+      (authorImage) =>
+        authorImage.node.name === author.name!.replace(" ", "-").toLowerCase(),
+    )?.node.publicURL,
+  }));
+  return {
+    authors,
   };
 };

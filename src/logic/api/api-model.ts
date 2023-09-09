@@ -11,3 +11,13 @@ export interface BlogPostApi {
 export interface BlogPostsListApi {
   posts: BlogPostApi[];
 }
+
+export interface BlogAuthorApi {
+  name: string;
+  url: string;
+  imageUrl: string | null | undefined;
+}
+
+export interface BlogAuthorsApi {
+  authors: BlogAuthorApi[];
+}

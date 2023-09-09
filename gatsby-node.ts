@@ -4,7 +4,10 @@ import * as path from "path";
 import * as fs from "fs";
 import { createFilePath } from "gatsby-source-filesystem";
 import { generatePostSlug, generateTagSlug, slugs } from "./src/logic/slug";
-import { blogPostApiAdapter } from "./src/logic/api/api-adapters";
+import {
+  blogAuthorsApiAdapter,
+  blogPostApiAdapter,
+} from "./src/logic/api/api-adapters";
 
 export const createPages: GatsbyNode["createPages"] = async ({
   graphql,
@@ -139,7 +142,30 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async ({ graphql }) => {
     ).data!,
   );
 
+  const authorsApi = blogAuthorsApiAdapter(
+    (
+      await graphql<Queries.AuthorsImagesApiQuery>(`
+        query AuthorsImagesApi {
+          allFile(
+            filter: {
+              relativeDirectory: { eq: "authors" }
+              extension: { regex: "/(jpg)|(jpeg)|(png)/" }
+            }
+          ) {
+            edges {
+              node {
+                publicURL
+                name
+              }
+            }
+          }
+        }
+      `)
+    ).data!,
+  );
+
   fs.writeFileSync(`${apiBasePath}/posts.json`, JSON.stringify(blogPostsApi));
+  fs.writeFileSync(`${apiBasePath}/authors.json`, JSON.stringify(authorsApi));
 
   console.log("onPostBuild: API generation completed.");
 };

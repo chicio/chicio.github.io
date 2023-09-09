@@ -31,6 +31,7 @@
     "node": "^18.4.0"
   },
   "scripts": {
+    "prestart": "npm run clean",
     "start": "gatsby develop",
     "clean": "gatsby clean",
     "serve": "gatsby serve",
