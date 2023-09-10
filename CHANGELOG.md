@@ -1,6 +1,13 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [6.2.0](https://github.com/chicio/chicio.github.io/releases/tag/v6.2.0)
+Release date: 2023-09-10
+
+#### Added
+
+- json api for a companion mobile app
+
 ## [6.1.0](https://github.com/chicio/chicio.github.io/releases/tag/v6.1.0)
 Release date: 2023-09-09
 
