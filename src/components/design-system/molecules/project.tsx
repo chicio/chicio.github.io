@@ -4,6 +4,10 @@ import styled from "styled-components";
 import { Container } from "../atoms/container";
 import { CallToActionExternalWithTracking } from "../../call-to-action-external-with-tracking";
 import { mediaQuery } from "../utils-css/media-query";
+import { ProjectCallToAction } from "../../../logic/projects";
+import { Paragraph } from "../atoms/paragraph";
+import { List } from "../atoms/list";
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 
 interface ProjectContainerProps {
   reverse: boolean;
@@ -32,22 +36,15 @@ const ProjectImageContainer = styled(ProjectContentContainer)`
   align-items: center;
 `;
 
-interface ProjectCallToAction {
-  label: string;
-  link: string;
-  trackingAction: string;
-  trackingCategory: string;
-  trackingLabel: string;
-}
-
 const CallToActionContainer = styled.div`
   margin: ${(props) => props.theme.spacing[6]} 0;
 `;
 
 export type ProjectProps = ProjectContainerProps & {
   name: string;
-  image: React.ReactElement;
-  description: React.ReactElement;
+  image: IGatsbyImageData;
+  description: string;
+  features: string[];
   callToActions: ProjectCallToAction[];
 };
 
@@ -56,13 +53,28 @@ export const Project: FC<ProjectProps> = ({
   name,
   image,
   description,
+  features,
   callToActions,
 }) => (
   <ProjectContainer reverse={reverse}>
-    <ProjectImageContainer>{image}</ProjectImageContainer>
+    <ProjectImageContainer>
+      <GatsbyImage
+        style={{
+          width: 500,
+          height: 500,
+        }}
+        alt={name}
+        image={image}
+      />
+    </ProjectImageContainer>
     <ProjectContentContainer>
       <Heading3>{name}</Heading3>
-      {description}
+      <Paragraph>{description}</Paragraph>
+      <List className="project-features">
+        {features.map((feature) => (
+          <li key={`${name}${feature}`}>{feature}</li>
+        ))}
+      </List>
       <CallToActionContainer>
         {callToActions.map((callToAction) => (
           <CallToActionExternalWithTracking

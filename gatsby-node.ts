@@ -16,7 +16,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
   reporter,
 }) => {
   const { createPage } = actions;
-  const result: any = await graphql(`
+  const result = await graphql<Queries.BlogPostsQuery>(`
     query BlogPosts {
       allMarkdownRemark(sort: { frontmatter: { date: DESC } }, limit: 1000) {
         edges {
@@ -40,7 +40,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
     return;
   }
 
-  const posts = result.data.allMarkdownRemark.edges;
+  const posts = result.data!.allMarkdownRemark.edges;
 
   //Create posts pages
   posts.forEach((post: any) => {
@@ -70,7 +70,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
   });
 
   //Create tag pages
-  const tags: any = result.data.tagsGroup.group;
+  const tags: any = result.data!.tagsGroup.group;
   tags.forEach((tag: any) => {
     createPage({
       path: generateTagSlug(tag.fieldValue),
@@ -162,7 +162,7 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async ({ graphql }) => {
 
   const blogPostsApi = blogPostsApiAdapter(apiBasePath, blogPostsQuery);
   const authorsApi = blogAuthorsApiAdapter(authorsImagesApiQuery);
-  let blogPostDetailApis = blogPostDetailsApiAdapter(blogPostsQuery);
+  const blogPostDetailApis = blogPostDetailsApiAdapter(blogPostsQuery);
 
   fs.writeFileSync(`${apiFolder}/posts.json`, JSON.stringify(blogPostsApi));
   fs.writeFileSync(`${apiFolder}/authors.json`, JSON.stringify(authorsApi));
