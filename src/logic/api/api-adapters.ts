@@ -66,7 +66,7 @@ export const blogPostDetailsApiAdapter = (
   }, {});
 
 export const blogAuthorsApiAdapter = (
-  authorsImages: Queries.AuthorsImagesApiQuery,
+  authorsImages: Queries.ImagesApiQuery,
 ): BlogAuthorsApi => {
   const authors: BlogAuthorApi[] = Object.values(blogAuthors).map((author) => ({
     name: author.name,
@@ -74,7 +74,7 @@ export const blogAuthorsApiAdapter = (
     imageUrl: authorsImages.allFile.edges.find(
       (authorImage) =>
         authorImage.node.name === author.name!.replace(" ", "-").toLowerCase(),
-    )!.node!.publicURL!,
+    )?.node?.publicURL,
   }));
   return {
     authors,

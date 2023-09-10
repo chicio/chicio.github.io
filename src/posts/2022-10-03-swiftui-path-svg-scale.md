@@ -6,7 +6,7 @@ image: ../images/posts/swiftui-path.jpg
 tags: [swift, swiftui, ios, apple, mobile application development]
 comments: true 
 math: true 
-authors: [fabrizio_duroni, marco_delucchi]
+authors: [fabrizio_duroni, marco_de_lucchi]
 ---
 
 *Let's have some fun with SwiftUI by drawing an inspiration title component leveraging Path and Shape.*

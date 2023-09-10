@@ -140,12 +140,12 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async ({ graphql }) => {
     `)
   ).data!;
 
-  const authorsImagesApiQuery = (
-    await graphql<Queries.AuthorsImagesApiQuery>(`
-      query AuthorsImagesApi {
+  const imagesApiQuery = (
+    await graphql<Queries.ImagesApiQuery>(`
+      query ImagesApi {
         allFile(
           filter: {
-            relativeDirectory: { eq: "authors" }
+            relativeDirectory: { in: ["projects", "authors"] }
             extension: { regex: "/(jpg)|(jpeg)|(png)/" }
           }
         ) {
@@ -159,9 +159,10 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async ({ graphql }) => {
       }
     `)
   ).data!;
+  console.log(JSON.stringify(imagesApiQuery));
 
   const blogPostsApi = blogPostsApiAdapter(apiBasePath, blogPostsQuery);
-  const authorsApi = blogAuthorsApiAdapter(authorsImagesApiQuery);
+  const authorsApi = blogAuthorsApiAdapter(imagesApiQuery);
   const blogPostDetailApis = blogPostDetailsApiAdapter(blogPostsQuery);
 
   fs.writeFileSync(`${apiFolder}/posts.json`, JSON.stringify(blogPostsApi));

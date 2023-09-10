@@ -29,7 +29,7 @@ export interface BlogPostsListApi {
 export interface BlogAuthorApi {
   name: string;
   url: string;
-  imageUrl: string;
+  imageUrl: string | null | undefined;
 }
 
 export interface BlogAuthorsApi {

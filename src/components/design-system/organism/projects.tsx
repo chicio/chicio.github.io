@@ -32,9 +32,6 @@ export const Projects: FC = () => {
           (projectImage) => projectImage.node.name === projectKey,
         )!.node!.childImageSharp!.gatsbyImageData!;
 
-        console.log(index);
-        console.log(index % 2 !== 0);
-
         return (
           <Project
             key={project.name}
