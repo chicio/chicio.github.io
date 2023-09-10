@@ -1,4 +1,3 @@
-import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { CallToActionInternalWithTracking } from "../src/components/call-to-action-internal-with-tracking";
 import { trackWith } from "../src/logic/tracking";
