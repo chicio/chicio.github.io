@@ -4,8 +4,11 @@ import {
   BlogPostApi,
   BlogPostDetailApi,
   BlogPostsListApi,
+  ProjectApi,
+  ProjectsApi,
 } from "./api-model";
 import { blogAuthors } from "../blog-authors";
+import { projects } from "../projects";
 
 const postResourceNameForEndpointCreator = (slug: string) =>
   slug!
@@ -73,10 +76,37 @@ export const blogAuthorsApiAdapter = (
     url: author.url,
     imageUrl: authorsImages.allFile.edges.find(
       (authorImage) =>
-        authorImage.node.name === author.name!.replace(" ", "-").toLowerCase(),
+        authorImage.node.name ===
+        author.name!.split(" ").join("-").toLowerCase(),
     )?.node?.publicURL,
   }));
   return {
     authors,
+  };
+};
+
+export const projectsApiAdapter = (
+  images: Queries.ImagesApiQuery,
+): ProjectsApi => {
+  const projectsApi: ProjectApi[] = Object.keys(projects).map((projectKey) => {
+    const project = projects[projectKey];
+
+    return {
+      id: projectKey,
+      name: project.name,
+      description: project.description,
+      features: project.features,
+      callToActions: project.callToActions.map((callToAction) => ({
+        text: callToAction.label,
+        url: callToAction.link,
+      })),
+      imageUrl: images.allFile.edges.find(
+        (authorImage) => authorImage.node.name === projectKey,
+      )?.node?.publicURL,
+    };
+  });
+
+  return {
+    projects: projectsApi,
   };
 };

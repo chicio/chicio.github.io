@@ -44,8 +44,12 @@ export interface CallToActionApi {
 export interface ProjectApi {
   id: string;
   name: string;
-  imageUrl: string;
+  imageUrl: string | null | undefined;
   description: string;
   callToActions: CallToActionApi[];
   features: string[];
+}
+
+export interface ProjectsApi {
+  projects: ProjectApi[];
 }

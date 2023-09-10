@@ -8,6 +8,7 @@ import {
   blogAuthorsApiAdapter,
   blogPostDetailsApiAdapter,
   blogPostsApiAdapter,
+  projectsApiAdapter,
 } from "./src/logic/api/api-adapters";
 
 export const createPages: GatsbyNode["createPages"] = async ({
@@ -159,14 +160,15 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async ({ graphql }) => {
       }
     `)
   ).data!;
-  console.log(JSON.stringify(imagesApiQuery));
 
   const blogPostsApi = blogPostsApiAdapter(apiBasePath, blogPostsQuery);
   const authorsApi = blogAuthorsApiAdapter(imagesApiQuery);
   const blogPostDetailApis = blogPostDetailsApiAdapter(blogPostsQuery);
+  const projectsApi = projectsApiAdapter(imagesApiQuery);
 
   fs.writeFileSync(`${apiFolder}/posts.json`, JSON.stringify(blogPostsApi));
   fs.writeFileSync(`${apiFolder}/authors.json`, JSON.stringify(authorsApi));
+  fs.writeFileSync(`${apiFolder}/projects.json`, JSON.stringify(projectsApi));
   Object.keys(blogPostDetailApis).forEach((key) => {
     fs.writeFileSync(
       `${apiFolder}/${key}.json`,
