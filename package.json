@@ -31,11 +31,12 @@
     "node": "^18.4.0"
   },
   "scripts": {
+    "prestart": "npm run clean",
     "start": "gatsby develop",
     "clean": "gatsby clean",
     "serve": "gatsby serve",
     "test": "jest",
-    "prebuild": "npm run test",
+    "prebuild": "npm run clean",
     "build": "gatsby build",
     "predeploy": "npm run clean && npm run build",
     "deploy": "gh-pages -d public -b main"

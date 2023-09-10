@@ -7,7 +7,7 @@ image: ../images/posts/swiftui-five-stars.png
 tags: [swift, swiftui, ios, apple, mobile-application-development]
 comments: true
 math: false
-authors: [fabrizio_duroni, marco_delucchi]
+authors: [fabrizio_duroni, marco_de_lucchi]
 ---
 
 In some recent posts (have a look [here](https://technology.lastminute.com/widget-ios-swiftui-configuration-intent/ "swiftui widget friyay lastminute") and [here](https://technology.lastminute.com/widget-ios-swiftui-react-native/ "swiftui widget lastminute") ) we show a beautfiul project me and Marco are creating during our [Friyay at lastminute.com](https://technology.lastminute.com/tech-learning-and-development-friyay/ "lastminute.com friyay"): some widgets for our iOS apps.

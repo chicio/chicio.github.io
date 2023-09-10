@@ -50,10 +50,10 @@ export const blogAuthors: { [authorName: string]: BlogAuthor } = {
     url: "https://www.linkedin.com/in/felice-giovinazzo-17277b55/",
     image: "felice-giovinazzo.jpg",
   },
-  marco_delucchi: {
+  marco_de_lucchi: {
     name: "Marco De Lucchi",
     url: "https://www.linkedin.com/in/marcodelucchi/",
-    image: "marco-delucchi.jpg",
+    image: "marco-de-lucchi.jpg",
   },
   stefano_varesi: {
     name: "Stefano Varesi",

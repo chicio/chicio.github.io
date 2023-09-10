@@ -31,29 +31,27 @@ export const SocialContacts: FC<SocialContactsProps> = ({
   trackingCategory,
   trackingLabel,
 }) => {
-  const data = useStaticQuery<Queries.SocialContactsQuery>(
-    graphql`
-      query SocialContacts {
-        site {
-          siteMetadata {
-            contacts {
-              email
-              phone
-              links {
-                twitter
-                facebook
-                linkedin
-                github
-                medium
-                devto
-                instagram
-              }
+  const data = useStaticQuery<Queries.SocialContactsQuery>(graphql`
+    query SocialContacts {
+      site {
+        siteMetadata {
+          contacts {
+            email
+            phone
+            links {
+              twitter
+              facebook
+              linkedin
+              github
+              medium
+              devto
+              instagram
             }
           }
         }
       }
-    `
-  );
+    }
+  `);
 
   const links = data.site!.siteMetadata!.contacts!.links!;
 

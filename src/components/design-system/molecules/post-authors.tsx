@@ -78,7 +78,7 @@ export const PostAuthors: FC<PostAuthorsProps> = ({
         const blogAuthor: BlogAuthor = blogAuthors[author!];
         const blogAuthorImage = blogAuthorsImages.allFile.edges.find(
           (blogAuthorImage) =>
-            blogAuthorImage.node.name === author!.replace("_", "-")
+            blogAuthorImage.node.name === author!.split("_").join("-"),
         )!.node!.childImageSharp!.gatsbyImageData!;
 
         return (

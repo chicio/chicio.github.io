@@ -79,8 +79,9 @@ export interface GalleryProps {
 }
 
 export const Gallery: FC<GalleryProps> = ({ images }) => {
-  const [currentImage, setCurrentImage] =
-    useState<IGatsbyImageData | null>(null);
+  const [currentImage, setCurrentImage] = useState<IGatsbyImageData | null>(
+    null,
+  );
 
   return (
     <>
