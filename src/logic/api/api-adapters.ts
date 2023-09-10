@@ -1,14 +1,17 @@
 import {
+  ArtApi,
   BlogAuthorApi,
   BlogAuthorsApi,
   BlogPostApi,
   BlogPostDetailApi,
   BlogPostsListApi,
+  DrawingApi,
   ProjectApi,
   ProjectsApi,
 } from "./api-model";
 import { blogAuthors } from "../blog-authors";
 import { projects } from "../projects";
+import { artDescriptions } from "../art";
 
 const postResourceNameForEndpointCreator = (slug: string) =>
   slug!
@@ -102,11 +105,31 @@ export const projectsApiAdapter = (
       })),
       imageUrl: images.allFile.edges.find(
         (authorImage) => authorImage.node.name === projectKey,
-      )?.node?.publicURL,
+      )!.node!.publicURL,
     };
   });
 
   return {
     projects: projectsApi,
+  };
+};
+
+export const artApiAdapter = (images: Queries.ImagesApiQuery): ArtApi => {
+  const projectsApi: DrawingApi[] = Object.keys(artDescriptions).map((date) => {
+    const description = artDescriptions[date];
+
+    return {
+      date,
+      description,
+      imageUrl: images.allFile.edges.find(
+        (drawImage) => drawImage.node.name === date,
+      )!.node!.publicURL!,
+    };
+  });
+
+  return {
+    drawings: projectsApi.sort((draw, anotherDraw) =>
+      anotherDraw.date.localeCompare(draw.date),
+    ),
   };
 };

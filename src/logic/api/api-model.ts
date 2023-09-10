@@ -53,3 +53,13 @@ export interface ProjectApi {
 export interface ProjectsApi {
   projects: ProjectApi[];
 }
+
+export interface DrawingApi {
+  date: string;
+  description: string;
+  imageUrl: string;
+}
+
+export interface ArtApi {
+  drawings: DrawingApi[];
+}

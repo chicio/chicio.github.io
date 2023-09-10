@@ -5,10 +5,11 @@ import * as fs from "fs";
 import { createFilePath } from "gatsby-source-filesystem";
 import { generatePostSlug, generateTagSlug, slugs } from "./src/logic/slug";
 import {
+  artApiAdapter,
   blogAuthorsApiAdapter,
   blogPostDetailsApiAdapter,
   blogPostsApiAdapter,
-  projectsApiAdapter,
+  projectsApiAdapter
 } from "./src/logic/api/api-adapters";
 
 export const createPages: GatsbyNode["createPages"] = async ({
@@ -146,7 +147,7 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async ({ graphql }) => {
       query ImagesApi {
         allFile(
           filter: {
-            relativeDirectory: { in: ["projects", "authors"] }
+            relativeDirectory: { in: ["projects", "authors", "art"] }
             extension: { regex: "/(jpg)|(jpeg)|(png)/" }
           }
         ) {
@@ -165,16 +166,18 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async ({ graphql }) => {
   const authorsApi = blogAuthorsApiAdapter(imagesApiQuery);
   const blogPostDetailApis = blogPostDetailsApiAdapter(blogPostsQuery);
   const projectsApi = projectsApiAdapter(imagesApiQuery);
+  const artApi = artApiAdapter(imagesApiQuery);
 
   fs.writeFileSync(`${apiFolder}/posts.json`, JSON.stringify(blogPostsApi));
   fs.writeFileSync(`${apiFolder}/authors.json`, JSON.stringify(authorsApi));
-  fs.writeFileSync(`${apiFolder}/projects.json`, JSON.stringify(projectsApi));
   Object.keys(blogPostDetailApis).forEach((key) => {
     fs.writeFileSync(
       `${apiFolder}/${key}.json`,
       JSON.stringify(blogPostDetailApis[key]),
     );
   });
+  fs.writeFileSync(`${apiFolder}/projects.json`, JSON.stringify(projectsApi));
+  fs.writeFileSync(`${apiFolder}/art.json`, JSON.stringify(artApi));
 
   console.log("onPostBuild: API generation completed.");
 };
