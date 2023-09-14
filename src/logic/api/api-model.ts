@@ -16,7 +16,7 @@ export interface BlogPostApi {
   date: string;
   readingTime: string;
   featuredImageUrl: string;
-  authors: string[];
+  authors: BlogAuthorApi[];
   tags: string[];
   resourceEndpoint: string;
   webEndpoint: string;

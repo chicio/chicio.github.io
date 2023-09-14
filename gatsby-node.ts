@@ -162,8 +162,12 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async ({ graphql }) => {
     `)
   ).data!;
 
-  const blogPostsApi = blogPostsApiAdapter(apiBasePath, blogPostsQuery);
   const authorsApi = blogAuthorsApiAdapter(imagesApiQuery);
+  const blogPostsApi = blogPostsApiAdapter(
+    apiBasePath,
+    blogPostsQuery,
+    authorsApi,
+  );
   const blogPostDetailApis = blogPostDetailsApiAdapter(blogPostsQuery);
   const projectsApi = projectsApiAdapter(imagesApiQuery);
   const artApi = artApiAdapter(imagesApiQuery);

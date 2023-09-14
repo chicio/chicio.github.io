@@ -25,6 +25,7 @@ const postResourceEndpointCreator = (apiBasePath: string, slug: string) =>
 export const blogPostsApiAdapter = (
   apiBasePath: string,
   blogPostsApiQueryResult: Queries.BlogPostsApiQuery,
+  authorsApi: BlogAuthorsApi,
 ): BlogPostsListApi => {
   const posts: BlogPostApi[] =
     blogPostsApiQueryResult!.allMarkdownRemark.edges.map(({ node }) => {
@@ -35,7 +36,13 @@ export const blogPostsApiAdapter = (
         date: frontmatter.date!,
         readingTime: node.fields!.readingTime!.text!,
         featuredImageUrl: frontmatter.image!.publicURL!,
-        authors: frontmatter.authors!.map((it) => it!),
+        authors: authorsApi.authors.filter((it) =>
+          frontmatter.authors!.find(
+            (author) =>
+              author!.split("_").join(" ").toUpperCase() ===
+              it.name.toUpperCase(),
+          ),
+        ),
         tags: frontmatter.tags!.map((it) => it!),
         resourceEndpoint: postResourceEndpointCreator(
           apiBasePath,
