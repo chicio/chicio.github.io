@@ -9,9 +9,10 @@ import {
   ProjectApi,
   ProjectsApi,
 } from "./api-model";
-import { blogAuthors } from "../blog-authors";
+import { BlogAuthor, blogAuthors } from "../blog-authors";
 import { projects } from "../projects";
 import { artDescriptions } from "../art";
+import config from "../../../gatsby-config";
 
 const postResourceNameForEndpointCreator = (slug: string) =>
   slug!
@@ -35,7 +36,8 @@ export const blogPostsApiAdapter = (
         description: frontmatter.description!,
         date: frontmatter.date!,
         readingTime: node.fields!.readingTime!.text!,
-        featuredImageUrl: frontmatter.image!.publicURL!,
+        featuredImageUrl: `${config.siteMetadata!.siteUrl}${frontmatter.image!
+          .publicURL!}`,
         authors: authorsApi.authors.filter((it) =>
           frontmatter.authors!.find(
             (author) =>
@@ -48,7 +50,7 @@ export const blogPostsApiAdapter = (
           apiBasePath,
           node.fields!.slug!,
         ),
-        webEndpoint: node.fields!.slug!,
+        webEndpoint: `${config.siteMetadata!.siteUrl}${node.fields!.slug!}`,
       };
     });
 
@@ -59,6 +61,7 @@ export const blogPostsApiAdapter = (
 
 export const blogPostDetailsApiAdapter = (
   blogPostsApiQueryResult: Queries.BlogPostsApiQuery,
+  authorsApi: BlogAuthorsApi,
 ): Record<string, BlogPostDetailApi> =>
   blogPostsApiQueryResult!.allMarkdownRemark.edges.reduce<
     Record<string, BlogPostDetailApi>
@@ -69,8 +72,15 @@ export const blogPostDetailsApiAdapter = (
       description: frontmatter.description!,
       date: frontmatter.date!,
       readingTime: edge.node.fields!.readingTime!.text!,
-      featuredImageUrl: frontmatter.image!.publicURL!,
-      authors: frontmatter.authors!.map((it) => it!),
+      featuredImageUrl: `${config.siteMetadata!.siteUrl}${frontmatter.image!
+        .publicURL!}`,
+      authors: authorsApi.authors.filter((it) =>
+        frontmatter.authors!.find(
+          (author) =>
+            author!.split("_").join(" ").toUpperCase() ===
+            it.name.toUpperCase(),
+        ),
+      ),
       tags: frontmatter.tags!.map((it) => it!),
       math: frontmatter.math!,
       content: edge.node!.html!,
@@ -81,14 +91,17 @@ export const blogPostDetailsApiAdapter = (
 export const blogAuthorsApiAdapter = (
   authorsImages: Queries.ImagesApiQuery,
 ): BlogAuthorsApi => {
-  const authors: BlogAuthorApi[] = Object.values(blogAuthors).map((author) => ({
-    name: author.name,
-    url: author.url,
-    imageUrl: authorsImages.allFile.edges.find(
+  const getImageUrl = (author: BlogAuthor) =>
+    authorsImages.allFile.edges.find(
       (authorImage) =>
         authorImage.node.name ===
         author.name!.split(" ").join("-").toLowerCase(),
-    )?.node?.publicURL,
+    )?.node?.publicURL;
+
+  const authors: BlogAuthorApi[] = Object.values(blogAuthors).map((author) => ({
+    name: author.name,
+    url: author.url,
+    imageUrl: `${config.siteMetadata!.siteUrl}${getImageUrl(author)}`,
   }));
   return {
     authors,
@@ -101,6 +114,10 @@ export const projectsApiAdapter = (
   const projectsApi: ProjectApi[] = Object.keys(projects).map((projectKey) => {
     const project = projects[projectKey];
 
+    const getImageUrl = () =>
+      images.allFile.edges.find((image) => image.node.name === projectKey)!
+        .node!.publicURL;
+
     return {
       id: projectKey,
       name: project.name,
@@ -110,9 +127,7 @@ export const projectsApiAdapter = (
         text: callToAction.label,
         url: callToAction.link,
       })),
-      imageUrl: images.allFile.edges.find(
-        (authorImage) => authorImage.node.name === projectKey,
-      )!.node!.publicURL,
+      imageUrl: `${config.siteMetadata!.siteUrl}${getImageUrl()}`,
     };
   });
 
@@ -125,12 +140,14 @@ export const artApiAdapter = (images: Queries.ImagesApiQuery): ArtApi => {
   const projectsApi: DrawingApi[] = Object.keys(artDescriptions).map((date) => {
     const description = artDescriptions[date];
 
+    const getImageUrl = () =>
+      images.allFile.edges.find((drawImage) => drawImage.node.name === date)!
+        .node!.publicURL!;
+
     return {
       date,
       description,
-      imageUrl: images.allFile.edges.find(
-        (drawImage) => drawImage.node.name === date,
-      )!.node!.publicURL!,
+      imageUrl: `${config.siteMetadata!.siteUrl}${getImageUrl()}`,
     };
   });
 

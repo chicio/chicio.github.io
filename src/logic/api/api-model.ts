@@ -4,7 +4,7 @@ export interface BlogPostDetailApi {
   date: string;
   readingTime: string;
   featuredImageUrl: string;
-  authors: string[];
+  authors: BlogAuthorApi[];
   tags: string[];
   math: boolean;
   content: string;

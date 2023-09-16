@@ -9,7 +9,7 @@ import {
   blogAuthorsApiAdapter,
   blogPostDetailsApiAdapter,
   blogPostsApiAdapter,
-  projectsApiAdapter
+  projectsApiAdapter,
 } from "./src/logic/api/api-adapters";
 
 export const createPages: GatsbyNode["createPages"] = async ({
@@ -168,7 +168,10 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async ({ graphql }) => {
     blogPostsQuery,
     authorsApi,
   );
-  const blogPostDetailApis = blogPostDetailsApiAdapter(blogPostsQuery);
+  const blogPostDetailApis = blogPostDetailsApiAdapter(
+    blogPostsQuery,
+    authorsApi,
+  );
   const projectsApi = projectsApiAdapter(imagesApiQuery);
   const artApi = artApiAdapter(imagesApiQuery);
 
