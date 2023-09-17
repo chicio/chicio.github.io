@@ -1,6 +1,13 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [6.3.0](https://github.com/chicio/chicio.github.io/releases/tag/v6.3.0)
+Release date: 2023-09-17
+
+#### Added
+
+- Post layout for app webview
+
 ## [6.2.0](https://github.com/chicio/chicio.github.io/releases/tag/v6.2.0)
 Release date: 2023-09-10
 
