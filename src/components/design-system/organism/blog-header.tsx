@@ -3,7 +3,6 @@ import { StaticImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { mediaQuery } from "../utils-css/media-query";
 import { gatsbyImagePlaceholderSelector } from "../utils-css/gatsby-image-selector";
-import { transform } from "../utils-css/transform-keyframes";
 
 const BlogHeaderContainer = styled.div`
   display: flex;

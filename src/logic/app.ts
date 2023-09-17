@@ -4,5 +4,5 @@ export const pageOpenedInApp = (
   location: WindowLocation<WindowLocation["state"]>,
 ): boolean => {
   const appParam = new URLSearchParams(location.search).get("app");
-  return appParam !== null && appParam === "true";
+  return appParam !== undefined && appParam !== null && appParam === "true";
 };
