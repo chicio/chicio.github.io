@@ -6,7 +6,7 @@ export interface CurrentLocation {
 }
 
 export const getCurrentLocationFrom: (
-  location: WindowLocation<WindowLocation["state"]>
+  location: WindowLocation<WindowLocation["state"]>,
 ) => CurrentLocation = (location: WindowLocation<WindowLocation["state"]>) => ({
   url: location.href,
   pathname: location.pathname,

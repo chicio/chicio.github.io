@@ -11,6 +11,7 @@ import styled from "styled-components";
 import { OgPageType } from "../logic/seo";
 import { getCurrentLocationFrom } from "../logic/current-location";
 import loadable from "@loadable/component";
+import { pageOpenedInApp } from "../logic/app";
 
 const PostTitle = styled(Heading2)`
   margin: 0;
@@ -18,15 +19,15 @@ const PostTitle = styled(Heading2)`
 `;
 
 const RecentPosts = loadable(
-  () => import(`../components/design-system/organism/read-next`)
+  () => import(`../components/design-system/organism/read-next`),
 );
 
 const PostTags = loadable(
-  () => import(`../components/design-system/molecules/post-tags`)
+  () => import(`../components/design-system/molecules/post-tags`),
 );
 
 const Comments = loadable(
-  () => import(`../components/design-system/molecules/comments`)
+  () => import(`../components/design-system/molecules/comments`),
 );
 
 const PostContainer = styled.div`
@@ -47,12 +48,13 @@ const Post: FC<PageProps<Queries.PostQuery>> = ({ data, location }) => {
       author={data.site!.siteMetadata!.author!}
       ogPageType={OgPageType.BlogPosting}
       ogImage={`${getSrc(
-        post.frontmatter!.image!.childImageSharp!.gatsbyImageData!
+        post.frontmatter!.image!.childImageSharp!.gatsbyImageData!,
       )!}`}
       trackingCategory={tracking.category.blog_post}
       customTitle={title}
       description={post.frontmatter!.description!}
       date={post.frontmatter!.date!}
+      pageOpenedInApp={pageOpenedInApp(location)}
     >
       <PostContainer>
         <PostTitle className="blog-post-title">
@@ -75,9 +77,13 @@ const Post: FC<PageProps<Queries.PostQuery>> = ({ data, location }) => {
           trackingLabel={tracking.label.body}
         />
       </PostContainer>
-      <RecentPosts currentSlug={location.pathname} />
-      {post.frontmatter?.comments && (
-        <Comments url={location.href} title={title} />
+      {!pageOpenedInApp(location) && (
+        <>
+          <RecentPosts currentSlug={location.pathname} />
+          {post.frontmatter?.comments && (
+            <Comments url={location.href} title={title} />
+          )}
+        </>
       )}
     </BlogPageTemplate>
   );

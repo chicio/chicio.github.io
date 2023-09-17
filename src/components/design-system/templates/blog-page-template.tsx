@@ -12,8 +12,9 @@ import { FC, ReactNode } from "react";
 
 const Footer = loadable(() => import(`../organism/footer`));
 
-const ContentContainer = styled(Container)`
-  margin-top: ${(props) => props.theme.spacing[12]};
+const ContentContainer = styled(Container)<{ pageOpenedFromApp: boolean }>`
+  margin-top: ${(props) =>
+    props.pageOpenedFromApp ? 0 : props.theme.spacing[12]};
   flex: 1 0 auto;
 `;
 
@@ -23,6 +24,7 @@ export interface BlogPageProps {
   ogPageType: OgPageType;
   ogImage: string;
   trackingCategory: string;
+  pageOpenedInApp: boolean;
   customTitle?: string;
   description?: string;
   date?: string;
@@ -37,6 +39,7 @@ export const BlogPageTemplate: FC<BlogPageProps> = ({
   ogPageType,
   ogImage,
   trackingCategory,
+  pageOpenedInApp,
   customTitle,
   description,
   date,
@@ -52,14 +55,18 @@ export const BlogPageTemplate: FC<BlogPageProps> = ({
       date={date}
       cookieConsentColor={blogPrimaryColor}
     />
-    <BlogMenu
-      trackingCategory={trackingCategory}
-      pathname={location.pathname}
-    />
-    <ContentContainer>
+    {!pageOpenedInApp && (
+      <BlogMenu
+        trackingCategory={trackingCategory}
+        pathname={location.pathname}
+      />
+    )}
+    <ContentContainer pageOpenedFromApp={pageOpenedInApp}>
       <DesktopBlogHeader big={big} />
       {children}
     </ContentContainer>
-    <Footer author={author} trackingCategory={trackingCategory} />
+    {!pageOpenedInApp && (
+      <Footer author={author} trackingCategory={trackingCategory} />
+    )}
   </BlogThemePage>
 );
