@@ -55,13 +55,11 @@ export const BlogPageTemplate: FC<BlogPageProps> = ({
       date={date}
       cookieConsentColor={blogPrimaryColor}
     />
-    {!pageOpenedInApp && (
-      <BlogMenu
-        trackingCategory={trackingCategory}
-        pathname={location.pathname}
-      />
-    )}
-    <ContentContainer pageOpenedFromApp={pageOpenedInApp}>
+    <BlogMenu
+      trackingCategory={trackingCategory}
+      pathname={location.pathname}
+    />
+    <ContentContainer pageOpenedFromApp={false}>
       <DesktopBlogHeader big={big} />
       {children}
     </ContentContainer>
