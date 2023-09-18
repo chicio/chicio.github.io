@@ -86,7 +86,7 @@ const ImageContainer = styled.div`
   }
 `;
 
-export const DesktopContainer = styled.div`
+const DesktopContainer = styled.div`
   display: none;
 
   ${mediaQuery.minWidth.sm} {
@@ -98,7 +98,7 @@ interface MobileContainerProps {
   height: string;
 }
 
-export const MobileContainer = styled.div<MobileContainerProps>`
+const MobileContainer = styled.div<MobileContainerProps>`
   display: flex;
   height: ${(props) => props.height};
 

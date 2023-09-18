@@ -39,12 +39,12 @@ const media: (content: string) => string = (content) => `@media ${content}`;
 const dark = media(content("prefers-color-scheme: dark"));
 
 const mouse = media(
-  `${content("hover: hover")} and ${content("pointer: fine")}`
+  `${content("hover: hover")} and ${content("pointer: fine")}`,
 );
 
 const width: (
   width: "max-width" | "min-width",
-  breakpoint: BreakPoint
+  breakpoint: BreakPoint,
 ) => string = (width: "max-width" | "min-width", breakpoint: BreakPoint) =>
   media(content(`${width}: ${breakpoints[breakpoint]}`));
 

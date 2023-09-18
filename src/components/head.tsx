@@ -59,30 +59,28 @@ export const Head: FC<HeadProps> = ({
   description,
   cookieConsentColor,
 }) => {
-  const data = useStaticQuery<Queries.HeadQuery>(
-    graphql`
-      query Head {
-        site {
-          siteMetadata {
-            author
-            title
-            siteUrl
-            contacts {
-              links {
-                twitter
-                facebook
-                linkedin
-                github
-                medium
-                devto
-                instagram
-              }
+  const data = useStaticQuery<Queries.HeadQuery>(graphql`
+    query Head {
+      site {
+        siteMetadata {
+          author
+          title
+          siteUrl
+          contacts {
+            links {
+              twitter
+              facebook
+              linkedin
+              github
+              medium
+              devto
+              instagram
             }
           }
         }
       }
-    `
-  );
+    }
+  `);
 
   const siteMetadata = data.site!.siteMetadata!;
   const title = customTitle ? customTitle : siteMetadata.title!;
@@ -99,7 +97,7 @@ export const Head: FC<HeadProps> = ({
         title,
         url,
         `${siteUrl}${imageUrl}`,
-        pageType
+        pageType,
       )}
     >
       <link rel="canonical" href={url} />
@@ -129,7 +127,7 @@ export const Head: FC<HeadProps> = ({
           title,
           links,
           description,
-          date
+          date,
         )}
       </script>
     </Helmet>

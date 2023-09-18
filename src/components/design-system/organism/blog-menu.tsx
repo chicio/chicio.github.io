@@ -24,7 +24,7 @@ interface MobileBlogHeaderContainerProps {
 }
 
 const MobileBlogHeaderContainer = styled(
-  ContainerFluid
+  ContainerFluid,
 )<MobileBlogHeaderContainerProps>`
   height: ${menuHeight};
   display: flex;
@@ -76,7 +76,8 @@ const MenuContainer = styled.div<MenuContainerProps>`
   top: ${(props) => (props.shouldHide ? `-${menuHeight}` : 0)};
   left: 0;
   right: 0;
-  transition: top 0.3s ease 0s,
+  transition:
+    top 0.3s ease 0s,
     height 0.3s ease ${(props) => `${props.delayOpenCloseMenuAnimation}s`};
   width: 100%;
   z-index: 300;
@@ -228,11 +229,11 @@ export const BlogMenu: FC<MenuProps> = ({ trackingCategory, pathname }) => {
 
   const onStartAnimation = useCallback(
     () => setEnableMenuButton(false),
-    [setEnableMenuButton]
+    [setEnableMenuButton],
   );
   const onFinishAnimation = useCallback(
     () => setEnableMenuButton(true),
-    [setEnableMenuButton]
+    [setEnableMenuButton],
   );
   const changeMenuStatus = useCallback(
     (enableMenuButton: boolean, shouldOpenMenu: boolean) => {
@@ -240,7 +241,7 @@ export const BlogMenu: FC<MenuProps> = ({ trackingCategory, pathname }) => {
         setShouldOpenMenu(!shouldOpenMenu);
       }
     },
-    [setShouldOpenMenu]
+    [setShouldOpenMenu],
   );
 
   return (

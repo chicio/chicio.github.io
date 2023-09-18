@@ -8,7 +8,7 @@ import loadable from "@loadable/component";
 import styled from "styled-components";
 import { Container } from "../atoms/container";
 import { blogPrimaryColor } from "../blog-colors";
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useEffect, useState } from "react";
 import { pageOpenedInApp } from "../../../logic/app";
 
 const Footer = loadable(() => import(`../organism/footer`));
@@ -21,28 +21,6 @@ const ContentContainer = styled(Container)`
 const ContentContainerApp = styled(Container)`
   flex: 1 0 auto;
 `;
-
-const StandardLayout: FC<{
-  location: CurrentLocation;
-  trackingCategory: string;
-  children?: ReactNode;
-  big: boolean;
-  author: string;
-}> = ({ location, trackingCategory, big, author, children }) => {
-  return (
-    <div>
-      <BlogMenu
-        trackingCategory={trackingCategory}
-        pathname={location.pathname}
-      />
-      <ContentContainer>
-        <DesktopBlogHeader big={big} />
-        {children}
-      </ContentContainer>
-      <Footer author={author} trackingCategory={trackingCategory} />
-    </div>
-  );
-};
 
 export interface BlogPageProps {
   location: CurrentLocation;
@@ -69,8 +47,14 @@ export const BlogPageTemplate: FC<BlogPageProps> = ({
   date,
   big = false,
 }) => {
+  const [isFromApp, setIsFromApp] = useState(false);
+
+  useEffect(() => {
+    setIsFromApp(pageOpenedInApp(location));
+  }, []);
+
   return (
-    <BlogThemePage>
+    <>
       <Head
         url={location.url}
         pageType={ogPageType}
@@ -80,18 +64,23 @@ export const BlogPageTemplate: FC<BlogPageProps> = ({
         date={date}
         cookieConsentColor={blogPrimaryColor}
       />
-      {!pageOpenedInApp(location) ? (
-        <StandardLayout
-          location={location}
-          big={big}
-          trackingCategory={trackingCategory}
-          author={author}
-        >
-          {children}
-        </StandardLayout>
-      ) : (
-        <ContentContainerApp>{children}</ContentContainerApp>
-      )}
-    </BlogThemePage>
+      <BlogThemePage>
+        {isFromApp ? (
+          <ContentContainerApp>{children}</ContentContainerApp>
+        ) : (
+          <>
+            <BlogMenu
+              trackingCategory={trackingCategory}
+              pathname={location.pathname}
+            />
+            <ContentContainer>
+              <DesktopBlogHeader big={big} />
+              {children}
+            </ContentContainer>
+            <Footer author={author} trackingCategory={trackingCategory} />
+          </>
+        )}
+      </BlogThemePage>
+    </>
   );
 };
