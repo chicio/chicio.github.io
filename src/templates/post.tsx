@@ -11,7 +11,7 @@ import styled from "styled-components";
 import { OgPageType } from "../logic/seo";
 import { getCurrentLocationFrom } from "../logic/current-location";
 import loadable from "@loadable/component";
-import { pageOpenedInApp } from "../logic/app";
+import { useIsFromApp } from "../components/design-system/hooks/use-is-from-app";
 
 const PostTitle = styled(Heading2)`
   margin: 0;
@@ -38,6 +38,7 @@ const Post: FC<PageProps<Queries.PostQuery>> = ({ data, location }) => {
   const post = data.markdownRemark!;
   const title = post.frontmatter!.title!;
   const currentLocation = getCurrentLocationFrom(location);
+  const isFromApp = useIsFromApp(currentLocation);
 
   if (post.frontmatter?.math === true) {
     require("katex/dist/katex.min.css");
@@ -77,7 +78,7 @@ const Post: FC<PageProps<Queries.PostQuery>> = ({ data, location }) => {
           trackingLabel={tracking.label.body}
         />
       </PostContainer>
-      {!pageOpenedInApp(currentLocation) && (
+      {!isFromApp && (
         <>
           <RecentPosts currentSlug={location.pathname} />
           {post.frontmatter?.comments && (

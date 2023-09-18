@@ -8,8 +8,8 @@ import loadable from "@loadable/component";
 import styled from "styled-components";
 import { Container } from "../atoms/container";
 import { blogPrimaryColor } from "../blog-colors";
-import { FC, ReactNode, useEffect, useState } from "react";
-import { pageOpenedInApp } from "../../../logic/app";
+import { FC, ReactNode } from "react";
+import { useIsFromApp } from "../hooks/use-is-from-app";
 
 const Footer = loadable(() => import(`../organism/footer`));
 
@@ -47,11 +47,7 @@ export const BlogPageTemplate: FC<BlogPageProps> = ({
   date,
   big = false,
 }) => {
-  const [isFromApp, setIsFromApp] = useState(false);
-
-  useEffect(() => {
-    setIsFromApp(pageOpenedInApp(location));
-  }, []);
+  const isFromApp = useIsFromApp(location);
 
   return (
     <>
