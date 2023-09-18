@@ -7,6 +7,7 @@ const primaryColorLight = "#F7BEC6";
 
 export const artDark: Colors = {
   primaryColor: artPrimaryColor,
+  secondaryColor: artPrimaryColor,
   primaryColorDark,
   primaryColorLight,
   generalBackground: "#181918",
@@ -22,6 +23,7 @@ export const artDark: Colors = {
 
 export const artLight: Colors = {
   primaryColor: artPrimaryColor,
+  secondaryColor: artPrimaryColor,
   primaryColorDark,
   primaryColorLight,
   generalBackground: "#FBFBFB",

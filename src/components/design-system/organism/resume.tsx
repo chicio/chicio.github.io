@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import { tracking } from "../../../logic/tracking";
 import { ContainerFluid } from "../atoms/container-fluid";
 import styled from "styled-components";

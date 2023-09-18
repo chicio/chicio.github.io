@@ -1,8 +1,6 @@
-import { WindowLocation } from "@reach/router";
+import { CurrentLocation } from "./current-location";
 
-export const pageOpenedInApp = (
-  location: WindowLocation<WindowLocation["state"]>,
-): boolean => {
+export const pageOpenedInApp = (location: CurrentLocation): boolean => {
   const appParam = new URLSearchParams(location.search).get("app");
   return appParam !== undefined && appParam !== null && appParam === "true";
 };

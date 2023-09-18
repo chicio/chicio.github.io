@@ -9,6 +9,7 @@ import styled from "styled-components";
 import { Container } from "../atoms/container";
 import { blogPrimaryColor } from "../blog-colors";
 import { FC, ReactNode } from "react";
+import { pageOpenedInApp } from "../../../logic/app";
 
 const Footer = loadable(() => import(`../organism/footer`));
 
@@ -20,20 +21,6 @@ const ContentContainer = styled(Container)`
 const ContentContainerApp = styled(Container)`
   flex: 1 0 auto;
 `;
-
-export interface BlogPageProps {
-  location: CurrentLocation;
-  author: string;
-  ogPageType: OgPageType;
-  ogImage: string;
-  trackingCategory: string;
-  pageOpenedInApp: boolean;
-  customTitle?: string;
-  description?: string;
-  date?: string;
-  big?: boolean;
-  children?: ReactNode;
-}
 
 const StandardLayout: FC<{
   location: CurrentLocation;
@@ -57,6 +44,19 @@ const StandardLayout: FC<{
   );
 };
 
+export interface BlogPageProps {
+  location: CurrentLocation;
+  author: string;
+  ogPageType: OgPageType;
+  ogImage: string;
+  trackingCategory: string;
+  customTitle?: string;
+  description?: string;
+  date?: string;
+  big?: boolean;
+  children?: ReactNode;
+}
+
 export const BlogPageTemplate: FC<BlogPageProps> = ({
   children,
   location,
@@ -64,13 +64,11 @@ export const BlogPageTemplate: FC<BlogPageProps> = ({
   ogPageType,
   ogImage,
   trackingCategory,
-  pageOpenedInApp,
   customTitle,
   description,
   date,
   big = false,
 }) => {
-  console.log("from app", pageOpenedInApp);
   return (
     <BlogThemePage>
       <Head
@@ -82,7 +80,7 @@ export const BlogPageTemplate: FC<BlogPageProps> = ({
         date={date}
         cookieConsentColor={blogPrimaryColor}
       />
-      {!pageOpenedInApp ? (
+      {!pageOpenedInApp(location) ? (
         <StandardLayout
           location={location}
           big={big}

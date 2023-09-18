@@ -39,7 +39,8 @@
     "prebuild": "npm run clean",
     "build": "gatsby build",
     "predeploy": "npm run clean && npm run build",
-    "deploy": "gh-pages -d public -b main"
+    "deploy": "gh-pages -d public -b main",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@loadable/component": "^5.15.3",

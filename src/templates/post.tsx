@@ -37,6 +37,7 @@ const PostContainer = styled.div`
 const Post: FC<PageProps<Queries.PostQuery>> = ({ data, location }) => {
   const post = data.markdownRemark!;
   const title = post.frontmatter!.title!;
+  const currentLocation = getCurrentLocationFrom(location);
 
   if (post.frontmatter?.math === true) {
     require("katex/dist/katex.min.css");
@@ -44,7 +45,7 @@ const Post: FC<PageProps<Queries.PostQuery>> = ({ data, location }) => {
 
   return (
     <BlogPageTemplate
-      location={getCurrentLocationFrom(location)}
+      location={currentLocation}
       author={data.site!.siteMetadata!.author!}
       ogPageType={OgPageType.BlogPosting}
       ogImage={`${getSrc(
@@ -54,7 +55,6 @@ const Post: FC<PageProps<Queries.PostQuery>> = ({ data, location }) => {
       customTitle={title}
       description={post.frontmatter!.description!}
       date={post.frontmatter!.date!}
-      pageOpenedInApp={pageOpenedInApp(location)}
     >
       <PostContainer>
         <PostTitle className="blog-post-title">
@@ -77,7 +77,7 @@ const Post: FC<PageProps<Queries.PostQuery>> = ({ data, location }) => {
           trackingLabel={tracking.label.body}
         />
       </PostContainer>
-      {!pageOpenedInApp(location) && (
+      {!pageOpenedInApp(currentLocation) && (
         <>
           <RecentPosts currentSlug={location.pathname} />
           {post.frontmatter?.comments && (
