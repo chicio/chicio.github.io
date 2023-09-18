@@ -1,6 +1,13 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
+## [6.3.1](https://github.com/chicio/chicio.github.io/releases/tag/v6.3.1)
+Release date: 2023-09-18
+
+#### Fixed
+
+- Post layout for app webview: if based on useEffect on mount client side effect (see https://www.gatsbyjs.com/docs/conceptual/react-hydration/)
+
 ## [6.3.0](https://github.com/chicio/chicio.github.io/releases/tag/v6.3.0)
 Release date: 2023-09-17
 
