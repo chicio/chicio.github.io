@@ -1,7 +1,7 @@
 # Change Log
 All changes to Chicio coding will be documented in this file.
 
-## [6.3.1](https://github.com/chicio/chicio.github.io/releases/tag/v6.3.1)
+## [6.3.2](https://github.com/chicio/chicio.github.io/releases/tag/v6.3.2)
 Release date: 2023-09-18
 
 #### Fixed
