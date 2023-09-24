@@ -32,6 +32,10 @@ const TabLink = styled(StandardExternalLink)<TabLinkProps>`
     border-right: ${(props) => props.theme.dark.dividerColor} 1px solid;
   }
 
+  ${mediaQuery.maxWidth.md} {
+    font-size: 16px;
+  }
+
   ${(props) =>
     props.active &&
     css`

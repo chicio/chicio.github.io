@@ -30,7 +30,7 @@ export const Resume: FC = () => {
       <Tabs
         tab1={{
           active: currentTab === TabContent.projects,
-          label: "Projects",
+          label: "Open Source",
           link: "#personal-projects",
           trackingAction: tracking.action.open_personal_projects_tab,
           trackingCategory: tracking.category.home,
