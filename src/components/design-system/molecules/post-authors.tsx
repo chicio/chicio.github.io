@@ -87,6 +87,7 @@ export const PostAuthors: FC<PostAuthorsProps> = ({
           >
             <PostAuthorImage
               alt={blogAuthor.name}
+              loading={"eager"}
               image={blogAuthorImage}
               style={{
                 width: 30,

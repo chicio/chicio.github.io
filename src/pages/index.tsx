@@ -13,21 +13,19 @@ import { FC } from "react";
 const BottomIndex = loadable(() => import(`../components/bottom-index`));
 
 const HomePage: FC<PageProps> = ({ location }) => {
-  const data = useStaticQuery<Queries.HomePageQuery>(
-    graphql`
-      query HomePage {
-        site {
-          siteMetadata {
-            author
-            featuredImage
-          }
+  const data = useStaticQuery<Queries.HomePageQuery>(graphql`
+    query HomePage {
+      site {
+        siteMetadata {
+          author
+          featuredImage
         }
       }
-    `
-  );
-  const siteMetada = data.site!.siteMetadata!;
-  const author = siteMetada.author!;
-  const featuredImage = siteMetada.featuredImage!;
+    }
+  `);
+  const siteMetadata = data.site!.siteMetadata!;
+  const author = siteMetadata.author!;
+  const featuredImage = siteMetadata.featuredImage!;
 
   return (
     <ShowcasePageTemplate

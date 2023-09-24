@@ -64,6 +64,7 @@ export const ProfilePresentation: FC<ProfilePresentationProps> = ({
     <ProfileImageContainer>
       <StaticImage
         placeholder={"none"}
+        loading={"eager"}
         imgStyle={{
           width: "130px",
           height: "130px",

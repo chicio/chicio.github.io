@@ -48,7 +48,7 @@ const PostCardContainer = styled.div<BigCardProps>`
   }
 `;
 
-const PostCardImageContainer = styled(GatsbyImage)`
+const PostCardImage = styled(GatsbyImage)`
   width: 100%;
   object-fit: cover;
   height: 200px;
@@ -117,9 +117,10 @@ export const PostCard: FC<PostCardProps> = ({
           label: tracking.label.body,
         }}
       >
-        <PostCardImageContainer
+        <PostCardImage
           alt={title}
           image={image}
+          loading={big ? "eager" : "lazy"}
           imgStyle={{
             borderRadius: "4px 4px 0 0",
           }}

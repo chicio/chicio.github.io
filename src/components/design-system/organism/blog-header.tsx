@@ -126,6 +126,7 @@ export const BlogHeader: FC = () => (
     <ImageContainer>
       <StaticImage
         src={"../../../images/blog-logo.jpg"}
+        loading={"eager"}
         alt={"blog logo"}
         width={80}
         height={80}
