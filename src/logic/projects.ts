@@ -44,7 +44,7 @@ export const projects: Record<string, Project> = {
         trackingCategory: tracking.category.home,
         trackingAction: tracking.action.open_sclt_thesis,
         trackingLabel: tracking.label.body,
-        link: "/tesi-fabrizio-duroni-770157.pdf",
+        link: "https://www.fabrizioduroni.it/tesi-fabrizio-duroni-770157.pdf",
       },
     ],
   },
