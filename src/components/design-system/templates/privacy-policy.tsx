@@ -22,19 +22,17 @@ export const PrivacyPolicyTemplate: FC<{
   location: WindowLocation<WindowLocation["state"]>;
   services: Service[];
 }> = ({ appName, location, services }) => {
-  const data = useStaticQuery<Queries.PrivacyPolicyQuery>(
-    graphql`
-      query PrivacyPolicy {
-        site {
-          siteMetadata {
-            title
-            author
-            featuredImage
-          }
+  const data = useStaticQuery<Queries.PrivacyPolicyQuery>(graphql`
+    query PrivacyPolicy {
+      site {
+        siteMetadata {
+          title
+          author
+          featuredImage
         }
       }
-    `
-  );
+    }
+  `);
   const siteMetadata = data.site!.siteMetadata!;
   const author = siteMetadata.author!;
   const featuredImage = siteMetadata.featuredImage!;
