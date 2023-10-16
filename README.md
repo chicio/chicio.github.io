@@ -1,6 +1,5 @@
 [![Build](https://github.com/chicio/chicio.github.io/actions/workflows/build.yml/badge.svg)](https://github.com/chicio/chicio.github.io/actions/workflows/build.yml)
 [![Test](https://github.com/chicio/chicio.github.io/actions/workflows/test.yml/badge.svg)](https://github.com/chicio/chicio.github.io/actions/workflows/test.yml)
-![Lighthouse](https://github.com/chicio/chicio.github.io/workflows/Lighthouse/badge.svg)
 ![Release](https://github.com/chicio/chicio.github.io/workflows/Release/badge.svg)
 ![CodeQL](https://github.com/chicio/chicio.github.io/workflows/CodeQL/badge.svg)
 [![Status](https://img.shields.io/badge/Status-Upptime-success)](https://status.fabrizioduroni.it)
