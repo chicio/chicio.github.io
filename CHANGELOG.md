@@ -1,6 +1,17 @@
 # Change Log
 All changes to Chicio Coding will be documented in this file.
 
+## [6.4.0](https://github.com/chicio/chicio.github.io/releases/tag/v6.4.0)
+Release date: 2023-10-22
+
+#### Added
+
+- New promotional text
+
+#### Fixed
+
+- No cookie consent for app pages
+
 ## [6.3.3](https://github.com/chicio/chicio.github.io/releases/tag/v6.3.3)
 Release date: 2023-09-24
 

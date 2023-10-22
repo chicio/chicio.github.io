@@ -11,5 +11,5 @@ export const getCurrentLocationFrom: (
 ) => CurrentLocation = (location: WindowLocation<WindowLocation["state"]>) => ({
   url: location.href,
   pathname: location.pathname,
-  search: location.search
+  search: location.search,
 });

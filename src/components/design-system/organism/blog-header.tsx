@@ -140,9 +140,7 @@ export const BlogHeader: FC = () => (
     <BlogHeaderColumn>
       <BlogTitle>CHICIO CODING</BlogTitle>
       <BlogDescriptionContainer>
-        <BlogDescription>
-          Dirty clean code. Creative Stuff. Stuff.
-        </BlogDescription>
+        <BlogDescription>Coding. Drawing. Fun.</BlogDescription>
       </BlogDescriptionContainer>
     </BlogHeaderColumn>
   </BlogHeaderContainer>

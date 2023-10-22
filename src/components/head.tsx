@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Helmet } from "react-helmet";
 import { graphql, useStaticQuery } from "gatsby";
 import { createJsonLD, createMetaAttributes, OgPageType } from "../logic/seo";
+import { appParameterName } from "./design-system/hooks/use-is-from-app";
 
 const cookieConsentCss = `
        .cc-window{opacity:1;transition:opacity 1s ease}.cc-window.cc-invisible{opacity:0}.cc-animate.cc-revoke{transition:transform 1s ease}.cc-animate.cc-revoke.cc-top{transform:translateY(-2em)}.cc-animate.cc-revoke.cc-bottom{transform:translateY(2em)}.cc-animate.cc-revoke.cc-active.cc-bottom,.cc-animate.cc-revoke.cc-active.cc-top,.cc-revoke:hover{transform:translateY(0)}.cc-grower{max-height:0;overflow:hidden;transition:max-height 1s}
@@ -13,7 +14,8 @@ const cookieConsentCss = `
     `;
 
 const cookieConsentScript = (color: string) => `
-if (typeof window !== "undefined") {
+var url = new URL(window.location.href);
+if (typeof window !== "undefined" && !url.searchParams.has("${appParameterName}")) {
   window.addEventListener('load', () => { 
        window.cookieconsent.initialise({
                       palette: {

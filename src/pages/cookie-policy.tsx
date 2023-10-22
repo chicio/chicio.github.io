@@ -12,19 +12,17 @@ import { OgPageType } from "../logic/seo";
 import { getCurrentLocationFrom } from "../logic/current-location";
 
 const CookiePolicy: FC<PageProps> = ({ location }) => {
-  const data = useStaticQuery<Queries.CookiePolicyQuery>(
-    graphql`
-      query CookiePolicy {
-        site {
-          siteMetadata {
-            title
-            author
-            featuredImage
-          }
+  const data = useStaticQuery<Queries.CookiePolicyQuery>(graphql`
+    query CookiePolicy {
+      site {
+        siteMetadata {
+          title
+          author
+          featuredImage
         }
       }
-    `
-  );
+    }
+  `);
   const siteMetadata = data.site!.siteMetadata!;
   const author = siteMetadata.author!;
   const featuredImage = siteMetadata.featuredImage!;
