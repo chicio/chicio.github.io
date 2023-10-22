@@ -68,7 +68,7 @@ describe("Head", () => {
           date={""}
           description={""}
           cookieConsentColor={"303F9F"}
-        />
+        />,
       );
 
       const helmet = Helmet.peek();
@@ -85,13 +85,13 @@ describe("Head", () => {
           date={""}
           description={""}
           cookieConsentColor={"303F9F"}
-        />
+        />,
       );
 
       const helmet = Helmet.peek();
 
       expect(helmet.title).toEqual(
-        "Fabrizio Duroni | Fabrizio Duroni ‘Chicio Coding’"
+        "Fabrizio Duroni | Fabrizio Duroni ‘Chicio Coding’",
       );
     });
   });
@@ -106,7 +106,7 @@ describe("Head", () => {
         date={""}
         description={""}
         cookieConsentColor={"303F9F"}
-      />
+      />,
     );
 
     const helmet = Helmet.peek();
@@ -124,7 +124,7 @@ describe("Head", () => {
         date={""}
         description={""}
         cookieConsentColor={"303F9F"}
-      />
+      />,
     );
 
     const helmet = Helmet.peek();
@@ -145,7 +145,7 @@ describe("Head", () => {
         date={""}
         description={""}
         cookieConsentColor={"303F9F"}
-      />
+      />,
     );
 
     const helmet = Helmet.peek();
@@ -179,7 +179,7 @@ describe("Head", () => {
         date={""}
         description={""}
         cookieConsentColor={"#303F9F"}
-      />
+      />,
     );
 
     const helmet = Helmet.peek();
@@ -195,7 +195,7 @@ describe("Head", () => {
       {
         type: "text/javascript",
         innerHTML:
-          "\nif (typeof window !== \"undefined\") {\n  window.addEventListener('load', () => { \n       window.cookieconsent.initialise({\n                      palette: {\n                          popup: {\n                              background: '#303F9F',\n                              text: '#ffffff'\n                          },\n                          button: {\n                              background: '#0F67FF',\n                              text: '#ffffff'\n                          }\n                      },\n                      theme: 'classic',\n                      content: {\n                          dismiss: 'Ok',\n                          href: window.location.protocol + '//' + window.location.host + '/cookie-policy/',\n                          message: 'This website uses cookies to ensure you get the best experience.',\n                          link: 'Learn more about cookie policy'\n                      }\n       });\n  });\n} else {\n  console.log(\"no cookieconsent\");\n}      \n",
+          "\nvar url = new URL(window.location.href);\nif (typeof window !== \"undefined\" && !url.searchParams.has(\"app\")) {\n  window.addEventListener('load', () => { \n       window.cookieconsent.initialise({\n                      palette: {\n                          popup: {\n                              background: '#303F9F',\n                              text: '#ffffff'\n                          },\n                          button: {\n                              background: '#0F67FF',\n                              text: '#ffffff'\n                          }\n                      },\n                      theme: 'classic',\n                      content: {\n                          dismiss: 'Ok',\n                          href: window.location.protocol + '//' + window.location.host + '/cookie-policy/',\n                          message: 'This website uses cookies to ensure you get the best experience.',\n                          link: 'Learn more about cookie policy'\n                      }\n       });\n  });\n} else {\n  console.log(\"no cookieconsent\");\n}      \n",
       },
       {
         type: "application/ld+json",
@@ -214,7 +214,7 @@ describe("Head", () => {
         date={""}
         description={""}
         cookieConsentColor={"303F9F"}
-      />
+      />,
     );
 
     const helmet = Helmet.peek();
