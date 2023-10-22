@@ -7,6 +7,7 @@ Release date: 2023-10-22
 #### Added
 
 - Updated deps
+- New art images
 - New promotional text
 
 #### Fixed
