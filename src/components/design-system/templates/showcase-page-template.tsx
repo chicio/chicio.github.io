@@ -34,17 +34,15 @@ export const ShowcasePageTemplate: FC<ShowcasePageProps> = ({
   featuredImage,
   cookieConsentColor,
 }) => {
-  const data = useStaticQuery<Queries.ShowcasePageQuery>(
-    graphql`
-      query ShowcasePage {
-        site {
-          siteMetadata {
-            author
-          }
+  const data = useStaticQuery<Queries.ShowcasePageQuery>(graphql`
+    query ShowcasePage {
+      site {
+        siteMetadata {
+          author
         }
       }
-    `
-  );
+    }
+  `);
 
   const siteMetadata = data.site!.siteMetadata!;
   const author = siteMetadata.author!;
