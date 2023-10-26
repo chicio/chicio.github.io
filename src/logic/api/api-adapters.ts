@@ -121,6 +121,7 @@ export const projectsApiAdapter = (
     return {
       id: projectKey,
       name: project.name,
+      abstract: project.abstract,
       description: project.description,
       features: project.features,
       callToActions: project.callToActions.map((callToAction) => ({

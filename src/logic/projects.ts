@@ -10,6 +10,7 @@ export interface ProjectCallToAction {
 
 export interface Project {
   name: string;
+  abstract: string;
   description: string;
   callToActions: ProjectCallToAction[];
   features: string[];
@@ -18,8 +19,11 @@ export interface Project {
 export const projects: Record<string, Project> = {
   "spectral-clara-lux-tracer": {
     name: "Spectral Clara Lux Tracer",
+    abstract:
+      "Physically based ray tracer with multiple shading models support and Color Rendering Index (CRI)" +
+      " evaluation.",
     description:
-      "Physically based ray tracer with multiple shading models support andColor Rendering Index (CRI)" +
+      "Physically based ray tracer with multiple shading models support and Color Rendering Index (CRI)" +
       " evaluation. Project developed for my master degree thesis at University Milano-Bicocca - Imaging and Vision" +
       " Laboratory.",
     features: [
@@ -50,8 +54,10 @@ export const projects: Record<string, Project> = {
   },
   "spectral-brdf-explorer": {
     name: "Spectral BRDF Explorer",
+    abstract: "An iOS OpenGL ES appfor exploring lighting models.",
     description:
-      "OpenGL ES application inspired by Walt Animation Disney Studios BRDF Viewer. A simple application that shows some of the most famous lighting model used in computer graphics and that supports color calculation using RGB and spectral data of lights and object surfaces.",
+      "An iOS OpenGL ES application inspired by Walt Animation Disney Studios BRDF Viewer. A simple application that" +
+      " shows some of the most famous lighting model used in computer graphics and that supports color calculation using RGB and spectral data of lights and object surfaces.",
     features: [
       "Computer graphics",
       "OpenGL ES",
@@ -71,6 +77,7 @@ export const projects: Record<string, Project> = {
   },
   id3tageditor: {
     name: "ID3TagEditor",
+    abstract: "A Swift library to edit ID3 Tag of any mp3 file. ",
     description:
       "A Swift library to read and modify ID3 Tag of any mp3 file. Supported " +
       "ID3 tag version: 2.2. and 2.3. Listed in the implementations section " +
@@ -79,6 +86,7 @@ export const projects: Record<string, Project> = {
       "Multiple id3 tag version supported",
       "Strictly adhere to the offical standard",
       "No external dependencies",
+      "Swift SPM and cocoapods support",
       "100% Swift",
     ],
     callToActions: [
@@ -100,6 +108,7 @@ export const projects: Record<string, Project> = {
   },
   "range-ui-slider": {
     name: "RangeUISlider",
+    abstract: "A RangeUISlider component for iOS and iPadOS.",
     description:
       "A highly customizable iOS range selection slider, developed using " +
       "autolayout and completely customizable using IBDesignabled and " +
@@ -133,6 +142,7 @@ export const projects: Record<string, Project> = {
   },
   tabbaruiaction: {
     name: "TabBarUIAction",
+    abstract: "A SwiftUI custom TabBar for iOS and macOS.",
     description:
       "A SwiftUI custom TabBar view with action button for modal content " +
       "display. Fully compatible with Mac Catalyst. Available as a standalone " +
@@ -161,6 +171,7 @@ export const projects: Record<string, Project> = {
   },
   mp3id3tagger: {
     name: "Mp3ID3Tagger",
+    abstract: "A macOS application to edit the ID3 tag of your mp3 files.",
     description:
       "A macOS application to edit the ID3 tag of your mp3 files. " +
       "Mp3ID3Tagger supports the following ID3 tag versions: 2.2. and 2.3. It " +
