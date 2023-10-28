@@ -72,11 +72,13 @@ const Post: FC<PageProps<Queries.PostQuery>> = ({ data, location }) => {
           readingTime={post.fields!.readingTime!.text!}
         />
         <PostContent html={post.html!} />
-        <PostTags
-          tags={post.frontmatter!.tags!}
-          trackingCategory={tracking.category.blog_post}
-          trackingLabel={tracking.label.body}
-        />
+        {!isFromApp && (
+          <PostTags
+            tags={post.frontmatter!.tags!}
+            trackingCategory={tracking.category.blog_post}
+            trackingLabel={tracking.label.body}
+          />
+        )}
       </PostContainer>
       {!isFromApp && (
         <>
