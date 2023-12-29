@@ -45,10 +45,8 @@ see from the photo below, there is already a big drop since the second day :swea
 
 ![Advent of TypeScript: first days result](../images/posts/advent-of-typescript-first.jpg "Advent of TypeScript: first days result")
 
-Then we arrived to the latest days challenges, and I was shocked to know that **I was one among only 200 developers in 
-the world to complete all the 25 challenges :loudspeaker:**. Maybe you're more shocked by the fact that I worked on 
-Christmas Eve. To be honest: it's not the first time, and I'm quite sure it won't be the last. Consider that some years ago I 
-was used to work/study also on Christmas...I know, I'm a bad/sad person :sweat_smile:.
+Then we arrived to the latest days challenges, and I was surprised to know that **I was one among only 200 
+developers in the world to complete all the 25 challenges :loudspeaker:**.
 
 ![Advent of TypeScript: last days result](../images/posts/advent-of-typescript-last.jpg "Advent of TypeScript: last days 
 result")
@@ -66,7 +64,7 @@ In this way, reading the articles will be easier:
 
 So which are the 4 challenges I like the most? Here they are:
 
-* [Rock, Paper, Scissors](/2023/12/29/advent-of-typescript-2023-rock-paper-scissors/)
+* [Rock, Paper, Scissors](/2023/12/30/advent-of-typescript-2023-rock-paper-scissors/)
 * Tic Tac Toe (BE PATIENT...PUBLISHED SOON)
 * Connect 4 (BE PATIENT...PUBLISHED SOON)
 * Santa is stuck! (BE PATIENT...PUBLISHED SOON)
