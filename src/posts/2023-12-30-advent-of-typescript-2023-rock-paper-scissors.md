@@ -69,7 +69,7 @@ type test_7_actual = WhoWins<'✌🏽', '✌🏽'>; //'draw'
 type test_8_actual = WhoWins<'✌🏽', '🖐🏾'>; //'lose'
 ```
 
-From the test cases, it was clear that we needed to define a type for the states of the game. I chose to type them 
+From the test cases, it was clear that I needed to define a type for the states of the game. I chose to type them 
 as an enum called `GameState`. 
 
 ```typescript
@@ -112,7 +112,7 @@ type Move<
 
 The first two rows of this `Move` type uses, as I mentioned before, conditional types to see if the current moves 
 match the expected moves for a rule, and returns the correct game states.
-If the move for one of the two players doesn't match the one of the rule we return `never`, a special type that 
+If the move for one of the two players doesn't match the one of the rule I return `never`, a special type that 
 represents the **type of values that never occur**.
 This type has [two interesting features](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-0.html#the-never-type):
 
@@ -188,8 +188,7 @@ type WhoWins<MovePlayerA extends '👊🏻' | '🖐🏾' | '✌🏽', MovePlayer
     : GameStateToString<SomeoneWon<MovePlayerA, MovePlayerB>>;
 ```
 
-You can find the full solution and the test cases we saw before to verify the correctness of the 
-solution down below.
+You can find the full solution and the test cases we saw before to verify its correctness down below.
 
 ```typescript
 type RockPaperScissors = '👊🏻' | '🖐🏾' | '✌🏽';
