@@ -10,6 +10,11 @@ math: false
 authors: [fabrizio_duroni, marco_de_lucchi]
 ---
 
+*Do you need a way to compose beautiful text with images and custom font like you are used with
+Attributed String. The Text component has everything we need to create some sort of 'attributed text' directly in SwiftUI. Let's go!!!*
+
+---
+
 In some recent posts (have a look [here](https://technology.lastminute.com/widget-ios-swiftui-configuration-intent/ "swiftui widget friyay lastminute") and [here](https://technology.lastminute.com/widget-ios-swiftui-react-native/ "swiftui widget lastminute") ) we show a beautfiul project me and Marco are creating during our [Friyay at lastminute.com](https://technology.lastminute.com/tech-learning-and-development-friyay/ "lastminute.com friyay"): some widgets for our iOS apps.
 For the second widget we developed, one that will show to our users their bookings information, we faced a challenge to display the information of hotels.  
 Our mobile app designer [Rafael de Sena Martinez](https://www.linkedin.com/in/raffaelmartinez/ "Rafael Martinez 

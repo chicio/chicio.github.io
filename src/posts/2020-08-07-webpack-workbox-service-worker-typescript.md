@@ -5,7 +5,7 @@ of Google libraries to improve the creation of a Progressive Web App. Let's see 
 tools."
 date: 2020-08-07 
 image: ../images/posts/workbox.jpg 
-tags: [web development, javascript, pwa]
+tags: [web development, javascript, pwa, typescript]
 comments: true
 math: false
 authors: [fabrizio_duroni]

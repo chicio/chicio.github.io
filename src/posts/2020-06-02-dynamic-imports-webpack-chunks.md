@@ -5,7 +5,7 @@ it when a page is requested. Is it possible to load chunks of JavaScript code on
 can with Webpack and its code splitting feature based on a syntax equal to the one of ES2020 dynamic imports."
 date: 2020-06-02
 image: ../images/posts/webpack-code-split.jpg
-tags: [web development, javascript]
+tags: [web development, javascript, typescript]
 comments: true
 math: false
 authors: [fabrizio_duroni]

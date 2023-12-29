@@ -9,6 +9,10 @@ math: false
 authors: [fabrizio_duroni, marco_de_lucchi]
 ---
 
+*Discover how we had a long day debugging WidgetKit problems with images.*
+
+---
+
 In a [recent post](https://technology.lastminute.com/widget-ios-swiftui-configuration-intent/) on the 
 lastminute.com official blog, we presented our FriYaY project: an inspirational iOS widget.
 We were so excited to have our first widget in production that we ~~forced~~ asked all our colleagues to give it a try.  
