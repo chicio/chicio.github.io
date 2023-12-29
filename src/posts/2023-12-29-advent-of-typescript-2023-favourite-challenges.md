@@ -66,7 +66,7 @@ In this way, reading the articles will be easier:
 
 So which are the 4 challenges I like the most? Here they are:
 
-* Rock, Paper, Scissors
+* [Rock, Paper, Scissors](/2023/12/29/advent-of-typescript-2023-rock-paper-scissors/)
 * Tic Tac Toe (BE PATIENT...PUBLISHED SOON)
 * Connect 4 (BE PATIENT...PUBLISHED SOON)
 * Santa is stuck! (BE PATIENT...PUBLISHED SOON)
