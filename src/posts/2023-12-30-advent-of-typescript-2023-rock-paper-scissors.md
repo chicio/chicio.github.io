@@ -98,10 +98,10 @@ Let's see what I implemented.
 
 ```typescript
 type Move<
-  CurrentMovePlayerA extends '👊🏻' | '🖐🏾' | '✌🏽', 
-  ExpectedMovePlayerA extends '👊🏻' | '🖐🏾' | '✌🏽', 
-  CurrentMovePlayerB extends '👊🏻' | '🖐🏾' | '✌🏽', 
-  ExpectedMovePlayerB extends '👊🏻' | '🖐🏾' | '✌🏽'
+  CurrentMovePlayerA extends RockPaperScissors, 
+  ExpectedMovePlayerA extends RockPaperScissors, 
+  CurrentMovePlayerB extends RockPaperScissors, 
+  ExpectedMovePlayerB extends RockPaperScissors
 > =
   CurrentMovePlayerA extends ExpectedMovePlayerA
     ? CurrentMovePlayerB extends ExpectedMovePlayerB
@@ -126,18 +126,18 @@ the code itself) way.
 
 ```typescript
 type RockCrushesScissors<
-  MovePlayerA extends '👊🏻' | '🖐🏾' | '✌🏽',
-  MovePlayerB extends '👊🏻' | '🖐🏾' | '✌🏽'
+  MovePlayerA extends RockPaperScissors,
+  MovePlayerB extends RockPaperScissors
 > = Move<MovePlayerA, '✌🏽', MovePlayerB, '👊🏻'>
 
 type PaperCoversRock<
-  MovePlayerA extends '👊🏻' | '🖐🏾' | '✌🏽',
-  MovePlayerB extends '👊🏻' | '🖐🏾' | '✌🏽'
+  MovePlayerA extends RockPaperScissors,
+  MovePlayerB extends RockPaperScissors
 > = Move<MovePlayerA, '👊🏻', MovePlayerB, '🖐🏾'>
 
 type ScissorsCutPaper<
-  MovePlayerA extends '👊🏻' | '🖐🏾' | '✌🏽',
-  MovePlayerB extends '👊🏻' | '🖐🏾' | '✌🏽'
+  MovePlayerA extends RockPaperScissors,
+  MovePlayerB extends RockPaperScissors
 > = Move<MovePlayerA, '🖐🏾', MovePlayerB, '✌🏽'>
 ```
 
@@ -156,7 +156,7 @@ The result of this type will always be the application of one and only one of th
 `never` property we just saw, the rules that doesn't match will be discarded and omitted from the `SomeoneWon` type.
 
 ```typescript
-type SomeoneWon<MovePlayerA extends '👊🏻' | '🖐🏾' | '✌🏽', MovePlayerB extends '👊🏻' | '🖐🏾' | '✌🏽'> = 
+type SomeoneWon<MovePlayerA extends RockPaperScissors, MovePlayerB extends RockPaperScissors> = 
 				| PaperCoversRock<MovePlayerA, MovePlayerB> 
 				| ScissorsCutPaper<MovePlayerA, MovePlayerB> 
 				| RockCrushesScissors<MovePlayerA, MovePlayerB>
@@ -168,8 +168,8 @@ moves were equal.
 
 ```typescript
 type Draw<
-  MovePlayerA extends '👊🏻' | '🖐🏾' | '✌🏽',
-  MovePlayerB extends '👊🏻' | '🖐🏾' | '✌🏽'
+  MovePlayerA extends RockPaperScissors,
+  MovePlayerB extends RockPaperScissors
 > = MovePlayerA extends MovePlayerB
   ? GameState.Draw
   : false
@@ -182,7 +182,7 @@ describe the game state :sweat_smile:).
 ```typescript
 type GameStateToString<State extends GameState> = `${State}`
 
-type WhoWins<MovePlayerA extends '👊🏻' | '🖐🏾' | '✌🏽', MovePlayerB extends '👊🏻' | '🖐🏾' | '✌🏽'> =
+type WhoWins<MovePlayerA extends RockPaperScissors, MovePlayerB extends RockPaperScissors> =
   Draw<MovePlayerA, MovePlayerB> extends GameState.Draw
     ? GameStateToString<GameState.Draw>
     : GameStateToString<SomeoneWon<MovePlayerA, MovePlayerB>>;
@@ -202,10 +202,10 @@ enum GameState {
 type GameStateToString<State extends GameState> = `${State}`
 
 type Move<
-  CurrentMovePlayerA extends '👊🏻' | '🖐🏾' | '✌🏽',
-  ExpectedMovePlayerA extends '👊🏻' | '🖐🏾' | '✌🏽',
-  CurrentMovePlayerB extends '👊🏻' | '🖐🏾' | '✌🏽',
-  ExpectedMovePlayerB extends '👊🏻' | '🖐🏾' | '✌🏽'
+  CurrentMovePlayerA extends RockPaperScissors,
+  ExpectedMovePlayerA extends RockPaperScissors,
+  CurrentMovePlayerB extends RockPaperScissors,
+  ExpectedMovePlayerB extends RockPaperScissors
 > =
   CurrentMovePlayerA extends ExpectedMovePlayerA
     ? CurrentMovePlayerB extends ExpectedMovePlayerB
@@ -214,33 +214,33 @@ type Move<
     : never
 
 type RockCrushesScissors<
-  MovePlayerA extends '👊🏻' | '🖐🏾' | '✌🏽', 
-  MovePlayerB extends '👊🏻' | '🖐🏾' | '✌🏽'
+  MovePlayerA extends RockPaperScissors,
+  MovePlayerB extends RockPaperScissors
 > = Move<MovePlayerA, '✌🏽', MovePlayerB, '👊🏻'>
 
 type PaperCoversRock<
-  MovePlayerA extends '👊🏻' | '🖐🏾' | '✌🏽', 
-  MovePlayerB extends '👊🏻' | '🖐🏾' | '✌🏽'
+  MovePlayerA extends RockPaperScissors,
+  MovePlayerB extends RockPaperScissors
 > = Move<MovePlayerA, '👊🏻', MovePlayerB, '🖐🏾'>
 
 type ScissorsCutPaper<
-  MovePlayerA extends '👊🏻' | '🖐🏾' | '✌🏽', 
-  MovePlayerB extends '👊🏻' | '🖐🏾' | '✌🏽'
+  MovePlayerA extends RockPaperScissors,
+  MovePlayerB extends RockPaperScissors
 > = Move<MovePlayerA, '🖐🏾', MovePlayerB, '✌🏽'>
 
-type SomeoneWon<MovePlayerA extends '👊🏻' | '🖐🏾' | '✌🏽', MovePlayerB extends '👊🏻' | '🖐🏾' | '✌🏽'> =
+type SomeoneWon<MovePlayerA extends RockPaperScissors, MovePlayerB extends RockPaperScissors> =
   | PaperCoversRock<MovePlayerA, MovePlayerB>
   | ScissorsCutPaper<MovePlayerA, MovePlayerB>
   | RockCrushesScissors<MovePlayerA, MovePlayerB>
 
 type Draw<
-  MovePlayerA extends '👊🏻' | '🖐🏾' | '✌🏽', 
-  MovePlayerB extends '👊🏻' | '🖐🏾' | '✌🏽'
+  MovePlayerA extends RockPaperScissors,
+  MovePlayerB extends RockPaperScissors
 > = MovePlayerA extends MovePlayerB
   ? GameState.Draw
   : false
 
-type WhoWins<MovePlayerA extends '👊🏻' | '🖐🏾' | '✌🏽', MovePlayerB extends '👊🏻' | '🖐🏾' | '✌🏽'> =
+type WhoWins<MovePlayerA extends RockPaperScissors, MovePlayerB extends RockPaperScissors> =
   Draw<MovePlayerA, MovePlayerB> extends GameState.Draw
     ? GameStateToString<GameState.Draw>
     : GameStateToString<SomeoneWon<MovePlayerA, MovePlayerB>>;
