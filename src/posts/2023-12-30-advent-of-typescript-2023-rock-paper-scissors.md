@@ -46,7 +46,7 @@ Given these parameters, the type should be return if we win, lose or there is a 
 
 #### Implementation
 
-The exercise gave us only a couple of code hints to start from: the union type `RockPaperScissors` and the `WhoWins` 
+The exercise gave me only a couple of code hints to start from: the union type `RockPaperScissors` and the `WhoWins` 
 without any parameter.
 
 ```typescript

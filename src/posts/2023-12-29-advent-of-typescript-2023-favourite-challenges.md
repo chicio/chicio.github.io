@@ -4,7 +4,7 @@ description: "This year I participated in the first edition of Advent of TypeScr
 new series of article I will show my solutions to the challenges I liked the most."
 date: 2023-12-29
 image: ../images/posts/advent-of-typescript-featured.jpg
-tags: [typescript]
+tags: [typescript, advent of typescript 2023]
 comments: true
 math: false
 authors: [fabrizio_duroni]
@@ -64,8 +64,8 @@ In this way, reading the articles will be easier:
 
 So which are the 4 challenges I like the most? Here they are:
 
-* [Rock, Paper, Scissors](/2023/12/30/advent-of-typescript-2023-rock-paper-scissors/)
-* Tic Tac Toe (BE PATIENT...PUBLISHED SOON)
+* [Rock, Paper, Scissors](/2023/12/30/advent-of-typescript-2023-rock-paper-scissors/ "rock paper scissors")
+* [Tic Tac Toe](/2024/01/04/advent-of-typescript-2023-tic-tac-toe/ "tic tac toe")
 * Connect 4 (BE PATIENT...PUBLISHED SOON)
 * Santa is stuck! (BE PATIENT...PUBLISHED SOON)
 
