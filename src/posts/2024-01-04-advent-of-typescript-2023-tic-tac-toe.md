@@ -349,7 +349,7 @@ type TicTacToe<CurrentTicTacToeGame extends TicTacToeGame, NextMove extends TicT
       : CurrentTicTacToeGame;
 ```
 
-Below, you can find the full solution and the test cases we saw before to verify its correctness down below.
+Below, you can find the full solution and the test cases we saw before to verify its correctness.
 
 ```typescript
 // domain 
