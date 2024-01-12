@@ -15,7 +15,8 @@ functions, variables etc. becomes a real challenge when you try to implement it 
 
 ---
 
-This is the first of the four challenges I liked the most from "Advent Of TypeScript 2023" by [TypeHero](https://typehero.dev). 
+This is the second of the four challenges I liked the most from "Advent Of TypeScript 2023" by [TypeHero]
+(https://typehero.dev). 
 Check out the other challenges I liked [here](/2023/12/29/advent-of-typescript-2023-favourite-challenges/ "advent of typescript 2023 challenges").
 
 #### The problem
@@ -597,5 +598,5 @@ type test_draw_expected = {
 
 #### Conclusion
 
-As I mentioned at the beginning, this is the first of the four challenges I liked the most from "Advent Of TypeScript 
+As I mentioned at the beginning, this is the second of the four challenges I liked the most from "Advent Of TypeScript 
 2023" by [TypeHero](https://typehero.dev). Check out the other challenges I liked [here](/2023/12/29/advent-of-typescript-2023-favourite-challenges/ "advent of typescript 2023 challenges").
