@@ -13,8 +13,7 @@ authors: [fabrizio_duroni]
 
 ---
 
-This is the third of the four challenges I liked the most from "Advent Of TypeScript 2023" by [TypeHero]
-(https://typehero.dev). 
+This is the third of the four challenges I liked the most from "Advent Of TypeScript 2023" by [TypeHero](https://typehero.dev). 
 Check out the other challenges I liked [here](/2023/12/29/advent-of-typescript-2023-favourite-challenges/ "advent of typescript 2023 challenges").
 
 #### The problem
