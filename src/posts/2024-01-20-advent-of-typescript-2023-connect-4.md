@@ -9,7 +9,7 @@ math: false
 authors: [fabrizio_duroni]
 ---
 
-*Connect 4, a classical family Christmas game. Let's see how to tackle it with the typescript type system.*
+*Connect 4, a classical family Christmas game. Let's see how to tackle it with the TypeScript type system.*
 
 ---
 
@@ -28,9 +28,9 @@ The goal of the exercise was to implement the `Connect4` type.
 
 #### Implementation
 
-The exercise gave me some data structure to use as the basis of my development.
-They were the domain data structures of the connect 4 game.
-There was the definition of the chips, the empty cells and all the possible states of the game.
+The exercise gave me some data structure to use as the basis of my development (as it was in the previous exercises).
+Again, they were the domain data structures of the Connect 4 game.
+There was the definition of the chips, of an empty cell and all the possible states of the game.
 There was also the definition in terms of data structure of the game board and the game itself.
 The last one was composed by the current board and the current state of the game. 
 
@@ -278,22 +278,22 @@ The first thing I did was implementing a type to find the position in the board 
 given the column as parameter.
 `PositionOnBoard` is a type tha given the current board, and the column where the player wants to place is chip,  
 returns the board position as a tuple of numbers (so it is like a coordinate point on a matrix).
-How did I calculated the coordinates.
+How did I calculate the coordinates?
 For the column it is really easy: is the one received as parameter :laughing:.
 For the row, I needed to find the first cell not occupied before one with a chip (or the last one if not chips are 
 present on that column).
-To do this, I created a `RowStatusFor` type that given a column position and the curren board, loops through all the 
-rows and check if for the current row the `Column` position is occupied:
+To do this, I created a `RowStatusFor` type that, given a column position and the curren board, loops through all the 
+rows and checks if for the current row the `Column` position is occupied:
 
 * if not, it returns the row position
 * if yes, it returns the content of the cell
 
 This means that `RowStatusFor` returns an array with a mix of numbers and chip element.
 The highest number in the array is the farest not occupied position for `Column`.
-To extract this information, I created a `FindLastRowNotOccupied` type, that recursively scan the array created from 
+To extract this information, I created a `FindLastRowNotOccupied` type, that scans the array created from 
 `RowStatusFor` type (`ColumnStatus`), and returns `LastFreeCell`.
-This support type is a parameter of `FindLastRowNotOccupied`, and is updated on each recursion with the current not 
-occupied cell.   
+`LastFreeCell` is a parameter of `FindLastRowNotOccupied`, and is updated on each recursion iteration through the
+`RowStatusFor` array with the current not occupied cell.   
 
 ```typescript
 type ToInt<StringToBeConverted> = StringToBeConverted extends `${infer StringContent extends number}` 
@@ -330,9 +330,9 @@ type PositionOnBoard<
 ```
 
 Now that I was able to calculate the position of the board for the current move, I was ready to create `UpdateBoard` 
-type.
+type. 
 In this type I passed the current position on the board to be updated, `NextMovePosition`, and looped over the board,
- to find the correspondent cell and update it.
+ to find the correspondent cell and update it. 
 I created also a support type called `UpdateColumn` in order to separate the loop through the row and the column 
 positions.
 
@@ -378,15 +378,17 @@ Below, you can find a schema I created from highlighting visually the diagonals 
 The base type I created is the `SequentialElementsWinningFor`.
 It receives an array of board cells, it scans them to see if there is a sequence of four cells with the same chip, 
 meaning that one of the two players won.
-If this condition is not found, `never` is returned (do you remember the discussion about it from one of the 
+If this condition is not found, `never` is returned (do you remember the discussion about it from one of my  
 [previous articles](/2023/12/30/advent-of-typescript-2023-rock-paper-scissors/)?)
-So I composed multiple calls to `SequentialElementsWinningFor` with different lists of cells (including the diagonal)
-in a new type called `IsWinning`, that can be invoked two times (one time for each chip).
-This is what I did in the `IsSomeoneWinning` type.  
+So I composed multiple calls to `SequentialElementsWinningFor` with different lists of cells (including the diagonal 
+and the columns with the wrapper type `ColumnWinningFor`) in a new type called `IsWinning`, that can be invoked two 
+times (one time for each chip).
+This is what I did in the `IsSomeoneWinning` type: a union type that describes the states of the two chips with 
+respect to the fact that one of them won the game.
+In the end this is not a real union type, because the chips (both or just one) that are not in a winning state will 
+return `never`, and so the union type will discard them.
 
 ```typescript
-// state
-
 type NextChip<CurrentState extends Connect4Chips> =
         CurrentState extends '🔴'
                 ? '🟡'
@@ -445,7 +447,14 @@ type IsSomeoneWinning<
   CurrentBoard extends Connect4Board
 > = IsWinning<'🟡',CurrentBoard> | IsWinning<'🔴',CurrentBoard>;
 ```
-....describe the UpdateState.... 
+
+So I was ready to implement a type to update the state of the game. 
+`UpdateState` rely on the previous types I defined to get the state of the game.
+If someone has won the game, it returns the "winning" state. 
+If there are empty cells (check done by the type `AreThereEmptyCells`), the game continues and the next chip is 
+returned by the type `NextChip`.
+In all the other cases, the game is in a state where no more empty cells are available and nobody won: the game is 
+in a `draw` state.  
 
 ```typescript
 type AreThereEmptyCellsOnRow<Row extends Connect4Cell[]> =
@@ -470,9 +479,6 @@ type UpdateState<UpdatedBoard extends Connect4Board, CurrentChip extends Connect
                         : 'Draw'
                 : IsSomeoneWinning<UpdatedBoard>;
 ```
-
-
-.....
 
 Below, you can find the full solution and the test cases we saw before to verify its correctness.
 
