@@ -1,8 +1,8 @@
 ---
 title: "Advent of TypeScript 2023: Santa is stuck! (Day 24)"
 description: "Santa is stuck! Let's see how I helped him to escape from the maze using the TypeScript type system."
-date: 2024-01-20
-image: ../images/posts/advent-of-typescript-connect-4.jpg
+date: 2024-01-31
+image: ../images/posts/advent-of-typescript-santa-is-stuck.jpg
 tags: [typescript, advent of typescript 2023]
 comments: true
 math: false
@@ -362,7 +362,85 @@ type MazeWin = [
 */
 ```
 
-....
+... descrivere come ho calcolato la prossima mossa
+... inclusi array di appoggio per avere gli indici
+
+```typescript
+type UpOrLeftDirectionsUpdatedIndexes = ['escape', 0, 1, 2, 3, 4, 5, 6, 7, 8];
+type DownOrRightDirectionsUpdatedIndexes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'escape'];
+type UpdatedPositionFor<NextMove extends Directions, RowPosition extends number, ColumnPosition extends number> = 
+  {
+    "up": [UpOrLeftDirectionsUpdatedIndexes[RowPosition], ColumnPosition];
+    "down": [DownOrRightDirectionsUpdatedIndexes[RowPosition], ColumnPosition];
+    "left": [RowPosition, UpOrLeftDirectionsUpdatedIndexes[ColumnPosition]];
+    "right": [RowPosition, DownOrRightDirectionsUpdatedIndexes[ColumnPosition]];
+  }[NextMove];
+
+type SearchOnRow<Row extends MazeItem[], PreviousElements extends MazeItem[] = []> = 
+  Row extends [infer Current extends MazeItem, ...infer Others extends MazeItem[]]
+    ? Current extends SantaClaus
+      ? PreviousElements["length"]
+      : SearchOnRow<Others, [...PreviousElements, Current]>
+    : never
+
+type CurrentPosition<Maze extends MazeItem[][], PreviousRows extends MazeItem[][] = []> = 
+  Maze extends [infer CurrentRow extends MazeItem[], ...infer OtherRows extends MazeItem[][]]
+    ? SearchOnRow<CurrentRow> extends false 
+      ? CurrentPosition<OtherRows, [...PreviousRows, CurrentRow]>
+      : [PreviousRows['length'], SearchOnRow<CurrentRow>]
+    : never;
+
+type NewPosition<Maze extends MazeItem[][], NextMove extends Directions> = 
+  CurrentPosition<Maze> extends [infer RowPosition extends number, infer ColumnPosition extends number] 
+    ? UpdatedPositionFor<NextMove, RowPosition, ColumnPosition> 
+    : never;
+```
+
+...descrivere come ho fatto aggiornamento labirinto
+
+```typescript
+type RemoveSantaFromRow<Row extends MazeItem[]> = {
+    [Index in keyof Row]: Row[Index] extends SantaClaus ? Alley : Row[Index]
+};
+
+type UpdateColumn<Row extends MazeItem[], ColumnPosition extends number> = {
+    [Index in keyof Row]: 
+        Index extends `${ColumnPosition}`
+            ? SantaClaus
+            : Row[Index] extends SantaClaus
+                ? Alley
+                : Row[Index]
+};
+
+type Update<Maze extends MazeItem[][], NextMovePosition extends [number, number]> = {
+  [Index in keyof Maze]:  
+    Index extends `${NextMovePosition[0]}` 
+      ? UpdateColumn<Maze[Index], NextMovePosition[1]> 
+      : RemoveSantaFromRow<Maze[Index]>
+};
+```
+
+...descrivere come ho forzato tutto a cookie
+...descrivere il tipo finale Move
+
+```typescript
+type CookiesRow<Row extends MazeItem[]> = {
+    [Index in keyof Row]: DELICIOUS_COOKIES
+};
+
+type Cookies<Maze extends MazeItem[][], > = {
+  [Index in keyof Maze]: CookiesRow<Maze[Index]>
+};          
+
+type Move<Maze extends MazeItem[][], NextMove extends Directions> =  
+  NewPosition<Maze, NextMove> extends [infer Row extends number, infer Column extends number]
+      ? Maze[Row][Column] extends Alley
+        ? Update<Maze, [Row, Column]>
+        : Maze
+      : Cookies<Maze>;
+```
+
+Below, you can find the full solution and the test cases we saw before to verify its correctness.
 
 ```typescript
 type Alley = "  ";
@@ -744,7 +822,6 @@ type MazeWin = [
   ["🍪", "🍪", "🍪", "🍪", "🍪", "🍪", "🍪", "🍪", "🍪", "🍪"],
 ];
 */
-
 ```
 
 #### Conclusion
