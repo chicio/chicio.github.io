@@ -362,8 +362,15 @@ type MazeWin = [
 */
 ```
 
-... descrivere come ho calcolato la prossima mossa
-... inclusi array di appoggio per avere gli indici
+First, I needed to define a type that let me find the current Santa position. `CurrentPosition` loops over rows and 
+columns of `Maze` (helped by the other type I defined `SearchOnRow`), and returns a tuple with two indexes that 
+describes Santa's position (x and y position starting from the top left corner). 
+With the new type above, I was ready to define `UpdatedPositionFor`, a type that receive the current position and the 
+`NextMove` as one of the `Directions` available, and return a tuple with the new position for Santa.
+This type uses two supports arrays, `UpOrLeftDirectionsUpdatedIndexes` and `DownOrRightDirectionsUpdatedIndexes`: 
+each element of them describes the next index where Santa should go starting from the current one.
+They also contain the special element `escape`, used when Santa has reached the boundaries of the maze (and later I 
+will show you what this value triggers).
 
 ```typescript
 type UpOrLeftDirectionsUpdatedIndexes = ['escape', 0, 1, 2, 3, 4, 5, 6, 7, 8];
@@ -381,7 +388,7 @@ type SearchOnRow<Row extends MazeItem[], PreviousElements extends MazeItem[] = [
     ? Current extends SantaClaus
       ? PreviousElements["length"]
       : SearchOnRow<Others, [...PreviousElements, Current]>
-    : never
+    : false
 
 type CurrentPosition<Maze extends MazeItem[][], PreviousRows extends MazeItem[][] = []> = 
   Maze extends [infer CurrentRow extends MazeItem[], ...infer OtherRows extends MazeItem[][]]
