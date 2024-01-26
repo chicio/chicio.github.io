@@ -66,7 +66,7 @@ So which are the 4 challenges I like the most? Here they are:
 
 * [Rock, Paper, Scissors](/2023/12/30/advent-of-typescript-2023-rock-paper-scissors/ "rock paper scissors")
 * [Tic Tac Toe](/2024/01/04/advent-of-typescript-2023-tic-tac-toe/ "tic tac toe")
-* Connect 4 (BE PATIENT...PUBLISHED SOON)
+* [Connect 4](/2024/01/20/advent-of-typescript-2023-connect-4/ "Connect 4")
 * Santa is stuck! (BE PATIENT...PUBLISHED SOON)
 
 
