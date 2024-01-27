@@ -22,7 +22,8 @@ In this last exercise of "Advent Of TypeScript 2023", I had to help santa to esc
 
 >Santa is craving cookies! But Alas, he's stuck in a dense North Polar forest. Implement Move so Santa ('🎅') can 
 > find his way to the end of the maze.
-As a reward, if Santa escapes the maze, fill it with DELICIOUS_COOKIES ('🍪'). Santa can only move through alleys (' ') and not through the trees ('🎄').
+> As a reward, if Santa escapes the maze, fill it with DELICIOUS_COOKIES ('🍪'). Santa can only move through alleys (' 
+> ') and not through the trees ('🎄').
 
 The goal of the exercise was to implement a `Move` type that, given the current maze state and the next Santa move, 
 it should return the updated maze:
