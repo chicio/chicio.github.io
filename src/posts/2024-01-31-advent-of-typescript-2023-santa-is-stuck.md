@@ -1,7 +1,7 @@
 ---
 title: "Advent of TypeScript 2023: Santa is stuck! (Day 24)"
 description: "Santa is stuck! Let's see how I helped him to escape from the maze using the TypeScript type system."
-date: 2024-01-31
+date: 2024-01-27
 image: ../images/posts/advent-of-typescript-santa-is-stuck.jpg
 tags: [typescript, advent of typescript 2023]
 comments: true
@@ -18,7 +18,7 @@ Check out the other challenges I liked [here](/2023/12/29/advent-of-typescript-2
 
 #### The problem
 
-In this last exercise of "Advent Of TypeScript 2023", I had to help santa to escape from a maze. 
+In this last exercise of "Advent Of TypeScript 2023", I had to help santa to escape from a maze :laughing:. 
 
 >Santa is craving cookies! But Alas, he's stuck in a dense North Polar forest. Implement Move so Santa ('🎅') can 
 > find his way to the end of the maze.
@@ -364,13 +364,15 @@ type MazeWin = [
 
 First, I needed to define a type that let me find the current Santa position. `CurrentPosition` loops over rows and 
 columns of `Maze` (helped by the other type I defined `SearchOnRow`), and returns a tuple with two indexes that 
-describes Santa's position (x and y position starting from the top left corner). 
+describes Santa's position (x and y position starting from the top left corner).  
 With the new type above, I was ready to define `UpdatedPositionFor`, a type that receive the current position and the 
 `NextMove` as one of the `Directions` available, and return a tuple with the new position for Santa.
 This type uses two supports arrays, `UpOrLeftDirectionsUpdatedIndexes` and `DownOrRightDirectionsUpdatedIndexes`: 
 each element of them describes the next index where Santa should go starting from the current one.
 They also contain the special element `escape`, used when Santa has reached the boundaries of the maze (and later I 
-will show you what this value triggers).
+will show you what this value triggers).  
+So at this point, I composed the two types above to create the type `NewPosition`, that is able to calculate and 
+return the new position for Santa. 
 
 ```typescript
 type UpOrLeftDirectionsUpdatedIndexes = ['escape', 0, 1, 2, 3, 4, 5, 6, 7, 8];
@@ -403,7 +405,11 @@ type NewPosition<Maze extends MazeItem[][], NextMove extends Directions> =
     : never;
 ```
 
-...descrivere come ho fatto aggiornamento labirinto
+Given the next position from the type above, I was ready to create the `Update` type.
+This is very similar to what I have already shown saw in the [previous articles](/2024/01/20/advent-of-typescript-2023-connect-4/): I loop over the maze matrix and I place Santa in the cell 
+corresponding to `NextMovePosition`.
+The only new thing here is `RemoveSantaFromRow`, a type that remove Santa from the cell if it doesn't match the one 
+contained in `NextMovePosition`.
 
 ```typescript
 type RemoveSantaFromRow<Row extends MazeItem[]> = {
@@ -427,8 +433,10 @@ type Update<Maze extends MazeItem[][], NextMovePosition extends [number, number]
 };
 ```
 
-...descrivere come ho forzato tutto a cookie
-...descrivere il tipo finale Move
+All the types above let me create the `Move` type require by the exercise.
+I get the `NewPosition` result: if it is a valid position I update the maze (if the cell is an `Alley`).
+If the position is not a pair of `Row, Column` *numbers*, it means that it contains `escape` and so... the `Cookies` 
+type will fill the maze with cookies 🍪.
 
 ```typescript
 type CookiesRow<Row extends MazeItem[]> = {
