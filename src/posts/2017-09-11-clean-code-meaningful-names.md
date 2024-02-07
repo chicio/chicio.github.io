@@ -29,7 +29,7 @@ So as I promised in [my first post](/2017/05/10/about-me/ "about me") on this bl
 articles in which I will talk about the foundation of clean code and my personal experiences with it. So let's start the
 discussion with one of the principles of clean code that impressed me the most: meaningful naming.
 
-[Remember: you NEED to choose your names carefully!](../images/posts/meaningful-names.jpg)
+![Remember: you NEED to choose your names carefully!](../images/posts/meaningful-names.jpg "Remember: you NEED to choose your names carefully!")
 
 As stated by Uncle Bob in the beautiful meme above, this principle is simple: choose your name carefully. But what does
 it really mean to "choose carefully"? :confused:. Choosing the right names means the following thing:
