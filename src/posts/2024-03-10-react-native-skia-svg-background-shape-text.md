@@ -22,7 +22,7 @@ vs. Native" (or, generally speaking, "<Hybrid framework> vs. Native") resurfaces
 igniting passions and sparking endless debates about which one is better."  
 Most of the time, native developers hold the belief that certain more advanced views and effects cannot be created 
 using React Native.
-However, lately, on the web, you can find some great developers (e.g. [William Candillon](https://www.youtube. com/@wcandillon)) on a mission to demonstrate that this belief is absolutely not true.  
+However, lately, on the web, you can find some great developers (e.g. [William Candillon](https://www.youtube.com/@wcandillon)) on a mission to demonstrate that this belief is absolutely not true.  
 Recently, I had the opportunity to work on a component that could spark this kind of discussion. Essentially, I had 
 to create a text component with a custom-shaped background and coordinated animations within it.
 Although I may not be as skilled as the developers I mentioned earlier, in this blog post I will demonstrate two 
