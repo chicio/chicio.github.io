@@ -5,6 +5,7 @@ import { heading4Style } from "./design-system/atoms/heading4";
 import { standardLinkStyle } from "./design-system/atoms/standard-link-style";
 import { syntax } from "./design-system/atoms/syntax";
 import { mediaQuery } from "./design-system/utils-css/media-query";
+import { heading5Style } from "./design-system/atoms/heading5";
 
 const PostContentContainer = styled.div`
   color: ${(props) => props.theme.light.primaryTextColor};
@@ -37,6 +38,13 @@ const PostContentContainer = styled.div`
 
   & h4 {
     ${heading4Style};
+    margin-left: 0;
+    margin-right: 0;
+    line-height: ${(props) => props.theme.lineHeight};
+  }
+
+  & h5 {
+    ${heading5Style};
     margin-left: 0;
     margin-right: 0;
     line-height: ${(props) => props.theme.lineHeight};

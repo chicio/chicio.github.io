@@ -3,7 +3,7 @@ title: "React Native is Native: drawing customized background shapes with React 
 description: "A lot of mobile developer often complains that React Native is not Native, because it is missing some 
 feature. This is absolutely not true! In this blog post I will show you how I create a component with a custom 
 background shape, similar to the one I did for a native component ome time ago"
-date: 2024-03-10
+date: 2024-03-02
 image: ../images/posts/daily-deals-featured.jpg
 tags: [react native, swift, ios, apple, android, java, mobile application development, javascript, typescript]
 comments: true
@@ -43,6 +43,8 @@ They will animate in sequence from the top to the bottom in terms of opacity. I 
 framework above, to evaluate their usage complexity. 
 
 ![The component on both platforms: iOS and Android](../images/posts/daily-deals-featured.jpg)
+
+`youtube: https://www.youtube.com/watch?v=96wofMjkyKc`
 
 #### Implementation
 
@@ -335,8 +337,8 @@ This means that `getPolygonFeatures` will always return a polygon shape coherent
 The `PolygonFeatures` are composed by:
 
 * the position of the four vertices (it is always a quadrilateral shape, but as a challenge you can try to abstract 
-  this part :smirk:) 
-* the size of the background.
+  this part, if you want to have some fun :smirk:) 
+* the background size
 
 ```tsx
 import React, {FC, ReactElement, useEffect, useState} from 'react';
@@ -523,6 +525,9 @@ export const DailyDealsShapeSkia: FC<Props> = ({
   );
 };
 ```
+
+As you can see from the implementation above, the more complicated part is outside Skia/SVG. They are simple 
+components focused on the drawing part.
 
 #### Conclusion
 
