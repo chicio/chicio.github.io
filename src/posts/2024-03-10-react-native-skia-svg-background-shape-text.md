@@ -24,7 +24,8 @@ Most of the time, native developers hold the belief that certain more advanced v
 using React Native.
 However, lately, on the web, you can find some great developers (e.g. [William Candillon](https://www.youtube.com/@wcandillon)) on a mission to demonstrate that this belief is absolutely not true.  
 Recently, I had the opportunity to work on a component that could spark this kind of discussion. Essentially, I had 
-to create a text component with a custom-shaped background and coordinated animations within it.
+to create a text component with a custom-shaped background and coordinated animations within it, similar to the one 
+I created [here](/2022/10/03/swiftui-path-svg-scale/) in swift.
 Although I may not be as skilled as the developers I mentioned earlier, in this blog post I will demonstrate two 
 possible ways to achieve the same result of a pure native component for this type of development.
 To do this, I will use two different frameworks:
@@ -40,7 +41,7 @@ The component that I will create is shown in the following screenshot, and it is
   around it 
 
 They will animate in sequence from the top to the bottom in terms of opacity. I will implement it using both the 
-framework above, to evaluate their usage complexity. 
+frameworks above, to evaluate their usage complexity. 
 
 ![The component on both platforms: iOS and Android](../images/posts/daily-deals-featured.jpg)
 
