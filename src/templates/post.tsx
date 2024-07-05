@@ -56,6 +56,7 @@ const Post: FC<PageProps<Queries.PostQuery>> = ({ data, location }) => {
       customTitle={title}
       description={post.frontmatter!.description!}
       date={post.frontmatter!.date!}
+      keywords={post.frontmatter!.tags!}
     >
       <PostContainer>
         <PostTitle className="blog-post-title">

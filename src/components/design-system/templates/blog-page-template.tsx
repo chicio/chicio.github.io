@@ -32,6 +32,7 @@ export interface BlogPageProps {
   description?: string;
   date?: string;
   big?: boolean;
+  keywords?: ReadonlyArray<string | null>;
   children?: ReactNode;
 }
 
@@ -45,6 +46,7 @@ export const BlogPageTemplate: FC<BlogPageProps> = ({
   customTitle,
   description,
   date,
+  keywords,
   big = false,
 }) => {
   const isFromApp = useIsFromApp(location);
@@ -59,6 +61,7 @@ export const BlogPageTemplate: FC<BlogPageProps> = ({
         description={description}
         date={date}
         cookieConsentColor={blogPrimaryColor}
+        keywords={keywords}
       />
       <BlogThemePage>
         {isFromApp ? (

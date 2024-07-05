@@ -11,7 +11,8 @@ export const createMetaAttributes = (
   title: string,
   url: string,
   imageUrl: string,
-  ogPageType: OgPageType
+  ogPageType: OgPageType,
+  keywords: ReadonlyArray<string | null>,
 ) => [
   {
     name: "viewport",
@@ -110,6 +111,10 @@ export const createMetaAttributes = (
     name: "yandex-verification",
     content: "741cf901cb1dbdf5",
   },
+  {
+    name: "keywords",
+    content: keywords.join(", "),
+  },
 ];
 
 export const createJsonLD = (
@@ -128,8 +133,9 @@ export const createJsonLD = (
     | "devto"
     | "instagram"
   >,
+  keywords: ReadonlyArray<string | null>,
   description?: string,
-  date?: string
+  date?: string,
 ) => `{
         ${
           date
@@ -184,4 +190,7 @@ export const createJsonLD = (
         ],
         "name":"${author}",
         "@context":"https://schema.org"
+        "keywords": [
+          ${keywords.join(",")}   
+        ]
       }`;

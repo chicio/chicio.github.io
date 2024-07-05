@@ -1,6 +1,13 @@
 # Change Log
 All changes to Chicio Coding will be documented in this file.
 
+## [6.5.0](https://github.com/chicio/chicio.github.io/releases/tag/v6.5.0)
+Release date: 2024-07-05
+
+#### Fixed
+
+- Restored seo keywords
+
 ## [6.4.0](https://github.com/chicio/chicio.github.io/releases/tag/v6.4.0)
 Release date: 2023-10-22
 

@@ -12,8 +12,9 @@ describe("Seo", () => {
         "Blog",
         "url",
         "imageUrl",
-        OgPageType.WebSite
-      )
+        OgPageType.WebSite,
+        ["keyword1", "keyword2"],
+      ),
     ).toEqual([
       {
         name: "viewport",
@@ -112,6 +113,10 @@ describe("Seo", () => {
         name: "yandex-verification",
         content: "741cf901cb1dbdf5",
       },
+      {
+        content: "keyword1, keyword2",
+        name: "keywords",
+      },
     ]);
   });
 
@@ -135,9 +140,10 @@ describe("Seo", () => {
           "Fabrizio Duroni",
           "The title",
           links,
+          ["keyword1", "keyword2"],
           "The description",
-          "2021 Apr 28"
-        )
+          "2021 Apr 28",
+        ),
       ).toContain(`"datePublished":"2021 Apr 28"`);
     });
 
@@ -150,9 +156,10 @@ describe("Seo", () => {
           "Fabrizio Duroni",
           "The title",
           links,
+          ["keyword1", "keyword2"],
           "The description",
-          "2021 Apr 28"
-        )
+          "2021 Apr 28",
+        ),
       ).toContain(`"dateModified":"2021 Apr 28"`);
     });
 
@@ -166,9 +173,10 @@ describe("Seo", () => {
             "Fabrizio Duroni",
             "The title",
             links,
+            ["keyword1", "keyword2"],
             "The description",
-            "2021 Apr 28"
-          )
+            "2021 Apr 28",
+          ),
         ).toContain(`"@type":"BlogPosting"`);
       });
 
@@ -181,9 +189,10 @@ describe("Seo", () => {
             "Fabrizio Duroni",
             "The title",
             links,
+            ["keyword1", "keyword2"],
             "The description",
-            "2021 Apr 28"
-          )
+            "2021 Apr 28",
+          ),
         ).toContain(`"@type":"WebSite"`);
       });
 
@@ -196,9 +205,10 @@ describe("Seo", () => {
             "Fabrizio Duroni",
             "The title",
             links,
+            ["keyword1", "keyword2"],
             "The description",
-            "2021 Apr 28"
-          )
+            "2021 Apr 28",
+          ),
         ).toContain(`"@type":"Person"`);
       });
     });
@@ -212,9 +222,10 @@ describe("Seo", () => {
           "Fabrizio Duroni",
           "The title",
           links,
+          ["keyword1", "keyword2"],
           "The description",
-          "2021 Apr 28"
-        )
+          "2021 Apr 28",
+        ),
       ).toContain(`"url":"http://url/"`);
     });
 
@@ -227,9 +238,10 @@ describe("Seo", () => {
           "Fabrizio Duroni",
           "The title",
           links,
+          ["keyword1", "keyword2"],
           "The description",
-          "2021 Apr 28"
-        )
+          "2021 Apr 28",
+        ),
       ).toContain(`"image":"/image.jpg"`);
     });
 
@@ -243,11 +255,12 @@ describe("Seo", () => {
             "Fabrizio Duroni",
             "The title",
             links,
+            ["keyword1", "keyword2"],
             "The description",
-            "2021 Apr 28"
-          )
+            "2021 Apr 28",
+          ),
         ).toContain(
-          `"mainEntityOfPage":{\n"@type":"WebPage",\n"@id":"http://url/"\n}`
+          `"mainEntityOfPage":{\n"@type":"WebPage",\n"@id":"http://url/"\n}`,
         );
       });
 
@@ -259,8 +272,9 @@ describe("Seo", () => {
           "Fabrizio Duroni",
           "The title",
           links,
+          ["keyword1", "keyword2"],
           "The description",
-          "2021 Apr 28"
+          "2021 Apr 28",
         );
         expect(jsonLD.includes("mainEntityOfPage", 0)).toBeFalsy();
 
@@ -271,8 +285,9 @@ describe("Seo", () => {
           "Fabrizio Duroni",
           "The title",
           links,
+          ["keyword1", "keyword2"],
           "The description",
-          "2021 Apr 28"
+          "2021 Apr 28",
         );
         expect(jsonLD.includes("mainEntityOfPage", 0)).toBeFalsy();
       });
@@ -288,15 +303,16 @@ describe("Seo", () => {
             "Fabrizio Duroni",
             "The title",
             links,
+            ["keyword1", "keyword2"],
             "The description",
-            "2021 Apr 28"
+            "2021 Apr 28",
           ).includes(
             `"author":{
           "@type":"Person",
           "name":"Fabrizio Duroni"
         }`,
-            0
-          )
+            0,
+          ),
         ).toBeFalsy();
       });
 
@@ -309,9 +325,10 @@ describe("Seo", () => {
             "Fabrizio Duroni",
             "The title",
             links,
+            ["keyword1", "keyword2"],
             "The description",
-            "2021 Apr 28"
-          )
+            "2021 Apr 28",
+          ),
         ).toContain(`"author":{
           "@type":"Person",
           "name":"Fabrizio Duroni"
@@ -325,9 +342,10 @@ describe("Seo", () => {
             "Fabrizio Duroni",
             "The title",
             links,
+            ["keyword1", "keyword2"],
             "The description",
-            "2021 Apr 28"
-          )
+            "2021 Apr 28",
+          ),
         ).toContain(`"author":{
           "@type":"Person",
           "name":"Fabrizio Duroni"
@@ -345,8 +363,9 @@ describe("Seo", () => {
             "Fabrizio Duroni",
             "The title",
             links,
+            ["keyword1", "keyword2"],
             "The description",
-            "2021 Apr 28"
+            "2021 Apr 28",
           ).includes(
             `"publisher":{
           "@type":"Organization",
@@ -356,8 +375,8 @@ describe("Seo", () => {
           },
           "name":"Fabrizio Duroni"
         }`,
-            0
-          )
+            0,
+          ),
         ).toBeFalsy();
       });
 
@@ -370,9 +389,10 @@ describe("Seo", () => {
             "Fabrizio Duroni",
             "The title",
             links,
+            ["keyword1", "keyword2"],
             "The description",
-            "2021 Apr 28"
-          )
+            "2021 Apr 28",
+          ),
         ).toContain(`"publisher":{
           "@type":"Organization",
           "logo":{
@@ -390,9 +410,10 @@ describe("Seo", () => {
             "Fabrizio Duroni",
             "The title",
             links,
+            ["keyword1", "keyword2"],
             "The description",
-            "2021 Apr 28"
-          )
+            "2021 Apr 28",
+          ),
         ).toContain(`"publisher":{
           "@type":"Organization",
           "logo":{
@@ -414,9 +435,10 @@ describe("Seo", () => {
             "Fabrizio Duroni",
             "The title",
             links,
+            ["keyword1", "keyword2"],
             "The description",
-            "2021 Apr 28"
-          )
+            "2021 Apr 28",
+          ),
         ).toContain(`"headline":"The title"`);
       });
 
@@ -428,8 +450,9 @@ describe("Seo", () => {
           "Fabrizio Duroni",
           "The title",
           links,
+          ["keyword1", "keyword2"],
           "The description",
-          "2021 Apr 28"
+          "2021 Apr 28",
         );
         expect(jsonLD).toContain(`"headline":"Fabrizio Duroni"`);
       });
@@ -442,8 +465,9 @@ describe("Seo", () => {
           "Fabrizio Duroni",
           "The title",
           links,
+          ["keyword1", "keyword2"],
           "The description",
-          "2021 Apr 28"
+          "2021 Apr 28",
         );
         expect(jsonLD.includes(`"headline":"Fabrizio Duroni"`)).toBeFalsy();
       });
@@ -459,9 +483,10 @@ describe("Seo", () => {
             "Fabrizio Duroni",
             "The title",
             links,
+            ["keyword1", "keyword2"],
             "The description",
-            "2021 Apr 28"
-          )
+            "2021 Apr 28",
+          ),
         ).toContain(`"description":"The description"`);
       });
 
@@ -473,8 +498,9 @@ describe("Seo", () => {
           "Fabrizio Duroni",
           "The title",
           links,
+          ["keyword1", "keyword2"],
           "The description",
-          "2021 Apr 28"
+          "2021 Apr 28",
         );
         expect(jsonLD).toContain(`"description":"The title"`);
 
@@ -485,8 +511,9 @@ describe("Seo", () => {
           "Fabrizio Duroni",
           "The title",
           links,
+          ["keyword1", "keyword2"],
           "The description",
-          "2021 Apr 28"
+          "2021 Apr 28",
         );
         expect(jsonLD).toContain(`"description":"The title"`);
       });
@@ -501,9 +528,10 @@ describe("Seo", () => {
           "Fabrizio Duroni",
           "The title",
           links,
+          ["keyword1", "keyword2"],
           "The description",
-          "2021 Apr 28"
-        )
+          "2021 Apr 28",
+        ),
       ).toContain(`"sameAs":[
           "${links!.twitter}",
           "${links!.facebook}",
@@ -521,9 +549,10 @@ describe("Seo", () => {
           "Fabrizio Duroni",
           "The title",
           links,
+          ["keyword1", "keyword2"],
           "The description",
-          "2021 Apr 28"
-        )
+          "2021 Apr 28",
+        ),
       ).toContain(`"name":"Fabrizio Duroni"`);
     });
 
@@ -536,10 +565,27 @@ describe("Seo", () => {
           "Fabrizio Duroni",
           "The title",
           links,
+          ["keyword1", "keyword2"],
           "The description",
-          "2021 Apr 28"
-        )
+          "2021 Apr 28",
+        ),
       ).toContain(`@context":"https://schema.org`);
+    });
+
+    it("keywords", () => {
+      expect(
+        createJsonLD(
+          OgPageType.WebSite,
+          "http://url/",
+          "/image.jpg",
+          "Fabrizio Duroni",
+          "The title",
+          links,
+          ["keyword1", "keyword2"],
+          "The description",
+          "2021 Apr 28",
+        ),
+      ).toContain(`keyword1,keyword2`);
     });
   });
 });

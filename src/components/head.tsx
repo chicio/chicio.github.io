@@ -49,6 +49,7 @@ interface HeadProps {
   customTitle?: string;
   date?: string;
   description?: string;
+  keywords?: ReadonlyArray<string | null>;
   cookieConsentColor: string;
 }
 
@@ -60,6 +61,7 @@ export const Head: FC<HeadProps> = ({
   date,
   description,
   cookieConsentColor,
+  keywords,
 }) => {
   const data = useStaticQuery<Queries.HeadQuery>(graphql`
     query Head {
@@ -89,6 +91,25 @@ export const Head: FC<HeadProps> = ({
   const author = siteMetadata.author!;
   const siteUrl = siteMetadata.siteUrl!;
   const links = siteMetadata.contacts!.links!;
+  const validKeywords: ReadonlyArray<string | null> = keywords || [
+    "fabrizio duroni",
+    "chicio",
+    "chicio86",
+    "mobile development",
+    "iOS",
+    "apple",
+    "android",
+    "react",
+    "react native",
+    "frontend",
+    "backend",
+    "typescript",
+    "kotlin",
+    "java",
+    "xcode",
+    "swift",
+    "swiftui",
+  ];
 
   return (
     <Helmet
@@ -100,6 +121,7 @@ export const Head: FC<HeadProps> = ({
         url,
         `${siteUrl}${imageUrl}`,
         pageType,
+        validKeywords,
       )}
     >
       <link rel="canonical" href={url} />
@@ -128,6 +150,7 @@ export const Head: FC<HeadProps> = ({
           author,
           title,
           links,
+          validKeywords,
           description,
           date,
         )}

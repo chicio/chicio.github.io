@@ -66,6 +66,7 @@ const Art: FC<PageProps<Queries.ArtQuery>> = ({ data, location }) => {
       title={"Chicio Art"}
       featuredImage={artImage}
       cookieConsentColor={artPrimaryColor}
+      keywords={["art", "drawing", "fabrizio duroni", "tattoo"]}
     >
       <BottomArt images={data.allFile.edges} />
     </ShowcasePageTemplate>

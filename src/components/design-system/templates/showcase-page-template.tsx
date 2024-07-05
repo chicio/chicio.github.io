@@ -20,6 +20,7 @@ interface ShowcasePageProps {
   title?: string;
   featuredImage: string;
   cookieConsentColor: string;
+  keywords?: ReadonlyArray<string | null>;
   children?: ReactNode;
 }
 
@@ -33,6 +34,7 @@ export const ShowcasePageTemplate: FC<ShowcasePageProps> = ({
   title,
   featuredImage,
   cookieConsentColor,
+  keywords,
 }) => {
   const data = useStaticQuery<Queries.ShowcasePageQuery>(graphql`
     query ShowcasePage {
@@ -55,6 +57,7 @@ export const ShowcasePageTemplate: FC<ShowcasePageProps> = ({
         imageUrl={featuredImage}
         customTitle={title}
         cookieConsentColor={cookieConsentColor}
+        keywords={keywords}
       />
       <ContainerFullscreen>
         {fullScreenComponent}
