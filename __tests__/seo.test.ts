@@ -586,6 +586,20 @@ describe("Seo", () => {
           "2021 Apr 28",
         ),
       ).toContain(`"keyword1","keyword2"`);
+
+      expect(
+        createJsonLD(
+          OgPageType.Person,
+          "http://url/",
+          "/image.jpg",
+          "Fabrizio Duroni",
+          "The title",
+          links,
+          ["keyword1", "keyword2"],
+          "The description",
+          "2021 Apr 28",
+        ),
+      ).not.toContain(`"keyword1","keyword2"`);
     });
   });
 });

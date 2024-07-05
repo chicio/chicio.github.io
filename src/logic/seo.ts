@@ -189,11 +189,15 @@ export const createJsonLD = (
           "${links!.github}"
         ],
         "name":"${author}",
-        "@context":"https://schema.org"
-        "keywords": [
-          ${keywords
-            .filter((value) => value !== null)
-            .map((keyword) => `"${keyword}"`)
-            .join(",")}   
-        ]
+        "@context":"https://schema.org",
+        ${
+          ogPageType !== OgPageType.Person
+            ? `"keywords": [
+                ${keywords
+                  .filter((value) => value !== null)
+                  .map((keyword) => `"${keyword}"`)
+                  .join(",")}
+                ]`
+            : ""
+        }
       }`;
