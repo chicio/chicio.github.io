@@ -585,7 +585,7 @@ describe("Seo", () => {
           "The description",
           "2021 Apr 28",
         ),
-      ).toContain(`keyword1,keyword2`);
+      ).toContain(`"keyword1","keyword2"`);
     });
   });
 });

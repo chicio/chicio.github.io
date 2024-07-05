@@ -113,7 +113,7 @@ export const createMetaAttributes = (
   },
   {
     name: "keywords",
-    content: keywords.join(", "),
+    content: keywords.filter((value) => value !== null).join(", "),
   },
 ];
 
@@ -191,6 +191,9 @@ export const createJsonLD = (
         "name":"${author}",
         "@context":"https://schema.org"
         "keywords": [
-          ${keywords.join(",")}   
+          ${keywords
+            .filter((value) => value !== null)
+            .map((keyword) => `"${keyword}"`)
+            .join(",")}   
         ]
       }`;
