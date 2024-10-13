@@ -34,7 +34,7 @@ jobs:
           sh ./scripts/install-ci.sh
           npm run build
       - name: Archive generated site source
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: site
           path: public
