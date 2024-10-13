@@ -102,7 +102,7 @@ export const projects: Record<string, Project> = {
         trackingCategory: tracking.category.home,
         trackingAction: tracking.action.open_id3tageditor_doc,
         trackingLabel: tracking.label.body,
-        link: "https://id3tageditor.fabrizioduroni.it",
+        link: "https://id3tageditor.fabrizioduroni.it/documentation/id3tageditor/",
       },
     ],
   },
