@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/chicio/chicio.github.io#readme",
   "engines": {
-    "node": "^22.12.0"
+    "node": "^18.4.0"
   },
   "scripts": {
     "prestart": "npm run clean",
