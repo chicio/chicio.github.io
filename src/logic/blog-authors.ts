@@ -65,4 +65,9 @@ export const blogAuthors: { [authorName: string]: BlogAuthor } = {
     url: "https://www.linkedin.com/in/alex-stabile-a9316b94/",
     image: "alex-stabile.jpg",
   },
+  sam_campisi: {
+    name: "Sam Campisi",
+    url: "https://www.linkedin.com/in/samantha-campisi-9a70b5a1/",
+    image: "sam-campisi.jpg",
+  },
 };
