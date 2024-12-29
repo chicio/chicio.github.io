@@ -184,7 +184,6 @@ describe("Head", () => {
 
     const helmet = Helmet.peek();
 
-    // @ts-ignore
     expect(helmet.scriptTags).toEqual([
       {
         type: "text/javascript",
@@ -195,7 +194,29 @@ describe("Head", () => {
       {
         type: "text/javascript",
         innerHTML:
-          "\nvar url = new URL(window.location.href);\nif (typeof window !== \"undefined\" && !url.searchParams.has(\"app\")) {\n  window.addEventListener('load', () => { \n       window.cookieconsent.initialise({\n                      palette: {\n                          popup: {\n                              background: '#303F9F',\n                              text: '#ffffff'\n                          },\n                          button: {\n                              background: '#0F67FF',\n                              text: '#ffffff'\n                          }\n                      },\n                      theme: 'classic',\n                      content: {\n                          dismiss: 'Ok',\n                          href: window.location.protocol + '//' + window.location.host + '/cookie-policy/',\n                          message: 'This website uses cookies to ensure you get the best experience.',\n                          link: 'Learn more about cookie policy'\n                      }\n       });\n  });\n} else {\n  console.log(\"no cookieconsent\");\n}      \n",
+          "\n" +
+          "var url = new URL(window.location.href);\n" +
+          "window.addEventListener('load', () => { \n" +
+          "     window.cookieconsent.initialise({\n" +
+          "                    palette: {\n" +
+          "                        popup: {\n" +
+          "                            background: '#303F9F',\n" +
+          "                            text: '#ffffff'\n" +
+          "                        },\n" +
+          "                        button: {\n" +
+          "                            background: '#0F67FF',\n" +
+          "                            text: '#ffffff'\n" +
+          "                        }\n" +
+          "                    },\n" +
+          "                    theme: 'classic',\n" +
+          "                    content: {\n" +
+          "                        dismiss: 'Ok',\n" +
+          "                        href: window.location.protocol + '//' + window.location.host + '/cookie-policy/',\n" +
+          "                        message: 'This website uses cookies to ensure you get the best experience.',\n" +
+          "                        link: 'Learn more about cookie policy'\n" +
+          "                    }\n" +
+          "     });\n" +
+          "});   \n",
       },
       {
         type: "application/ld+json",
