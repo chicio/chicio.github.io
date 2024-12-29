@@ -2,7 +2,6 @@ import { graphql, PageProps, useStaticQuery } from "gatsby";
 import { ProfilePresentation } from "../components/design-system/organism/profile-presentation";
 import { tracking } from "../logic/tracking";
 import { OgPageType } from "../logic/seo";
-import { BackgroundFullScreen } from "../components/background-fullscreen";
 import loadable from "@loadable/component";
 import { ShowcasePageTemplate } from "../components/design-system/templates/showcase-page-template";
 import { getCurrentLocationFrom } from "../logic/current-location";
@@ -31,12 +30,7 @@ const HomePage: FC<PageProps> = ({ location }) => {
     <ShowcasePageTemplate
       location={getCurrentLocationFrom(location)}
       theme={blogTheme}
-      fullScreenComponent={
-        <>
-          <BackgroundFullScreen />
-          <ProfilePresentation author={author} />
-        </>
-      }
+      fullScreenComponent={<ProfilePresentation author={author} />}
       trackingCategory={tracking.category.home}
       ogPageType={OgPageType.Person}
       featuredImage={featuredImage}
