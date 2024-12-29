@@ -14,6 +14,7 @@ Release date: 2024-12-30
 - algolia search implementation
 - loadable components
 - unused/useless deps
+- fixed tests config (removed css mapper + fix errors)
 
 #### Fixed
 
