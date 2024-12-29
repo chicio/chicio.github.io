@@ -78,11 +78,9 @@ My website has been created for Github Pages using:
     * [gatsby-plugin-feed](https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/)
     * [gatsby-plugin-catch-links](https://www.gatsbyjs.com/plugins/gatsby-plugin-catch-links/)
     * [gatsby-plugin-loadable-components-ssr](https://www.gatsbyjs.com/plugins/gatsby-plugin-loadable-components-ssr/)
-    * [gatsby-plugin-algolia](https://www.gatsbyjs.com/plugins/gatsby-plugin-algolia/)
 * [Styled components](https://styled-components.com)
 * [TypeScript](https://www.typescriptlang.org) 
 * [Jest](https://github.com/facebook/jest) + [React Testing Library](https://github.com/testing-library/react-testing-library)
 * [react transition group](https://reactcommunity.org/react-transition-group/)
-* [algolia](https://www.algolia.com)
 
 Go and checkout my [homepage](https://www.fabrizioduroni.it "homepage") and my [blog](https://www.fabrizioduroni.it/blog/ "blog").

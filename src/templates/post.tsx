@@ -11,7 +11,6 @@ import styled from "styled-components";
 import { OgPageType } from "../logic/seo";
 import { getCurrentLocationFrom } from "../logic/current-location";
 import loadable from "@loadable/component";
-import { useIsFromApp } from "../components/design-system/hooks/use-is-from-app";
 
 const PostTitle = styled(Heading2)`
   margin: 0;
@@ -38,7 +37,6 @@ const Post: FC<PageProps<Queries.PostQuery>> = ({ data, location }) => {
   const post = data.markdownRemark!;
   const title = post.frontmatter!.title!;
   const currentLocation = getCurrentLocationFrom(location);
-  const isFromApp = useIsFromApp(currentLocation);
 
   if (post.frontmatter?.math === true) {
     require("katex/dist/katex.min.css");
@@ -73,22 +71,18 @@ const Post: FC<PageProps<Queries.PostQuery>> = ({ data, location }) => {
           readingTime={post.fields!.readingTime!.text!}
         />
         <PostContent html={post.html!} />
-        {!isFromApp && (
-          <PostTags
-            tags={post.frontmatter!.tags!}
-            trackingCategory={tracking.category.blog_post}
-            trackingLabel={tracking.label.body}
-          />
-        )}
+        <PostTags
+          tags={post.frontmatter!.tags!}
+          trackingCategory={tracking.category.blog_post}
+          trackingLabel={tracking.label.body}
+        />
       </PostContainer>
-      {!isFromApp && (
-        <>
-          <RecentPosts currentSlug={location.pathname} />
-          {post.frontmatter?.comments && (
-            <Comments url={location.href} title={title} />
-          )}
-        </>
-      )}
+      <>
+        <RecentPosts currentSlug={location.pathname} />
+        {post.frontmatter?.comments && (
+          <Comments url={location.href} title={title} />
+        )}
+      </>
     </BlogPageTemplate>
   );
 };

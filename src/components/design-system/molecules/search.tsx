@@ -1,12 +1,4 @@
-import { FC, useMemo } from "react";
-import {
-  connectHits,
-  connectSearchBox,
-  connectStateResults,
-  InstantSearch,
-} from "react-instantsearch-dom";
-import algoliasearch from "algoliasearch/lite";
-import { HitsProvided, SearchBoxProvided } from "react-instantsearch-core";
+import { FC, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import { SearchAlt } from "@styled-icons/boxicons-regular";
 import { mediaQuery } from "../utils-css/media-query";
@@ -15,6 +7,7 @@ import { List } from "../atoms/list";
 import { Paragraph } from "../atoms/paragraph";
 import { Link } from "gatsby";
 import { isIOS } from "react-device-detect";
+import { SearchResult } from "../../../lunr";
 
 const SearchListContainer = styled(Container)`
   position: absolute;
@@ -64,9 +57,7 @@ const SearchTitle = styled(Paragraph)`
   }
 `;
 
-const SearchHits: FC<
-  HitsProvided<{ title: string; slug: string; description: string }>
-> = ({ hits }) => (
+const SearchHits: FC<{ hits: SearchResult[] }> = ({ hits }) => (
   <SearchListContainer>
     <SearchHitsList>
       {hits.map((hit, index) => (
@@ -153,18 +144,14 @@ interface OnClickProp {
   onClick: () => void;
 }
 
-const SearchBox: FC<SearchBoxProvided & StartSearchProps & OnClickProp> = ({
-  currentRefinement,
-  refine,
-  startSearch,
-  onClick,
-}) => (
+const SearchBox: FC<
+  StartSearchProps & OnClickProp & { onSearch: (searchValue: string) => void }
+> = ({ startSearch, onClick, onSearch }) => (
   <SearchBoxContainer>
     <SearchBoxInput
       startSearch={startSearch}
-      value={startSearch ? currentRefinement : ""}
       placeholder={startSearch ? "Search" : ""}
-      onChange={(event) => refine(event.currentTarget.value)}
+      onChange={(event) => onSearch(event.currentTarget.value)}
       disabled={!startSearch}
     />
     <SearchAltContainer startSearch={startSearch} onClick={onClick}>
@@ -173,19 +160,18 @@ const SearchBox: FC<SearchBoxProvided & StartSearchProps & OnClickProp> = ({
   </SearchBoxContainer>
 );
 
-const AlgoliaHits = connectHits(SearchHits);
+const hasMinimumCharsToSearch = (query: string): boolean => query.length >= 3;
 
-const AlgoliaResults = connectStateResults(
-  // @ts-ignore
-  ({ searchState, searchResults, children }) =>
-    searchResults && searchResults.nbHits !== 0 && searchState.query ? (
-      <>{children}</>
-    ) : (
-      <></>
-    ),
-);
-
-const AlgoliaSearchBox = connectSearchBox(SearchBox);
+const isASearchInProgressUsing = (
+  searching: boolean,
+  query: string,
+  hits: SearchResult[],
+): boolean =>
+  searching &&
+  query !== null &&
+  query !== undefined &&
+  hasMinimumCharsToSearch(query) &&
+  hits.length > 0;
 
 interface SearchProps {
   startSearch: boolean;
@@ -193,28 +179,34 @@ interface SearchProps {
 }
 
 export const Search: FC<SearchProps> = ({ startSearch, setStartSearch }) => {
-  const searchClient = useMemo(
-    () =>
-      algoliasearch(
-        process.env.GATSBY_ALGOLIA_APP_ID ?? "",
-        process.env.GATSBY_ALGOLIA_SEARCH_KEY ?? "",
-      ),
-    [],
-  );
+  const [query, setQuery] = useState("");
+  const [hits, setHits] = useState<SearchResult[]>([]);
+
+  useEffect(() => {
+    if (query) {
+      const { index, store } = window.__LUNR__.en;
+      const enhancedQuery = query
+        .split(" ")
+        .map((term) => `${term}*`)
+        .join(" ");
+      const searchResults = index.search(enhancedQuery);
+      const hits = searchResults.map(({ ref }) => store[ref]);
+      if (isASearchInProgressUsing(startSearch, query, hits)) {
+        setHits(hits);
+      } else {
+        setHits([]);
+      }
+    }
+  }, [query]);
 
   return (
     <>
-      <InstantSearch indexName="fabrizioduroni.it" searchClient={searchClient}>
-        <AlgoliaSearchBox
-          startSearch={startSearch}
-          onClick={() => setStartSearch(!startSearch)}
-        />
-        {startSearch && (
-          <AlgoliaResults>
-            <AlgoliaHits />
-          </AlgoliaResults>
-        )}
-      </InstantSearch>
+      <SearchBox
+        startSearch={startSearch}
+        onClick={() => setStartSearch(!startSearch)}
+        onSearch={(value) => setQuery(value)}
+      />
+      {startSearch && hits.length > 0 && <SearchHits hits={hits} />}
     </>
   );
 };
