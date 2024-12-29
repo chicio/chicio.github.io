@@ -81,7 +81,6 @@
     "katex": "0.16.18",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
-    "react-adaptive-hooks": "0.0.8",
     "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
