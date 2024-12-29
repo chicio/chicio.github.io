@@ -1,14 +1,7 @@
-import {
-  createGlobalStyle,
-  DefaultTheme,
-  GlobalStyleComponent,
-} from "styled-components";
+import { createGlobalStyle } from "styled-components";
 import { mediaQuery } from "./utils-css/media-query";
 
-export const GlobalStyle: GlobalStyleComponent<
-  {},
-  DefaultTheme
-> = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'Open Sans';
     src: local("Open Sans Regular"),
