@@ -14,11 +14,12 @@ Release date: 2024-12-30
 - algolia search implementation
 - loadable components
 - unused/useless deps
-- fixed tests config (removed css mapper + fix errors)
 
 #### Fixed
 
 - Fix menu button on menu open
+- Fixed tests config (removed css mapper + fix errors)
+- Fixed transient props
 
 ## [6.5.1](https://github.com/chicio/chicio.github.io/releases/tag/v6.5.1)
 Release date: 2024-07-05
