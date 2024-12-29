@@ -1,6 +1,24 @@
 # Change Log
 All changes to Chicio Coding will be documented in this file.
 
+## [7.0.0](https://github.com/chicio/chicio.github.io/releases/tag/v6.5.1)
+Release date: 2024-12-30
+
+#### Added
+
+- update deps to latest releases
+- lunr search
+
+#### Removed
+
+- algolia search implementation
+- loadable components
+- unused/useless deps
+
+#### Fixed
+
+- Fix menu button on menu open
+
 ## [6.5.1](https://github.com/chicio/chicio.github.io/releases/tag/v6.5.1)
 Release date: 2024-07-05
 
