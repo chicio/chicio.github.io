@@ -1,11 +1,11 @@
 import { FC } from "react";
 import styled from "styled-components";
-import { heading3Style } from "./design-system/atoms/heading3";
-import { heading4Style } from "./design-system/atoms/heading4";
-import { standardLinkStyle } from "./design-system/atoms/standard-link-style";
-import { syntax } from "./design-system/atoms/syntax";
-import { mediaQuery } from "./design-system/utils-css/media-query";
-import { heading5Style } from "./design-system/atoms/heading5";
+import { heading3Style } from "./atoms/heading3";
+import { heading4Style } from "./atoms/heading4";
+import { standardLinkStyle } from "./atoms/standard-link-style";
+import { syntax } from "./atoms/syntax";
+import { mediaQuery } from "./utils-css/media-query";
+import { heading5Style } from "./atoms/heading5";
 
 const PostContentContainer = styled.div`
   color: ${(props) => props.theme.light.primaryTextColor};

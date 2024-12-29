@@ -2,14 +2,13 @@ import { graphql, PageProps, useStaticQuery } from "gatsby";
 import { ProfilePresentation } from "../components/design-system/organism/profile-presentation";
 import { tracking } from "../logic/tracking";
 import { OgPageType } from "../logic/seo";
-import loadable from "@loadable/component";
 import { ShowcasePageTemplate } from "../components/design-system/templates/showcase-page-template";
 import { getCurrentLocationFrom } from "../logic/current-location";
-import { blogTheme } from "../components/design-system/theme";
-import { blogPrimaryColor } from "../components/design-system/blog-colors";
+import { blogTheme } from "../components/design-system/themes/theme";
+import { blogPrimaryColor } from "../components/design-system/themes/blog-colors";
 import { FC } from "react";
-
-const BottomIndex = loadable(() => import(`../components/bottom-index`));
+import { Technologies } from "../components/design-system/organism/technologies";
+import { Resume } from "../components/design-system/organism/resume";
 
 const HomePage: FC<PageProps> = ({ location }) => {
   const data = useStaticQuery<Queries.HomePageQuery>(graphql`
@@ -36,7 +35,8 @@ const HomePage: FC<PageProps> = ({ location }) => {
       featuredImage={featuredImage}
       cookieConsentColor={blogPrimaryColor}
     >
-      <BottomIndex author={author} />
+      <Technologies author={author} />
+      <Resume />
     </ShowcasePageTemplate>
   );
 };

@@ -1,4 +1,4 @@
-import { blogTheme } from "../theme";
+import { blogTheme } from "../themes/theme";
 import { FC, ReactNode } from "react";
 import { ThemePage } from "./theme-page";
 

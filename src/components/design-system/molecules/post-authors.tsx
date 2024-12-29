@@ -10,7 +10,7 @@ import styled from "styled-components";
 import { ContainerFluid } from "../atoms/container-fluid";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Paragraph } from "../atoms/paragraph";
-import { StandardExternalLinkWithTracking } from "../../standard-external-link-with-tracking";
+import { StandardExternalLinkWithTracking } from "../../tracking/standard-external-link-with-tracking";
 import { mediaQuery } from "../utils-css/media-query";
 import { gatsbyImagePlaceholderSelector } from "../utils-css/gatsby-image-selector";
 

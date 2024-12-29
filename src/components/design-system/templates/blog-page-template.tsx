@@ -7,7 +7,7 @@ import { BlogMenu } from "../organism/blog-menu";
 import loadable from "@loadable/component";
 import styled from "styled-components";
 import { Container } from "../atoms/container";
-import { blogPrimaryColor } from "../blog-colors";
+import { blogPrimaryColor } from "../themes/blog-colors";
 import { FC, ReactNode } from "react";
 
 const Footer = loadable(() => import(`../organism/footer`));

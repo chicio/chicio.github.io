@@ -6,7 +6,7 @@ import styled, { css } from "styled-components";
 import { Container } from "../atoms/container";
 import { Heading6 } from "../atoms/heading6";
 import { mediaQuery } from "../utils-css/media-query";
-import { StandardExternalLinkWithTracking } from "../../standard-external-link-with-tracking";
+import { StandardExternalLinkWithTracking } from "../../tracking/standard-external-link-with-tracking";
 import { Time } from "../atoms/time";
 import { tracking } from "../../../logic/tracking";
 import { Briefcase } from "@styled-icons/boxicons-regular";

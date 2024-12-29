@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Heading3 } from "../atoms/heading3";
 import styled from "styled-components";
 import { Container } from "../atoms/container";
-import { CallToActionExternalWithTracking } from "../../call-to-action-external-with-tracking";
+import { CallToActionExternalWithTracking } from "../../tracking/call-to-action-external-with-tracking";
 import { mediaQuery } from "../utils-css/media-query";
 import { ProjectCallToAction } from "../../../logic/projects";
 import { Paragraph } from "../atoms/paragraph";

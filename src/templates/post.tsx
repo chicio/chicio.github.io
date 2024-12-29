@@ -6,7 +6,7 @@ import { PostAuthors } from "../components/design-system/molecules/post-authors"
 import { getSrc } from "gatsby-plugin-image";
 import { BlogPageTemplate } from "../components/design-system/templates/blog-page-template";
 import { Heading2 } from "../components/design-system/atoms/heading2";
-import { PostContent } from "../components/post-content";
+import { PostContent } from "../components/design-system/post-content";
 import styled from "styled-components";
 import { OgPageType } from "../logic/seo";
 import { getCurrentLocationFrom } from "../logic/current-location";

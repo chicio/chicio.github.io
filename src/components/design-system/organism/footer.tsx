@@ -4,7 +4,7 @@ import { SocialContacts } from "./social-contacts";
 import styled from "styled-components";
 import { Paragraph } from "../atoms/paragraph";
 import { slugs } from "../../../logic/slug";
-import { MenuItemWithTracking } from "../../menu-item-with-tracking";
+import { MenuItemWithTracking } from "../../tracking/menu-item-with-tracking";
 import { mediaQuery } from "../utils-css/media-query";
 
 const FooterContainer = styled.footer`

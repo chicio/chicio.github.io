@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
-import { TrackingElementProps, trackWith } from "../logic/tracking";
-import { MenuItem } from "./design-system/molecules/menu-item";
+import { TrackingElementProps, trackWith } from "../../logic/tracking";
+import { MenuItem } from "../design-system/molecules/menu-item";
 
 type MenuItemWithTrackingProps = TrackingElementProps & {
   to: string;

@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { FC } from "react";
-import { StandardInternalLinkWithTracking } from "../../standard-internal-link-with-tracking";
+import { StandardInternalLinkWithTracking } from "../../tracking/standard-internal-link-with-tracking";
 import { tracking } from "../../../logic/tracking";
 import { mediaQuery } from "../utils-css/media-query";
 

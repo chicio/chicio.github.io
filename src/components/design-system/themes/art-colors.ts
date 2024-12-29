@@ -1,4 +1,4 @@
-import { Colors } from "./styled";
+import { Colors } from "../styled";
 
 export const artPrimaryColor = "#6B2C5B";
 export const artTextAbovePrimaryColor = "#FFFFFF";

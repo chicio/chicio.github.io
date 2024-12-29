@@ -5,7 +5,7 @@ import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import { PostAuthors } from "./post-authors";
 import { PostMeta } from "./post-meta";
 import { Heading5 } from "../atoms/heading5";
-import { StandardInternalLinkWithTracking } from "../../standard-internal-link-with-tracking";
+import { StandardInternalLinkWithTracking } from "../../tracking/standard-internal-link-with-tracking";
 import { mediaQuery } from "../utils-css/media-query";
 import PostTags from "./post-tags";
 import { gatsbyImagePlaceholderSelector } from "../utils-css/gatsby-image-selector";

@@ -1,6 +1,6 @@
 import { Icon } from "../atoms/icon";
 import styled from "styled-components";
-import { CallToActionExternalWithTracking } from "../../call-to-action-external-with-tracking";
+import { CallToActionExternalWithTracking } from "../../tracking/call-to-action-external-with-tracking";
 import { FC, ReactElement } from "react";
 
 export interface SocialContactProps {

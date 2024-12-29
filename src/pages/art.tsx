@@ -3,9 +3,8 @@ import { getCurrentLocationFrom } from "../logic/current-location";
 import { tracking } from "../logic/tracking";
 import { OgPageType } from "../logic/seo";
 import { ShowcasePageTemplate } from "../components/design-system/templates/showcase-page-template";
-import { artTheme } from "../components/design-system/theme";
-import loadable from "@loadable/component";
-import { artPrimaryColor } from "../components/design-system/art-colors";
+import { artTheme } from "../components/design-system/themes/theme";
+import { artPrimaryColor } from "../components/design-system/themes/art-colors";
 import styled from "styled-components";
 import { opacity } from "../components/design-system/utils-css/opacity-keyframes";
 // @ts-ignore
@@ -13,9 +12,49 @@ import ChicioArt from "../images/chicio-art.png";
 // @ts-ignore
 import Background from "../images/wall-bricks-violet.jpg";
 import { FC } from "react";
+import { Gallery } from "../components/design-system/organism/gallery";
+import { ContainerFullscreen } from "../components/design-system/atoms/container-fullscreen";
+import { mediaQuery } from "../components/design-system/utils-css/media-query";
+import { Paragraph } from "../components/design-system/atoms/paragraph";
+import { Container } from "../components/design-system/atoms/container";
 
-const BottomArt = loadable(() => import(`../components/bottom-art`));
+const ArtDescriptionContainer = styled(ContainerFullscreen)`
+  padding: ${(props) => props.theme.spacing[10]};
 
+  ${mediaQuery.minWidth.sm} {
+    padding: ${(props) => props.theme.spacing[14]};
+  }
+
+  ${mediaQuery.dark} {
+    background-color: ${(props) => props.theme.dark.primaryColorDark};
+  }
+`;
+
+const ArtDescription = styled(Paragraph)`
+  text-align: center;
+  font-style: italic;
+  font-size: ${(props) => props.theme.fontSizes[3]};
+  margin: ${(props) => props.theme.spacing[4]};
+  color: ${(props) => props.theme.light.textAbovePrimaryColor};
+
+  ${mediaQuery.dark} {
+    color: ${(props) => props.theme.dark.textAbovePrimaryColor};
+  }
+
+  ${mediaQuery.minWidth.xs} {
+    font-size: ${(props) => props.theme.fontSizes[6]};
+    margin: ${(props) => props.theme.spacing[8]};
+  }
+
+  ${mediaQuery.minWidth.sm} {
+    font-size: ${(props) => props.theme.fontSizes[10]};
+  }
+`;
+
+const ContentContainer = styled(Container)`
+  margin-top: ${(props) => props.theme.spacing[8]};
+  flex: 1 0 auto;
+`;
 const ArtPresentationContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -68,7 +107,18 @@ const Art: FC<PageProps<Queries.ArtQuery>> = ({ data, location }) => {
       cookieConsentColor={artPrimaryColor}
       keywords={["art", "drawing", "fabrizio duroni", "tattoo"]}
     >
-      <BottomArt images={data.allFile.edges} />
+      <ArtDescriptionContainer>
+        <ArtDescription>
+          {`...My love for everything that is related to visual 👨‍🎨 art/science 👨‍🔬 (tattoo, computer graphics etc.) took me to create this page.`}
+        </ArtDescription>
+        <ArtDescription>
+          {` A
+          collection of all the draws I created while I'm learning to draw. Keep it in your bookmark to see my drawing skills evolution 🎨 (or follow me on instagram ❤️)...`}
+        </ArtDescription>
+      </ArtDescriptionContainer>
+      <ContentContainer>
+        <Gallery images={data.allFile.edges} />
+      </ContentContainer>
     </ShowcasePageTemplate>
   );
 };

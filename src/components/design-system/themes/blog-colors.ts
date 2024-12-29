@@ -1,4 +1,4 @@
-import { Colors } from "./styled";
+import { Colors } from "../styled";
 
 export const blogPrimaryColor = "#3F51B5";
 export const blogTextAbovePrimaryColor = "#FFFFFF";

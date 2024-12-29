@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
-import { TrackingElementProps, trackWith } from "../logic/tracking";
-import { CallToActionExternal } from "./design-system/atoms/call-to-action-external";
+import { TrackingElementProps, trackWith } from "../../logic/tracking";
+import { CallToActionExternal } from "../design-system/atoms/call-to-action-external";
 
 type CallToActionExternalWithTrackingProps = TrackingElementProps & {
   href: string;

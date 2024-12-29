@@ -4,7 +4,7 @@ import { Heading1 } from "../components/design-system/atoms/heading1";
 import { Paragraph } from "../components/design-system/atoms/paragraph";
 import { ContainerFullscreen } from "../components/design-system/atoms/container-fullscreen";
 import { BlogThemePage } from "../components/design-system/templates/blog-theme-page";
-import { CallToActionInternalWithTracking } from "../components/call-to-action-internal-with-tracking";
+import { CallToActionInternalWithTracking } from "../components/tracking/call-to-action-internal-with-tracking";
 
 const NotFoundPage: FC = () => {
   return (

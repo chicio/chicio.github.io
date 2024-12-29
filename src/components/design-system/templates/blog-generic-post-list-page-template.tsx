@@ -7,7 +7,7 @@ import { tracking } from "../../../logic/tracking";
 import { PageTitle } from "../molecules/page-title";
 import { OgPageType } from "../../../logic/seo";
 import { CurrentLocation } from "../../../logic/current-location";
-import { StandardInternalLinkWithTracking } from "../../standard-internal-link-with-tracking";
+import { StandardInternalLinkWithTracking } from "../../tracking/standard-internal-link-with-tracking";
 import { mediaQuery } from "../utils-css/media-query";
 
 const PostContainer = styled(ContainerFluid)`

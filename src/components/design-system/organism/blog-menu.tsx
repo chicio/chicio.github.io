@@ -3,7 +3,7 @@ import { tracking } from "../../../logic/tracking";
 import styled, { css } from "styled-components";
 import { Container } from "../atoms/container";
 import { slugs } from "../../../logic/slug";
-import { MenuItemWithTracking } from "../../menu-item-with-tracking";
+import { MenuItemWithTracking } from "../../tracking/menu-item-with-tracking";
 import { HamburgerMenu } from "../molecules/hamburger-menu";
 import { Overlay } from "../atoms/overlay";
 import { CSSTransition } from "react-transition-group";

@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { trackWith } from "../src/logic/tracking";
 import { BlogThemePage } from "../src/components/design-system/templates/blog-theme-page";
-import { StandardInternalLinkWithTracking } from "../src/components/standard-internal-link-with-tracking";
+import { StandardInternalLinkWithTracking } from "../src/components/tracking/standard-internal-link-with-tracking";
 
 jest.mock("../src/logic/tracking", () => ({
   ...jest.requireActual("../src/logic/tracking"),

@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
-import { CallToActionInternal } from "./design-system/atoms/call-to-action-internal";
-import { TrackingElementProps, trackWith } from "../logic/tracking";
+import { CallToActionInternal } from "../design-system/atoms/call-to-action-internal";
+import { TrackingElementProps, trackWith } from "../../logic/tracking";
 
 type CallToActionInternalWithTrackingProps = TrackingElementProps & {
   to: string;

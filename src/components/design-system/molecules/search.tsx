@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import styled, { css } from "styled-components";
 import { SearchAlt } from "@styled-icons/boxicons-regular";
 import { mediaQuery } from "../utils-css/media-query";
@@ -8,6 +8,7 @@ import { Paragraph } from "../atoms/paragraph";
 import { Link } from "gatsby";
 import { isIOS } from "react-device-detect";
 import { SearchResult } from "../../../lunr";
+import { useSearch } from "../hooks/use-search";
 
 const SearchListContainer = styled(Container)`
   position: absolute;
@@ -160,44 +161,13 @@ const SearchBox: FC<
   </SearchBoxContainer>
 );
 
-const hasMinimumCharsToSearch = (query: string): boolean => query.length >= 3;
-
-const isASearchInProgressUsing = (
-  searching: boolean,
-  query: string,
-  hits: SearchResult[],
-): boolean =>
-  searching &&
-  query !== null &&
-  query !== undefined &&
-  hasMinimumCharsToSearch(query) &&
-  hits.length > 0;
-
 interface SearchProps {
   startSearch: boolean;
   setStartSearch: (value: ((prevState: boolean) => boolean) | boolean) => void;
 }
 
 export const Search: FC<SearchProps> = ({ startSearch, setStartSearch }) => {
-  const [query, setQuery] = useState("");
-  const [hits, setHits] = useState<SearchResult[]>([]);
-
-  useEffect(() => {
-    if (query) {
-      const { index, store } = window.__LUNR__.en;
-      const enhancedQuery = query
-        .split(" ")
-        .map((term) => `${term}*`)
-        .join(" ");
-      const searchResults = index.search(enhancedQuery);
-      const hits = searchResults.map(({ ref }) => store[ref]);
-      if (isASearchInProgressUsing(startSearch, query, hits)) {
-        setHits(hits);
-      } else {
-        setHits([]);
-      }
-    }
-  }, [query]);
+  const { hits, setQuery } = useSearch(startSearch);
 
   return (
     <>

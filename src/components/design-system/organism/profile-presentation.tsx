@@ -5,7 +5,7 @@ import { tracking } from "../../../logic/tracking";
 import styled from "styled-components";
 import { Heading2 } from "../atoms/heading2";
 import { slugs } from "../../../logic/slug";
-import { CallToActionInternalWithTracking } from "../../call-to-action-internal-with-tracking";
+import { CallToActionInternalWithTracking } from "../../tracking/call-to-action-internal-with-tracking";
 import { opacity } from "../utils-css/opacity-keyframes";
 import { mediaQuery } from "../utils-css/media-query";
 import { FC } from "react";

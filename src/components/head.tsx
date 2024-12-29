@@ -2,7 +2,6 @@ import { FC } from "react";
 import { Helmet } from "react-helmet";
 import { graphql, useStaticQuery } from "gatsby";
 import { createJsonLD, createMetaAttributes, OgPageType } from "../logic/seo";
-import { appParameterName } from "./design-system/hooks/use-is-from-app";
 
 const cookieConsentCss = `
        .cc-window{opacity:1;transition:opacity 1s ease}.cc-window.cc-invisible{opacity:0}.cc-animate.cc-revoke{transition:transform 1s ease}.cc-animate.cc-revoke.cc-top{transform:translateY(-2em)}.cc-animate.cc-revoke.cc-bottom{transform:translateY(2em)}.cc-animate.cc-revoke.cc-active.cc-bottom,.cc-animate.cc-revoke.cc-active.cc-top,.cc-revoke:hover{transform:translateY(0)}.cc-grower{max-height:0;overflow:hidden;transition:max-height 1s}
@@ -15,31 +14,27 @@ const cookieConsentCss = `
 
 const cookieConsentScript = (color: string) => `
 var url = new URL(window.location.href);
-if (typeof window !== "undefined" && !url.searchParams.has("${appParameterName}")) {
-  window.addEventListener('load', () => { 
-       window.cookieconsent.initialise({
-                      palette: {
-                          popup: {
-                              background: '${color}',
-                              text: '#ffffff'
-                          },
-                          button: {
-                              background: '#0F67FF',
-                              text: '#ffffff'
-                          }
-                      },
-                      theme: 'classic',
-                      content: {
-                          dismiss: 'Ok',
-                          href: window.location.protocol + '//' + window.location.host + '/cookie-policy/',
-                          message: 'This website uses cookies to ensure you get the best experience.',
-                          link: 'Learn more about cookie policy'
-                      }
-       });
-  });
-} else {
-  console.log("no cookieconsent");
-}      
+window.addEventListener('load', () => { 
+     window.cookieconsent.initialise({
+                    palette: {
+                        popup: {
+                            background: '${color}',
+                            text: '#ffffff'
+                        },
+                        button: {
+                            background: '#0F67FF',
+                            text: '#ffffff'
+                        }
+                    },
+                    theme: 'classic',
+                    content: {
+                        dismiss: 'Ok',
+                        href: window.location.protocol + '//' + window.location.host + '/cookie-policy/',
+                        message: 'This website uses cookies to ensure you get the best experience.',
+                        link: 'Learn more about cookie policy'
+                    }
+     });
+});   
 `;
 
 interface HeadProps {

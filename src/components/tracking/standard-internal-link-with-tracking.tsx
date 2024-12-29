@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
-import { TrackingElementProps, trackWith } from "../logic/tracking";
-import { StandardInternalLink } from "./design-system/atoms/standard-internal-link";
+import { TrackingElementProps, trackWith } from "../../logic/tracking";
+import { StandardInternalLink } from "../design-system/atoms/standard-internal-link";
 
 type StandardInternalLinkWithTrackingProps = TrackingElementProps & {
   to: string;
