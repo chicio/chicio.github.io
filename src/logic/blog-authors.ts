@@ -71,3 +71,5 @@ export const blogAuthors: { [authorName: string]: BlogAuthor } = {
     image: "sam-campisi.jpg",
   },
 };
+
+export const authorName = (author: string) => author!.split("_").join("-");

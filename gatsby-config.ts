@@ -1,4 +1,5 @@
 import { GatsbyConfig } from "gatsby";
+import { authorName } from "./src/logic/blog-authors";
 
 require("dotenv").config();
 
@@ -221,6 +222,41 @@ const config: GatsbyConfig = {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
         apiKey: process.env.ALGOLIA_ADMIN_KEY,
         queries: require("./src/logic/algolia"),
+      },
+    },
+    {
+      resolve: `gatsby-plugin-lunr`,
+      options: {
+        languages: [
+          {
+            name: "en",
+            filterNodes: (node: any) => !!node.frontmatter,
+          },
+        ],
+        fields: [
+          { name: "title", store: true, attributes: { boost: 20 } },
+          { name: "content", store: true },
+          { name: "slug", store: true },
+          { name: "description", store: true },
+          { name: "authors", store: true },
+        ],
+        filterNodes: (node: any) => !!node.frontmatter,
+        resolvers: {
+          MarkdownRemark: {
+            title: (node: any) => node.frontmatter.title,
+            content: (node: any) => node.rawMarkdownBody,
+            slug: (node: any) => node.fields.slug,
+            description: (node: any) => node.frontmatter.description,
+            authors: (node: any) =>
+              node.frontmatter.authors.map((author: string) =>
+                authorName(author),
+              ),
+          },
+        },
+        filename: "search_index.json",
+        fetchOptions: {
+          credentials: "same-origin",
+        },
       },
     },
   ],

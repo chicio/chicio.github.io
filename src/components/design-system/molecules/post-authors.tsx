@@ -1,6 +1,10 @@
 import { FC } from "react";
 import { tracking } from "../../../logic/tracking";
-import { BlogAuthor, blogAuthors } from "../../../logic/blog-authors";
+import {
+  authorName,
+  BlogAuthor,
+  blogAuthors,
+} from "../../../logic/blog-authors";
 import { graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 import { ContainerFluid } from "../atoms/container-fluid";
@@ -78,7 +82,7 @@ export const PostAuthors: FC<PostAuthorsProps> = ({
         const blogAuthor: BlogAuthor = blogAuthors[author!];
         const blogAuthorImage = blogAuthorsImages.allFile.edges.find(
           (blogAuthorImage) =>
-            blogAuthorImage.node.name === author!.split("_").join("-"),
+            author && blogAuthorImage.node.name === authorName(author),
         )!.node!.childImageSharp!.gatsbyImageData!;
 
         return (
