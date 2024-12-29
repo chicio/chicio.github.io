@@ -324,7 +324,9 @@ export const BlogMenu: FC<MenuProps> = ({ trackingCategory, pathname }) => {
               )}
             </MenuButtonContainer>
           )}
-          <Search startSearch={startSearch} setStartSearch={setStartSearch} />
+          {!shouldOpenMenu && (
+            <Search startSearch={startSearch} setStartSearch={setStartSearch} />
+          )}
         </NavBar>
       </MenuContainer>
       {(shouldOpenMenu || startSearch) && (
