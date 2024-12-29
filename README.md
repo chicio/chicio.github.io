@@ -2,9 +2,6 @@
 [![Test](https://github.com/chicio/chicio.github.io/actions/workflows/test.yml/badge.svg)](https://github.com/chicio/chicio.github.io/actions/workflows/test.yml)
 ![Release](https://github.com/chicio/chicio.github.io/workflows/Release/badge.svg)
 ![CodeQL](https://github.com/chicio/chicio.github.io/workflows/CodeQL/badge.svg)
-[![Status](https://img.shields.io/badge/Status-Upptime-success)](https://status.fabrizioduroni.it)
-![Chicio Coding Uptime](https://img.shields.io/endpoint?label=Chicio%20Coding%20Uptime&url=https%3A%2F%2Fraw.githubusercontent.com%2Fchicio%2Fchicio.status.github.io%2Fmaster%2Fapi%2Fchicio-coding-blog%2Fuptime.json)
-![Chicio Coding Response Time](https://img.shields.io/endpoint?label=Chicio%20Coding%20Response%20Time&url=https%3A%2F%2Fraw.githubusercontent.com%2Fchicio%2Fchicio.status.github.io%2Fmaster%2Fapi%2Fchicio-coding-blog%2Fresponse-time.json)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/chicio/chicio.github.io/blob/master/LICENSE.md)
 
 <p align="center">
@@ -85,12 +82,7 @@ My website has been created for Github Pages using:
 * [Styled components](https://styled-components.com)
 * [TypeScript](https://www.typescriptlang.org) 
 * [Jest](https://github.com/facebook/jest) + [React Testing Library](https://github.com/testing-library/react-testing-library)
-* [tsParticles](https://github.com/matteobruni/tsparticles) + [react-adaptive-hooks](https://github.com/GoogleChromeLabs/react-adaptive-hooks)
 * [react transition group](https://reactcommunity.org/react-transition-group/)
 * [algolia](https://www.algolia.com)
 
 Go and checkout my [homepage](https://www.fabrizioduroni.it "homepage") and my [blog](https://www.fabrizioduroni.it/blog/ "blog").
-
-## Status monitoring
-
-You can find status monitoring information at [status.fabrizioduroni.it](https://status.fabrizioduroni.it).
