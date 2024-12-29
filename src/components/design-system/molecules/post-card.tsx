@@ -20,7 +20,7 @@ const PostDescription = styled(Paragraph)`
   margin-left: 0;
 `;
 
-const PostCardContainer = styled.div<BigCardProps>`
+const PostCardContainer = styled.div<TransientProps<BigCardProps>>`
   border-radius: 4px;
   margin-top: ${(props) => props.theme.spacing[4]};
   background-color: ${(props) => props.theme.light.generalBackgroundLight};
@@ -36,7 +36,7 @@ const PostCardContainer = styled.div<BigCardProps>`
     }
 
     ${(props) =>
-      !props.big &&
+      !props.$big &&
       css`
         width: 48%;
       `}
@@ -107,7 +107,7 @@ export const PostCard: FC<PostCardProps> = ({
   description,
   trackingCategory,
 }) => (
-  <PostCardContainer big={big} key={slug}>
+  <PostCardContainer $big={big} key={slug}>
     <A>
       <PostCardLink
         to={slug}

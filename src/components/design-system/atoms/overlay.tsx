@@ -9,22 +9,22 @@ export interface OverlayProps {
   onClick: () => void;
 }
 
-const StyledOverlay = styled.div<OverlayProps>`
+const StyledOverlay = styled.div<TransientProps<OverlayProps>>`
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: ${(props) => props.zIndex};
+  z-index: ${(props) => props.$zIndex};
   background: rgba(0, 0, 0, 0.6);
   opacity: 0;
-  animation: ${opacity} 0.25s linear ${(props) => `${props.delay}`};
+  animation: ${opacity} 0.25s linear ${(props) => `${props.$delay}`};
   animation-fill-mode: forwards;
   backdrop-filter: blur(4px);
 `;
 
-export const Overlay: FC<OverlayProps> = (props) => {
+export const Overlay: FC<OverlayProps> = ({ zIndex, onClick, delay }) => {
   useLockBodyScroll();
 
-  return <StyledOverlay {...props} />;
+  return <StyledOverlay $zIndex={zIndex} $onClick={onClick} $delay={delay} />;
 };

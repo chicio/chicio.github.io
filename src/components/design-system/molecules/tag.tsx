@@ -8,7 +8,9 @@ interface TagContentProps {
   big: boolean;
 }
 
-const TagLink = styled(StandardInternalLinkWithTracking)<TagContentProps>`
+const TagLink = styled(StandardInternalLinkWithTracking)<
+  TransientProps<TagContentProps>
+>`
   display: inline-block;
   text-decoration: none;
 
@@ -17,24 +19,24 @@ const TagLink = styled(StandardInternalLinkWithTracking)<TagContentProps>`
   }
 
   ${(props) =>
-    props.big === true &&
+    props.$big === true &&
     css`
       margin-bottom: ${(props) => props.theme.spacing[4]};
     `}
 `;
 
-const TagText = styled.span<TagContentProps>`
+const TagText = styled.span<TransientProps<TagContentProps>>`
   background-color: ${(props) => props.theme.light.primaryColor};
   color: ${(props) => props.theme.light.textAbovePrimaryColor};
   margin-right: ${(props) => props.theme.spacing[0]};
   margin-bottom: ${(props) => props.theme.spacing[0]};
   border-radius: 3px;
   font-size: ${(props) =>
-    props.big ? props.theme.fontSizes[5] : props.theme.fontSizes[1]};
+    props.$big ? props.theme.fontSizes[5] : props.theme.fontSizes[1]};
   padding: 0.5px 5px;
 
   ${(props) =>
-    props.big &&
+    props.$big &&
     css`
       display: block;
       margin-right: ${(props) => props.theme.spacing[4]};
@@ -68,8 +70,8 @@ export const Tag: FC<TagProps> = ({
       label: trackingLabel,
     }}
     to={link}
-    big={big}
+    $big={big}
   >
-    <TagText big={big}>{tag}</TagText>
+    <TagText $big={big}>{tag}</TagText>
   </TagLink>
 );

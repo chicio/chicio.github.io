@@ -8,15 +8,16 @@ type StandardInternalLinkWithTrackingProps = TrackingElementProps & {
   children?: ReactNode;
 };
 
-export const StandardInternalLinkWithTracking: FC<StandardInternalLinkWithTrackingProps> =
-  ({ children, className, to, trackingData }) => (
-    <StandardInternalLink
-      className={className}
-      to={to}
-      onClick={() => {
-        trackWith(trackingData);
-      }}
-    >
-      {children}
-    </StandardInternalLink>
-  );
+export const StandardInternalLinkWithTracking: FC<
+  StandardInternalLinkWithTrackingProps
+> = ({ children, className, to, trackingData }) => (
+  <StandardInternalLink
+    className={className}
+    to={to}
+    onClick={() => {
+      trackWith(trackingData);
+    }}
+  >
+    {children}
+  </StandardInternalLink>
+);

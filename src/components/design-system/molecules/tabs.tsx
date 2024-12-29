@@ -12,7 +12,7 @@ const TabContainer = styled.li`
   width: 50%;
 `;
 
-const TabLink = styled(StandardExternalLink)<TabLinkProps>`
+const TabLink = styled(StandardExternalLink)<TransientProps<TabLinkProps>>`
   font-size: ${(props) => props.theme.fontSizes[4]};
   display: block;
   background-color: ${(props) => props.theme.light.generalBackgroundLight};
@@ -37,7 +37,7 @@ const TabLink = styled(StandardExternalLink)<TabLinkProps>`
   }
 
   ${(props) =>
-    props.active &&
+    props.$active &&
     css`
       background-color: ${(props) => props.theme.light.generalBackground};
       border-right: ${(props) => props.theme.light.generalBackground} 1px solid;
@@ -74,7 +74,7 @@ const Tab: FC<TabProps> = ({
 }) => (
   <TabContainer>
     <TabLink
-      active={active}
+      $active={active}
       href={link}
       onClick={(event) => {
         event.preventDefault();

@@ -7,7 +7,7 @@ import { List } from "../atoms/list";
 import { Paragraph } from "../atoms/paragraph";
 import { Link } from "gatsby";
 import { isIOS } from "react-device-detect";
-import { SearchResult } from "../../../lunr";
+import { SearchResult } from "../lunr";
 import { useSearch } from "../hooks/use-search";
 
 const SearchListContainer = styled(Container)`
@@ -90,7 +90,7 @@ interface StartSearchProps {
   startSearch: boolean;
 }
 
-const SearchAltContainer = styled.span<StartSearchProps>`
+const SearchAltContainer = styled.span<TransientProps<StartSearchProps>>`
   position: absolute;
   top: 50%;
   right: -3px;
@@ -103,14 +103,14 @@ const SearchAltContainer = styled.span<StartSearchProps>`
   }
 
   ${(props) =>
-    props.startSearch &&
+    props.$startSearch &&
     css`
       opacity: 0;
       z-index: -1;
     `}
 `;
 
-const SearchBoxInput = styled.input<StartSearchProps>`
+const SearchBoxInput = styled.input<TransientProps<StartSearchProps>>`
   padding: 10px;
   width: 35px;
   height: 35px;
@@ -129,7 +129,7 @@ const SearchBoxInput = styled.input<StartSearchProps>`
   }
 
   ${(props) =>
-    props.startSearch &&
+    props.$startSearch &&
     css`
       width: 200px;
       background: ${(props) => props.theme.light.generalBackground};
@@ -150,12 +150,12 @@ const SearchBox: FC<
 > = ({ startSearch, onClick, onSearch }) => (
   <SearchBoxContainer>
     <SearchBoxInput
-      startSearch={startSearch}
+      $startSearch={startSearch}
       placeholder={startSearch ? "Search" : ""}
       onChange={(event) => onSearch(event.currentTarget.value)}
       disabled={!startSearch}
     />
-    <SearchAltContainer startSearch={startSearch} onClick={onClick}>
+    <SearchAltContainer $startSearch={startSearch} onClick={onClick}>
       <SearchAlt width={20} height={20} />
     </SearchAltContainer>
   </SearchBoxContainer>

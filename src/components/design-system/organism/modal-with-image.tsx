@@ -10,7 +10,7 @@ interface ModalContainerProps {
   zIndex: number;
 }
 
-const ModalContainer = styled.div<ModalContainerProps>`
+const ModalContainer = styled.div<TransientProps<ModalContainerProps>>`
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@ const ModalContainer = styled.div<ModalContainerProps>`
   max-width: 100%;
   width: 700px;
   height: 700px;
-  z-index: ${(props) => props.zIndex};
+  z-index: ${(props) => props.$zIndex};
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -50,7 +50,7 @@ export const ModalWithImage: FC<ModalWithImageProps> = ({
 }) => (
   <>
     <Overlay zIndex={zIndex} onClick={onClick} delay={"0.25s"} />
-    <ModalContainer zIndex={zIndex}>
+    <ModalContainer $zIndex={zIndex}>
       <ModalImage src={imageUrl} alt={imageAlt} />
       <CallToActionExternal onClick={onClick}>Close</CallToActionExternal>
     </ModalContainer>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { SearchResult } from "../../../lunr";
+import { SearchResult } from "../lunr";
 
 const hasMinimumCharsToSearch = (query: string): boolean => query.length >= 3;
 

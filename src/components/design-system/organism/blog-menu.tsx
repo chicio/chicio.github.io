@@ -19,20 +19,14 @@ import { Search } from "../molecules/search";
 
 export const menuHeight = "55px";
 
-interface MobileBlogHeaderContainerProps {
-  hide: boolean;
-}
-
-const MobileBlogHeaderContainer = styled(
-  ContainerFluid,
-)<MobileBlogHeaderContainerProps>`
+const MobileBlogHeaderContainer = styled(ContainerFluid)<{ $hide: boolean }>`
   height: ${menuHeight};
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.2s ease ${(props) => (props.hide ? "0s" : "0.4s")};
-  opacity: ${(props) => (props.hide ? 0 : 1)};
+  transition: opacity 0.2s ease ${(props) => (props.$hide ? "0s" : "0.4s")};
+  opacity: ${(props) => (props.$hide ? 0 : 1)};
 
   ${mediaQuery.minWidth.sm} {
     display: none;
@@ -63,36 +57,30 @@ const MenuButtonContainer = styled.div`
   }
 `;
 
-interface MenuContainerProps {
-  shouldHide: boolean;
-  shouldOpenMenu: boolean;
-  delayOpenCloseMenuAnimation: number;
-}
-
-const MenuContainer = styled.div<MenuContainerProps>`
+const MenuContainer = styled.div<{
+  $shouldHide: boolean;
+  $shouldOpenMenu: boolean;
+  $delayOpenCloseMenuAnimation: number;
+}>`
   background-color: ${(props) => props.theme.light.primaryColorDark};
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   position: fixed;
-  top: ${(props) => (props.shouldHide ? `-${menuHeight}` : 0)};
+  top: ${(props) => (props.$shouldHide ? `-${menuHeight}` : 0)};
   left: 0;
   right: 0;
   transition:
     top 0.3s ease 0s,
-    height 0.3s ease ${(props) => `${props.delayOpenCloseMenuAnimation}s`};
+    height 0.3s ease ${(props) => `${props.$delayOpenCloseMenuAnimation}s`};
   width: 100%;
   z-index: 300;
-  height: ${(props) => (props.shouldOpenMenu ? "260px" : menuHeight)};
+  height: ${(props) => (props.$shouldOpenMenu ? "260px" : menuHeight)};
 
   ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.primaryColorDark};
   }
 `;
 
-interface NavBarProps {
-  shouldOpenMenu: boolean;
-}
-
-const NavBar = styled(Container)<NavBarProps>`
+const NavBar = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -247,12 +235,12 @@ export const BlogMenu: FC<MenuProps> = ({ trackingCategory, pathname }) => {
   return (
     <>
       <MenuContainer
-        shouldOpenMenu={shouldOpenMenu}
-        shouldHide={direction === ScrollDirection.down}
-        delayOpenCloseMenuAnimation={shouldOpenMenu ? 0 : 0.4}
+        $shouldOpenMenu={shouldOpenMenu}
+        $shouldHide={direction === ScrollDirection.down}
+        $delayOpenCloseMenuAnimation={shouldOpenMenu ? 0 : 0.4}
       >
-        <NavBar shouldOpenMenu={shouldOpenMenu}>
-          <MobileBlogHeaderContainer hide={startSearch}>
+        <NavBar>
+          <MobileBlogHeaderContainer $hide={startSearch}>
             <MobileBlogHeader height={menuHeight} />
             {shouldOpenMenu && <Divider />}
           </MobileBlogHeaderContainer>

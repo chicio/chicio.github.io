@@ -13,14 +13,16 @@ interface ProjectContainerProps {
   reverse: boolean;
 }
 
-const ProjectContainer = styled(Container)<ProjectContainerProps>`
+const ProjectContainer = styled(Container)<
+  TransientProps<ProjectContainerProps>
+>`
   display: flex;
   flex-direction: column;
   padding: 0;
   margin: ${(props) => props.theme.spacing[7]} auto;
 
   ${mediaQuery.minWidth.md} {
-    flex-direction: ${(props) => (props.reverse ? "row-reverse" : "row")};
+    flex-direction: ${(props) => (props.$reverse ? "row-reverse" : "row")};
     max-width: 1100px;
   }
 `;
@@ -56,7 +58,7 @@ export const Project: FC<ProjectProps> = ({
   features,
   callToActions,
 }) => (
-  <ProjectContainer reverse={reverse}>
+  <ProjectContainer $reverse={reverse}>
     <ProjectImageContainer>
       <GatsbyImage
         style={{

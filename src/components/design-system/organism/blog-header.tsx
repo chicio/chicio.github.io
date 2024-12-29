@@ -107,13 +107,13 @@ const MobileContainer = styled.div<MobileContainerProps>`
   }
 `;
 
-const Background = styled.div<DesktopHeaderProps>`
+const Background = styled.div<TransientProps<DesktopHeaderProps>>`
   background-image: linear-gradient(
     to bottom,
     ${(props) => props.theme.dark.secondaryColor},
     ${(props) => props.theme.dark.primaryColor}
   );
-  height: ${(props) => (props.big ? "400px" : "220px")};
+  height: ${(props) => (props.$big ? "400px" : "220px")};
   position: absolute;
   top: 0;
   left: 0;
@@ -153,7 +153,7 @@ interface DesktopHeaderProps {
 export const DesktopBlogHeader: FC<DesktopHeaderProps> = ({ big }) => (
   <DesktopContainer>
     <BlogHeader />
-    <Background big={big} />
+    <Background $big={big} />
   </DesktopContainer>
 );
 
