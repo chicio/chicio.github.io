@@ -13,7 +13,7 @@ describe("slug", () => {
 
   it("post", () => {
     expect(generatePostSlug("/2017-05-10-about-me")).toEqual(
-      "/2017/05/10/about-me"
+      "/2017/05/10/about-me",
     );
   });
 });

@@ -21,7 +21,7 @@ describe("media-query", () => {
 
   it("device", () => {
     expect(mediaQuery.inputDevice.mouse).toEqual(
-      "@media (hover: hover) and (pointer: fine)"
+      "@media (hover: hover) and (pointer: fine)",
     );
   });
 });

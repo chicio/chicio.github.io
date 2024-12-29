@@ -24,7 +24,7 @@ describe("CallToActionInternalWithTracking", () => {
         >
           Button
         </CallToActionInternalWithTracking>
-      </BlogThemePage>
+      </BlogThemePage>,
     );
     const button = screen.getByText("Button");
 

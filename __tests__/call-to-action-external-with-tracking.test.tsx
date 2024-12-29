@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { trackWith } from "../src/logic/tracking";
 import { BlogThemePage } from "../src/components/design-system/templates/blog-theme-page";
 import { CallToActionExternalWithTracking } from "../src/components/call-to-action-external-with-tracking";
@@ -24,7 +24,7 @@ describe("CallToActionExternalWithTracking", () => {
         >
           Button
         </CallToActionExternalWithTracking>
-      </BlogThemePage>
+      </BlogThemePage>,
     );
     const button = screen.getByText("Button");
 

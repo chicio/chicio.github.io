@@ -24,7 +24,7 @@ describe("StandardExternalLinkWithTracking", () => {
         >
           Link
         </StandardExternalLinkWithTracking>
-      </BlogThemePage>
+      </BlogThemePage>,
     );
     const button = screen.getByText("Link");
 

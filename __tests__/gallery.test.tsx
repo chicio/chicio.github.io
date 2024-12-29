@@ -71,7 +71,7 @@ describe("Gallery", () => {
       <BlogThemePage>
         {/* @ts-ignore */}
         <Gallery images={images} />
-      </BlogThemePage>
+      </BlogThemePage>,
     );
 
     const image = screen.getByAltText("2021-03-30");

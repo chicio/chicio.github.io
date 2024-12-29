@@ -25,7 +25,7 @@ describe("MenuItemWithTracking", () => {
         >
           Link
         </MenuItemWithTracking>
-      </BlogThemePage>
+      </BlogThemePage>,
     );
     const button = screen.getByText("Link");
 
