@@ -2941,15 +2941,5 @@ type BlogPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 type BlogPostsQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: { readonly fields: { readonly slug: string | null } | null } }> }, readonly tagsGroup: { readonly group: ReadonlyArray<{ readonly fieldValue: string | null }> } };
 
-type BlogPostsApiQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type BlogPostsApiQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: { readonly html: string | null, readonly fields: { readonly slug: string | null, readonly readingTime: { readonly text: string | null } | null } | null, readonly frontmatter: { readonly title: string | null, readonly description: string | null, readonly authors: ReadonlyArray<string | null> | null, readonly tags: ReadonlyArray<string | null> | null, readonly math: boolean | null, readonly date: string | null, readonly image: { readonly publicURL: string | null } | null } | null } }> } };
-
-type ImagesApiQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type ImagesApiQuery = { readonly allFile: { readonly edges: ReadonlyArray<{ readonly node: { readonly publicURL: string | null, readonly name: string } }> } };
-
 
 }

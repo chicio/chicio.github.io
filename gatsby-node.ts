@@ -1,16 +1,8 @@
 import { GatsbyNode } from "gatsby";
 import readingTime from "reading-time";
 import * as path from "path";
-import * as fs from "fs";
 import { createFilePath } from "gatsby-source-filesystem";
 import { generatePostSlug, generateTagSlug, slugs } from "./src/logic/slug";
-import {
-  artApiAdapter,
-  blogAuthorsApiAdapter,
-  blogPostDetailsApiAdapter,
-  blogPostsApiAdapter,
-  projectsApiAdapter,
-} from "./src/logic/api/api-adapters";
 
 export const createPages: GatsbyNode["createPages"] = async ({
   graphql,
@@ -99,92 +91,4 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = ({
       value: readingTime(node.rawMarkdownBody as string),
     });
   }
-};
-
-export const onPostBuild: GatsbyNode["onPostBuild"] = async ({ graphql }) => {
-  console.log("onPostBuild: generating API...");
-
-  const apiBasePath = "/api";
-  const apiFolder = `./public${apiBasePath}`;
-
-  if (!fs.existsSync(apiFolder)) {
-    fs.mkdirSync(apiFolder);
-  }
-
-  const blogPostsQuery = (
-    await graphql<Queries.BlogPostsApiQuery>(`
-      query BlogPostsApi {
-        allMarkdownRemark(sort: { frontmatter: { date: DESC } }, limit: 1000) {
-          edges {
-            node {
-              fields {
-                slug
-                readingTime {
-                  text
-                }
-              }
-              frontmatter {
-                title
-                description
-                authors
-                tags
-                math
-                date(formatString: "DD MMM YYYY")
-                image {
-                  publicURL
-                }
-              }
-              html
-            }
-          }
-        }
-      }
-    `)
-  ).data!;
-
-  const imagesApiQuery = (
-    await graphql<Queries.ImagesApiQuery>(`
-      query ImagesApi {
-        allFile(
-          filter: {
-            relativeDirectory: { in: ["projects", "authors", "art"] }
-            extension: { regex: "/(jpg)|(jpeg)|(png)/" }
-          }
-        ) {
-          edges {
-            node {
-              publicURL
-              name
-            }
-          }
-        }
-      }
-    `)
-  ).data!;
-
-  const authorsApi = blogAuthorsApiAdapter(imagesApiQuery);
-  const blogPostsApi = blogPostsApiAdapter(
-    apiBasePath,
-    blogPostsQuery,
-    authorsApi,
-  );
-  const blogPostDetailApis = blogPostDetailsApiAdapter(
-    blogPostsQuery,
-    authorsApi,
-  );
-  const projectsApi = projectsApiAdapter(imagesApiQuery);
-  const artApi = artApiAdapter(imagesApiQuery);
-
-  fs.writeFileSync(`${apiFolder}/posts.json`, JSON.stringify(blogPostsApi));
-  fs.writeFileSync(`${apiFolder}/authors.json`, JSON.stringify(authorsApi));
-  Object.keys(blogPostDetailApis).forEach((key) => {
-    fs.writeFileSync(
-      `${apiFolder}/${key}.json`,
-      JSON.stringify(blogPostDetailApis[key]),
-    );
-  });
-  fs.writeFileSync(`${apiFolder}/projects.json`, JSON.stringify(projectsApi));
-  fs.writeFileSync(`${apiFolder}/art.json`, JSON.stringify(artApi));
-
-  console.log("onPostBuild: API generation completed.");
 };
