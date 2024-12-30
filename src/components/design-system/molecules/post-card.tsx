@@ -7,9 +7,9 @@ import { PostMeta } from "./post-meta";
 import { Heading5 } from "../atoms/heading5";
 import { StandardInternalLinkWithTracking } from "../../tracking/standard-internal-link-with-tracking";
 import { mediaQuery } from "../utils-css/media-query";
-import PostTags from "./post-tags";
 import { gatsbyImagePlaceholderSelector } from "../utils-css/gatsby-image-selector";
 import { FC } from "react";
+import { PostTags } from "./post-tags";
 
 interface BigCardProps {
   big: boolean;

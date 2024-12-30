@@ -77,7 +77,6 @@ My website has been created for Github Pages using:
         * [gatsby-remark-prismjs](https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/)
     * [gatsby-plugin-feed](https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/)
     * [gatsby-plugin-catch-links](https://www.gatsbyjs.com/plugins/gatsby-plugin-catch-links/)
-    * [gatsby-plugin-loadable-components-ssr](https://www.gatsbyjs.com/plugins/gatsby-plugin-loadable-components-ssr/)
 * [Styled components](https://styled-components.com)
 * [TypeScript](https://www.typescriptlang.org) 
 * [Jest](https://github.com/facebook/jest) + [React Testing Library](https://github.com/testing-library/react-testing-library)

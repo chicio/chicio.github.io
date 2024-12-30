@@ -31,5 +31,3 @@ export const PostTags: FC<PostTagsProps> = ({
     ))}
   </PostTagsContainer>
 );
-
-export default PostTags;

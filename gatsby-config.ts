@@ -215,7 +215,6 @@ const config: GatsbyConfig = {
     },
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-loadable-components-ssr`,
     {
       resolve: `gatsby-plugin-lunr`,
       options: {

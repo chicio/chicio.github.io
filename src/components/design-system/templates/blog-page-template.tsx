@@ -4,13 +4,11 @@ import { CurrentLocation } from "../../../logic/current-location";
 import { BlogThemePage } from "./blog-theme-page";
 import { Head } from "../../head";
 import { BlogMenu } from "../organism/blog-menu";
-import loadable from "@loadable/component";
 import styled from "styled-components";
 import { Container } from "../atoms/container";
 import { blogPrimaryColor } from "../themes/blog-colors";
 import { FC, ReactNode } from "react";
-
-const Footer = loadable(() => import(`../organism/footer`));
+import { Footer } from "../organism/footer";
 
 const ContentContainer = styled(Container)`
   margin-top: ${(props) => props.theme.spacing[12]};

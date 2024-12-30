@@ -43,12 +43,10 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@loadable/component": "^5.16.4",
     "@styled-icons/boxicons-logos": "^10.47.0",
     "@styled-icons/boxicons-regular": "^10.47.0",
     "@styled-icons/fa-solid": "^10.47.0",
     "@styled-icons/styled-icon": "^10.7.1",
-    "@types/loadable__component": "^5.13.9",
     "@types/lunr": "^2.3.7",
     "@types/react-adaptive-hooks": "0.0.3",
     "@types/react-transition-group": "^4.4.12",
@@ -60,7 +58,6 @@
     "gatsby-plugin-feed": "^5.14.0",
     "gatsby-plugin-google-gtag": "^5.14.0",
     "gatsby-plugin-image": "^3.14.0",
-    "gatsby-plugin-loadable-components-ssr": "^4.3.2",
     "gatsby-plugin-lunr": "^1.5.2",
     "gatsby-plugin-manifest": "^5.14.0",
     "gatsby-plugin-offline": "^6.14.0",

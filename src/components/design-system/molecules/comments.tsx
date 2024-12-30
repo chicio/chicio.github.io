@@ -23,5 +23,3 @@ export const Comments: FC<CommentsProps> = ({ url, title }) => (
     />
   </CommentsContainer>
 );
-
-export default Comments;

@@ -73,5 +73,3 @@ export const RecentPosts: FC<RecentPostsProps> = ({ currentSlug }) => {
     </ReadNextContainer>
   );
 };
-
-export default RecentPosts;

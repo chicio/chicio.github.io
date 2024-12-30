@@ -10,24 +10,14 @@ import { PostContent } from "../components/design-system/post-content";
 import styled from "styled-components";
 import { OgPageType } from "../logic/seo";
 import { getCurrentLocationFrom } from "../logic/current-location";
-import loadable from "@loadable/component";
+import { RecentPosts } from "../components/design-system/organism/read-next";
+import { PostTags } from "../components/design-system/molecules/post-tags";
+import { Comments } from "../components/design-system/molecules/comments";
 
 const PostTitle = styled(Heading2)`
   margin: 0;
   word-wrap: break-word;
 `;
-
-const RecentPosts = loadable(
-  () => import(`../components/design-system/organism/read-next`),
-);
-
-const PostTags = loadable(
-  () => import(`../components/design-system/molecules/post-tags`),
-);
-
-const Comments = loadable(
-  () => import(`../components/design-system/molecules/comments`),
-);
 
 const PostContainer = styled.div`
   margin-top: ${(props) => props.theme.spacing[5]};

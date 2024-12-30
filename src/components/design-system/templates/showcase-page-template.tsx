@@ -4,12 +4,10 @@ import { OgPageType } from "../../../logic/seo";
 import { ContainerFullscreen } from "../atoms/container-fullscreen";
 import { DownArrow } from "../molecules/down-arrow";
 import { CurrentLocation } from "../../../logic/current-location";
-import loadable from "@loadable/component";
 import { ThemePage } from "./theme-page";
 import { DefaultTheme } from "styled-components";
 import { FC, ReactNode } from "react";
-
-const Footer = loadable(() => import(`..//organism/footer`));
+import { Footer } from "../organism/footer";
 
 interface ShowcasePageProps {
   location: CurrentLocation;
