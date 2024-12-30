@@ -118,24 +118,25 @@ const SearchBoxInput = styled.input<TransientProps<StartSearchProps>>`
   border-radius: 50px;
   box-sizing: border-box;
   font-size: ${(props) => props.theme.fontSizes[3]};
-  color: ${(props) => props.theme.light.textAbovePrimaryColor};
   border: 2px solid ${(props) => props.theme.light.textAbovePrimaryColor};
   outline: none;
   transition: 0.5s;
+  color: transparent;
 
   ${mediaQuery.dark} {
-    color: ${(props) => props.theme.dark.textAbovePrimaryColor};
     border: 2px solid ${(props) => props.theme.dark.textAbovePrimaryColor};
   }
 
   ${(props) =>
     props.$startSearch &&
     css`
+      color: ${(props) => props.theme.light.textAbovePrimaryColor};
       width: 200px;
       background: ${(props) => props.theme.light.generalBackground};
       ${borderRadius};
 
       ${mediaQuery.dark} {
+        color: ${(props) => props.theme.dark.textAbovePrimaryColor};
         background: ${(props) => props.theme.dark.generalBackground};
       }
     `}
