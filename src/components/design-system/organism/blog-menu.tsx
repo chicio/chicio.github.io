@@ -141,10 +141,6 @@ const NavBarMenuItem = memo(styled(MenuItemWithTracking)<NavBarMenuItemProps>`
       css`
         ${mediaQuery.inputDevice.mouse} {
           transition: transform 0.15s;
-
-          &:hover {
-            transform: scale(1.1);
-          }
         }
       `};
   }

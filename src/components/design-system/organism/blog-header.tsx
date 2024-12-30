@@ -3,6 +3,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { mediaQuery } from "../utils-css/media-query";
 import { gatsbyImagePlaceholderSelector } from "../utils-css/gatsby-image-selector";
+import { backgroundGradients } from "../atoms/gradients";
 
 const BlogHeaderContainer = styled.div`
   display: flex;
@@ -108,11 +109,7 @@ const MobileContainer = styled.div<MobileContainerProps>`
 `;
 
 const Background = styled.div<TransientProps<DesktopHeaderProps>>`
-  background-image: linear-gradient(
-    to bottom,
-    ${(props) => props.theme.dark.secondaryColor},
-    ${(props) => props.theme.dark.primaryColor}
-  );
+  ${backgroundGradients};
   height: ${(props) => (props.$big ? "400px" : "220px")};
   position: absolute;
   top: 0;

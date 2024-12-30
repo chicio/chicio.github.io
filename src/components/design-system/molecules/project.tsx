@@ -9,6 +9,7 @@ import { Paragraph } from "../atoms/paragraph";
 import { List } from "../atoms/list";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import { gatsbyImageWrapperSelector } from "../utils-css/gatsby-image-selector";
+import { borderRadius } from "../atoms/border-radius";
 
 interface ProjectContainerProps {
   reverse: boolean;
@@ -40,7 +41,7 @@ const ProjectImageContainer = styled(ProjectContentContainer)`
 
   ${gatsbyImageWrapperSelector} {
     overflow: hidden;
-    border-radius: 4px;
+    ${borderRadius};
     box-shadow: 0 3px 10px 0 ${(props) => props.theme.light.boxShadowLight};
 
     ${mediaQuery.dark} {

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { mediaQuery } from "../utils-css/media-query";
+import { backgroundGradients } from "./gradients";
 
 export const ContainerFullscreen = styled.div`
   display: flex;
@@ -9,9 +9,5 @@ export const ContainerFullscreen = styled.div`
   height: 100vh;
   min-height: 100vh;
   width: 100%;
-  background-color: ${(props) => props.theme.light.primaryColor};
-
-  ${mediaQuery.dark} {
-    background-color: ${(props) => props.theme.dark.primaryColor};
-  }
+  ${backgroundGradients}
 `;

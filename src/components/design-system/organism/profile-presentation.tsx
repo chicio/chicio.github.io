@@ -1,4 +1,3 @@
-import { StaticImage } from "gatsby-plugin-image";
 import { Heading5 } from "../atoms/heading5";
 import { SocialContacts } from "./social-contacts";
 import { tracking } from "../../../logic/tracking";
@@ -9,6 +8,8 @@ import { CallToActionInternalWithTracking } from "../../tracking/call-to-action-
 import { opacity } from "../utils-css/opacity-keyframes";
 import { mediaQuery } from "../utils-css/media-query";
 import { FC } from "react";
+// @ts-ignore
+import FabrizioDuroniAvatar from "../../../images/authors/fabrizio-duroni.jpg";
 
 const Author = styled(Heading2)`
   color: ${(props) => props.theme.light.textAbovePrimaryColor};
@@ -42,39 +43,23 @@ const ProfileContainer = styled.div`
   animation-fill-mode: forwards;
 `;
 
-const ProfileImageContainer = styled.div`
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  background-color: ${(props) => props.theme.light.generalBackgroundLight};
-
-  ${mediaQuery.dark} {
-    background-color: ${(props) => props.theme.dark.generalBackgroundLight};
-  }
-`;
-
 export interface ProfilePresentationProps {
   author: string;
 }
+
+const ProfilePhoto = styled.img`
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 3px solid white;
+  margin: "auto";
+`;
 
 export const ProfilePresentation: FC<ProfilePresentationProps> = ({
   author,
 }) => (
   <ProfileContainer>
-    <ProfileImageContainer>
-      <StaticImage
-        placeholder={"none"}
-        loading={"eager"}
-        imgStyle={{
-          width: "130px",
-          height: "130px",
-          borderRadius: "50%",
-          margin: "auto",
-        }}
-        src={"../../../images/authors/fabrizio-duroni.jpg"}
-        alt={author}
-      />
-    </ProfileImageContainer>
+    <ProfilePhoto src={FabrizioDuroniAvatar} alt={author} />
     <Author>{author}</Author>
     <Job>Software Developer</Job>
     <SocialContacts

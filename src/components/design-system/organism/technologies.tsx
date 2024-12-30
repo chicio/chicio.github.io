@@ -55,10 +55,7 @@ export interface TechnologiesProps {
 export const Technologies: FC<TechnologiesProps> = ({ author }) => (
   <TechnologiesContainer>
     <TechnologyParagraph>
-      {`I'm ${author}, a software developer with many years of experience.
-        I have a strong knowledge of the following languages: C++, Objective-C, Swift, C, Java, PHP,
-        JavaScript, TypeScript, Kotlin.
-        I develop mobile app since 2010 and web application since 2005. I'm also passionate about computer graphics.`}
+      {`I’m ${author}, a software developer with over 15 years of experience, working in the field since 2008. I specialise in developing mobile and web applications. I also maintain smaller open-source projects and I have a blog where I speak about technology.`}
     </TechnologyParagraph>
     <TechnologiesIconsContainer>
       <TechnologyImageContainer>

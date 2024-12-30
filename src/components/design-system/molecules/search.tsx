@@ -9,6 +9,7 @@ import { Link } from "gatsby";
 import { isIOS } from "react-device-detect";
 import { SearchResult } from "../lunr";
 import { useSearch } from "../hooks/use-search";
+import { borderRadius } from "../atoms/border-radius";
 
 const SearchListContainer = styled(Container)`
   position: absolute;
@@ -18,7 +19,7 @@ const SearchListContainer = styled(Container)`
   bottom: 0;
   height: calc(100vh - 55px ${isIOS ? " - 100px" : ""});
   overflow: scroll;
-  border-radius: 4px;
+  ${borderRadius};
 `;
 
 const SearchHitsList = styled(List)`
@@ -26,7 +27,7 @@ const SearchHitsList = styled(List)`
   padding: ${(props) => props.theme.spacing[2]};
   margin: ${(props) => props.theme.spacing[6]} 0;
   background-color: ${(props) => props.theme.light.generalBackground};
-  border-radius: 4px;
+  ${borderRadius};
 
   ${mediaQuery.dark} {
     background-color: ${(props) => props.theme.dark.generalBackground};
@@ -133,7 +134,7 @@ const SearchBoxInput = styled.input<TransientProps<StartSearchProps>>`
     css`
       width: 200px;
       background: ${(props) => props.theme.light.generalBackground};
-      border-radius: 4px;
+      ${borderRadius};
 
       ${mediaQuery.dark} {
         background: ${(props) => props.theme.dark.generalBackground};

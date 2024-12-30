@@ -3,8 +3,8 @@ import { Colors } from "../styled";
 export const blogPrimaryColor = "#3F51B5";
 export const blogTextAbovePrimaryColor = "#FFFFFF";
 const primaryColorDark = "#303F9F";
-const primaryColorLight = "#DFDFF1";
-const secondaryColor = "#b5763f";
+const primaryColorLight = "#BFBFD1";
+const secondaryColor = "#80808B";
 
 export const blogDark: Colors = {
   primaryColor: blogPrimaryColor,

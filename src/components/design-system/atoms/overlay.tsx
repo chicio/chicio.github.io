@@ -6,7 +6,6 @@ import { useLockBodyScroll } from "../hooks/use-lock-body-scroll";
 export interface OverlayProps {
   zIndex: number;
   delay: string;
-  onClick: () => void;
 }
 
 const StyledOverlay = styled.div<TransientProps<OverlayProps>>`
@@ -23,8 +22,12 @@ const StyledOverlay = styled.div<TransientProps<OverlayProps>>`
   backdrop-filter: blur(4px);
 `;
 
-export const Overlay: FC<OverlayProps> = ({ zIndex, onClick, delay }) => {
+export const Overlay: FC<OverlayProps & { onClick: () => void }> = ({
+  zIndex,
+  onClick,
+  delay,
+}) => {
   useLockBodyScroll();
 
-  return <StyledOverlay $zIndex={zIndex} $onClick={onClick} $delay={delay} />;
+  return <StyledOverlay $zIndex={zIndex} onClick={onClick} $delay={delay} />;
 };

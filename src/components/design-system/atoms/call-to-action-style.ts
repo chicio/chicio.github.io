@@ -1,5 +1,6 @@
 import { css } from "styled-components";
 import { mediaQuery } from "../utils-css/media-query";
+import { borderRadius } from "./border-radius";
 
 export const callToActionStyle = css`
   font-size: ${(props) => props.theme.fontSizes[3]};
@@ -7,7 +8,7 @@ export const callToActionStyle = css`
   color: ${(props) => props.theme.light.textAbovePrimaryColor};
   padding: ${(props) => props.theme.spacing[2]};
   border: none;
-  border-radius: 4px;
+  ${borderRadius};
   margin: ${(props) => props.theme.spacing[0]};
   line-height: 1;
   text-align: center;

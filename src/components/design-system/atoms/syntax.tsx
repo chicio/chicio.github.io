@@ -1,4 +1,5 @@
 import { css } from "styled-components";
+import { borderRadius } from "./border-radius";
 
 export const syntax = css`
   /**
@@ -36,7 +37,7 @@ export const syntax = css`
 
   pre[class*="language-"] {
     padding: 15px;
-    border-radius: 4px;
+    ${borderRadius};
     border: 1px solid #e1e1e8;
     overflow: auto;
     position: relative;

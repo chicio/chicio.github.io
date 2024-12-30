@@ -6,6 +6,8 @@ import styled from "styled-components";
 import { ContainerFluid } from "../atoms/container-fluid";
 import { Paragraph } from "../atoms/paragraph";
 import { mediaQuery } from "../utils-css/media-query";
+import { borderRadius } from "../atoms/border-radius";
+import { gatsbyImageWrapperSelector } from "../utils-css/gatsby-image-selector";
 
 const GalleryContainer = styled(ContainerFluid)`
   padding: 0;
@@ -23,6 +25,7 @@ const GalleryImageFrame = styled.figure`
   margin: 0;
   background-color: ${(props) => props.theme.light.generalBackgroundLight};
   box-shadow: 0 3px 10px 0 ${(props) => props.theme.light.boxShadowLight};
+  ${borderRadius};
 
   ${mediaQuery.minWidth.md} {
     ${mediaQuery.inputDevice.mouse} {
@@ -67,6 +70,13 @@ const GalleryImage = styled(GatsbyImage)`
   }
 `;
 
+const GalleryImageContainer = styled.div`
+  ${gatsbyImageWrapperSelector} {
+    overflow: hidden;
+    ${borderRadius};
+  }
+`;
+
 export interface GalleryProps {
   images: ReadonlyArray<{
     readonly node: {
@@ -93,10 +103,12 @@ export const Gallery: FC<GalleryProps> = ({ images }) => {
               setCurrentImage(image.node.childImageSharp!.gatsbyImageData!)
             }
           >
-            <GalleryImage
-              alt={image.node.name}
-              image={image.node.childImageSharp!.gatsbyImageData!}
-            />
+            <GalleryImageContainer>
+              <GalleryImage
+                alt={image.node.name}
+                image={image.node.childImageSharp!.gatsbyImageData!}
+              />
+            </GalleryImageContainer>
             <GalleryImageDescription>
               {artDescriptions[image.node.name]}
             </GalleryImageDescription>

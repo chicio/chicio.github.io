@@ -10,6 +10,7 @@ import { mediaQuery } from "../utils-css/media-query";
 import { gatsbyImagePlaceholderSelector } from "../utils-css/gatsby-image-selector";
 import { FC } from "react";
 import { PostTags } from "./post-tags";
+import { borderRadius } from "../atoms/border-radius";
 
 interface BigCardProps {
   big: boolean;
@@ -21,7 +22,7 @@ const PostDescription = styled(Paragraph)`
 `;
 
 const PostCardContainer = styled.div<TransientProps<BigCardProps>>`
-  border-radius: 4px;
+  ${borderRadius};
   margin-top: ${(props) => props.theme.spacing[4]};
   background-color: ${(props) => props.theme.light.generalBackgroundLight};
   box-shadow: 0 3px 10px 0 ${(props) => props.theme.light.boxShadowLight};
