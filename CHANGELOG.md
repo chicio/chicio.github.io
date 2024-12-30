@@ -1,6 +1,13 @@
 # Change Log
 All changes to Chicio Coding will be documented in this file.
 
+## [7.1.0](https://github.com/chicio/chicio.github.io/releases/tag/v7.1.0)
+Release date: 2024-12-30
+
+#### Added
+
+- Update deps to latest releases
+
 ## [7.0.1](https://github.com/chicio/chicio.github.io/releases/tag/v7.0.1)
 Release date: 2024-12-30
 
