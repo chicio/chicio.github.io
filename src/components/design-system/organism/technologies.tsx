@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { ContainerFluid } from "../atoms/container-fluid";
 import { mediaQuery } from "../utils-css/media-query";
 import { FC } from "react";
+import { Container } from "../atoms/container";
 
 const TechnologiesContainer = styled(ContainerFluid)`
   margin: 0;
@@ -21,6 +22,7 @@ const TechnologyParagraph = styled(Paragraph)`
   text-align: center;
   margin-bottom: ${(props) => props.theme.spacing[7]};
   color: ${(props) => props.theme.light.textAbovePrimaryColor};
+  font-size: ${(props) => props.theme.fontSizes[3]};
 
   ${mediaQuery.dark} {
     color: ${(props) => props.theme.dark.textAbovePrimaryColor};
@@ -54,10 +56,28 @@ export interface TechnologiesProps {
 
 export const Technologies: FC<TechnologiesProps> = ({ author }) => (
   <TechnologiesContainer>
-    <TechnologyParagraph>
-      {`I’m ${author}, a software developer with over 15 years of experience, working in the field since 2008. I specialise in developing mobile and web applications. I also maintain smaller open-source projects and I have a blog where I speak about technology.`}
-    </TechnologyParagraph>
+    <Container>
+      <TechnologyParagraph>
+        {`I’m ${author}, a software developer with over 15 years of experience, working in the field since 2008. I specialise in developing mobile 📱 and web applications 🚀. I also maintain small open-source projects and I have a blog where I speak about technology.`}
+      </TechnologyParagraph>
+    </Container>
     <TechnologiesIconsContainer>
+      <TechnologyImageContainer>
+        <StaticImage
+          objectFit={"contain"}
+          src={"../../../images/technologies/typescript.png"}
+          alt={"typescript"}
+          placeholder={"blurred"}
+        />
+      </TechnologyImageContainer>
+      <TechnologyImageContainer>
+        <StaticImage
+          objectFit={"contain"}
+          src={"../../../images/technologies/react.png"}
+          alt={"react"}
+          placeholder={"blurred"}
+        />
+      </TechnologyImageContainer>
       <TechnologyImageContainer>
         <StaticImage
           objectFit={"contain"}
@@ -78,54 +98,6 @@ export const Technologies: FC<TechnologiesProps> = ({ author }) => (
           objectFit={"contain"}
           src={"../../../images/technologies/android.png"}
           alt={"android"}
-          placeholder={"blurred"}
-        />
-      </TechnologyImageContainer>
-      <TechnologyImageContainer>
-        <StaticImage
-          objectFit={"contain"}
-          src={"../../../images/technologies/cpp.png"}
-          alt={"c++"}
-          placeholder={"blurred"}
-        />
-      </TechnologyImageContainer>
-      <TechnologyImageContainer>
-        <StaticImage
-          objectFit={"contain"}
-          src={"../../../images/technologies/opengl-es.png"}
-          alt={"opengl"}
-          placeholder={"blurred"}
-        />
-      </TechnologyImageContainer>
-      <TechnologyImageContainer>
-        <StaticImage
-          objectFit={"contain"}
-          src={"../../../images/technologies/react.png"}
-          alt={"react"}
-          placeholder={"blurred"}
-        />
-      </TechnologyImageContainer>
-      <TechnologyImageContainer>
-        <StaticImage
-          objectFit={"contain"}
-          src={"../../../images/technologies/php.png"}
-          alt={"php"}
-          placeholder={"blurred"}
-        />
-      </TechnologyImageContainer>
-      <TechnologyImageContainer>
-        <StaticImage
-          objectFit={"contain"}
-          src={"../../../images/technologies/html-css-js.png"}
-          alt={"js"}
-          placeholder={"blurred"}
-        />
-      </TechnologyImageContainer>
-      <TechnologyImageContainer>
-        <StaticImage
-          objectFit={"contain"}
-          src={"../../../images/technologies/typescript.png"}
-          alt={"typescript"}
           placeholder={"blurred"}
         />
       </TechnologyImageContainer>
