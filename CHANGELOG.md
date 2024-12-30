@@ -6,14 +6,15 @@ Release date: 2024-12-30
 
 #### Added
 
-- update deps to latest releases
-- lunr search
+- Update deps to latest releases
+- Lunr search
+- Various ui improvements
 
 #### Removed
 
-- algolia search implementation
-- loadable components
-- unused/useless deps
+- Algolia search implementation
+- Loadable components
+- Unused/useless deps
 
 #### Fixed
 

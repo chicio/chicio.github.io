@@ -8,6 +8,7 @@ import { ProjectCallToAction } from "../../../logic/projects";
 import { Paragraph } from "../atoms/paragraph";
 import { List } from "../atoms/list";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
+import { gatsbyImageWrapperSelector } from "../utils-css/gatsby-image-selector";
 
 interface ProjectContainerProps {
   reverse: boolean;
@@ -36,6 +37,16 @@ const ProjectImageContainer = styled(ProjectContentContainer)`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${gatsbyImageWrapperSelector} {
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 3px 10px 0 ${(props) => props.theme.light.boxShadowLight};
+
+    ${mediaQuery.dark} {
+      box-shadow: 0 3px 10px 0 ${(props) => props.theme.dark.boxShadowLight};
+    }
+  }
 `;
 
 const CallToActionContainer = styled.div`
