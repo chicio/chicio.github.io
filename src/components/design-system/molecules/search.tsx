@@ -6,7 +6,6 @@ import { Container } from "../atoms/container";
 import { List } from "../atoms/list";
 import { Paragraph } from "../atoms/paragraph";
 import { Link } from "gatsby";
-import { isIOS } from "react-device-detect";
 import { SearchResult } from "../lunr";
 import { useSearch } from "../hooks/use-search";
 import { borderRadius } from "../atoms/border-radius";
@@ -17,7 +16,7 @@ const SearchListContainer = styled(Container)`
   right: 0;
   left: 0;
   bottom: 0;
-  height: calc(100vh - 55px ${isIOS ? " - 100px" : ""});
+  height: 80vh;
   overflow: scroll;
   ${borderRadius};
 `;
