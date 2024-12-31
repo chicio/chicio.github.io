@@ -342,13 +342,15 @@ leveraging the power of React Native Reanimated.</em></p>
 <hr>
 <p>Recently, during a one-to-one meeting with my engineering manager, <a href="https://www.linkedin.com/in/lucadantona/" target="_blank" rel="nofollow noopener noreferrer">Luca D'antona</a>,
 we discussed some exciting animations we’d like to bring to our mobile apps at <a href="https://corporate.lastminute.com" target="_blank" rel="nofollow noopener noreferrer">lastminute.com</a>.
-In particular, Luca pointed out how captivating the carousel on the home screen of the official<br>
-<a href="https://www.apple.com/apple-tv-app/" target="_blank" rel="nofollow noopener noreferrer">Apple TV app</a> is. This carousel stands out for its stunning parallax animation.
-Essentially, as you scroll through the images of TV shows/movies, the images shift based on the scroll position,
+In particular, Luca pointed out how captivating the carousel on the home screen of the official
+<a href="https://www.apple.com/apple-tv-app/" target="_blank" rel="nofollow noopener noreferrer">Apple TV app</a> is.<br>
+This carousel stands out for its stunning parallax animation.
+Essentially, as you scroll through the images of TV shows and movies, the images shift based on the scroll position,
 adding a dynamic sense of motion to the entire experience.
 In our apps we have been using <a href="/2018/07/04/react-native-typescript-existing-app/">React Native</a> for quite some
 time, but animations often have a bad reputation within this framework.
-Luca challenged the team, asking: “Do you think it’s possible to implement such a cool animation on our daily deals carousel? ChatGPT says it should be possible!”
+Luca challenged the team, asking: “Do you think it’s possible to implement such a cool animation on our daily deals
+carousel? ChatGPT says it should be possible!”.<br>
 I took this challenge personally because I’m passionate about animations—a natural consequence of my love for
 <a href="/2017/08/25/how-to-calculate-reflection-vector/">computer graphics</a>).
 And here I am today, having successfully implemented the challenge and enhanced our daily deals carousel with this
@@ -480,10 +482,9 @@ to cache in some way the offset of each item (and perform very fast the <code cl
 <p>Now that we have our carousel in <code class="language-text">FlatList</code> iin place, we can implement the <code class="language-text">ParallaxCarouselItem</code> component. This
 component receive the <code class="language-text">scrollX</code> offset from the parent, and pass it to the <code class="language-text">useParallaxWithOpacityAnimations</code> hook
 to calculate the animation needed.
-In terms strictly of UI, the component is quite straight forward.
+In terms strictly of UI, the component is quite straight forward.<br>
 It has an image fullscreen, wrapped by a <code class="language-text">Animated.View</code> that we will use to apply the parallax animation.
-A <code class="language-text">LinearGradient</code> is used to add som contrast with the texts at the bottom of the item, created using <code class="language-text">Animated.
-Text</code> views.</p>
+A <code class="language-text">LinearGradient</code> is used to add som contrast with the texts at the bottom of the item, created using <code class="language-text">Animated.Text</code> views.</p>
 <div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">import</span> Animated<span class="token punctuation">,</span> <span class="token punctuation">{</span>SharedValue<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"react-native-reanimated"</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span>Dimensions<span class="token punctuation">,</span> Image<span class="token punctuation">,</span> StyleSheet<span class="token punctuation">,</span> View<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"react-native"</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span>ParallaxCarouselItemData<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@/parallax-carousel/parallax-carousel-item/parallax-carousel-item-data"</span><span class="token punctuation">;</span>
@@ -610,6 +611,7 @@ We just want the item carousel content to move inside its container, that is bas
 <p>We are now ready to add our <code class="language-text">ParallaxCarousel</code> component to the <code class="language-text">RootLayout</code> of the expo example app, with some test
 data.</p>
 <div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">import</span> <span class="token punctuation">{</span>ParallaxCarousel<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@/parallax-carousel/parallax-carousel"</span><span class="token punctuation">;</span>
+
 <span class="token keyword">const</span> items <span class="token operator">=</span> <span class="token punctuation">[</span>
   <span class="token punctuation">{</span>
     id<span class="token operator">:</span> <span class="token string">'1'</span><span class="token punctuation">,</span>
