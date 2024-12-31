@@ -31,10 +31,6 @@ const FooterMenuItem = styled(MenuItemWithTracking)`
 
   ${mediaQuery.inputDevice.mouse} {
     transition: transform 0.15s;
-
-    &:hover {
-      transform: scale(1.1);
-    }
   }
 `;
 
