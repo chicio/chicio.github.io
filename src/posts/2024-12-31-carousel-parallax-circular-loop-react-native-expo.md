@@ -17,13 +17,15 @@ leveraging the power of React Native Reanimated.*
 
 Recently, during a one-to-one meeting with my engineering manager, [Luca D'antona](https://www.linkedin.com/in/lucadantona/), 
 we discussed some exciting animations we’d like to bring to our mobile apps at [lastminute.com](https://corporate.lastminute.com).
-In particular, Luca pointed out how captivating the carousel on the home screen of the official  
-[Apple TV app](https://www.apple.com/apple-tv-app/) is. This carousel stands out for its stunning parallax animation.
-Essentially, as you scroll through the images of TV shows/movies, the images shift based on the scroll position,
+In particular, Luca pointed out how captivating the carousel on the home screen of the official 
+[Apple TV app](https://www.apple.com/apple-tv-app/) is.  
+This carousel stands out for its stunning parallax animation.
+Essentially, as you scroll through the images of TV shows and movies, the images shift based on the scroll position,
 adding a dynamic sense of motion to the entire experience. 
 In our apps we have been using [React Native](/2018/07/04/react-native-typescript-existing-app/) for quite some 
 time, but animations often have a bad reputation within this framework.
-Luca challenged the team, asking: “Do you think it’s possible to implement such a cool animation on our daily deals carousel? ChatGPT says it should be possible!”
+Luca challenged the team, asking: “Do you think it’s possible to implement such a cool animation on our daily deals 
+carousel? ChatGPT says it should be possible!”.  
 I took this challenge personally because I’m passionate about animations—a natural consequence of my love for 
 [computer graphics](/2017/08/25/how-to-calculate-reflection-vector/)).
 And here I am today, having successfully implemented the challenge and enhanced our daily deals carousel with this 
@@ -152,10 +154,9 @@ export const useCircularCarousel = (items: ParallaxCarouselItemData[]) => {
 Now that we have our carousel in `FlatList` iin place, we can implement the `ParallaxCarouselItem` component. This 
 component receive the `scrollX` offset from the parent, and pass it to the `useParallaxWithOpacityAnimations` hook 
 to calculate the animation needed.
-In terms strictly of UI, the component is quite straight forward.
+In terms strictly of UI, the component is quite straight forward.  
 It has an image fullscreen, wrapped by a `Animated.View` that we will use to apply the parallax animation.
-A `LinearGradient` is used to add som contrast with the texts at the bottom of the item, created using `Animated.
-Text` views.  
+A `LinearGradient` is used to add som contrast with the texts at the bottom of the item, created using `Animated.Text` views.  
 
 ```tsx
 import Animated, {SharedValue} from "react-native-reanimated";
@@ -292,6 +293,7 @@ data.
 
 ```tsx
 import {ParallaxCarousel} from "@/parallax-carousel/parallax-carousel";
+
 const items = [
   {
     id: '1',
