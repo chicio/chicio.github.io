@@ -1,6 +1,7 @@
 ---
 title: "Create a circular carousel with parallax effect in React Native"
-description: "Let's see how it is possible to create a circular carousel with parallax effect in React Native."
+description: "Let's see how it is possible to create a circular carousel with parallax effect in React Native by 
+leveraging the power of React Native Reanimated."
 date: 2024-12-30
 image: ../images/posts/react-native-parallax-carousel.jpg
 tags: [react native, swift, ios, apple, android, java, mobile application development, javascript, typescript, expo]
@@ -9,7 +10,8 @@ math: false
 authors: [fabrizio_duroni]
 ---
 
-*Let's see how it is possible to create a circular carousel with parallax effect in React Native.*
+*Let's see how it is possible to create a circular carousel with parallax effect in React Native by
+leveraging the power of React Native Reanimated.*
 
 ---
 
