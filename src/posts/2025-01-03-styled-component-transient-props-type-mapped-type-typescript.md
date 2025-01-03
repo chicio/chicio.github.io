@@ -22,9 +22,9 @@ element.
 The framework offers a couple of ways to avoid this behavior. 
 The first one is [Transient props](https://styled-components.com/docs/api#transient-props). By using `$` as a 
 prefix of a prop name it will not be propagated.
-The second one is the `shouldforwardProp`.
+The second one is the `shouldForwardProp`.
 This is a fine-grained way to prevent the prop forward with a specific filter that acts on the name of the 
-props. You can add it using  the `withConfig` api or the `shouldforwardProp` prop as in the example below.
+props. You can add it using  the `withConfig` api or the `shouldForwardProp` prop as in the example below.
 
 ```tsx
 interface BigCardProps {
@@ -95,14 +95,13 @@ export const Overlay: FC<OverlayProps> = ({ zIndex, onClick, delay }) => {
 
 In the last couple of years, I felt in love with the TypeScript type system.
 It is so powerful and flexible that it allows you to write DSL with validation that other languages would dream of.
-A lot of colleagues still argue that this kind of knowledge on the specific part of TypeScript, but I strongly 
+A lot of colleagues still argue that this kind of knowledge on the specific part of TypeScript is useless, but I strongly 
 disagree.
 Why? Because in this post, I will show you a practical application of the knowledge I acquired to solve the 
 problem above.
 In particular, we want to avoid coding two different interfaces,
 but just creating a new one starting from the `OverlayProps`
-that adds the `$` sign to the ones that should be transient props, and skips `$` 
-for the ones that are DOM attributes.
+that adds the `$` sign to the ones that should be transient props, and skips the other ones that are DOM attributes.
 
 #### Implementation
 
@@ -112,7 +111,7 @@ Based on the description above, we want to define a `TransientProps` type that i
 * skip the DOM props in some way, because they should still be forwarded
 
 To start the implementation, we need first to check some types exposed by React.  
-In particular for our use case it will be useful the [`ComponentProps` type](https://react-typescript-cheatsheet.netlify.app/docs/react-types/ComponentProps). 
+For our use case it will be useful the [`ComponentProps` type](https://react-typescript-cheatsheet.netlify.app/docs/react-types/ComponentProps). 
 This utility type lets us extract the props of a React component received as generic parameter.  
 The other interesting type is `React.JSX.IntrinsicElements`.
 This is a type that declares which JSX elements are allowed/defined and their props.
