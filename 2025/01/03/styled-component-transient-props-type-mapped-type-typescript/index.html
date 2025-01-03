@@ -346,9 +346,9 @@ element.
 The framework offers a couple of ways to avoid this behavior.
 The first one is <a href="https://styled-components.com/docs/api#transient-props" target="_blank" rel="nofollow noopener noreferrer">Transient props</a>. By using <code class="language-text">$</code> as a
 prefix of a prop name it will not be propagated.
-The second one is the <code class="language-text">shouldforwardProp</code>.
+The second one is the <code class="language-text">shouldForwardProp</code>.
 This is a fine-grained way to prevent the prop forward with a specific filter that acts on the name of the
-props. You can add it using  the <code class="language-text">withConfig</code> api or the <code class="language-text">shouldforwardProp</code> prop as in the example below.</p>
+props. You can add it using  the <code class="language-text">withConfig</code> api or the <code class="language-text">shouldForwardProp</code> prop as in the example below.</p>
 <div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">interface</span> <span class="token class-name">BigCardProps</span> <span class="token punctuation">{</span>
   big<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -412,14 +412,13 @@ This is why they are contained again in the <code class="language-text">StyledOv
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
 <p>In the last couple of years, I felt in love with the TypeScript type system.
 It is so powerful and flexible that it allows you to write DSL with validation that other languages would dream of.
-A lot of colleagues still argue that this kind of knowledge on the specific part of TypeScript, but I strongly
+A lot of colleagues still argue that this kind of knowledge on the specific part of TypeScript is useless, but I strongly
 disagree.
 Why? Because in this post, I will show you a practical application of the knowledge I acquired to solve the
 problem above.
 In particular, we want to avoid coding two different interfaces,
 but just creating a new one starting from the <code class="language-text">OverlayProps</code>
-that adds the <code class="language-text">$</code> sign to the ones that should be transient props, and skips <code class="language-text">$</code>
-for the ones that are DOM attributes.</p>
+that adds the <code class="language-text">$</code> sign to the ones that should be transient props, and skips the other ones that are DOM attributes.</p>
 <h4>Implementation</h4>
 <p>Based on the description above, we want to define a <code class="language-text">TransientProps</code> type that is able to:</p>
 <ul>
@@ -427,7 +426,7 @@ for the ones that are DOM attributes.</p>
 <li>skip the DOM props in some way, because they should still be forwarded</li>
 </ul>
 <p>To start the implementation, we need first to check some types exposed by React.<br>
-In particular for our use case it will be useful the <a href="https://react-typescript-cheatsheet.netlify.app/docs/react-types/ComponentProps" target="_blank" rel="nofollow noopener noreferrer"><code class="language-text">ComponentProps</code> type</a>.
+For our use case it will be useful the <a href="https://react-typescript-cheatsheet.netlify.app/docs/react-types/ComponentProps" target="_blank" rel="nofollow noopener noreferrer"><code class="language-text">ComponentProps</code> type</a>.
 This utility type lets us extract the props of a React component received as generic parameter.<br>
 The other interesting type is <code class="language-text">React.JSX.IntrinsicElements</code>.
 This is a type that declares which JSX elements are allowed/defined and their props.
