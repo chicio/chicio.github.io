@@ -111,7 +111,7 @@ Based on the description above, we want to define a `TransientProps` type that i
 * add the `$` prefix to props that are not DOM attributes, and are defined by ourselves
 * skip the DOM props in some way, because they should still be forwarded
 
-To start ith the implementation, we need first to check some types exposed by React.  
+To start the implementation, we need first to check some types exposed by React.  
 In particular for our use case it will be useful the [`ComponentProps` type](https://react-typescript-cheatsheet.netlify.app/docs/react-types/ComponentProps). 
 This utility type lets us extract the props of a React component received as generic parameter.  
 The other interesting type is `React.JSX.IntrinsicElements`.
