@@ -194,6 +194,8 @@ architecture in the `NasaPhotoComponentPresenter`. As you can see from the code 
 similar to other language like Java, C# (and many other :sunglasses:).
 
 ```jsx
+import { OverlayProps } from "./overlay";
+
 export class NasaPhotoService {
   async retrieve(): Promise<any> {
     return fetch('https://api.nasa.gov/planetary/apod?api_key=1cygunHJsSwDug6zJjF3emev3QAP8yFLppohLuxb')
@@ -224,11 +226,11 @@ export class NasaPhotoComponentPresenter {
 
 //...
 
-export class NasaPhotoViewerScreen extends React.Component<Props, State> implements NasaPhotoView {
+export class NasaPhotoViewerScreen extends React.Component<TransientProps<OverlayProps, "div">, State> implements NasaPhotoView {
   private readonly
   presenter: NasaPhotoComponentPresenter
 
-  constructor(props: Props) {
+  constructor(props: TransientProps<OverlayProps, "div">) {
     super(props)
     this.state = {
       photo: NasaPhoto.empty()
@@ -256,7 +258,7 @@ export class NasaPhotoViewerScreen extends React.Component<Props, State> impleme
       <ScrollView style={styles.container}>
         <Image
           style={styles.image}
-          {% raw %}source={{uri: this.state.photo.url}}{% endraw %}
+          {% raw %} source={{ uri: this.state.photo.url }}{% endraw %}
         />
         <NasaPhotoInformationComponent
           title={this.state.photo.title}
@@ -268,11 +270,15 @@ export class NasaPhotoViewerScreen extends React.Component<Props, State> impleme
   }
 }
 
-interface Props {
+interface
+Props
+{
   name: string
 }
 
-interface State {
+interface
+State
+{
   photo: NasaPhoto
 }
 

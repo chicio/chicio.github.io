@@ -9,9 +9,7 @@ export interface OverlayProps {
   onClick: () => void;
 }
 
-type Props = TransientProps<OverlayProps, "div">;
-
-const StyledOverlay = styled.div<Props>`
+const StyledOverlay = styled.div<TransientProps<OverlayProps, "div">>`
   position: fixed;
   top: 0;
   left: 0;
@@ -28,12 +26,5 @@ const StyledOverlay = styled.div<Props>`
 export const Overlay: FC<OverlayProps> = ({ zIndex, onClick, delay }) => {
   useLockBodyScroll();
 
-  return (
-    <StyledOverlay
-      $zIndex={zIndex}
-      onClick={onClick}
-      $delay={delay}
-      data-test={"ciaone"}
-    />
-  );
+  return <StyledOverlay $zIndex={zIndex} onClick={onClick} $delay={delay} />;
 };
