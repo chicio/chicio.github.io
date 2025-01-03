@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css, TransientProps } from "styled-components";
 import { StandardExternalLink } from "../atoms/standard-external-link";
 import { trackWith } from "../../../logic/tracking";
 import { FC } from "react";

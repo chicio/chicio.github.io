@@ -1,5 +1,5 @@
 import { FC } from "react";
-import styled, { css } from "styled-components";
+import styled, { css, TransientProps } from "styled-components";
 import { SearchAlt } from "@styled-icons/boxicons-regular";
 import { mediaQuery } from "../utils-css/media-query";
 import { Container } from "../atoms/container";

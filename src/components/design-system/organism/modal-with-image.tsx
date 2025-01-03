@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { TransientProps } from "styled-components";
 import { CallToActionExternal } from "../atoms/call-to-action-external";
 import { FC } from "react";
 import { opacity } from "../utils-css/opacity-keyframes";

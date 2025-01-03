@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css, TransientProps } from "styled-components";
 import { Paragraph } from "../atoms/paragraph";
 import { tracking } from "../../../logic/tracking";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";

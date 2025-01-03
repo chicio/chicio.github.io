@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Heading3 } from "../atoms/heading3";
-import styled from "styled-components";
+import styled, { TransientProps } from "styled-components";
 import { Container } from "../atoms/container";
 import { CallToActionExternalWithTracking } from "../../tracking/call-to-action-external-with-tracking";
 import { mediaQuery } from "../utils-css/media-query";
@@ -15,9 +15,9 @@ interface ProjectContainerProps {
   reverse: boolean;
 }
 
-const ProjectContainer = styled(Container)<
-  TransientProps<ProjectContainerProps>
->`
+type Created = TransientProps<ProjectContainerProps>;
+
+const ProjectContainer = styled(Container)<Created>`
   display: flex;
   flex-direction: column;
   padding: 0;

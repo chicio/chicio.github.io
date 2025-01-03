@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { TransientProps } from "styled-components";
 import { opacity } from "../utils-css/opacity-keyframes";
 import { FC } from "react";
 import { useLockBodyScroll } from "../hooks/use-lock-body-scroll";
@@ -6,9 +6,12 @@ import { useLockBodyScroll } from "../hooks/use-lock-body-scroll";
 export interface OverlayProps {
   zIndex: number;
   delay: string;
+  onClick: () => void;
 }
 
-const StyledOverlay = styled.div<TransientProps<OverlayProps>>`
+type Props = TransientProps<OverlayProps, "div">;
+
+const StyledOverlay = styled.div<Props>`
   position: fixed;
   top: 0;
   left: 0;
@@ -22,12 +25,15 @@ const StyledOverlay = styled.div<TransientProps<OverlayProps>>`
   backdrop-filter: blur(4px);
 `;
 
-export const Overlay: FC<OverlayProps & { onClick: () => void }> = ({
-  zIndex,
-  onClick,
-  delay,
-}) => {
+export const Overlay: FC<OverlayProps> = ({ zIndex, onClick, delay }) => {
   useLockBodyScroll();
 
-  return <StyledOverlay $zIndex={zIndex} onClick={onClick} $delay={delay} />;
+  return (
+    <StyledOverlay
+      $zIndex={zIndex}
+      onClick={onClick}
+      $delay={delay}
+      data-test={"ciaone"}
+    />
+  );
 };

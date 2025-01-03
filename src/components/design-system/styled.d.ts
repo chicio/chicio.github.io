@@ -1,4 +1,5 @@
 import "styled-components";
+import React, { ComponentProps } from "react";
 
 interface Colors {
   primaryColor: string;
@@ -24,4 +25,23 @@ declare module "styled-components" {
     spacing: string[];
     lineHeight: number;
   }
+
+  type Stringify<PropName> = PropName extends string ? PropName : never;
+  type DomElement = keyof React.JSX.IntrinsicElements | false;
+  type OmitDomProps<
+    CustomProps,
+    Component extends DomElement,
+  > = Component extends false
+    ? keyof CustomProps
+    : keyof Omit<CustomProps, keyof ComponentProps<Component>>;
+
+  export type TransientProps<
+    CustomProps,
+    Component extends DomElement = false,
+  > = {
+    [Key in OmitDomProps<
+      CustomProps,
+      Component
+    > as `$${Stringify<Key>}`]: CustomProps[Key];
+  };
 }

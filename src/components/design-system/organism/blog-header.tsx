@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { StaticImage } from "gatsby-plugin-image";
-import styled from "styled-components";
+import styled, { TransientProps } from "styled-components";
 import { mediaQuery } from "../utils-css/media-query";
 import { gatsbyImagePlaceholderSelector } from "../utils-css/gatsby-image-selector";
 import { backgroundGradients } from "../atoms/gradients";
