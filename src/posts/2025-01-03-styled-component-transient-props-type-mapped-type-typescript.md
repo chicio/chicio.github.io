@@ -51,8 +51,7 @@ The `StyledOverlay` component receive all the props of the container component, 
 
 * avoid the forward for `zIndex` and `delay` because they are not DOM attributes.
   This is why they are contained again in the `StyledOverlayProps` interface with the `$` transient prop prefix.
-* forward the `onClick` prop to the underling DOM element (and so we don't add the property to the `StyledOverlayProps` but 
-we still pass it to the component).
+* forward the `onClick` prop to the underling DOM element (and so we don't add the property to the `StyledOverlayProps` but we still pass it to the component).
 
 ```tsx
 interface StyledOverlayProps {
@@ -149,13 +148,12 @@ Now we are ready to create the `TransientProps` type.
 This type receives two generic parameters:
 
 * the `CustomProps` interface for which we want to remap the properties as transient ones.
-* the `IntrinsicElements` if needed to get the type of the underlying dome element. If not passed it will have a default `false` value and all the props will become transient. 
+* the `IntrinsicElements` if needed to get the type of the underlying DOM element. If not passed it will have a default `false` value and all the props will become transient. 
 
 This type will use TypeScript mapped types to remap the properties of `CustomProps` received.
 The utility types created before are used to conditionally filter out DOM properties if needed.
 We can add our utility type to the `styled-components` module.
-In this way,
-thanks to [module augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation), 
+In this way, thanks to [module augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation), 
 we will have the `TransientProps` type exposed as it is a type from the framework itself.
 
 ```typescript
