@@ -1,3 +1,5 @@
+## ATTENTION: I moved my website to Next.js + Vercel. You can find the new implementation [here](https://github.com/chicio/chicio-blog "fabrizioduroni.it").
+
 [![Build](https://github.com/chicio/chicio.github.io/actions/workflows/build.yml/badge.svg)](https://github.com/chicio/chicio.github.io/actions/workflows/build.yml)
 [![Test](https://github.com/chicio/chicio.github.io/actions/workflows/test.yml/badge.svg)](https://github.com/chicio/chicio.github.io/actions/workflows/test.yml)
 ![Release](https://github.com/chicio/chicio.github.io/workflows/Release/badge.svg)
