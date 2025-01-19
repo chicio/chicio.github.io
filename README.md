@@ -1,4 +1,4 @@
-## ATTENTION: I moved my website to Next.js + Vercel. You can find the new implementation [here](https://github.com/chicio/chicio-blog "fabrizioduroni.it").
+## ATTENTION: I moved my website to Next.js + Vercel. You can find the new implementation in the [chicio-blog](https://github.com/chicio/chicio-blog "fabrizioduroni.it") repository. I keep this repository as a documentation of the old implmentation.
 
 [![Build](https://github.com/chicio/chicio.github.io/actions/workflows/build.yml/badge.svg)](https://github.com/chicio/chicio.github.io/actions/workflows/build.yml)
 [![Test](https://github.com/chicio/chicio.github.io/actions/workflows/test.yml/badge.svg)](https://github.com/chicio/chicio.github.io/actions/workflows/test.yml)
